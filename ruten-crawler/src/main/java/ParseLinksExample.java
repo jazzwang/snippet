@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.util.Map;
 import java.net.SocketTimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jsoup.Connection;
 import org.jsoup.Connection.Response;
@@ -15,6 +17,7 @@ public class ParseLinksExample {
     int count = 0;
     boolean success = false;
     Map<String, String> cookies = null;
+    String pattern = ".*\\?c=(.*)";
     String url = "http://goods.ruten.com.tw/item/show?" + args[0];
     System.out.println(url);
 
@@ -38,16 +41,20 @@ public class ParseLinksExample {
           e.printStackTrace();
       }
     }
-    // get title of the page
-    String title = doc.title();
-    System.out.println("Title: " + title);
-    // System.out.println(doc.body());
+    String href = null;
     // get all links
     Elements links = doc.select(".rt-breadcrumb-link");
     for (Element link : links) {
       // get the value from href attribute
-      if(link.text() != "")
-        System.out.println(link.attr("href")+","+link.text());
+      href = link.attr("href");
+      if (href.contains("category.php?c=")) {
+        Matcher m = Pattern.compile(pattern).matcher(href);
+        if (m.find()) {
+          System.out.println("category_id = " + m.group(1) + " , category = '" + link.text() + "'");
+        } else {
+          System.out.println(href);
+        }
+      }
     }
   }
 }
