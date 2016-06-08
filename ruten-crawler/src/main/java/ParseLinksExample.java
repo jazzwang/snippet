@@ -19,7 +19,7 @@ public class ParseLinksExample {
     Map<String, String> cookies = null;
     String pattern = ".*\\?c=(.*)";
     String url = "http://goods.ruten.com.tw/item/show?" + args[0];
-    System.out.println(url);
+    System.err.println(url);
 
     while ( ! success ) {
       try {
@@ -44,17 +44,20 @@ public class ParseLinksExample {
     String href = null;
     // get all links
     Elements links = doc.select(".rt-breadcrumb-link");
+    String category_id = "9999";
     for (Element link : links) {
       // get the value from href attribute
       href = link.attr("href");
       if (href.contains("category.php?c=")) {
         Matcher m = Pattern.compile(pattern).matcher(href);
         if (m.find()) {
-          System.out.println("category_id = " + m.group(1) + " , category = '" + link.text() + "'");
+          System.err.println("category_id = " + m.group(1) + " , category = '" + link.text() + "'");
+          category_id = m.group(1);
         } else {
-          System.out.println(href);
+          System.err.println(href);
         }
       }
     }
+    System.out.println(args[0] + "," + category_id);
   }
 }
