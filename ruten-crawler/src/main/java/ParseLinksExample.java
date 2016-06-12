@@ -21,7 +21,7 @@ public class ParseLinksExample {
     String url = "http://goods.ruten.com.tw/item/show?" + args[0];
     System.err.println(url);
 
-    while ( ! success ) {
+    while ( ! success && count < 5 ) {
       try {
         Response res = Jsoup.connect(url).userAgent("Mozilla").followRedirects(false).execute();
         //System.out.println("url:"+res.url());
