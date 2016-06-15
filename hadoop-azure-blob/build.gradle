@@ -22,6 +22,10 @@ dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
 
+    // Read/Write Files from Azure Blob with Hadoop 2.7
+    // http://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common/2.7.2
+    compile 'org.apache.hadoop:hadoop-common:2.7.2'
+
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add

@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'hadoop_azure_blob'
+rootProject.name = 'hadoop-azure-blob'
