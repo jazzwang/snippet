@@ -2,6 +2,7 @@ import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.StorageException;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
 import com.microsoft.azure.storage.blob.CloudBlobContainer;
+import com.microsoft.azure.storage.blob.CloudBlockBlob;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -25,8 +26,12 @@ public class AzureBlobExample {
             connectStr = br.readLine();
             CloudStorageAccount account = CloudStorageAccount.parse(connectStr);
             CloudBlobClient client = account.createCloudBlobClient();
-            CloudBlobContainer container = client.getContainerReference("log");
-            System.err.println(container.getStorageUri().toString());
+            CloudBlobContainer container = client.getContainerReference("test");
+            CloudBlockBlob blob1 = container.getBlockBlobReference("sample_file1");
+            // Write "Hello World" to Azure Block Blob 'sample_file1'
+            blob1.uploadText("Hello World");
+            // Read from Azure Block Blob 'sample_file1'
+            System.out.println(blob1.downloadText());
         } catch (FileNotFoundException e) {
             System.err.println("Can not find file named by 'storagekey'!!\n" +
                                "Please put Azure Blob Container Connection String in file `storagekeys'.");
