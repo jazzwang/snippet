@@ -21,7 +21,9 @@ public class KafkaProducerSample {
         KafkaProducer<String,String> producer = new KafkaProducer<>(props);
         for (int i = 1; i <= 50_000; i++) {
             producer.send(new ProducerRecord<String, String>("test", Integer.toString(i), Integer.toString(i)));
+            System.out.println("Sending to topic 'test' with key '" + i + "' and payload '" + i + "'");
         }
+        producer.flush();
         producer.close();
     }
 }
