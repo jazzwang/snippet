@@ -1,0 +1,12 @@
+module.exports = {
+  'Azure Blob Usage' : function (browser) {
+    var username = "jazz@example.com";
+    var password = "CHANGE_PASSWORD";
+    var subscription = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
+
+    browser
+      .azure_login(username, password)
+      .azure_blob_usage(subscription, 'RESOURCE_GROUP','STORAGE_ACCOUNT')
+      .end();
+  }
+};

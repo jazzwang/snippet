@@ -1,6 +1,7 @@
 {
  "src_folders" : ["tests"],
  "output_folder" : "reports",
+ "custom_commands_path": "command",
 
  "selenium" : {
   "start_process" : true,
