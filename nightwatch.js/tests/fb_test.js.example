@@ -1,0 +1,12 @@
+module.exports = {
+  'Facebook login test' : function (browser) {
+    var username = "Replace with your account";
+    var password = "Replace with your password";
+
+    browser
+      .fb_login(username, password)
+      .pause(10000)
+      .saveScreenshot('reports/fb_login.png')
+      .end();
+  }
+};
