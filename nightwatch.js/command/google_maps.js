@@ -4,6 +4,6 @@ exports.command = function(url, job_name){
   browser
       .url(url)
       .waitForElementVisible('#scene', 30000)
-      .saveScreenshot('reports/' + job_name + '_' + date.toISOString().substring(0, 10) + '_' + date.getHours() + '.png')
+      .saveScreenshot('reports/' + job_name + '_' + date.toISOString().replace(/:/g,'-') + '.png')
   return this;
 };
