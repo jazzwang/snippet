@@ -15,9 +15,7 @@ for message in mbox:
 	dt = parser.parse(message['Date']).strftime("%Y-%m-%d")
 	soup = BeautifulSoup(content, "lxml")
 	for block in soup.select(".job_company"):
-		print dt + ";" + block.text.encode('utf-8')
-	for block in soup.find_all('span', 'sg-paragraph-large'):
-		if block.find(class_='db'):
-			continue
-		else:
-			print dt + ";" + block.text.encode('utf-8')
+		print dt + ";" + block.text.rstrip().lstrip().encode('utf-8')
+	for block in soup.select(".sg-paragraph-large"):
+		if block.get('style') == "color: #000;" :
+			print dt + ";" + block.text.rstrip().lstrip().encode('utf-8')

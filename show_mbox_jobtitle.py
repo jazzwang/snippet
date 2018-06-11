@@ -15,6 +15,6 @@ for message in mbox:
 	dt = parser.parse(message['Date']).strftime("%Y-%m-%d")
 	soup = BeautifulSoup(content, "lxml")
 	for block in soup.select(".jobtitle"):
-		print dt + ";" + block.text.encode('utf-8')
+		print dt + ";" + block.text.rstrip().lstrip().encode('utf-8')
 	for block in soup.select(".sg-heading4 a"):
-		print dt + ";" + block.text.encode('utf-8')
+		print dt + ";" + block.text.replace('">','').rstrip().lstrip().encode('utf-8')
