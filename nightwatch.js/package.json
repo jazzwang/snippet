@@ -3,6 +3,6 @@
     "test-e2e": "nightwatch"
   },
   "devDependencies": {
-    "nightwatch": "^0.9.19"
+    "nightwatch": "^0.9.21"
   }
 }
