@@ -365,13 +365,12 @@ https://revcycleintelligence.com/news/vertical-integration-in-healthcare-doesnt-
 
 <!-- slide -->
 
-### Let's take a look <font color='greenyellow'>Roles</font><br/> in <font color='aqua'>Digital Marketing (AdTech)</font>
+### Let's take a look at <br/><font color='greenyellow'>Roles</font> in <font color='aqua'>Digital Marketing (AdTech)</font>
 
 @import "https://image.slidesharecdn.com/2017-11-12datapipelinematters-171112161249/95/data-pipeline-matters-16-638.jpg" {width=40%}
 
-<i>-<small>- Source: "Data Pipeline Matters -- take tracking pixel as an example", Jazz Yao-Tsung Wang, 2018
-https://www.slideshare.net/jazzwang/data-pipeline-matters
-</small></i>
+<i><small>-- Source: "Data Pipeline Matters -- take tracking pixel as an example", Jazz Yao-Tsung Wang, 2018
+https://www.slideshare.net/jazzwang/data-pipeline-matters</small></i>
 
 
 <!-- slide -->
