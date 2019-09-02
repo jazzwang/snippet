@@ -23,7 +23,7 @@ By [Jazz Yao-Tsung Wang](https://slideshare.net/jazzwang)
 
 <hr/>
 
-Vertival Integration of <font color="red">**Data Pipeline**</font>
+Vertival Integration of <font color="lightpink">**Data Pipeline**</font>
 from <font color="hotpink">**Provider**</font> to <font color="orange">**Payer**</font> for providing <font color="greenyellow">**Value**</font> to <font color="aqua">**Consumer**</font>
 
 ![DevCon_2018_Ideation](https://i.imgur.com/fHEnDvz.png)
@@ -33,7 +33,7 @@ DevCon 2018 Ideation by Jazz Yao-Tsung Wang @ 2018-07-14
 
 ![DevCon_2018_Ideation](https://i.imgur.com/fHEnDvz.png)
 
-* **Business Model**: <font color="red">B-to-B-to-C ( CHC - Payer - Patient )</font>
+* **Business Model**: <font color="lightpink">B-to-B-to-C ( CHC - Payer - Patient )</font>
 * **Deliverable**: Web Services for each <font color="hotpink">Payer</font> that help <font color="orange">Patient</font> to identify their best package for each payer.
 * **Value proposition for Payer**: <font color="greenyellow">Customer Relationship Management</font> <br/> (inspired by <font color="aqua">Telecom fare diagnosis service</font> in Taiwan).
 
@@ -49,12 +49,12 @@ DevCon 2018 Ideation by Jazz Yao-Tsung Wang @ 2018-07-14
 
 #### But ...
 
-Learned from the perspective of <font color="red">Cardiologist</font>
+Learned from the perspective of <font color="lightpink">Cardiologist</font>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/S40xaVjmetM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <blockquote>
-A presentation from the <font color="red">2015</font> The New Orleans Conference<br/> covering the topic of <font color="red">integration in healthcare</font> <br/>and how it affects those in the cardiac surgery specialty.
+A presentation from the <font color="lightpink">2015</font> The New Orleans Conference<br/> covering the topic of <font color="lightpink">integration in healthcare</font> <br/>and how it affects those in the cardiac surgery specialty.
 </blockquote>
 
 <i><small>-- Source: "Vertical vs Horizontal Integration in Cardiac Surgery", Arie Blitz, MD, 2015
@@ -161,7 +161,7 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 <!-- slide -->
 
 ### Vertical Integration: 80’s Fad or Health Care’s Future?
-July 1, <font color="red">**1997**</font>
+July 1, <font color="lightpink">**1997**</font>
 
 @import "https://i.imgur.com/cwYsuBk.png" {width=40%}
 
@@ -185,7 +185,7 @@ https://www.strategy-business.com/article/18205?gko=a00f6</small></i>
 
 ### Vertical Integration throughtout <font color="yellow">1980's</font> ...
 
-* <font color="red">**Kaiser**</font> expand its owned hospitals and contracted exclusively with the **<font color="red">Permanente</font> Group**
+* <font color="lightpink">**Kaiser**</font> expand its owned hospitals and contracted exclusively with the **<font color="lightpink">Permanente</font> Group**
 
 * <font color="hotpink">**Aetna**</font> built staff model clinics across the country
 
@@ -206,7 +206,7 @@ https://www.strategy-business.com/article/18205?gko=a00f6</small></i>
 
 ### Horizontal Consolidation in <font color="aqua">1990's</font>
 
-* <font color="red">**Kaiser**</font> is **renting hospital capacity** rather than owning it, and has started to **contract with non-<font color="red">Permanente</font> physicians** to supplement its core networks.
+* <font color="lightpink">**Kaiser**</font> is **renting hospital capacity** rather than owning it, and has started to **contract with non-<font color="lightpink">Permanente</font> physicians** to supplement its core networks.
 
 * <font color="hotpink">**Aetna**</font> sold its physician practice management company to <font color="greenyellow">**MedPartners**</font>.
 
@@ -222,7 +222,7 @@ https://www.strategy-business.com/article/18205?gko=a00f6</small></i>
 ### Why refocus on vertical intergration again?
 
 ## <font color="yellow">Affordable Care Act (ACA)</font>
-### March 23, <font color="red">**2010**</font>
+### March 23, <font color="lightpink">**2010**</font>
 
 ![Affordable-Care-Act](https://i.imgur.com/PIrA7AP.png)
 <i><small> -- Source: https://en.wikipedia.org/wiki/Patient_Protection_and_Affordable_Care_Act</small></i>
@@ -261,7 +261,7 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 <!-- slide -->
 
 ### The Way Forward for Integrated Care
-#### 31 March, <font color="red">**2014**</font>
+#### 31 March, <font color="lightpink">**2014**</font>
 
 ![way-forward-integrated-care](https://i.imgur.com/utXs08X.png)
 
@@ -273,11 +273,11 @@ https://ldi.upenn.edu/way-forward-integrated-care</small></i>
 ### Hospital-Physician Integration
 
 <blockquote>
-The percentage of physicians employed by hospitals has increased<br/> from <font color="red">11% in 2000</font> to nearly <font color="greenyellow">15% in 2008</font>.
+The percentage of physicians employed by hospitals has increased<br/> from <font color="lightpink">11% in 2000</font> to nearly <font color="greenyellow">15% in 2008</font>.
 </blockquote>
 
 <blockquote>
-It has led to <font color="red">financial losses</font> approaching <font color="aqua">$200,000 per year per physician</font>, double the losses incurred <br/> during the early period of integration in the 1990s.
+It has led to <font color="lightpink">financial losses</font> approaching <font color="aqua">$200,000 per year per physician</font>, double the losses incurred <br/> during the early period of integration in the 1990s.
 </blockquote>
 
 <i><small>-- Source: "The Way Forward for Integrated Care", 2014-03-31
@@ -291,7 +291,7 @@ https://ldi.upenn.edu/way-forward-integrated-care</small></i>
 Another form of vertical integration is <br/> <font color="hotpink">between providers and health insurance plans</font>. 
 </blockquote>
 <blockquote>
-There are several well-known examples of these systems, <br/>including <font color="red">Kaiser Health Plan</font> and other major integrated systems <br/>(e.g., Mayo Clinic, Cleveland Clinic). 
+There are several well-known examples of these systems, <br/>including <font color="lightpink">Kaiser Health Plan</font> and other major integrated systems <br/>(e.g., Mayo Clinic, Cleveland Clinic). 
 </blockquote>
 <blockquote>
 The success of these integrated systems can be attributed to a number of features, in particular a notably <font color="greenyellow">physician-driven system</font>, <font color="aqua">unified clinical and administrative cultures</font>, a long history with sufficient time to develop this culture, and <font color="magenta">strong economic interdependence</font> among their three arms (the physicians, the hospital, and the health plan).
@@ -341,7 +341,7 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 <!-- slide -->
 
 ### Vertical Integration in Healthcare <br/>Doesn’t Boost Care Quality
-#### February 14, <font color="red">2019</font>
+#### February 14, <font color="lightpink">2019</font>
 
 @import "https://i.imgur.com/aK9hmUb.png" {width=30%}
 
@@ -361,7 +361,7 @@ https://revcycleintelligence.com/news/vertical-integration-in-healthcare-doesnt-
 <!-- slide -->
 
 # <u>Discussion</u>
-## The position of <br/> <font color="red">Change Healthcare</font> <br/>in Vertical Integration?
+## The position of <br/> <font color="lightpink">Change Healthcare</font> <br/>in Vertical Integration?
 
 <!-- slide -->
 
@@ -377,29 +377,33 @@ https://www.slideshare.net/jazzwang/data-pipeline-matters</small></i>
 
 ### Revisit the position of Change Healthcare
 
+<hr/>
+
+Mapping roles in "Healthcare IT" and "Digital Marketing (AdTech)" ...
+
 <font color="black">
 <table style="border: 0.5pt solid black; text-align: center; vertical-align:middle;">
 <tr>
-<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
-Digital Marketing (AdTech)
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAA3">
+<b>Digital Marketing (AdTech)</b>
 </td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
 ⟷</td>
-<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
-Healthcare IT
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE59D">
+<b>Healthcare IT</b>
 </td>
 </tr><tr><td colspan="3"></td></tr><tr>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
-<b>Audience</b>: website visitor</td>
+<b>Audience</b>: Website Visitor</td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
 ⟷</td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
-<b>Patient</b></td>
+<b>Consumer</b>: Patient</td>
 </tr>
 </tr><tr><td colspan="3"></td></tr><tr>
 <tr>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
-<b>Demand</b> side</td>
+<b>Demand</b> side: Budget Source</td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
 ⟷</td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
@@ -408,7 +412,7 @@ Healthcare IT
 </tr><tr><td colspan="3"></td></tr><tr>
 <tr>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
-Advertising Network (<b>Platform</b>)</td>
+<b>Platform</b>: Advertising Network</td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
 ⟷</td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
@@ -426,6 +430,12 @@ Advertising Network (<b>Platform</b>)</td>
 </table>
 </font>
 
+Can we reproduce the Disruptive innovation in AdTech like **Facebook**?
+
 <!-- slide -->
 
 # Q & A
+
+<blockquote>
+Today's sharing is majorly talking about <h3>different types of "Supply Chain"</h3> in healthcare!!
+</blockquote>
