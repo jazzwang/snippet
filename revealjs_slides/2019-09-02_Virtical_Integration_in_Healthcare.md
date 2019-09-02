@@ -35,7 +35,7 @@ DevCon 2018 Ideation by Jazz Yao-Tsung Wang @ 2018-07-14
 
 * **Business Model**: <font color="red">B-to-B-to-C ( CHC - Payer - Patient )</font>
 * **Deliverable**: Web Services for each <font color="hotpink">Payer</font> that help <font color="orange">Patient</font> to identify their best package for each payer.
-* **Value proposition for Payer**: <font color="greenyellow">Customer Relationship Management</font> <br/> (inspired by <font color='aqua'>Telecom fare diagnosis service</font> in Taiwan).
+* **Value proposition for Payer**: <font color="greenyellow">Customer Relationship Management</font> <br/> (inspired by <font color="aqua">Telecom fare diagnosis service</font> in Taiwan).
 
 <!-- slide -->
 
@@ -49,7 +49,7 @@ DevCon 2018 Ideation by Jazz Yao-Tsung Wang @ 2018-07-14
 
 #### But ...
 
-Learned from the perspective of <font color='red'>Cardiologist</font>
+Learned from the perspective of <font color="red">Cardiologist</font>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/S40xaVjmetM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -66,9 +66,9 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 
 <!-- slide -->
 
-### What is 'Horizontal integration'?
+### What is "Horizontal integration"?
 
-<iframe width='80%' src='https://en.wikipedia.org/wiki/Horizontal_integration' height="600"></iframe>
+<iframe width="80%" src="https://en.wikipedia.org/wiki/Horizontal_integration" height="600"></iframe>
 
 <i><small>-- Source: https://en.wikipedia.org/wiki/Horizontal_integration</small></i>
 
@@ -76,7 +76,7 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 
 #### Horizontal integration
 
-* Increase production of goods or services **<font color='hotpink'>at the same part of the supply chain</font>** via:
+* Increase production of goods or services **<font color="hotpink">at the same part of the supply chain</font>** via:
   * internal expansion
   * acquisition 
   * merger
@@ -85,9 +85,9 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 
 <!-- slide -->
 
-### What is 'Vertical Integration'?
+### What is "Vertical Integration"?
 
-<iframe width='80%' src='https://en.wikipedia.org/wiki/Vertical_integration' height="600"></iframe>
+<iframe width="80%" src="https://en.wikipedia.org/wiki/Vertical_integration" height="600"></iframe>
 
 <i><small>-- Source: https://en.wikipedia.org/wiki/Vertical_integration</small></i>
 
@@ -95,10 +95,10 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 
 ### Vertical Integration
 
-* Bring large portions of the supply chain not only **<font color='hotpink'>under a common ownership</font>**, 
-but also **<font color='greenyellow'>into one corporation</font>**
-* Three types of Vertical Integration: (A) **<font color='aqua'>backwards</font>** (upstream), (B) **<font color='aqua'>forwards</font>** (downstream), 
-(C) **<font color='aqua'>balanced</font>** (both upstream and downstream)
+* Bring large portions of the supply chain not only **<font color="hotpink">under a common ownership</font>**, 
+but also **<font color="greenyellow">into one corporation</font>**
+* Three types of Vertical Integration: (A) **<font color="aqua">backwards</font>** (upstream), (B) **<font color="aqua">forwards</font>** (downstream), 
+(C) **<font color="aqua">balanced</font>** (both upstream and downstream)
 
 @import "https://upload.wikimedia.org/wikipedia/commons/f/fc/Integration_in_English.svg" {width=40%}
 
@@ -172,24 +172,24 @@ https://www.strategy-business.com/article/18205?gko=a00f6</small></i>
 
 ### Cases for Vertical Integration between Payors and Providers
 
-* owning physicians gives a health plan greater influence over practice patterns and <br/> **<font color='hotpink'>reduces the use of medical resources</font>**
+* owning physicians gives a health plan greater influence over practice patterns and <br/> **<font color="hotpink">reduces the use of medical resources</font>**
 
-* owning hospitals allows an insurer to **<font color='orange'>control medical facility capacity</font>** and generate <br/> **<font color='greenyellow'>lower unit costs</font>**
+* owning hospitals allows an insurer to **<font color="orange">control medical facility capacity</font>** and generate <br/> **<font color="greenyellow">lower unit costs</font>**
 
-* combining insurance, physician and hospital components under one entity yields <br/> **<font color='aqua'>reductions in administrative costs</font>**
+* combining insurance, physician and hospital components under one entity yields <br/> **<font color="aqua">reductions in administrative costs</font>**
 
 <i><small>-- Source: "Vertical Integration: 80’s Fad or Health Care’s Future?", 1997-07-01
 https://www.strategy-business.com/article/18205?gko=a00f6</small></i>
 
 <!-- slide -->
 
-### Vertical Integration throughtout <font color='yellow'>1980's</font> ...
+### Vertical Integration throughtout <font color="yellow">1980's</font> ...
 
-* <font color='red'>**Kaiser**</font> expand its owned hospitals and contracted exclusively with the **<font color='red'>Permanente</font> Group**
+* <font color="red">**Kaiser**</font> expand its owned hospitals and contracted exclusively with the **<font color="red">Permanente</font> Group**
 
-* <font color='hotpink'>**Aetna**</font> built staff model clinics across the country
+* <font color="hotpink">**Aetna**</font> built staff model clinics across the country
 
-* <font color='orange'>**CIGNA**</font> also built staff model clinics and acquired the **Lovelace integrated health system**
+* <font color="orange">**CIGNA**</font> also built staff model clinics and acquired the **Lovelace integrated health system**
 
 * **FHP** owned health plans, physician clinics and hospitals
 
@@ -204,13 +204,13 @@ https://www.strategy-business.com/article/18205?gko=a00f6</small></i>
 
 <!-- slide -->
 
-### Horizontal Consolidation in <font color='aqua'>1990's</font>
+### Horizontal Consolidation in <font color="aqua">1990's</font>
 
-* <font color='red'>**Kaiser**</font> is **renting hospital capacity** rather than owning it, and has started to **contract with non-<font color='red'>Permanente</font> physicians** to supplement its core networks.
+* <font color="red">**Kaiser**</font> is **renting hospital capacity** rather than owning it, and has started to **contract with non-<font color="red">Permanente</font> physicians** to supplement its core networks.
 
-* <font color='hotpink'>**Aetna**</font> sold its physician practice management company to <font color='greenyellow'>**MedPartners**</font>.
+* <font color="hotpink">**Aetna**</font> sold its physician practice management company to <font color="greenyellow">**MedPartners**</font>.
 
-* <font color='orange'>**CIGNA**</font> divested its southern California clinics to <font color='greenyellow'>**MedPartners**</font>.
+* <font color="orange">**CIGNA**</font> divested its southern California clinics to <font color="greenyellow">**MedPartners**</font>.
 
 * **FHP** sold its hospitals and created a separate subsidiary for its group practice, ostensibly as a first step toward spinning it off.
 
@@ -221,15 +221,15 @@ https://www.strategy-business.com/article/18205?gko=a00f6</small></i>
 
 ### Why refocus on vertical intergration again?
 
-## <font color='yellow'>Affordable Care Act (ACA)</font>
-### March 23, <font color='red'>**2010**</font>
+## <font color="yellow">Affordable Care Act (ACA)</font>
+### March 23, <font color="red">**2010**</font>
 
 ![Affordable-Care-Act](https://i.imgur.com/PIrA7AP.png)
 <i><small> -- Source: https://en.wikipedia.org/wiki/Patient_Protection_and_Affordable_Care_Act</small></i>
 
 <!-- slide -->
 
-### <font color='yellow'>ACA</font> encourages integration
+### <font color="yellow">ACA</font> encourages integration
 
 <table>
 <tr>
@@ -261,7 +261,7 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 <!-- slide -->
 
 ### The Way Forward for Integrated Care
-#### 31 March, <font color='red'>**2014**</font>
+#### 31 March, <font color="red">**2014**</font>
 
 ![way-forward-integrated-care](https://i.imgur.com/utXs08X.png)
 
@@ -288,13 +288,13 @@ https://ldi.upenn.edu/way-forward-integrated-care</small></i>
 ### Physician - Hospital - Health Plan Integration
 
 <blockquote>
-Another form of vertical integration is <br/> <font color='hotpink'>between providers and health insurance plans</font>. 
+Another form of vertical integration is <br/> <font color="hotpink">between providers and health insurance plans</font>. 
 </blockquote>
 <blockquote>
-There are several well-known examples of these systems, <br/>including <font color='red'>Kaiser Health Plan</font> and other major integrated systems <br/>(e.g., Mayo Clinic, Cleveland Clinic). 
+There are several well-known examples of these systems, <br/>including <font color="red">Kaiser Health Plan</font> and other major integrated systems <br/>(e.g., Mayo Clinic, Cleveland Clinic). 
 </blockquote>
 <blockquote>
-The success of these integrated systems can be attributed to a number of features, in particular a notably <font color='greenyellow'>physician-driven system</font>, <font color='aqua'>unified clinical and administrative cultures</font>, a long history with sufficient time to develop this culture, and <font color='MAGENTA'>strong economic interdependence</font> among their three arms (the physicians, the hospital, and the health plan).
+The success of these integrated systems can be attributed to a number of features, in particular a notably <font color="greenyellow">physician-driven system</font>, <font color="aqua">unified clinical and administrative cultures</font>, a long history with sufficient time to develop this culture, and <font color="magenta">strong economic interdependence</font> among their three arms (the physicians, the hospital, and the health plan).
 </blockquote>
 
 <i><small>-- Source: "The Way Forward for Integrated Care", 2014-03-31
@@ -306,7 +306,7 @@ https://ldi.upenn.edu/way-forward-integrated-care</small></i>
 ### "Virtual Integration" ?
 
 <blockquote>
-There is also a movement towards "virtual integration" which allows a physician to <font color='hotpink'>remain independent</font> but exploit some of the advantages of group practice, including <font color='aqua'>centralized administration, risk spreading</font>, and leverage with health plans. 
+There is also a movement towards "virtual integration" which allows a physician to <font color="hotpink">remain independent</font> but exploit some of the advantages of group practice, including <font color="aqua">centralized administration, risk spreading</font>, and leverage with health plans. 
 </blockquote>
 
 <i><small>-- Source: "The Way Forward for Integrated Care", 2014-03-31
@@ -341,12 +341,12 @@ https://www.youtube.com/watch?v=S40xaVjmetM</small></i>
 <!-- slide -->
 
 ### Vertical Integration in Healthcare <br/>Doesn’t Boost Care Quality
-#### February 14, <font color='red'>2019</font>
+#### February 14, <font color="red">2019</font>
 
 @import "https://i.imgur.com/aK9hmUb.png" {width=30%}
 
 <blockquote>
-A new study from Rice University’s Baker Institute for Public Policy shows <font color='hotpink'>vertical integration in healthcare has little to no impact on care quality</font>.
+A new study from Rice University’s Baker Institute for Public Policy shows <font color="hotpink">vertical integration in healthcare has little to no impact on care quality</font>.
 </blockquote>
 
 <i><small>-- Source: "Vertical Integration in Healthcare Doesn’t Boost Care Quality", 2019-02-14
@@ -355,17 +355,17 @@ https://revcycleintelligence.com/news/vertical-integration-in-healthcare-doesnt-
 <!-- slide -->
 
 ## How about the role of 
-# <font color='hotpink'>"Platform"</font>
+# <font color="hotpink">"Platform"</font>
 ## in Vertical Integration?
 
 <!-- slide -->
 
 # <u>Discussion</u>
-## The position of <br/> <font color='red'>Change Healthcare</font> <br/>in Vertical Integration?
+## The position of <br/> <font color="red">Change Healthcare</font> <br/>in Vertical Integration?
 
 <!-- slide -->
 
-### Let's take a look at <br/><font color='greenyellow'>Roles</font> in <font color='aqua'>Digital Marketing (AdTech)</font>
+### Let's take a look at <br/><font color="greenyellow">Roles</font> in <font color="aqua">Digital Marketing (AdTech)</font>
 
 @import "https://image.slidesharecdn.com/2017-11-12datapipelinematters-171112161249/95/data-pipeline-matters-16-638.jpg" {width=40%}
 
@@ -377,7 +377,7 @@ https://www.slideshare.net/jazzwang/data-pipeline-matters</small></i>
 
 ### Revisit the position of Change Healthcare
 
-<font color='black'>
+<font color="black">
 <table style="border: 0.5pt solid black; text-align: center; vertical-align:middle;">
 <tr>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
@@ -388,7 +388,7 @@ Digital Marketing (AdTech)
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
 Healthcare IT
 </td>
-</tr><tr><td colspan='3'></td></tr><tr>
+</tr><tr><td colspan="3"></td></tr><tr>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
 <b>Audience</b>: website visitor</td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
@@ -396,7 +396,7 @@ Healthcare IT
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
 <b>Patient</b></td>
 </tr>
-</tr><tr><td colspan='3'></td></tr><tr>
+</tr><tr><td colspan="3"></td></tr><tr>
 <tr>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
 <b>Demand</b> side</td>
@@ -405,7 +405,7 @@ Healthcare IT
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
 <b>Payer</b>: Insurer</td>
 </tr>
-</tr><tr><td colspan='3'></td></tr><tr>
+</tr><tr><td colspan="3"></td></tr><tr>
 <tr>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
 Advertising Network (<b>Platform</b>)</td>
@@ -414,7 +414,7 @@ Advertising Network (<b>Platform</b>)</td>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
 <b>Financial Data</b>: Cleaning House</br><b>Clinic Data</b>: CommonWell</td>
 </tr>
-</tr><tr><td colspan='3'></td></tr><tr>
+</tr><tr><td colspan="3"></td></tr><tr>
 <tr>
 <td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
 <b>Supply</b> side: Publisher (Website)</td>
