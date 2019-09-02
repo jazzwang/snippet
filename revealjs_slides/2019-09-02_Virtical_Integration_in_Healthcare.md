@@ -122,8 +122,8 @@ digraph G {
 	subgraph cluster_0 {
 		style=filled;
 		color=lightgrey;
-    fontsize=38
-		node [style=filled,color=white,fontsize=38];
+    fontsize=32
+		node [style=filled,color=white,fontsize=32];
 		label = "Inpatient";
     "Hospital" -> "ED";
     "ED" -> "Hospitalist";
@@ -133,10 +133,10 @@ digraph G {
 	}
 
 	subgraph cluster_1 {
-		node [style=filled,fontsize=38];
+		node [style=filled,fontsize=32];
 		label = "Outpatient";
 		color=blue;
-    fontsize=38
+    fontsize=32
 
     "Nurse Practitioner" -> "Primary Care";
     "Primary Care" -> "Cardiologist";
@@ -147,17 +147,8 @@ digraph G {
 }
 ```
 * Emergency department (ED)
-
-<!-- slide -->
-### Vertical Integration in Healthcare Provider (PROs & CONs)
-
-<!-- slide -->
-### Horizontal Integration in Healthcare Provider (PROs & CONs)
-
-<!-- slide -->
-### 
-
-* Fee-for-service (FFS)
+<i>-- Source: "Vertical vs Horizontal Integration in Cardiac Surgery", Arie Blitz, MD, 2015</i>
+https://www.youtube.com/watch?v=S40xaVjmetM
 
 <!-- slide -->
 
@@ -294,6 +285,31 @@ There is also a movement towards "virtual integration" which allows a physician 
 https://ldi.upenn.edu/way-forward-integrated-care
 
 <!-- slide -->
+### Vertical Integration in Healthcare Provider (PROs & CONs)
+
+![VI_Benefits](https://i.imgur.com/45m9elj.jpg)
+
+<i>-- Source: "Vertical vs Horizontal Integration in Cardiac Surgery", Arie Blitz, MD, 2015</i>
+https://www.youtube.com/watch?v=S40xaVjmetM
+
+<!-- slide -->
+### Horizontal Integration in Healthcare Provider (PROs & CONs)
+
+![HI_Benefits](https://i.imgur.com/642cV1y.jpg)
+
+<i>-- Source: "Vertical vs Horizontal Integration in Cardiac Surgery", Arie Blitz, MD, 2015</i>
+https://www.youtube.com/watch?v=S40xaVjmetM
+
+<!-- slide -->
+### Economic Barriers to Integration
+
+![Barries_to_Integration](https://i.imgur.com/EEDlGiP.jpg)
+
+* Fee-for-service (FFS)
+<i>-- Source: "Vertical vs Horizontal Integration in Cardiac Surgery", Arie Blitz, MD, 2015</i>
+https://www.youtube.com/watch?v=S40xaVjmetM
+
+<!-- slide -->
 
 ### Vertical Integration in Healthcare <br/>Doesn’t Boost Care Quality
 #### February 14, <font color='red'>2019</font>
@@ -306,3 +322,74 @@ A new study from Rice University’s Baker Institute for Public Policy shows <fo
 
 <i>-- Source: "Vertical Integration in Healthcare Doesn’t Boost Care Quality", 2019-02-14</i>
 https://revcycleintelligence.com/news/vertical-integration-in-healthcare-doesnt-boost-care-quality
+
+<!-- slide -->
+
+## How about the role of 
+# "Platform"
+## in Vertical Integration?
+
+<!-- slide -->
+
+# Discussion
+## The position of Change Healthcare in Vert?
+
+<!-- slide -->
+
+### Let's take a look Roles<br/> in Digital Marketing (AdTech)
+
+@import "https://image.slidesharecdn.com/2017-11-12datapipelinematters-171112161249/95/data-pipeline-matters-16-638.jpg" {width=70%}
+
+<!-- slide -->
+
+### Revisit the position of Change Healthcare
+
+<font color='black'>
+<table style="border: 0.5pt solid black; text-align: center; vertical-align:middle;">
+<tr>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
+Digital Marketing (AdTech)
+</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
+⟷</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
+Healthcare IT
+</td>
+</tr>
+<tr>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
+Audience: website visitor</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
+⟷</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
+Patient</td>
+</tr>
+<tr>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
+Demand side</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
+⟷</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
+<b>Payer</b>: Insurer</td>
+</tr>
+<tr>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
+Advertising Network (Platform)</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
+⟷</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
+<b>Financial Data</b>: Cleaning House</br><b>Clinic Data</b>: CommonWell</td>
+</tr>
+<tr>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#D9EAD3">
+Supply side: Publisher (Website)</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FFFFFF">
+⟷</td>
+<td style="border: 0.5pt solid black; text-align: center; vertical-align:middle;" bgcolor="#FCE5CD">
+<b>Provider</b>: Hospital, Clinic, Dental, Lab</td>
+</tr>
+</font>
+
+<!-- slide -->
+
+# Q & A
