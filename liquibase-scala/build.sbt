@@ -21,9 +21,23 @@ lazy val root = (project in file("."))
 // https://index.scala-lang.org/permutive/sbt-liquibase-plugin
 import com.permutive.sbtliquibase.SbtLiquibase
 enablePlugins(SbtLiquibase)
-liquibaseUsername := ""
-liquibasePassword := ""
+liquibaseUsername := "root"
+liquibasePassword := "example"
 liquibaseDriver   := "com.mysql.cj.jdbc.Driver"
 liquibaseUrl      := "jdbc:mysql://localhost:3306/test_db?createDatabaseIfNotExist=true"
+
+lazy val startMySQL = taskKey[Unit]("Start MySQL container for testing")
+lazy val stopMySQL  = taskKey[Unit]("Stop MySQL container for testing")
+
+// https://stackoverflow.com/questions/24996437/how-to-execute-a-bash-script-as-sbt-task/25005651
+startMySQL := {
+  import scala.sys.process._
+  "docker-compose up -d" !
+}
+
+stopMySQL := {
+  import scala.sys.process._
+  "docker-compose down" !
+}
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
