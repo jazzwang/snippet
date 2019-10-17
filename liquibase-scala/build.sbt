@@ -11,18 +11,19 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "org.apache.spark"  %%  "spark-core"    % "2.2.1",
       "org.apache.spark"  %%  "spark-sql"     % "2.2.1",
-      "mysql" % "mysql-connector-java" % "8.0.15" % "runtime"
+      "mysql"             % "mysql-connector-java" % "8.0.15" 
     )
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     // https://stackoverflow.com/questions/20779764/how-to-set-dependency-as-runtime-in-sbt-to-mimic-runtime-scope-in-maven
     // https://stackoverflow.com/questions/27718382/how-to-work-with-mysql-and-apache-spark
   )
 
+// https://index.scala-lang.org/permutive/sbt-liquibase-plugin
 import com.permutive.sbtliquibase.SbtLiquibase
 enablePlugins(SbtLiquibase)
 liquibaseUsername := ""
 liquibasePassword := ""
-liquibaseDriver   := "com.mysql.jdbc.Driver"
+liquibaseDriver   := "com.mysql.cj.jdbc.Driver"
 liquibaseUrl      := "jdbc:mysql://localhost:3306/test_db?createDatabaseIfNotExist=true"
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
