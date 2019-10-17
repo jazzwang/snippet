@@ -18,10 +18,10 @@ object Hello extends Greeting with App {
   var input = spark.read.csv("input/sample.csv")
   input.printSchema()
 
-  val connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
-  val statement = connection.createStatement();
+  val connection = DriverManager.getConnection("jdbc:sqlite:sample.db")
+  val statement = connection.createStatement()
 
-  connection.close();
+  connection.close()
 
   spark.stop()
 }
