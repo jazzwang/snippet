@@ -2,13 +2,13 @@
 
 
 
-### Mac Users
+### for Mac Users
 
 * use Mac OS default `mail.app` to download the mails from [Office365](https://www.office.com) and export to `mbox` file.
 
 ![Screen Shot 2019-10-22 at 10.39.06](https://i.imgur.com/9mQnP7h.png)
 
-sample files in the export folder:
+Here are the sample files in the exported folder:
 
 ```bash
 ~/mbox$ tree
@@ -23,13 +23,14 @@ sample files in the export folder:
 Today.mbox/mbox: ASCII text, with very long lines
 ```
 
-### Windows / Linux Users
+### for Windows / Linux Users
 
 * use [`Thunderbird`](https://www.thunderbird.net) to download the mail from [Office365](https://www.office.com) and export to `mbox` file.
+  * Thunderbird Addon `ImportExportTools` - https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools/
 
 ## Reference
 
-If you need to deal with Office 365 or Outlook, the file format is PST(Personal Storage Table).
+If you need to deal with Office 365 or Outlook, the file format is PST (Personal Storage Table).
 
 * [Export or backup email, contacts, and calendar to an Outlook .pst file](https://support.office.com/en-us/article/export-or-backup-email-contacts-and-calendar-to-an-outlook-pst-file-14252b52-3075-4e9b-be4e-ff9ef1068f91)
 
