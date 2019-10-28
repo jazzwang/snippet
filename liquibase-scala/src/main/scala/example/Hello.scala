@@ -15,7 +15,7 @@ object Hello extends Greeting with App {
 //  .config("spark.eventLog.enabled","true")
     .getOrCreate
 
-  var input = spark.read.csv("input/sample.csv")
+  var input = spark.read.option("header",true).csv("input/sample.csv")
   input.printSchema()
 
   val connection = DriverManager.getConnection("jdbc:sqlite:sample.db")
