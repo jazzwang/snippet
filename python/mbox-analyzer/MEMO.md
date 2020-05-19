@@ -1,3 +1,7 @@
+# Development MEMO
+
+## MBox headers
+
 ```python
 In [1]: import sys, re
    ...: import mailbox
