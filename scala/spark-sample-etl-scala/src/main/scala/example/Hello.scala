@@ -11,6 +11,8 @@ object Hello extends Greeting with App {
   var spark = SparkSession.builder
     .appName("Spark Example")
     .master("local[*]")
+    .config("spark.eventLog.enabled","true")
+    .config("spark.eventLog.dir","/tmp/spark-history")
     .getOrCreate
 
   var employeeDF = spark.read.json("input/employees.json")
