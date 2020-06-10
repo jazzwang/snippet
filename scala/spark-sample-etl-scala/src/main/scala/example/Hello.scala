@@ -8,11 +8,24 @@ object Hello extends Greeting with App {
   val whereami = System.getProperty("user.dir")
   println(whereami)
 
+  // To make sure eventLog dir exists
+  val sparkEventLogDir = "/tmp/spark-history"
+  val directory = new java.io.File(sparkEventLogDir)
+  if (! directory.exists) {
+    directory.mkdir
+  }
+
+  // To avoid error: "path XXXXX/output already exists."
+  val outDir = new java.io.File("output")
+  if (outDir.exists) {
+    outDir.delete()
+  }
+
   var spark = SparkSession.builder
     .appName("Spark Example")
     .master("local[*]")
     .config("spark.eventLog.enabled","true")
-    .config("spark.eventLog.dir","/tmp/spark-history")
+    .config("spark.eventLog.dir", sparkEventLogDir)
     .getOrCreate
 
   var employeeDF = spark.read.json("input/employees.json")
