@@ -3,6 +3,8 @@
 ## 2020-06-12
 
 * https://yargs.js.org/docs/
+* It use [Flatdoc](https://ricostacruz.com/flatdoc/) to generate API Docs
+    * https://github.com/rstacruz/flatdoc
 
 ## 2020-06-09
 
