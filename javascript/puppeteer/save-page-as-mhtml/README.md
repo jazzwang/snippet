@@ -1,4 +1,4 @@
-# Lab 1 : save page as MTHML
+# Lab 1 : save page as MTHML @ 2020-06-09
 
 ## motivation
 
@@ -8,4 +8,3 @@
 ## Reference
 
 * https://github.com/puppeteer/puppeteer/issues/3575
-

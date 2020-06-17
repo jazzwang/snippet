@@ -1,0 +1,16 @@
+{
+  "name": "url2mhtml",
+  "version": "0.0.1",
+  "description": "a simple CLI program to scrap url to MHTML file",
+  "main": "index.js",
+  "keywords": [
+    "puppeteer", 
+    "MHTML"
+  ],
+  "dependencies": {
+    "yargs": "^15.3.1",
+    "puppeteer": "^4.0.0"
+  },
+  "author": "Jazz Wang",
+  "license": "MIT"
+}
