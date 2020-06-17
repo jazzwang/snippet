@@ -51,3 +51,8 @@ About to write to /Users/jazzwang/git/snippet/javascript/puppeteer/url2mhtml/pac
 
 Is this OK? (yes) 
 ```
+
+* Reference https://github.com/nodejs/examples/blob/master/cli/yargs/countEntriesInDirectory/package.json
+* modify `package.json`
+* Reference https://github.com/yargs/yargs/blob/master/example/line_count.js
+* add `bin/cli.js`
