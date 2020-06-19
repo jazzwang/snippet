@@ -1,6 +1,7 @@
 package example
 
 import org.apache.spark.sql.SparkSession
+import org.apache.commons.io.FileUtils
 
 object Hello extends Greeting with App {
   println(greeting)
@@ -18,7 +19,8 @@ object Hello extends Greeting with App {
   // To avoid error: "path XXXXX/output already exists."
   val outDir = new java.io.File("output")
   if (outDir.exists) {
-    outDir.delete()
+    println("Found existing 'output' folder! Will delete it.")
+    FileUtils.deleteDirectory(outDir)
   }
 
   var spark = SparkSession.builder
@@ -38,7 +40,7 @@ object Hello extends Greeting with App {
 
   var outputDF = spark.sql("select employee.name, people.age, employee.salary from employee, people where employee.name = people.name order by salary")
   outputDF.show()
-  outputDF.write.parquet("output")
+  outputDF.coalesce(1).write.parquet("output")
   spark.stop()
 }
 
