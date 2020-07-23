@@ -1,5 +1,3 @@
-import Dependencies._
-
 ThisBuild / scalaVersion     := "2.11.11"
 ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "com.example"
@@ -10,7 +8,8 @@ lazy val root = (project in file("."))
     name := "Spark in Scala Seed Project",
     libraryDependencies ++= Seq(
       "org.apache.spark"  %%  "spark-core"    % "2.2.1",
-      "org.apache.spark"  %%  "spark-sql"     % "2.2.1"
+      "org.apache.spark"  %%  "spark-sql"     % "2.2.1",
+      "org.scalatest"     %%  "scalatest"     % "3.1.1"
     )
   )
 
