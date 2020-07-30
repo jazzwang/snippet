@@ -5,7 +5,7 @@ ThisBuild / organizationName := "example"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "Spark in Scala Seed Project",
+    name := "spark-gzip-io",
     libraryDependencies ++= Seq(
       "org.apache.spark"  %%  "spark-core"    % "2.2.1",
       "org.apache.spark"  %%  "spark-sql"     % "2.2.1",
