@@ -6,7 +6,7 @@ object Hello extends Greeting with App {
   println(greeting)
 
   val spark = SparkSession.builder
-      .appName("Spark Example")
+      .appName("Spark SQL Join Example")
       .master("local[*]")
       .config("spark.eventLog.enabled","true")
       .config("spark.eventLog.dir", "/tmp/spark-history")
