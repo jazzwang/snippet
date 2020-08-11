@@ -1,7 +1,7 @@
 package example
 
 import org.apache.spark.sql.SparkSession
-import org.apache.commons.io.FileUtils
+import org.apache.hadoop.fs._
 
 object Hello extends Greeting with App {
   println(greeting)
@@ -11,24 +11,29 @@ object Hello extends Greeting with App {
 
   // To make sure eventLog dir exists
   val sparkEventLogDir = "/tmp/spark-history"
-  val directory = new java.io.File(sparkEventLogDir)
-  if (! directory.exists) {
-    directory.mkdir
-  }
 
-  // To avoid error: "path XXXXX/output already exists."
-  val outDir = new java.io.File("output")
-  if (outDir.exists) {
-    println("Found existing 'output' folder! Will delete it.")
-    FileUtils.deleteDirectory(outDir)
-  }
-
-  var spark = SparkSession.builder
+  val spark = SparkSession.builder
     .appName("Spark Example")
     .master("local[*]")
     .config("spark.eventLog.enabled","true")
     .config("spark.eventLog.dir", sparkEventLogDir)
     .getOrCreate
+
+  val sc = spark.sparkContext
+
+  // https://stackoverflow.com/questions/27023766/spark-iterate-hdfs-directory
+  val fs = FileSystem.get(sc.hadoopConfiguration)
+  val eventDir = new Path(sparkEventLogDir)
+  if (! fs.exists(eventDir)) {
+    fs.mkdirs(eventDir)
+  }
+
+  // To avoid error: "path XXXXX/output already exists."
+  val outDir = new Path("output")
+  if (fs.exists(outDir)) {
+    println("Found existing 'output' folder! Will delete it.")
+    fs.delete(outDir,true)
+  }
 
   var employeeDF = spark.read.json("input/employees.json")
   employeeDF.printSchema()
