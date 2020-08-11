@@ -17,3 +17,20 @@ note that if you call sc.textFile() on a gzipped file, Spark will give you an RD
 - https://docs.oracle.com/javase/8/docs/api/java/util/zip/GZIPInputStream.html
 - https://hadoop.apache.org/docs/r3.0.0/api/org/apache/hadoop/fs/FSDataInputStream.html
 - https://issues.apache.org/jira/browse/HADOOP-7076
+
+## 2020-07-30
+
+- test with `spark-shell`
+
+```
+val large_input = spark.read.format("csv").option("header","false").option("delimiter",",").load("input/large.csv.gz")
+large_input.coalesce(10).count
+large_input.coalesce(10).rdd.getNumPartitions
+large_input.repartition(4).rdd.partitions.size
+large_input.repartition(4).count
+val large_input_rdd = spark.sparkContext.textFile("input/large.csv.gz",10)
+large_input_rdd.partitions.size
+val DF4P = large_input.repartition(4)
+DF4P.rdd.partitions.size
+System.gc
+```
