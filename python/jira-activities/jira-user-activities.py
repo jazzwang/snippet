@@ -42,8 +42,10 @@ while more_pages:
     try:
         ## If there are div with "jira-activity-item" class
         if(driver.find_element_by_class_name("jira-activity-item")):
-            csv_output = open(user_id + ".csv","w+")
             soup = BeautifulSoup(driver.page_source,"lxml")
+            csv_output = open(user_id + ".csv","w+")
+            activity = open( user_id + '.html','w+')
+            print(soup.prettify(), file=activity)
             for item in soup.select('.jira-activity-item'):
                 issue = item.select('.activity-item-summary')[0].select('a')[1].get("href")
                 item.select('.activity-item-summary')[0].select('a')[0].decompose()
@@ -58,11 +60,7 @@ while more_pages:
     if(driver.find_element_by_id("activity-stream-show-more").get_attribute("class") == 'hidden'):
         more_pages = False
     else:
-        time.sleep(5)
-
-soup = BeautifulSoup(driver.page_source,"lxml")
-activity = open( user_id + '.html','w+')
-print(soup.prettify(), file=activity)
+        time.sleep(1)
 
 input("Press Enter to continue...")
 driver.close()
