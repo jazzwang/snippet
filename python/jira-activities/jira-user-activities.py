@@ -50,3 +50,5 @@ while more_pages:
 soup = BeautifulSoup(driver.page_source,"lxml")
 activity = open( user_id + '.html','w+')
 print(soup.prettify(), file=activity)
+
+driver.close()
