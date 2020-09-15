@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os, time
+import os, sys, time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -37,12 +37,15 @@ driver.get(base_url + "/secure/ViewProfile.jspa?name=" + user_id)
 soup = BeautifulSoup(driver.page_source,"lxml")
 driver.get(soup.find('iframe').get('src'))
 time.sleep(3)
-
-while(driver.find_element_by_id("activity-stream-show-more")):
+more_pages = True
+while more_pages:
     if(driver.find_element_by_id("activity-stream-show-more").get_attribute("class") == ''):
         driver.find_element_by_id("activity-stream-show-more").click()
+    if(driver.find_element_by_id("activity-stream-show-more").get_attribute("class") == 'hidden'):
+        more_pages = False
     else:
-        time.sleep(5)
+        time.sleep(1)
+        print(".")
 
 soup = BeautifulSoup(driver.page_source,"lxml")
 activity = open( user_id + '.html','w+')
