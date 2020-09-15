@@ -39,16 +39,30 @@ driver.get(soup.find('iframe').get('src'))
 time.sleep(3)
 more_pages = True
 while more_pages:
+    try:
+        ## If there are div with "jira-activity-item" class
+        if(driver.find_element_by_class_name("jira-activity-item")):
+            csv_output = open(user_id + ".csv","w+")
+            soup = BeautifulSoup(driver.page_source,"lxml")
+            for item in soup.select('.jira-activity-item'):
+                issue = item.select('.activity-item-summary')[0].select('a')[1].get("href")
+                item.select('.activity-item-summary')[0].select('a')[0].decompose()
+                summary=' '.join(item.select('.activity-item-summary')[0].text.replace('\n','').split())
+                timestamp=item.select('.timestamp')[0].get('datetime')
+                print(timestamp + ";" + issue + ";" + summary, file=csv_output)
+    except:
+        more_pages = False
+    ## click if "activity-stream-show-more" is not 'hidden' or 'loading'
     if(driver.find_element_by_id("activity-stream-show-more").get_attribute("class") == ''):
         driver.find_element_by_id("activity-stream-show-more").click()
     if(driver.find_element_by_id("activity-stream-show-more").get_attribute("class") == 'hidden'):
         more_pages = False
     else:
-        time.sleep(1)
-        print(".")
+        time.sleep(5)
 
 soup = BeautifulSoup(driver.page_source,"lxml")
 activity = open( user_id + '.html','w+')
 print(soup.prettify(), file=activity)
 
+input("Press Enter to continue...")
 driver.close()
