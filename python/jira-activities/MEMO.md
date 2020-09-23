@@ -13,9 +13,27 @@
 import base64
 print base64.b64encode "username:password"
 ```
+  - 注意：Python 2.7 與 Python 3.x 的 base64 輸入參數不同，前者是 [string](https://docs.python.org/2/library/base64.html)，後者是 [bytes-like object](https://docs.python.org/3/library/base64.html)
+```
+Python 2.7.16 (default, Jun  5 2020, 22:59:21)
+[GCC 4.2.1 Compatible Apple LLVM 11.0.3 (clang-1103.0.29.20) (-macos10.15-objc- on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import base64
+>>> base64.b64encode("abc")
+'YWJj'
+>>> exit()
+-----------------------------------------------------------
+Python 3.7.3 (default, Apr 24 2020, 18:51:23)
+[Clang 11.0.3 (clang-1103.0.32.62)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import base64
+>>> base64.b64encode(b"abc")
+b'YWJj'
+>>> quit()
+```
 - 採用基本認證(Basic Authentication)的 RESTful API 測試語法
 ```
-~$ ~$ curl -s -k -H "Authorization: Basic ${base64_string}" https://issues.apache.org/jira/rest/api/2/myself | jq .
+~$ curl -s -k -H "Authorization: Basic ${base64_string}" https://issues.apache.org/jira/rest/api/2/myself | jq .
 {
   "self": "https://issues.apache.org/jira/rest/api/2/user?username=jazzwang",
   "key": "jazzwang",
@@ -63,4 +81,4 @@ print base64.b64encode "username:password"
 }
 ```
 
-###  
+###
