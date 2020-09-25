@@ -11,7 +11,12 @@
         * 其次，看到比較大型的專案是 GitPython
             * https://pypi.org/project/GitPython/
             * https://github.com/gitpython-developers/GitPython
-    * 2. 能計算 Bus Factor
+    * 2. 能計算 [Bus Factor](https://en.wikipedia.org/wiki/Bus_factor)
+        * https://github.com/jerdonegan/bus-factor
+        * https://github.com/zats/github_bus_factor
+        * https://github.com/yamikuronue/BusFactor
+        * https://pypi.org/project/mr.parker/
     * [參考]
         * https://github.com/wdm0006/gitnoc - 這個專案蠻接近最終想呈現的結果
+            * 相依 [git-pandas](http://wdm0006.github.io/git-pandas/) 
             * https://github.com/wdm0006/git-pandas - 使用 gitPython 把 Git Repo 的一些屬性轉成 Pandas 的 DataFrame
