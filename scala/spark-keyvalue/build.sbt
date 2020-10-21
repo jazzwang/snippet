@@ -4,6 +4,10 @@ ThisBuild / scalaVersion     := "2.11.11"
 ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
+ThisBuild / semanticdbEnabled := true
+ThisBuild / semanticdbVersion := "4.1.9"
+ThisBuild / scalafixOnCompile := true
+ThisBuild / scalacOptions     += "-Ywarn-unused-import" // required by `RemoveUnused` rule
 
 lazy val root = (project in file("."))
   .settings(
