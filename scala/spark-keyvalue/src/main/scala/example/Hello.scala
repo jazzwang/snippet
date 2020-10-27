@@ -20,9 +20,9 @@ object Hello extends Greeting with App {
   //       in the sample dataset, we'll use ','
   conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator",",")
   val records = sc.newAPIHadoopFile("dataset",classOf[KeyValueTextInputFormat], classOf[Text], classOf[Text])
-  System.out.println("RDD Partitions: " + records.getNumPartitions)
-  records.keys.foreach(println)
-  records.values.foreach(println)
+  System.out.println("RDD Partitions: " + records.getNumPartitions.toString)
+  records.keys.foreach(k => println(k))
+  records.values.foreach(v => println(v))
   spark.stop()
 }
 

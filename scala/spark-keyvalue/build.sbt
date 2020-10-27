@@ -26,3 +26,6 @@ distclean := {
   "rm -rf project/target project/project target output" !
 }
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
+
+// http://www.wartremover.org/doc/install-setup.html
+wartremoverErrors ++= Warts.unsafe
