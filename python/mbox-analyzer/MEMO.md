@@ -63,3 +63,10 @@ grab one here: https://myaccount.google.com/apppasswords
 
 - 看樣子要改用 Google 提供的 Gmail API
    - https://developers.google.com/gmail/api/quickstart/python
+
+## 2020-11-06
+
+- https://github.com/mjs/imapclient/
+   - https://stackoverflow.com/a/57518241
+
+看了一下 Stackoverflow 的討論，2019 年有人可以用 imapclient 套件登入 Outlook
