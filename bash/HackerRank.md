@@ -1,5 +1,7 @@
 # 2020-11-08
 
+- https://www.hackerrank.com/domains/shell
+
 ## 數學運算式的精準度
 
 - ( 2020-11-08 22:40:31 ) 這個問題蠻有趣的：
