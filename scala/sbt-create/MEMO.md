@@ -47,3 +47,58 @@ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repos
 
 libraryDependencies += "org.mitre.synthea" % "synthea" % "2.6.1"
 ```
+
+# 2020-11-216
+
+- 測試時，也要注意 import 的 maven package 所用的 JVM 版本是否相容，不然會遇到 `java.lang.UnsupportedClassVersionError`。
+    - 底下的例子是 sbt 1.3.8 + scala 2.12.10 + JVM 1.8.0
+    - 可是 `org.mitre.synthea` 卻是 JVM `1.11` 編出來的
+
+```
+~/git/snippet/scala/sbt-create$ sbt
+[info] Updated file /Users/jazzwang/git/snippet/scala/sbt-create/project/build.properties: set sbt.version to 1.3.8
+[info] Loading project definition from /Users/jazzwang/git/snippet/scala/sbt-create/project
+[info] Loading settings for project sbt-create from build.sbt ...
+[info] Set current project to sbt-create (in build file:/Users/jazzwang/git/snippet/scala/sbt-create/)
+[info] sbt server started at local:///Users/jazzwang/.sbt/1.0/server/ae1837471fe1a34adce9/sock
+sbt:sbt-create> console
+[info] Starting scala interpreter...
+Welcome to Scala 2.12.10 (OpenJDK 64-Bit Server VM, Java 1.8.0_275).
+Type in expressions for evaluation. Or try :help.
+
+scala> import org.mitre.synthea.engine.Generator
+import org.mitre.synthea.engine.Generator
+
+scala> val option = new Generator.GeneratorOptions()
+java.lang.UnsupportedClassVersionError: org/mitre/synthea/engine/Generator$GeneratorOptions has been compiled by a more recent version of the Java Runtime (class file version 58.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+  at java.lang.ClassLoader.defineClass1(Native Method)
+  at java.lang.ClassLoader.defineClass(ClassLoader.java:757)
+  at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+  ... (skipped) ...
+
+scala> :help
+All commands can be abbreviated, e.g., :he instead of :help.
+:completions <string>    output completions for the given string
+:edit <id>|<line>        edit history
+:help [command]          print this summary or command-specific help
+:history [num]           show the history (optional num is commands to show)
+:h? <string>             search the history
+:imports [name name ...] show import history, identifying sources of names
+:implicits [-v]          show the implicits in scope
+:javap <path|class>      disassemble a file or class name
+:line <id>|<line>        place line(s) at the end of history
+:load <path>             interpret lines in a file
+:paste [-raw] [path]     enter paste mode or paste a file
+:power                   enable power user mode
+:quit                    exit the interpreter
+:replay [options]        reset the repl and replay all previous commands
+:require <path>          add a jar to the classpath
+:reset [options]         reset the repl to its initial state, forgetting all session entries
+:save <path>             save replayable session to a file
+:sh <command line>       run a shell command (result is implicitly => List[String])
+:settings <options>      update compiler options, if possible; see reset
+:silent                  disable/enable automatic printing of results
+:type [-v] <expr>        display the type of an expression without evaluating it
+:kind [-v] <type>        display the kind of a type. see also :help kind
+:warnings                show the suppressed warnings from the most recent line which had any
+```
