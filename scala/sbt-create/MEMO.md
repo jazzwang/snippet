@@ -1,11 +1,13 @@
 ## 2020-11-25
 
-- My initial question: how to add remote Maven repository into Scala REPL like `spark-shell`?
-- Reference: [Scala REPL: How to add remote Maven repository to Scala REPL classpath?](https://stackoverflow.com/questions/15666425/scala-repl-how-to-add-remote-maven-repository-to-scala-repl-classpath)
-- learn the following steps from https://stackoverflow.com/a/55552940/4209274
+- My initial question:
+  - How to add remote Maven repository into Scala REPL like `spark-shell --packages '...'`?
+- Reference:
+  - [Scala REPL: How to add remote Maven repository to Scala REPL classpath?](https://stackoverflow.com/questions/15666425/scala-repl-how-to-add-remote-maven-repository-to-scala-repl-classpath)
+- Learn the following steps from https://stackoverflow.com/a/55552940/4209274
     - it demonstrates how to create a `build.sbt` from scratch!
 
-```
+```scala
 ~/git/snippet/scala$ mkdir sbt-create
 ~/git/snippet/scala$ cd sbt-create/
 ~/git/snippet/scala/sbt-create$ sbt -sbt-create
@@ -48,8 +50,9 @@ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repos
 libraryDependencies += "org.mitre.synthea" % "synthea" % "2.6.1"
 ```
 
-# 2020-11-216
+# 2020-11-26
 
+- ( 2020-11-26 01:19:07 )
 - 測試時，也要注意 import 的 maven package 所用的 JVM 版本是否相容，不然會遇到 `java.lang.UnsupportedClassVersionError`。
     - 底下的例子是 sbt 1.3.8 + scala 2.12.10 + JVM 1.8.0
     - 可是 `org.mitre.synthea` 卻是 JVM `1.11` 編出來的
