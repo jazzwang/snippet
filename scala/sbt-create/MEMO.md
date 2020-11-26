@@ -55,8 +55,6 @@ libraryDependencies += "org.mitre.synthea" % "synthea" % "2.6.1"
 - ( 2020-11-26 01:19:07 )
 - 測試時，也要注意 import 的 maven package 所用的 JVM 版本是否相容，不然會遇到 `java.lang.UnsupportedClassVersionError`。
     - 底下的例子是 sbt 1.3.8 + scala 2.12.10 + JVM 1.8.0
-    - 可是 `org.mitre.synthea` 卻是 JVM `1.11` 編出來的
-
 ```
 ~/git/snippet/scala/sbt-create$ sbt
 [info] Updated file /Users/jazzwang/git/snippet/scala/sbt-create/project/build.properties: set sbt.version to 1.3.8
@@ -78,7 +76,29 @@ java.lang.UnsupportedClassVersionError: org/mitre/synthea/engine/Generator$Gener
   at java.lang.ClassLoader.defineClass(ClassLoader.java:757)
   at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
   ... (skipped) ...
+```
+- 可是 `org.mitre.synthea` 卻是 Java `15` 編出來的
+- 參考: https://www.baeldung.com/java-lang-unsupportedclassversion
+```
+45 = Java 1.1
+46 = Java 1.2
+47 = Java 1.3
+48 = Java 1.4
+49 = Java 5
+50 = Java 6
+51 = Java 7
+52 = Java 8
+53 = Java 9
+54 = Java 10
+55 = Java 11
+56 = Java 12
+57 = Java 13
+```
+------
 
+- MEMO: scala shell commands
+
+```
 scala> :help
 All commands can be abbreviated, e.g., :he instead of :help.
 :completions <string>    output completions for the given string
