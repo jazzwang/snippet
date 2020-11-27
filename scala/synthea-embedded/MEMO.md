@@ -127,3 +127,104 @@ val generator = new Generator(options, ero);
 generator.run()
 val jsonRecord = ero.getNextRecord();
 ```
+## 2020-11-27
+
+- ( 2020-11-27 21:43:41 )
+- reference: [Generator.generatePerson(int index, long personSeed)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L442)
+```java
+  public Person generatePerson(int index, long personSeed) {
+```
+- it create `demoAttributes` with `Generator.randomDemographics(Random random)`
+```java
+      Random randomForDemographics = new Random(personSeed);
+      Map<String, Object> demoAttributes = randomDemographics(randomForDemographics);
+```
+- [Generator.randomDemographics(Random random)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L614-L618) create `demoAttributes` with [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659)
+```java
+  public Map<String, Object> randomDemographics(Random random) {
+    Demographics city = location.randomCity(random);
+    Map<String, Object> demoAttributes = pickDemographics(random, city);
+    return demoAttributes;
+  }
+```
+- [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) will fill up `person.CITY`, `person.STATE`, `county`, `Person.RACE`, `Person.ETHNICITY`, `Person.FIRST_LANGUAGE`, `Person.GENDER`, `Person.EDUCATION`, `Person.EDUCATION_LEVEL`, `Person.INCOME`, `Person.INCOME_LEVEL`, `Person.OCCUPATION_LEVEL`, `Person.SOCIOECONOMIC_SCORE`, `Person.SOCIOECONOMIC_CATEGORY`, `TARGET_AGE`, `Person.BIRTHDATE`.
+- ( 2020-11-27 22:34:31 ) found there are new feature to load JSON file from `fixedRecordPath` after last stable release `v2.6.1`
+  - we can learn from its implementation as well.
+  - it will call [Generator.pickFixedDemographics(int index, Random random)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L734) which call [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) too.
+  ```
+      System.out.println("Usage: run_synthea [options] [state [city]]");
+      System.out.println("Options: [-s seed] [-cs clinicianSeed] [-p populationSize]");
+      ... (skipped) ...
+      System.out.println("         [-t updateTimePeriodInDays]");
+      System.out.println("         [-f fixedRecordPath]");
+      System.out.println("         [--config* value]");
+      System.out.println("          * any setting from src/main/resources/synthea.properties");
+  ```
+
+- [Exporter.exportRecord(Person person, String fileTag, long stopTime, ExporterRuntimeOptions options)](https://github.com/synthetichealth/synthea/blob/bef87a9b779514d78329f1835e334890f8d62fc6/src/main/java/org/mitre/synthea/export/Exporter.java#L235-L240)
+
+```java
+    if (Boolean.parseBoolean(Config.get("exporter.ccda.export"))) {
+      String ccdaXml = CCDAExporter.export(person, stopTime);
+      File outDirectory = getOutputFolder("ccda", person);
+      Path outFilePath = outDirectory.toPath().resolve(filename(person, fileTag, "xml"));
+      writeNewFile(outFilePath, ccdaXml);
+    }
+```
+
+- [CCDAExporter.export(Person person, long time)](https://github.com/synthetichealth/synthea/blob/6e4507a6170322fec628c923256a8fb4c6fd34b6/src/main/java/org/mitre/synthea/export/CCDAExporter.java#L65-L114)
+
+```java
+  public static String export(Person person, long time) {
+    // create a super encounter... this makes it easier to access
+    // all the Allergies (for example) in the export templates,
+    // instead of having to iterate through all the encounters.
+    Encounter superEncounter = person.record.new Encounter(time, "super");
+    for (Encounter encounter : person.record.encounters) {
+      if (encounter.start <= time) {
+        superEncounter.observations.addAll(encounter.observations);
+        superEncounter.reports.addAll(encounter.reports);
+        superEncounter.conditions.addAll(encounter.conditions);
+        superEncounter.allergies.addAll(encounter.allergies);
+        superEncounter.procedures.addAll(encounter.procedures);
+        superEncounter.immunizations.addAll(encounter.immunizations);
+        superEncounter.medications.addAll(encounter.medications);
+        superEncounter.careplans.addAll(encounter.careplans);
+        superEncounter.imagingStudies.addAll(encounter.imagingStudies);
+      } else {
+        break;
+      }
+    }
+
+
+    // The export templates fill in the record by accessing the attributes
+    // of the Person, so we add a few attributes just for the purposes of export.
+    person.attributes.put("UUID", new UUIDGenerator(person));
+    person.attributes.put("ehr_encounters", person.record.encounters);
+    person.attributes.put("ehr_observations", superEncounter.observations);
+    person.attributes.put("ehr_reports", superEncounter.reports);
+    person.attributes.put("ehr_conditions", superEncounter.conditions);
+    person.attributes.put("ehr_allergies", superEncounter.allergies);
+    person.attributes.put("ehr_procedures", superEncounter.procedures);
+    person.attributes.put("ehr_immunizations", superEncounter.immunizations);
+    person.attributes.put("ehr_medications", superEncounter.medications);
+    person.attributes.put("ehr_careplans", superEncounter.careplans);
+    person.attributes.put("ehr_imaging_studies", superEncounter.imagingStudies);
+    person.attributes.put("time", time);
+    person.attributes.put("race_lookup", RaceAndEthnicity.LOOK_UP_CDC_RACE);
+    person.attributes.put("ethnicity_lookup", RaceAndEthnicity.LOOK_UP_CDC_ETHNICITY_CODE);
+    person.attributes.put("ethnicity_display_lookup",
+        RaceAndEthnicity.LOOK_UP_CDC_ETHNICITY_DISPLAY);
+
+
+    StringWriter writer = new StringWriter();
+    try {
+      Template template = TEMPLATES.getTemplate("ccda.ftl");
+      template.process(person.attributes, writer);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return writer.toString();
+  }
+}
+```
