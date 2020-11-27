@@ -1,5 +1,5 @@
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>mermaid.initialize({startOnLoad:true});</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">
+</script>
 
 Here is one mermaid diagram:
 
@@ -18,3 +18,7 @@ And here is another:
   B -->|tcp_456| C[Server1]
   B -->|tcp_456| D[Server2]
 </div>
+
+<script>
+mermaid.initialize({startOnLoad:true});
+</script>

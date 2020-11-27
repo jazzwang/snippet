@@ -1,4 +1,4 @@
-# Development MEMO
+# Development Notes
 
 ## 2020-11-24
 
@@ -111,7 +111,10 @@ jazzwang:~/git/synthea$ JAVA_OPTS="-Xms1g -Xmx2g" scala -cp build/libs/synthea-w
 ```
 - ( 2020-11-26 15:47:30 )
 - https://www.journaldev.com/8278/scala-file-io-write-file-read-file#scala-write-to-file
+- https://alvinalexander.com/scala/how-to-write-text-files-in-scala-printwriter-filewriter/
+
 ```scala
+import java.io._
 import org.mitre.synthea.engine._
 import org.mitre.synthea.helpers._
 import org.mitre.synthea.export._
@@ -126,8 +129,13 @@ ero.enableQueue(Exporter.SupportedFhirVersion.R4);
 val generator = new Generator(options, ero);
 generator.run()
 val jsonRecord = ero.getNextRecord();
+val bw = new BufferedWriter(new FileWriter(new File("output.json")))
+bw.write(jsonRecord)
 ```
+
 ## 2020-11-27
+
+### Generator - Person - Demographics
 
 - ( 2020-11-27 21:43:41 )
 - [Generator.run()](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L303) call [Generator.generatePerson(int index, long personSeed)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L442)
@@ -146,6 +154,32 @@ val jsonRecord = ero.getNextRecord();
       Random randomForDemographics = new Random(personSeed);
       Map<String, Object> demoAttributes = randomDemographics(randomForDemographics);
 ```
+- ( 2020-11-28 00:19:24 )
+- [Generator.generatePerson(int index, long personSeed)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L442) then create `person` with [`Generator.(long personSeed, Map<String, Object> demoAttributes)`](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L563-576)
+
+```java
+        person = createPerson(personSeed, demoAttributes);
+```
+
+```java
+  public Person createPerson(long personSeed, Map<String, Object> demoAttributes) {
+    Person person = new Person(personSeed);
+    person.populationSeed = this.options.seed;
+    person.attributes.putAll(demoAttributes);
+    person.attributes.put(Person.LOCATION, location);
+    person.lastUpdated = (long) demoAttributes.get(Person.BIRTHDATE);
+
+
+    LifecycleModule.birth(person, person.lastUpdated);
+    person.currentModules = Module.getModules(modulePredicate);
+
+
+    updatePerson(person);
+
+
+    return person;
+  }
+```
 - [Generator.randomDemographics(Random random)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L614-L618) create `demoAttributes` with [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659)
 ```java
   public Map<String, Object> randomDemographics(Random random) {
@@ -154,11 +188,11 @@ val jsonRecord = ero.getNextRecord();
     return demoAttributes;
   }
 ```
-- [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) will put following into demoAttributes:
+- [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) will put the following attributes into `demoAttributes`:
   - `Person.CITY`, `Person.STATE`, `county`, `Person.RACE`, `Person.ETHNICITY`, `Person.FIRST_LANGUAGE`, `Person.GENDER`,
   - `Person.EDUCATION`, `Person.EDUCATION_LEVEL`, `Person.INCOME`, `Person.INCOME_LEVEL`, `Person.OCCUPATION_LEVEL`, `Person.SOCIOECONOMIC_SCORE`, `Person.SOCIOECONOMIC_CATEGORY`,
   - `TARGET_AGE`, `Person.BIRTHDATE`.
-- ( 2020-11-27 22:34:31 ) found there are new feature to load JSON file from `fixedRecordPath` after last stable release `v2.6.1`
+- ( 2020-11-27 22:34:31 ) I also found that there's a new feature to load JSON file from `fixedRecordPath` after last stable release `v2.6.1`
   - we can learn from its implementation as well.
   - it will call [Generator.pickFixedDemographics(int index, Random random)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L734) which call [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) too. But it overwrite `Person.BIRTHDATE`, `Person.BIRTH_CITY`, `Person.GENDER`, and add `Person.RECORD_GROUP`, `Person.LINK_ID` to demoAttributes.
   - we can learn from [FixedRecordGroupTest.setup()](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/test/java/org/mitre/synthea/engine/FixedRecordGroupTest.java#L28) and see the test json file [src/test/resources/fixed_demographics/fixed_demographics_test.json](https://github.com/synthetichealth/synthea/blob/master/src/test/resources/fixed_demographics/fixed_demographics_test.json)
@@ -172,6 +206,8 @@ val jsonRecord = ero.getNextRecord();
       System.out.println("         [--config* value]");
       System.out.println("          * any setting from src/main/resources/synthea.properties");
   ```
+
+### Exporter - Person
 
 - [Exporter.exportRecord(Person person, String fileTag, long stopTime, ExporterRuntimeOptions options)](https://github.com/synthetichealth/synthea/blob/bef87a9b779514d78329f1835e334890f8d62fc6/src/main/java/org/mitre/synthea/export/Exporter.java#L235-L240)
 
@@ -239,4 +275,14 @@ val jsonRecord = ero.getNextRecord();
     return writer.toString();
   }
 }
+```
+
+## 2020-11-28
+
+- ( 2020-11-28 00:06:23 )
+```scala
+import java.io._
+import org.mitre.synthea.engine._
+import org.mitre.synthea.helpers._
+import org.mitre.synthea.export._
 ```
