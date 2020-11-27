@@ -130,11 +130,18 @@ val jsonRecord = ero.getNextRecord();
 ## 2020-11-27
 
 - ( 2020-11-27 21:43:41 )
-- reference: [Generator.generatePerson(int index, long personSeed)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L442)
+- [Generator.run()](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L303) call [Generator.generatePerson(int index, long personSeed)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L442)
 ```java
-  public Person generatePerson(int index, long personSeed) {
+    } else {
+      // Generate patients up to the specified population size.
+      for (int i = 0; i < this.options.population; i++) {
+        final int index = i;
+        final long seed = this.random.nextLong();
+        threadPool.submit(() -> generatePerson(index, seed));
+      }
+    }
 ```
-- it create `demoAttributes` with `Generator.randomDemographics(Random random)`
+- [Generator.generatePerson(int index, long personSeed)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L442) create `demoAttributes` with `Generator.randomDemographics(Random random)`
 ```java
       Random randomForDemographics = new Random(personSeed);
       Map<String, Object> demoAttributes = randomDemographics(randomForDemographics);
@@ -147,10 +154,15 @@ val jsonRecord = ero.getNextRecord();
     return demoAttributes;
   }
 ```
-- [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) will fill up `person.CITY`, `person.STATE`, `county`, `Person.RACE`, `Person.ETHNICITY`, `Person.FIRST_LANGUAGE`, `Person.GENDER`, `Person.EDUCATION`, `Person.EDUCATION_LEVEL`, `Person.INCOME`, `Person.INCOME_LEVEL`, `Person.OCCUPATION_LEVEL`, `Person.SOCIOECONOMIC_SCORE`, `Person.SOCIOECONOMIC_CATEGORY`, `TARGET_AGE`, `Person.BIRTHDATE`.
+- [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) will put following into demoAttributes:
+  - `Person.CITY`, `Person.STATE`, `county`, `Person.RACE`, `Person.ETHNICITY`, `Person.FIRST_LANGUAGE`, `Person.GENDER`,
+  - `Person.EDUCATION`, `Person.EDUCATION_LEVEL`, `Person.INCOME`, `Person.INCOME_LEVEL`, `Person.OCCUPATION_LEVEL`, `Person.SOCIOECONOMIC_SCORE`, `Person.SOCIOECONOMIC_CATEGORY`,
+  - `TARGET_AGE`, `Person.BIRTHDATE`.
 - ( 2020-11-27 22:34:31 ) found there are new feature to load JSON file from `fixedRecordPath` after last stable release `v2.6.1`
   - we can learn from its implementation as well.
-  - it will call [Generator.pickFixedDemographics(int index, Random random)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L734) which call [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) too.
+  - it will call [Generator.pickFixedDemographics(int index, Random random)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L734) which call [Generator.pickDemographics(Random random, Demographics city)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L659) too. But it overwrite `Person.BIRTHDATE`, `Person.BIRTH_CITY`, `Person.GENDER`, and add `Person.RECORD_GROUP`, `Person.LINK_ID` to demoAttributes.
+  - we can learn from [FixedRecordGroupTest.setup()](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/test/java/org/mitre/synthea/engine/FixedRecordGroupTest.java#L28) and see the test json file [src/test/resources/fixed_demographics/fixed_demographics_test.json](https://github.com/synthetichealth/synthea/blob/master/src/test/resources/fixed_demographics/fixed_demographics_test.json)
+
   ```
       System.out.println("Usage: run_synthea [options] [state [city]]");
       System.out.println("Options: [-s seed] [-cs clinicianSeed] [-p populationSize]");
