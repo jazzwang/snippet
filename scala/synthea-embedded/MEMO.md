@@ -6,6 +6,96 @@
 
 ## 2020-11-26
 
+# 2020-11-26
+
+- ( 2020-11-26 10:02:31 )
+- [Generator.Generator(GeneratorOptions o, Exporter.ExporterRuntimeOptions ero)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L180-L188)
+```java
+  public Generator(GeneratorOptions o, Exporter.ExporterRuntimeOptions ero) {
+    options = o;
+    exporterRuntimeOptions = ero;
+    if (options.updatedPopulationSnapshotPath != null) {
+      exporterRuntimeOptions.deferExports = true;
+      internalStore = Collections.synchronizedList(new LinkedList<>());
+    }
+    init();
+  }
+```
+- ( 2020-11-26 10:03:10 )
+- [Generator](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L80-L85)
+```java
+  /**
+   * Used only for testing and debugging. Populate this field to keep track of all patients
+   * generated, living or dead, during a simulation. Note that this may result in significantly
+   * increased memory usage as patients cannot be GC'ed.
+   */
+  List<Person> internalStore;
+```
+- ( 2020-11-26 10:04:05 )
+- [Generator.recordPerson(Person person, int index)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L781-L791)
+```java
+  public void recordPerson(Person person, int index) {
+    long finishTime = person.lastUpdated + timestep;
+    boolean isAlive = person.alive(finishTime);
+
+    if (database != null) {
+      database.store(person);
+    }
+
+    if (internalStore != null) {
+      internalStore.add(person);
+    }
+```
+- ( 2020-11-26 10:07:04 )
+- [GeneratorTest.testDemographicsRetry()](https://github.com/synthetichealth/synthea/blob/5921215d8c16b3c7918cfeb7940b0c85118ca39e/src/test/java/org/mitre/synthea/engine/GeneratorTest.java#L183-L228) is a good example to understand how Generator use `internalStore` to store `Person` objects.
+```java
+  @Test
+  public void testDemographicsRetry() throws Exception {
+    // confirm that the demographic choices will persist if the first generated patients die
+    int numberOfPeople = 4;
+    Generator.GeneratorOptions opts = new Generator.GeneratorOptions();
+    opts.population = numberOfPeople;
+    opts.minAge = 50;
+    opts.maxAge = 100;
+    Generator generator = new Generator(opts);
+    generator.internalStore = new LinkedList<>();
+    for (int i = 0; i < numberOfPeople; i++) {
+      Person person = generator.generatePerson(i);
+
+      // the person returned will be last in the internalStore
+      int personIndex = generator.internalStore.size() - 1;
+
+      for (int j = personIndex - 1; j >= 0; j--) { //
+        Person compare = generator.internalStore.get(j);
+
+        // basic demographics should always be exactly the same
+        assertEquals(person.attributes.get(Person.CITY), compare.attributes.get(Person.CITY));
+        assertEquals(person.attributes.get(Person.RACE), compare.attributes.get(Person.RACE));
+
+        long expectedBirthdate;
+
+        if (personIndex < 10) {
+          // less than 10 attempts were made, so all of them should match exactly
+          expectedBirthdate = (long)person.attributes.get(Person.BIRTHDATE);
+        } else if (j > 10) {
+          // the person we got back (potentially) has the changed target birthdate
+          // and so would any with index > 10
+          // so these should match exactly
+          expectedBirthdate = (long)person.attributes.get(Person.BIRTHDATE);
+        } else {
+          // the person we got back (potentially) has the changed target birthdate
+          // but any with index < 10 might not
+          // in this case, ensure the first 10 match index 0 (which the loop will take care of)
+          expectedBirthdate = (long)generator.internalStore.get(0).attributes.get(Person.BIRTHDATE);
+        }
+
+        assertEquals(expectedBirthdate, (long)compare.attributes.get(Person.BIRTHDATE));
+      }
+
+      generator.internalStore.clear();
+    }
+  }
+```
 - https://github.com/synthetichealth/synthea/wiki/Embedding#json-integration
 - reference [sbt-create](../sbt-create/MEMO.md)
 - manually use java11 instead of java8
@@ -285,4 +375,6 @@ import java.io._
 import org.mitre.synthea.engine._
 import org.mitre.synthea.helpers._
 import org.mitre.synthea.export._
+```
+- ( 2020-11-28 20:35:04 )
 ```
