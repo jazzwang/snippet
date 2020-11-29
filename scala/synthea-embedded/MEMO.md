@@ -509,3 +509,20 @@ val finishTime = person.lastUpdated + timestep;
 // https://github.com/synthetichealth/synthea/blob/fbfd20e1c210c952b16962ffb72d789634bcfc42/src/main/java/org/mitre/synthea/engine/Generator.java#L442
 Exporter.export(person, finishTime, ero);
 ```
+
+## read `snapshot` into `Person`
+
+- ( 2020-11-29 23:41:43 )
+```scala
+import java.io._
+import java.util._
+import org.mitre.synthea.world.agents._
+
+val fis = new FileInputStream("snapshot.2020-11-26_12")
+val ois = new ObjectInputStream(fis);
+val persons = ois.readObject().asInstanceOf[java.util.List[org.mitre.synthea.world.agents.Person]]
+ois.close();
+persons.size
+val bw = new BufferedWriter(new FileWriter(new File("snapshot_0.txt")))
+bw.write(persons.get(0).attributes.toString)
+```
