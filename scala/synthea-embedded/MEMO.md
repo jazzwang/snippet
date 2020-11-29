@@ -407,6 +407,7 @@ import org.mitre.synthea.helpers._
 import org.mitre.synthea.export._
 import org.mitre.synthea.world.agents._
 import org.mitre.synthea.world.geography._
+import org.mitre.synthea.world.concepts._
 
 val options = new Generator.GeneratorOptions();
 
@@ -421,17 +422,16 @@ Config.set("generate.only_alive_patients", "true");
 Config.set("exporter.ccda.export", "true");
 
 val ero = new Exporter.ExporterRuntimeOptions();
-ero.enableQueue(Exporter.SupportedFhirVersion.R4);
-
 val generator = new Generator(options, ero);
 
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L425
 val personSeed = UUID.randomUUID().getMostSignificantBits() & Long.MaxValue;
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L564
 val person = new Person(personSeed);
-person.populationSeed = options.seed;
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L222
-val location = new Location("Colorado","Denver")
+val state = "Colorado";
+val city = "Denver";
+val location = new Location(state, city)
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L565
 person.populationSeed = options.seed;
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L217
@@ -440,15 +440,17 @@ val random = new Random(options.seed);
 val demographicsOutput = new HashMap[String, Object]();
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L663-L666
 // Pull the person's location data.
-demographicsOutput.put(Person.CITY, "Denver");
-demographicsOutput.put(Person.STATE, "Colorado");
-demographicsOutput.put("county", "US");
+demographicsOutput.put(Person.CITY, city);
+demographicsOutput.put(Person.STATE, state);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L668-L674
 // Generate the person's race data based on their location.
 val race_ethnicity = org.apache.commons.collections.MapUtils.invertMap(RaceAndEthnicity.LOOK_UP)
-demographicsOutput.put(Person.RACE, race_ethnicity.get("2106-3"))
-demographicsOutput.put(Person.ETHNICITY, race_ethnicity.get("2135-2"));
-demographicsOutput.put(Person.FIRST_LANGUAGE, ""english");
+val race = race_ethnicity.get("2106-3").toString;
+val ethnicity = race_ethnicity.get("2135-2").toString;
+val language = "english";
+demographicsOutput.put(Person.RACE, race)
+demographicsOutput.put(Person.ETHNICITY, ethnicity);
+demographicsOutput.put(Person.FIRST_LANGUAGE, language);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L688
 demographicsOutput.put(Person.GENDER, "unknown");
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L741
@@ -479,8 +481,11 @@ person.attributes.putAll(demographicsOutput);
 person.attributes.put(Person.LOCATION, location);
 person.lastUpdated = birthdate
 LifecycleModule.birth(person, person.lastUpdated);
+updatePerson(person);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L218
 val timestep = Config.get("generate.timestep").toLong;
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L468
 val finishTime = person.lastUpdated + timestep;
+// https://github.com/synthetichealth/synthea/blob/fbfd20e1c210c952b16962ffb72d789634bcfc42/src/main/java/org/mitre/synthea/engine/Generator.java#L442
+Exporter.export(person, finishTime, ero);
 ```
