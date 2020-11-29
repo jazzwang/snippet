@@ -6,7 +6,7 @@
 
 ## 2020-11-26
 
-# 2020-11-26
+### Generator - `internalStore` - Person - Demographics
 
 - ( 2020-11-26 10:02:31 )
 - [Generator.Generator(GeneratorOptions o, Exporter.ExporterRuntimeOptions ero)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L180-L188)
@@ -22,7 +22,7 @@
   }
 ```
 - ( 2020-11-26 10:03:10 )
-- [Generator](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L80-L85)
+- [Generator.internalStore](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L80-L85) is for testing and debugging.
 ```java
   /**
    * Used only for testing and debugging. Populate this field to keep track of all patients
@@ -96,6 +96,9 @@
     }
   }
 ```
+
+### Embedding & JSON integration (FHIRv4)
+
 - https://github.com/synthetichealth/synthea/wiki/Embedding#json-integration
 - reference [sbt-create](../sbt-create/MEMO.md)
 - manually use java11 instead of java8
@@ -169,13 +172,13 @@ Caused by: java.lang.ClassNotFoundException: com.google.gson.TypeAdapterFactory
   at java.lang.ClassLoader.loadClass(ClassLoader.java:352)
   ... 36 more
 ```
-- ( 2020-11-26 15:37:51 )
+- ( 2020-11-26 15:37:51 ) create `uberJar` with JDK8
 ```
 jazzwang:~/git/synthea$ ./gradlew uberJar
 jazzwang:~/git/synthea$ cp build/libs/synthea-with-dependencies.jar ~/git/snippet/scala/synthea-embedded/
 jazzwang:~/git/synthea$ scala -cp build/libs/synthea-with-dependencies.jar
 ```
-- ( 2020-11-26 15:41:04 ) Error:
+- ( 2020-11-26 15:41:04 ) Error: `java.lang.OutOfMemoryError: GC overhead limit exceeded`
 ```
 scala> val generator = new Generator(options, ero);
 java.lang.OutOfMemoryError: GC overhead limit exceeded
@@ -195,13 +198,13 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
   at org.mitre.synthea.engine.Generator.<init>(Generator.java:171)
   ... 18 elided
 ```
-- ( 2020-11-26 15:41:44 )
+- ( 2020-11-26 15:41:44 ) increase HEAP size by defining `JAVA_OPTS` environment variable:
 ```bash
 jazzwang:~/git/synthea$ JAVA_OPTS="-Xms1g -Xmx2g" scala -cp build/libs/synthea-with-dependencies.jar
 ```
-- ( 2020-11-26 15:47:30 )
-- https://www.journaldev.com/8278/scala-file-io-write-file-read-file#scala-write-to-file
-- https://alvinalexander.com/scala/how-to-write-text-files-in-scala-printwriter-filewriter/
+- ( 2020-11-26 15:47:30 ) store JSON string to a JSON file
+  - https://www.journaldev.com/8278/scala-file-io-write-file-read-file#scala-write-to-file
+  - https://alvinalexander.com/scala/how-to-write-text-files-in-scala-printwriter-filewriter/
 
 ```scala
 import java.io._
@@ -245,12 +248,11 @@ bw.write(jsonRecord)
       Map<String, Object> demoAttributes = randomDemographics(randomForDemographics);
 ```
 - ( 2020-11-28 00:19:24 )
-- [Generator.generatePerson(int index, long personSeed)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L442) then create `person` with [`Generator.(long personSeed, Map<String, Object> demoAttributes)`](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L563-576)
+- [Generator.generatePerson(int index, long personSeed)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L442) then create `person` with [`Generator.createPerson(long personSeed, Map<String, Object> demoAttributes)`](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L563-576)
 
 ```java
         person = createPerson(personSeed, demoAttributes);
 ```
-
 ```java
   public Person createPerson(long personSeed, Map<String, Object> demoAttributes) {
     Person person = new Person(personSeed);
@@ -258,15 +260,9 @@ bw.write(jsonRecord)
     person.attributes.putAll(demoAttributes);
     person.attributes.put(Person.LOCATION, location);
     person.lastUpdated = (long) demoAttributes.get(Person.BIRTHDATE);
-
-
     LifecycleModule.birth(person, person.lastUpdated);
     person.currentModules = Module.getModules(modulePredicate);
-
-
     updatePerson(person);
-
-
     return person;
   }
 ```
@@ -377,4 +373,88 @@ import org.mitre.synthea.helpers._
 import org.mitre.synthea.export._
 ```
 - ( 2020-11-28 20:35:04 )
+
+## 2020-11-29
+
+- ( 2020-11-29 16:12:35 )
+- [Generator.generatePerson(int index)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L423-L427)
+```java
+  public Person generatePerson(int index) {
+    // System.currentTimeMillis is not unique enough
+    long personSeed = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+    return generatePerson(index, personSeed);
+  }
+```
+- ( 2020-11-29 16:55:40 )
+- [Generator.pickFixedDemographics(int index, Random random)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L729-L760)
+```java
+  private Map<String, Object> pickFixedDemographics(int index, Random random) {
+    // Get the first FixedRecord from the current RecordGroup
+    FixedRecordGroup recordGroup = this.recordGroups.get(index);
+    FixedRecord fr = recordGroup.records.get(0);
+    // Get the city from the location in the fixed record.
+    this.location = new Location(fr.state, recordGroup.getSafeCity());
+    Demographics city = this.location.randomCity(random);
+    // Pick the rest of the demographics based on the location of the fixed record.
+    Map<String, Object> demoAttributes = pickDemographics(random, city);
+```
+```scala
+import java.io._
+import java.util._
+import org.mitre.synthea.engine._
+import org.mitre.synthea.helpers._
+import org.mitre.synthea.export._
+import org.mitre.synthea.world.agents._
+import org.mitre.synthea.world.geography._
+
+val options = new Generator.GeneratorOptions();
+
+// disable default options
+Config.set("exporter.fhir.export", "false");
+Config.set("exporter.fhir.transaction_bundle", "false");
+Config.set("exporter.hospital.fhir.export", "false");
+Config.set("exporter.practitioner.fhir.export", "false");
+Config.set("generate.append_numbers_to_person_names", "false");
+// enable C-CDA exporter
+Config.set("generate.only_alive_patients", "true");
+Config.set("exporter.ccda.export", "true");
+
+val ero = new Exporter.ExporterRuntimeOptions();
+ero.enableQueue(Exporter.SupportedFhirVersion.R4);
+
+val generator = new Generator(options, ero);
+
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L425
+val personSeed = UUID.randomUUID().getMostSignificantBits() & Long.MaxValue;
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L564
+val person = new Person(personSeed);
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L222
+val location = new Location("Colorado","Denver")
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L565
+person.populationSeed = options.seed;
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L217
+val random = new Random(options.seed);
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L661
+val demographicsOutput = new HashMap[String, Object]();
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L663-L666
+// Pull the person's location data.
+demographicsOutput.put(Person.CITY, "Denver");
+demographicsOutput.put(Person.STATE, "Colorado");
+demographicsOutput.put("county", "US");
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L668-L674
+// Generate the person's race data based on their location.
+val race_ethnicity = org.apache.commons.collections.MapUtils.invertMap(RaceAndEthnicity.LOOK_UP)
+demographicsOutput.put(Person.RACE, race_ethnicity.get("2106-3"))
+demographicsOutput.put(Person.ETHNICITY, race_ethnicity.get("2135-2"));
+demographicsOutput.put(Person.FIRST_LANGUAGE, ""english");
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L688
+demographicsOutput.put(Person.GENDER, "unknown");
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L692
+demographicsOutput.put(Person.EDUCATION, education);
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L694
+demographicsOutput.put(Person.EDUCATION_LEVEL, educationLevel);
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L218
+val timestep = Long.parseLong(Config.get("generate.timestep"));
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L468
+val finishTime = person.lastUpdated + timestep;
 ```
