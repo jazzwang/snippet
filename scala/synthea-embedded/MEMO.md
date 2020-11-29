@@ -401,6 +401,7 @@ import org.mitre.synthea.export._
 ```scala
 import java.io._
 import java.util._
+import java.time._
 import org.mitre.synthea.engine._
 import org.mitre.synthea.helpers._
 import org.mitre.synthea.export._
@@ -428,6 +429,7 @@ val generator = new Generator(options, ero);
 val personSeed = UUID.randomUUID().getMostSignificantBits() & Long.MaxValue;
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L564
 val person = new Person(personSeed);
+person.populationSeed = options.seed;
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L222
 val location = new Location("Colorado","Denver")
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L565
@@ -449,12 +451,36 @@ demographicsOutput.put(Person.ETHNICITY, race_ethnicity.get("2135-2"));
 demographicsOutput.put(Person.FIRST_LANGUAGE, ""english");
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L688
 demographicsOutput.put(Person.GENDER, "unknown");
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L741
+val city = location.randomCity(random);
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L691
+val education = city.pickEducation(random);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L692
 demographicsOutput.put(Person.EDUCATION, education);
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L693
+val educationLevel = city.educationLevel(education, random);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L694
 demographicsOutput.put(Person.EDUCATION_LEVEL, educationLevel);
+val income = city.pickIncome(random);
+demographicsOutput.put(Person.INCOME, income);
+val incomeLevel = city.incomeLevel(income);
+demographicsOutput.put(Person.INCOME_LEVEL, incomeLevel);
+val occupation = random.nextDouble();
+demographicsOutput.put(Person.OCCUPATION_LEVEL, occupation);
+val sesScore = city.socioeconomicScore(incomeLevel, educationLevel, occupation);
+demographicsOutput.put(Person.SOCIOECONOMIC_SCORE, sesScore);
+demographicsOutput.put(Person.SOCIOECONOMIC_CATEGORY, city.socioeconomicCategory(sesScore));
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/input/FixedRecord.java#L99-L100
+val birthdate = LocalDateTime.of(1961,9,8,12,0).toInstant(ZoneOffset.UTC).toEpochMilli(); //1961-09-08T12:00:00
+// https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L723
+demographicsOutput.put(Person.BIRTHDATE, birthdate);
+// https://github.com/synthetichealth/synthea/blob/fbfd20e1c210c952b16962ffb72d789634bcfc42/src/main/java/org/mitre/synthea/engine/Generator.java#L511
+person.attributes.putAll(demographicsOutput);
+person.attributes.put(Person.LOCATION, location);
+person.lastUpdated = birthdate
+LifecycleModule.birth(person, person.lastUpdated);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L218
-val timestep = Long.parseLong(Config.get("generate.timestep"));
+val timestep = Config.get("generate.timestep").toLong;
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L468
 val finishTime = person.lastUpdated + timestep;
 ```
