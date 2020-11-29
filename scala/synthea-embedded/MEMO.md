@@ -454,24 +454,24 @@ demographicsOutput.put(Person.FIRST_LANGUAGE, language);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L688
 demographicsOutput.put(Person.GENDER, "unknown");
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L741
-val city = location.randomCity(random);
+val randomCity = location.randomCity(random);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L691
-val education = city.pickEducation(random);
+val education = randomCity.pickEducation(random);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L692
 demographicsOutput.put(Person.EDUCATION, education);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L693
-val educationLevel = city.educationLevel(education, random);
+val educationLevel = randomCity.educationLevel(education, random).asInstanceOf[java.lang.Double];
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L694
 demographicsOutput.put(Person.EDUCATION_LEVEL, educationLevel);
-val income = city.pickIncome(random);
+val income = randomCity.pickIncome(random).asInstanceOf[java.lang.Double];
 demographicsOutput.put(Person.INCOME, income);
-val incomeLevel = city.incomeLevel(income);
+val incomeLevel = randomCity.incomeLevel(income).asInstanceOf[java.lang.Double];
 demographicsOutput.put(Person.INCOME_LEVEL, incomeLevel);
-val occupation = random.nextDouble();
+val occupation = random.nextDouble().asInstanceOf[java.lang.Double];
 demographicsOutput.put(Person.OCCUPATION_LEVEL, occupation);
-val sesScore = city.socioeconomicScore(incomeLevel, educationLevel, occupation);
+val sesScore = randomCity.socioeconomicScore(incomeLevel, educationLevel, occupation);
 demographicsOutput.put(Person.SOCIOECONOMIC_SCORE, sesScore);
-demographicsOutput.put(Person.SOCIOECONOMIC_CATEGORY, city.socioeconomicCategory(sesScore));
+demographicsOutput.put(Person.SOCIOECONOMIC_CATEGORY, randomCity.socioeconomicCategory(sesScore));
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/input/FixedRecord.java#L99-L100
 val birthdate = LocalDateTime.of(1961,9,8,12,0).toInstant(ZoneOffset.UTC).toEpochMilli(); //1961-09-08T12:00:00
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L723
@@ -479,8 +479,28 @@ demographicsOutput.put(Person.BIRTHDATE, birthdate);
 // https://github.com/synthetichealth/synthea/blob/fbfd20e1c210c952b16962ffb72d789634bcfc42/src/main/java/org/mitre/synthea/engine/Generator.java#L511
 person.attributes.putAll(demographicsOutput);
 person.attributes.put(Person.LOCATION, location);
-person.lastUpdated = birthdate
-LifecycleModule.birth(person, person.lastUpdated);
+person.lastUpdated = birthdate;
+// LifecycleModule.birth(person, person.lastUpdated);
+val firstName = "Salomon";
+val lastName = "Cockshutt";
+val birthPlace = location.randomBirthPlace(person);
+val phoneNumber = "555-" + ((person.randInt(999 - 100 + 1) + 100)) + "-" + ((person.randInt(9999 - 1000 + 1) + 1000));
+val ssn = "999-" + ((person.randInt(99 - 10 + 1) + 10)) + "-" + ((person.randInt(9999 - 1000 + 1) + 1000));
+val address = "6 Lyons Street Denver, Colorado 32985"
+val zip = "32985"
+person.attributes.put(Person.ID, person.randUUID().toString());
+person.attributes.put(Person.FIRST_NAME, firstName);
+person.attributes.put(Person.LAST_NAME, lastName);
+person.attributes.put(Person.NAME, firstName + " " + lastName);
+person.attributes.put(Person.ADDRESS, address);
+person.attributes.put(Person.TELECOM, phoneNumber);
+person.attributes.put(Person.IDENTIFIER_SSN, ssn);
+person.attributes.put(Person.ADDRESS, address);
+person.attributes.put(Person.ZIP, zip);
+person.attributes.put(Person.BIRTH_CITY, birthPlace[0]);
+person.attributes.put(Person.BIRTH_STATE, birthPlace[1]);
+person.attributes.put(Person.BIRTH_COUNTRY, birthPlace[2]);
+person.attributes.put(Person.ACTIVE_WEIGHT_MANAGEMENT, false);
 updatePerson(person);
 // https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L218
 val timestep = Config.get("generate.timestep").toLong;
