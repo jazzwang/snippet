@@ -47,6 +47,27 @@ addresses: scala.xml.NodeSeq =
 scala> addresses.length
 res7: Int = 1
 ```
+## 2020-11-30
+
+```scala
+val xml = scala.xml.XML.loadFile("/tmp/sample.xml")
+val members = xml \ "member"
+members(1)
+members(1) \ "code"
+members(1) \ "us_core_race"
+members(1) \ "us_core_race" \ "code"
+members(1) \ "us_core_race" \ "code" .toString
+val race = members(1) \ "us_core_race" \ "code"
+race.toString
+val birthdate = members(1) \ "birth_date"
+birthdate.text
+val first_name = members(1) \ "names"
+val first_name = members(1) \ "names" \ "name"
+val first_name = members(1) \ "names" \ "name" \ "given"
+first_name.text
+val last_name = members(1) \ "names" \ "name" \ "family"
+last_name.text
+```
 
 ## 2020-12-09
 
