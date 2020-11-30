@@ -7,7 +7,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "Spark in Scala Seed Project",
     libraryDependencies ++= Seq(
-      "org.mitre.synthea" %   "synthea"       % "2.6.1",
+      // "org.mitre.synthea" %   "synthea"       % "2.6.1",
       "org.scalatest"     %%  "scalatest"     % "3.1.1"
     )
   )

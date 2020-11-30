@@ -1,8 +1,67 @@
 # Development Notes
 
+[TOC]
+
 ## 2020-11-24
 
 - https://github.com/synthetichealth/synthea/wiki/Embedding
+
+## 2020-11-25
+
+### Generator - `internalStore` - `updatedPopulationSnapshotPath`
+
+- We can use `updatedPopulationSnapshotPath` to store `Person` class object into `snapshot` file
+    - [Generator.run()](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L364-L376) will store `internalStore` if we specified `updatedPopulationSnapshotPath`.
+```java
+    // Save a snapshot of the generated population using Java Serialization
+    if (options.updatedPopulationSnapshotPath != null) {
+      FileOutputStream fos = null;
+      try {
+        fos = new FileOutputStream(options.updatedPopulationSnapshotPath);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(internalStore);
+        oos.close();
+        fos.close();
+      } catch (Exception ex) {
+        System.out.printf("Unable to save population snapshot, error: %s", ex.getMessage());
+      }
+```
+```bash
+[11/25 11:53:57] ./run_synthea -s $RANDOM -p 100 -u snapshot.2020-11-25_11
+[11/25 12:11:52] file snapshot.2020-11-25_11
+```
+```bash
+~/git/synthea$ file snapshot.2020-11-25_11
+snapshot: Java serialization data, version 5
+```
+### mismatched jar file version
+
+- ( 2020-11-26 01:19:07 )
+- When importing from maven package, we need to make sure the jar file version. If the Java version is mismatched, there will be a `java.lang.UnsupportedClassVersionError`。
+    - Here is an example using sbt `1.3.8` + scala `2.12.10` + JVM `1.8.0`
+
+```
+~/git/snippet/scala/sbt-create$ sbt
+[info] Updated file /Users/jazzwang/git/snippet/scala/sbt-create/project/build.properties: set sbt.version to 1.3.8
+[info] Loading project definition from /Users/jazzwang/git/snippet/scala/sbt-create/project
+[info] Loading settings for project sbt-create from build.sbt ...
+[info] Set current project to sbt-create (in build file:/Users/jazzwang/git/snippet/scala/sbt-create/)
+[info] sbt server started at local:///Users/jazzwang/.sbt/1.0/server/ae1837471fe1a34adce9/sock
+sbt:sbt-create> console
+[info] Starting scala interpreter...
+Welcome to Scala 2.12.10 (OpenJDK 64-Bit Server VM, Java 1.8.0_275).
+Type in expressions for evaluation. Or try :help.
+
+scala> import org.mitre.synthea.engine.Generator
+import org.mitre.synthea.engine.Generator
+
+scala> val option = new Generator.GeneratorOptions()
+java.lang.UnsupportedClassVersionError: org/mitre/synthea/engine/Generator$GeneratorOptions has been compiled by a more recent version of the Java Runtime (class file version 58.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+  at java.lang.ClassLoader.defineClass1(Native Method)
+  at java.lang.ClassLoader.defineClass(ClassLoader.java:757)
+  at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+  ... (skipped) ...
+```
 
 ## 2020-11-26
 
@@ -376,6 +435,8 @@ import org.mitre.synthea.export._
 
 ## 2020-11-29
 
+### `createPerson` with `demographicsOutput`
+
 - ( 2020-11-29 16:12:35 )
 - [Generator.generatePerson(int index)](https://github.com/synthetichealth/synthea/blob/e9354e75076e1b8b98d4810d2987eb45c228ef70/src/main/java/org/mitre/synthea/engine/Generator.java#L423-L427)
 ```java
@@ -510,7 +571,7 @@ val finishTime = person.lastUpdated + timestep;
 Exporter.export(person, finishTime, ero);
 ```
 
-## read `snapshot` into `Person`
+### read `snapshot` into `Person`
 
 - ( 2020-11-29 23:41:43 )
 ```scala
@@ -526,3 +587,196 @@ persons.size
 val bw = new BufferedWriter(new FileWriter(new File("snapshot_0.txt")))
 bw.write(persons.get(0).attributes.toString)
 ```
+- ( 2020-11-30 00:20:51 )
+
+## 2020-11-30
+
+- ( 2020-11-30 09:34:04 )
+- After the exploration of `Generator`, `Exporter` and `Person` class, the best way to create one person with specified `firstName`, `lastName`, `gender`, `state`, `city` fields is to use `Generator.createPerson(int index)` with `state`, `city`, `age` and `gender`, then manually update `firstName` and `lastName`.
+
+### Update `Person` attributes before running `Exporter`
+
+- ( 2020-11-30 10:01:52 )
+```bash
+jazzwang:~/git/synthea$ JAVA_OPTS="-Xms1g -Xmx2g" scala -cp build/libs/synthea-with-dependencies.jar
+Welcome to Scala 2.11.11 (OpenJDK 64-Bit Server VM, Java 1.8.0_275).
+Type in expressions for evaluation. Or try :help.
+
+scala>
+```
+```scala
+import java.io._
+import java.time._
+import org.mitre.synthea.engine._
+import org.mitre.synthea.helpers._
+import org.mitre.synthea.export._
+
+val options = new Generator.GeneratorOptions();
+val ero = new Exporter.ExporterRuntimeOptions();
+val generator = new Generator(options, ero);
+
+Config.set("generate.append_numbers_to_person_names", "false");
+
+generator.options.gender = "F";
+generator.options.state = "Pennsylvania";
+generator.options.city = "Scranton";
+generator.options.ageSpecified = true;
+generator.options.minAge = 5;
+generator.options.maxAge = 6;
+
+
+val person = generator.generatePerson(0)
+
+generator.options.gender = "M";
+generator.options.state = "Virginia";
+generator.options.city = "Richmond";
+generator.options.ageSpecified = true;
+generator.options.minAge = 72;
+generator.options.maxAge = 73;
+
+val person = generator.generatePerson(1)
+```
+- ( 2020-11-30 11:16:32 ) confirmed that we can create different person with specified age.
+
+### generate C-CDA XML based on self-defined FreeMaker template
+
+- ( 2020-11-30 12:55:34 )
+- create symbolic link to `src/main/resources/templates/`
+```bash
+jazzwang:~/git/synthea$ ln -s src/main/resources/templates/
+```
+- ( 2020-11-30 13:01:38 ) test with following syntax:
+```scala
+import java.io._;
+import java.time._;
+import freemarker.template._;
+import org.mitre.synthea.engine._;
+import org.mitre.synthea.helpers._;
+import org.mitre.synthea.export._;
+import org.mitre.synthea.world.agents._;
+import org.mitre.synthea.world.concepts._;
+
+var options = new Generator.GeneratorOptions();
+var ero = new Exporter.ExporterRuntimeOptions();
+
+Config.set("generate.append_numbers_to_person_names", "false");
+
+options.gender = "F";
+options.state = "Pennsylvania";
+options.city = "Scranton";
+options.ageSpecified = true;
+options.minAge = 5;
+options.maxAge = 6;
+
+var generator = new Generator(options, ero);
+
+var person = generator.generatePerson(0);
+
+// modify first name and last name
+person.attributes.put(Person.FIRST_NAME, "Janey");
+person.attributes.get(Person.FIRST_NAME);
+person.attributes.put(Person.LAST_NAME, "Mayger");
+person.attributes.get(Person.LAST_NAME);
+person.attributes.put(Person.NAME, "Janey Mayger");
+
+val time = generator.stop
+person.attributes.put("time", time);
+person.attributes.put("race_lookup", RaceAndEthnicity.LOOK_UP_CDC_RACE);
+person.attributes.put("ethnicity_lookup", RaceAndEthnicity.LOOK_UP_CDC_ETHNICITY_CODE);
+person.attributes.put("ethnicity_display_lookup", RaceAndEthnicity.LOOK_UP_CDC_ETHNICITY_DISPLAY);
+
+// write `Person.attributes` KeySet to `person-attributes-key.txt`
+var bw = new BufferedWriter(new FileWriter(new File("person-attributes-key.txt")));
+bw.write(person.attributes.keySet.toString);
+bw.close();
+
+// generate CCD XML based on `ccda.ftl`
+var configuration = new Configuration(Configuration.VERSION_2_3_26);
+configuration.setDefaultEncoding("UTF-8");
+configuration.setLogTemplateExceptions(false);
+configuration.setSetting("object_wrapper", "DefaultObjectWrapper(2.3.26, forceLegacyNonListCollections=false, iterableSupport=true, exposeFields=true)");
+configuration.setAPIBuiltinEnabled(true);
+configuration.setDirectoryForTemplateLoading(new File("templates/ccda"));
+var template = configuration.getTemplate("ccda.ftl")
+var writer = new StringWriter();
+template.process(person.attributes, writer);
+var bw = new BufferedWriter(new FileWriter(new File("Janey_Mayger.xml")));
+bw.write(writer.toString);
+bw.close();
+```
+
+### Data Model Mapping
+
+- ( 2020-11-30 17:20:37 )
+
+| Person.Attributes | C-CDA Header | C-CDA Section |
+|-------------------|--------------|---------------|
+| AGE
+| AGE_MONTHS
+| DALY
+| QALY
+| QOLS
+| RH_NEG
+| active_weight_management
+| address
+| adherence probability
+| birth_city
+| birth_country
+| birth_state
+| birthdate
+| birthplace
+| bmi_percentile
+| cardio_risk
+| city
+| ckd
+| coordinate
+| county
+| covid19
+| covid19_careplan
+| covid19_death
+| covid19_risk
+| covid19_severity
+| current-encounters
+| current_weight_length_percentile
+| deductible
+| diabetic_eye_damage
+| diabetic_nerve_damage
+| education
+| education_level
+| ethnicity
+| first_language
+| first_name
+| gender
+| growth_trajectory
+| id
+| identifier_ssn
+| immunizations
+| income
+| income_level
+| last_month_paid
+| last_name
+| location
+| most-recent-daly
+| most-recent-qaly
+| name
+| name_father
+| name_mother
+| number_of_children
+| occupation_level
+| preferredProviderambulatory
+| preferredProviderwellness
+| pregnant
+| race
+| sexual_orientation
+| sexually_active
+| socioeconomic_category
+| socioeconomic_score
+| state
+| target_age
+| telecom
+| zip
+
+### fixing FreeMarker issue
+
+- ( 2020-11-30 18:12:07 )
+- update `Hello.scala` to generate the specified XML output.
