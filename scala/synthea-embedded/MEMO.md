@@ -41,11 +41,11 @@ snapshot: Java serialization data, version 5
     - Here is an example using sbt `1.3.8` + scala `2.12.10` + JVM `1.8.0`
 
 ```
-~/git/snippet/scala/sbt-create$ sbt
-[info] Updated file /Users/jazzwang/git/snippet/scala/sbt-create/project/build.properties: set sbt.version to 1.3.8
-[info] Loading project definition from /Users/jazzwang/git/snippet/scala/sbt-create/project
+~/git/cch-ccda-generator$ sbt
+[info] Updated file /Users/jazzwang/git/cch-ccda-generator/project/build.properties: set sbt.version to 1.3.8
+[info] Loading project definition from /Users/jazzwang/git/cch-ccda-generator/project
 [info] Loading settings for project sbt-create from build.sbt ...
-[info] Set current project to sbt-create (in build file:/Users/jazzwang/git/snippet/scala/sbt-create/)
+[info] Set current project to sbt-create (in build file:/Users/jazzwang/git/cch-ccda-generator/)
 [info] sbt server started at local:///Users/jazzwang/.sbt/1.0/server/ae1837471fe1a34adce9/sock
 sbt:sbt-create> console
 [info] Starting scala interpreter...
@@ -159,7 +159,6 @@ java.lang.UnsupportedClassVersionError: org/mitre/synthea/engine/Generator$Gener
 ### Embedding & JSON integration (FHIRv4)
 
 - https://github.com/synthetichealth/synthea/wiki/Embedding#json-integration
-- reference [sbt-create](../sbt-create/MEMO.md)
 - manually use java11 instead of java8
 ```
 jazzwang:~$ wget https://download.java.net/java/GA/jdk15.0.1/51f4f36ad4ef43e39d0dfdbaf6549e32/9/GPL/openjdk-15.0.1_osx-x64_bin.tar.gz
@@ -176,8 +175,8 @@ OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
 ```
 - ( 2020-11-26 14:32:45 ) encounter class version issue again with JDK11
 ```
-jazzwang:~$ cd ~/git/snippet/scala/synthea-embedded/
-jazzwang:~/git/snippet/scala/synthea-embedded$ sbt console
+jazzwang:~$ cd ~/git/cch-ccda-generator
+jazzwang:~/git/cch-ccda-generator$ sbt console
 scala> import org.mitre.synthea.engine._
 scala> val options = new org.mitre.synthea.engine.Generator.GeneratorOptions();
 java.lang.UnsupportedClassVersionError: org/mitre/synthea/engine/Generator$GeneratorOptions has been compiled by a more recent version of the Java Runtime (class file version 58.0), this version of the Java Runtime only recognizes class file versions up to 55.0
@@ -188,12 +187,10 @@ java.lang.UnsupportedClassVersionError: org/mitre/synthea/engine/Generator$Gener
 jazzwang:~$ cd git/synthea
 jazzwang:~/git/synthea$ git checkout v2.6.1
 jazzwang:~/git/synthea$ ./gradlew jar
-jazzwang:~/git/synthea$ cp build/libs/synthea.jar ~/git/snippet/scala/synthea-embedded/
 ```
 - ( 2020-11-26 15:13:22 ) loading synthea.jar (without dependencies) to scala REPL
 ```
-jazzwang:~/git/synthea$ cd ~/git/snippet/scala/synthea-embedded/
-jazzwang:~/git/snippet/scala/synthea-embedded$ scala -cp synthea.jar
+jazzwang:~/git/synthea$ scala -cp build/libs/synthea.jar
 Welcome to Scala 2.11.11 (OpenJDK 64-Bit Server VM, Java 1.8.0_275).
 Type in expressions for evaluation. Or try :help.
 ```
@@ -214,7 +211,6 @@ val ero = new Exporter.ExporterRuntimeOptions();
 ero.enableQueue(Exporter.SupportedFhirVersion.R4);
 
 val generator = new Generator(options, ero);
-
 ```
 - Error
 ```scala
@@ -234,7 +230,6 @@ Caused by: java.lang.ClassNotFoundException: com.google.gson.TypeAdapterFactory
 - ( 2020-11-26 15:37:51 ) create `uberJar` with JDK8
 ```
 jazzwang:~/git/synthea$ ./gradlew uberJar
-jazzwang:~/git/synthea$ cp build/libs/synthea-with-dependencies.jar ~/git/snippet/scala/synthea-embedded/
 jazzwang:~/git/synthea$ scala -cp build/libs/synthea-with-dependencies.jar
 ```
 - ( 2020-11-26 15:41:04 ) Error: `java.lang.OutOfMemoryError: GC overhead limit exceeded`
@@ -257,10 +252,13 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
   at org.mitre.synthea.engine.Generator.<init>(Generator.java:171)
   ... 18 elided
 ```
+
 - ( 2020-11-26 15:41:44 ) increase HEAP size by defining `JAVA_OPTS` environment variable:
+
 ```bash
 jazzwang:~/git/synthea$ JAVA_OPTS="-Xms1g -Xmx2g" scala -cp build/libs/synthea-with-dependencies.jar
 ```
+
 - ( 2020-11-26 15:47:30 ) store JSON string to a JSON file
   - https://www.journaldev.com/8278/scala-file-io-write-file-read-file#scala-write-to-file
   - https://alvinalexander.com/scala/how-to-write-text-files-in-scala-printwriter-filewriter/
@@ -459,6 +457,7 @@ import org.mitre.synthea.export._
     // Pick the rest of the demographics based on the location of the fixed record.
     Map<String, Object> demoAttributes = pickDemographics(random, city);
 ```
+- test with following syntax using Scala REPL
 ```scala
 import java.io._
 import java.util._
@@ -592,7 +591,9 @@ bw.write(persons.get(0).attributes.toString)
 ## 2020-11-30
 
 - ( 2020-11-30 09:34:04 )
-- After the exploration of `Generator`, `Exporter` and `Person` class, the best way to create one person with specified `firstName`, `lastName`, `gender`, `state`, `city` fields is to use `Generator.createPerson(int index)` with `state`, `city`, `age` and `gender`, then manually update `firstName` and `lastName`.
+- After the exploration of `Generator`, `Exporter` and `Person` classes, the best way to create one person with **specified fields** are:
+  1. use `Generator.createPerson(int index)` with `state`, `city`, `age` and `gender`
+  2. manually update `firstName`, `lastName`, `race`, `ethnicity` and other fields into `Person.attributes`.
 
 ### Update `Person` attributes before running `Exporter`
 
@@ -604,6 +605,7 @@ Type in expressions for evaluation. Or try :help.
 
 scala>
 ```
+- test with Scala REPL
 ```scala
 import java.io._
 import java.time._
@@ -645,7 +647,7 @@ val person = generator.generatePerson(1)
 ```bash
 jazzwang:~/git/synthea$ ln -s src/main/resources/templates/
 ```
-- ( 2020-11-30 13:01:38 ) test with following syntax:
+- ( 2020-11-30 13:01:38 ) test following syntax with Scala REPL:
 ```scala
 import java.io._;
 import java.time._;
@@ -679,7 +681,7 @@ person.attributes.put(Person.LAST_NAME, "Mayger");
 person.attributes.get(Person.LAST_NAME);
 person.attributes.put(Person.NAME, "Janey Mayger");
 
-val time = generator.stop
+var time = generator.stop
 person.attributes.put("time", time);
 person.attributes.put("race_lookup", RaceAndEthnicity.LOOK_UP_CDC_RACE);
 person.attributes.put("ethnicity_lookup", RaceAndEthnicity.LOOK_UP_CDC_ETHNICITY_CODE);
@@ -709,74 +711,378 @@ bw.close();
 
 - ( 2020-11-30 17:20:37 )
 
-| Person.Attributes | C-CDA Header | C-CDA Section |
+| Key of `Person.Attributes` | ccda.ftl | `section`.ftl |
 |-------------------|--------------|---------------|
-| AGE
-| AGE_MONTHS
-| DALY
-| QALY
-| QOLS
-| RH_NEG
-| active_weight_management
-| address
-| adherence probability
-| birth_city
-| birth_country
-| birth_state
-| birthdate
-| birthplace
-| bmi_percentile
-| cardio_risk
-| city
-| ckd
-| coordinate
-| county
-| covid19
-| covid19_careplan
-| covid19_death
-| covid19_risk
-| covid19_severity
-| current-encounters
-| current_weight_length_percentile
-| deductible
-| diabetic_eye_damage
-| diabetic_nerve_damage
-| education
-| education_level
-| ethnicity
-| first_language
-| first_name
-| gender
-| growth_trajectory
-| id
-| identifier_ssn
-| immunizations
-| income
-| income_level
-| last_month_paid
-| last_name
-| location
-| most-recent-daly
-| most-recent-qaly
-| name
-| name_father
-| name_mother
-| number_of_children
-| occupation_level
-| preferredProviderambulatory
-| preferredProviderwellness
-| pregnant
-| race
-| sexual_orientation
-| sexually_active
-| socioeconomic_category
-| socioeconomic_score
-| state
-| target_age
-| telecom
-| zip
+| AGE | N | N |
+| AGE_MONTHS | N | N |
+| DALY | N | N |
+| QALY | N | N |
+| QOLS | N | N |
+| RH_NEG | N | N |
+| active_weight_management | N | N |
+| address | Y | N |
+| adherence probability | N | N |
+| birth_city | N | N |
+| birth_country | N | N |
+| birth_state | N | N |
+| birthdate | Y | Y |
+| birthplace | N | N |
+| bmi_percentile | N | N |
+| cardio_risk | N | N |
+| city | Y | N |
+| ckd | N | N |
+| coordinate | N | N |
+| county | N | N |
+| covid19 | N | N |
+| covid19_careplan | N | N |
+| covid19_death | N | N |
+| covid19_risk | N | N |
+| covid19_severity | N | N |
+| current-encounters | N | N |
+| current_weight_length_percentile | N | N |
+| deductible | N | N |
+| diabetic_eye_damage | N | N |
+| diabetic_nerve_damage | N | N |
+| education | N | N |
+| education_level | N | N |
+| ethnicity | Y | N |
+| first_language | N (should be Y) | N |
+| first_name | N (shoule be Y) | N |
+| gender | Y | N |
+| growth_trajectory | N | N |
+| id | Y (for `root="2.16.840.1.113883.19.5"`) | N |
+| identifier_ssn | N | N |
+| immunizations | N | Y (section `immunizations`) |
+| income | N | N |
+| income_level | N | N |
+| last_month_paid | N | N |
+| last_name | N (should be Y) | N |
+| location | N | N |
+| most-recent-daly | N | N |
+| most-recent-qaly | N | N |
+| name | Y | N |
+| name_father | N | N |
+| name_mother | N | N |
+| number_of_children | N | N |
+| occupation_level | N | N |
+| preferredProviderambulatory | N | N |
+| preferredProviderwellness | Y | N |
+| pregnant | N | N |
+| race | Y | N |
+| sexual_orientation | N | N |
+| sexually_active | N | N |
+| socioeconomic_category | N | N |
+| socioeconomic_score | N | N |
+| state | Y | N |
+| target_age | N | N |
+| telecom | N (should be Y) | N |
+| zip | Y | N |
+
+- Table: *( 2020-12-01 13:48:40 ) updated based on `ccda.ftl` and other templates*
 
 ### fixing FreeMarker issue
 
 - ( 2020-11-30 18:12:07 )
 - update `Hello.scala` to generate the specified XML output.
+- ( 2020-11-30 23:19:25 )
+- found missing sections data within generated XML output.
+  - Reason: missing `ehr_allergies`. `ehr_conditions`, etc.
+
+## 2020-12-01
+
+### `person.attributes` used in `FreeMarker` templates
+
+- ( 2020-12-01 10:23:46 )
+```
+templates/ccda$ grep --color "\${.*}" * | sed 's#.*\$#\$#g' | sed 's#}.*#}#' | sort | uniq | sort >> ../../MEMO.md
+```
+```java
+${(entry.unit)!""}
+${UUID?api.toString()}
+${address}
+${birthdate?number_to_date?string["yyyyMMddHHmmss"]}
+${city}
+${code.display}
+${codes[0].display}
+${entry.codes[0].code}
+${entry.codes[0].display}
+${entry.manufacturer}
+${entry.start?number_to_date?string["yyyyMMddHHmmss"]}
+${entry.start?number_to_datetime?iso_local}
+${entry.stop?number_to_date?string["yyyyMMddHHmmss"]}
+${entry.stop?number_to_datetime?iso_local}
+${entry.unit}
+${entry.value.display}
+${entry.value}
+${entry?counter}
+${ethnicity_display_lookup[race]}
+${gender}
+${id}
+${instance.dicomUid}
+${instance.sopClass.display}
+${name?keep_after_last(" ")}
+${name?keep_before_last(" ")}
+${name}
+${obs.start?number_to_date?string["yyyyMMddHHmmss"]}
+${obs.unit}
+${obs.value}
+${preferredProviderwellness.address?replace("&", "&amp;")}
+${preferredProviderwellness.city}
+${preferredProviderwellness.name?replace("&", "&amp;")}
+${preferredProviderwellness.state}
+${preferredProviderwellness.zip}
+${race}
+${section}
+${series.dicomUid}
+${series.modality.display}
+${state}
+${study.dicomUid}
+${study.start?number_to_date?string["yyyyMMddHHmmss"]}
+${tag}
+${time?number_to_date?string["yyyyMMddHHmmss"]}
+${zip}
+```
+- ( 2020-12-01 10:53:43 ) `person.attributes` difference after running `CCDAExporter.export()`
+```
+$ diff -Naur key1 key2 >> MEMO.md
+```
+```diff
+--- key1	2020-12-01 10:44:56.000000000 +0800
++++ key2	2020-12-01 10:44:50.000000000 +0800
+@@ -49,6 +49,7 @@
+  Sore Throat Condition
+  Sore Throat Module
+  Total Joint Replacement Module
++ UUID
+  Urinary Tract Infections Module
+  Veteran Hyperlipidemia Module
+  Veteran Lung Cancer Module
+@@ -88,7 +89,19 @@
+  diabetic_nerve_damage
+  education
+  education_level
++ ehr_allergies
++ ehr_careplans
++ ehr_conditions
++ ehr_encounters
++ ehr_imaging_studies
++ ehr_immunizations
++ ehr_medications
++ ehr_observations
++ ehr_procedures
++ ehr_reports
+  ethnicity
++ ethnicity_display_lookup
++ ethnicity_lookup
+  first_language
+  first_name
+  gender
+@@ -113,6 +126,7 @@
+  preferredProviderwellness
+  pregnant
+  race
++ race_lookup
+  sexual_orientation
+  sexually_active
+  socioeconomic_category
+@@ -120,4 +134,5 @@
+  state
+  target_age
+  telecom
++ time
+  zip
+```
+- ( 2020-12-01 11:17:43 )
+```bash
+$ grep "\${.*}" templates/ccda/* | sed 's#.*\$#\$#g' | sed 's#}.*#}#' | sort | uniq | sort | sed 's#\${[(]*##' | sed 's#?.*##' | sed 's#\..*##' | sed 's#\[.*##' | tr -d '}' | sort -n | uniq | nl
+     1	UUID
+     2	address
+     3	birthdate
+     4	city
+     5	code
+     6	codes
+     7	entry
+     8	ethnicity_display_lookup
+     9	gender
+    10	id
+    11	instance
+    12	name
+    13	obs
+    14	preferredProviderwellness
+    15	race
+    16	section
+    17	series
+    18	state
+    19	study
+    20	tag
+    21	time
+    22	zip
+```
+- ( 2020-12-01 11:23:01 ) `person.attributes` KeySet used in FreeMarker templates
+```bash
+$ grep "\${.*}" templates/ccda/* | sed 's#.*\$#\$#g' | sed 's#}.*#}#' | sort | uniq | sort | sed 's#\${[(]*##' | sed 's#?.*##' | sed 's#\..*##' | sed 's#\[.*##' | tr -d '}' | sort -n | uniq > used_key
+```
+```
+$ for i in $(cat used_key);do A=$(grep " $i$" key2) ; if [ $? -eq 0 ]; then echo "| $i | YES |"; else echo "| $i | NO |"; fi; done
+```
+| `FreeMarker` variable | within `Person.Attributes` |
+|--|--|
+| UUID | YES |
+| address | YES |
+| birthdate | YES |
+| city | YES |
+| code | NO |
+| codes | NO |
+| entry | NO |
+| ethnicity_display_lookup | YES |
+| gender | YES |
+| id | YES |
+| instance | NO |
+| name | YES |
+| obs | NO |
+| preferredProviderwellness | YES |
+| race | YES |
+| section | NO |
+| series | NO |
+| state | YES |
+| study | NO |
+| tag | NO |
+| time | YES |
+| zip | YES |
+- ( 2020-12-01 11:38:56 ) `codes` = `code_with_reference.ftl`
+```
+$ grep "as codes" templates/ccda/*
+templates/ccda/allergies.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/conditions.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/encounters.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/immunizations.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/medical_equipment.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/medications.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/procedures.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/results.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/social_history.ftl:<#import "code_with_reference.ftl" as codes>
+templates/ccda/vital_signs.ftl:<#import "code_with_reference.ftl" as codes>
+```
+- ( 2020-12-01 11:41:00 ) `code` is part of `codes`
+```
+$ grep "as code>" templates/ccda/*
+templates/ccda/code_with_reference.ftl:            <#list codes[1..] as code>
+```
+- ( 2020-12-01 11:43:02 ) `entry` = attributes `ehr_*` created within `CCDAExporter.export()`
+```
+grep "as entry" templates/ccda/* | column -t
+templates/ccda/allergies.ftl:          <#list  ehr_allergies          as  entry>
+templates/ccda/conditions.ftl:         <#list  ehr_conditions         as  entry>
+templates/ccda/encounters.ftl:         <#list  ehr_encounters         as  entry>
+templates/ccda/immunizations.ftl:      <#list  ehr_immunizations      as  entry>
+templates/ccda/medical_equipment.ftl:  <#list  ehr_medical_equipment  as  entry>
+templates/ccda/medications.ftl:        <#list  ehr_medications        as  entry>
+templates/ccda/narrative_block.ftl:    <#list  entries                as  entry>
+templates/ccda/procedures.ftl:         <#list  ehr_procedures         as  entry>
+templates/ccda/results.ftl:            <#list  ehr_reports            as  entry>
+templates/ccda/social_history.ftl:     <#list  ehr_social_history     as  entry>
+templates/ccda/vital_signs.ftl:        <#list  ehr_observations       as  entry>
+```
+- ( 2020-12-01 11:51:16 ) `entry` = `entries` in `narrative_block.ftl`
+```
+$ grep 'entries' templates/ccda/narrative_block.ftl
+<#macro narrative section entries>
+        <#if entries[0].value??>
+      <#list entries as entry>
+```
+- ( 2020-12-01 11:44:16 ) `instance` = `series.instances` = `ehr_imaging_studies.series.instances`
+```
+$ grep "as instance" templates/ccda/*
+templates/ccda/diagnostic_imaging_reports.ftl:            <#list series.instances as instance>
+```
+- ( 2020-12-01 11:45:22 ) `obs` = `entry.observations` = `ehr_*.observations`
+```
+$ grep "as obs" templates/ccda/*
+templates/ccda/narrative_block.ftl:          <#list entry.observations as obs>
+templates/ccda/results.ftl:        <#list entry.observations as obs>
+templates/ccda/vital_signs.ftl:        <#list entry.observations as obs>
+```
+- ( 2020-12-01 11:52:51 ) `series` = `study.series` = `ehr_imaging_studies.series`
+```
+$ grep 'as series' templates/ccda/*
+templates/ccda/diagnostic_imaging_reports.ftl:        <#list study.series as series>
+```
+- ( 2020-12-01 11:55:30 ) `study` = `ehr_imaging_studies`
+```
+$ grep 'as study' templates/ccda/*
+templates/ccda/diagnostic_imaging_reports.ftl:    <#list ehr_imaging_studies as study>
+```
+- ( 2020-12-01 11:59:27 ) `tag` = "code"
+```
+$ grep 'tag=' templates/ccda/*
+templates/ccda/code_with_reference.ftl:<#macro code_section codes section counter tag="code" extra="">
+templates/ccda/conditions.ftl:            <@codes.code_section codes=entry.codes section="conditions" counter=entry?counter tag="value" extra="xsi:type=\"CD\""/>
+```
+```
+$ grep '${tag' templates/ccda/*
+templates/ccda/code_with_reference.ftl:        <${tag} ${extra} code="${codes[0].code}" codeSystem="<@lookup.oid_for_code_system system=codes[0].system/>" displayName="${codes[0].display}">
+templates/ccda/code_with_reference.ftl:        </${tag}>
+templates/ccda/code_with_reference.ftl:        <${tag} nullFlavor="UNK"/>
+```
+
+### Scala does not support `inner class`?
+
+- ( 2020-12-01 13:52:52 ) Based on [CCDAExporter.export(Person person, long time)](https://github.com/synthetichealth/synthea/blob/6e4507a6170322fec628c923256a8fb4c6fd34b6/src/main/java/org/mitre/synthea/export/CCDAExporter.java#L65-L114), Attributes `ehr_*`are from `org.mitre.synthea.world.concepts.HealthRecord.Encounter`
+- [HealthRecord.Encounter](https://github.com/synthetichealth/synthea/blob/fbfd20e1c210c952b16962ffb72d789634bcfc42/src/main/java/org/mitre/synthea/world/concepts/HealthRecord.java#L492-L521)
+```java
+public class HealthRecord implements Serializable {
+
+... (skipped) ...
+
+  public class Encounter extends Entry {
+    public List<Observation> observations;
+    public List<Report> reports;
+    public List<Entry> conditions;
+    public List<Entry> allergies;
+    public List<Procedure> procedures;
+    public List<Immunization> immunizations;
+    public List<Medication> medications;
+    public List<CarePlan> careplans;
+    public List<ImagingStudy> imagingStudies;
+    public List<Device> devices;
+    public List<Supply> supplies;
+    public Claim claim; // for now assume 1 claim per encounter
+    public Code reason;
+    public Code discharge;
+    public Provider provider;
+    public Clinician clinician;
+    public boolean ended;
+    // Track if we renewed meds at this encounter. Used in State.java encounter state.
+    public boolean chronicMedsRenewed;
+    public String clinicalNote;
+
+
+    /**
+     * Construct an encounter.
+     * @param time the time of the encounter.
+     * @param type the type of the encounter.
+     */
+    public Encounter(long time, String type) {
+      super(time, type);
+      if (type.equalsIgnoreCase(EncounterType.EMERGENCY.toString())) {
+```
+- ( 2020-12-01 14:01:47 ) But we can't find `org.mitre.synthea.world.concepts.HealthRecord.Encounter` within Scala REPL
+```bash
+jazzwang:~/git/synthea$ JAVA_OPTS="-Xms1g -Xmx2g" scala -cp build/libs/synthea-with-dependencies.jar
+Welcome to Scala 2.11.11 (OpenJDK 64-Bit Server VM, Java 1.8.0_275).
+Type in expressions for evaluation. Or try :help.
+```
+```scala
+scala> import org.mitre.synthea.world.concepts.HealthRecord.Encounter
+<console>:11: error: value Encounter is not a member of object org.mitre.synthea.world.concepts.HealthRecord
+       import org.mitre.synthea.world.concepts.HealthRecord.Encounter
+scala> import org.mitre.synthea.world.agents.Person
+import org.mitre.synthea.world.agents.Person
+scala> val healthrecord = new HealthRecord(new Person(0L))
+healthrecord: org.mitre.synthea.world.concepts.HealthRecord = org.mitre.synthea.world.concepts.HealthRecord@3f40568e
+scala> healthrecord.encounters
+res0: java.util.List[org.mitre.synthea.world.concepts.HealthRecord#Encounter] = []
+scala> healthrecord.currentEncounter
+   def currentEncounter(x$1: Long): org.mitre.synthea.world.concepts.HealthRecord#Encounter
+```
+- ( 2020-12-01 14:28:24 ) Use `person.record.encounters.get(0)` as `superEncounter` of `CCDAExporter.export()`

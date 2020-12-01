@@ -14,11 +14,12 @@ object Hello extends Greeting with App {
 
   var options = new Generator.GeneratorOptions();
 
-  // disable default options
+  // disable default exporter options - to reduce output files
   Config.set("exporter.fhir.export", "false");
   Config.set("exporter.fhir.transaction_bundle", "false");
   Config.set("exporter.hospital.fhir.export", "false");
   Config.set("exporter.practitioner.fhir.export", "false");
+  // disable generator option
   Config.set("generate.append_numbers_to_person_names", "false");
 
   var ero = new Exporter.ExporterRuntimeOptions();
@@ -38,6 +39,33 @@ object Hello extends Greeting with App {
   person.attributes.put(Person.LAST_NAME, "Mayger");
 
   val time = generator.stop.asInstanceOf[java.lang.Long]
+  var superEncounter = person.record.encounters.get(0)
+  for ( i <- 1 to person.record.encounters.size -1 ) {
+    val encounter = person.record.encounters.get(i);
+    if (encounter.start <= time) {
+      superEncounter.observations.addAll(encounter.observations);
+      superEncounter.reports.addAll(encounter.reports);
+      superEncounter.conditions.addAll(encounter.conditions);
+      superEncounter.allergies.addAll(encounter.allergies);
+      superEncounter.procedures.addAll(encounter.procedures);
+      superEncounter.immunizations.addAll(encounter.immunizations);
+      superEncounter.medications.addAll(encounter.medications);
+      superEncounter.careplans.addAll(encounter.careplans);
+      superEncounter.imagingStudies.addAll(encounter.imagingStudies);
+    }
+  }
+
+  person.attributes.put("UUID", person.randUUID);
+  person.attributes.put("ehr_encounters", person.record.encounters);
+  person.attributes.put("ehr_observations", superEncounter.observations);
+  person.attributes.put("ehr_reports", superEncounter.reports);
+  person.attributes.put("ehr_conditions", superEncounter.conditions);
+  person.attributes.put("ehr_allergies", superEncounter.allergies);
+  person.attributes.put("ehr_procedures", superEncounter.procedures);
+  person.attributes.put("ehr_immunizations", superEncounter.immunizations);
+  person.attributes.put("ehr_medications", superEncounter.medications);
+  person.attributes.put("ehr_careplans", superEncounter.careplans);
+  person.attributes.put("ehr_imaging_studies", superEncounter.imagingStudies);
   person.attributes.put("time", time);
   person.attributes.put("race_lookup", RaceAndEthnicity.LOOK_UP_CDC_RACE);
   person.attributes.put("ethnicity_lookup", RaceAndEthnicity.LOOK_UP_CDC_ETHNICITY_CODE);
