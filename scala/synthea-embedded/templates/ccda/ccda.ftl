@@ -1,14 +1,18 @@
 <#setting number_format="computer">
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='CDA.xsl'?>
-<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 http://xreg2.nist.gov:8080/hitspValidation/schema/cdar2c32/infrastructure/cda/C32_CDA.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="CDA.xsl"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- ** CDA Header ** -->
+  <!-- US Realm Header (V3) -->
   <realmCode code="US"/>
   <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
   <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <!-- Continuity of Care Document (CCD) (V3) -->
   <templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
   <id root="2.16.840.1.113883.19.5" extension="${id}" assigningAuthorityName="https://github.com/synthetichealth/synthea"/>
   <code code="34133-9" displayName="Summarization of episode note" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
   <title>C-CDA R2.1 Patient Record: ${name}</title>
-  <effectiveTime value=""/>
+  <effectiveTime value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
   <confidentialityCode code="N"/>
   <languageCode code="en-US"/>
   <recordTarget>
@@ -24,7 +28,11 @@
         <postalCode nullFlavor="NI"/>
         </#if>
       </addr>
+      <#if telecom?has_content>
+      <telecom use="HP" value="tel:${telecom}"/>
+      <#else>
       <telecom nullFlavor="NI"/>
+      </#if>
       <patient>
         <name>
           <given>${name?keep_before_last(" ")}</given>

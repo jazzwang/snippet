@@ -77,13 +77,18 @@ object Hello extends Greeting with App {
   configuration.setSetting("object_wrapper", "DefaultObjectWrapper(2.3.26, forceLegacyNonListCollections=false, iterableSupport=true, exposeFields=true)");
   configuration.setAPIBuiltinEnabled(true);
   configuration.setDirectoryForTemplateLoading(new File("templates/ccda"));
+  // generate document type: CCD
   var template = configuration.getTemplate("ccda.ftl")
   var writer = new StringWriter();
   template.process(person.attributes, writer);
   var bw = new BufferedWriter(new FileWriter(new File("Janey_Mayger.xml")));
-  var xml = writer.toString;
-  //val printer = new scala.xml.PrettyPrinter(80, 2)
-  //printer.format(xml)
+  bw.write(writer.toString);
+  bw.close();
+  // generate document type: Consultation Note
+  template = configuration.getTemplate("consultation_note.ftl")
+  writer = new StringWriter();
+  template.process(person.attributes, writer);
+  bw = new BufferedWriter(new FileWriter(new File("Janey_Mayger-consultation_note.xml")));
   bw.write(writer.toString);
   bw.close();
 }

@@ -1028,6 +1028,7 @@ templates/ccda/code_with_reference.ftl:        <${tag} nullFlavor="UNK"/>
 ### Scala does not support `inner class`?
 
 - ( 2020-12-01 13:52:52 ) Based on [CCDAExporter.export(Person person, long time)](https://github.com/synthetichealth/synthea/blob/6e4507a6170322fec628c923256a8fb4c6fd34b6/src/main/java/org/mitre/synthea/export/CCDAExporter.java#L65-L114), Attributes `ehr_*`are from `org.mitre.synthea.world.concepts.HealthRecord.Encounter`
+- https://stackoverflow.com/questions/1069987/static-inner-classes-in-scala
 - [HealthRecord.Encounter](https://github.com/synthetichealth/synthea/blob/fbfd20e1c210c952b16962ffb72d789634bcfc42/src/main/java/org/mitre/synthea/world/concepts/HealthRecord.java#L492-L521)
 ```java
 public class HealthRecord implements Serializable {
@@ -1086,3 +1087,42 @@ scala> healthrecord.currentEncounter
    def currentEncounter(x$1: Long): org.mitre.synthea.world.concepts.HealthRecord#Encounter
 ```
 - ( 2020-12-01 14:28:24 ) Use `person.record.encounters.get(0)` as `superEncounter` of `CCDAExporter.export()`
+
+## 2020-12-02
+
+### Support "Consultation Note"
+
+- reference:
+  - [HL7 Implementation Guide for CDA® Release 2: Consolidated CDA Templates for Clinical Notes](http://www.hl7.org/documentcenter/public/standards/dstu/CDAR2_IG_CCDA_CLINNOTES_R1_DSTU2.1_2015AUG_2019JUNwith_errata-errata2020.zip)
+  - https://github.com/HL7/C-CDA-Examples/blob/master/Documents/Consultation%20Note/Consultation_Note.xml
+- add `templates/ccda/consultation_note.ftl` and `templates/ccda/present_illness_no_current.ftl`
+  - ONLY include **required** sections:
+    - `History of Present Illness` Section
+    - `Allergies and Intolerances` Section (entries required) (V3)
+    - `Problem` Section (entries required) (V3)
+- ( 2020-12-02 15:57:16 ) confirmed to generate sample output `Janey_Mayger.xml` and `Janey_Mayger-consultation_note.xml`
+
+### Validation - using XSD
+
+- ( 2020-12-02 11:55:21 ) `C32_CDA.xsd` could be download in following Test Package
+  - https://cda-validation.nist.gov/cda-validation/downloads/HITSP_C32v2.1_TestPackage.zip
+  - https://cda-validation.nist.gov/cda-validation/downloads.html
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Bob Dolin (HL7 CDA TC) -->
+<xs:schema targetNamespace="urn:hl7-org:v3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" elementFormDefault="qualified">
+	<xs:include schemaLocation="C32_POCD_MT000040.xsd"/>
+	<xs:element name="ClinicalDocument" type="POCD_MT000040.ClinicalDocument"/>
+</xs:schema>
+```
+- it will reference `C32_POCD_MT000040.xsd`
+- https://github.com/scala/scala-xml/wiki/XML-validation
+- [XML validation mechanisms](https://ec.europa.eu/cefdigital/wiki/download/attachments/55891984/CEFeInvoicingWebinar%238XMLValidationMechanisms_v1.0.pdf?version=1&modificationDate=1518541361643&api=v2)
+
+### Validation - using `Schematron`
+
+- ( 2020-12-02 16:34:50 )
+- https://github.com/ewadkins/cda-schematron
+
+- https://www.infoq.com/news/2008/04/xsd-schematron-real-world/
+- https://schematron.com/ - ISO Schematron
