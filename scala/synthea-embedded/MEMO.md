@@ -1094,6 +1094,8 @@ scala> healthrecord.currentEncounter
 
 - reference:
   - [HL7 Implementation Guide for CDA® Release 2: Consolidated CDA Templates for Clinical Notes](http://www.hl7.org/documentcenter/public/standards/dstu/CDAR2_IG_CCDA_CLINNOTES_R1_DSTU2.1_2015AUG_2019JUNwith_errata-errata2020.zip)
+    - check `CDAR2_IG_CCDA_CLINNOTES_R1_DSTU2.1_2015AUG_Vol2_2019JUNwith_errata.pdf` after unzip the downloaded ZIP file.
+    - Page 34~35 listed required sections
   - https://github.com/HL7/C-CDA-Examples/blob/master/Documents/Consultation%20Note/Consultation_Note.xml
 - add `templates/ccda/consultation_note.ftl` and `templates/ccda/present_illness_no_current.ftl`
   - ONLY include **required** sections:
@@ -1126,3 +1128,10 @@ scala> healthrecord.currentEncounter
 
 - https://www.infoq.com/news/2008/04/xsd-schematron-real-world/
 - https://schematron.com/ - ISO Schematron
+
+## 2020-12-03
+
+- ( 2020-12-03 00:56:46 )
+- Care Plan (V2) - there are only two required sections
+  - `Health Concerns` Section (V2)
+  - `Goals` Section
