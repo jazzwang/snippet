@@ -25,10 +25,6 @@ sbt:sbt-create> set libraryDependencies += "org.mitre.synthea" % "synthea" % "2.
 [info] Reapplying settings...
 [info] Set current project to sbt-create (in build file:/Users/jazzwang/git/snippet/scala/sbt-create/)
 sbt:sbt-create> console
-/                ::               consoleProject   consoleQuick
-sbt:sbt-create> console
-/                ::               consoleProject   consoleQuick
-sbt:sbt-create> console
 [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
 [info] Starting scala interpreter...
 Welcome to Scala 2.12.10 (OpenJDK 64-Bit Server VM, Java 1.8.0_275).
