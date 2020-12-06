@@ -2,6 +2,8 @@ package example
 
 import java.io._
 import java.time._
+import java.util._
+import java.nio.file._
 import freemarker.template._
 import org.mitre.synthea.engine._
 import org.mitre.synthea.helpers._
@@ -77,20 +79,38 @@ object Hello extends Greeting with App {
   configuration.setSetting("object_wrapper", "DefaultObjectWrapper(2.3.26, forceLegacyNonListCollections=false, iterableSupport=true, exposeFields=true)");
   configuration.setAPIBuiltinEnabled(true);
   configuration.setDirectoryForTemplateLoading(new File("templates/ccda"));
+
+  val outDirectory = Exporter.getOutputFolder("ccda", person);
+
+  //-----------
   // generate document type: CCD
+  //-----------
   var template = configuration.getTemplate("ccda.ftl")
   var writer = new StringWriter();
   template.process(person.attributes, writer);
-  var bw = new BufferedWriter(new FileWriter(new File("Janey_Mayger.xml")));
-  bw.write(writer.toString);
-  bw.close();
+  var fileName = Exporter.filename(person, "-ccd", "xml");
+  var outFilePath = outDirectory.toPath().resolve(fileName);
+  Files.write(outFilePath, Collections.singleton(writer.toString()), StandardOpenOption.CREATE_NEW);
+
+  //-----------
   // generate document type: Consultation Note
+  //-----------
   template = configuration.getTemplate("consultation_note.ftl")
   writer = new StringWriter();
   template.process(person.attributes, writer);
-  bw = new BufferedWriter(new FileWriter(new File("Janey_Mayger-consultation_note.xml")));
-  bw.write(writer.toString);
-  bw.close();
+  fileName = Exporter.filename(person, "-consult", "xml");
+  outFilePath = outDirectory.toPath().resolve(fileName);
+  Files.write(outFilePath, Collections.singleton(writer.toString()), StandardOpenOption.CREATE_NEW);
+
+  //-----------
+  // generate document type: Discharge Summary
+  //-----------
+  template = configuration.getTemplate("discharge_summary.ftl")
+  writer = new StringWriter();
+  template.process(person.attributes, writer);
+  fileName = Exporter.filename(person, "-discharge", "xml");
+  outFilePath = outDirectory.toPath().resolve(fileName);
+  Files.write(outFilePath, Collections.singleton(writer.toString()), StandardOpenOption.CREATE_NEW);
 }
 
 trait Greeting {

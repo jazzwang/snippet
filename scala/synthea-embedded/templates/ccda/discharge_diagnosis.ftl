@@ -1,0 +1,12 @@
+<component>
+  <section>
+    <templateId root="2.16.840.1.113883.10.20.22.2.24" extension="2015-08-01"/>
+    <code code="11535-2" displayName="Hospital Discharge Diagnosis"
+      codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+      <translation code="78375-3" displayName="Discharge Diagnosis"
+        codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+    </code>
+    <title>Discharge Diagnosis</title>
+    <text>Appendicitis</text>
+  </section>
+</component>

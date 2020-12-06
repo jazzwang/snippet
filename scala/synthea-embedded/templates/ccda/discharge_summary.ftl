@@ -2,20 +2,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?xml-stylesheet type="text/xsl" href="CDA.xsl"?>
 <ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<!-- ** CDA Header ** -->
-	<!-- US Realm Header (V3) -->
-	<realmCode code="US"/>
-	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
-	<templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
-	<!-- Consultation Note (V3) -->
-	<templateId root="2.16.840.1.113883.10.20.22.1.4" extension="2015-08-01"/>
-	<id root="2.16.840.1.113883.19.5.99999.1" extension="${id}"/>
-	<code code="11488-4"  displayName="Consult note" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-	<title>Consultation Note: ${name}</title>
+    <!-- ** CDA Header ** -->
+    <!-- US Realm Header (V3) -->
+    <realmCode code="US"/>
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+    <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+    <!-- Discharge Summary (V3) -->
+    <templateId root="2.16.840.1.113883.10.20.22.1.8" extension="2015-08-01"/>
+    <id root="2.16.840.1.113883.19.5.99999.1" extension="${id}"/>
+    <code code="18842-5" displayName="Discharge summary" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+    <title>Discharge summary: ${name}</title>
     <effectiveTime value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
-	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
-	<languageCode code="en-US"/>
-	<recordTarget>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+    <languageCode code="en-US"/>
+    <recordTarget>
 		<patientRole>
 			<id root="2.16.840.1.113883.19.5" extension="${id}" assigningAuthorityName="https://github.com/synthetichealth/synthea"/>
 			<!-- HP is "primary home" from codeSystem 2.16.840.1.113883.5.1119 -->
@@ -55,7 +55,7 @@
 			</patient>
 		</patientRole>
 	</recordTarget>
-	<author>
+    <author>
 		<time value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
 		<assignedAuthor>
 		<id nullFlavor="NA"/>
@@ -93,42 +93,30 @@
 			</representedCustodianOrganization>
 		</assignedCustodian>
 	</custodian>
-	<!-- Describes prior orders that are fulfilled (in whole or part) by the service events described in the Consultation Note -->
-	<!-- TODO: add 'module' for this required section for Consultation Note -->
-	<inFulfillmentOf typeCode="FLFS">
-		<order classCode="ACT" moodCode="RQO">
-			<id root="2.16.840.1.113883.6.96" extension="1298989898"/>
-			<code code="388975008" displayName="Weight Reduction Consultation" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
-		</order>
-	</inFulfillmentOf>
-	<componentOf>
-		<encompassingEncounter>
-			<id extension="9937012" root="2.16.840.1.113883.19"/>
-			<code codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4" code="99213" displayName="Evaluation and Management"/>
-			<effectiveTime value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
-			<location>
-				<healthCareFacility>
-					<id root="2.16.540.1.113883.19.2"/>
-				</healthCareFacility>
-			</location>
-		</encompassingEncounter>
-	</componentOf>
-	<!-- CDA Body -->
-	<component>
-		<structuredBody>
-			<!-- History of Present Illness Section -->
-			<#include "present_illness_no_current.ftl" parse=false>
-			<!-- ALLERGIES AND INTOLERANCES SECTION (ENTRIES REQUIRED) V2 -->
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime>
+                <low value="${(time - 86400000)?number_to_date?string["yyyyMMddHHmmss"]}"/>
+                <high value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
+            </effectiveTime>
+            <dischargeDispositionCode code="01" codeSystem="2.16.840.1.113883.12.112" displayName="Routine Discharge" codeSystemName="HL7 Discharge Disposition"/>
+        </encompassingEncounter>
+    </componentOf>
+    <!-- CDA Body -->
+    <component>
+        <structuredBody>
+            <!-- ALLERGIES AND INTOLERANCES SECTION (ENTRIES REQUIRED) V2 -->
 			<#if ehr_allergies?has_content>
 				<#include "allergies.ftl">
 			<#else>
 				<#include "allergies_no_current.ftl" parse=false>
 			</#if>
-			<#if ehr_conditions?has_content>
-				<#include "conditions.ftl">
-			<#else>
-				<#include "conditions_no_current.ftl" parse=false>
-			</#if>
-		</structuredBody>
-	</component>
+            <!-- Hospital Course Section -->
+            <#include "hospital_course.ftl" parse=false>
+            <!-- Discharge Diagnosis Section (V3) -->
+            <#include "discharge_diagnosis.ftl" parse=false>
+            <!-- Plan of Treatment Section (V2) -->
+            <#include "care_goals.ftl" parse=false>
+        </structuredBody>
+    </component>
 </ClinicalDocument>

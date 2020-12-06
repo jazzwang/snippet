@@ -1135,3 +1135,48 @@ scala> healthrecord.currentEncounter
 - Care Plan (V2) - there are only two required sections
   - `Health Concerns` Section (V2)
   - `Goals` Section
+
+## 2020-12-04
+
+## 2020-12-05
+
+- [HL7 CDA Document Validation and Content Quality Assessment](https://www.hl7.org/documentcenter/public/wg/pug/CDA%20Validation%2020160406%20FINAL.pdf), HL7 Payer Summit User Group, Panel Discussion Moderated by Lisa Nelson, April 6, 2016
+  - [ART-DECOR](https://art-decor.org/mediawiki/index.php?title=Download#Software)
+    - ART-DECOR® is an open-source tool suite that supports the creation and maintenance of HL7 templates, value sets, scenarios and data sets.
+  - [HL7 MDHT(Model-Driven Health Tool)](https://wiki.hl7.org/MDHT_Template_Sub_Project)
+  - [Lantana Consulting Group](https://www.lantanagroup.com/about-us/) - provides services and software for standards-based health information exchange.
+    - https://www.lantanagroup.com/tag/cdainthewild/
+    - **https://validator.lantanagroup.com/**
+    - [Trifolia, lantanagroup](https://trifolia.lantanagroup.com/)
+    - Trifolia template/profile editor and publication tool
+    - https://github.com/lantanagroup/trifolia
+- https://developers.google.com/product-review-feeds/validation
+  ```
+  xmllint --xinclude --schematron HITSP_C32.sch --schema https://xreg2.github.io/schema/cdar2c32/infrastructure/cda/C32_CDA.xsd Janey_Mayger.xml > Janey_Mayger_CCD.xml
+  ```
+- Schematron
+  - https://gazelle.ihe.net/EVSClient/administration/schematrons.seam
+  - https://gazelle.ihe.net/gazelle-documentation/Schematron-Validator/user.html
+- https://github.com/ramandeep30/xml-validator-scala
+  - https://blog.knoldus.com/validating-xml-using-xsd/
+- https://github.com/scala/scala-xml/wiki/XML-validation
+- Q: will `xmllint` follow `<xsd:include ... />`?
+- A: **[indirect imports](https://lists.w3.org/Archives/Public/xmlschema-dev/2004Jul/0010.html)** are not supposed to work.
+  - https://stackoverflow.com/a/57776770/4209274
+  - for multiple XSD, we should use `<xsd:import ... />`
+  - https://stackoverflow.com/a/17003036/4209274
+    - http://xerces.apache.org/
+- https://learning.oreilly.com/library/view/beginning-xml-5th/9781118239483/
+
+## 2020-12-06
+
+### Discharge Summary
+
+- Reference: https://raw.githubusercontent.com/HL7/C-CDA-Examples/master/Documents/Discharge%20Summary/Discharge_Summary.xml
+- add required sections to `discharge_summary.ftl`
+  - Allergies and Intolerances Section (entries optional) (V3)
+  - Hospital Course Section = `hospital_course.ftl`
+  - Discharge Diagnosis Section (V3) = `discharge_diagnosis.ftl`
+  - Plan of Treatment Section (V2) = `treatment_plan.ftl`
+- ( 2020-12-06 14:49:35 )
+  - remove `treatment_plan.ftl` and use `care_goals.ftl`

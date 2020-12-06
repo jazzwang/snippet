@@ -52,8 +52,8 @@
     <time value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
     <assignedAuthor>
       <id nullFlavor="NA"/>
-      <addr nullFlavor="NA" />
-      <telecom nullFlavor="NA" />
+      <addr nullFlavor="NA"/>
+      <telecom nullFlavor="NA"/>
       <assignedAuthoringDevice>
         <manufacturerModelName>https://github.com/synthetichealth/synthea</manufacturerModelName>
         <softwareName>https://github.com/synthetichealth/synthea</softwareName>

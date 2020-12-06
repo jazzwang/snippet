@@ -20,8 +20,8 @@
           <participantRole classCode="MANU">
             <templateId root="2.16.840.1.113883.10.20.22.4.37"/>
             <!-- Product instance template -->
-            <addr nullFlavor="NA" />
-            <telecom nullFlavor="NA" />
+            <addr nullFlavor="NA"/>
+            <telecom nullFlavor="NA"/>
             <playingDevice>
             <@codes.code_section codes=entry.codes section="medical_equipment" counter=entry?counter />
             </playingDevice>

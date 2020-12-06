@@ -40,7 +40,7 @@
               <low value="${entry.start?number_to_date?string["yyyyMMddHHmmss"]}"/>
               <#if entry.stop != 0><high value="${entry.stop?number_to_date?string["yyyyMMddHHmmss"]}"/></#if>
             </effectiveTime>
-            <priorityCode code="8319008" codeSystem="2.16.840.1.113883.6.96" displayName="Principal diagnosis" />
+            <priorityCode code="8319008" codeSystem="2.16.840.1.113883.6.96" displayName="Principal diagnosis"/>
             <@codes.code_section codes=entry.codes section="conditions" counter=entry?counter tag="value" extra="xsi:type=\"CD\""/>
           </observation>
         </entryRelationship>
