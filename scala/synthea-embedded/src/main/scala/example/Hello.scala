@@ -111,6 +111,46 @@ object Hello extends Greeting with App {
   fileName = Exporter.filename(person, "-discharge", "xml");
   outFilePath = outDirectory.toPath().resolve(fileName);
   Files.write(outFilePath, Collections.singleton(writer.toString()), StandardOpenOption.CREATE_NEW);
+
+  //-----------
+  // generate document type: History and Physical
+  //-----------
+  template = configuration.getTemplate("history_and_physical.ftl")
+  writer = new StringWriter();
+  template.process(person.attributes, writer);
+  fileName = Exporter.filename(person, "-history", "xml");
+  outFilePath = outDirectory.toPath().resolve(fileName);
+  Files.write(outFilePath, Collections.singleton(writer.toString()), StandardOpenOption.CREATE_NEW);
+
+  //-----------
+  // generate document type: Operative Note
+  //-----------
+  template = configuration.getTemplate("operative_note.ftl")
+  writer = new StringWriter();
+  template.process(person.attributes, writer);
+  fileName = Exporter.filename(person, "-operative", "xml");
+  outFilePath = outDirectory.toPath().resolve(fileName);
+  Files.write(outFilePath, Collections.singleton(writer.toString()), StandardOpenOption.CREATE_NEW);
+
+  //-----------
+  // generate document type: Procedure Note
+  //-----------
+  template = configuration.getTemplate("procedure_note.ftl")
+  writer = new StringWriter();
+  template.process(person.attributes, writer);
+  fileName = Exporter.filename(person, "-procedure", "xml");
+  outFilePath = outDirectory.toPath().resolve(fileName);
+  Files.write(outFilePath, Collections.singleton(writer.toString()), StandardOpenOption.CREATE_NEW);
+
+  //-----------
+  // generate document type: Progress Note
+  //-----------
+  template = configuration.getTemplate("progress_note.ftl")
+  writer = new StringWriter();
+  template.process(person.attributes, writer);
+  fileName = Exporter.filename(person, "-progress", "xml");
+  outFilePath = outDirectory.toPath().resolve(fileName);
+  Files.write(outFilePath, Collections.singleton(writer.toString()), StandardOpenOption.CREATE_NEW);
 }
 
 trait Greeting {

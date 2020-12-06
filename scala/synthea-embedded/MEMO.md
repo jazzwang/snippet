@@ -1177,6 +1177,77 @@ scala> healthrecord.currentEncounter
   - Allergies and Intolerances Section (entries optional) (V3)
   - Hospital Course Section = `hospital_course.ftl`
   - Discharge Diagnosis Section (V3) = `discharge_diagnosis.ftl`
-  - Plan of Treatment Section (V2) = `treatment_plan.ftl`
+  - Plan of Treatment Section (V2) = ~~`treatment_plan.ftl`~~ `care_goals.ftl`
 - ( 2020-12-06 14:49:35 )
   - remove `treatment_plan.ftl` and use `care_goals.ftl`
+
+### History and Physical
+
+- ( 2020-12-06 19:07:46 )
+- Reference: https://raw.githubusercontent.com/HL7/C-CDA-Examples/master/Documents/History%20and%20Physical/History_and_Physical.xml
+- add required sections to `history_and_physical.ftl`
+  - Allergies and Intolerances Section (entries optional) (V3)
+  - Family History Section (V3) = `family_history.ftl`
+  - General Status Section = `general_status.ftl`
+  - Past Medical History (V3) = `past_medical_history.ftl`
+  - Medications Section (entries optional) (V2)
+  - Physical Exam Section (V3) = `physical_exam.ftl`
+  - Results Section (entries optional) (V3)
+  - Review of Systems Section Social History Section (V3) = `review_of_systems.ftl`
+  - Vital Signs Section (entries optional) (V3)
+- ( 2020-12-06 20:37:05 )
+
+### Operative Note
+
+- ( 2020-12-06 20:41:33 )
+- Reference: https://raw.githubusercontent.com/HL7/C-CDA-Examples/master/Documents/Operative%20Note/Operative_Note.xml
+- add required sections to `operative_note.ftl`
+  - Anesthesia Section (V2) = `anesthesia.ftl`
+  - Complications Section (V3) = `complications.ftl`
+  - Preoperative Diagnosis Section (V3) = `preoperative_diagnosis.ftl`
+  - Procedure Estimated Blood Loss Section = `procedure_estimated_blood_loss.ftl`
+  - Procedure Findings Section (V3) = `procedure_findings.ftl`
+  - Procedure Specimens Taken Section = `procedure_specimens_taken.ftl`
+  - Procedure Description Section = `procedure_description.ftl`
+  - Postoperative Diagnosis Section = `postoperative_diagnosis.ftl`
+- ( 2020-12-06 22:25:53 )
+
+### Procedure Note
+
+- ( 2020-12-06 22:26:37 )
+- Reference: https://raw.githubusercontent.com/HL7/C-CDA-Examples/master/Documents/Procedure%20Note/Procedure_Note.xml
+- add required sections to `procedure_note.ftl`
+  - Complications Section (V3) = `complications.ftl`
+  - Procedure Description Section = `procedure_description.ftl`
+  - Procedure Indications Section (V2) = `procedure_indications.ftl`
+  - Postprocedure Diagnosis Section (V3) = `postoperative_diagnosis_v3.ftl`
+- ( 2020-12-06 22:43:36 )
+
+### Progress Note
+
+- ( 2020-12-06 22:43:41 )
+- Reference: https://raw.githubusercontent.com/HL7/C-CDA-Examples/master/Documents/Progress%20Note/Progress_Note.xml
+- add `progress_note.ftl`
+- no required sections
+
+### C-CDA R2.1 Validation
+
+- use https://validator-legacy.lantanagroup.com/validator/
+- fix multiple templates issue
+- ( 2020-12-06 23:59:34 )
+- format the output with `xmllint`
+```
+~/git/cch-ccda-generator/output/ccda$ for i in $(ls *.xml); do xmllint --format $i > $i.2; mv $i.2 $i; done
+```
+- compress 7 documents into single ZIP file
+```
+~/git/cch-ccda-generator/output/ccda$ zip Janey_Mayger.zip *.xml
+  adding: Janey_Mayger_6b668817-b781-aac7-9d50-d3aae2a32f28-ccd.xml (deflated 95%)
+  adding: Janey_Mayger_6b668817-b781-aac7-9d50-d3aae2a32f28-consult.xml (deflated 87%)
+  adding: Janey_Mayger_6b668817-b781-aac7-9d50-d3aae2a32f28-discharge.xml (deflated 72%)
+  adding: Janey_Mayger_6b668817-b781-aac7-9d50-d3aae2a32f28-history.xml (deflated 95%)
+  adding: Janey_Mayger_6b668817-b781-aac7-9d50-d3aae2a32f28-operative.xml (deflated 76%)
+  adding: Janey_Mayger_6b668817-b781-aac7-9d50-d3aae2a32f28-procedure.xml (deflated 72%)
+  adding: Janey_Mayger_6b668817-b781-aac7-9d50-d3aae2a32f28-progress.xml (deflated 70%)
+```
+- passed validation with https://validator-legacy.lantanagroup.com/validator/

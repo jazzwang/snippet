@@ -30,7 +30,7 @@ downloadJar := {
 // https://stackoverflow.com/a/25005651/4209274
 lazy val distclean = taskKey[Unit]("Clean up temporary files and directories")
 distclean := {
-  "rm -rf project/target project/project target output spark-warehouse" !
+  "rm -rf project/target project/project target output/ccda/*.xml spark-warehouse" !
 }
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.

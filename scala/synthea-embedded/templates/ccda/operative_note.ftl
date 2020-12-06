@@ -7,11 +7,11 @@
     <realmCode code="US"/>
     <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
     <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
-    <!-- Discharge Summary (V3) -->
-    <templateId root="2.16.840.1.113883.10.20.22.1.8" extension="2015-08-01"/>
+    <!-- Operative Note (V3) -->
+    <templateId root="2.16.840.1.113883.10.20.22.1.7" extension="2015-08-01"/>
     <id root="2.16.840.1.113883.19.5.99999.1" extension="${id}"/>
-    <code code="18842-5" displayName="Discharge summary" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-    <title>Discharge summary: ${name}</title>
+    <code code="11504-8" displayName="Surgical Operation Note" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+    <title>Operative Note: ${name}</title>
     <effectiveTime value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
     <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
     <languageCode code="en-US"/>
@@ -93,27 +93,55 @@
 			</representedCustodianOrganization>
 		</assignedCustodian>
 	</custodian>
-    <componentOf>
-        <encompassingEncounter>
-            <effectiveTime value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
-            <dischargeDispositionCode code="01" codeSystem="2.16.840.1.113883.12.112" displayName="Routine Discharge" codeSystemName="HL7 Discharge Disposition"/>
-        </encompassingEncounter>
-    </componentOf>
+    <documentationOf>
+        <serviceEvent classCode="PROC">
+            <code code="801460020" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Laparoscopic Appendectomy"/>
+            <effectiveTime>
+                <low value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
+                <width value="138" unit="m" />
+            </effectiveTime>
+            <performer typeCode="PPRF">
+                <functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+					<originalText>Primary Care Provider</originalText>
+				</functionCode>
+                <assignedEntity>
+                    <id root="2.16.840.1.113883.4.6" extension="999999943252"/>
+                    <addr>
+                        <streetAddressLine>${preferredProviderwellness.address?replace("&", "&amp;")}</streetAddressLine>
+                        <city>${preferredProviderwellness.city}</city>
+                        <state>${preferredProviderwellness.state}</state>
+                        <postalCode>${preferredProviderwellness.zip}</postalCode>
+                    </addr>
+                    <assignedPerson>
+                        <name>
+                            <prefix>Dr.</prefix>
+                            <given>Carl</given>
+                            <family>Cutter</family>
+                        </name>
+                    </assignedPerson>
+                </assignedEntity>
+            </performer>
+        </serviceEvent>
+    </documentationOf>
     <!-- CDA Body -->
     <component>
         <structuredBody>
-            <!-- ALLERGIES AND INTOLERANCES SECTION (ENTRIES REQUIRED) V2 -->
-			<#if ehr_allergies?has_content>
-				<#include "allergies.ftl">
-			<#else>
-				<#include "allergies_no_current.ftl" parse=false>
-			</#if>
-            <!-- Hospital Course Section -->
-            <#include "hospital_course.ftl" parse=false>
-            <!-- Discharge Diagnosis Section (V3) -->
-            <#include "discharge_diagnosis.ftl" parse=false>
-            <!-- Plan of Treatment Section (V2) -->
-            <#if ehr_careplans?has_content><#include "care_goals.ftl"></#if>
+            <!-- Anesthesia Section (V2) -->
+            <#include "anesthesia.ftl" parse=false>
+            <!-- Complications Section (V3) -->
+            <#include "complications.ftl" parse=false>
+            <!-- Preoperative Diagnosis Section (V3) -->
+            <#include "preoperative_diagnosis.ftl" parse=false>
+            <!-- Procedure Estimated Blood Loss Section -->
+            <#include "procedure_estimated_blood_loss.ftl" parse=false>
+            <!-- Procedure Findings Section (V3) -->
+            <#include "procedure_findings.ftl" parse=false>
+            <!--Procedure Specimens Taken Section -->
+            <#include "procedure_specimens_taken.ftl" parse=false>
+            <!-- Procedure Description Section -->
+            <#include "procedure_description.ftl" parse=false>
+            <!-- Postoperative Diagnosis Section -->
+            <#include "postoperative_diagnosis.ftl" parse=false>
         </structuredBody>
     </component>
 </ClinicalDocument>

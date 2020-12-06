@@ -7,11 +7,11 @@
     <realmCode code="US"/>
     <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
     <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
-    <!-- Discharge Summary (V3) -->
-    <templateId root="2.16.840.1.113883.10.20.22.1.8" extension="2015-08-01"/>
+    <!-- Progress Note -->
+    <templateId root="2.16.840.1.113883.10.20.22.1.9" extension="2015-08-01"/>
     <id root="2.16.840.1.113883.19.5.99999.1" extension="${id}"/>
-    <code code="18842-5" displayName="Discharge summary" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-    <title>Discharge summary: ${name}</title>
+    <code code="11506-3" displayName="Progress Note" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+    <title>Progress Note: ${name}</title>
     <effectiveTime value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
     <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
     <languageCode code="en-US"/>
@@ -95,25 +95,28 @@
 	</custodian>
     <componentOf>
         <encompassingEncounter>
-            <effectiveTime value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
-            <dischargeDispositionCode code="01" codeSystem="2.16.840.1.113883.12.112" displayName="Routine Discharge" codeSystemName="HL7 Discharge Disposition"/>
+            <id extension="9937012" root="2.16.840.1.113883.19"/>
+            <effectiveTime>
+                <low value="${time?number_to_date?string["yyyyMMddHHmmss"]}"/>
+            </effectiveTime>
+            <location>
+                <healthCareFacility>
+                    <id root="2.16.540.1.113883.19.2"/>
+                </healthCareFacility>
+            </location>
         </encompassingEncounter>
     </componentOf>
     <!-- CDA Body -->
     <component>
         <structuredBody>
+            <!-- Plan of Treatment Section (V2) -->
+            <#if ehr_careplans?has_content><#include "care_goals.ftl"></#if>
             <!-- ALLERGIES AND INTOLERANCES SECTION (ENTRIES REQUIRED) V2 -->
 			<#if ehr_allergies?has_content>
 				<#include "allergies.ftl">
 			<#else>
 				<#include "allergies_no_current.ftl" parse=false>
 			</#if>
-            <!-- Hospital Course Section -->
-            <#include "hospital_course.ftl" parse=false>
-            <!-- Discharge Diagnosis Section (V3) -->
-            <#include "discharge_diagnosis.ftl" parse=false>
-            <!-- Plan of Treatment Section (V2) -->
-            <#if ehr_careplans?has_content><#include "care_goals.ftl"></#if>
         </structuredBody>
     </component>
 </ClinicalDocument>
