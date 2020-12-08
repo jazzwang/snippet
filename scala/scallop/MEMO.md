@@ -8,3 +8,7 @@
 
 - http://blog.rogach.org/2012/04/better-cli-option-parsing-in-scala.html
 - http://blog.rogach.org/2012/04/configuration-objects-in-scallop.html
+
+## stackoverflow
+
+- ( 2020-12-08 09:48:19 ) [Best way to parse command-line parameters in Scala?](https://stackoverflow.com/a/13336521/4209274)

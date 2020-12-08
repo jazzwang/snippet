@@ -65,3 +65,6 @@ Input Dir:test
 Output Dir:output
 [success] Total time: 6 s, completed Dec 7, 2020 11:47:20 PM
 ```
+- ( 2020-12-08 00:06:27 ) http://www.learn4master.com/algorithms/spark-program-use-scopt-parse-arguments
+- ( 2020-12-08 09:47:27 ) https://stackoverflow.com/a/2315921/4209274
+- ( 2020-12-08 10:32:58 ) https://scalaxb.org/scopt
