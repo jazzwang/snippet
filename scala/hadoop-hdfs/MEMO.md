@@ -1,7 +1,8 @@
 # Development Notes
 
-## 2020-12-11
+## 2020-12-13
 
+- ( 2020-12-13 13:02:08 )
 - create project with `sbt --sbt-create`
 ```bash
 ~/git/snippet/scala$ mkdir -p hadoop-hdfs
@@ -15,5 +16,7 @@ sbt:hadoop-hdfs> exit
 ~/git/snippet/scala/hadoop-hdfs$ cp ../spark-sample-etl/project/plugins.sbt project/
 ~/git/snippet/scala/hadoop-hdfs$ cp ../spark-sample-etl/Makefile .
 ~/git/snippet/scala/hadoop-hdfs$ git gi sbt,scala > .gitignore
-
+~/git/snippet/scala/hadoop-hdfs$ git add .
+~/git/snippet/scala/hadoop-hdfs$ git commit -a
+~/git/snippet/scala/hadoop-hdfs$ git push
 ```
