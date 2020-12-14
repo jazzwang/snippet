@@ -16,14 +16,17 @@ object MyApp extends App {
     val parser = new DefaultParser();
     try {
       val cmd = parser.parse( options, args);
-      if (cmd.hasOption("h")) {
-        usage();
+      if (cmd.hasOption("f")) {
+        println(cmd.getOptionValue("f"));
       }
       if (cmd.hasOption("D")) {
         val properties = cmd.getOptionProperties("D");
         properties.stringPropertyNames().forEach( key => {
           println(s"$key = " + properties.getProperty(key))
         })
+      }
+      if (cmd.hasOption("h")) {
+        usage();
       }
     } catch {
       case ex: UnrecognizedOptionException => {
