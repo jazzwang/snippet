@@ -64,3 +64,14 @@
 ![](https://g.gravizo.com/svg?digraph%20G%20{%20%20main%20-%3E%20parse%20-%3E%20execute;%20%20main%20-%3E%20init;%20%20main%20-%3E%20cleanup;%20%20execute%20-%3E%20make_string;%20%20execute%20-%3E%20printf%20%20init%20-%3E%20make_string;%20%20main%20-%3E%20printf;%20%20execute%20-%3E%20compare;})
 
 - 拿來試一下 homebrew 相依圖
+
+![](https://g.gravizo.com/source/brew-dep?https%3A%2F%2Fraw.githubusercontent.com%2Fjazzwang%2Fsnippet%2Fmaster%2Fmarkdown%2Fgravizo%2FREADME.md)
+
+<details>
+<summary></summary>
+brew-dep
+digraph "brew-dep" { rankdir=LR; node [shape=record];
+"gdbm"->"python@3.8"; "gettext"->"git"; "gettext"->"libidn2"; "gettext"->"wget"; "libidn2"->"wget"; "libunistring"->"libidn2"; "libunistring"->"wget"; "ncurses"->"htop"; "oniguruma"->"jq"; "openssl@1.1"->"mosh"; "openssl@1.1"->"nmap"; "openssl@1.1"->"python@3.8"; "openssl@1.1"->"wget"; "pcre2"->"git"; "protobuf"->"mosh"; "readline"->"python@3.8"; "readline"->"sqlite"; "readline"->"tig"; "sqlite"->"python@3.8"; "xz"->"python@3.8"; "bash-completion"; "coreutils"; "dos2unix"; "gdbm"; "gettext"; "git-extras"; "icu4c"; "libunistring"; "mtr"; "ncurses"; "oniguruma"; "openssl@1.1"; "pcre2"; "pidof"; "protobuf"; "readline"; "tree"; "unrar"; "xz";
+}
+brew-dep
+</details>
