@@ -3,6 +3,7 @@
 - Source: https://github.com/DiUS/java-faker
 - Web: http://dius.github.io/java-faker/
 - Java Docs: http://dius.github.io/java-faker/apidocs/index.html
+- https://www.baeldung.com/java-fakers
 
 ## 2021-01-04
 
