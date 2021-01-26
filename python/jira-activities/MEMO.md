@@ -31,6 +31,17 @@ Type "help", "copyright", "credits" or "license" for more information.
 b'YWJj'
 >>> quit()
 ```
+- https://stackoverflow.com/questions/18241077/base-64-encoding-with-scala-or-java
+```scala
+scala> import java.nio.charset.StandardCharsets
+import java.nio.charset.StandardCharsets
+
+scala> import java.util.Base64
+import java.util.Base64
+
+scala> Base64.getEncoder.encodeToString("user:pass".getBytes(StandardCharsets.UTF_8))
+res3: String = dXNlcjpwYXNz
+```
 - 採用基本認證(Basic Authentication)的 RESTful API 測試語法
 ```
 ~$ curl -s -k -H "Authorization: Basic ${base64_string}" https://issues.apache.org/jira/rest/api/2/myself | jq .
