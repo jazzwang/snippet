@@ -1,4 +1,4 @@
-<mxfile modified="2021-03-28T09:05:31.991Z" host="app.diagrams.net" agent="5.0 (Macintosh)" etag="23Uao6h1BJBlG2pKkNl1" version="14.5.3" type="github" pages="3">
+<mxfile modified="2021-03-28T16:52:58.447Z" host="app.diagrams.net" agent="5.0 (Macintosh)" etag="lBhZw0lyTbPK-fkTUZOH" version="14.5.3" type="github" pages="3">
   <diagram id="tvXD1tTg9UDpYKT_lr0f" name="E2E Data Pipeline">
     <mxGraphModel dx="788" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -429,7 +429,7 @@
         <mxCell id="qXVDnTP5m0UevZfbI7ER-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;dashed=1;strokeColor=#666666;" edge="1" parent="qXVDnTP5m0UevZfbI7ER-1" source="qXVDnTP5m0UevZfbI7ER-42" target="qXVDnTP5m0UevZfbI7ER-15">
           <mxGeometry x="920" y="410" as="geometry" />
         </mxCell>
-        <mxCell id="qXVDnTP5m0UevZfbI7ER-42" value="&lt;div&gt;replay&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="qXVDnTP5m0UevZfbI7ER-1">
+        <mxCell id="qXVDnTP5m0UevZfbI7ER-42" value="amazon-kinesis-replay-*.jar" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="qXVDnTP5m0UevZfbI7ER-1">
           <mxGeometry x="1280" y="720" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qXVDnTP5m0UevZfbI7ER-44" value="Data Replay" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;strokeColor=#996185;fillColor=#e6d0de;size=21;gradientColor=#d5739d;" vertex="1" parent="qXVDnTP5m0UevZfbI7ER-1">
@@ -453,7 +453,7 @@
         <mxCell id="qXVDnTP5m0UevZfbI7ER-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#006600;strokeWidth=3;fontColor=#FFFFFF;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="qXVDnTP5m0UevZfbI7ER-1" source="qXVDnTP5m0UevZfbI7ER-54" target="qXVDnTP5m0UevZfbI7ER-10">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qXVDnTP5m0UevZfbI7ER-54" value="flink" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="qXVDnTP5m0UevZfbI7ER-1">
+        <mxCell id="qXVDnTP5m0UevZfbI7ER-54" value="amazon-kinesis-analytics-taxi-consumer-*.jar" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="qXVDnTP5m0UevZfbI7ER-1">
           <mxGeometry x="1600" y="720" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qXVDnTP5m0UevZfbI7ER-56" value="AWS Kinesis &lt;br&gt;&lt;div&gt;Analytics&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qXVDnTP5m0UevZfbI7ER-1">
