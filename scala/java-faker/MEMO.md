@@ -78,6 +78,21 @@ res10: String = WA
 
 scala> faker.address.stateAbbr
 res11: String = NC
+
+scala> faker.internet.emailAddress
+res12: String = quintin.bailey@hotmail.com
+
+scala> import java.text.SimpleDateFormat
+import java.text.SimpleDateFormat
+
+scala> val formatter = new SimpleDateFormat("yyyy-MM-dd'T'mm:ss:SS'Z'")
+formatter: java.text.SimpleDateFormat = java.text.SimpleDateFormat@aa70184f
+
+scala> import java.util.TimeZone
+import java.util.TimeZone
+
+scala> formatter.format(faker.date.birthday)
+res11: String = 1984-03-20T40:09:649Z
 ```
 - ( 2021-01-05 13:42:49 )
 - 看起來每執行一個函數，就會產生一個隨機的結果。
@@ -98,3 +113,7 @@ def <init>(x$1: com.github.javafaker.service.FakeValuesService,x$2: com.github.j
   - `Locale(String language)` - Construct a locale from a language code.
   - `Locale(String language, String country)` - Construct a locale from language and country.
   - `Locale(String language, String country, String variant)` - Construct a locale from language, country and variant.
+- 參考
+  - https://mincong.io/2017/02/16/convert-date-to-string-in-java/
+  - http://dius.github.io/java-faker/apidocs/index.html
+  - https://www.baeldung.com/java-faker
