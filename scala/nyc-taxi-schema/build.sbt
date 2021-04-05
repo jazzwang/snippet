@@ -7,9 +7,8 @@ lazy val root = (project in file("."))
   .settings(
     name := "Spark in Scala Seed Project",
     libraryDependencies ++= Seq(
-      "org.apache.spark"  %%  "spark-core"    % "2.2.1",
-      "org.apache.spark"  %%  "spark-sql"     % "2.2.1",
-      "org.scalatest"     %%  "scalatest"     % "3.1.1"
+      "org.apache.spark"  %%  "spark-core"    % "3.0.0",
+      "org.apache.spark"  %%  "spark-sql"     % "3.0.0"
     )
   )
 
@@ -17,5 +16,5 @@ lazy val root = (project in file("."))
 import scala.sys.process._
 lazy val distclean = taskKey[Unit]("Clean up temporary files and directories")
 distclean := {
-  "rm -rf project/target project/project target output spark-warehouse" !
+  "rm -rf project/target project/project target yellow_v*.txt spark-warehouse" !
 }
