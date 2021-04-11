@@ -16,8 +16,14 @@ object Hello extends Greeting with App {
   val sc = spark.sparkContext
   // https://stackoverflow.com/a/45422969
   for (i <- 1 to 5) {
+    val df = spark.read.option("header","true").csv(s"nyc-tlc/yellow_v$i")
     scala.Console.withOut(new PrintStream(new FileOutputStream(s"yellow_v$i.txt"))) {
-      spark.read.option("header","true").csv(s"nyc-tlc/yellow_v$i").printSchema
+      df.printSchema
+    }
+    scala.Console.withOut(new PrintStream(new FileOutputStream(s"yellow_v$i_distinct.txt"))) {
+      for (j <- df.columns) {
+        df.select(col(s"$j")).distinct.show
+      }
     }
   }
   spark.stop()
