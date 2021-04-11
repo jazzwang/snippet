@@ -25,3 +25,7 @@ Template applied in /Users/jazzwang/git/snippet/scala/./nyc-taxi-parquet
    )
 ```
 - reference [${spark}/examples/src/main/scala/org/apache/spark/examples/ml/DataFrameExample.scala](https://github.com/apache/spark/blob/0494dc90af48ce7da0625485a4dc6917a244d580/examples/src/main/scala/org/apache/spark/examples/ml/DataFrameExample.scala)
+
+```
+~/git/snippet/scala/nyc-taxi-parquet$ spark-submit --packages "com.github.scopt:scopt_2.12:4.0.0" --class example.NYC2Parquet target/scala-2.12/spark-in-scala-seed-project_2.12-0.1.0.jar -i nyc-tlc/yellow_v2 -o parquet/v2
+```
