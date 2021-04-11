@@ -1,8 +1,9 @@
 package example
 
-import org.apache.spark.sql.SparkSession
 import java.io.PrintStream
 import java.io.FileOutputStream
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
 
 object Hello extends Greeting with App {
   println(greeting)
@@ -20,7 +21,7 @@ object Hello extends Greeting with App {
     scala.Console.withOut(new PrintStream(new FileOutputStream(s"yellow_v$i.txt"))) {
       df.printSchema
     }
-    scala.Console.withOut(new PrintStream(new FileOutputStream(s"yellow_v$i_distinct.txt"))) {
+    scala.Console.withOut(new PrintStream(new FileOutputStream(s"yellow_v${i}_distinct.txt"))) {
       for (j <- df.columns) {
         df.select(col(s"$j")).distinct.show
       }
