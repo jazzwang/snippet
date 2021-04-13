@@ -5,7 +5,7 @@ import java.io.FileOutputStream
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.SparkSession
 
-object NYC2Parquet {
+object NYC2JSON {
 
   case class Arguments(inputDir: String = "", outputDir: String = "", version: String = "")
 
@@ -37,8 +37,7 @@ object NYC2Parquet {
     println("- Schema Version: " + arguments.version)
 
     val spark = SparkSession.builder
-                            .appName("Spark Example")
-                            .master("local[*]")
+                            .appName("Convert NYC-TLC CSV to JSON")
                             .getOrCreate
     val sc = spark.sparkContext
 

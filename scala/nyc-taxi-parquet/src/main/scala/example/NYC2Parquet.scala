@@ -37,8 +37,7 @@ object NYC2Parquet {
     println("- Schema Version: " + arguments.version)
 
     val spark = SparkSession.builder
-                            .appName("Spark Example")
-                            .master("local[*]")
+                            .appName("Convert NYC-TLC CSV to Parquet")
                             .getOrCreate
     val sc = spark.sparkContext
 
@@ -199,7 +198,7 @@ object NYC2Parquet {
     scala.Console.withOut(new PrintStream(new FileOutputStream(s"yellow_v${arguments.version}.txt"))) {
       target.printSchema
     }
-    target.write.parquet(arguments.outputDir)
+    target.write.mode("append").parquet(arguments.outputDir)
     spark.stop()
   }
 }
