@@ -92,4 +92,13 @@ res3: String = dXNlcjpwYXNz
 }
 ```
 
-###
+### JIRA Activity RSS
+
+- 要注意像是 `evans_ye` 會變成 `evans%5C_ye` ，所以需要額外處理特殊字元 `_` 變成 `%5C_`
+```
+curl -s -k -H "Authorization: Basic ${base64_string}" https://issues.apache.org/jira/activity?maxResults=10&streams=user+IS+evans%5C_ye&os_authType=basic&title=undefined
+```
+- 可以直接用 curl 指令把 RSS XML 結果存成檔案
+```
+~/git/snippet/python/jira-activities$ curl -s -k -H "Authorization: Basic ${base64_string}" "https://issues.apache.org/jira/activity?maxResults=300&streams=user+IS+jayunit100&os_authType=basic&title=undefined" -o jayunit100.xml
+```
