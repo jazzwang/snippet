@@ -823,3 +823,66 @@ val df1 = spark.read.option("header","true").csv("nyc-tlc/yellow_v1")
 for (i <- df1.columns)
      df1.select(col(s"$i")).distinct.show
 ```
+
+# Development Notes
+
+## 2021-04-09
+
+```
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.SparkSession
+val spark = SparkSession.builder.appName("Spark Example").master("local[*]").config("spark.eventLog.enabled","true").config("spark.eventLog.dir", "/tmp/spark-history").getOrCreate
+val sc = spark.sparkContext
+val df1 = spark.read.option("header","true").csv("nyc-tlc/yellow_v1")
+df1.stat
+import org.apache.spark.mllib.stat.{MultivariateStatisticalSummary, Statistics}
+df1.createTempView("yellow_v1")
+spark.sql("select * from yellow_v1").show
+df1.createGlobalTempView("yellow1")
+spark.sql("show tables")
+spark.sql("show tables").show
+spark.sql("show tables")
+spark.sql("show tables").show
+spark.sql("show databases").show
+df1.columns
+df1.columns.toString
+df1.columns.view
+df1.columns.toArray
+import spark.implicits._
+df1.select($"vendor_name" as "VendorID").printSchema
+df1.select($"vendor_name" as "VendorID").write.json("output/v1")
+df1.select($"vendor_name" as "VendorID").toJSON
+df1.select($"vendor_name" as "VendorID").toJSON.write.text("text")
+spark.sql("select * from global_temp.yellow1").show
+spark.sql("show tables").show
+```
+
+## 2021-04-11
+
+```
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.SparkSession
+val spark = SparkSession.builder.appName("Spark Example").master("local[*]").config("spark.eventLog.enabled","true").config("spark.eventLog.dir", "/tmp/spark-history").getOrCreate
+val sc = spark.sparkContext
+val df1 = spark.read.option("header","true").csv("nyc-tlc/yellow_v1")
+df1.printSchema
+import spark.implicits._
+df1t.write.format("json").save("json/v1")
+val t1 = df1t.coalesce(1)
+df1t.coalesce(1).printSchema
+df1t.coalesce(1).schema
+df1t.coalesce(1).write.json("json/v1")
+df1t.coalesce(1).write.parquet("parquet/v1")
+spark.sql("show databases")
+spark.sql("show databases").show
+spark.sql("show tables").show
+spark.sql("create table default.yellow1 (vendor_id string, pickup_timestamp timestamp, dropoff_timestamp timestamp, trip_second long, trip_distance float, passenger_count integer, rate_code string, store_and_fwd_flag string, payment_type string, fare_amount float) using parquet location 'parquet/v1'").show
+spark.sql("show tables").show
+spark.sql("select * from yellow1").show
+spark.sql("describe table yellow1").show
+spark.sql("describe table yellow1").show(false)
+spark.sql("select * from yellow1").show(false)
+spark.sql("select count(*) from yellow1").show(false)
+spark.sql("select count(*) from yellow1").show(false)
+spark.sql("select * from yellow1").show(false)
+```
