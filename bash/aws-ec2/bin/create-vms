@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ ! -f /usr/bin/pip       ] ; then sudo apt-get -y install python-pip ; fi
+if [ ! -f /usr/local/bin/aws ] ; then sudo pip install awscli; fi
+
+if [ "$2" != "" ]; then PROFILE="--profile $2"; fi
+
+echo "Please enter keypair name :"
+read KEYPAIR
+echo $KEYPAIR
+
+aws ec2 create-key-pair --key-name ${KEYPAIR} --query 'KeyMaterial' --output text $PROFILE > ${KEYPAIR}.pem
+chmod 400 ${KEYPAIR}.pem
+if [ -f current_instances ]; then rm current_instances ; fi
+
+AMI="ami-09a3cad575b7eabaa"
+TYPE="m5.2xlarge"
+
+for ((i=1;i<=4;i++))
+do
+    INSTANCE=$(aws ec2 run-instances --image-id ${AMI} --instance-type ${TYPE} --key-name ${KEYPAIR} --query 'Instances[*].InstanceId' --output text $PROFILE)
+    echo "[$i] creating EC2 instance: $INSTANCE"
+    echo $INSTANCE >> current_instances
+done

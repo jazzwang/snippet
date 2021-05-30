@@ -1,0 +1,20 @@
+#!/bin/bash
+
+INSTANCES="current_instances"
+
+if [ "$2" != "" ]; then PROFILE="--profile $2"; fi
+
+if [ -f $INSTANCES ]; then
+    for i in `cat $INSTANCES`; do
+    	VMS="$VMS $i"
+    done
+    aws ec2 terminate-instances --instance-ids $VMS $PROFILE
+    rm -f current_instances  dns  hosts
+fi
+
+for i in "$(ls *.pem)"
+do
+  echo "remove keypair : ${i//.pem} ...."
+  aws ec2 delete-key-pair --key-name ${i//.pem} $PROFILE
+  rm -f $i
+done

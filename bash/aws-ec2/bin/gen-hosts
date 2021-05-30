@@ -1,0 +1,4 @@
+#!/bin/bash
+export PATH=$(dirname $0):$PATH
+list-vms | awk '{ print $3"\thdp0"NR".3du.me\thdp0"NR }' > hosts
+list-vms | awk '{ print "name.com-3du.me hdp0"NR" "$2 }' > dns

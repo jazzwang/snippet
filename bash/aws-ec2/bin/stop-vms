@@ -1,0 +1,12 @@
+#!/bin/bash
+
+INSTANCES="current_instances"
+
+if [ "$2" != "" ]; then PROFILE="--profile $2"; fi
+
+if [ -f $INSTANCES ]; then
+    for i in `cat $INSTANCES`; do
+    	VMS="$VMS $i"
+    done
+    aws ec2 stop-instances --instance-ids $VMS $PROFILE
+fi
