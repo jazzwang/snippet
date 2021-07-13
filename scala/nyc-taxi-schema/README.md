@@ -393,6 +393,30 @@ td
 
 # Development Notes
 
+## 2021-04-05
+
+### s3cat 替代方案
+
+- Python 套件
+    - https://pypi.org/project/s3cat/
+        - 已經找不到原始檔案，似乎也只有在 Python 2.7 環境才能正常運作
+    - https://pypi.org/project/s3streamcat/ 支援 Python3
+        - 參考：https://stackoverflow.com/a/28390423
+        - 缺點：只讀 default `.aws/config`
+- Go 版
+    - https://github.com/rlister/s3cat \- 待測試
+    - https://github.com/seqsense/s3cat \- 待測試
+- 使用原生 `awscli` 指令 \- `aws s3 cp s3://bucket/PATH -`
+    - https://github.com/aws/aws-cli/issues/2982
+    - https://loige.co/aws-command-line-s3-content-from-stdin-or-to-stdout/
+
+### 分析資料特徵 (欄位差異/資料分布)
+
+- 取樣前 100 筆
+```bash
+~$ aws s3 cp --quiet s3://jazzwang/nyc-tlc/yellow/yellow_tripdata_2009-01.csv - | head -n 100 | csvstat | pbcopy
+```
+
 ## 2021-04-10
 
 - Q: spark-shell 到底 import 了哪些類別呢？
