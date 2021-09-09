@@ -86,10 +86,15 @@ Docker version 20.10.8, build 3967b7d
 * 方便實驗起見，這次就只用一個 secret，也就是密碼 `PASSWORD`
 * 首先，先產生檔案存放 PASSWORD 變數
 ```bash
-
+$ echo "1234" > /tmp/passwd
 ```
 * 接著，以下是我們測試用的 Dockerfile
 ```
+FROM alpine:latest
+MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
+
+RUN --mount=type=secret,id=PASSWORD read PASSWORD < //run/secrets/PASSWORD
+RUN echo ${PASSWORD}
 ```
 * 注意：若沒有權限修改 `/etc/docker/daemon.json` 只能加環境變數 `DOCKER_BUILDKIT=1` 來啟用 `--secret` 參數
 * 讓我們來產生 docker image
