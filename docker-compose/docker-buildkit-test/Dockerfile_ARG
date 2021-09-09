@@ -1,0 +1,7 @@
+FROM alpine:latest
+MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
+
+ARG USERNAME
+ARG PASSWORD
+
+RUN echo "${USERNAME}:${PASSWORD}" > /var/log/secrets
