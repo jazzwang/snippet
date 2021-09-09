@@ -1,5 +1,5 @@
 FROM alpine:latest
 MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 
-RUN --mount=type=secret,id=PASSWORD read PASSWORD < //run/secrets/PASSWORD
+RUN --mount=type=secret,id=PASSWORD read PASSWORD < /run/secrets/PASSWORD
 RUN echo ${PASSWORD}

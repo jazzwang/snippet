@@ -93,7 +93,7 @@ $ echo "1234" > /tmp/passwd
 FROM alpine:latest
 MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 
-RUN --mount=type=secret,id=PASSWORD read PASSWORD < //run/secrets/PASSWORD
+RUN --mount=type=secret,id=PASSWORD read PASSWORD <  /run/secrets/PASSWORD
 RUN echo ${PASSWORD}
 ```
 * 注意：若沒有權限修改 `/etc/docker/daemon.json` 只能加環境變數 `DOCKER_BUILDKIT=1` 來啟用 `--secret` 參數
@@ -107,7 +107,7 @@ $ DOCKER_BUILDKIT=1 docker build -t jazzwang/buildkit-test -f Dockerfile_BuildKi
  => => transferring context: 2B                                                                               0.0s
  => [internal] load metadata for docker.io/library/alpine:latest                                              0.0s
  => [1/3] FROM docker.io/library/alpine:latest                                                                0.0s
- => [2/3] RUN --mount=type=secret,id=PASSWORD read PASSWORD < //run/secrets/PASSWORD                          0.3s
+ => [2/3] RUN --mount=type=secret,id=PASSWORD read PASSWORD <  /run/secrets/PASSWORD                          0.3s
  => [3/3] RUN echo ${PASSWORD}                                                                                0.4s
  => exporting to image                                                                                        0.1s
  => => exporting layers                                                                                       0.1s
@@ -119,7 +119,7 @@ $ DOCKER_BUILDKIT=1 docker build -t jazzwang/buildkit-test -f Dockerfile_BuildKi
 $ docker history jazzwang/buildkit-test:latest
 IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
 c8d64fd4c770   3 minutes ago   RUN /bin/sh -c echo ${PASSWORD} # buildkit      0B        buildkit.dockerfile.v0
-<missing>      3 minutes ago   RUN /bin/sh -c read PASSWORD < //run/secrets…   0B        buildkit.dockerfile.v0
+<missing>      3 minutes ago   RUN /bin/sh -c read PASSWORD <  /run/secrets…   0B        buildkit.dockerfile.v0
 <missing>      3 minutes ago   MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>    0B        buildkit.dockerfile.v0
 <missing>      12 days ago     /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B
 <missing>      12 days ago     /bin/sh -c #(nop) ADD file:aad4290d27580cc1a…   5.6MB
