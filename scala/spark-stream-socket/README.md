@@ -64,3 +64,17 @@ wordCounts.print()
 ssc.start()
 ssc.awaitTerminationOrTimeout(1000)
 ```
+
+### 2021-09-18
+
+- 看起來 Spark UI (:4040) 才有 Streaming Statistics。這些資訊沒有存在 History Server (:18080)
+  - https://community.cloudera.com/t5/Support-Questions/HDP-2-6-Spark-2-1-Streaming-tab-not-available-in-the-Spark/td-p/230447
+  - https://stackoverflow.com/questions/47780148/how-to-access-statistics-endpoint-for-a-spark-streaming-application
+  - https://mallikarjuna_g.gitbooks.io/spark/content/spark-streaming/spark-streaming-webui.html
+- Store Spark Streaming Metrics to influxdb
+  - https://medium.com/analytics-vidhya/processing-time-series-data-in-real-time-with-influxdb-and-structured-streaming-d1864154cf8b
+  - https://www.linkedin.com/pulse/monitoring-spark-streaming-influxdb-grafana-christian-g%C3%BCgi/
+- Store Spark Streaming Metrics to Graphite
+  - https://supergloo.com/spark-monitoring/spark-performance-monitoring/
+  - https://ankur-singh1000.medium.com/spark-monitoring-with-graphite-telegraf-bc4a0149560b
+- 
