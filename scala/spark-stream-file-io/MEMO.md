@@ -50,3 +50,54 @@ sc: org.apache.spark.SparkContext = org.apache.spark.SparkContext@662c5207
 
 - 觀察二：在 `input` 目錄中，預先放了純文字檔案，當執行 `ssc.start()` 時，並不會去讀取該檔案。
 反而是目錄內容 `有新檔案` 或者 `檔案內容有異動` 的時候才讀取。
+
+## 2021-09-17
+
+* 改用 Scala `2.12.10` 搭配 Spark `3.0.0`
+* https://mvnrepository.com/artifact/org.apache.spark/spark-streaming_2.12/3.0.0
+```
+jazz.wang@cloudshell:~/snippet/scala/spark-stream-file-io $ sbt distclean
+[info] Loading project definition from /home/jazz.wang/snippet/scala/spark-stream-file-io/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to spark-stream-file-io (in build file:/home/jazz.wang/snippet/scala/spark-stream-file-io/)
+[success] Total time: 0 s, completed Sep 17, 2021, 8:37:59 AM
+jazz.wang@cloudshell:~/snippet/scala/spark-stream-file-io $ sbt run
+[info] Loading project definition from /home/jazz.wang/snippet/scala/spark-stream-file-io/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to spark-stream-file-io (in build file:/home/jazz.wang/snippet/scala/spark-stream-file-io/)
+[warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+[info] Compiling 1 Scala source to /home/jazz.wang/snippet/scala/spark-stream-file-io/target/scala-2.12/classes ...
+[warn] there was one deprecation warning; re-run with -deprecation for details
+[warn] one warning found
+[info] running example.Hello
+hello
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/tmp/sbt_c3f18ca1/target/331d271f/255e2aee/spark-unsafe_2.12-3.0.0.jar) to constructor java.nio.DirectByteBuffer(long,int)
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+start Spark Streaming Context
+-------------------------------------------
+Time: 1631867921000 ms
+-------------------------------------------
+
+-------------------------------------------
+Time: 1631867922000 ms
+-------------------------------------------
+
+create 'new-file.txt'
+-------------------------------------------
+Time: 1631867923000 ms
+-------------------------------------------
+(STREAMING,1)
+(SPARK,1)
+(INPUT,1)
+(DATA,1)
+
+-------------------------------------------
+Time: 1631867924000 ms
+-------------------------------------------
+
+[success] Total time: 12 s, completed Sep 17, 2021, 8:38:44 AM
+jazz.wang@cloudshell:~/snippet/scala/spark-stream-file-io $
+```

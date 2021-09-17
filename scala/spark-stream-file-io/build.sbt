@@ -1,5 +1,5 @@
-ThisBuild / scalaVersion     := "2.11.11"
-ThisBuild / version          := "0.1.0"
+ThisBuild / scalaVersion     := "2.12.10"
+ThisBuild / version          := "0.1.1"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
 
@@ -7,9 +7,9 @@ lazy val root = (project in file("."))
   .settings(
     name := "spark-stream-file-io",
     libraryDependencies ++= Seq(
-      "org.apache.spark"  %%  "spark-core"      % "2.2.1",
-      // https://mvnrepository.com/artifact/org.apache.spark/spark-streaming_2.11/2.2.1
-      "org.apache.spark"  %%  "spark-streaming" % "2.2.1",
+      "org.apache.spark"  %%  "spark-core"      % "3.0.0",
+      // https://mvnrepository.com/artifact/org.apache.spark/spark-streaming_2.12/3.0.0
+      "org.apache.spark"  %%  "spark-streaming" % "3.0.0",
       "org.scalatest"     %%  "scalatest"       % "3.1.1"
     )
   )
