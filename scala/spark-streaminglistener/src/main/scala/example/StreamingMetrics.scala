@@ -15,7 +15,7 @@ object StreamingMetrics extends App {
   val sc = ssc.sparkContext
   // https://aws.amazon.com/blogs/big-data/monitor-spark-streaming-applications-on-amazon-emr/
   // add SparkStreamingListener
-  ssc.addStreamingListener(new ConsoleSparkListener("Spark Streaming Example"))
+  ssc.addStreamingListener(new ConsoleSparkListener())
   val fs = FileSystem.get(sc.hadoopConfiguration)
   // http://spark.apache.org/docs/latest/streaming-programming-guide.html#file-streams
   // Case 1: static plain text input files

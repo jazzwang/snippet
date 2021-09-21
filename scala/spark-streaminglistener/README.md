@@ -5,78 +5,76 @@
 [info] Loading project definition from /home/jazzwang/snippet/scala/spark-streaminglistener/project
 [info] Loading settings for project root from build.sbt ...
 [info] Set current project to spark-stream-file-io (in build file:/home/jazzwang/snippet/scala/spark-streaminglistener/)
-[info] Compiling 1 Scala source to /home/jazzwang/snippet/scala/spark-streaminglistener/target/scala-2.12/classes ...
+[info] Compiling 2 Scala sources to /home/jazzwang/snippet/scala/spark-streaminglistener/target/scala-2.12/classes ...
+[warn] there was one deprecation warning; re-run with -deprecation for details
+[warn] one warning found
 [info] running example.StreamingMetrics 
 WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/tmp/sbt_67072130/target/331d271f/255e2aee/spark-unsafe_2.12-3.0.0.jar) to constructor java.nio.DirectByteBuffer(long,int)
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/tmp/sbt_543566b5/target/331d271f/255e2aee/spark-unsafe_2.12-3.0.0.jar) to constructor java.nio.DirectByteBuffer(long,int)
 WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
 start Spark Streaming Context
 -------------------------------------------
-Time: 1632232216000 ms
+Time: 1632233345000 ms
 -------------------------------------------
 
-Console Streaming Listener, onBatchCompleted:Spark Streaming Example
-Batch completed at: 1632232216746
- was started at: 1632232216093
- submission time: 1632232216078
- batch time: 1632232216000 ms
- batch processing delay: 653
+Batch completed at: 1632233345709
+ was started at: 1632233345092
+ submission time: 1632233345081
+ batch time: 1632233345000 ms
+ batch processing delay: 617
  records : 0
- total batch delay:668
+ total batch delay:628
  product prefix:BatchInfo
- schedulingDelay:15
- processingTime:653
+ schedulingDelay:11
+ processingTime:617
 -------------------------------------------
-Time: 1632232217000 ms
+Time: 1632233346000 ms
 -------------------------------------------
 
-Console Streaming Listener, onBatchCompleted:Spark Streaming Example
-Batch completed at: 1632232217065
- was started at: 1632232217014
- submission time: 1632232217014
- batch time: 1632232217000 ms
- batch processing delay: 51
+Batch completed at: 1632233346073
+ was started at: 1632233346017
+ submission time: 1632233346016
+ batch time: 1632233346000 ms
+ batch processing delay: 56
  records : 0
- total batch delay:51
+ total batch delay:57
  product prefix:BatchInfo
- schedulingDelay:0
- processingTime:51
+ schedulingDelay:1
+ processingTime:56
 create 'new-file.txt'
 -------------------------------------------
-Time: 1632232218000 ms
+Time: 1632233347000 ms
 -------------------------------------------
 (STREAMING,1)
 (SPARK,1)
 (INPUT,1)
 (DATA,1)
 
-Console Streaming Listener, onBatchCompleted:Spark Streaming Example
-Batch completed at: 1632232218326
- was started at: 1632232218095
- submission time: 1632232218091
- batch time: 1632232218000 ms
- batch processing delay: 231
+Batch completed at: 1632233347355
+ was started at: 1632233347106
+ submission time: 1632233347105
+ batch time: 1632233347000 ms
+ batch processing delay: 249
  records : 0
- total batch delay:235
+ total batch delay:250
  product prefix:BatchInfo
- schedulingDelay:4
- processingTime:231
+ schedulingDelay:1
+ processingTime:249
 -------------------------------------------
-Time: 1632232219000 ms
+Time: 1632233348000 ms
 -------------------------------------------
 
-Console Streaming Listener, onBatchCompleted:Spark Streaming Example
-Batch completed at: 1632232219051
- was started at: 1632232219012
- submission time: 1632232219012
- batch time: 1632232219000 ms
- batch processing delay: 39
+Batch completed at: 1632233348049
+ was started at: 1632233348012
+ submission time: 1632233348011
+ batch time: 1632233348000 ms
+ batch processing delay: 37
  records : 0
- total batch delay:39
+ total batch delay:38
  product prefix:BatchInfo
- schedulingDelay:0
- processingTime:39
-[success] Total time: 12 s, completed Sep 21, 2021, 1:50:19 PM
+ schedulingDelay:1
+ processingTime:37
+[success] Total time: 13 s, completed Sep 21, 2021, 2:09:08 PM
 ```

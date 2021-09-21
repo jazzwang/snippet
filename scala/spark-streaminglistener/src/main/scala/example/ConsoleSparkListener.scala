@@ -5,14 +5,9 @@ package example
 // https://aws.amazon.com/blogs/big-data/monitor-spark-streaming-applications-on-amazon-emr/
 
 import org.apache.spark.streaming.scheduler._
-import collection.mutable.{ Map , HashMap }
 
 class ConsoleSparkListener(appName: String = "ApplicationName") extends StreamingListener {
-
-    val dimentionsMap = new HashMap[String,String]()
-
     override def onBatchCompleted(batchCompleted: StreamingListenerBatchCompleted): Unit = {
-        println("Console Streaming Listener, onBatchCompleted:" + appName)
         val processingTime = if (batchCompleted.batchInfo.processingDelay.isDefined) {
             batchCompleted.batchInfo.processingDelay.get 
         }
