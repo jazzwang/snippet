@@ -101,3 +101,9 @@ Time: 1631867924000 ms
 [success] Total time: 12 s, completed Sep 17, 2021, 8:38:44 AM
 jazz.wang@cloudshell:~/snippet/scala/spark-stream-file-io $
 ```
+
+## 2021-09-21
+
+- 觀察三：嘗試在 Driver 程式中執行 10 次的迴圈，一直把 `input/existing.txt` 複製到 `input/new-file.txt`。
+  - 結果發現只有第一次複製時才會觸發 Spark Streaming 定義的運算邏輯。
+  - 代表 Spark Streaming 在偵測 HCFS 檔案系統異動時，有把『檔案名稱』列入考慮。
