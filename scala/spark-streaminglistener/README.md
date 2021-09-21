@@ -17,7 +17,7 @@ start Spark Streaming Context
 Time: 1632232216000 ms
 -------------------------------------------
 
-CloudWatch Streaming Listener, onBatchCompleted:Spark Streaming Example
+Console Streaming Listener, onBatchCompleted:Spark Streaming Example
 Batch completed at: 1632232216746
  was started at: 1632232216093
  submission time: 1632232216078
@@ -32,7 +32,7 @@ Batch completed at: 1632232216746
 Time: 1632232217000 ms
 -------------------------------------------
 
-CloudWatch Streaming Listener, onBatchCompleted:Spark Streaming Example
+Console Streaming Listener, onBatchCompleted:Spark Streaming Example
 Batch completed at: 1632232217065
  was started at: 1632232217014
  submission time: 1632232217014
@@ -52,7 +52,7 @@ Time: 1632232218000 ms
 (INPUT,1)
 (DATA,1)
 
-CloudWatch Streaming Listener, onBatchCompleted:Spark Streaming Example
+Console Streaming Listener, onBatchCompleted:Spark Streaming Example
 Batch completed at: 1632232218326
  was started at: 1632232218095
  submission time: 1632232218091
@@ -67,7 +67,7 @@ Batch completed at: 1632232218326
 Time: 1632232219000 ms
 -------------------------------------------
 
-CloudWatch Streaming Listener, onBatchCompleted:Spark Streaming Example
+Console Streaming Listener, onBatchCompleted:Spark Streaming Example
 Batch completed at: 1632232219051
  was started at: 1632232219012
  submission time: 1632232219012

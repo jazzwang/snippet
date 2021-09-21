@@ -12,7 +12,7 @@ class ConsoleSparkListener(appName: String = "ApplicationName") extends Streamin
     val dimentionsMap = new HashMap[String,String]()
 
     override def onBatchCompleted(batchCompleted: StreamingListenerBatchCompleted): Unit = {
-        println("CloudWatch Streaming Listener, onBatchCompleted:" + appName)
+        println("Console Streaming Listener, onBatchCompleted:" + appName)
         val processingTime = if (batchCompleted.batchInfo.processingDelay.isDefined) {
             batchCompleted.batchInfo.processingDelay.get 
         }
