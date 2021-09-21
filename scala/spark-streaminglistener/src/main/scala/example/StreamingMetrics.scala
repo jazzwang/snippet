@@ -30,19 +30,6 @@ object StreamingMetrics extends App {
   // sleep 1 seconds for Spark Streaming initiation
   // https://docs.oracle.com/javase/tutorial/essential/concurrency/sleep.html
   Thread.sleep(1000)
-  /* 
-  // create a new file 'hello.txt' in "input" folder
-  val outFile = new Path("input/hello.txt")
-  // remove 'hello.txt' if it exists
-  if (fs.exists(outFile)) { 
-    fs.delete(outFile) 
-  }
-  println("create 'hello.txt'")
-  val outStream = fs.create(outFile)
-  outStream.writeUTF("hello world")
-  outStream.close()
-  Thread.sleep(1000) 
-  */
   // copy file from "existing.txt" to "new-file.txt"
   val srcFile = new Path("input/existing.txt")
   val dstFile = new Path("input/new-file.txt")
