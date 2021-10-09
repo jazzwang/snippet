@@ -86,4 +86,16 @@
 
 ### SQS and SNS
 
--
+- ( 2021-10-09 22:06:46 )
+- tightly coupled components -> monolithic application => 單點失效造成整個系統失效
+- loosely coupled components -> microservices => 單點失效不會造成整個系統失效
+- Amazon Simple Notification Service (Amazon SNS)
+  - a publish/subscribe service.
+  - In Amazon SNS, subscribers can be `web servers`, `email addresses`, `AWS Lambda functions`, or several other options.
+  - 概念類似 newsletter (電子報)，一個 topic 等同於一個電子報。
+- ( 2021-10-09 22:21:51 )
+- Amazon Simple Queue Service (Amazon SQS)
+  - a message queuing service.
+  - In Amazon SQS, an application sends messages into a queue.
+  - A user or service retrieves a message from the queue, processes it, and then deletes it from the queue.
+
