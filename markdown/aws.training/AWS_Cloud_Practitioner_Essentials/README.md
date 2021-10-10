@@ -99,3 +99,14 @@
   - In Amazon SQS, an application sends messages into a queue.
   - A user or service retrieves a message from the queue, processes it, and then deletes it from the queue.
 
+### Additional Compute services
+
+- ( 2021-10-09 22:23:37 )
+- Serverless computing
+  - “serverless” means that your code runs on servers, but you do not need to provision or manage these servers.
+  - e.g. AWS Lambda
+
+#### Lambda
+
+- ( 2021-10-09 22:29:51 )
+- AWS Lambda is a service that lets you run code <mark>without needing to provision or manage servers</mark>.
