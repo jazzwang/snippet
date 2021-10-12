@@ -1,0 +1,5 @@
+openapi:
+  image: 'openapitools/openapi-generator-cli'
+  volumes:
+    - ./local:/local
+  command: generate -i /local/petstore.yaml -g go -o /local/out/go
