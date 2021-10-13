@@ -1,9 +1,7 @@
-# E-Learning MEMO
-
+[TOC]
+----------------------------------------------------------------
 - https://www.aws.training/Details/eLearning?id=60697 (English)
 - https://www.aws.training/Details/eLearning?id=66364 (繁體中文)
-
-[TOC]
 
 # AWS Cloud Practitioner Essentials
 
@@ -110,3 +108,31 @@
 
 - ( 2021-10-09 22:29:51 )
 - AWS Lambda is a service that lets you run code <mark>without needing to provision or manage servers</mark>.
+
+- ( 2021-10-13 10:55:55 )
+- How AWS Lambda works
+  - <mark>upload your code</mark> to Lambda
+  - trigger from an <mark>event source</mark>
+  - run when triggered
+  - You pay only for the compute time that you use.
+
+#### Amazon Elastic Container Service (Amazon ECS)
+
+- <mark>Container orchestration services</mark> help you to deploy, manage, and scale your containerized applications.
+- AWS supports the use of open-source Docker Community Edition and subscription-based Docker Enterprise Edition.
+- With Amazon ECS, you can use **API calls** to launch and stop Docker-enabled applications.
+
+#### Amazon Elastic Kubernetes Service (Amazon EKS)
+
+- a fully **managed service** that you can use to run **Kubernetes** on AWS.
+
+#### AWS Fargate
+
+- AWS Fargate is a **serverless** compute engine for containers.
+- It works with **both Amazon ECS and Amazon EKS.**
+- AWS Fargate manages your server infrastructure for you.
+
+### Additional resources
+
+- [Hands-On Tutorials: Compute](https://aws.amazon.com/getting-started/hands-on/?awsf.getting-started-category=category%23compute&awsf.getting-started-content-type=content-type%23hands-on)
+- [Category Deep Dive: Serverless](https://aws.amazon.com/getting-started/deep-dive-serverless/)
