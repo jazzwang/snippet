@@ -1,0 +1,1 @@
+- https://explore.skillbuilder.aws/learn/course/1099/aws-partner-cloud-economics-accreditation

@@ -1,0 +1,1 @@
+- https://explore.skillbuilder.aws/learn/course/1096/aws-partner-accreditation-technical
