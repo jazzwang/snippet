@@ -44,6 +44,9 @@ df3.show
 ### TEST 3:
 ###  - use Hive DDL to create table `default.data` and specified partition column `batch`
 ###  - use Hive DDL to add partition and corresponding location to table `default.data`
+### reference:
+###  - https://stackoverflow.com/a/49557506
+###  - https://cwiki.apache.org/confluence/display/hive/languagemanual+ddl
 
 spark.sql("create table data (k string, v integer) partitioned by (batch integer)")
 spark.sql("show tables").show
@@ -63,7 +66,7 @@ df2.createTempView("partitioned")
 spark.sql("show tables").show
 spark.sql("describe partitioned").show
 
-### TEST 5:
+### TEST 4:
 ###  - manually add column to DataFrame `df3` and `df4`
 ###    https://stackoverflow.com/a/32788650
 ###  - union `df3` and `df4` (it becomes DataSet) and convert it to a DataFrame as `df5`
