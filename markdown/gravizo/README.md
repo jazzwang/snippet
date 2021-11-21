@@ -1,5 +1,7 @@
 # Graphviz 線上服務
 
+[TOC]
+
 ## 緣起
 
 以前喜歡用 [Trac](https://trac.edgewall.org/) 並且搭配它的 [Graphviz](https://graphviz.org/) 擴充元件。這樣就可以在 Wiki 裡面直接鑲嵌 [Graphviz](https://graphviz.org/) 語法，然後靠後端的指令產生對應的圖片。好處是能**版本控制**圖片的內容，其次是用語法就可以產生圖片，很常用來畫一些像是 Debian package 的相依性啦～後來也常用來畫 [Homebrew](https://brew.sh/) 的相依性。
@@ -19,6 +21,12 @@
 搜尋相關實作時，發現了 [Gravizo](http://www.gravizo.com/) 的服務。
 - 優點：Github 也可以直接鑲嵌
 - 缺點：每張圖都有「Gravizo」的 Logo
+
+## 替代
+
+- ( 2021-11-21 11:37:11 )
+- 發現 [Mermaid](https://mermaid-js.github.io/mermaid/#/) 也有提供 [Mermaid Live Editor](https://github.com/mermaid-js/mermaid-live-editor) 可以線上編輯後，取得 [mermaid.ink](https://mermaid.ink/) 的 Markdown Link
+- 參照[另一個 Markdown 文件](../mermaid/README.md)
 
 ## 範例
 
