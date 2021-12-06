@@ -211,7 +211,92 @@ stateDiagram-v2
     - Enables customers to run applications and failovers across multiple AZs and Regions
 
 ### Module 5: Business Agility
+
+- ( 2021-12-06 16:12:21 )
+- Measuring business agility - KPI
+  - Time to market for new applications - 18.8% faster
+  - Features per release - 26.4% more features
+  - Value per release ($ revenue potential) - 338.8% increase
+- Innovate by increasing "fail fast" while reducing risks and costs
+  - Being able to easily shut down failed initiatives without the pain and wasted resources associated with an inflexible on-premises environment.
+- DevOps practice - improve throughout and quality
+  - Lead Time for Changes
+  - Deployment Frequency
+  - Change Failure Rate
+  - MTTR (Mean Time to Recover)
+- Life Time Value
+
 ### Module 6: Cloud Financial Management
+
+- ( 2021-12-06 16:25:11 )
+- Four Key Areas
+  - Measurement and Accountability - Establishing cost transparency and accountability to ensure visibility into spend
+    - Enabling cost transparency
+      - Must-have tagging
+        - Cost center
+        - Application
+        - User
+        - Expiration
+        - Automation
+    - Measuring and monitoring Tools
+      - Option #1 - Build a Custom Dashboard
+      - Option #2 - AWS Partner Network (APN)
+        - AWS Cloud Management Tools (CMT) Competency
+          - Cloud Governance
+          - Resource and Cost Optimization
+      - Option #3 - AWS Cost Explorer
+    - accountability for spend
+  - Cost optimization - Identifying waste, building cloud-friendly architectures, improving cost efficiency
+    - identify waste
+    - cloud-friendly architecture that scale on demand
+    - improve cost efficiency
+    - 4 best practices
+      - Right-sizing instances - use `CloudWatch` and `AWS Cost Explorer`
+      - Increasing elasticity - use `AWS Lambda + CloudWatch = Automated Scheduling`
+        - https://aws.amazon.com/premiumsupport/knowledge-center/start-stop-lambda-cloudwatch/
+        - 看到這裡，覺得 Amazon 可以用很多數據來預估未來的使用量，甚至建議 win-win scale
+      - Choosing the right pricing model
+        - On-Demand Instances
+          - Pay for compute capacity by the second with no long-term commitments.
+        - Reserved Instances (RI)
+          - Make a 1 or 3-year commitment for a significant discount. Best for steady-state workloads
+          - use `AWS Cost Explorer` to get a recommendation
+          - Capacity reservation - AZ: Yes, Zone: No
+            - Convertible RI - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html
+            - Standard RI
+          - AZ flexibility - Zone: Yes
+          - Instance size flexibility - Zone: Yes
+        - Spot Instances
+          - Spare EC2 capacity; best for fault-tolerant, flexible, and stateless workloads
+          - best practices
+            - Spot infrastructure
+            - Spot pricing
+            - Diversify
+          - 2-minutes notice
+            - use `stop-start` and `hibernate` to restart faster
+        - EC2 Fleet with EC2 Auto Scaling
+          - automatically
+      - Optimizing storage
+        - Access Frequency
+          - S3 Standard
+          - S3 Intelligent-Tiering (IA)
+          - S3 Glacier
+  - Planning and forecasting - Understanding current and future costs and IT needs, driving accurate planning
+    - current and future costs and IT needs
+    - Option #1 - AWS Price Calculator
+    - Option #2 - detail pricing page of each AWS service
+    - Option #3 - AWS Price List API
+      - https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
+      - https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-notification.html
+    - Option #4 - AWS Cost Explorer
+    - Migration Portfolio Assessment (MPA) - Partner ONLY
+  - Cloud financial operations - Identifying and investing in people, processes, tools, and automation
+    - invest in people, processes, tools and automation
+    - Cloud Center of Excellence (CoE)
+
 ### Module 7: Introduction to Migration Portfolio Assessment (MPA)
+
+- ( 2021-12-06 17:55:44 )
+
 ### Module 8: Cost savings with MPA
 ### AWS Cloud Economics: End of Course Assessment
