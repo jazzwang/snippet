@@ -1,7 +1,8 @@
 [TOC]
 ----------------------------------------------------------------
-- https://www.aws.training/Details/eLearning?id=60697 (English)
-- https://www.aws.training/Details/eLearning?id=66364 (繁體中文)
+- https://explore.skillbuilder.aws/learn/course/134/aws-cloud-practitioner-essentials
+- (OLD, deprecated) https://www.aws.training/Details/eLearning?id=60697 (English)
+- (OLD, deprecated) https://www.aws.training/Details/eLearning?id=66364 (繁體中文)
 
 # AWS Cloud Practitioner Essentials
 
@@ -104,7 +105,7 @@
   - “serverless” means that your code runs on servers, but you do not need to provision or manage these servers.
   - e.g. AWS Lambda
 
-#### Lambda
+#### AWS Lambda
 
 - ( 2021-10-09 22:29:51 )
 - AWS Lambda is a service that lets you run code <mark>without needing to provision or manage servers</mark>.
@@ -136,3 +137,56 @@
 
 - [Hands-On Tutorials: Compute](https://aws.amazon.com/getting-started/hands-on/?awsf.getting-started-category=category%23compute&awsf.getting-started-content-type=content-type%23hands-on)
 - [Category Deep Dive: Serverless](https://aws.amazon.com/getting-started/deep-dive-serverless/)
+
+## Module 3: Global Infrastructure and Reliability
+
+### AWS global infrastructure
+
+- **AWS Region**
+  - Regions are <mark>geographically isolated areas</mark>, where you can access services needed to run your enterprise.
+  - 4 business factors that go into choosing a Region:
+    - compliance
+    - proximity
+    - feature availability
+    - pricing
+- **Availability Zones (AZ)**
+  - An Availability Zone is <mark>a single data center or a group of data centers</mark> within a Region.
+  - Availability Zones are located **tens of miles apart from each other**.
+  - Availability Zones help you solve **<mark>high availability</mark>** and **<mark>disaster recovery</mark>** scenarios, without any additional effort on your part
+
+### Edge locations
+
+- **AWS Edge locations** run **Amazon CloudFront** to help get content closer to your customers, no matter where they are in the world.
+- Content Delivery Networks = **CDN**s -> <mark>**Amazon CloudFront**</mark>
+- **DNS** -> <mark>**Amazon Route 53**</mark>
+- An edge location is a site that <mark>Amazon CloudFront</mark> uses to store cached copies of your content closer to your customers for faster delivery.
+- <mark>**AWS Outposts**</mark> - Extend AWS infrastructure and services to your on-premises data center.
+
+### How to provision AWS resources
+
+- In AWS, everything is a API.
+- Ways to interact with AWS services
+  - **AWS Management Console**
+  - **AWS Command Line Interface (AWS CLI)**
+  - **software development kits (SDKs)**
+    - Supported programming languages include C++, Java, .NET, and more.
+- Managed Tool
+  - **AWS Elastic Beanstalk**
+    - service that helps you provision **Amazon EC2-based environments**.
+  - **AWS CloudFormation**
+    - an **infrastructure as code** tool that allows you to define a wide variety of AWS resources in a declarative way using **JSON** or **YAML** text-based documents called CloudFormation templates.
+
+### Additional resources
+
+Review these resources to learn more about the concepts that were explored in Module 3.
+
+- [Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/)
+- [Interactive map of the AWS Global Infrastructure](https://www.infrastructure.aws/)
+- [Regions and Availability Zones](https://aws.amazon.com/about-aws/global-infrastructure/regions_az)
+- [AWS Networking and Content Delivery Blog](https://aws.amazon.com/blogs/networking-and-content-delivery/)
+- [Tools to Build on AWS](https://aws.amazon.com/tools/)
+- [AWS Customer Stories: Content Delivery](https://aws.amazon.com/solutions/case-studies/?customer-references-cards.sort-by=item.additionalFields.publishedDate&customer-references-cards.sort-order=desc&awsf.customer-references-location=*all&awsf.customer-references-segment=*all&awsf.customer-references-product=product%23vpc%7Cproduct%23api-gateway%7Cproduct%23cloudfront%7Cproduct%23route53%7Cproduct%23directconnect%7Cproduct%23elb&awsf.customer-references-category=category%23content-delivery)
+
+- ( 2021-12-12 17:31:29 )
+
+##
