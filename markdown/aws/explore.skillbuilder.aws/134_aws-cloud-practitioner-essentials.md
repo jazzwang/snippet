@@ -189,4 +189,192 @@ Review these resources to learn more about the concepts that were explored in Mo
 
 - ( 2021-12-12 17:31:29 )
 
-##
+## Module 4: Networking
+
+- ( 2021-12-12 21:31:35 )
+- Amazon Virtual Private Cloud, or VPCs
+
+### Connectivity to AWS
+
+- Amazon Virtual Private Cloud (**Amazon VPC**)
+  - Amazon VPC enables you to provision an isolated section of the AWS Cloud.
+- A **subnet** is a section of a VPC that can contain resources such as Amazon EC2 instances.
+- To allow public traffic from the internet to access your VPC, you attach an **internet gateway** to the VPC.
+
+![](https://assets.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1639317600/QJdXiPoV4TGc9YByvpZSyw/tincan/31d9c0cca79c54bdceaf3e938fd424e97c98c7e8/assets/Q_HnMl_BAEsDZGxf_NEblbQjD0vn0-pPU.png)
+
+- To access private resources in a VPC, you can use a **virtual private gateway**.
+
+![](https://assets.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1639317600/QJdXiPoV4TGc9YByvpZSyw/tincan/31d9c0cca79c54bdceaf3e938fd424e97c98c7e8/assets/tthacSS-FyYNWwE3_s8U3lQzEONXm1FMX.png)
+
+- **AWS Direct Connect** is a service that enables you to establish a dedicated private connection between your data center and a VPC.
+
+![](https://assets.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1639317600/QJdXiPoV4TGc9YByvpZSyw/tincan/31d9c0cca79c54bdceaf3e938fd424e97c98c7e8/assets/p53HDtoqu2euSy0Y_YdzRvczPABE_j-yV.png)
+
+### Subnets and network access control lists
+
+#### Network access control lists (ACLs)
+
+- A network access control list (ACL) is a **virtual firewall** that controls inbound and outbound traffic at the **subnet** level.
+- **Stateless** packet filtering
+  - Network ACLs perform stateless packet filtering.
+- By default, your account’s default network ACL <mark>**allows** all inbound and outbound traffic</mark>, but you can modify it by adding your own rules.
+
+#### Security groups
+
+- A security group is a **virtual firewall** that controls inbound and outbound traffic for an **Amazon EC2** instance.
+- **Stateful** packet filtering
+  - Security groups perform stateful packet filtering.
+- By default, security groups <mark>**deny** all inbound traffic</mark>, but you can add custom rules to fit your operational and security needs.
+
+![](https://assets.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1639317600/QJdXiPoV4TGc9YByvpZSyw/tincan/31d9c0cca79c54bdceaf3e938fd424e97c98c7e8/assets/QkcDe-SJB4lQAuyB_ha8um-1InZb0jryB.png)
+
+### Global networking
+
+#### Domain Name System (DNS) - Amazon Route 53
+#### Example: How Amazon Route 53 and Amazon CloudFront deliver content
+
+![](https://assets.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1639317600/QJdXiPoV4TGc9YByvpZSyw/tincan/31d9c0cca79c54bdceaf3e938fd424e97c98c7e8/assets/mR1nvYoC4OSUVg9a_WE71CA369xcdceJ2.png)
+
+#### Additional resources
+
+To learn more about the concepts that were explored in Module 4, review these resources.
+
+- [Networking and Content Delivery on AWS](https://aws.amazon.com/products/networking)
+- [AWS Networking & Content Delivery Blog](https://aws.amazon.com/blogs/networking-and-content-delivery/)
+- [Amazon Virtual Private Cloud](https://aws.amazon.com/vpc)
+- [What is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [How Amazon VPC works](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)
+
+( 2021-12-12 22:46:59 )
+
+## Module 5: Storage and Databases
+
+- ( 2021-12-12 22:51:46 )
+
+In this module, you will learn how to:
+
+- Summarize the basic concept of storage and databases.
+- Describe the benefits of Amazon Elastic Block Store (Amazon EBS).
+- Describe the benefits of Amazon Simple Storage Service (Amazon S3).
+- Describe the benefits of Amazon Elastic File System (Amazon EFS).
+- Summarize various storage solutions.
+- Describe the benefits of Amazon Relational Database Service (Amazon RDS).
+- Describe the benefits of Amazon DynamoDB.
+- Summarize various database services.
+
+### Instance stores and Amazon Elastic Block Store (Amazon EBS)
+
+#### Instance stores
+
+- An instance store provides **temporary** block-level storage for an Amazon EC2 instance.
+
+#### Amazon EBS
+
+- **Amazon Elastic Block Store (Amazon EBS)** is a service that provides **block-level storage volumes** that you can use with Amazon EC2 instances. If you stop or terminate an Amazon EC2 instance, all the data on the attached EBS volume remains available.
+
+#### Amazon EBS snapshots
+
+- An EBS snapshot is an **incremental** backup.
+
+### Amazon Simple Storage Service (Amazon S3)
+
+#### Object storage
+
+- In object storage, each object consists of **data, metadata, and a key**.
+  - The data might be an image, video, text document, or any other type of file.
+  - Metadata contains information about what the data is, how it is used, the object size, and so on.
+  - An object’s key is its **unique identifier**.
+
+#### Amazon S3
+
+- Amazon Simple Storage Service (Amazon S3) is a service that provides **object-level storage**. Amazon S3 stores data as objects in **buckets**.
+
+- <mark>The maximum file size for an object in Amazon S3 is **5 TB**</mark>.
+
+#### Amazon S3 storage classes
+
+- S3 Standard
+  - Designed for **frequently accessed** data
+  - Stores data in a minimum of **three Availability Zones**
+- S3 Standard-Infrequent Access (S3 Standard-IA)
+  - Ideal for **infrequently accessed** data
+  - Similar to S3 Standard but has a lower storage price and **higher retrieval price**
+  - store data in a minimum of **three Availability Zones**.
+- S3 One Zone-Infrequent Access (S3 One Zone-IA)
+  - Stores data in a **single Availability Zone**
+  - Has a lower storage price than S3 Standard-IA
+- S3 Intelligent-Tiering
+  - Ideal for data with **unknown or changing access patterns**
+  - Requires a small monthly monitoring and automation fee per object
+  - 30 consecutive days -> move to `S3 Standard-IA` or `S3 Standard`
+- S3 Glacier
+  - Low-cost storage designed for data archiving
+  - Able to retrieve objects within a few minutes to hours
+- S3 Glacier Deep Archive
+  - Lowest-cost object storage class ideal for archiving
+  - Able to retrieve objects within 12 hours
+
+#### AWS EBS vs AWS S3
+
+| AWS EBS | AWS S3 |
+|-------------|------------|
+| up to 16 TB | up to 5 TB |
+| EC2 required | serverless |
+
+### Amazon Elastic File System (Amazon EFS)
+
+- ( 2021-12-12 23:23:42 )
+- File storage
+  - In file storage, multiple clients (such as users, applications, servers, and so on) can access data that is stored in shared file folders.
+- Amazon Elastic File System (Amazon EFS) is a scalable file system used with AWS Cloud services and on-premises resources. As you add and remove files, Amazon EFS grows and shrinks automatically. It can scale on demand to **petabytes** without disrupting applications.
+
+#### AWS EBS vs AWS EFS
+
+| AWS EBS | AWS EFS |
+|-------------|------------|
+| 1 AZ | multiple AZ |
+| attach EC2 | managed service |
+
+- NOTE: think about `NFS over WAN`
+
+### Amazon Relational Database Service (Amazon RDS)
+
+- ( 2021-12-12 23:29:53 )
+- Amazon Relational Database Service (Amazon RDS) is a service that enables you to run relational databases in the AWS Cloud.
+- Amazon RDS is a **managed service** that automates tasks such as hardware provisioning, database setup, patching, and backups.
+- Amazon RDS is available on six database engines:
+  - Amazon Aurora
+  - PostgreSQL
+  - MySQL
+  - MariaDB
+  - Oracle Database
+  - Microsoft SQL Server
+
+#### Amazon Aurora
+
+- an enterprise-class relational database.
+- It is compatible with MySQL and PostgreSQL relational databases.
+- It is up to **five times faster** than standard MySQL databases and up to **three times faster** than standard PostgreSQL databases.
+- Consider Amazon Aurora if your workloads require **high availability**. It replicates **six copies** of your data across **three Availability Zones** and continuously backs up your data to **Amazon S3**.
+
+### Amazon DynamoDB
+
+- Nonrelational databases are sometimes referred to as **“NoSQL databases”** because they use structures other than rows and columns to organize data. With key-value pairs, data is organized into items (keys), and items have attributes (values).
+
+- Amazon DynamoDB is a key-value database service. It delivers single-digit millisecond performance at any scale.
+  - Serverless
+  - Auto Scaling
+- Scaling up to 10 trillion requests per day
+
+#### Amazon RDS vs Amazon DynamoDB
+
+| AWS RDS | AWS DynamoDB |
+|-------------|------------|
+| Relational (SQL) | Non-Relational (NoSQL) - `key-value` |
+| provision on EC2 | managed service |
+
+- ( 2021-12-12 23:46:29 )
+
+### Amazon Redshift
+
