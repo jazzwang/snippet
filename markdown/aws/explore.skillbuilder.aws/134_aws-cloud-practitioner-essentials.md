@@ -328,6 +328,8 @@ In this module, you will learn how to:
 - File storage
   - In file storage, multiple clients (such as users, applications, servers, and so on) can access data that is stored in shared file folders.
 - Amazon Elastic File System (Amazon EFS) is a scalable file system used with AWS Cloud services and on-premises resources. As you add and remove files, Amazon EFS grows and shrinks automatically. It can scale on demand to **petabytes** without disrupting applications.
+- ( 2021-12-19 23:48:05 )
+- - [Amazon EFS: How it works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html)
 
 #### AWS EBS vs AWS EFS
 
@@ -378,3 +380,167 @@ In this module, you will learn how to:
 
 ### Amazon Redshift
 
+- ( 2021-12-19 22:31:59 )
+- Amazon Redshift is a **data warehousing** service that you can use for big data analytics.
+- In cooperation with Amazon Redshift Spectrum, you can directly run a single SQL query against **exabytes** of unstructured data running in data lakes.
+
+### AWS Database Migration Service (DMS)
+
+- ( 2021-12-19 23:37:21 )
+- AWS Database Migration Service (AWS DMS) enables you to migrate relational databases, nonrelational databases, and other types of data stores.
+
+### Additional database services
+
+- ( 2021-12-19 23:39:42 )
+- **Amazon DocumentDB** is a **document database** service that supports **MongoDB** workloads. (MongoDB is a document database program.)
+- **Amazon Neptune** is a **graph database** service. You can use Amazon Neptune to build and run applications that work with highly connected datasets, such as <mark>recommendation engines, fraud detection, and knowledge graphs</mark>.
+- **Amazon Quantum Ledger Database (Amazon QLDB)** is a ledger database service. You can use Amazon QLDB to review a complete history of all the changes that have been made to your application data.
+- **Amazon Managed Blockchain** is a service that you can use to create and manage blockchain networks with **open-source frameworks**. Blockchain is a distributed ledger system that lets multiple parties run transactions and share data without a central authority.
+- **Amazon ElastiCache** is a service that adds caching layers on top of your databases to help improve the read times of common requests. It supports two types of data stores: **Redis** and **Memcached**.
+- **Amazon DynamoDB Accelerator (DAX)** is an <mark>in-memory cache for DynamoDB</mark>. It helps improve response times from single-digit milliseconds to microseconds.
+
+### Additional resources
+
+- [Cloud Storage on AWS](https://aws.amazon.com/products/storage)
+- [AWS Storage Blog](https://aws.amazon.com/blogs/storage/)
+- [Hands-On Tutorials: Storage](https://aws.amazon.com/getting-started/hands-on/?awsf.getting-started-category=category%23storage&awsf.getting-started-content-type=content-type%23hands-on)
+- [AWS Customer Stories: Storage](https://aws.amazon.com/solutions/case-studies/?customer-references-cards.sort-by=item.additionalFields.publishedDate&customer-references-cards.sort-order=desc&awsf.customer-references-location=*all&awsf.customer-references-segment=*all&awsf.customer-references-product=product%23vpc%7Cproduct%23api-gateway%7Cproduct%23cloudfront%7Cproduct%23route53%7Cproduct%23directconnect%7Cproduct%23elb&awsf.customer-references-category=category%23storage)
+- [AWS Database Migration Service](https://aws.amazon.com/dms/)
+- [Databases on AWS](https://aws.amazon.com/products/databases)
+- [Category Deep Dive: Databases](https://aws.amazon.com/getting-started/deep-dive-databases/)
+- [AWS Database Blog](https://aws.amazon.com/blogs/database/)
+- [AWS Customer Stories: Databases](https://aws.amazon.com/solutions/case-studies/?customer-references-cards.sort-by=item.additionalFields.publishedDate&customer-references-cards.sort-order=desc&awsf.customer-references-location=*all&awsf.customer-references-segment=*all&awsf.customer-references-product=product%23vpc%7Cproduct%23api-gateway%7Cproduct%23cloudfront%7Cproduct%23route53%7Cproduct%23directconnect%7Cproduct%23elb&awsf.customer-references-category=category%23databases)
+
+## Module 6: Security
+
+- Explain the benefits of the shared responsibility model.
+- Describe multi-factor authentication (MFA).
+- Differentiate between the AWS Identity and Access Management (IAM) security levels.
+- Explain the main benefits of AWS Organizations.
+- Describe security policies at a basic level.
+- Summarize the benefits of compliance with AWS.
+- Explain additional AWS security services at a basic level.
+
+### Shared responsibility model
+
+- customer responsibilities - “security in the cloud” - homeowner
+- AWS responsibilities - “security of the cloud” - homebuilder
+
+![](https://assets.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1639933200/NNsIt-0m45WY040i2hOBFA/tincan/31d9c0cca79c54bdceaf3e938fd424e97c98c7e8/assets/sIlyltjk4kwKozZ1_eyqltDSWURM2V1xC.png)
+
+### User permissions and access
+
+#### AWS Identity and Access Management (IAM)
+
+- **AWS Identity and Access Management (IAM)** enables you to manage access to AWS services and resources securely.
+
+#### AWS account root user
+
+- When you first create an AWS account, you begin with an identity known as the root user.
+
+#### IAM users
+
+- An IAM user is an **identity** that you create in AWS. It represents the **person** or **application** that interacts with AWS services and resources. It consists of a **name** and **credentials**.
+
+#### IAM policies
+
+- An **IAM policy** is a document that **allows or denies permissions** to AWS services and resources.
+- Best practice: Follow the security principle of **least privilege** when granting permissions.
+
+#### IAM groups
+
+- An IAM group is a **collection of IAM users**.
+
+#### IAM roles
+
+- An IAM role is an identity that you can assume to gain **temporary** access to permissions.
+- Best practice: IAM roles are ideal for situations in which access to services or resources needs to be granted **temporarily**, instead of long-term.
+
+#### Multi-factor authentication (MFA)
+
+- In IAM, multi-factor authentication (MFA) provides an extra layer of security for your AWS account.
+
+### AWS Organizations
+
+- You can use AWS Organizations to consolidate and manage **multiple AWS accounts** within a central location.
+- In AWS Organizations, you can centrally control permissions for the accounts in your organization by using <mark>**[service control policies (SCPs)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)**</mark>.
+- **Consolidated billing** is another feature of AWS Organizations.
+
+#### Organizational units (OUs)
+
+- In AWS Organizations, you can group accounts into organizational units (OUs) to make it easier to manage accounts with similar business or security requirements.
+- In AWS Organizations, you can apply service control policies (SCPs) to the **organization root**, an **individual member account**, or an **OU**.
+
+### Compliance
+
+#### AWS Artifact
+
+- [AWS Artifact](https://aws.amazon.com/artifact) is a service that provides on-demand access to AWS security and compliance reports and select online agreements.
+- AWS Artifact consists of two main sections:
+  - AWS Artifact Agreements
+    - Different types of agreements are offered to address the needs of customers who are subject to specific regulations, such as the **Health Insurance Portability and Accountability Act (HIPAA)**.
+  - AWS Artifact Reports.
+    - AWS Artifact Reports provide **compliance reports from third-party auditors**.
+
+![](https://assets.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1639933200/NNsIt-0m45WY040i2hOBFA/tincan/31d9c0cca79c54bdceaf3e938fd424e97c98c7e8/assets/MqGHDcunFO8FzCGV_qiguS0QgqBrh0ktF.jpg)
+
+#### Customer Compliance Center
+
+- The [Customer Compliance Center](https://aws.amazon.com/compliance/customer-center/) contains resources to help you learn more about AWS compliance.
+
+### Denial-of-service attacks
+
+- A **denial-of-service (DoS) attack** is a deliberate attempt to make a website or application unavailable to users.
+
+#### Distributed denial-of-service attacks (DDoS)
+
+To help minimize the effect of DoS and DDoS attacks on your applications, you can use [AWS Shield](https://aws.amazon.com/shield).
+
+#### AWS Shield
+
+- ( 2021-12-20 00:29:04 )
+- AWS Shield is a service that protects applications against DDoS attacks.
+- AWS Shield provides two levels of protection:
+  - AWS Shield Standard
+    - automatically protects all AWS customers at no cost. It protects your AWS resources from the most common, frequently occurring types of DDoS attacks.
+  - AWS Shield Advanced
+    - a paid service that provides detailed attack diagnostics and the ability to detect and mitigate sophisticated DDoS attacks.
+    - It also integrates with other services:
+      - Amazon CloudFront
+      - Amazon Route 53
+      - Amazon Elastic Load Balancing (ELB).
+      - [AWS WAF(Web Application Firewall)](https://aws.amazon.com/waf/)
+
+### Additional security services
+
+#### AWS Key Management Service (AWS KMS)
+
+- AWS Key Management Service (AWS KMS) enables you to perform encryption operations through the use of cryptographic keys.
+
+#### AWS WAF (Web Application Firewall)
+
+- AWS WAF is a web application firewall that lets you monitor network requests that come into your web applications.
+- AWS WAF works together with **Amazon CloudFront** and an **Application Load Balancer**.
+- using a <mark>**[web access control list (ACL)](https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html)**</mark> to protect your AWS resources.
+
+#### Amazon Inspector
+
+- Amazon Inspector helps to improve the security and compliance of applications by running automated security assessments. It checks applications for **security vulnerabilities** and deviations from security best practices, such as open access to Amazon EC2 instances and installations of vulnerable software versions.
+- 感覺類似**黑箱掃描**
+
+#### Amazon GuardDuty
+
+- https://aws.amazon.com/guardduty
+- a service that provides **intelligent threat detection** for your AWS infrastructure and resources.
+- GuardDuty then continuously analyzes data from multiple AWS sources, including **VPC Flow Logs** and **DNS logs**.
+
+### Additional resources
+
+- [Security, Identity, and Compliance on AWS](https://aws.amazon.com/products/security)
+- [Whitepaper: Introduction to AWS Security](https://docs.aws.amazon.com/whitepapers/latest/introduction-aws-security/welcome.html)[](https://docs.aws.amazon.com/whitepapers/latest/aws-security-best-practices/know-the-aws-shared-responsibility-model.html)
+- [Whitepaper: Amazon Web Services - Overview of Security Processes](https://docs.aws.amazon.com/whitepapers/latest/aws-overview-security-processes/aws-overview-security-processes.pdf)
+- [AWS Security Blog](https://aws.amazon.com/blogs/security/)
+- [AWS Compliance](https://aws.amazon.com/compliance)
+- [AWS Customer Stories: Security, Identity, and Compliance](https://aws.amazon.com/solutions/case-studies/?customer-references-cards.sort-by=item.additionalFields.publishedDate&customer-references-cards.sort-order=desc&awsf.customer-references-location=*all&awsf.customer-references-segment=*all&awsf.customer-references-product=product%23vpc%7Cproduct%23api-gateway%7Cproduct%23cloudfront%7Cproduct%23route53%7Cproduct%23directconnect%7Cproduct%23elb&awsf.customer-references-category=category%23security-identity-compliance)
+
+- ( 2021-12-20 00:38:42 )
