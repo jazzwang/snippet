@@ -544,3 +544,31 @@ To help minimize the effect of DoS and DDoS attacks on your applications, you ca
 - [AWS Customer Stories: Security, Identity, and Compliance](https://aws.amazon.com/solutions/case-studies/?customer-references-cards.sort-by=item.additionalFields.publishedDate&customer-references-cards.sort-order=desc&awsf.customer-references-location=*all&awsf.customer-references-segment=*all&awsf.customer-references-product=product%23vpc%7Cproduct%23api-gateway%7Cproduct%23cloudfront%7Cproduct%23route53%7Cproduct%23directconnect%7Cproduct%23elb&awsf.customer-references-category=category%23security-identity-compliance)
 
 - ( 2021-12-20 00:38:42 )
+
+## Module 7: Monitoring and Analytics
+
+- Summarize approaches to monitoring your AWS environment.
+- Describe the benefits of Amazon CloudWatch.
+- Describe the benefits of AWS CloudTrail.
+- Describe the benefits of AWS Trusted Advisor.
+
+### Amazon CloudWatch
+
+- Amazon CloudWatch is a web service that enables you to **monitor** and manage various **metrics** and configure **alarm** actions based on data from those metrics.
+
+#### CloudWatch alarms
+
+- With CloudWatch, you can create alarms that automatically **perform actions** if the value of your metric has gone above or below a predefined threshold.
+
+#### CloudWatch dashboard
+
+- The CloudWatch dashboard feature enables you to access all the metrics for your resources from a single location.
+
+### AWS CloudTrail
+
+- AWS CloudTrail records API calls for your account.
+- The recorded information includes:
+  -  the identity of the API caller
+  - the time of the API call
+  - the source IP address of the API caller
+- Events are typically updated in CloudTrail **within 15 minutes after an API call**.
