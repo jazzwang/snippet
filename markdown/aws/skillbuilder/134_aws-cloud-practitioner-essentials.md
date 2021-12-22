@@ -572,3 +572,61 @@ To help minimize the effect of DoS and DDoS attacks on your applications, you ca
   - the time of the API call
   - the source IP address of the API caller
 - Events are typically updated in CloudTrail **within 15 minutes after an API call**.
+
+#### CloudTrail Insights
+
+- ( 2021-12-21 21:56:03 )
+-  CloudTrail Insights.
+  - optional feature allows CloudTrail to automatically **detect unusual API activities** in your AWS account.
+
+### AWS Trusted Advisor
+
+- AWS Trusted Advisor is a web service that inspects your AWS environment and provides real-time recommendations in accordance with AWS best practices.
+- Trusted Advisor compares its findings to AWS best practices in five categories:
+  - cost optimization
+  - performance
+  - security
+  - fault tolerance
+  - service limits
+
+### Additional resources
+
+- [Management and Governance on AWS](https://aws.amazon.com/products/management-tools)
+- [Monitoring and Observability](https://aws.amazon.com/products/management-tools/use-cases/monitoring-and-observability/)
+- [Configuration, Compliance, and Auditing](https://aws.amazon.com/products/management-tools/use-cases/configuration-compliance-and-auditing/)
+- [AWS Management & Governance Blog](https://aws.amazon.com/blogs/mt/)
+- [Whitepaper: AWS Governance at Scale](https://docs.aws.amazon.com/whitepapers/latest/aws-governance-at-scale/introduction.html)
+
+- ( 2021-12-21 21:56:07 )
+
+## Module 8: Pricing and Support.
+
+- ( 2021-12-21 21:58:32 )
+- Describe AWS pricing and support models.
+- Describe the AWS Free Tier.
+- Describe key benefits of AWS Organizations and consolidated billing.
+- Explain the benefits of AWS Budgets.
+- Explain the benefits of AWS Cost Explorer.
+- Explain the primary benefits of the AWS Pricing Calculator.
+- Distinguish between the various AWS Support Plans.
+- Describe the benefits of AWS Marketplace.
+
+### AWS Free Tier
+
+- The AWS Free Tier enables you to begin using certain services without having to worry about incurring costs for the specified period.
+- Three types of offers are available:
+  - Always Free
+    - e.g. AWS Lambda allows 1 million free requests and up to 3.2 million seconds of compute time per month.
+    - e.g. Amazon DynamoDB allows 25 GB of free storage per month.
+  - 12 Months Free
+    - These offers are free for 12 months following **your initial sign-up date** to AWS.
+  - Trials
+    - Short-term free trial offers start from the date you activate a particular service.
+    - e.g. Amazon Inspector offers a **90-day** free trial.
+    - e.g. Amazon Lightsail (a service that enables you to run virtual private servers) offers **750 free hours** of usage over a **30-day** period.
+
+### AWS pricing concepts
+
+- Pay for what you use.
+- Pay less when you reserve.
+- 
