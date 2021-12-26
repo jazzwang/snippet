@@ -629,4 +629,349 @@ To help minimize the effect of DoS and DDoS attacks on your applications, you ca
 
 - Pay for what you use.
 - Pay less when you reserve.
-- 
+- Pay less with volume-based discounts when you use more.
+
+#### AWS pricing examples
+
+- You can save on AWS Lambda costs by signing up for **Compute Savings Plans**.
+- Compute Savings Plans offer lower compute costs in exchange for **committing to a consistent amount of usage** over a 1-year or 3-year term.
+- You can find additional cost savings for Amazon EC2 by considering **Savings Plans** and **Reserved Instances**.
+- For Amazon S3 pricing, consider the following cost components:
+  - Storage
+  - Requests and data retrievals
+  - Data transfer
+  - Management and replication
+
+### Billing dashboard
+
+### Consolidated billing
+
+- AWS Organizations also provides the option for consolidated billing.
+- The consolidated billing feature of AWS Organizations enables you to receive a single bill for all AWS accounts in your organization.
+- The default maximum number of accounts allowed for an organization is **4**.
+- Another benefit of consolidated billing is the ability to share **bulk discount pricing**, **Savings Plans**, and **Reserved Instances** across the accounts in your organization.
+
+### AWS Budgets
+
+- In AWS Budgets, you can create budgets to plan your service usage, service costs, and instance reservations.
+- The information in AWS Budgets **updates three times a day**.
+- This helps you to accurately determine how close your usage is to your budgeted amounts or to **the AWS Free Tier limits**.
+- In AWS Budgets, you can also **set custom alerts** when your usage exceeds (or is forecasted to exceed) the budgeted amount.
+
+### AWS Cost Explorer
+
+- AWS Cost Explorer is a tool that enables you to visualize, understand, and manage your AWS costs and usage over time.
+- AWS Cost Explorer includes a default report of the costs and usage for your **top five cost-accruing AWS services**.
+
+### AWS Support plans
+
+- AWS offers **four different Support plans** to help you troubleshoot issues, lower costs, and efficiently use AWS services.
+  - Basic
+    - limited selection of AWS Trusted Advisor
+    - AWS Personal Health Dashboard
+  - Developer
+    - pay-by-the-month pricing
+    - Client-side diagnostic tools
+  - Business
+    - pay-by-the-month pricing
+    - All AWS Trusted Advisor checks
+  - Enterprise
+    - pay-by-the-month pricing
+    - A Technical Account Manager
+
+#### Technical Account Manager (TAM)
+
+- your primary point of contact at AWS
+
+### AWS Marketplace
+
+- AWS Marketplace is a digital catalog that includes thousands of software listings from independent software vendors.
+
+### Additional resources
+
+- [AWS Pricing](https://aws.amazon.com/pricing)
+- [AWS Free Tier](https://aws.amazon.com/free)
+- [AWS Cost Management](https://aws.amazon.com/aws-cost-management/)
+- [Whitepaper: How AWS Pricing Works](https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/welcome.html)
+- [Whitepaper: Introduction to AWS Economics](https://d1.awsstatic.com/whitepapers/introduction-to-aws-cloud-economics-final.pdf)
+- [AWS Support](https://aws.amazon.com/premiumsupport)
+- [AWS Knowledge Center](https://aws.amazon.com/premiumsupport/knowledge-center/)
+
+- ( 2021-12-24 22:02:48 )
+
+## Module 9: Migration and Innovation
+
+- ( 2021-12-24 22:03:06 )
+- Understand migration and innovation in the AWS Cloud.
+- Summarize the AWS Cloud Adoption Framework (AWS CAF).
+- Summarize the six key factors of a cloud migration strategy.
+- Describe the benefits of AWS data migration solutions, such as AWS Snowcone, AWS Snowball, and AWS Snowmobile.
+- Summarize the broad scope of innovative solutions that AWS offers.
+
+### AWS Cloud Adoption Framework (AWS CAF)
+
+- ( 2021-12-26 11:42:14 )
+- [Whitepaper: An Overview of the AWS Cloud Adoption Framework](https://d1.awsstatic.com/whitepapers/aws_cloud_adoption_framework.pdf)
+
+#### Six core perspectives of the Cloud Adoption Framework
+
+- In general, the **Business**, **People**, and **Governance** Perspectives focus on **business** capabilities, whereas the **Platform**, **Security**, and **Operations** Perspectives focus on **technical** capabilities.
+
+##### Business Perspective
+
+Common roles in the Business Perspective include:
+
+- Business managers
+- Finance managers
+- Budget owners
+- Strategy stakeholders
+
+##### People Perspective
+
+Common roles in the People Perspective include:
+
+- Human resources
+- Staffing
+- People managers
+
+##### Governance Perspective
+
+Common roles in the Governance Perspective include:
+
+- Chief Information Officer (CIO)
+- Program managers
+- Enterprise architects
+- Business analysts
+- Portfolio managers
+
+##### Platform Perspective
+
+Common roles in the Platform Perspective include:
+
+- Chief Technology Officer (CTO)
+- IT managers
+- Solutions architects
+
+##### Security Perspective
+
+Common roles in the Security Perspective include:
+
+- Chief Information Security Officer (CISO)
+- IT security managers
+- IT security analysts
+
+##### Operations Perspective
+
+Common roles in the Operations Perspective include:
+
+- IT operations managers
+- IT support managers
+
+### Migration strategies
+
+#### 6 strategies for migration (6R)
+
+##### Rehosting
+
+- lift-and-shift
+- Rehosting also known as “lift-and-shift” involves moving applications without changes.
+
+##### Replatforming
+
+- Replatforming, also known as “lift, tinker, and shift,” involves making a few cloud optimizations to realize a tangible benefit.
+
+##### Refactoring/re-architecting
+
+- Refactoring (also known as re-architecting) involves reimagining how an application is architected and developed by using cloud-native features.
+
+##### Repurchasing
+
+- Repurchasing involves moving from a traditional license to a software-as-a-service model.
+
+##### Retaining
+
+- Retaining consists of keeping applications that are critical for the business in the source environment.
+
+##### Retiring
+
+- Retiring is the process of removing applications that are no longer needed.
+
+### AWS Snow Family (`Edge Computing ??`)
+
+- The AWS Snow Family is a collection of physical devices that help to physically transport up to exabytes of data into and out of AWS.
+
+- AWS Snow Family is composed of **AWS Snowcone**, **AWS Snowball**, and **AWS Snowmobile**.
+
+#### AWS Snowcone
+
+- a small, rugged, and secure edge computing and data transfer device.
+- It features 2 CPUs, 4 GB of memory, and 8 TB of usable storage.
+
+#### AWS Snowball
+
+- **Snowball Edge Storage Optimized**
+  - suited for **large-scale data migrations** and recurring transfer workflows, in addition to local computing with higher capacity needs.
+  - **Storage: 80 TB** of hard disk drive (HDD) capacity for block volumes and Amazon S3 compatible object storage, and 1 TB of SATA solid state drive (SSD) for block volumes.
+  - **Compute: 40 vCPUs, and 80 GiB of memory** to support Amazon EC2 sbe1 instances (equivalent to C5).
+- **Snowball Edge Compute Optimized**
+  - **powerful computing resources** for use cases such as machine learning, full motion video analysis, analytics, and local computing stacks.
+  - **Storage: 42-TB** usable HDD capacity for Amazon S3 compatible object storage or Amazon EBS compatible block volumes and 7.68 TB of usable NVMe SSD capacity for Amazon EBS compatible block volumes.
+  - **Compute: 52 vCPUs, 208 GiB of memory**, and an optional **NVIDIA Tesla V100 GPU.** Devices run Amazon EC2 sbe-c and sbe-g instances, which are equivalent to C5, M5a, G3, and P3 instances.
+
+#### AWS Snowmobile
+
+- an exabyte-scale data transfer service used to move large amounts of data to AWS.
+- You can transfer up to **100 petabytes (PB)** of data per Snowmobile, a 45-foot long ruggedized shipping container, pulled by a semi trailer truck.
+
+### Innovation with AWS
+
+#### Serverless applications
+
+- **AWS Lambda**
+- Building your architecture with serverless applications enables your developers to focus on their core product instead of managing and operating servers.
+
+#### Artificial intelligence (AI)
+
+- Convert speech to text with **Amazon Transcribe**.
+- Discover patterns in text with **Amazon Comprehend**.
+- Identify potentially fraudulent online activities with **Amazon Fraud Detector**.
+- Build voice and text chatbots with **Amazon Lex**.
+
+#### Machine learning (ML)
+
+AWS offers **Amazon SageMaker** to remove the difficult work from the process and empower you to build, train, and deploy ML models quickly.
+
+### Additional resources
+
+- [Migration & Transfer on AWS](https://aws.amazon.com/products/migration-and-transfer)
+- [A Process for Mass Migrations to the Cloud](https://aws.amazon.com/blogs/enterprise-strategy/214-2/)
+- [6 Strategies for Migrating Applications to the Cloud](https://aws.amazon.com/blogs/enterprise-strategy/6-strategies-for-migrating-applications-to-the-cloud/)
+- [AWS Cloud Adoption Framework](https://aws.amazon.com/professional-services/CAF/)
+- [AWS Fundamentals: Core Concepts](https://aws.amazon.com/getting-started/fundamentals-core-concepts/)
+- [AWS Cloud Enterprise Strategy Blog](https://aws.amazon.com/blogs/enterprise-strategy/)
+- [Modernizing with AWS Blog](https://aws.amazon.com/blogs/modernizing-with-aws/)
+- [AWS Customer Stories: Data Center Migration](https://aws.amazon.com/solutions/case-studies/?customer-references-cards.sort-by=item.additionalFields.publishedDate&customer-references-cards.sort-order=desc&awsf.customer-references-location=*all&awsf.customer-references-segment=*all&awsf.customer-references-product=product%23vpc%7Cproduct%23api-gateway%7Cproduct%23cloudfront%7Cproduct%23route53%7Cproduct%23directconnect%7Cproduct%23elb&awsf.customer-references-category=category%23datacenter-migration)
+
+## Module 10: The Cloud Journey
+
+- ( 2021-12-26 12:16:07 )
+
+In this module, you will learn how to:
+
+- Summarize the five pillars of the Well-Architected Framework.
+- Explain the six benefits of cloud computing.
+
+### The AWS Well-Architected Framework
+
+The **AWS Well-Architected Framework** helps you understand how to design and operate reliable, secure, efficient, and cost-effective systems in the AWS Cloud.
+
+- [Whitepaper: AWS Well-Architected Framework](https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf)
+
+The Well-Architected Framework is based on five pillars:
+
+- Operational excellence
+- Security
+- Reliability
+- Performance efficiency
+- Cost optimization
+
+#### Operational excellence
+
+Operational excellence is the ability to run and monitor systems to deliver business value and to continually improve supporting processes and procedures.
+
+Design principles for operational excellence in the cloud include
+  - performing operations as code
+  - annotating documentation
+  - anticipating failure
+  - frequently making small, reversible changes.
+
+#### Security
+
+The Security pillar is the ability to protect information, systems, and assets while delivering business value through risk assessments and mitigation strategies.
+
+When considering the security of your architecture, apply these best practices:
+
+- Automate security best practices when possible.
+- Apply security at all layers.
+- Protect data in transit and at rest.
+
+#### Reliability
+
+Reliability is the ability of a system to do the following:
+
+- Recover from infrastructure or service disruptions
+- Dynamically acquire computing resources to meet demand
+- Mitigate disruptions such as misconfigurations or transient network issues
+
+Reliability includes
+  - testing recovery procedures
+  - scaling horizontally to increase aggregate system availability
+  - automatically recovering from failure.
+
+#### Performance efficiency
+
+Performance efficiency is the ability to use computing resources efficiently to meet system requirements and to maintain that efficiency as demand changes and technologies evolve.
+
+Evaluating the performance efficiency of your architecture includes
+- experimenting more often
+- using serverless architectures
+- designing systems to be able to go global in minutes.
+
+#### Cost optimization
+
+Cost optimization is the ability to run systems to deliver business value at the lowest price point.
+
+Cost optimization includes
+- adopting a consumption model
+- analyzing and attributing expenditure
+- using managed services to reduce the cost of ownership.
+
+### Benefits of the AWS Cloud
+
+six advantages of cloud computing:
+
+- Trade upfront expense for variable expense.
+- Benefit from massive economies of scale.
+- Stop guessing capacity.
+- Increase speed and agility.
+- Stop spending money running and maintaining data centers.
+- Go global in minutes.
+
+## Module 11:  AWS Certified Cloud Practitioner Basics
+
+### Exam domains
+
+- Domain 1: Cloud Concepts	26%
+- Domain 2: Security and Compliance	25%
+- Domain 3: Technology	33%
+- Domain 4: Billing and Pricing	16%
+
+### Recommended experience
+
+- <mark>[Exam Guide](https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf)</mark>
+
+- [AWS Certified Cloud Practitioner website](https://aws.amazon.com/certification/certified-cloud-practitioner/)
+- You are encouraged to read the information in the [Exam Guide](https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf) as part of your preparation for the exam.
+
+### Exam details
+
+The AWS Certified Cloud Practitioner exam consists of **65 questions** to be completed in **90 minutes**. The minimum passing score is **70%**.
+
+Two types of questions are included on the exam: **multiple choice** and **multiple response**.
+
+- A multiple-choice question has **one correct response** and three incorrect responses, or distractors.
+- A multiple-response question has two or more correct responses out of five or more options.
+
+On the exam, there is **no penalty for guessing**. Any questions that you do not answer are scored as incorrect. If you are not sure of what the correct answer is, it’s always best for you to guess instead of leaving any questions unanswered.
+
+### Exam strategies
+
+- Read the full question.
+- Predict the answer before reviewing the response options.
+- Eliminate incorrect response options.
+
+### Sample questions
+
+- https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Sample-Questions.pdf
+
+- ( 2021-12-26 15:20:23 )
