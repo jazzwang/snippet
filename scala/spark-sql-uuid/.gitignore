@@ -1,0 +1,36 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/scala,sbt,metals
+# Edit at https://www.toptal.com/developers/gitignore?templates=scala,sbt,metals
+
+### Metals ###
+.metals/
+.bloop/
+project/metals.sbt
+
+# Created by https://www.toptal.com/developers/gitignore/api/scala,sbt
+# Edit at https://www.toptal.com/developers/gitignore?templates=scala,sbt
+
+### SBT ###
+# Simple Build Tool
+# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
+
+dist/*
+target/
+lib_managed/
+src_managed/
+project/build.properties
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+
+### Scala ###
+*.class
+*.log
+
+# End of https://www.toptal.com/developers/gitignore/api/scala,sbt
+
+### Spark Shell ##
+
+metastore_db
