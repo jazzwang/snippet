@@ -17,6 +17,7 @@ dist/*
 target/
 lib_managed/
 src_managed/
+project/build.properties
 project/boot/
 project/plugins/project/
 .history
