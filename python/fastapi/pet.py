@@ -10,6 +10,6 @@ class Pet(BaseModel):
 
 app = FastAPI()
 
-@app.post("/pet/")
+@app.post("/pet")
 async def create_pet(pet: Pet):
     return pet

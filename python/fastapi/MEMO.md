@@ -155,3 +155,49 @@ test_main.py .                                                            [100%]
 
 =============================== 1 passed in 0.60s ===============================
 ```
+- ( 2022-05-19 21:42:40 )
+- 測試 POST request
+```
+~/git/snippet/python/fastapi$ cat test_pet.py
+from fastapi.testclient import TestClient
+
+from pet import app
+
+client = TestClient(app)
+
+def test_add_pet():
+  response = client.post(
+      "/pet",
+      headers={ "accept": "application/json", "Content-Type": "application/json" },
+      json={ "id": 0, "name": "doggie", "status": "available" }
+  )
+  assert response.status_code == 200
+  assert response.json() == { "id": 0, "name": "doggie", "status": "available" }
+  EOF
+  ~/git/snippet/python/fastapi$ pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.8.9, pytest-7.1.2, pluggy-1.0.0
+rootdir: /Users/jazzwang/git/snippet/python/fastapi
+plugins: anyio-3.6.1
+collected 2 items
+
+test_main.py .                                                           [ 50%]
+test_pet.py .                                                            [100%]
+
+============================== 2 passed in 0.80s ===============================
+```
+- 注意：結尾的反斜線也有差。
+```diff
+diff --git a/python/fastapi/MEMO.md b/python/fastapi/MEMO.md
+index 8c8736f..5a34c9a 100644
+--- a/python/fastapi/MEMO.md
++++ b/python/fastapi/MEMO.md
+@@ -54,7 +54,7 @@ class Pet(BaseModel):
+
+ app = FastAPI()
+
+-@app.post("/pet/")
++@app.post("/pet")
+ async def create_pet(pet: Pet):
+     return pet
+```
