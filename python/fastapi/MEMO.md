@@ -113,3 +113,45 @@ curl -X 'POST' \
  date: Tue,17 May 2022 16:24:45 GMT
  server: uvicorn
 ```
+
+## 2022-05-19
+
+- ( 2022-05-19 12:50:28 )
+- Q: `contract first` vs `implement first`? 目前看起來 FastAPI 的基本邏輯是 `implement first`，若要走 `contract first` 只能用 openapi-generator？
+- A:
+  - https://github.com/tiangolo/fastapi/issues/519 - 2019 年九月討論過
+  - code generator (if following `contract first`/`spec first`)
+    - https://github.com/koxudaxi/fastapi-code-generator
+      - https://pypi.org/project/fastapi-code-generator/
+    - https://github.com/dmontagu/fastapi_client
+    - **https://openapi-generator.tech/docs/generators/python-fastapi**
+
+- ( 2022-05-19 13:10:44 )
+- https://fastapi.tiangolo.com/tutorial/testing/
+- Q: 怎麼做單元測試 Unit Test？
+- A: 搭配 [pytest](https://docs.pytest.org/)
+- ( 2022-05-19 21:11:48 )
+```
+~/git/snippet/python/fastapi$ pip install pytest
+~/git/snippet/python/fastapi$ cat > test_main.py << EOF
+from fastapi.testclient import TestClient
+
+from main import app
+client = TestClient(app)
+
+def test_read_main():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message":"Hello World"}
+EOF
+~/git/snippet/python/fastapi$ pytest
+============================== test session starts ==============================
+platform darwin -- Python 3.8.9, pytest-7.1.2, pluggy-1.0.0
+rootdir: /Users/jazzwang/git/snippet/python/fastapi
+plugins: anyio-3.6.1
+collected 1 item
+
+test_main.py .                                                            [100%]
+
+=============================== 1 passed in 0.60s ===============================
+```
