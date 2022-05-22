@@ -33,3 +33,33 @@
 
 - ( 2022-05-20 15:24:18 )
 - https://docs.xlwings.org/en/stable/quickstart.html
+- ( 2022-05-21 00:56:45 )
+- 安裝 `xlwings` 跟 `matplotlib`
+```bash
+jazzwang:~/git/snippet/python/xlwings$ source ~/venv/bin/activate
+(venv) jazzwang:~/git/snippet/python/xlwings$ pip3 install xlwings matplotlib
+(venv) jazzwang:~/git/snippet/python/xlwings$ xlwings addin install
+
+xlwings version: 0.27.7
+Successfully installed the xlwings add-in! Please restart Excel.
+Successfully enabled RunPython!
+```
+- 使用 ipython 來做互動式操作
+```
+(venv) jazzwang:~/git/snippet/python/xlwings$ ipython3
+Python 3.8.9 (default, Oct 26 2021, 07:25:54)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.3.0 -- An enhanced Interactive Python. Type '?' for help.
+```
+```python
+import xlwings as xw
+app = xw.App()
+wb = app.books.add()
+sheet = wb.sheets['Sheet1']
+sheet.range('A1').value = [['Foo 1', 'Foo 2', 'Foo 3'], [10.0, 20.0, 30.0]]
+import matplotlib.pyplot as plt
+fig = plt.figure()
+plt.plot([1, 2, 3, 4, 5])
+sheet.pictures.add(fig, name='MyPlot', top=100, left=100, update=True)
+wb.save("sample.xlsx")
+```
