@@ -1,5 +1,7 @@
 # MEMO
 
+[TOC]
+
 ## 緣起
 
 - 工作上有需求讀 Excel XLSX 檔案，做一些比對。想說拿這個來練練手，維持寫程式的手感。
@@ -30,6 +32,8 @@
   - **UDFs**: Write User Defined Functions (UDFs) in Python (<mark>Windows only</mark>).
 
 ## 練習實作
+
+### 2022-05-21
 
 - ( 2022-05-20 15:24:18 )
 - https://docs.xlwings.org/en/stable/quickstart.html
@@ -62,4 +66,22 @@ fig = plt.figure()
 plt.plot([1, 2, 3, 4, 5])
 sheet.pictures.add(fig, name='MyPlot', top=100, left=100, update=True)
 wb.save("sample.xlsx")
+```
+
+### 2022-05-22
+
+- ( 2022-05-22 11:58:29 )
+- 實驗把 Excel Table 讀成 pandas DataFrame
+- 參考：Pandas Series converter
+  - https://docs.xlwings.org/en/stable/converters.html#pandas-series-converter
+```python
+In [8]: %history
+import pandas as pd
+import xlwings as xw
+sht = xw.sheets.active
+sht
+sht.range('B2').value
+s = sht.range('B2').options(pd.Series, expand='table').value
+s
+%history
 ```
