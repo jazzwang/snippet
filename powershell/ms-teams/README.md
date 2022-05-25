@@ -15,3 +15,7 @@
     Get-Team -User user@domain.com
     ```
 
+## 2022-05-25
+
+- Install Microsoft Teams cmdlet
+- https://www.powershellgallery.com/packages/MicrosoftTeams/
