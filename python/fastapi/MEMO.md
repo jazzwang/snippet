@@ -1,5 +1,7 @@
 # MEMO
 
+[TOC]
+
 ## Development Environment
 
 https://fastapi.tiangolo.com/tutorial
@@ -200,4 +202,72 @@ index 8c8736f..5a34c9a 100644
 +@app.post("/pet")
  async def create_pet(pet: Pet):
      return pet
+```
+
+## 2022-05-30
+
+- ( 2022-05-30 23:57:18 )
+- Handling Errors
+- https://fastapi.tiangolo.com/tutorial/handling-errors/
+```bash
+~/git/snippet/python/fastapi$ cat > pet2.py << EOF
+from typing import Union
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+import random
+
+class Pet(BaseModel):
+    id: int
+    name: str
+    status: str
+
+app = FastAPI()
+
+@app.post("/pet")
+async def create_pet(pet: Pet):
+    if pet.id == 0:
+        pet.id = random.randint(10^9, 10^10-1)
+        return pet
+    else:
+        raise HTTPException(status_code=405)
+EOF
+```
+- run the server
+```bash
+(venv) jazzwang:~/git/snippet/python/fastapi$ uvicorn pet2:app --reload
+```
+- test the server
+```bash
+jazzwang:~/git/snippet/python/fastapi$ curl -X 'POST' -v  \
+  'http://127.0.0.1:8000/pet' \
+   -H 'accept: application/json' \
+   -H 'Content-Type: application/json'  \
+   -d '{
+    "id": 1,
+    "name": "string",
+    "status": "string"
+  }'
+
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 127.0.0.1...
+* TCP_NODELAY set
+* Connected to 127.0.0.1 (127.0.0.1) port 8000 (#0)
+> POST /pet HTTP/1.1
+> Host: 127.0.0.1:8000
+> User-Agent: curl/7.64.1
+> accept: application/json
+> Content-Type: application/json
+> Content-Length: 63
+>
+* upload completely sent off: 63 out of 63 bytes
+< HTTP/1.1 405 Method Not Allowed
+< date: Mon, 30 May 2022 16:12:37 GMT
+< server: uvicorn
+< content-length: 31
+< content-type: application/json
+<
+* Connection #0 to host 127.0.0.1 left intact
+{"detail":"Method Not Allowed"}* Closing connection 0
 ```
