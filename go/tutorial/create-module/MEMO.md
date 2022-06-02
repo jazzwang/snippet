@@ -270,6 +270,60 @@ func randomFormat() string {
 }
 EOF
 ```
+- ( 2022-06-03 00:21:42 )
+- <mark>觀念點：小寫開頭的函數，只能在自己的 package 中使用</mark>
+```
+Note that randomFormat starts with a lowercase letter,
+making it accessible only to code in its own package (in other words, it's not exported).
+```
+- ( 2022-06-03 00:25:28 )
+- <mark>觀念點：括號沒有宣告 slice 大小時，代表 slice 下的 arrary 是可以動態改變的</mark>
+```
+When declaring a slice, you omit its size in the brackets, like this: []string.
+This tells Go that the size of the array underlying the slice can be dynamically changed.
+```
+- ( 2022-06-03 00:27:04 )
+- modify `hello/hello.go`
+```
+~/git/snippet/go/tutorial/create-module/hello$ cat > hello.go << EOF
+package main
+
+import (
+    "fmt"
+    "log"
+
+    "example.com/greetings"
+)
+
+func main() {
+    // Set properties of the predefined Logger, including
+    // the log entry prefix and a flag to disable printing
+    // the time, source file, and line number.
+    log.SetPrefix("greetings: ")
+    log.SetFlags(0)
+
+    // Request a greeting message.
+    message, err := greetings.Hello("Gladys")
+    // If an error was returned, print it to the console and
+    // exit the program.
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // If no error was returned, print the returned message
+    // to the console.
+    fmt.Println(message)
+}
+EOF
+```
+- ( 2022-06-03 00:28:22 )
+- run `hello.go`
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ go run .
+Great to see you, Gladys!
+~/git/snippet/go/tutorial/create-module/hello$ go run .
+Hi, Gladys. Welcome!
+```
 
 ## 延伸閱讀
 
@@ -300,7 +354,7 @@ After you run the command, the go.mod file in the hello directory should include
 ```
 For more on version numbers, see Module version numbering.
 ```
-- https://go.dev/doc/effective_go.html#multiple-returns - Effective Go
+- https://go.dev/doc/effective_go.html#multiple-returns - Effective Go - 關於回傳多個值
 ```
 Any Go function can return multiple values. For more, see Effective Go.
 ```
@@ -311,4 +365,8 @@ Any Go function can return multiple values. For more, see Effective Go.
 ```
 A slice is like an array, except that its size changes dynamically as you add and remove items.
 For more on slices, see Go slices in the Go blog.
+```
+- https://go.dev/doc/effective_go.html#init - Effective Go - 關於 module 的 init() 函數
+```
+For more about init functions, see Effective Go.
 ```
