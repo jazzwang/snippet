@@ -1,5 +1,6 @@
 # Learning Notes
 
+- A Tour of Go
 - https://go.dev/tour/list
 
 ## 2022-06-01
@@ -9,4 +10,4 @@
 ## 2022-06-02
 
 - ( 2022-06-02 10:49:31 )
-- 
+-
