@@ -146,7 +146,130 @@ Hi, Gladys. Welcome!
 
 - ( 2022-06-03 00:01:15 )
 - https://go.dev/doc/tutorial/handle-errors
+- ( 2022-06-03 00:05:40 )
+- modify the context of `greetings.go` and add error handling
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ cd ../greetings/
+~/git/snippet/go/tutorial/create-module/greetings$ cat > greetings.go << EOF
+package greetings
 
+import (
+    "errors"
+    "fmt"
+)
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+    // If no name was given, return an error with a message.
+    if name == "" {
+        return "", errors.New("empty name")
+    }
+
+    // If a name was received, return a value that embeds the name
+    // in a greeting message.
+    message := fmt.Sprintf("Hi, %v. Welcome!", name)
+    return message, nil
+}
+EOF
+```
+- ( 2022-06-03 00:09:32 )
+- NOTE: since the `greetings.go`, it might change the version in `go.mod`
+- 好奇點：這段比較像刻意產生了新版本的 greeting module，看後面是否可以觀察到版本變化
+- ( 2022-06-03 00:11:06 )
+- modify `hello/hello.go` to add error handling and `log`
+```bash
+~/git/snippet/go/tutorial/create-module/greetings$ cd ../hello
+~/git/snippet/go/tutorial/create-module/hello$ cat > hello.go << EOF
+package main
+
+import (
+    "fmt"
+    "log"
+
+    "example.com/greetings"
+)
+
+func main() {
+    // Set properties of the predefined Logger, including
+    // the log entry prefix and a flag to disable printing
+    // the time, source file, and line number.
+    log.SetPrefix("greetings: ")
+    log.SetFlags(0)
+
+    // Request a greeting message.
+    message, err := greetings.Hello("")
+    // If an error was returned, print it to the console and
+    // exit the program.
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // If no error was returned, print the returned message
+    // to the console.
+    fmt.Println(message)
+}
+EOF
+```
+- ( 2022-06-03 00:13:57 )
+- run `hello.go`
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ go run .
+greetings: empty name
+exit status 1
+```
+
+### Return a random greeting
+
+- ( 2022-06-03 00:16:45 )
+```
+A slice is like an array, except that its size changes dynamically as you add and remove items.
+The slice is one of Go's most useful types.
+```
+- ( 2022-06-03 00:18:05 )
+- modify `greetings/greetings.go` to add `math/rand` and `time`
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ cat > ../greetings/greetings.go << EOF
+package greetings
+
+import (
+    "errors"
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+    // If no name was given, return an error with a message.
+    if name == "" {
+        return name, errors.New("empty name")
+    }
+    // Create a message using a random format.
+    message := fmt.Sprintf(randomFormat(), name)
+    return message, nil
+}
+
+// init sets initial values for variables used in the function.
+func init() {
+    rand.Seed(time.Now().UnixNano())
+}
+
+// randomFormat returns one of a set of greeting messages. The returned
+// message is selected at random.
+func randomFormat() string {
+    // A slice of message formats.
+    formats := []string{
+        "Hi, %v. Welcome!",
+        "Great to see you, %v!",
+        "Hail, %v! Well met!",
+    }
+
+    // Return a randomly selected message format by specifying
+    // a random index for the slice of formats.
+    return formats[rand.Intn(len(formats))]
+}
+EOF
+```
 
 ## 延伸閱讀
 
@@ -176,4 +299,16 @@ After you run the command, the go.mod file in the hello directory should include
 - https://go.dev/doc/modules/version-numbers - 關於 module 版本號碼
 ```
 For more on version numbers, see Module version numbering.
+```
+- https://go.dev/doc/effective_go.html#multiple-returns - Effective Go
+```
+Any Go function can return multiple values. For more, see Effective Go.
+```
+- https://pkg.go.dev/errors/#example-New - `errors.New` function
+- https://pkg.go.dev/log/ - `log` package
+- https://pkg.go.dev/log?tab=doc#Fatal - `log` package's `Fatal` function
+- https://blog.golang.org/slices-intro - 關於 `Go slice`
+```
+A slice is like an array, except that its size changes dynamically as you add and remove items.
+For more on slices, see Go slices in the Go blog.
 ```
