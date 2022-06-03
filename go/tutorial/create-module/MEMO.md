@@ -460,6 +460,53 @@ map[Darrin:Hi, Darrin. Welcome! Gladys:Great to see you, Gladys! Samantha:Hail, 
 It also introduced the idea of preserving backward compatibility by implementing a new function for new or changed functionality in a module.
 ```
 
+### Add a test
+
+- ( 2022-06-03 22:58:46 )
+- https://go.dev/doc/tutorial/add-a-test
+
+- ( 2022-06-03 23:01:30 )
+- 觀念點：Go 內建單元測試 unit test，只要靠 命名規則 `<name>_test.go` 跟 `go test` 指令
+```
+Go's built-in support for unit testing makes it easier to test as you go.
+Specifically, using naming conventions, Go's testing package,
+and the go test command, you can quickly write and execute tests.
+```
+- ( 2022-06-03 23:01:35 )
+- create `greetings/greetings_test.go`
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ code ../greetings/greetings_test.go
+```
+- <mark>問題：特殊字元 "`" 代表意義？</mark>
+- ( 2022-06-03 23:06:58 )
+- run `go test`
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ cd ../greetings/
+~/git/snippet/go/tutorial/create-module/greetings$ go test
+PASS
+ok  	example.com/greetings	0.007s
+```
+- ( 2022-06-03 23:22:22 )
+- <mark>觀念點：`go test` 會執行名稱為 `Test` 開頭的測試函數</mark>
+```
+The go test command executes test functions
+(whose names begin with Test) in test files
+(whose names end with _test.go).
+You can add the -v flag to get verbose output
+that lists all of the tests and their results.
+```
+- ( 2022-06-03 23:28:39 )
+- <mark>小技巧：`go test -v` 會列出詳細測試名稱與結果</mark>
+```
+~/git/snippet/go/tutorial/create-module/greetings$ go test -v
+=== RUN   TestHelloName
+--- PASS: TestHelloName (0.00s)
+=== RUN   TestHelloEmpty
+--- PASS: TestHelloEmpty (0.00s)
+PASS
+ok  	example.com/greetings	0.009s
+```
+
 ## 延伸閱讀
 
 以下是 Tutorial 文件中提到的連結：
@@ -519,3 +566,6 @@ For more, see The blank identifier in Effective Go.
 For more about backward compatibility,
 see Keeping your modules compatible.
 ```
+- https://pkg.go.dev/testing/#T - `testing` package's `testing.T` type
+- https://pkg.go.dev/testing/#T.Fatalf - `t` parameter's `Fatalf` method
+- https://go.dev/cmd/go/#hdr-Test_packages - `go test` 指令
