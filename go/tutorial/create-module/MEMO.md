@@ -507,6 +507,46 @@ PASS
 ok  	example.com/greetings	0.009s
 ```
 
+### Compile and install the application
+
+- ( 2022-06-03 23:36:27 )
+- https://go.dev/doc/tutorial/compile-install
+
+- ( 2022-06-03 23:38:07 )
+- test `go build` command
+```
+~/git/snippet/go/tutorial/create-module/greetings$ cd ../hello/
+~/git/snippet/go/tutorial/create-module/hello$ go build
+~/git/snippet/go/tutorial/create-module/hello$ tree
+.
+├── go.mod
+├── hello
+└── hello.go
+
+0 directories, 3 files
+~/git/snippet/go/tutorial/create-module/hello$ ./hello
+map[Darrin:Hail, Darrin! Well met! Gladys:Great to see you, Gladys! Samantha:Hi, Samantha. Welcome!]
+```
+- ( 2022-06-03 23:41:47 )
+- test `go list` command
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ go list -f '{{.Target}}'
+/Users/jazzwang/go/bin/hello
+```
+- test `go env` command
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ go env -w GOBIN=~/bin
+~/git/snippet/go/tutorial/create-module/hello$ go list -f '{{.Target}}'
+/Users/jazzwang/bin/hello
+```
+- ( 2022-06-03 23:43:08 )
+- test `go install` command
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ go install
+~/git/snippet/go/tutorial/create-module/hello$ hello
+map[Darrin:Hi, Darrin. Welcome! Gladys:Hi, Gladys. Welcome! Samantha:Great to see you, Samantha!]
+```
+
 ## 延伸閱讀
 
 以下是 Tutorial 文件中提到的連結：
@@ -569,3 +609,7 @@ see Keeping your modules compatible.
 - https://pkg.go.dev/testing/#T - `testing` package's `testing.T` type
 - https://pkg.go.dev/testing/#T.Fatalf - `t` parameter's `Fatalf` method
 - https://go.dev/cmd/go/#hdr-Test_packages - `go test` 指令
+- https://go.dev/cmd/go/#hdr-Compile_packages_and_dependencies - `go build` 指令
+- https://go.dev/ref/mod#go-install - `go install` 指令
+- https://go.dev/cmd/go/#hdr-List_packages_or_modules - `go list` 指令
+- https://go.dev/cmd/go/#hdr-Print_Go_environment_information - `go env` 指令
