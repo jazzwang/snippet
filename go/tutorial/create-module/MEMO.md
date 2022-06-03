@@ -119,7 +119,7 @@ go: found example.com/greetings in example.com/greetings v0.0.0-00010101000000-0
 0 directories, 2 files
 ```
 - ( 2022-06-02 23:53:44 )
-- NOTE: `go mod tidy` did not create `go.sum`. It modifies `go.`mod` instead.
+- NOTE: `go mod tidy` did not create `go.sum`. It modifies `go.mod` instead.
 ```bash
 ~/git/snippet/go/tutorial/create-module/hello$ cat go.mod
 module example.com/hello
@@ -132,7 +132,7 @@ require example.com/greetings v0.0.0-00010101000000-000000000000
 ```
 - ( 2022-06-02 23:56:58 )
 - 觀念點：[`require` directive](https://go.dev/doc/modules/gomod-ref#require)
-- 觀念點：對於已發佈(published)的 module，就會根據網路上的版本號碼
+- <mark>觀念點：對於已發佈(published)的 module，就會根據網路上的版本號碼</mark>
 ```
 To reference a published module, a go.mod file would typically omit the replace directive
 and use a require directive with a tagged version number at the end.
@@ -325,6 +325,141 @@ Great to see you, Gladys!
 Hi, Gladys. Welcome!
 ```
 
+### Return greetings for multiple people
+
+- ( 2022-06-03 00:32:17 )
+- https://go.dev/doc/tutorial/greetings-multiple-people
+
+- ( 2022-06-03 22:31:28 )
+- modify `greetings/greetings.go`
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ cat > ../greetings/greetings.go << EOF
+package greetings
+
+import (
+    "errors"
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+// Hello returns a greeting for the named person.
+func Hello(name string) (string, error) {
+    // If no name was given, return an error with a message.
+    if name == "" {
+        return name, errors.New("empty name")
+    }
+    // Create a message using a random format.
+    message := fmt.Sprintf(randomFormat(), name)
+    return message, nil
+}
+
+// Hellos returns a map that associates each of the named people
+// with a greeting message.
+func Hellos(names []string) (map[string]string, error) {
+    // A map to associate names with messages.
+    messages := make(map[string]string)
+    // Loop through the received slice of names, calling
+    // the Hello function to get a message for each name.
+    for _, name := range names {
+        message, err := Hello(name)
+        if err != nil {
+            return nil, err
+        }
+        // In the map, associate the retrieved message with
+        // the name.
+        messages[name] = message
+    }
+    return messages, nil
+}
+
+// Init sets initial values for variables used in the function.
+func init() {
+    rand.Seed(time.Now().UnixNano())
+}
+
+// randomFormat returns one of a set of greeting messages. The returned
+// message is selected at random.
+func randomFormat() string {
+    // A slice of message formats.
+    formats := []string{
+        "Hi, %v. Welcome!",
+        "Great to see you, %v!",
+        "Hail, %v! Well met!",
+    }
+
+    // Return one of the message formats selected at random.
+    return formats[rand.Intn(len(formats))]
+}
+EOF
+```
+- ( 2022-06-03 22:39:33 )
+- <mark>觀念點：這段比較難的地方是 map，初始化的語法是 `make(map[key-type]value-type)`</mark>
+```
+In Go, you initialize a map with the following syntax: make(map[key-type]value-type).
+```
+- ( 2022-06-03 22:44:05 )
+- <mark>觀念點：第二個比較特別的地方是 for loop 回傳 range 的 index 跟 value</mark>
+```
+In this for loop, range returns two values:
+the index of the current item in the loop
+and a copy of the item's value.
+```
+- 理解：每次從 `names` 拿出一個 map，索引 index 給 `_`，值 value 給 `name`
+```go
+for _, name := range names {
+```
+- 觀念點：這裡用的 `_` 是指 `Go blank identifier (an underscore)`，用於「忽略」(跟 Scala 的 `_` 有點不同)
+```
+You don't need the index,
+so you use the Go blank identifier (an underscore) to ignore it.
+```
+- ( 2022-06-03 22:51:36 )
+- modify `hello/hello.go`
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ cat > hello.go << EOF
+package main
+
+import (
+    "fmt"
+    "log"
+
+    "example.com/greetings"
+)
+
+func main() {
+    // Set properties of the predefined Logger, including
+    // the log entry prefix and a flag to disable printing
+    // the time, source file, and line number.
+    log.SetPrefix("greetings: ")
+    log.SetFlags(0)
+
+    // A slice of names.
+    names := []string{"Gladys", "Samantha", "Darrin"}
+
+    // Request greeting messages for the names.
+    messages, err := greetings.Hellos(names)
+    if err != nil {
+        log.Fatal(err)
+    }
+    // If no error was returned, print the returned map of
+    // messages to the console.
+    fmt.Println(messages)
+}
+EOF
+```
+- ( 2022-06-03 22:52:48 )
+- execute with `go run .`
+```bash
+~/git/snippet/go/tutorial/create-module/hello$ go run .
+map[Darrin:Hi, Darrin. Welcome! Gladys:Great to see you, Gladys! Samantha:Hail, Samantha! Well met!]
+```
+- ( 2022-06-03 22:54:31 )
+- 觀念點：這段展示了怎麼相容於舊版
+```
+It also introduced the idea of preserving backward compatibility by implementing a new function for new or changed functionality in a module.
+```
+
 ## 延伸閱讀
 
 以下是 Tutorial 文件中提到的連結：
@@ -363,10 +498,24 @@ Any Go function can return multiple values. For more, see Effective Go.
 - https://pkg.go.dev/log?tab=doc#Fatal - `log` package's `Fatal` function
 - https://blog.golang.org/slices-intro - 關於 `Go slice`
 ```
-A slice is like an array, except that its size changes dynamically as you add and remove items.
+A slice is like an array,
+except that its size changes dynamically as you add and remove items.
 For more on slices, see Go slices in the Go blog.
 ```
 - https://go.dev/doc/effective_go.html#init - Effective Go - 關於 module 的 init() 函數
 ```
 For more about init functions, see Effective Go.
+```
+- https://blog.golang.org/maps - Go 語言的 map 型態
+```
+For more about maps, see Go maps in action on the Go blog.
+```
+- https://go.dev/doc/effective_go.html#blank - 關於 `The blank identifier`
+```
+For more, see The blank identifier in Effective Go.
+```
+- https://blog.golang.org/module-compatibility - Keeping your modules compatible.
+```
+For more about backward compatibility,
+see Keeping your modules compatible.
 ```
