@@ -3,6 +3,8 @@
 - A Tour of Go
 - https://go.dev/tour/list
 
+[TOC]
+
 ## 2022-06-01
 
 - https://go.dev/tour/welcome/1
@@ -12,7 +14,7 @@
 - ( 2022-06-05 20:53:33 )
 - https://go.dev/tour/basics/1
 
-### Packages
+### Packages, variables, and functions.
 
 - ( 2022-06-05 20:54:50 )
 ```bash
@@ -374,9 +376,599 @@ func main() {
 }
 ```
 
+### Flow control statements: for, if, else, switch and defer
+
+- ( 2022-06-05 22:05:06 )
+- for 迴圈
+- 注意：for 沒有用 parentheses 括號把條件包起來，而且 braces 大括號 是**必要的**！
+```
+Note: Unlike other languages like C, Java, or JavaScript
+there are no parentheses surrounding the three components of the for statement
+and the braces { } are always required.
+```
+```go
+package main
+
+import "fmt"
+
+func main() {
+	sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+	fmt.Println(sum)
+}
+```
+- ( 2022-06-05 22:08:50 )
+- for 迴圈的初始條件與結束條件可以忽略
+```go
+package main
+
+import "fmt"
+
+func main() {
+	sum := 1
+	for ; sum < 1000; {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+```
+- ( 2022-06-05 22:13:11 )
+- 拿掉上個範例的分號，Go 的 `for` 等同 C 語法的 `while`
+```go
+package main
+
+import "fmt"
+
+func main() {
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+```
+- ( 2022-06-05 22:14:58 )
+- 無窮迴圈
+```go
+package main
+
+func main() {
+	for {
+	}
+}
+```
+- ( 2022-06-05 22:16:19 )
+- `if` 宣告跟 `for` 一樣，沒有用 parentheses 括號把條件包起來，而且 braces 大括號 是**必要的**！
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func sqrt(x float64) string {
+	if x < 0 {
+		return sqrt(-x) + "i"
+	}
+	return fmt.Sprint(math.Sqrt(x))
+}
+
+func main() {
+	fmt.Println(sqrt(2), sqrt(-4))
+}
+```
+- ( 2022-06-05 22:17:42 )
+- `if` 可以用一個短的宣告 short statement 開始，分號後再接條件 condition
+- 備註：短宣告內的變數只存在 `if` 條件
+```
+Variables declared by the statement are only in scope until the end of the if.
+```
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func pow(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
+	}
+	return lim
+}
+
+func main() {
+	fmt.Println(
+		pow(3, 2, 10),
+		pow(3, 3, 20),
+	)
+}
+```
+- ( 2022-06-05 22:22:27 )
+- `if` 與 `else` 可以共用短宣告中的變數
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func pow(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
+	} else {
+		fmt.Printf("%g >= %g\n", v, lim)
+	}
+	// can't use v here, though
+	return lim
+}
+
+func main() {
+	fmt.Println(
+		pow(3, 2, 10),
+		pow(3, 3, 20),
+	)
+}
+```
+- 備忘：這個範例說明了一些執行的順序：
+	- pow(3, 2, 10) 回傳 9
+	- pow(3, 3, 20) 先列印 "27 >= 20" 再回傳 20
+	- fmt.Println( 9, 20, ) 印出 90 20
+- ( 2022-06-05 22:30:04 )
+- Exercise: Loops and Functions
+- 十分逼近法 =  Newton's method 牛頓法
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func Sqrt(x float64) float64 {
+	z := float64(1)
+	for i :=1; i <= 10 ; i++ {
+	  z -= (z*z - x) / (2*z)
+	}
+	return z
+}
+
+func main() {
+	fmt.Println(Sqrt(2))
+	fmt.Println(math.Sqrt(2))
+}
+```
+- ( 2022-06-05 22:40:06 )
+- `switch` 表示式 statement
+	- 差異：不必用 `break`
+	- 差異：不必是常數，也不必是整數
+```go
+package main
+
+import (
+	"fmt"
+	"runtime"
+)
+
+func main() {
+	fmt.Print("Go runs on ")
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.\n", os)
+	}
+}
+```
+- ( 2022-06-05 22:46:31 )
+- Switch evaluation order
+- `switch` 從上而下逐一判斷是否符合條件，直到判斷是成立為止。
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	fmt.Println("When's Saturday?")
+	today := time.Now().Weekday()
+	switch time.Saturday {
+	case today + 0:
+		fmt.Println("Today.")
+	case today + 1:
+		fmt.Println("Tomorrow.")
+	case today + 2:
+		fmt.Println("In two days.")
+	default:
+		fmt.Println("Too far away.")
+	}
+}
+```
+- ( 2022-06-05 22:49:10 )
+- 如果 `switch` 沒給變數，等同 `switch true`
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+}
+```
+- ( 2022-06-05 22:50:21 )
+- Defer 推遲
+```
+A defer statement defers the execution of a function until the surrounding function returns.
+```
+```go
+package main
+
+import "fmt"
+
+func main() {
+	defer fmt.Println("world")
+
+	fmt.Println("hello")
+}
+```
+- ( 2022-06-05 22:52:02 )
+- Stacking defers
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
+}
+```
+
+### More types: structs, slices, and maps.
+
+- ( 2022-06-05 22:53:02 )
+- Pointers - 這段跟 C 比較接近
+- Pointer 的 zero value 是 `nil`
+	The type `*T` is a pointer to a `T` value. Its zero value is `nil`.
+	```
+	var p *int
+	```
+-	The `&` operator generates a pointer to its operand (操作數).
+	```
+	i := 42
+	p = &i
+	```
+-	The `*` operator denotes the pointer's underlying value.
+	```
+	fmt.Println(*p) // read i through the pointer p
+	*p = 21         // set i through the pointer p
+	```
+-	This is known as "dereferencing" or "indirecting".
+
+```
+Unlike C, Go has no pointer arithmetic.
+```
+```go
+package main
+
+import "fmt"
+
+func main() {
+	i, j := 42, 2701
+
+	p := &i         // point to i
+	fmt.Println(*p) // read i through the pointer
+	*p = 21         // set i through the pointer
+	fmt.Println(i)  // see the new value of i
+
+	p = &j         // point to j
+	*p = *p / 37   // divide j through the pointer
+	fmt.Println(j) // see the new value of j
+}
+```
+- ( 2022-06-05 23:12:24 )
+- structs 結構
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	X int
+	Y int
+}
+
+func main() {
+	fmt.Println(Vertex{1, 2})
+}
+```
+- 感想：`golang` 不是物件導向，所以多數結構都用 `struct`
+- ( 2022-06-05 23:12:59 )
+- 用 dot (.) 存取 struct 的欄位
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	X int
+	Y int
+}
+
+func main() {
+	v := Vertex{1, 2}
+	v.X = 4
+	fmt.Println(v.X)
+}
+```
+- ( 2022-06-05 23:15:01 )
+- Pointers to structs
+- 這裡說明了一個「特例」，`(*p).X` 可以簡化成 `p.X`
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	X int
+	Y int
+}
+
+func main() {
+	v := Vertex{1, 2}
+	p := &v
+	p.X = 1e9
+	fmt.Println(v)
+}
+```
+- ( 2022-06-05 23:19:03 )
+- Struct Literals
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	X, Y int
+}
+
+var (
+	v1 = Vertex{1, 2}  // has type Vertex
+	v2 = Vertex{X: 1}  // Y:0 is implicit
+	v3 = Vertex{}      // X:0 and Y:0
+	p  = &Vertex{1, 2} // has type *Vertex
+)
+
+func main() {
+	fmt.Println(v1, p, v2, v3)
+}
+```
+- ( 2022-06-05 23:21:18 )
+- Array 陣列
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a [2]string
+	a[0] = "Hello"
+	a[1] = "World"
+	fmt.Println(a[0], a[1])
+	fmt.Println(a)
+
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+	fmt.Println(primes)
+}
+```
+- 注意：陣列不可以變更大小。arrays cannot be resized.
+- ( 2022-06-05 23:24:46 )
+- Slices
+	- An array has a **fixed size**.
+	- A slice, on the other hand, is a **dynamically-sized**, flexible view into the elements of an array.
+	- In practice, slices are much more common than arrays.
+- ( 2022-06-05 23:26:24 )
+```go
+a[low : high]
+```
+- This selects a half-open range which **includes the first element**, but **excludes the last one**.
+```go
+package main
+
+import "fmt"
+
+func main() {
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+
+	var s []int = primes[1:4] // includes primes element 1,2,3
+	fmt.Println(s)
+}
+```
+- ( 2022-06-05 23:29:20 )
+- Slices are like references to arrays
+- A slice **does not store any data**, it just describes a section of an underlying array.
+```go
+package main
+
+import "fmt"
+
+func main() {
+	names := [4]string{
+		"John",
+		"Paul",
+		"George",
+		"Ringo",
+	}
+	fmt.Println(names)
+
+	a := names[0:2]
+	b := names[1:3]
+	fmt.Println(a, b)
+
+	b[0] = "XXX"
+	fmt.Println(a, b)
+	fmt.Println(names)
+}
+```
+```bash
+~/git/snippet/go/tour$ go run slices-pointers.go
+[John Paul George Ringo]
+[John Paul] [Paul George]
+[John XXX] [XXX George]
+[John XXX George Ringo]
+```
+- ( 2022-06-05 23:32:44 )
+- Slice literals
+	- A slice literal is like an array literal **without the length**.
+```go
+package main
+
+import "fmt"
+
+func main() {
+	q := []int{2, 3, 5, 7, 11, 13}
+	fmt.Println(q)
+
+	r := []bool{true, false, true, true, false, true}
+	fmt.Println(r)
+
+	s := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{3, false},
+		{5, true},
+		{7, true},
+		{11, false},
+		{13, true},
+	}
+	fmt.Println(s)
+}
+```
+- ( 2022-06-05 23:34:23 )
+- Slice defaults
+```go
+package main
+
+import "fmt"
+
+func main() {
+	s := []int{2, 3, 5, 7, 11, 13}
+
+	s = s[1:4]
+	fmt.Println(s)
+
+	s = s[:2]
+	fmt.Println(s)
+
+	s = s[1:]
+	fmt.Println(s)
+}
+```
+- ( 2022-06-05 23:39:20 )
+- Slice length and capacity
+```go
+package main
+
+import "fmt"
+
+func main() {
+	s := []int{2, 3, 5, 7, 11, 13}
+	printSlice(s)
+
+	// Slice the slice to give it zero length.
+	s = s[:0]
+	printSlice(s)
+
+	// Extend its length.
+	s = s[:4]
+	printSlice(s)
+
+	// Drop its first two values.
+	s = s[2:]
+	printSlice(s)
+}
+
+func printSlice(s []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+```
+- ( 2022-06-05 23:44:15 )
+- Nil Slices
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var s []int
+	fmt.Println(s, len(s), cap(s))
+	if s == nil {
+		fmt.Println("nil!")
+	}
+}
+```
+- ( 2022-06-05 23:48:12 )
+- Creating a slice with make
+```go
+package main
+
+import "fmt"
+
+func main() {
+	a := make([]int, 5)
+	printSlice("a", a)
+
+	b := make([]int, 0, 5)
+	printSlice("b", b)
+
+	c := b[:2]
+	printSlice("c", c)
+
+	d := c[2:5]
+	printSlice("d", d)
+}
+
+func printSlice(s string, x []int) {
+	fmt.Printf("%s len=%d cap=%d %v\n",
+		s, len(x), cap(x), x)
+}
+```
+
+
 ## 延伸閱讀
 
 以下是 Tour 文件中提到的連結：
 
+- https://pkg.go.dev/cmd/gofmt - `Gofmt` formats Go programs.
 - https://go.dev/pkg/math/rand/#Seed - To see a different number, seed the number generator; see `rand.Seed`.
 - https://blog.golang.org/gos-declaration-syntax - For more about why types look the way they do, see `the article on Go's declaration syntax`.
+- https://go.dev/blog/defer-panic-and-recover - To learn more about `defer` statements read this blog post.
