@@ -962,6 +962,88 @@ func printSlice(s string, x []int) {
 		s, len(x), cap(x), x)
 }
 ```
+- ( 2022-06-06 10:50:10 )
+- Slices of slices
+	- Slices can contain <mark>any type</mark>, including other slices.
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	// Create a tic-tac-toe board.
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+
+	// The players take turns.
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
+}
+```
+- ( 2022-06-06 10:50:56 )
+- Appending to a slice
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var s []int
+	printSlice(s)
+
+	// append works on nil slices.
+	s = append(s, 0)
+	printSlice(s)
+
+	// The slice grows as needed.
+	s = append(s, 1)
+	printSlice(s)
+
+	// We can add more than one element at a time.
+	s = append(s, 2, 3, 4)
+	printSlice(s)
+}
+
+func printSlice(s []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+```
+- ( 2022-06-06 10:55:30 )
+- Range
+	- The `range` form of the `for` loop iterates over a slice or map.
+	- When ranging over a slice, two values are returned for each iteration.
+	- The first is `the index`, and the second is a copy of `the element` at that index.
+- ( 2022-06-06 11:06:05 )
+```go
+package main
+
+import "fmt"
+
+func main() {
+	pow := make([]int, 10)
+	for i := range pow {
+		pow[i] = 1 << uint(i) // == 2**i
+	}
+	for _, value := range pow {
+		fmt.Printf("%d\n", value)
+	}
+}
+```
+- ( 2022-06-06 11:07:25 )
+- Exercise: Slices
 
 
 ## 延伸閱讀
@@ -972,3 +1054,5 @@ func printSlice(s string, x []int) {
 - https://go.dev/pkg/math/rand/#Seed - To see a different number, seed the number generator; see `rand.Seed`.
 - https://blog.golang.org/gos-declaration-syntax - For more about why types look the way they do, see `the article on Go's declaration syntax`.
 - https://go.dev/blog/defer-panic-and-recover - To learn more about `defer` statements read this blog post.
+- https://go.dev/pkg/builtin/#append - Go provides a built-in append function to append new elements to a slice
+- https://go.dev/blog/go-slices-usage-and-internals - To learn more about slices, read the `Slices: usage and internals` article.
