@@ -1042,9 +1042,389 @@ func main() {
 	}
 }
 ```
-- ( 2022-06-06 11:07:25 )
-- Exercise: Slices
 
+## 2022-06-12
+
+- ( 2022-06-12 17:38:54 )
+- Exercise: Slices
+```go
+package main
+
+import "golang.org/x/tour/pic"
+
+func Pic(dx, dy int) [][]uint8 {
+	ss := make([][]uint8, dy)
+	for y := 0; y < dy; y++ {
+		s := make([]uint8, dx)
+		for x := 0; x < dx; x++ {
+			s[x] = uint8((x + y) / 2)
+		}
+		ss[y] = s
+	}
+	return ss
+}
+
+func main() {
+	pic.Show(Pic)
+}
+
+// Example from https://pkg.go.dev/golang.org/x/tour/pic#example-Show
+```
+- ( 2022-06-12 17:40:19 )
+- Maps
+	- A map maps keys to values.
+	- The zero value of a map is `nil`
+	- The `make` function returns a map of the given type, initialized and ready for use.
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	Lat, Long float64
+}
+
+var m map[string]Vertex
+
+func main() {
+	m = make(map[string]Vertex)
+	m["Bell Labs"] = Vertex{
+		40.68433, -74.39967,
+	}
+	fmt.Println(m["Bell Labs"])
+}
+```
+```bash
+~/git/snippet/go/tour$ go run maps.go
+{40.68433 -74.39967}
+```
+- ( 2022-06-12 17:42:37 )
+- Map literals
+	- Map literals are like struct literals, but <mark>the keys are required</mark>.
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	Lat, Long float64
+}
+
+var m = map[string]Vertex{
+	"Bell Labs": Vertex{
+		40.68433, -74.39967,
+	},
+	"Google": Vertex{
+		37.42202, -122.08408,
+	},
+}
+
+func main() {
+	fmt.Println(m)
+}
+```
+```bash
+~/git/snippet/go/tour$ go run maps-literals.go
+map[Bell Labs:{40.68433 -74.39967} Google:{37.42202 -122.08408}]
+```
+- ( 2022-06-12 17:45:44 )
+- If the top-level type is just a type name, you can omit it from the elements of the literal.
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	Lat, Long float64
+}
+
+var m = map[string]Vertex{
+	"Bell Labs": {40.68433, -74.39967},
+	"Google":    {37.42202, -122.08408},
+}
+
+func main() {
+	fmt.Println(m)
+}
+```
+```bash
+~/git/snippet/go/tour$ go run maps-literals-continued.go
+map[Bell Labs:{40.68433 -74.39967} Google:{37.42202 -122.08408}]
+```
+- ( 2022-06-12 17:49:34 )
+- Mutating Maps
+	- Insert or update an element in map `m`: `m[key] = elem`
+	- Retrieve an element: `elem = m[key]`
+	- Delete an element: `delete(m, key)`
+	- Test that a key is present with a two-value assignment: `elem, ok = m[key]`
+		- If `key` is in `m`, `ok` is `true`.
+		- If not, `ok` is `false`.
+```go
+package main
+
+import "fmt"
+
+func main() {
+	m := make(map[string]int)
+
+	m["Answer"] = 42
+	fmt.Println("The value:", m["Answer"])
+
+	m["Answer"] = 48
+	fmt.Println("The value:", m["Answer"])
+
+	delete(m, "Answer")
+	fmt.Println("The value:", m["Answer"])
+
+	v, ok := m["Answer"]
+	fmt.Println("The value:", v, "Present?", ok)
+}
+```
+```bash
+~/git/snippet/go/tour$ go run mutating-maps.go
+The value: 42
+The value: 48
+The value: 0
+The value: 0 Present? false
+```
+- ( 2022-06-12 17:53:26 )
+- https://pkg.go.dev/strings#Fields
+- ( 2022-06-12 22:03:34 )
+- install Golang REPL
+```bash
+## Install Golang REPL `gore`
+~/git/snippet/go/tour$ go install github.com/x-motemen/gore/cmd/gore@latest
+## For autocompletion
+~/git/snippet/go/tour$ go install github.com/mdempsky/gocode
+```
+- ( 2022-06-12 22:03:52 )
+- test with `gore`
+```bash
+~/git/snippet/go/tour$ gore -autoimport
+gore version 0.5.5  :help for help
+gore> :import strings
+gore> :doc strings.Fields
+gore> s := "I am learning Go!"
+"I am learning Go!"
+gore> w := strings.Fields(s)
+[]string{
+  "I",
+  "am",
+  "learning",
+  "Go!",
+}
+gore> w[0]
+"I"
+gore> w[1]
+"am"
+gore> m := make(map[string]int)
+map[string]int{}
+gore> v, ok := m[w[0]]
+0
+false
+gore> i := 0
+0
+gore> m[w[i]]
+0
+gore> i++
+gore> m[w[i]] ++
+gore> m
+map[string]int{
+  "am": 1,
+}
+gore> :print
+package main
+
+import (
+    "strings"
+
+    "github.com/k0kubun/pp/v3"
+)
+
+func __gore_p(xs ...interface{}) {
+    for _, x := range xs {
+        pp.Println(x)
+    }
+}
+func main() {
+    s := "I am learning Go!"
+    w := strings.Fields(s)
+    m := make(map[string]int)
+    v, ok := m[w[0]]
+    i := 0
+    i++
+    m[w[i]]++
+    for i := 0; i < len(w); i++ {
+        m[w[i]]++
+    }
+}
+```
+```go
+package main
+
+import (
+	"strings"
+
+	"golang.org/x/tour/wc"
+)
+
+func WordCount(s string) map[string]int {
+	m := make(map[string]int)
+	w := strings.Fields(s)
+	for i := 0; i < len(w); i++ {
+		m[w[i]]++
+	}
+	return m
+}
+
+func main() {
+	wc.Test(WordCount)
+}
+```
+- ( 2022-06-12 22:35:26 )
+```bash
+~/git/snippet/go/tour$ go run exercise-maps.go
+PASS
+ f("I am learning Go!") =
+  map[string]int{"Go!":1, "I":1, "am":1, "learning":1}
+PASS
+ f("The quick brown fox jumped over the lazy dog.") =
+  map[string]int{"The":1, "brown":1, "dog.":1, "fox":1, "jumped":1, "lazy":1, "over":1, "quick":1, "the":1}
+PASS
+ f("I ate a donut. Then I ate another donut.") =
+  map[string]int{"I":2, "Then":1, "a":1, "another":1, "ate":2, "donut.":2}
+PASS
+ f("A man a plan a canal panama.") =
+  map[string]int{"A":1, "a":2, "canal":1, "man":1, "panama.":1, "plan":1}
+```
+- ( 2022-06-12 22:35:43 )
+- Function values
+	- 觀念：有點類似 C 的 function pointer
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+func main() {
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
+
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
+}
+```
+```bash
+~/git/snippet/go/tour$ go run function-values.go
+13
+5
+81
+```
+- ( 2022-06-12 22:38:59 )
+- Function closures
+	- Go functions may be closures.
+	- <mark>A closure is a function value that references variables from outside its body.</mark>
+```go
+package main
+
+import "fmt"
+
+func adder() func(int) int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
+
+func main() {
+	pos, neg := adder(), adder()
+	for i := 0; i < 10; i++ {
+		fmt.Println(
+			pos(i),
+			neg(-2*i),
+		)
+	}
+}
+```
+```bash
+~/git/snippet/go/tour$ go run function-closures.go
+0 0
+1 -2
+3 -6
+6 -12
+10 -20
+15 -30
+21 -42
+28 -56
+36 -72
+45 -90
+```
+- ( 2022-06-12 23:06:31 )
+- Exercise: Fibonacci closure
+```go
+package main
+
+import "fmt"
+
+// fibonacci is a function that returns
+// a function that returns an int.
+func fibonacci() func(int) int {
+	fn1 := 0
+	fn2 := 0
+	sum := 0
+	return func(x int) int {
+		if x == 0 {
+			return 0
+		} else if x == 1 {
+			fn1 = 1
+			return 1
+		} else {
+			sum = fn1 + fn2
+			fmt.Printf("// %d = %d + %d\n", sum, fn1, fn2)
+			fn2 = fn1
+			fn1 = sum
+			return sum
+		}
+	}
+}
+
+func main() {
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f(i))
+	}
+}
+```
+- ( 2022-06-12 23:34:48 )
+```bash
+~/git/snippet/go/tour$ go run excercise-fibonacci-closure.go
+0
+1
+1
+// 2 = 1 + 1
+2
+// 3 = 2 + 1
+3
+// 5 = 3 + 2
+5
+// 8 = 5 + 3
+8
+// 13 = 8 + 5
+13
+// 21 = 13 + 8
+21
+// 34 = 21 + 13
+34
+```
 
 ## 延伸閱讀
 
