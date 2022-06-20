@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: recordings
+      MYSQL_USER: sample
+      MYSQL_PASSWORD: CHANGME
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306

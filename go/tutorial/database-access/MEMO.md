@@ -212,8 +212,110 @@ func addAlbum(alb Album) (int64, error) {
 ```
 - ( 2022-06-20 22:21:52 )
 - test on GCP Cloud Shell with MySQL docker running
+- https://shell.cloud.google.com/?show=ide%2Cterminal
 ```bash
+~/snippet/go/tutorial/database-access$ cloudshell open-workspace .
+~/snippet/go/tutorial/database-access$ cloudshell edit docker-compose.yml
+```
+- ( 2022-06-20 22:30:06 )
+```docker
+version: '2'
 
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: recordings
+      MYSQL_USER: sample
+      MYSQL_PASSWORD: CHANGME
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+```
+```bash
+~/snippet/go/tutorial/database-access$ docker-compose up -d
+~/snippet/go/tutorial/database-access$ docker-compose exec mysql /bin/bash
+root@0b2e7f9f3435:/# mysql -u sample -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.38 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database recordings;
+ERROR 1007 (HY000): Can't create database 'recordings'; database exists
+
+mysql> use recordings;
+Database changed
+
+mysql> DROP TABLE IF EXISTS album;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> CREATE TABLE album (
+    ->   id         INT AUTO_INCREMENT NOT NULL,
+    ->   title      VARCHAR(128) NOT NULL,
+    ->   artist     VARCHAR(255) NOT NULL,
+    ->   price      DECIMAL(5,2) NOT NULL,
+    ->   PRIMARY KEY (`id`)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql> INSERT INTO album
+    ->   (title, artist, price)
+    -> VALUES
+    ->   ('Blue Train', 'John Coltrane', 56.99),
+    ->   ('Giant Steps', 'John Coltrane', 63.99),
+    ->   ('Jeru', 'Gerry Mulligan', 17.99),
+    ->   ('Sarah Vaughan', 'Sarah Vaughan', 34.98);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from album;
++----+---------------+----------------+-------+
+| id | title         | artist         | price |
++----+---------------+----------------+-------+
+|  1 | Blue Train    | John Coltrane  | 56.99 |
+|  2 | Giant Steps   | John Coltrane  | 63.99 |
+|  3 | Jeru          | Gerry Mulligan | 17.99 |
+|  4 | Sarah Vaughan | Sarah Vaughan  | 34.98 |
++----+---------------+----------------+-------+
+4 rows in set (0.01 sec)
+
+mysql> quit
+Bye
+root@0b2e7f9f3435:/# exit
+exit
+
+~/snippet/go/tutorial/database-access$ 
+~/snippet/go/tutorial/database-access$ go get .
+go: downloading github.com/go-sql-driver/mysql v1.6.0
+go: added github.com/go-sql-driver/mysql v1.6.0
+
+~/snippet/go/tutorial/database-access$ export DBUSER=sample
+~/snippet/go/tutorial/database-access$ export DBPASS=CHANGME
+
+~/snippet/go/tutorial/database-access$ go run .
+[mysql] 2022/06/20 14:38:35 connector.go:95: could not use requested auth plugin 'mysql_native_password': this user requires mysql native password authentication.
+2022/06/20 14:38:35 this user requires mysql native password authentication.
+exit status 1
+
+~/snippet/go/tutorial/database-access$ docker ps -a
+CONTAINER ID   IMAGE       COMMAND                  CREATED              STATUS              PORTS                               NAMES
+8f0483590b79   mysql:5.7   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3306->3306/tcp, 33060/tcp   database-access_mysql_1
+~/snippet/go/tutorial/database-access$ mysql -u sample -p
+Enter password:
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
 ```
 
 ## References
