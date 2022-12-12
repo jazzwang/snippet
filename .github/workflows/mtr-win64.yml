@@ -1,6 +1,5 @@
 name: Build MTR Win64 binary
 
-## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
 
 on:
   workflow_dispatch:
@@ -12,9 +11,10 @@ on:
 
 jobs:
   build:
-
+    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
     runs-on: windows-latest
-    if:  ${{ inputs.print_tags }}
+    ## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
+    if:  ${{ inputs.tags }}
     steps:
       - name: Print the input tag to STDOUT
         run: echo  The tags are ${{ inputs.tags }}
