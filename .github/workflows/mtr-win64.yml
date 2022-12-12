@@ -1,0 +1,20 @@
+name: Build MTR Win64 binary
+
+## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
+
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    if:  ${{ inputs.print_tags }}
+    steps:
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.tags }}
