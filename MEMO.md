@@ -22,3 +22,30 @@ Testing Github Actions and build DEB/RPM packages and win64 executables
 >  ```
 >
 >  [Learn more about this action in textbook/git-checkout-submodule-action](https://github.com/textbook/git-checkout-submodule-action)
+
+## 2022-12-15
+
+- ( 2022-12-15 11:08:10 )
+- Q: How to store `secrets` in Github Actions?
+- https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository
+- https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md
+- AWS credentials?
+- https://github.com/aws-actions/configure-aws-credentials
+- GitHub Action workflows to deploy to Azure
+- https://github.com/Azure/actions-workflow-samples
+
+## 2022-12-29
+
+- ( 2022-12-29 14:16:47 )
+- Q: Does Github Action support cron job?
+- https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+- https://docs.getnacelle.com/deployment/scheduled-builds-github-actions.html
+```yaml
+# .github/workflows/scheduled-builds.yml
+name: Trigger Site Rebuild on a CRON Schedule
+
+on:
+  schedule:
+    # Runs "at minute 55 past every hour" (see https://crontab.guru)
+    - cron: '55 * * * *'
+```
