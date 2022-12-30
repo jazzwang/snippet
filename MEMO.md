@@ -49,3 +49,17 @@ on:
     # Runs "at minute 55 past every hour" (see https://crontab.guru)
     - cron: '55 * * * *'
 ```
+
+## 2022-12-30
+
+- ( 2022-12-30 09:13:01 )
+- https://github.com/actions/setup-python#caching-packages-dependencies
+```yaml
+steps:
+- uses: actions/checkout@v3
+- uses: actions/setup-python@v4
+  with:
+    python-version: '3.9'
+    cache: 'pip' # caching pip dependencies
+- run: pip install -r requirements.txt
+```
