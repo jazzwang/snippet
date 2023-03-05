@@ -4,19 +4,19 @@
 
 ## Execution
 
-```
+```bash
 sbt run
 ```
 
 ## Clean up
 
-```
+```bash
 sbt distclean
 ```
 
 ## Results
 
-```
+```bash
 cat yellow_v*.txt
 
 root
@@ -420,7 +420,7 @@ td
 ## 2021-04-10
 
 - Q: spark-shell 到底 import 了哪些類別呢？
-```
+```bash
 ~$ spark-shell
 21/04/10 16:41:34 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Setting default log level to "WARN".
@@ -454,13 +454,13 @@ scala> :imports
 ### Schema v1
 
 - 觀察資料分布狀況:
-```
+```bash
 ~/git/snippet/scala/nyc-taxi-schema$ sbt console
 
 scala> :paste
 ```
 - 貼上程式碼
-```
+```scala
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.SparkSession
 val spark = SparkSession.builder.master("local[*]").getOrCreate
@@ -852,7 +852,7 @@ for (i <- df1.columns)
 
 ## 2021-04-09
 
-```
+```scala
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.SparkSession
 val spark = SparkSession.builder.appName("Spark Example").master("local[*]").config("spark.eventLog.enabled","true").config("spark.eventLog.dir", "/tmp/spark-history").getOrCreate
