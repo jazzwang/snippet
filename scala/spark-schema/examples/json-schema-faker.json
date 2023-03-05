@@ -1,0 +1,237 @@
+{
+  "reporting_entity_name": "consequat minim",
+  "reporting_entity_type": "quis eu et aute magna",
+  "last_updated_on": "velit ea sit",
+  "in_network": [
+    {
+      "negotiation_arrangement": "ffs",
+      "name": "voluptate pariatur enim incididunt amet",
+      "billing_code_type": "LOCAL",
+      "billing_code_type_version": "qui",
+      "billing_code": "quis est velit ad",
+      "negotiated_rates": [
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "percentage",
+              "billing_class": "professional",
+              "negotiated_rate": -95913035.70035574,
+              "expiration_date": "Duis",
+              "billing_code_modifier": [
+                "nulla ullamco deserunt",
+                "incididunt in nisi consequat cupidatat",
+                "qui mollit",
+                "enim dolor",
+                "ut adipisicing id"
+              ],
+              "service_code": [
+                "58"
+              ],
+              "additional_information": "reprehenderit deserunt aute aliquip qui"
+            },
+            {
+              "negotiated_type": "derived",
+              "billing_class": "institutional",
+              "negotiated_rate": -1402285.2046697438,
+              "expiration_date": "elit et cillum voluptate",
+              "service_code": [
+                "96"
+              ],
+              "additional_information": "occaecat",
+              "billing_code_modifier": [
+                "sit qui",
+                "non in",
+                "aliqua minim nisi",
+                "dolor cupidatat qui sit",
+                "adipisicing Duis laboris do sed"
+              ]
+            },
+            {
+              "negotiated_type": "fee schedule",
+              "billing_class": "institutional",
+              "negotiated_rate": -22911337.629077315,
+              "expiration_date": "Ut mollit",
+              "billing_code_modifier": [
+                "dolor irure culpa",
+                "deserunt ipsum ea dolor esse"
+              ],
+              "service_code": [
+                "79"
+              ],
+              "additional_information": "in"
+            }
+          ],
+          "provider_groups": [
+            {
+              "npi": [
+                21475349.504029095
+              ],
+              "tin": {
+                "type": "npi",
+                "value": "minim quis consectetur ex"
+              }
+            }
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "fee schedule",
+              "billing_class": "professional",
+              "negotiated_rate": -31306803.741047025,
+              "expiration_date": "enim proident",
+              "service_code": [
+                "CSTM-00",
+                "03",
+                "94",
+                "95",
+                "46"
+              ],
+              "additional_information": "ipsum voluptate exercitation",
+              "billing_code_modifier": [
+                "id"
+              ]
+            }
+          ],
+          "provider_references": [
+            -14667842.846232787,
+            -94707444.30337566,
+            -86944306.3355833,
+            31199304.910565794,
+            -33439638.985393837
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "percentage",
+              "billing_class": "professional",
+              "negotiated_rate": 291258.0267199427,
+              "expiration_date": "nostrud",
+              "billing_code_modifier": [
+                "quis Ut",
+                "incididunt id do",
+                "dolore dolor",
+                "ea ullamco"
+              ],
+              "additional_information": "esse laborum Ut est"
+            },
+            {
+              "negotiated_type": "negotiated",
+              "billing_class": "professional",
+              "negotiated_rate": 83006928.853436,
+              "expiration_date": "voluptate Lorem",
+              "billing_code_modifier": [
+                "nulla occaecat quis esse pariatur",
+                "sit pariatur"
+              ],
+              "additional_information": "occaecat sed non ut",
+              "service_code": [
+                "79",
+                "34",
+                "22"
+              ]
+            },
+            {
+              "negotiated_type": "percentage",
+              "billing_class": "institutional",
+              "negotiated_rate": -12827650.456431568,
+              "expiration_date": "id eiusmod veniam in dolore",
+              "billing_code_modifier": [
+                "dolor tempor nisi",
+                "dolore laboris Lorem in deserunt"
+              ],
+              "service_code": [
+                "65",
+                "54"
+              ]
+            }
+          ],
+          "provider_references": [
+            -67469846.20337985
+          ]
+        }
+      ],
+      "description": "reprehenderit ut",
+      "bundled_codes": [
+        {
+          "billing_code_type": "AP-DRG",
+          "billing_code_type_version": "laborum officia incididunt",
+          "billing_code": "consectetur anim occaecat ullamco reprehenderit",
+          "description": "ex elit aliqua occaecat cupidatat"
+        },
+        {
+          "billing_code_type": "EAPG",
+          "billing_code_type_version": "sunt est",
+          "billing_code": "pariatur",
+          "description": "Duis"
+        },
+        {
+          "billing_code_type": "S-DRG",
+          "billing_code_type_version": "ullamco ad",
+          "billing_code": "incididunt Ut ut Lorem est",
+          "description": "amet sint mollit incididunt et"
+        },
+        {
+          "billing_code_type": "APC",
+          "billing_code_type_version": "sed commodo ea",
+          "billing_code": "non aliquip consequat proident",
+          "description": "amet ipsum sunt"
+        }
+      ],
+      "covered_services": [
+        {
+          "billing_code_type": "APR-DRG",
+          "billing_code_type_version": "voluptate nostrud sit ad esse",
+          "billing_code": "commodo officia Lorem magna sit",
+          "description": "cillum et nisi eiusmod"
+        },
+        {
+          "billing_code_type": "CDT",
+          "billing_code_type_version": "aute tempor nisi fugiat",
+          "billing_code": "dolor eiusmod culpa",
+          "description": "deserunt eu"
+        },
+        {
+          "billing_code_type": "R-DRG",
+          "billing_code_type_version": "ad incididunt amet do laborum",
+          "billing_code": "commodo voluptate eu anim",
+          "description": "dolore id est dolor adipisicing"
+        },
+        {
+          "billing_code_type": "EAPG",
+          "billing_code_type_version": "culpa velit nostrud",
+          "billing_code": "Excepteur",
+          "description": "labore tempor consequat"
+        }
+      ]
+    }
+  ],
+  "version": "magna eu labore",
+  "plan_id_type": "ex minim do magna incididunt",
+  "provider_references": [
+    {
+      "provider_group_id": 10507786.586078316,
+      "provider_groups": []
+    },
+    {
+      "provider_group_id": 35711607.705649525,
+      "location": "https://"
+    },
+    {
+      "provider_group_id": 23788083.975649193,
+      "location": "https://"
+    },
+    {
+      "provider_group_id": -53533062.77806258,
+      "provider_groups": []
+    },
+    {
+      "provider_group_id": -36071985.40598606,
+      "location": "https://"
+    }
+  ],
+  "plan_market_type": "group",
+  "plan_id": "mollit qui",
+  "plan_name": "nulla ex magna minim Duis"
+}
