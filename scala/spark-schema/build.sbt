@@ -16,5 +16,5 @@ lazy val root = (project in file("."))
 import scala.sys.process._
 lazy val distclean = taskKey[Unit]("Clean up temporary files and directories")
 distclean := {
-  "rm -rf project/target project/project target *.printSchema spark-warehouse" !
+  "rm -rf project/target project/project target in-network-rates.schema in-network-rates-faker.df.printSchema in-network-rates-sample.df.schema.printSchema in-network-ratess-sample.df.printSchema" !
 }
