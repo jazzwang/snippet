@@ -51,7 +51,7 @@ By [Jazz Yao-Tsung Wang](https://slideshare.net/jazzwang)
 
 <!-- slide -->
 
-## From "Life" perspective
+## "Life" perspective
 
 <hr/>
 
@@ -62,7 +62,9 @@ By [Jazz Yao-Tsung Wang](https://slideshare.net/jazzwang)
 
 <!-- slide -->
 
-## From "Work" perspective
+## "Work" perspective
+
+<hr/>
 
 * A Multi-disciplinary, Cross-functional `Learner`.
 * Act as `People Management`, `Product Management`, `Project Management`, `Sales Consult (Pre-sales)`, `Solution Architect`, `Data Architect`, `Cloud Admin`, `System Admin`, `Network Admin`, and `Developer` roles.
@@ -72,8 +74,8 @@ By [Jazz Yao-Tsung Wang](https://slideshare.net/jazzwang)
 
 <!-- slide -->
 
-### Why I joined Toast Master
+### Why I joined Toastmasters
 
 
 - Think concisely, then talk concisely
-- Learn how Toast Master works
+- Learn how Toastmasters works
