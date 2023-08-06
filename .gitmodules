@@ -1,0 +1,3 @@
+[submodule "go/go-workshop-practical"]
+	path = go/go-workshop-practical
+	url = https://github.com/infinityworks/go-workshop-practical
