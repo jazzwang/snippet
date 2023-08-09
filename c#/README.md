@@ -3,6 +3,8 @@
 ## 2023-08-06
 
 - ( 2023-08-06 21:35:47 )
+- The Difference Between C# vs .NET
+  - https://fullscale.io/blog/csharp-vs-dotnet/
 ```
 In summary, C# is a programming language, while .NET is a developer platform.
 ```
