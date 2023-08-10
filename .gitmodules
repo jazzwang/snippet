@@ -1,3 +1,6 @@
 [submodule "go/go-workshop-practical"]
 	path = go/go-workshop-practical
 	url = https://github.com/infinityworks/go-workshop-practical
+[submodule "c#/c-sharp-basics"]
+	path = "c#/c-sharp-basics"
+	url = https://github.com/PacktPublishing/C-sharp-Basics-for-Absolute-Beginners-in-C-Sharp-and-dot-NET.git
