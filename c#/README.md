@@ -56,3 +56,7 @@ $ git submodule add https://github.com/PacktPublishing/C-sharp-Basics-for-Absolu
 - Option #2: There are another tool similar to `gofmt` --> `dotnet-format`
   -  please refer https://randulakoralage82.medium.com/format-your-net-code-with-git-hooks-a0dc33f68048
   - `dotnet tool install -g dotnet-format`
+
+### Solution (.sln) file
+
+- https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/solution-dot-sln-file?view=vs-2022

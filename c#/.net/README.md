@@ -49,3 +49,7 @@
 
     > This extension will helps you keep your csproj files in sync when using VS Code. <font color='hotpink'>This is useful if you work in a team that uses both VS Code and Visual Studio.</font>
 
+### Modern Web App
+
+- https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/
+- https://github.com/dotnet-architecture/eShopOnWeb
