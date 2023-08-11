@@ -60,3 +60,8 @@ $ git submodule add https://github.com/PacktPublishing/C-sharp-Basics-for-Absolu
 ### Solution (.sln) file
 
 - https://learn.microsoft.com/en-us/visualstudio/extensibility/internals/solution-dot-sln-file?view=vs-2022
+
+## 2023-08-11
+
+- ( 2023-08-11 17:09:16 )
+- https://code.visualstudio.com/docs/csharp/get-started
