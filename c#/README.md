@@ -65,3 +65,13 @@ $ git submodule add https://github.com/PacktPublishing/C-sharp-Basics-for-Absolu
 
 - ( 2023-08-11 17:09:16 )
 - https://code.visualstudio.com/docs/csharp/get-started
+- ( 2023-08-11 17:10:32 )
+- Install .Net Core SDK using HomeBrew
+```bash
+~$ brew install dotnet@6
+```
+- ( 2023-08-11 17:13:18 )
+- Install [VS Code C# Dev Kit extension]()
+```bash
+~$ code --install-extension ms-dotnettools.csdevkit
+```
