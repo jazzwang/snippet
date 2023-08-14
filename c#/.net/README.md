@@ -164,3 +164,372 @@ NJsonSchema version: 10.9.0.0 (Newtonsoft.Json v13.0.0.0)
 
 Duration: 00:00:00.0080436
 ```
+- ( 2023-08-14 22:45:27 )
+- https://github.com/RicoSuter/NSwag/wiki/CSharpControllerGenerator
+```bash
+~$ mkdir -p petstore
+~$ cd petstore
+~/petstore$ nswag openapi2cscontroller /input:https://petstore.swagger.io/v2/swagger.json /classname:petstore /namespace:me.3du /output:Controllers/ResourceController.cs /UseLiquidTemplates:true /AspNetNamespace:"Microsoft.AspNetCore.Mvc" /ControllerBaseClass:"Microsoft.AspNetCore.Mvc.Controller"
+NSwag NPM CLI
+NSwag command line tool for .NET Core Net60, toolchain v13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))
+Visit http://NSwag.org for more information.
+NSwag bin directory: /usr/local/nvm/versions/node/v18.12.1/lib/node_modules/nswag/bin/binaries/Net60
+Code has been successfully written to file.
+
+Duration: 00:00:01.6041773
+
+~/petstore$ tree
+.
+└── Controllers
+    └── ResourceController.cs
+
+1 directory, 1 file
+```
+
+###
+
+- ( 2023-08-14 22:52:52 )
+- Installation: https://openapi-generator.tech/docs/installation
+```bash
+~$ npm install @openapitools/openapi-generator-cli -g
+npm install @openapitools/openapi-generator-cli -g
+
+added 113 packages in 25s
+
+23 packages are looking for funding
+  run `npm fund` for details
+
+~$ openapi-generator-cli version
+Download 6.6.0 ...
+Downloaded 6.6.0
+Did set selected version to 6.6.0
+6.6.0
+
+~$ openapi-generator-cli list -s | tr ',' '\n'
+
+ada
+ada-server
+android
+apache2
+apex
+asciidoc
+aspnetcore
+avro-schema
+bash
+crystal
+c
+clojure
+cwiki
+cpp-qt-client
+cpp-qt-qhttpengine-server
+cpp-pistache-server
+cpp-restbed-server
+cpp-restbed-server-deprecated
+cpp-restsdk
+cpp-tiny
+cpp-tizen
+cpp-ue4
+csharp
+csharp-netcore
+csharp-netcore-functions
+dart
+dart-dio
+eiffel
+elixir
+elm
+erlang-client
+erlang-proper
+erlang-server
+fsharp-functions
+fsharp-giraffe-server
+go
+go-echo-server
+go-server
+go-gin-server
+graphql-schema
+graphql-nodejs-express-server
+groovy
+kotlin
+kotlin-server
+kotlin-spring
+kotlin-vertx
+ktorm-schema
+haskell-http-client
+haskell
+haskell-yesod
+java
+jaxrs-cxf-client
+java-helidon-client
+java-helidon-server
+java-inflector
+java-micronaut-client
+java-micronaut-server
+java-msf4j
+java-pkmst
+java-play-framework
+java-undertow-server
+java-vertx-web
+java-camel
+jaxrs-cxf
+jaxrs-cxf-extended
+jaxrs-cxf-cdi
+jaxrs-jersey
+jaxrs-resteasy
+jaxrs-resteasy-eap
+jaxrs-spec
+javascript
+javascript-flowtyped
+javascript-closure-angular
+jetbrains-http-client
+jmeter
+julia-client
+julia-server
+k6
+lua
+markdown
+mysql-schema
+n4js
+nim
+nodejs-express-server
+objc
+ocaml
+openapi
+openapi-yaml
+plantuml
+perl
+php
+php-laravel
+php-lumen
+php-slim4
+php-symfony
+php-mezzio-ph
+php-dt
+powershell
+protobuf-schema
+python-legacy
+python-nextgen
+python
+python-fastapi
+python-prior
+python-flask
+python-aiohttp
+python-blueplanet
+r
+ruby
+ruby-on-rails
+ruby-sinatra
+rust
+rust-server
+scalatra
+scala-akka
+scala-akka-http-server
+scala-finch
+scala-gatling
+scala-lagom-server
+scala-play-server
+scala-sttp
+scalaz
+spring
+dynamic-html
+html
+html2
+swift5
+typescript
+typescript-angular
+typescript-aurelia
+typescript-axios
+typescript-fetch
+typescript-inversify
+typescript-jquery
+typescript-nestjs
+typescript-node
+typescript-redux-query
+typescript-rxjs
+wsdl-schema
+xojo-client
+~$ mkdir pet
+~$ cd pet/
+~/pet$ wget -q https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml
+~/pet$ openapi-generator-cli generate -i petstore.yaml -g csharp-netcore
+Did set selected version to 6.6.0
+[main] INFO  o.o.codegen.DefaultGenerator - Generating with dryRun=false
+[main] INFO  o.o.c.ignore.CodegenIgnoreProcessor - No .openapi-generator-ignore file found.
+[main] INFO  o.o.codegen.DefaultGenerator - OpenAPI Generator: csharp-netcore (client)
+[main] INFO  o.o.codegen.DefaultGenerator - Generator 'csharp-netcore' is considered stable.
+[main] INFO  o.o.c.l.AbstractCSharpCodegen - Environment variable CSHARP_POST_PROCESS_FILE not defined so the C# code may not be properly formatted by uncrustify (0.66 or later) or other code formatter. To define it, try `export CSHARP_POST_PROCESS_FILE="/usr/local/bin/uncrustify --no-backup" && export UNCRUSTIFY_CONFIG=/path/to/uncrustify-rules.cfg` (Linux/Mac). Note: replace /path/to with the location of uncrustify-rules.cfg
+[main] INFO  o.o.c.l.AbstractCSharpCodegen - NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] WARN  o.o.c.languages.CSharpClientCodegen - If using built-in templates, RestSharp only supports netstandard 2.0 or later.
+[main] INFO  o.o.c.languages.CSharpClientCodegen - Generating code for .NET Framework netstandard2.0
+[main] INFO  o.o.codegen.InlineModelResolver - Inline schema created as updatePetWithForm_request. To have complete control of the model name, set the `title` field or use the inlineSchemaNameMapping option (--inline-schema-name-mappings in CLI).
+[main] INFO  o.o.codegen.InlineModelResolver - Inline schema created as uploadFile_request. To have complete control of the model name, set the `title` field or use the inlineSchemaNameMapping option (--inline-schema-name-mappings in CLI).
+[main] INFO  o.o.codegen.DefaultGenerator - Model updatePetWithForm_request not generated since it's marked as unused (due to form parameters) and `skipFormModel` (global property) set to true (default)
+[main] INFO  o.o.codegen.DefaultGenerator - Model uploadFile_request not generated since it's marked as unused (due to form parameters) and `skipFormModel` (global property) set to true (default)
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Model/ApiResponse.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Model/ApiResponseTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/ApiResponse.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Model/Category.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Model/CategoryTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/Category.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Model/Order.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Model/OrderTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/Order.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Model/Pet.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Model/PetTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/Pet.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Model/Tag.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Model/TagTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/Tag.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Model/User.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Model/UserTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/User.md
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+[main] WARN  o.o.codegen.DefaultCodegen - Multiple MediaTypes found, using only the first one
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/xml)
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Api/PetApi.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Api/PetApiTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/PetApi.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Api/StoreApi.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Api/StoreApiTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/StoreApi.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Api/UserApi.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Api/UserApiTests.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./docs/UserApi.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/IApiAccessor.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/Configuration.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/ApiClient.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/ApiException.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/ApiResponse.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/ExceptionFactory.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/OpenAPIDateConverter.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/ClientUtils.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/HttpMethod.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/IAsynchronousClient.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/ISynchronousClient.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/RequestOptions.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/Multimap.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/RetryConfiguration.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/IReadableConfiguration.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/GlobalConfiguration.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./README.md
+[main] INFO  o.o.codegen.TemplateManager - writing file ./git_push.sh
+[main] INFO  o.o.codegen.TemplateManager - writing file ./.gitignore
+[main] INFO  o.o.codegen.TemplateManager - writing file ./Org.OpenAPITools.sln
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Org.OpenAPITools.csproj
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools.Test/Org.OpenAPITools.Test.csproj
+[main] INFO  o.o.codegen.TemplateManager - writing file ./appveyor.yml
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Model/AbstractOpenAPISchema.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/Auth/OAuthAuthenticator.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/Auth/TokenResponse.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./src/Org.OpenAPITools/Client/Auth/OAuthFlow.cs
+[main] INFO  o.o.codegen.TemplateManager - writing file ./api/openapi.yaml
+[main] INFO  o.o.codegen.TemplateManager - writing file /home/jazz_innova18/pet/./.openapi-generator-ignore
+[main] INFO  o.o.codegen.TemplateManager - writing file ./.openapi-generator/VERSION
+[main] INFO  o.o.codegen.TemplateManager - writing file ./.openapi-generator/FILES
+################################################################################
+# Thanks for using OpenAPI Generator.                                          #
+# Please consider donation to help us maintain this project 🙏                 #
+# https://opencollective.com/openapi_generator/donate                          #
+#                                                                              #
+# This generator's contributed by Jim Schubert (https://github.com/jimschubert)#
+# Please support his work directly via https://patreon.com/jimschubert 🙏      #
+################################################################################
+
+~/pet$ tree
+.
+├── api
+│   └── openapi.yaml
+├── appveyor.yml
+├── docs
+│   ├── ApiResponse.md
+│   ├── Category.md
+│   ├── Order.md
+│   ├── PetApi.md
+│   ├── Pet.md
+│   ├── StoreApi.md
+│   ├── Tag.md
+│   ├── UserApi.md
+│   └── User.md
+├── git_push.sh
+├── openapitools.json
+├── Org.OpenAPITools.sln
+├── petstore.yaml
+├── README.md
+└── src
+    ├── Org.OpenAPITools
+    │   ├── Api
+    │   │   ├── PetApi.cs
+    │   │   ├── StoreApi.cs
+    │   │   └── UserApi.cs
+    │   ├── Client
+    │   │   ├── ApiClient.cs
+    │   │   ├── ApiException.cs
+    │   │   ├── ApiResponse.cs
+    │   │   ├── Auth
+    │   │   │   ├── OAuthAuthenticator.cs
+    │   │   │   ├── OAuthFlow.cs
+    │   │   │   └── TokenResponse.cs
+    │   │   ├── ClientUtils.cs
+    │   │   ├── Configuration.cs
+    │   │   ├── ExceptionFactory.cs
+    │   │   ├── GlobalConfiguration.cs
+    │   │   ├── HttpMethod.cs
+    │   │   ├── IApiAccessor.cs
+    │   │   ├── IAsynchronousClient.cs
+    │   │   ├── IReadableConfiguration.cs
+    │   │   ├── ISynchronousClient.cs
+    │   │   ├── Multimap.cs
+    │   │   ├── OpenAPIDateConverter.cs
+    │   │   ├── RequestOptions.cs
+    │   │   └── RetryConfiguration.cs
+    │   ├── Model
+    │   │   ├── AbstractOpenAPISchema.cs
+    │   │   ├── ApiResponse.cs
+    │   │   ├── Category.cs
+    │   │   ├── Order.cs
+    │   │   ├── Pet.cs
+    │   │   ├── Tag.cs
+    │   │   └── User.cs
+    │   └── Org.OpenAPITools.csproj
+    └── Org.OpenAPITools.Test
+        ├── Api
+        │   ├── PetApiTests.cs
+        │   ├── StoreApiTests.cs
+        │   └── UserApiTests.cs
+        ├── Model
+        │   ├── ApiResponseTests.cs
+        │   ├── CategoryTests.cs
+        │   ├── OrderTests.cs
+        │   ├── PetTests.cs
+        │   ├── TagTests.cs
+        │   └── UserTests.cs
+        └── Org.OpenAPITools.Test.csproj
+
+11 directories, 56 files
+```
