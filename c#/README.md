@@ -227,3 +227,48 @@ Build FAILED.
 
 Time Elapsed 00:00:01.97
 ```
+
+- ( 2023-08-14 13:23:53 )
+- [Learn to program using C#](https://aka.ms/selfguidedcsharp)
+
+- ( 2023-08-14 18:14:34 )
+- test https://aka.ms/dotnet-hello-world with https://shell.cloud.google.com/?show=terminal
+```bash
+~$ dotnet --version
+6.0.412
+~$ dotnet new console -o MyApp
+
+Welcome to .NET 6.0!
+---------------------
+SDK Version: 6.0.412
+
+Telemetry
+---------
+The .NET tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_CLI_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
+
+Read more about .NET CLI Tools telemetry: https://aka.ms/dotnet-cli-telemetry
+
+----------------
+Installed an ASP.NET Core HTTPS development certificate.
+To trust the certificate run 'dotnet dev-certs https --trust' (Windows and macOS only).
+Learn about HTTPS: https://aka.ms/dotnet-https
+----------------
+Write your first app: https://aka.ms/dotnet-hello-world
+Find out what's new: https://aka.ms/dotnet-whats-new
+Explore documentation: https://aka.ms/dotnet-docs
+Report issues and find source on GitHub: https://github.com/dotnet/core
+Use 'dotnet --help' to see available commands or visit: https://aka.ms/dotnet-cli
+--------------------------------------------------------------------------------------
+The template "Console App" was created successfully.
+
+Processing post-creation actions...
+Running 'dotnet restore' on /home/jazz_innova18/MyApp/MyApp.csproj...
+  Determining projects to restore...
+  Restored /home/jazz_innova18/MyApp/MyApp.csproj (in 115 ms).
+Restore succeeded.
+
+
+~$ cd MyApp/
+~/MyApp$ dotnet run
+Hello, World!
+```
