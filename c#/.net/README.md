@@ -186,7 +186,7 @@ Duration: 00:00:01.6041773
 1 directory, 1 file
 ```
 
-###
+### OpenAPI Generator
 
 - ( 2023-08-14 22:52:52 )
 - Installation: https://openapi-generator.tech/docs/installation
