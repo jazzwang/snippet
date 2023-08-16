@@ -20,3 +20,25 @@ Did set selected version to 6.6.0
 Validating spec (petstore.yaml)
 No validation issues detected.
 ```
+
+## 2023-08-16
+
+- ( 2023-08-16 13:25:15 )
+- add `add-pet.yaml` which keep only 1 path and remove most out of `petstore.yaml`
+- ( 2023-08-16 13:27:10 )
+- run `openapi-generator-cli validate -i add-pet.yaml`
+```bash
+~/snippet/go/petstoropenapi-generator-cli validate -i add-pet.yaml
+Did set selected version to 6.6.0
+Validating spec (add-pet.yaml)
+Warnings:
+        - Unused model: Order
+        - Unused model: User
+        - Unused model: ApiResponse
+
+[info] Spec has 3 recommendation(s).
+```
+- ( 2023-08-16 13:29:25 )
+- remove `store`, `user` from `tags`
+- remove `ApiResponse`, `Order`, `User` from `schemas`
+- remove `UserArray` from `requestBodies`

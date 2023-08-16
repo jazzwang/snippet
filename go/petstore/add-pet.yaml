@@ -44,15 +44,6 @@ externalDocs:
   url: 'http://swagger.io'
 components:
   requestBodies:
-    UserArray:
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
-      description: List of user object
-      required: true
     Pet:
       content:
         application/json:
@@ -77,35 +68,6 @@ components:
       name: api_key
       in: header
   schemas:
-    Order:
-      title: Pet Order
-      description: An order for a pets from the pet store
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        petId:
-          type: integer
-          format: int64
-        quantity:
-          type: integer
-          format: int32
-        shipDate:
-          type: string
-          format: date-time
-        status:
-          type: string
-          description: Order Status
-          enum:
-            - placed
-            - approved
-            - delivered
-        complete:
-          type: boolean
-          default: false
-      xml:
-        name: Order
     Category:
       title: Pet category
       description: A category for a pet
@@ -119,32 +81,6 @@ components:
           pattern: '^[a-zA-Z0-9]+[a-zA-Z0-9\.\-_]*[a-zA-Z0-9]+$'
       xml:
         name: Category
-    User:
-      title: a User
-      description: A User who is purchasing from the pet store
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        username:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-        phone:
-          type: string
-        userStatus:
-          type: integer
-          format: int32
-          description: User Status
-      xml:
-        name: User
     Tag:
       title: Pet Tag
       description: A tag for a pet
@@ -197,15 +133,3 @@ components:
             - sold
       xml:
         name: Pet
-    ApiResponse:
-      title: An uploaded response
-      description: Describes the result of uploading an image resource
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        type:
-          type: string
-        message:
-          type: string
