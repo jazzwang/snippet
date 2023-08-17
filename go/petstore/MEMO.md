@@ -77,3 +77,75 @@ Did set selected version to 6.6.0
 - ( 2023-08-16 15:02:45 )
 - remove `Category`, `Tag` from `schemas`
 - remove `category`, `tags` from `schemas > Pet`
+
+## 2023-08-17
+
+- ( 2023-08-17 09:23:46 )
+- Here is the [mustache](https://mustache.github.io/) templates that `openapi-generator-cli` used for generating golang codes
+- https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/resources/go
+- https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/resources/go-echo-server
+- https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/resources/go-gin-server
+- https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/resources/go-server
+```
+go
+├── api_doc.mustache
+├── api.mustache
+├── api_test.mustache
+├── client.mustache
+├── configuration.mustache
+├── gitignore.mustache
+├── git_push.sh.mustache
+├── go.mod.mustache
+├── go.sum.mustache
+├── model_anyof.mustache
+├── model_doc.mustache
+├── model_enum.mustache
+├── model.mustache
+├── model_oneof.mustache
+├── model_simple.mustache
+├── nullable_model.mustache
+├── openapi.mustache
+├── partial_header.mustache
+├── README.mustache
+├── response.mustache
+├── signing.mustache
+└── utils.mustache
+go-gin-server
+├── controller-api.mustache
+├── Dockerfile.mustache
+├── go.mod.mustache
+├── main.mustache
+├── model.mustache
+├── openapi.mustache
+├── partial_header.mustache
+├── README.mustache
+└── routers.mustache
+go-echo-server
+├── api.mustache
+├── Dockerfile.mustache
+├── go-mod.mustache
+├── handler-container.mustache
+├── hello-world.mustache
+├── main.mustache
+├── model.mustache
+├── openapi.mustache
+└── README.mustache
+go-server
+├── api.mustache
+├── controller-api.mustache
+├── Dockerfile.mustache
+├── error.mustache
+├── go.mod.mustache
+├── helpers.mustache
+├── impl.mustache
+├── logger.mustache
+├── main.mustache
+├── model.mustache
+├── openapi.mustache
+├── partial_header.mustache
+├── README.mustache
+├── routers.mustache
+└── service.mustache
+
+0 directories, 55 files
+```
