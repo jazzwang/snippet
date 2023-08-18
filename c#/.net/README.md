@@ -533,3 +533,181 @@ Did set selected version to 6.6.0
 
 11 directories, 56 files
 ```
+
+
+## 2023-08-18
+
+- ( 2023-08-18 23:20:39 )
+- test on gitpod.io
+```bash
+gitpod /workspace/gitpod-labs (main) $ pwd
+/workspace/gitpod-labs
+gitpod /workspace/gitpod-labs (main) $ python -m venv venv
+gitpod /workspace/gitpod-labs (main) $ source venv/bin/activate
+(venv) gitpod /workspace/gitpod-labs (main) $ pip install openapi-generator-cli
+(venv) gitpod /workspace/gitpod-labs (main) $ openapi-generator version
+Picked up JAVA_TOOL_OPTIONS:  -Xmx12884m
+4.3.1
+(venv) gitpod /workspace/gitpod-labs (main) $ openapi-generator list
+Picked up JAVA_TOOL_OPTIONS:  -Xmx12884m
+The following generators are available:
+
+CLIENT generators:
+    - ada
+    - android
+    - apex
+    - bash
+    - c
+    - clojure
+    - cpp-qt5-client
+    - cpp-restsdk
+    - cpp-tizen
+    - csharp
+    - csharp-netcore
+    - dart
+    - dart-dio
+    - dart-jaguar
+    - eiffel
+    - elixir
+    - elm
+    - erlang-client
+    - erlang-proper
+    - flash
+    - go
+    - go-experimental (experimental)
+    - groovy
+    - haskell-http-client
+    - java
+    - javascript
+    - javascript-apollo (beta)
+    - javascript-closure-angular
+    - javascript-flowtyped
+    - jaxrs-cxf-client
+    - jmeter
+    - k6 (beta)
+    - kotlin
+    - lua
+    - nim (beta)
+    - objc
+    - ocaml
+    - perl
+    - php
+    - powershell
+    - powershell-experimental (beta)
+    - python
+    - python-experimental (experimental)
+    - r
+    - ruby
+    - rust
+    - scala-akka
+    - scala-gatling
+    - scala-sttp (beta)
+    - scalaz
+    - swift4
+    - swift5 (beta)
+    - typescript-angular
+    - typescript-angularjs
+    - typescript-aurelia
+    - typescript-axios
+    - typescript-fetch
+    - typescript-inversify
+    - typescript-jquery
+    - typescript-node
+    - typescript-redux-query
+    - typescript-rxjs
+
+
+SERVER generators:
+    - ada-server
+    - aspnetcore
+    - cpp-pistache-server
+    - cpp-qt5-qhttpengine-server
+    - cpp-restbed-server
+    - csharp-nancyfx
+    - erlang-server
+    - fsharp-functions (beta)
+    - fsharp-giraffe-server (beta)
+    - go-gin-server
+    - go-server
+    - graphql-nodejs-express-server
+    - haskell
+    - java-inflector
+    - java-msf4j
+    - java-pkmst
+    - java-play-framework
+    - java-undertow-server
+    - java-vertx
+    - java-vertx-web (beta)
+    - jaxrs-cxf
+    - jaxrs-cxf-cdi
+    - jaxrs-cxf-extended
+    - jaxrs-jersey
+    - jaxrs-resteasy
+    - jaxrs-resteasy-eap
+    - jaxrs-spec
+    - kotlin-server
+    - kotlin-spring
+    - kotlin-vertx (beta)
+    - nodejs-express-server (beta)
+    - php-laravel
+    - php-lumen
+    - php-silex
+    - php-slim4
+    - php-symfony
+    - php-ze-ph
+    - python-aiohttp
+    - python-blueplanet
+    - python-flask
+    - ruby-on-rails
+    - ruby-sinatra
+    - rust-server
+    - scala-akka-http-server (beta)
+    - scala-finch
+    - scala-lagom-server
+    - scala-play-server
+    - scalatra
+    - spring
+
+
+DOCUMENTATION generators:
+    - asciidoc
+    - cwiki
+    - dynamic-html
+    - html
+    - html2
+    - markdown (beta)
+    - openapi
+    - openapi-yaml
+
+
+SCHEMA generators:
+    - avro-schema (beta)
+    - mysql-schema
+
+
+CONFIG generators:
+    - apache2
+    - graphql-schema
+    - protobuf-schema (beta)
+
+(venv) gitpod /workspace/gitpod-labs (main) $ curl https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh | bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 58994  100 58994    0     0  30307      0  0:00:01  0:00:01 --:--:-- 30299
+dotnet-install: Attempting to download using aka.ms link https://dotnetcli.azureedge.net/dotnet/Sdk/6.0.413/dotnet-sdk-6.0.413-linux-x64.tar.gz
+dotnet-install: Extracting zip from https://dotnetcli.azureedge.net/dotnet/Sdk/6.0.413/dotnet-sdk-6.0.413-linux-x64.tar.gz
+dotnet-install: Installed version is 6.0.413
+dotnet-install: Adding to current process PATH: `/home/gitpod/.dotnet`. Note: This change will be visible only when sourcing script.
+dotnet-install: Note that the script does not resolve dependencies during installation.
+dotnet-install: To check the list of dependencies, go to https://learn.microsoft.com/dotnet/core/install, select your operating system and check the "Dependencies" section.
+dotnet-install: Installation finished successfully.
+
+(venv) gitpod /workspace/gitpod-labs (main) $ mv /home/gitpod/.dotnet .
+(venv) gitpod /workspace/gitpod-labs (main) $ du -sh .dotnet/
+493M	.dotnet/
+(venv) gitpod /workspace/gitpod-labs (main) $ export HOME=/workspace/gitpod-labs
+(venv) gitpod /workspace/gitpod-labs (main) $ cd
+(venv) gitpod /workspace/gitpod-labs (main) $ export PATH=$PATH:~/.dotnet
+(venv) gitpod ~ (main) $ wget https://raw.githubusercontent.com/jazzwang/snippet/master/go/petstore/add-pet.yaml
+```
+- <mark>以後應該習慣性把 $HOME 設成 `workspace` 路徑，這樣就不會遇到 gitpod 被關閉後，下次回來 `/home/gitpod` 被清掉造成的問題。</mark>
