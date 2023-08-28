@@ -95,7 +95,7 @@ def main():
     session.mount("https://", adapter)
     session.mount("http://", adapter)
 
-    for extension in get_vscode_extensions(session=session, page_size=10):
+    for extension in get_vscode_extensions(session=session):
         extension_name = extension['extensionName']
         extension_description = extension['extensionName']
         extensions_versions = extension['versions']
