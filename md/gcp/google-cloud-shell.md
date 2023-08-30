@@ -117,3 +117,11 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 22/06/19 00:45:00 INFO ShutdownHookManager: Shutdown hook called
 22/06/19 00:45:00 INFO ShutdownHookManager: Deleting directory /tmp/spark-bc87ac2e-47ac-4998-9b3a-89e20d4dafb3
 ```
+
+### 2023-08-30
+
+- 如果想產生像底下這種 Icon 的話，可參考 https://cloud.google.com/shell/docs/open-in-cloud-shell
+
+  [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=http://path-to-repo/sample.git)
+
+- 連結產生器 - [Open in Cloud Shell link generator](https://cloud.google.com/shell/docs/open-in-cloud-shell#open_in_link_generator)
