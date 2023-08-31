@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.15.3/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.3/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.15.3/dist/index.js"></script><script>(r => {
+                setTimeout(r);
+              })(() => {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root, jsonOptions) => {
+          const markmap = getMarkmap();
+          window.mm = markmap.Markmap.create('svg#mindmap', (getOptions || markmap.deriveOptions)(jsonOptions), root);
+        })(() => window.markmap,null,{"type":"heading","depth":0,"payload":{"lines":[1,2]},"content":"<a href=\"https://www.tabnine.com/blog/codewhisperer-alternatives/\">The 6 best CodeWhisperer alternatives <br/>to know in 2022 (free and paid),<br/>  Tabnine, 2022-08-22</a>","children":[{"type":"heading","depth":1,"payload":{"lines":[2,3]},"content":"1. Tabnine","children":[{"type":"heading","depth":2,"payload":{"lines":[3,4]},"content":"<a href=\"https://www.tabnine.com/\">https://www.tabnine.com/</a>","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[4,5]},"content":"2. Github Copilot","children":[{"type":"heading","depth":2,"payload":{"lines":[5,6]},"content":"<a href=\"https://github.com/features/copilot\">https://github.com/features/copilot</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[6,7]},"content":"10/month or 100/year","children":[]},{"type":"heading","depth":2,"payload":{"lines":[7,8]},"content":"<strong>LLM</strong> : based on <a href=\"https://arxiv.org/abs/2005.14165\">GPT-3</a>, called <a href=\"https://arxiv.org/abs/2107.03374\">GPT-Codex</a>","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[8,9]},"content":"3. Captain Stack","children":[{"type":"heading","depth":2,"payload":{"lines":[9,10]},"content":"<a href=\"https://github.com/hieunc229/copilot-clone\">https://github.com/hieunc229/copilot-clone</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[10,11]},"content":"Open Source","children":[]},{"type":"heading","depth":2,"payload":{"lines":[11,12]},"content":"This one is not based on LLM. It's majorly google + StackOverflow + Github <strong>search</strong>","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[12,13]},"content":"4. GPT-Code-Clippy (GPT-CC)","children":[{"type":"heading","depth":2,"payload":{"lines":[13,14]},"content":"<a href=\"https://github.com/CodedotAl/gpt-code-clippy\">https://github.com/CodedotAl/gpt-code-clippy</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[14,15]},"content":"Open Source","children":[{"type":"heading","depth":3,"payload":{"lines":[15,16]},"content":"GPT-Code-Clippy (GPT-CC) is an open source version of GitHub Copilot","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[16,17]},"content":"<strong><a href=\"https://the-eye.eu/public/AI/training_data/code_clippy_data/code_clippy_dedup_data/\">Dataset</a></strong> : <a href=\"https://seart-ghs.si.usi.ch/\">SEART GitHub Search</a> + <a href=\"https://arxiv.org/abs/2101.00027\">The Pile</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[17,18]},"content":"<strong>LLM</strong> : <font color='red'>fine-tuned</font> versions of <a href=\"https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf\">GPT-2</a> and <a href=\"https://github.com/EleutherAI/gpt-neo\">GPT-Neo</a>.","children":[{"type":"heading","depth":3,"payload":{"lines":[18,19]},"content":"https://huggingface.co/models?search=code-clippy","children":[]}]}]},{"type":"heading","depth":1,"payload":{"lines":[19,20]},"content":"5. Second Mate","children":[{"type":"heading","depth":2,"payload":{"lines":[20,21]},"content":"<a href=\"https://github.com/samrawal/emacs-secondmate\">https://github.com/samrawal/emacs-secondmate</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[21,22]},"content":"Open Source for <strong><mark>Emacs</mark></strong>.","children":[]},{"type":"heading","depth":2,"payload":{"lines":[22,23]},"content":"<strong><em>LLM</em></strong> :","children":[{"type":"heading","depth":3,"payload":{"lines":[23,24]},"content":"<a href=\"https://huggingface.co/replit/replit-code-v1-3b\">Replit Code 3B</a>","children":[{"type":"heading","depth":4,"payload":{"lines":[24,25]},"content":"Dataset: <a href=\"https://huggingface.co/datasets/bigcode/the-stack-dedup\">bigcode/the-stack-dedup</a>","children":[]}]},{"type":"heading","depth":3,"payload":{"lines":[25,26]},"content":"<a href=\"https://huggingface.co/EleutherAI/gpt-neo-2.7B\">EleutherAI GPT-Neo-2.7B</a>","children":[{"type":"heading","depth":4,"payload":{"lines":[26,27]},"content":"Dataset: <a href=\"https://huggingface.co/datasets/EleutherAI/pile\">EleutherAI/pile</a>","children":[]}]}]}]},{"type":"heading","depth":1,"payload":{"lines":[27,28]},"content":"6. Kite (Not Available)","children":[]},{"type":"heading","depth":1,"payload":{"lines":[28,29]},"content":"7. YouCompleteMe","children":[{"type":"heading","depth":2,"payload":{"lines":[29,30]},"content":"<a href=\"https://github.com/ycm-core/YouCompleteMe\">https://github.com/ycm-core/YouCompleteMe</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[30,31]},"content":"<a href=\"http://ycm-core.github.io/YouCompleteMe/\">http://ycm-core.github.io/YouCompleteMe/</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[31,32]},"content":"A code-completion engine for <strong><mark>Vim</mark></strong>","children":[{"type":"heading","depth":3,"payload":{"lines":[32,33]},"content":"C/C<ins>/Objective-C/Objective-C</ins>/CUDA - <a href=\"https://clang.llvm.org/extra/clangd.html\">clangd-based engine</a>","children":[]},{"type":"heading","depth":3,"payload":{"lines":[33,34]},"content":"Python 2 and 3 - <a href=\"https://github.com/davidhalter/jedi\">Jedi-based completion engine</a>","children":[]},{"type":"heading","depth":3,"payload":{"lines":[34,35]},"content":"C# - <a href=\"https://github.com/OmniSharp/omnisharp-roslyn\">OmniSharp-Roslyn-based completion engine</a>","children":[]},{"type":"heading","depth":3,"payload":{"lines":[35,36]},"content":"Go - <a href=\"https://github.com/golang/go/wiki/gopls\">Gopls-based completion engin</a>","children":[]},{"type":"heading","depth":3,"payload":{"lines":[36,37]},"content":"JavaScript and TypeScript - <a href=\"https://github.com/Microsoft/TypeScript/tree/master/src/server\">TSServer-based completion engine</a>","children":[]},{"type":"heading","depth":3,"payload":{"lines":[37,38]},"content":"Rust - <a href=\"https://github.com/rust-lang/rls\">rls-based completion engine</a>","children":[]},{"type":"heading","depth":3,"payload":{"lines":[38,39]},"content":"Java - <a href=\"https://github.com/eclipse/eclipse.jdt.ls\">jdt.ls-based completion engine</a>","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[39,40]},"content":"<a href=\"https://github.com/ycm-core/ycmd\">https://github.com/ycm-core/ycmd</a>","children":[{"type":"heading","depth":3,"payload":{"lines":[40,41]},"content":"<mark>ycmd: a code-completion &amp; comprehension server</mark>","children":[]},{"type":"heading","depth":3,"payload":{"lines":[41,42]},"content":"VSCode client - <a href=\"https://marketplace.visualstudio.com/items?itemName=RichardHe.you-complete-me\">you-complete-me</a>","children":[]}]}]}]},{})</script>
+</body>
+</html>
