@@ -711,3 +711,11 @@ dotnet-install: Installation finished successfully.
 (venv) gitpod ~ (main) $ wget https://raw.githubusercontent.com/jazzwang/snippet/master/go/petstore/add-pet.yaml
 ```
 - <mark>以後應該習慣性把 $HOME 設成 `workspace` 路徑，這樣就不會遇到 gitpod 被關閉後，下次回來 `/home/gitpod` 被清掉造成的問題。</mark>
+
+## 2023-09-01
+
+- ( 2023-09-01 16:49:30 )
+- https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html
+```
+dotnet new -i Amazon.Lambda.Templates
+```
