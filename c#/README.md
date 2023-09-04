@@ -274,3 +274,19 @@ Restore succeeded.
 ~/MyApp$ dotnet run
 Hello, World!
 ```
+
+## 2023-09-04
+
+- ( 2023-09-04 22:03:16 )
+- C# REPL
+  - Reference: https://dev.to/tallesl/c-repl-gkn
+  - https://github.com/filipw/dotnet-script
+  ```
+  $ dotnet tool install -g dotnet-script
+  $ dotnet script
+  ```
+  - If you are already on .NET 7 you can install csharprepl:
+  ```
+  $ dotnet tool install -g csharprepl
+  $ csharprepl
+  ```
