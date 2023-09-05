@@ -36,4 +36,6 @@ gitpod /workspace/snippet/c#/.net/codespace (master) $ code sbin/enable-dotnet
 gitpod /workspace/snippet/c#/.net/codespace (master) $ source sbin/enable-dotnet
 gitpod ~ (master) $ code MEMO.md
 gitpod ~ (master) $ git add .
+gitpod ~ (master) $ git commit -a
+gitpod ~ (master) $ git push
 ```
