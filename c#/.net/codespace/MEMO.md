@@ -16,5 +16,24 @@ gitpod /workspace/snippet/c#/.net/codespace (master) $ code MEMO.md
 gitpod /workspace/snippet/c#/.net/codespace (master) $ git remote -v
 origin  https://github.com/jazzwang/snippet.git (fetch)
 origin  https://github.com/jazzwang/snippet.git (push)
-gitpod /workspace/snippet/c#/.net/codespace (master) $
+gitpod /workspace/snippet/c#/.net/codespace (master) $ git add .
+gitpod /workspace/snippet/c#/.net/codespace (master) $ git commit -a
+gitpod /workspace/snippet/c#/.net/codespace (master) $ git push
+```
+
+## 2023-09-05
+
+- ( 2023-09-05 02:30:54 )
+```
+gitpod /workspace/snippet (master) $ cd c#/.net/codespace/
+gitpod /workspace/snippet/c#/.net/codespace (master) $ code .
+gitpod /workspace/snippet/c#/.net/codespace (master) $ mkdir sbin
+gitpod /workspace/snippet/c#/.net/codespace (master) $ code sbin/install-dotnet
+gitpod /workspace/snippet/c#/.net/codespace (master) $ chmod a+x sbin/install-dotnet
+gitpod /workspace/snippet/c#/.net/codespace (master) $ sbin/install-dotnet
+gitpod /workspace/snippet/c#/.net/codespace (master) $ code .gitignore
+gitpod /workspace/snippet/c#/.net/codespace (master) $ code sbin/enable-dotnet
+gitpod /workspace/snippet/c#/.net/codespace (master) $ source sbin/enable-dotnet
+gitpod ~ (master) $ code MEMO.md
+gitpod ~ (master) $ git add .
 ```

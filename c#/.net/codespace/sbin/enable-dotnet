@@ -1,0 +1,5 @@
+# Usage: 
+# source sbin/enable-dotnet
+
+export HOME=$(pwd)
+export PATH=$PATH:$HOME/.dotnet
