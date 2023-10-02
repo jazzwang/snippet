@@ -1,1 +1,2 @@
 - https://requests.readthedocs.io/en/master/user/quickstart/
+- https://realpython.com/python-requests/
