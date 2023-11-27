@@ -1,6 +1,6 @@
 * [動機] 想分析團隊成員有貢獻的 git repo 並且將增減行數及時間做視覺畫的呈現
 * [構思] 
-    * 1. 需要先能找到分析 git repo 的 python 函式庫
+    1. 需要先能找到分析 git repo 的 python 函式庫
     * [參考]
         * 底下幾個參考連結幾乎都是靠 `git log` 的結果來做分析
         * https://pypi.org/project/gitstats/
@@ -11,7 +11,7 @@
         * 其次，看到比較大型的專案是 GitPython
             * https://pypi.org/project/GitPython/
             * https://github.com/gitpython-developers/GitPython
-    * 2. 能計算 [Bus Factor](https://en.wikipedia.org/wiki/Bus_factor)
+    2. 能計算 [Bus Factor](https://en.wikipedia.org/wiki/Bus_factor)
         * https://github.com/jerdonegan/bus-factor
         * https://github.com/zats/github_bus_factor
         * https://github.com/yamikuronue/BusFactor
