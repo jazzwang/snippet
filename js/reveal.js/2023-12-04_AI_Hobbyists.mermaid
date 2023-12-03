@@ -1,0 +1,12 @@
+
+sequenceDiagram
+    User ->> Chainlit: ➊ Question
+    Chainlit -->> LangChain: 
+    LangChain ->> OpenAI: ➋ Prompt
+    OpenAI -->> LangChain: ➁ SQL
+    LangChain ->> SQLite: ➌ Query
+    SQLite -->> LangChain: ➂ Result
+    LangChain ->> OpenAI: ➍ Format Response
+    OpenAI -->> LangChain: 
+    LangChain -->> Chainlit: ➎ Answer
+    Chainlit -->> User: 
