@@ -1,13 +1,8 @@
 #!/bin/bash
 
-if [ $(which virtenv) == "" ]; then
-    echo "Please install `virtualenv` first. Ex. `pip install virtenv`"
-    exit 1
+if [ ! -d venv ]; then
+    python -m venv venv
 fi
 
-if [ ! -d env ]; then 
-    virtenv env --python python3
-fi
-
-source env/bin/activate
+source venv/bin/activate
 pip install selenium webdriver_manager bs4 lxml
