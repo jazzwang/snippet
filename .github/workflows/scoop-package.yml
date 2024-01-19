@@ -24,13 +24,18 @@ jobs:
       run: |
         ## https://github.com/ScoopInstaller/Install#for-admin
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
-        pwd
         scoop update
         scoop download saml2aws
         scoop download k6
         scoop download terraform
-        if ($env:SCOOP) {
-          Write-Host "SCOOP environment variable value: $($env:SCOOP)"
-        } else {
-          Write-Host "SCOOP environment variable is not set."
-        }
+    - name: Zip folder
+      run: |
+        $scoopPath = Join-Path $env:HOME 'scoop'
+        Write-Host "Scoop path: $scoopPath"
+        Compress-Archive -Path $scoopPath -DestinationPath scoop.zip
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: scoop
+        path: scoop.zip
