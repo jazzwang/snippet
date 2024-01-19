@@ -22,4 +22,5 @@ jobs:
     - name: Execute PowerShell commands
       shell: powershell
       run: |
-        irm get.scoop.sh | iex
+        ## https://github.com/ScoopInstaller/Install#for-admin
+        iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
