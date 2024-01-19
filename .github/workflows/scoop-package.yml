@@ -18,11 +18,9 @@ jobs:
     runs-on: windows-latest
     ## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
     if:  ${{ inputs.team }}
-    ## https://chat.openai.com/share/15822fa0-621a-429c-ac4e-f99d6f5c5c52
     steps:
-    - name: Set up PowerShell
-      uses: microsoft/setup-powershell@v1.0.0
     - name: Execute PowerShell commands
+      shell: powershell
       run: |
         Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
         Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
