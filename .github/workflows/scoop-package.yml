@@ -29,3 +29,8 @@ jobs:
         scoop download saml2aws
         scoop download k6
         scoop download terraform
+        if ($env:SCOOP) {
+          Write-Host "SCOOP environment variable value: $($env:SCOOP)"
+        } else {
+          Write-Host "SCOOP environment variable is not set."
+        }
