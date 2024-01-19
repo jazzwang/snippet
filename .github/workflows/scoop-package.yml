@@ -1,0 +1,29 @@
+name: Package Scoop and softwares required by EE IND
+
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      team:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'team'
+        # Default value if no value is explicitly provided
+        default: 'EE_IND'
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  build:
+    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+    runs-on: windows-latest
+    ## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
+    if:  ${{ inputs.team }}
+    ## https://chat.openai.com/share/15822fa0-621a-429c-ac4e-f99d6f5c5c52
+    steps:
+    - name: Set up PowerShell
+      uses: microsoft/setup-powershell@v1.0.0
+    - name: Execute PowerShell commands
+      run: |
+        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+        Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+        scoop list
