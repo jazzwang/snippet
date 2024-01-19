@@ -24,17 +24,21 @@ jobs:
       run: |
         ## https://github.com/ScoopInstaller/Install#for-admin
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
+        scoop bucket add extras
         scoop download git 
         scoop download 7zip
+        scoop download cmder
         scoop download saml2aws
         scoop download k6
         scoop download terraform
-    - name: Zip folder
-      run: |
-        Compress-Archive -Path D:\a\_temp\scoop -DestinationPath scoop.zip
+        scoop download redis
+        scoop download vscode
+        scoop download wget
+        scoop download python
+        scoop download golangci-lint
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: scoop
-        path: scoop.zip
+        name: scoop-cache
+        path: D:\a\_temp\scoop\cache
