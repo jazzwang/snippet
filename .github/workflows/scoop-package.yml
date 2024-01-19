@@ -24,3 +24,8 @@ jobs:
       run: |
         ## https://github.com/ScoopInstaller/Install#for-admin
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+        pwd
+        scoop update
+        scoop download saml2aws
+        scoop download k6
+        scoop download terraform
