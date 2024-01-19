@@ -22,6 +22,4 @@ jobs:
     - name: Execute PowerShell commands
       shell: powershell
       run: |
-        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-        Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-        scoop list
+        irm get.scoop.sh | iex
