@@ -24,9 +24,8 @@ jobs:
       run: |
         ## https://github.com/ScoopInstaller/Install#for-admin
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
-        scoop update
-        scoop install git 7zip
-        scoop list
+        scoop download git 
+        scoop download 7zip
         scoop download saml2aws
         scoop download k6
         scoop download terraform
@@ -39,8 +38,3 @@ jobs:
       with:
         name: scoop
         path: scoop.zip
-    
-    - name: upload release
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "scoop.zip"
