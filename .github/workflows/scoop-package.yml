@@ -23,16 +23,14 @@ jobs:
       shell: powershell
       run: |
         ## https://github.com/ScoopInstaller/Install#for-admin
-        iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+        iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
         scoop update
         scoop download saml2aws
         scoop download k6
         scoop download terraform
     - name: Zip folder
       run: |
-        $scoopPath = Join-Path $env:HOME 'scoop'
-        Write-Host "Scoop path: $scoopPath"
-        Compress-Archive -Path $scoopPath -DestinationPath scoop.zip
+        Compress-Archive -Path D:\a\_temp\scoop -DestinationPath scoop.zip
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
