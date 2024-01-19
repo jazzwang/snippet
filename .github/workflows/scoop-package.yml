@@ -1,4 +1,4 @@
-name: Package Scoop and softwares required by EE IND
+name: Package Scoop and softwares
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'team'
         # Default value if no value is explicitly provided
-        default: 'EE_IND'
+        default: 'Test'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -25,6 +25,8 @@ jobs:
         ## https://github.com/ScoopInstaller/Install#for-admin
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
         scoop update
+        scoop install git 7zip
+        scoop list
         scoop download saml2aws
         scoop download k6
         scoop download terraform
@@ -37,3 +39,8 @@ jobs:
       with:
         name: scoop
         path: scoop.zip
+    
+    - name: upload release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "scoop.zip"
