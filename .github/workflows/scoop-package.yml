@@ -4,6 +4,15 @@ name: Package Scoop and softwares
 # or API.
 on:
   workflow_dispatch:
+  # Inputs the workflow accepts.
+    inputs:
+      team:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'team'
+        # Default value if no value is explicitly provided
+        default: 'Test'
+        # Input has to be provided for the workflow to run
+        required: true
 
 jobs:
   build:
