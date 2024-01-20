@@ -1,16 +1,9 @@
 name: Package Scoop and softwares
 
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      team:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'team'
-        # Default value if no value is explicitly provided
-        default: 'Test'
-        # Input has to be provided for the workflow to run
-        required: true
 
 jobs:
   build:
@@ -19,7 +12,7 @@ jobs:
     ## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
     if:  ${{ inputs.team }}
     steps:
-    - name: Execute PowerShell commands
+    - name: Install scoop
       shell: powershell
       run: |
         ## https://github.com/ScoopInstaller/Install#for-admin
@@ -27,18 +20,64 @@ jobs:
         scoop bucket add extras
         scoop download git 
         scoop download 7zip
+
+    - name: Package scoop-basic
+      uses: actions/upload-artifact@v2
+      with:
+        name: scoop-cache-basic
+        path: D:\a\_temp\scoop\cache
+
+    - name: Package python related packages
+      shell: powershell
+      run: |
+        scoop cache clean
+        scoop download dark
+        scoop download python
+        scoop download aws
+
+    - name: Package scoop-python
+      uses: actions/upload-artifact@v2
+      with:
+        name: scoop-cache-python
+        path: D:\a\_temp\scoop\cache
+
+    - name: Package CLI related packages
+      shell: powershell
+      run: |
+        scoop cache clean
         scoop download cmder
+        scoop download cacert
+        scoop download wget
+        scoop download nmap
         scoop download saml2aws
+
+    - name: Package scoop-cli
+      uses: actions/upload-artifact@v2
+      with:
+        name: scoop-cache-cli
+        path: D:\a\_temp\scoop\cache
+
+    - name: Package RCM EE MISC
+      shell: powershell
+      run: |
+        scoop cache clean
         scoop download k6
         scoop download terraform
         scoop download redis
-        scoop download vscode
-        scoop download wget
-        scoop download python
-        scoop download golangci-lint
-
-    - name: Upload artifact
+    - name: Package scoop-rcm-ee
       uses: actions/upload-artifact@v2
       with:
-        name: scoop-cache
+        name: scoop-cache-rcm-ee
+        path: D:\a\_temp\scoop\cache
+
+    - name: Package VS Code
+      shell: powershell
+      run: |
+        scoop cache clean
+        scoop download vscode
+
+    - name: Package scoop-vscode
+      uses: actions/upload-artifact@v2
+      with:
+        name: scoop-cache-vscode
         path: D:\a\_temp\scoop\cache
