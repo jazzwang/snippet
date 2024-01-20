@@ -29,64 +29,21 @@ jobs:
         scoop bucket add extras
         scoop download git 
         scoop download 7zip
-
-    - name: Package scoop-basic
-      uses: actions/upload-artifact@v2
-      with:
-        name: scoop-cache-basic
-        path: D:\a\_temp\scoop\cache
-
-    - name: Package python related packages
-      shell: powershell
-      run: |
-        scoop cache clean
         scoop download dark
         scoop download python
         scoop download aws
-
-    - name: Package scoop-python
-      uses: actions/upload-artifact@v2
-      with:
-        name: scoop-cache-python
-        path: D:\a\_temp\scoop\cache
-
-    - name: Package CLI related packages
-      shell: powershell
-      run: |
-        scoop cache clean
         scoop download cmder
         scoop download cacert
         scoop download wget
         scoop download nmap
         scoop download saml2aws
-
-    - name: Package scoop-cli
-      uses: actions/upload-artifact@v2
-      with:
-        name: scoop-cache-cli
-        path: D:\a\_temp\scoop\cache
-
-    - name: Package RCM EE MISC
-      shell: powershell
-      run: |
-        scoop cache clean
         scoop download k6
         scoop download terraform
         scoop download redis
-    - name: Package scoop-rcm-ee
-      uses: actions/upload-artifact@v2
-      with:
-        name: scoop-cache-rcm-ee
-        path: D:\a\_temp\scoop\cache
-
-    - name: Package VS Code
-      shell: powershell
-      run: |
-        scoop cache clean
         scoop download vscode
 
-    - name: Package scoop-vscode
+    - name: Package scoop-cache
       uses: actions/upload-artifact@v2
       with:
-        name: scoop-cache-vscode
+        name: scoop-cache
         path: D:\a\_temp\scoop\cache
