@@ -55,8 +55,8 @@ for link in soup.select('div.cart-item-detail div.item-detail-content div.item-t
         book_category    = "已下架"
         book_subcategory = "已下架"
         book_title       = "已下架"
-        book_price       = 0
-        readmoo_id       = null
+        book_price       = "0"
+        readmoo_id       = "0"
 
     print(book_url + ";" +  book_category + ";" +  book_subcategory + ";" + book_title + ";" + book_price + ";" + readmoo_id,file=category)
     print(book_url + ";" +  book_category + ";" +  book_subcategory + ";" + book_title + ";" + book_price + ";" + readmoo_id)
