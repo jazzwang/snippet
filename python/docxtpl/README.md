@@ -1,6 +1,7 @@
 # python-docx-template
 
-- https://docxtpl.readthedocs.io/en/latest/
+- Doc: https://docxtpl.readthedocs.io/en/latest/
+- Source: https://github.com/elapouya/python-docx-template
 
 ## Reference
 
