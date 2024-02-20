@@ -32,7 +32,7 @@ quote { color: #e7ad52; }
 <table><tr>
 <td>
 
-- **What** is the Business Need? <---- NEXT
+- **What** is the Business Need? <---- *NEXT*
     - <font color="lightgreen">Hospital Price Transparency</font>
 - **Why** building AI Chatbot?
     - Will <font color="hotpink">AI Chatbot</font> be the "new" UI?
@@ -116,7 +116,7 @@ Effective on `2021-01-01`
 
 - **What** is the Business Need?
     - <font color="lightgreen">Hospital Price Transparency</font>
-- **Why** building AI Chatbot? <---- NEXT
+- **Why** building AI Chatbot? <---- *NEXT*
     - Will <font color="hotpink">AI Chatbot</font> be the "new" UI?
     - <font color='lightblue'>Multilingual</font> Support?
 - **How**
@@ -258,7 +258,7 @@ Botpress Community, 2023-03-23](https://botpress.com/blog/list-of-languages-supp
 - **Why** building AI Chatbot?
     - Will <font color="hotpink">AI Chatbot</font> be the "new" UI?
     - <font color='lightblue'>Multilingual</font> Support?
-- **How** <---- NEXT
+- **How** <---- *NEXT*
     - High-level Architecture
     - POC Implementation
 </td>
@@ -386,7 +386,7 @@ PS. I tried to leverage <font color="lightgreen">local GPT4All-J LLM</font> inst
 </td>
 <td>
 
-- **Deep Dive** <---- NEXT
+- **Deep Dive** <---- *NEXT*
     - OpenAI
     - LangChain
     - Chainlit
@@ -632,7 +632,7 @@ https://docs.chainlit.io/integrations/langchain
     - OpenAI
     - LangChain
     - Chainlit
-- **Lesson Learnt**
+- **Lesson Learnt** <---- *NEXT*
     - Limitation of LangChain and LocalAI
     - Chainlit Local Cache - SQLite
 - **Future Plan**
@@ -721,7 +721,7 @@ https://docs.chainlit.io/data-persistence/history
 - **Lesson Learnt**
     - Limitation of LangChain and LocalAI
     - Chainlit Local Cache - SQLite
-- **Future Plan**
+- **Future Plan** <---- *NEXT*
     - Serverless Architecture
     - Different RAG implimentation
     - Interacting with APIs with LangChain
