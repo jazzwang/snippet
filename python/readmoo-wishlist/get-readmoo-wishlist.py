@@ -40,7 +40,7 @@ books.close()
 
 ## create wishlist book category file
 category = open('readmoo_wishlist_category.csv','w+', 512)
-print("book_url ; book_category ; book_subcategory ; book_title ; book_price ; readmoo_id",file=category)
+print("book_url;book_category;book_subcategory;book_title;book_price;readmoo_id",file=category)
 for link in soup.select('div.cart-item-detail div.item-detail-content div.item-title-link-box a.item-title-link'):
     book_url = link.get('href')
     r = requests.get(book_url)
