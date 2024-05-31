@@ -109,3 +109,145 @@ _internal	check-books
 jazzwang:~/git/snippet/python/requests/hcml$ file dist/check-books/check-books 
 dist/check-books/check-books: Mach-O 64-bit executable x86_64
 ```
+( 2024-05-31 17:01:51 )
+* 在 Github CodeSpace 上測試。
+* Linux 環境遇到一些錯誤訊息：
+```
+@jazzwang ➜ .../snippet/python/requests/hcml (master) $ pyinstaller check-books.py 
+147 INFO: PyInstaller: 6.7.0, contrib hooks: 2024.6
+147 INFO: Python: 3.10.13
+149 INFO: Platform: Linux-6.5.0-1021-azure-x86_64-with-glibc2.31
+150 INFO: wrote /workspaces/snippet/python/requests/hcml/check-books.spec
+152 INFO: Extending PYTHONPATH with paths
+['/workspaces/snippet/python/requests/hcml']
+328 INFO: checking Analysis
+328 INFO: Building Analysis because Analysis-00.toc is non existent
+328 INFO: Running Analysis Analysis-00.toc
+328 INFO: Target bytecode optimization level: 0
+329 INFO: Initializing module dependency graph...
+329 INFO: Caching module graph hooks...
+337 INFO: Analyzing base_library.zip ...
+793 INFO: Loading module hook 'hook-heapq.py' from '/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/hooks'...
+854 INFO: Loading module hook 'hook-encodings.py' from '/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/hooks'...
+2134 INFO: Loading module hook 'hook-pickle.py' from '/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/hooks'...
+3029 INFO: Caching module dependency graph...
+3104 INFO: Looking for Python shared library...
+Traceback (most recent call last):
+  File "/home/codespace/.python/current/bin/pyinstaller", line 8, in <module>
+    sys.exit(_console_script_run())
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/__main__.py", line 228, in _console_script_run
+    run()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/__main__.py", line 212, in run
+    run_build(pyi_config, spec_file, **vars(args))
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/__main__.py", line 69, in run_build
+    PyInstaller.building.build_main.main(pyi_config, spec_file, **kwargs)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/building/build_main.py", line 1189, in main
+    build(specfile, distpath, workpath, clean_build)
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/building/build_main.py", line 1129, in build
+    exec(code, spec_namespace)
+  File "/workspaces/snippet/python/requests/hcml/check-books.spec", line 4, in <module>
+    a = Analysis(
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/building/build_main.py", line 529, in __init__
+    self.__postinit__()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/building/datastruct.py", line 184, in __postinit__
+    self.assemble()
+  File "/usr/local/python/3.10.13/lib/python3.10/site-packages/PyInstaller/building/build_main.py", line 642, in assemble
+    raise PythonLibraryNotFoundError()
+PyInstaller.exceptions.PythonLibraryNotFoundError: Python library not found: libpython3.10.so, libpython3.10.so.1.0
+    This means your Python installation does not come with proper shared library files.
+    This usually happens due to missing development package, or unsuitable build parameters of the Python installation.
+
+    * On Debian/Ubuntu, you need to install Python development packages:
+      * apt-get install python3-dev
+      * apt-get install python-dev
+    * If you are building Python by yourself, rebuild with `--enable-shared` (or, `--enable-framework` on macOS).
+```
+* 試過 `apt-get install python3-dev` 跟 `apt-get install python-dev` 還是沒效。
+* 根據錯誤訊息
+```
+PyInstaller.exceptions.PythonLibraryNotFoundError: Python library not found: libpython3.10.so, libpython3.10.so.1.0
+```
+* 應該是找不到 share library `libpython3.10.so` 跟 `libpython3.10.so.1.0`
+* 用 `apt-file` 找找看
+```
+@jazzwang ➜ .../snippet/python/requests/hcml (master) $ apt-file search libpython3.10.so
+conda: /opt/conda/lib/libpython3.10.so    
+conda: /opt/conda/lib/libpython3.10.so.1.0
+```
+* 安裝 `conda` 套件，重裝一次 pyinstaller，再跑一次。Yeah!! 成功！！
+```
+@jazzwang ➜ .../snippet/python/requests/hcml (master) $ sudo apt-get -y install conda
+@jazzwang ➜ .../snippet/python/requests/hcml (master) $ source /opt/conda/bin/activate
+(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ pip3 install pyinstaller
+(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ pyinstaller check-books.py 
+217 INFO: PyInstaller: 6.7.0, contrib hooks: 2024.6
+217 INFO: Python: 3.12.3 (conda)
+219 INFO: Platform: Linux-6.5.0-1021-azure-x86_64-with-glibc2.31
+219 INFO: wrote /workspaces/snippet/python/requests/hcml/check-books.spec
+221 INFO: Extending PYTHONPATH with paths
+['/workspaces/snippet/python/requests/hcml']
+305 INFO: checking Analysis
+305 INFO: Building Analysis because Analysis-00.toc is non existent
+305 INFO: Running Analysis Analysis-00.toc
+305 INFO: Target bytecode optimization level: 0
+305 INFO: Initializing module dependency graph...
+306 INFO: Caching module graph hooks...
+311 INFO: Analyzing base_library.zip ...
+1286 INFO: Loading module hook 'hook-encodings.py' from '/opt/conda/lib/python3.12/site-packages/PyInstaller/hooks'...
+1881 INFO: Loading module hook 'hook-heapq.py' from '/opt/conda/lib/python3.12/site-packages/PyInstaller/hooks'...
+2567 INFO: Loading module hook 'hook-pickle.py' from '/opt/conda/lib/python3.12/site-packages/PyInstaller/hooks'...
+3459 INFO: Caching module dependency graph...
+3527 INFO: Looking for Python shared library...
+3535 INFO: Using Python shared library: /opt/conda/lib/libpython3.12.so.1.0
+3535 INFO: Analyzing /workspaces/snippet/python/requests/hcml/check-books.py
+3704 INFO: Loading module hook 'hook-platform.py' from '/opt/conda/lib/python3.12/site-packages/PyInstaller/hooks'...
+4095 INFO: Loading module hook 'hook-charset_normalizer.py' from '/opt/conda/lib/python3.12/site-packages/_pyinstaller_hooks_contrib/hooks/stdhooks'...
+4350 INFO: Loading module hook 'hook-cryptography.py' from '/opt/conda/lib/python3.12/site-packages/_pyinstaller_hooks_contrib/hooks/stdhooks'...
+5512 INFO: Loading module hook 'hook-certifi.py' from '/opt/conda/lib/python3.12/site-packages/_pyinstaller_hooks_contrib/hooks/stdhooks'...
+5626 INFO: Processing module hooks...
+5657 INFO: Performing binary vs. data reclassification (13 entries)
+5755 INFO: Looking for ctypes DLLs
+5760 INFO: Analyzing run-time hooks ...
+5763 INFO: Including run-time hook '/opt/conda/lib/python3.12/site-packages/PyInstaller/hooks/rthooks/pyi_rth_inspect.py'
+5765 INFO: Including run-time hook '/opt/conda/lib/python3.12/site-packages/_pyinstaller_hooks_contrib/hooks/rthooks/pyi_rth_cryptography_openssl.py'
+5771 INFO: Looking for dynamic libraries
+6148 INFO: Warnings written to /workspaces/snippet/python/requests/hcml/build/check-books/warn-check-books.txt
+6162 INFO: Graph cross-reference written to /workspaces/snippet/python/requests/hcml/build/check-books/xref-check-books.html
+6171 INFO: checking PYZ
+6171 INFO: Building PYZ because PYZ-00.toc is non existent
+6171 INFO: Building PYZ (ZlibArchive) /workspaces/snippet/python/requests/hcml/build/check-books/PYZ-00.pyz
+6457 INFO: Building PYZ (ZlibArchive) /workspaces/snippet/python/requests/hcml/build/check-books/PYZ-00.pyz completed successfully.
+6467 INFO: checking PKG
+6467 INFO: Building PKG because PKG-00.toc is non existent
+6467 INFO: Building PKG (CArchive) check-books.pkg
+6475 INFO: Building PKG (CArchive) check-books.pkg completed successfully.
+6475 INFO: Bootloader /opt/conda/lib/python3.12/site-packages/PyInstaller/bootloader/Linux-64bit-intel/run
+6475 INFO: checking EXE
+6475 INFO: Building EXE because EXE-00.toc is non existent
+6475 INFO: Building EXE from EXE-00.toc
+6476 INFO: Copying bootloader EXE to /workspaces/snippet/python/requests/hcml/build/check-books/check-books
+6476 INFO: Appending PKG archive to custom ELF section in EXE
+6497 INFO: Building EXE from EXE-00.toc completed successfully.
+6499 INFO: checking COLLECT
+6499 INFO: Building COLLECT because COLLECT-00.toc is non existent
+6499 INFO: Building COLLECT COLLECT-00.toc
+6599 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+```
+( 2024-05-31 17:11:10 )
+* 看起來在 Linux 上就會是 ELF 64-bit LSB executable
+```
+(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ file dist/check-books/check-books 
+dist/check-books/check-books: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=979c889cc9ca56a33ed67aeb4d2d05cb8db2df1b, for GNU/Linux 2.6.32, stripped
+```
+* 看起來還是有相依動態連結擋。
+```
+(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ ldd dist/check-books/check-books 
+        linux-vdso.so.1 (0x00007ffe643d8000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x0000795bffcb1000)
+        libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x0000795bffc95000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x0000795bffc72000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000795bffa80000)
+        /lib64/ld-linux-x86-64.so.2 (0x0000795bffcc3000)
+```
+( 2024-05-31 17:13:48 )
+* 不錯～這樣以後可以靠 Github Action 來把編好的 Linux Binary 變成 DEB 或 RPM 檔。
