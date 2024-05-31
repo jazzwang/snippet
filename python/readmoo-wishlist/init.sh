@@ -1,1 +1,0 @@
-../selenium-lab/init.sh
