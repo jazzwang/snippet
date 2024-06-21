@@ -8,3 +8,5 @@
 
 - [準備] Exam Prep Standard Course: AWS Certified Data Engineer – Associate (DEA-C01)
     - https://explore.skillbuilder.aws/learn/course/external/view/elearning/18546/exam-prep-standard-course-aws-certified-data-engineer-associate-dea-c01?nc1=h_ls
+- [PDF] AWS Certified Data Engineer Associate Exam Guide
+    - https://d1.awsstatic.com/training-and-certification/docs-data-engineer-associate/AWS-Certified-Data-Engineer-Associate_Exam-Guide.pdf

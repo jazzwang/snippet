@@ -115,3 +115,59 @@ with Diagram("Access Summary", show=False):
 ```
 - 結果:
 ![](access_summary.png)
+
+### 實驗四：
+
+- 從實驗三結果，看起來 Diagram 在微調一些「文字置中」的支援上沒有很細緻。Edge 線條也不是很方便調整位置。或許產生 dot 檔後，可以再用 Graphviz 語法微調。
+- 實驗四來測試一下客製化的 icon
+- 參考：https://diagrams.mingrammer.com/docs/nodes/custom
+- 實作：[lab2.py](lab2.py)
+```python
+from diagrams import Diagram, Cluster
+from diagrams.custom import Custom
+from diagrams.generic.device import Mobile ## 手機
+from urllib.request import urlretrieve
+
+with Diagram("Custom with remote icons", show=False, filename="custom_remote", direction="LR"):
+    # download the icon image file
+    onedrive_url = "https://github.com/sempostma/office365-icons/blob/master/png/256/onedrive.png?raw=true"
+    onedrive_icon = "onedrive.png"
+    urlretrieve(onedrive_url, onedrive_icon)
+    
+    onedrive = Custom("OneDrive", onedrive_icon)
+
+    mobile = Mobile("Personal Mobile")
+
+    mobile >> onedrive
+```
+- 結果：
+![](custom_remote.png)
+
+### 備忘：
+
+- 從 Diagrams 原始碼 Github 看起來 icon 並沒有做過 size 正規化 (e.g. 固定為 `256px` )
+- 除非想要把圖片弄得很好看，有很多 icon，不然 Diagrams 比較合適畫 AWS, Azure, GCP 架構簡圖。
+
+### 資源：
+
+- Office 365 的 256x256 icon png
+  - https://github.com/sempostma/office365-icons/tree/master/png/256
+- Microsoft Integration, Azure, Power Platform, Office 365 等 SVG 圖庫
+  - https://github.com/sandroasp/Microsoft-Integration-and-Azure-Stencils-Pack-for-Visio
+- Microsoft Power Platform icons
+  - https://learn.microsoft.com/en-us/power-platform/guidance/icons
+- Microsoft Dynamics 365 icons
+  - https://learn.microsoft.com/en-us/dynamics365/get-started/icons
+- Microsoft 365 architecture templates and icons
+  - https://learn.microsoft.com/en-us/microsoft-365/solutions/architecture-icons-templates?view=o365-worldwide
+- Azure architecture icons
+  - https://learn.microsoft.com/en-us/azure/architecture/icons/
+- Microsoft Entra architecture icons (Active Directory)
+  - https://learn.microsoft.com/en-us/entra/architecture/architecture-icons
+- Microsoft icons
+  - https://janbakker.tech/microsoft-icons/
+- Microsoft 365 Product Icons
+  - https://developer.microsoft.com/en-us/fluentui#/styles/web/m365-product-icons
+- 以前常用的兩個找 icon 圖示的線上服務 (Google Slides 有 extension 可以加)
+  - https://www.flaticon.com
+  - https://thenounproject.com/
