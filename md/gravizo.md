@@ -26,7 +26,7 @@
 
 - ( 2021-11-21 11:37:11 )
 - 發現 [Mermaid](https://mermaid-js.github.io/mermaid/#/) 也有提供 [Mermaid Live Editor](https://github.com/mermaid-js/mermaid-live-editor) 可以線上編輯後，取得 [mermaid.ink](https://mermaid.ink/) 的 Markdown Link
-- 參照[另一個 Markdown 文件](../mermaid/README.md)
+- 參照[另一個 Markdown 文件](mermaid.md)
 
 ## 範例
 
