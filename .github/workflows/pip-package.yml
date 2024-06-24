@@ -1,4 +1,4 @@
-name: Package Scoop and softwares
+name: Package PIP cache files
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -28,6 +28,7 @@ jobs:
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
         scoop bucket add extras
         scoop install python
+        scoop cleanup -a
         pip3 download -d D:\a\_temp\scoop\cache selenium webdriver-manager bs4 lxml pandas webweb
 
     - name: Package scoop-cache
