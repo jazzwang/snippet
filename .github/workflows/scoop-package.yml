@@ -43,7 +43,7 @@ jobs:
         scoop download vscode
 
     - name: Package scoop-cache
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: scoop-cache
         path: D:\a\_temp\scoop\cache
