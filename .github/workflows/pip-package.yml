@@ -29,6 +29,7 @@ jobs:
         scoop bucket add extras
         scoop install python
         scoop cleanup -a
+        scoop cache rm -a
         pip3 download -d D:\a\_temp\scoop\cache selenium webdriver-manager bs4 lxml pandas webweb
 
     - name: Package scoop-cache
