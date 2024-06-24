@@ -751,3 +751,37 @@ columns 1
   C --> D
   style B fill:#969,stroke:#333,stroke-width:4px
 ```
+
+## 2024-06-24
+
+- 測試 Flow Chat 的 subgraph styling
+
+```diff
+--- flowchart.org	2024-06-24 16:54:35.000000000 +0800
++++ flowchart.new	2024-06-24 16:53:43.000000000 +0800
+@@ -10,5 +10,6 @@
+         i2 -->f2
+     end
+   end
++  style TOP fill:#FFFF00,stroke-width:0px
+   A --> TOP --> B
+   B1 --> B2
+```
+- 結果：對比上面的範例，會發現 TOP 這個 subgraph 顏色變成深黃色
+```mermaid
+flowchart LR
+  subgraph TOP
+    direction TB
+    subgraph B1
+        direction RL
+        i1 -->f1
+    end
+    subgraph B2
+        direction BT
+        i2 -->f2
+    end
+  end
+  style TOP fill:#FFFF00,stroke-width:0px
+  A --> TOP --> B
+  B1 --> B2
+```
