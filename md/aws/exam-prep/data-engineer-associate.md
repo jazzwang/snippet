@@ -1,5 +1,7 @@
 # Get AWS Certified: Data Engineer – Associate Challenge
 
+## 2024-06-20
+
 - 2024-06-20 23:06:37
 - https://community.aws/content/2ddmtoLXEyAwYMA3g0zptl4R70i/exam-prep-aws-certified-data-engineer-associate
 - [報名] https://pages.awscloud.com/TW-other-GC-traincert_data-engineer-associate-certification-challenge-2024-reg.html
@@ -10,3 +12,10 @@
     - https://explore.skillbuilder.aws/learn/course/external/view/elearning/18546/exam-prep-standard-course-aws-certified-data-engineer-associate-dea-c01?nc1=h_ls
 - [PDF] AWS Certified Data Engineer Associate Exam Guide
     - https://d1.awsstatic.com/training-and-certification/docs-data-engineer-associate/AWS-Certified-Data-Engineer-Associate_Exam-Guide.pdf
+
+## 2024-06-25
+
+- 2024-06-25 08:26:54
+- On Demand Exam Prep: Data Engineer - Associate
+    - On demand exam prep option for AWS Partners looking to prepare to become an AWS Certified Data Engineer - Associate
+- https://training.resources.awscloud.com/partner-certification-readiness/on-demand-exam-prep-data-engineer-associate
