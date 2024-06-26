@@ -1,17 +1,18 @@
 # pyinstaller
 
-
 * 先前會用 py2exe 把 python 程式變成 Windows 執行檔，可以把一些不想揭露原始碼的小工具變成方便散播的格式。
 * 查了一下在 macOS 或 Linux 上可以改用 pyinstaller
     * 參考 https://stackoverflow.com/a/9035527
 * 官網：https://pyinstaller.org/en/stable/
 * Github: https://github.com/pyinstaller/pyinstaller
 
+## 2024-05-31
+
 ( 2024-05-31 16:39:52 )
 * 安裝：`pip3 install pyinstaller`
 * 以 hcml 新竹市圖書館的 requests 為例：
 ```
-jazzwang:~/git/snippet/python/requests/hcml$ pyinstaller check-books.py 
+jazzwang:~/git/snippet/python/requests/hcml$ pyinstaller check-books.py
 3293 INFO: PyInstaller: 6.7.0, contrib hooks: 2024.6
 3293 INFO: Python: 3.9.6
 3439 INFO: Platform: macOS-12.7.5-x86_64-i386-64bit
@@ -106,14 +107,14 @@ jazzwang:~/git/snippet/python/requests/hcml$ pyinstaller check-books.py
 ```
 jazzwang:~/git/snippet/python/requests/hcml$ ls dist/check-books/
 _internal	check-books
-jazzwang:~/git/snippet/python/requests/hcml$ file dist/check-books/check-books 
+jazzwang:~/git/snippet/python/requests/hcml$ file dist/check-books/check-books
 dist/check-books/check-books: Mach-O 64-bit executable x86_64
 ```
 ( 2024-05-31 17:01:51 )
 * 在 Github CodeSpace 上測試。
 * Linux 環境遇到一些錯誤訊息：
 ```
-@jazzwang ➜ .../snippet/python/requests/hcml (master) $ pyinstaller check-books.py 
+@jazzwang ➜ .../snippet/python/requests/hcml (master) $ pyinstaller check-books.py
 147 INFO: PyInstaller: 6.7.0, contrib hooks: 2024.6
 147 INFO: Python: 3.10.13
 149 INFO: Platform: Linux-6.5.0-1021-azure-x86_64-with-glibc2.31
@@ -171,7 +172,7 @@ PyInstaller.exceptions.PythonLibraryNotFoundError: Python library not found: lib
 * 用 `apt-file` 找找看
 ```
 @jazzwang ➜ .../snippet/python/requests/hcml (master) $ apt-file search libpython3.10.so
-conda: /opt/conda/lib/libpython3.10.so    
+conda: /opt/conda/lib/libpython3.10.so
 conda: /opt/conda/lib/libpython3.10.so.1.0
 ```
 * 安裝 `conda` 套件，重裝一次 pyinstaller，再跑一次。Yeah!! 成功！！
@@ -179,7 +180,7 @@ conda: /opt/conda/lib/libpython3.10.so.1.0
 @jazzwang ➜ .../snippet/python/requests/hcml (master) $ sudo apt-get -y install conda
 @jazzwang ➜ .../snippet/python/requests/hcml (master) $ source /opt/conda/bin/activate
 (base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ pip3 install pyinstaller
-(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ pyinstaller check-books.py 
+(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ pyinstaller check-books.py
 217 INFO: PyInstaller: 6.7.0, contrib hooks: 2024.6
 217 INFO: Python: 3.12.3 (conda)
 219 INFO: Platform: Linux-6.5.0-1021-azure-x86_64-with-glibc2.31
@@ -236,12 +237,12 @@ conda: /opt/conda/lib/libpython3.10.so.1.0
 ( 2024-05-31 17:11:10 )
 * 看起來在 Linux 上就會是 ELF 64-bit LSB executable
 ```
-(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ file dist/check-books/check-books 
+(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ file dist/check-books/check-books
 dist/check-books/check-books: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=979c889cc9ca56a33ed67aeb4d2d05cb8db2df1b, for GNU/Linux 2.6.32, stripped
 ```
 * 看起來還是有相依動態連結擋。
 ```
-(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ ldd dist/check-books/check-books 
+(base) @jazzwang ➜ .../snippet/python/requests/hcml (master) $ ldd dist/check-books/check-books
         linux-vdso.so.1 (0x00007ffe643d8000)
         libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x0000795bffcb1000)
         libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x0000795bffc95000)
@@ -251,3 +252,105 @@ dist/check-books/check-books: ELF 64-bit LSB executable, x86-64, version 1 (SYSV
 ```
 ( 2024-05-31 17:13:48 )
 * 不錯～這樣以後可以靠 Github Action 來把編好的 Linux Binary 變成 DEB 或 RPM 檔。
+
+## 2024-06-26
+
+* 2024-06-26 21:47:29
+- 後來經過一些實驗，發現產生出來的 macOS executable 會相依 `_internal` 目錄底下的內容。
+```bash
+jazzwang:/tmp$ ./export_fieldglass
+[16974] Error loading Python lib '/private/tmp/_internal/Python3': dlopen: dlopen(/private/tmp/_internal/Python3, 0x000A): tried: '/private/tmp/_internal/Python3' (no such file)
+```
+- 2024-06-26 21:56:50
+- 看了一下[官方文件 Using PyInstaller](https://pyinstaller.org/en/stable/usage.html)，有幾個參數可以試試看：
+```
+--clean
+
+    Clean PyInstaller cache and remove temporary files before building.
+
+-F, --onefile
+
+    Create a one-file bundled executable.
+```
+- 2024-06-26 22:01:36
+- 加上 `--onefile` 這樣跑的話，會產生單一個檔案比較大，但不相依其他目錄的執行檔。
+```bash
+jazzwang:/tmp$ pyinstaller --clean --onefile ~/git/snippet/python/requests/hcml/check-books.py
+jazzwang:/tmp$ tree dist/
+dist/
+└── check-books
+
+1 directory, 1 file
+
+jazzwang:/tmp$ file dist/check-books
+dist/check-books: Mach-O 64-bit executable x86_64
+
+jazzwang:/tmp$ du -sh dist/check-books
+ 42M	dist/check-books
+```
+- 2024-06-26 22:06:01
+- 遇到奇怪的錯誤
+```bash
+jazzwang:/tmp$ ./check-books
+urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+ID: **********
+Password:
+Traceback (most recent call last):
+  File "pandas/compat/_optional.py", line 135, in import_optional_dependency
+  File "importlib/__init__.py", line 127, in import_module
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'html5lib'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "check-books.py", line 35, in <module>
+  File "pandas/io/html.py", line 1240, in read_html
+  File "pandas/io/html.py", line 971, in _parse
+  File "pandas/io/html.py", line 915, in _parser_dispatch
+  File "pandas/compat/_optional.py", line 138, in import_optional_dependency
+ImportError: Missing optional dependency 'html5lib'.  Use pip or conda to install html5lib.
+[17842] Failed to execute script 'check-books' due to unhandled exception!
+```
+- 2024-06-26 22:35:01
+- 安裝 html5lib 套件，再重跑一次。
+```bash
+jazzwang:/tmp$ pip install html5lib
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: html5lib in /Users/jazzwang/Library/Python/3.9/lib/python/site-packages (1.1)
+Requirement already satisfied: six>=1.9 in /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages (from html5lib) (1.15.0)
+Requirement already satisfied: webencodings in /Users/jazzwang/Library/Python/3.9/lib/python/site-packages (from html5lib) (0.5.1)
+jazzwang:/tmp$ pyinstaller -F ~/git/snippet/python/requests/hcml/check-books.py
+jazzwang:/tmp$ cd dist/
+jazzwang:/tmp/dist$ ./check-books
+urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+ID: **********
+Password:
+-----------  待還書 -----------------
+    到期日      題名                                            索書號               借書日期
+ 0  2024-07-14  簡單老師和想飛的企鵝                            C 861.59 8444 (4)    2024-06-16
+ 1  2024-07-14  管家貓                                          C 861 8736 (7)       2024-06-16
+ 6  2024-07-14  這是(便所專用)的腦筋急轉彎                      book 997 8564        2024-06-16
+ 9  2024-07-14  孩子精 媽媽驚 : 運動員兒子給校長媽媽的震撼教育  book 528.2 8457 (4)  2024-06-16
+10  2024-07-14  戒掉孩子的拖延症                                book 528.2 8426 (4)  2024-06-16
+ 2  2024-07-20  跳箱要午休                                      C 861.596 8352 (3)   2024-06-22
+ 3  2024-07-20  腳踏車扛神轎                                    C 861.59 8352 (3)    2024-06-22
+ 4  2024-07-20  超白目爆笑腦筋急轉彎                            book 997 8564 (5)    2024-06-22
+ 5  2024-07-20  野兔甜點師傅的祕密                              C 861.59 8473 (4)    2024-06-22
+ 7  2024-07-20  深夜的放屁大賽                                  C 861.59 8633 (6)    2024-06-22
+ 8  2024-07-20  深夜的打呼大賽                                  C 861.596 8633 (6)   2024-06-22
+11  nan         nan                                             nan                  nan
+-----------  預約書 -----------------
+      保留日期  題名
+ 0         nan  就是要爆笑啊!不然要幹嘛? : 最經典的腦筋急轉彎
+ 1         nan  全民大笑話 : 笑到凍未條!
+ 2         nan  我可以不去上學嗎?
+ 3         nan  Llama drama : it's showtime!
+ 4         nan  Llama llama sand & sun
+ 5         nan  暖爐放寒假
+ 6         nan  最棒的調味料
+ 7         nan  小獅子向前走!
+ 8         nan  nan
+```
