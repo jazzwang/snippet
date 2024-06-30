@@ -49,3 +49,24 @@
 
 - https://github.com/vllm-project/vllm
 - https://docs.vllm.ai/en/stable/
+
+## 2024-06-30
+
+### pgvector + pgvectorscale vs pinecone
+
+- 本來想說來比較一下 pgvector 跟 pinecone 兩個效能會差多少呢？
+- 2024-04-17 : [Pinecone vs. Postgres pgvector: For vector search, easy isn’t so easy](https://www.pinecone.io/blog/pinecone-vs-pgvector/)
+    - 本文提到了一些 pgvector 的缺點，像是用 HNSW index 太耗費記憶體（所以成本太高）
+- 2024-06-13: [Pgvector vs. Pinecone: Vector Database Performance and Cost Comparison](https://www.timescale.com/blog/pgvector-vs-pinecone/)
+    - 結果六月 Timescale 開發了 [pgvectorscale](https://github.com/timescale/pgvectorscale)
+- 2024-06-27: [PostgreSQL and Pgvector: Now Faster Than Pinecone, 75% Cheaper, and 100% Open Source](https://www.timescale.com/blog/pgvector-is-now-as-fast-as-pinecone-at-75-less-cost/)
+    - 宣稱
+
+- ANN-Benchmarks is a benchmarking environment for approximate nearest neighbor algorithms search
+    - https://ann-benchmarks.com/
+    - 實作: https://github.com/erikbern/ann-benchmarks/
+
+### more fun stuff from TimeScale
+
+- [How to Collapse Your Stack Using PostgreSQL for Everything](https://www.timescale.com/blog/how-to-collapse-your-stack-using-postgresql-for-everything/)
+- https://github.com/timescale/timescaledb - 在 https://db-engines.com/en/system/PostgreSQL 只有列到 Document store, Graph DBMS, Spatial DBMS, Vector DBMS。TimeScale 讓 PostgreSQL 變成 time-series SQL database，挺有趣的。真的是「多模態 Multimodal 資料庫」，而且用 extension 的方式存在，確實有種讓 PostgreSQL 能適應各種應用場景的感覺。
