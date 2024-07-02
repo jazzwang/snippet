@@ -70,3 +70,17 @@
 
 - [How to Collapse Your Stack Using PostgreSQL for Everything](https://www.timescale.com/blog/how-to-collapse-your-stack-using-postgresql-for-everything/)
 - https://github.com/timescale/timescaledb - 在 https://db-engines.com/en/system/PostgreSQL 只有列到 Document store, Graph DBMS, Spatial DBMS, Vector DBMS。TimeScale 讓 PostgreSQL 變成 time-series SQL database，挺有趣的。真的是「多模態 Multimodal 資料庫」，而且用 extension 的方式存在，確實有種讓 PostgreSQL 能適應各種應用場景的感覺。
+
+## 2024-07-01
+
+### more about Vector Database
+
+- 看到一篇 [Christoph Bussler](https://www.real-programmer.com)(待過 Google Cloud Solution Architect) 寫的 [Vector Databases (are All The Rage)](https://medium.com/google-cloud/vector-databases-are-all-the-rage-872c888fa348)。整理了目前市面上出現的 Vector Database (當然很多是現有系統的 plugin/extension)，還拆解了向量資料型態、向量距離、怎麼建立索引，相似度搜尋的演算法，怎麼下查詢，怎麼做效能 Benchmark。
+    - 經過先前的 Chatbot POC，我覺得對 Embedding 感覺還是很抽象。具體只知道不同的 LLM 產生的 Enbedding 也各有不同。
+    - 看樣子要搞懂這每個環節裡的名詞，不是一件容易的事情。
+    - 上次有把資料轉成 [Facebook AI Similarity Search (FAISS)](https://github.com/facebookresearch/faiss) 格式儲存，但具體該怎麼用，好難懂。
+- https://superlinked.com/vector-db-comparison
+    - 這篇文章裡講到的一個 Vector Database 比較表。算是初步可以拿來了解一些專有名詞
+- https://x.com/YingjunWu/status/1667232357953466369 的二分法：開源、專用
+    - 2023~2024 真是 Vectore Database 百家爭鳴啊！
+    - ![alt text](images/vector-landscape.png)
