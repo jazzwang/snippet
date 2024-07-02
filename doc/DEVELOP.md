@@ -84,3 +84,39 @@
 - https://x.com/YingjunWu/status/1667232357953466369 的二分法：開源、專用
     - 2023~2024 真是 Vectore Database 百家爭鳴啊！
     - ![alt text](images/vector-landscape.png)
+
+## 2024-07-02
+
+### 測試 pgvector 的 docker image
+
+- 參考 https://ithelp.ithome.com.tw/m/articles/10328071 給了一個 hint 可以找 docker image，文中使用 `ankane/pgvector`
+- 看起來 `ankane/pgvector` 這個 image 是比較多人 STAR 的
+```
+jazz@docker:~$ docker search pgvector
+NAME                                    DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+ankane/pgvector                         Open-source vector similarity search for P...   21                                      
+tensorchord/pgvecto-rs                  Scalable Vector Search in Postgres. Revolu...   10                                      
+pgvector/pgvector                       Open-source vector similarity search for P...   9                                       
+riskledger/pgvector                     postgresql + pgvector                           1                                       
+phidata/pgvector                                                                        1                                       
+ramsrib/pgvector                        Extends the official postgres image with p...   1                                       
+justintc/postgres-15.2-pgvector                                                         0                                       
+execholdings/postgis-pgvector                                                           0                                       
+mautrix100/timescale-pgvector                                                           0                                       
+talentpairqa/postgis-pgvector-alpine    Extension of postgis-alpine image with pgv...   0                                       
+davidcheung/postgres-pgvector           postgres with pgvector                          0                                       
+rstocker99/pgvector13                                                                   0                                       
+fantix/pgvector                                                                         0                                       
+burakince/pgvector                      Docker image of pgvector enabled PostgresD...   0                                       
+octoberlan/pgvector                                                                     0                                       
+solmano/pgvector                                                                        0                                       
+darren2046/pgvector                                                                     0                                       
+ashwinc/pgvector                        https://github.com/pgvector/pgvector/blob/...   0                                       
+zcemycl123/pgvector                     create extension vector for pgvector            0                                       
+hannesmoser/cimg-postgres-13-pgvector   A CircleCI Postgres image with the pgvecto...   0                                       
+huuthieu/pgvector                                                                       0                                       
+tangibleai/pgvector                     Postgresql with pgvector                        0                                       
+joshuasundance/postgis_pgvector         docker image for postgresql w/ postgis & p...   0                                       
+flyjason/fly-pg-pgvector                Fork of https://github.com/fly-apps/postgr...   0                                       
+chapvic/pgvectors                       PostgreSQL with pgvecto.rs plugin               0             
+```
