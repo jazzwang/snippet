@@ -71,7 +71,7 @@
 - [How to Collapse Your Stack Using PostgreSQL for Everything](https://www.timescale.com/blog/how-to-collapse-your-stack-using-postgresql-for-everything/)
 - https://github.com/timescale/timescaledb - 在 https://db-engines.com/en/system/PostgreSQL 只有列到 Document store, Graph DBMS, Spatial DBMS, Vector DBMS。TimeScale 讓 PostgreSQL 變成 time-series SQL database，挺有趣的。真的是「多模態 Multimodal 資料庫」，而且用 extension 的方式存在，確實有種讓 PostgreSQL 能適應各種應用場景的感覺。
 
-## 2024-07-01
+## 2024-07-01~05
 
 ### more about Vector Database
 
@@ -84,8 +84,6 @@
 - https://x.com/YingjunWu/status/1667232357953466369 的二分法：開源、專用
     - 2023~2024 真是 Vectore Database 百家爭鳴啊！
     - ![alt text](images/vector-landscape.png)
-
-## 2024-07-02
 
 ### 測試 pgvector 的 docker image
 
@@ -120,3 +118,11 @@ joshuasundance/postgis_pgvector         docker image for postgresql w/ postgis &
 flyjason/fly-pg-pgvector                Fork of https://github.com/fly-apps/postgr...   0                                       
 chapvic/pgvectors                       PostgreSQL with pgvecto.rs plugin               0             
 ```
+
+- 其實對 PostgreSQL 的 extension 安裝不熟，pgvector 專案只講到用 `make install`，難道說 PostgreSQL 沒有 extension repo 嗎？
+
+### pgvector.rs
+
+- https://github.com/tensorchord/pgvecto.rs
+- `pgvecto.rs` is a Postgres extension that provides ==**vector similarity search**== functions. 
+
