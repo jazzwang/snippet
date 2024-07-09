@@ -63,3 +63,23 @@ steps:
     cache: 'pip' # caching pip dependencies
 - run: pip install -r requirements.txt
 ```
+
+## 2024-07-09
+
+- ( 2024-07-09 14:14:11 )
+- 最近為了在內網的 Windows 環境裡裝 [plow](https://github.com/six-ddc/plow)，所以想要試試看怎麼產生 plow 的 win64 binary
+- 首先需要能在 Github Actions 的 `windows-latest` 環境裡，安裝 golang
+- Google 了一下，先找到 https://github.com/actions/setup-go
+- 雖然 https://github.com/actions/setup-go/blob/main/.github/workflows/windows-validation.yml 有看到做了 Windows 環境的驗證，但沒有看到文件裡寫到 Windows 環境的範例。
+- ( 2024-07-09 14:23:51 )
+- 參考 https://www.omerlh.info/2022/02/25/how-to-build-go-c-code-for-windows-using-github-actions/
+  - https://github.com/omerlh/wizo-scheduler/blob/main/.github/workflows/go.yml
+
+### Github Marketplace
+
+- ( 2024-07-09 14:24:45 )
+- 後來發現 Github Marketplace 有一些 Actions 可以用
+  - https://github.com/marketplace/actions/setup-go-environment
+- https://github.com/marketplace?query=Chocolatey 
+  - https://github.com/marketplace/actions/chocolatey-action - 在 [How To Build Go & C Code for Windows using Github Actions](https://www.omerlh.info/2022/02/25/how-to-build-go-c-code-for-windows-using-github-actions/) 有提到用 chocolatey 指令 `choco`，但是這篇作者的 github action 實作 [.github/workflows/go.yml](https://github.com/omerlh/wizo-scheduler/blob/main/.github/workflows/go.yml) 並沒有用到其他 marketplace 的 actions. 初步壞疑 `windows-latest` 已經包了 `choco` 。待確認。
+  - https://github.com/marketplace/actions/install-chocolatey-pkg

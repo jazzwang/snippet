@@ -24,4 +24,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '>=1.17.0'
-      - run: go version
+      - run: |
+          go version
+          go env
+          go install github.com/six-ddc/plow@latest
