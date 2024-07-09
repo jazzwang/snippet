@@ -83,3 +83,7 @@ steps:
 - https://github.com/marketplace?query=Chocolatey 
   - https://github.com/marketplace/actions/chocolatey-action - 在 [How To Build Go & C Code for Windows using Github Actions](https://www.omerlh.info/2022/02/25/how-to-build-go-c-code-for-windows-using-github-actions/) 有提到用 chocolatey 指令 `choco`，但是這篇作者的 github action 實作 [.github/workflows/go.yml](https://github.com/omerlh/wizo-scheduler/blob/main/.github/workflows/go.yml) 並沒有用到其他 marketplace 的 actions. 初步壞疑 `windows-latest` 已經包了 `choco` 。待確認。
   - https://github.com/marketplace/actions/install-chocolatey-pkg
+- https://github.com/marketplace?query=scoop
+  - https://github.com/marketplace/actions/setup-scoop
+  - https://github.com/marketplace/actions/scoop-action
+  - https://github.com/marketplace/actions/scoop-checkver-action
