@@ -21,12 +21,19 @@ jobs:
     ## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
     if:  ${{ inputs.team }}
     steps:
-      - uses: actions/setup-go@v5
+      - name: Setup Golang
+        uses: actions/setup-go@v5
         with:
           go-version: '>=1.17.0'
-      - run: |
+      - name: Install plow
+        run: |
           go version
           go env
           go install github.com/six-ddc/plow@latest
           where plow
           dir C:\Users\runneradmin\go\bin
+      - name: Package plow win64 binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: plow-win64
+          path: C:\Users\runneradmin\go\bin
