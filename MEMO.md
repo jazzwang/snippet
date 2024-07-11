@@ -87,3 +87,17 @@ steps:
   - https://github.com/marketplace/actions/setup-scoop
   - https://github.com/marketplace/actions/scoop-action
   - https://github.com/marketplace/actions/scoop-checkver-action
+
+## 2024-07-11
+
+- ( 2024-07-11 22:01:06 )
+- 在 Github Actions Marketplace 看到一個有趣的實作 "Convert JSON to HTML Table"
+  - https://github.com/marketplace/actions/convert-json-to-html-table
+- 範例顯示有一個輸入 JSON 檔，會產生一個 HTML 的 `Table`
+- ( 2024-07-11 22:02:44 )
+- 反查了一下原始碼 https://github.com/Teebra/JSON-to-HTML-table/blob/main/entrypoint.py
+- 原來是透過 `json2table` 這個套件
+  - `json2table` 原始碼在 https://github.com/latture/json2table
+  - 竟然是八年前的實作了。其次，沒什麼人給星星 :)
+  - 以前常需要靠 PlantUML 把 JSON 檔轉成圖檔，以利找出一些規律（跟理解背後的 Data Model）
+  - 未來也許可以用這個套件來解讀比較複雜的 JSON 檔。
