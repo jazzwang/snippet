@@ -101,3 +101,17 @@ steps:
   - 竟然是八年前的實作了。其次，沒什麼人給星星 :)
   - 以前常需要靠 PlantUML 把 JSON 檔轉成圖檔，以利找出一些規律（跟理解背後的 Data Model）
   - 未來也許可以用這個套件來解讀比較複雜的 JSON 檔。
+
+## 2024-07-18
+
+- ( 2024-07-18 23:28:12 )
+- 緣起：想把查圖書館待取待還書目列表，透過 Github Actions 定期執行，並改用 HTML 方式呈現結果。
+- 研究：
+  - https://github.com/marketplace/actions/html-preview
+  - https://github.com/marketplace/actions/html-reporter-github-pages
+- ( 2024-07-18 23:30:03 )
+- 看到另一個有趣的 Github Actions Marketplace 專案
+  - https://github.com/marketplace/actions/aqua-security-trivy
+  - 可以用 Github Actions 檢查 docker image 的 vulnerabilities
+  - 原始碼：https://github.com/aquasecurity/trivy-action
+  - Runs Trivy as GitHub action to scan your Docker container image for vulnerabilities
