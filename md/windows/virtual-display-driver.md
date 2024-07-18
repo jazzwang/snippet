@@ -17,3 +17,5 @@
     - read from https://www.reddit.com/r/rust/comments/16hvf4p/virtual_display_driver_for_windows/
 - 針對 GCP 的解法
     - https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display
+- https://www.amyuni.com/forum/viewtopic.php?t=3030
+    - Download our virtual display driver from https://www.amyuni.com/downloads/usbmmidd_v2.zip
