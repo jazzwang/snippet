@@ -1,5 +1,6 @@
 # Supabase
 
+- 在測試 https://www.chatbotui.com 的登入時，看到 Google OAuth 認證的網域名稱是 `ictjeriolkoxhduautym.supabase.co` 所以查了一下 `supabase` 是什麼。
 - https://supabase.com/
 > Supabase is an open source Firebase alternative.
 > Start your project with a Postgres database, Authentication, instant APIs, Edge Functions, Realtime subscriptions, Storage, and Vector embeddings.
@@ -153,7 +154,7 @@ jazzwang_tw@cloudshell:~/snippet/python/supubase-py$ tree . .vscode/
 └── settings.json
 ```
 - 接著跑 `supabase start` 就會啟動預設的 docker
-```
+```bash
 jazzwang_tw@cloudshell:~/snippet/python/supubase-py$ supabase start
 
 Started supabase local development setup.
@@ -175,4 +176,25 @@ service_role key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZ
 ```
 jazzwang_tw@cloudshell:~/snippet/python/supubase-py$ cloudshell get-web-preview-url -p54323
 https://54323-cs-216321250341-default.cs-asia-east1-duck.cloudshell.dev
+```
+- 關閉範例 Supabase 範例容器
+```bash
+jazzwang_tw@cloudshell:~/snippet/python/supubase-py$ docker ps -a
+CONTAINER ID   IMAGE                                             COMMAND                  CREATED          STATUS                    PORTS                                                        NAMES
+929f5175375c   public.ecr.aws/supabase/studio:20240729-ce42139   "docker-entrypoint.s…"   27 seconds ago   Up 27 seconds (healthy)   0.0.0.0:54323->3000/tcp                                      supabase_studio_supubase-py
+f16d7ba876b1   public.ecr.aws/supabase/postgres-meta:v0.83.2     "docker-entrypoint.s…"   27 seconds ago   Up 27 seconds (healthy)   8080/tcp                                                     supabase_pg_meta_supubase-py
+9a877faba846   public.ecr.aws/supabase/edge-runtime:v1.56.1      "sh -c 'cat <<'EOF' …"   28 seconds ago   Up 27 seconds             8081/tcp                                                     supabase_edge_runtime_supubase-py
+ce1edc9c7036   public.ecr.aws/supabase/imgproxy:v3.8.0           "imgproxy"               28 seconds ago   Up 28 seconds (healthy)   8080/tcp                                                     supabase_imgproxy_supubase-py
+22af469602d0   public.ecr.aws/supabase/storage-api:v1.10.1       "docker-entrypoint.s…"   29 seconds ago   Up 28 seconds (healthy)   5000/tcp                                                     supabase_storage_supubase-py
+05810d7a5c0c   public.ecr.aws/supabase/postgrest:v12.2.0         "/bin/postgrest"         29 seconds ago   Up 29 seconds             3000/tcp                                                     supabase_rest_supubase-py
+1ec9f56af0e1   public.ecr.aws/supabase/realtime:v2.30.23         "/usr/bin/tini -s -g…"   30 seconds ago   Up 29 seconds (healthy)   4000/tcp                                                     supabase_realtime_supubase-py
+238969f9e16a   public.ecr.aws/supabase/inbucket:3.0.3            "/start-inbucket.sh …"   30 seconds ago   Up 29 seconds (healthy)   1100/tcp, 2500/tcp, 0.0.0.0:54324->9000/tcp                  supabase_inbucket_supubase-py
+01a9fdde27a9   public.ecr.aws/supabase/gotrue:v2.158.1           "auth"                   30 seconds ago   Up 30 seconds (healthy)   9999/tcp                                                     supabase_auth_supubase-py
+817f84620f6b   public.ecr.aws/supabase/kong:2.8.1                "sh -c 'cat <<'EOF' …"   31 seconds ago   Up 30 seconds (healthy)   8001/tcp, 8088/tcp, 8443-8444/tcp, 0.0.0.0:54321->8000/tcp   supabase_kong_supubase-py
+ec09641e341c   public.ecr.aws/supabase/vector:0.28.1-alpine      "sh -c 'cat <<'EOF' …"   31 seconds ago   Up 31 seconds (healthy)                                                                supabase_vector_supubase-py
+3237f0a0c835   public.ecr.aws/supabase/logflare:1.4.0            "sh -c 'cat <<'EOF' …"   31 seconds ago   Up 31 seconds (healthy)   0.0.0.0:54327->4000/tcp                                      supabase_analytics_supubase-py
+9a140a4db6c8   public.ecr.aws/supabase/postgres:15.1.1.78        "sh -c 'cat <<'EOF' …"   43 seconds ago   Up 42 seconds (healthy)   0.0.0.0:54322->5432/tcp                                      supabase_db_supubase-p
+jazzwang_tw@cloudshell:~/snippet/python/supubase-py$ supabase stop
+Stopped supabase local development setup.
+Local data are backed up to docker volume. Use docker to show them: docker volume ls --filter label=com.supabase.cli.project=supubase-py
 ```
