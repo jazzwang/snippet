@@ -14,6 +14,8 @@
   - https://rsvp.withgoogle.com/events/partner-learning/exam-readiness-workshop-schedule
 - Exam Readiness Workshop
   - https://services.google.com/fh/files/misc/exam_readiness_workshops.pdf
+- Professional Cloud Architect Exam Readiness Workshop
+  - https://partner.cloudskillsboost.google/course_templates/1028
 - Google Cloud Skills Boost for Partners
   - https://rsvp.withgoogle.com/events/partner-learning/on-demand-partner-technical-training
 - Professional Cloud Architect - Certification exam guide
