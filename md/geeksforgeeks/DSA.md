@@ -36,13 +36,13 @@ Data structures and algorithms are fundamental concepts in computer science that
     - Greedy Algorithms
     - Backtracking
 
-Sure! Data structures and algorithms are fundamental concepts in computer science that help us efficiently store, organize, and process data. Here's a high-level overview:
-
 ### Overview of Data Structures and Algorithms (2)
 
 - from chat.openai.com = https://chatgpt.com/
 - prompt:
 > could you give me a high-level overview of data structure and algorithm?
+
+Data structures and algorithms are fundamental concepts in computer science that help us efficiently store, organize, and process data. Here's a high-level overview:
 
 #### Data Structures
 

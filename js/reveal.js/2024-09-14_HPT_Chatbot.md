@@ -820,13 +820,13 @@ Source: https://python.langchain.com/docs/use_cases/apis
 
 * [2016-12-05 - <br/> Hadoop 生態系十年回顧與未來展望](https://www.slideshare.net/slideshow/hadoop-69818883/69818883)
 
-<img src="https://image.slidesharecdn.com/16-12-05hadoop-161205030501/75/Hadoop-3-2048.jpg"/>
+<img src="https://image.slidesharecdn.com/16-12-05hadoop-161205030501/75/Hadoop-3-2048.jpg" height='720'>
 </td>
 <td>
 
 * [2018-04-26 - <br/> My journey of Innovation 我的創新之旅](https://www.slideshare.net/slideshow/my-journey-of-innovation/95062230#21)
 
-<img src="https://image.slidesharecdn.com/myjourneyofinnovation-180426054418/75/My-journey-of-Innovation-44-2048.jpg"/>
+<img src="https://image.slidesharecdn.com/myjourneyofinnovation-180426054418/75/My-journey-of-Innovation-44-2048.jpg"  height='720'>
 
 </td>
 </tr></table>
@@ -851,24 +851,24 @@ Domain Name: hadoop.tw
     m.ponomarenko@futurragroup.com
     CY
     (Redacted for privacy)
-
    Record expires on 2024-10-16 18:52:26 (UTC+8)
    Record created on 2023-10-16 18:52:26 (UTC+8)
-
    Domain servers in listed order:
       ns1.alidns.com     （阿里雲）
       ns2.alidns.com     
-
 Registration Service Provider: Dynadot LLC
 Registration Service URL: https://www.dynadot.com/
 </pre>
 </td>
 <td>
-<img src='https://i.imgur.com/JTcZ3UT.png'/>
+<img src='https://i.imgur.com/JTcZ3UT.png' height='640'>
+
+Souce: https://hadoop.tw
+
 </td>
 </tr></table>
 
-Souce: https://hadoop.tw
+
 
 <!-- slide -->
 
@@ -878,7 +878,7 @@ Souce: https://hadoop.tw
 
 #### 歷史：[2017-07-11 社群、協會、國際連結](https://www.slideshare.net/slideshow/ss-77743104/77743104)
 
-<img src='https://image.slidesharecdn.com/myjourneyofinnovation-180426054418/75/My-journey-of-Innovation-77-2048.jpg'>
+<img src='https://image.slidesharecdn.com/myjourneyofinnovation-180426054418/75/My-journey-of-Innovation-77-2048.jpg' height='720'>
 
 <!-- slide -->
 
@@ -886,13 +886,18 @@ Souce: https://hadoop.tw
 
 <hr/>
 
-<img src='https://image.slidesharecdn.com/myjourneyofinnovation-180426054418/75/My-journey-of-Innovation-81-2048.jpg'>
+<img src='https://image.slidesharecdn.com/myjourneyofinnovation-180426054418/75/My-journey-of-Innovation-81-2048.jpg' height='720'>
 
 <!-- slide -->
 
 ## TDEA 現況：待改選第二屆理監事
 
 <hr/>
+
+
+<img src='https://i.imgur.com/ZMLZgqU.png' height='720'>
+
+Source: https://grouptw.moi.gov.tw/searchGroup
 
 <!-- slide -->
 
