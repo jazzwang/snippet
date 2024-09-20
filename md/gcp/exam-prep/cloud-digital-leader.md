@@ -20,3 +20,15 @@
   - https://cloud.google.com/learn/certification/guides/cloud-digital-leader
 - Cloud Digital Leader Sample Questions
   - https://docs.google.com/forms/d/e/1FAIpQLSedAmf77MGS7FGEaylFzY51KtBd7kkIZJIMDsV5zSRSmpKIOA/formResponse
+
+## 2024-09-20
+
+- 訓練：https://rsvp.withgoogle.com/events/partnerca-cdl_24373/sessions/academy-cloud-digital-leader-workshop
+- 講義: 
+  - https://partner.cloudskillsboost.google/classrooms/25383/notes
+
+- 關於 Google Cloud 的 region 位置
+  - https://cloud.google.com/about/locations/#lightbox-regions-map
+
+- 登記考試
+  - https://webassessor.com/googlecloud
