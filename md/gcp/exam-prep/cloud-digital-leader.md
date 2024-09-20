@@ -32,3 +32,4 @@
 
 - 登記考試
   - https://webassessor.com/googlecloud
+  - https://services.google.com/fh/files/misc/exam_tips_packet_external.pdf = Exam Tips
