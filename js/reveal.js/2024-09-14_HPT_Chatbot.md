@@ -59,7 +59,7 @@ quote { color: #e7ad52; }
 </td>
 </tr></table>
 
-<!-- slide -->
+<!-- slide vertical=true -->
 
 ## <font color="lightgreen">Hospital Price Transparency</font>
 
@@ -149,7 +149,7 @@ https://hackmd.io/IuddDt16T9mw_Q-jFcViqg?view
 </td>
 </tr></table>
 
-<!-- slide -->
+<!-- slide vertical=true -->
 
 ## [ WHY ] Will <font color="hotpink">AI Chatbot</font> be the "new" UI?
 
@@ -209,7 +209,7 @@ https://hackmd.io/IuddDt16T9mw_Q-jFcViqg?view
 
 <small>Source: ["How ChatGPT Works: The Model Behind The Bot", 2023-01-31](https://towardsdatascience.com/how-chatgpt-works-the-models-behind-the-bot-1ce5fca96286)</small>
 
-<!-- slide -->
+<!-- slide vertical=true -->
 
 ## [ WHY ] <font color='lightblue'>Multilingual</font> Support?
 
@@ -292,7 +292,7 @@ Botpress Community, 2023-03-23](https://botpress.com/blog/list-of-languages-supp
 </td>
 </tr></table>
 
-<!-- slide -->
+<!-- slide vertical=true -->
 
 ## [ HOW ] High-level Architecture
 
@@ -417,7 +417,7 @@ Source Code: https://github.com/jazzwang/hpt-chat
 </td>
 </tr></table>
 
-<!-- slide -->
+<!-- slide vertical=true -->
 
 ## [Deep Dive] OpenAI API
 
@@ -659,7 +659,7 @@ https://docs.chainlit.io/integrations/langchain
 </td>
 </tr></table>
 
-<!-- slide -->
+<!-- slide vertical=true -->
 
 ## [Learnt] Limitations of LangChain and LocalAI
 
@@ -697,7 +697,7 @@ Source: https://huggingface.co/codellama
 
 <img src='https://i.imgur.com/Xa9rhab.png' height='640'>
 
-<!-- slide -->
+<!-- slide vertical=true -->
 
 ## [Learnt] Chatlit Local Cache - SQLite
 
@@ -745,7 +745,7 @@ https://docs.chainlit.io/data-persistence/history
 </td>
 </tr></table>
 
-<!-- slide -->
+<!-- slide vertical=true -->
 
 ## [Future] Serverelss Architecture
 
