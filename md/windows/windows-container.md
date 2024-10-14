@@ -269,7 +269,7 @@ PS C:\Windows\system32> docker pull mcr.microsoft.com/windows/nanoserver:ltsc202
 ltsc2022: Pulling from windows/nanoserver
 bbb4d9e65e9c: Downloading [==================>                                ]   42.7MB/116.8MB
 ```
-- 看起來資料都存在 `C:\
+- 看起來資料都存在 `C:\ProgramData\docker`
 ```powershell
 Windows PowerShell
 Copyright (C) Microsoft Corporation. All rights reserved.
@@ -279,7 +279,7 @@ Install the latest PowerShell for new features and improvements! https://aka.ms/
 PS C:\Windows\system32> docker pull mcr.microsoft.com/windows/nanoserver
 Using default tag: latest
 Error response from daemon: manifest for mcr.microsoft.com/windows/nanoserver:latest not found: manifest unknown: manifest tagged by "latest" is not found
-PS C:\Windows\system32> docker pull mcr.microsoft.com/windows/nanoserver:docker pull mcr.microsoft.com/windows/nanoserver^C
+
 PS C:\Windows\system32> docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
 ltsc2022: Pulling from windows/nanoserver
 bbb4d9e65e9c: Pull complete
@@ -355,3 +355,61 @@ d-----        10/15/2024  12:21 AM                windowsfilter
 -a----        10/15/2024  12:19 AM           1083 panic.log
 -a----        10/14/2024  11:46 PM            943 panic.log.old
 ```
+- ( 2024-10-15 00:28:43 )
+- 參考：https://github.com/docker/labs/blob/master/windows/windows-containers/WindowsContainers.md
+- 嘗試運行 Windows NanoServer 的 Docker container
+```powershell
+PS C:\> cd $env:HOMEPATH
+PS C:\Users\jazzw> docker images
+REPOSITORY                             TAG        IMAGE ID       CREATED      SIZE
+mcr.microsoft.com/windows/nanoserver   ltsc2022   b9775a86954e   8 days ago   292MB
+PS C:\Users\jazzw> docker run mcr.microsoft.com/windows/nanoserver:ltsc2022 hostname
+docker: Error response from daemon: hcs::CreateComputeSystem 2355fb2397c668245c66340dec9d60e29fd32523d63bdf0dcfdd660e77325958: The request is not supported.
+```
+- 用 `docker container run` 還是一樣的錯誤訊息。
+```powershell
+PS C:\Users\jazzw> docker container
+
+Usage:  docker container COMMAND
+
+Manage containers
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  exec        Execute a command in a running container
+  export      Export a container's filesystem as a tar archive
+  inspect     Display detailed information on one or more containers
+  kill        Kill one or more running containers
+  logs        Fetch the logs of a container
+  ls          List containers
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  prune       Remove all stopped containers
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  run         Create and run a new container from an image
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker container COMMAND --help' for more information on a command.
+PS C:\Users\jazzw> docker container run
+"docker container run" requires at least 1 argument.
+See 'docker container run --help'.
+
+Usage:  docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Create and run a new container from an image
+PS C:\Users\jazzw> docker container run mcr.microsoft.com/windows/nanoserver:ltsc2022 hostname
+docker: Error response from daemon: hcs::CreateComputeSystem 4c267977624bea28527503901e33f5fdff859ee5dce4014d206057a8b012314c: The request is not supported.
+```
+- 看樣子還是用 `Docker Desktop` 會比 `Docker Engine` 來得容易。
