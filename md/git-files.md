@@ -27,3 +27,29 @@
     }
 }
 ```
+
+### more about `Development Containers`
+
+- https://containers.dev/overview - 簡介
+- https://containers.dev/supporting - 支援平台
+- https://github.com/devcontainers/cli - CLI 工具
+
+- 問題：能否在本地端模擬 `Development Containers` ？
+- 看起來是可行的
+  - [Reproducible Local Development with Dev Containers](https://medium.com/cwan-engineering/reproducible-local-development-with-dev-containers-0ed5fa850b36)
+  - ![](https://miro.medium.com/v2/resize:fit:828/format:webp/1*p7fItlFwMp1VbKN2KgiVAw.png)
+- 從文章中學到可以有多個不同「環境」的設定方法：
+  - 參考：https://github.com/clearwater-analytics/devcontainer-java-example/tree/main/.devcontainer
+  - 每個設定檔都是參考 https://github.com/devcontainers/templates/blob/main/src/java/.devcontainer/devcontainer.json
+    ```json
+    // For format details, see https://aka.ms/devcontainer.json. For config options, see the
+    // README at: https://github.com/devcontainers/templates/tree/main/src/java
+    {
+        "name": "Java",
+        // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+        "image": "mcr.microsoft.com/devcontainers/java:1-${templateOption:imageVariant}",
+        //... 以下省略 ..
+    }
+    ```
+- [文章] [DevContainer and Makefile: A Duo for Simplified GCP Workflows](https://dev.to/tanvirrahman/devcontainer-and-makefile-a-duo-for-simplified-gcp-workflows-ii9)
+  - 講述善用 DevContainer 跟 Makefile 來管理 GCP 的工作流程 (e.g. 產生 GCE VM)
