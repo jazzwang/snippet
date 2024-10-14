@@ -4,10 +4,18 @@
 
 - 緣起：在 Windows 上可以跑 Windows Server Docker container。想了解一下基本需求有哪些。
 - 參考：
+  - https://learn.microsoft.com/en-us/virtualization/windowscontainers/about/
+    - Windows 10/11 - 必須安裝 WSL + Docker Desktop 才能跑 `docker` (可以切換 OS/Arch 是 Windows 或 Linux)
+    - Windows Server 有內建 native windows docker
+- 其他資訊：
+  - 先前有在 hub.docker.com 查到 windows server 的不同版本
+    - https://hub.docker.com/r/microsoft/windows-server
+      - `docker pull mcr.microsoft.com/windows/server`
+    - https://hub.docker.com/r/microsoft/windows-servercore
+      - `docker pull mcr.microsoft.com/windows/servercore`
 
 ```bash
 jazzw@JazzBook:~$ scoop info docker
-
 
 Name        : docker
 Description : Docker CLI & Docker Engine for Windows containers. Docker is an open platform for developing, shipping, and running applications.
@@ -22,8 +30,6 @@ Notes       : The 'dockerd' binary here only supports running Windows containers
               However it is possible to connect to existing Linux containers using the 'docker' binary
               To register Docker as a service, run `dockerd --register-service`
               Similarly, to unregister, run `dockerd --unregister-service`
-
-
 
 jazzw@JazzBook:~$ scoop install docker
 Installing 'docker' (27.3.1) [64bit] from 'main' bucket
@@ -65,4 +71,195 @@ More help is available by typing NET HELPMSG 2182.
 jazzw@JazzBook:~/git/snippet$ sudo net stop "Docker Engine"
 The Docker Engine service is stopping.
 The Docker Engine service was stopped successfully.
+```
+- 使用 Administrator 權限，是可以正常執行 docker 指令
+```bash
+jazzw@JazzBook:~$ sudo net start "Docker Engine"
+The Docker Engine service is starting.
+The Docker Engine service was started successfully.
+
+jazzw@JazzBook:~$ sudo docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+- 本來希望可以透過新增群組的方式，讓一般使用者也可以使用。
+- 參考：
+  - https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/ide/troubleshooting-docker-errors#docker-users-group
+```powershell
+net localgroup docker-users DOMAIN\username /add
+```
+```powershell
+PS C:\Windows\system32> Get-LocalGroup
+
+Name                          Description
+----                          -----------
+Administrators                Administrators have complete and unrestricted access to the computer/domain
+Device Owners                 Members of this group can change system-wide settings.
+Distributed COM Users         Members are allowed to launch, activate and use Distributed COM objects on this machine.
+Event Log Readers             Members of this group can read event logs from local machine
+Guests                        Guests have the same access as members of the Users group by default, except for the Guest account which is further restricted
+Hyper-V Administrators        Members of this group have complete and unrestricted access to all features of Hyper-V.
+IIS_IUSRS                     Built-in group used by Internet Information Services.
+Performance Log Users         Members of this group may schedule logging of performance counters, enable trace providers, and collect event traces both locally and via remote access to this computer
+Performance Monitor Users     Members of this group can access performance counter data locally and remotely
+Remote Management Users       Members of this group can access WMI resources over management protocols (such as WS-Management via the Windows Remote Management service). This applies only to WMI namespaces t...
+System Managed Accounts Group Members of this group are managed by the system.
+Users                         Users are prevented from making accidental or intentional system-wide changes and can run most applications
+
+PS C:\Users\jazzw> net localgroup docker-users /ADD
+
+PS C:\Users\jazzw> net localgroup docker-users jazzw /ADD
+
+PS C:\Windows\system32> Get-LocalGroup
+
+Name                          Description
+----                          -----------
+docker-users
+Administrators                Administrators have complete and unrestricted access to the computer/domain
+Device Owners                 Members of this group can change system-wide settings.
+Distributed COM Users         Members are allowed to launch, activate and use Distributed COM objects on this machine.
+Event Log Readers             Members of this group can read event logs from local machine
+Guests                        Guests have the same access as members of the Users group by default, except for the Guest account which is further restricted
+Hyper-V Administrators        Members of this group have complete and unrestricted access to all features of Hyper-V.
+IIS_IUSRS                     Built-in group used by Internet Information Services.
+Performance Log Users         Members of this group may schedule logging of performance counters, enable trace providers, and collect event traces both locally and via remote access to this computer
+Performance Monitor Users     Members of this group can access performance counter data locally and remotely
+Remote Management Users       Members of this group can access WMI resources over management protocols (such as WS-Management via the Windows Remote Management service). This applies only to WMI namespaces t...
+System Managed Accounts Group Members of this group are managed by the system.
+Users                         Users are prevented from making accidental or intentional system-wide changes and can run most applications
+```
+- 參考：https://stackoverflow.com/a/40086454
+
+```bash
+jazzw@JazzBook:~/git/snippet$ export DOCKER_HOST="tcp://0.0.0.0:53"
+jazzw@JazzBook:~/git/snippet$ docker ps
+error during connect: in the default daemon configuration on Windows, the docker client must be run with elevated privileges to connect: Get "http://%2F%2F.%2Fpipe%2Fdocker_engine/v1.47/containers/json": open //./pipe/docker_engine: Access is denied.
+```
+- 但看起來應該卡在 pipe 裝置上。
+- 以下是將 PowerShell 以 Administrator 身份執行時，看到的結果：
+  - Docker 的 OS/Arch 是 `windows/amd64`
+```powershell
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Windows\system32> whoami
+jazzbook\jazzw
+PS C:\Windows\system32> docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\Windows\system32> docker status
+docker: 'status' is not a docker command.
+See 'docker --help'
+PS C:\Windows\system32> docker version
+Client:
+ Version:           27.3.1
+ API version:       1.47
+ Go version:        go1.22.7
+ Git commit:        ce12230
+ Built:             Fri Sep 20 11:42:27 2024
+ OS/Arch:           windows/amd64
+ Context:           default
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          27.3.1
+  API version:      1.47 (minimum version 1.24)
+  Go version:       go1.22.7
+  Git commit:       41ca978
+  Built:            Fri Sep 20 11:40:58 2024
+  OS/Arch:          windows/amd64
+  Experimental:     false
+PS C:\Windows\system32> docker info
+Client:
+ Version:    27.3.1
+ Context:    default
+ Debug Mode: false
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 0
+ Server Version: 27.3.1
+ Storage Driver: windowsfilter
+  Windows:
+ Logging Driver: json-file
+ Plugins:
+  Volume: local
+  Network: ics internal l2bridge l2tunnel nat null overlay private transparent
+  Log: awslogs etwlogs fluentd gcplogs gelf json-file local splunk syslog
+ Swarm: inactive
+ Default Isolation: hyperv
+ Kernel Version: 10.0 22631 (22621.1.amd64fre.ni_release.220506-1250)
+ Operating System: Microsoft Windows Version 23H2 (OS Build 22631.4317)
+ OSType: windows
+ Architecture: x86_64
+ CPUs: 16
+ Total Memory: 31.25GiB
+ Name: JazzBook
+ ID: 634e6087-5c24-4e7b-9c17-50cbbd677989
+ Docker Root Dir: C:\ProgramData\docker
+ Debug Mode: false
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+ Product License: Community Engine
+
+PS C:\Windows\system32> docker login
+
+USING WEB-BASED LOGIN
+To sign in with credentials on the command line, use 'docker login -u <username>'
+
+Your one-time device confirmation code is: MLLJ-JCCB
+Press ENTER to open your browser or submit your device code here: https://login.docker.com/activate
+
+Waiting for authentication in the browser…
+
+WARNING! Your password will be stored unencrypted in C:\Users\jazzw\.docker\config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+PS C:\Windows\system32> docker search windows
+NAME                           DESCRIPTION                                     STARS     OFFICIAL
+dockurr/windows                Windows inside a Docker container.              282
+actiontestscript/windows       ATS Docker Windows image ready to launch ATS…   0
+calico/windows                                                                 3
+mgba/windows                   Windows autobuilds                              2
+toxchat/windows                                                                0
+toktoknet/windows              Windows cross compilers: i686 and x86_64.       0
+spellegrino021/windows                                                         2
+dcoswindowsci/windows          CI Nano Server Image                            0
+hchandawad1/windows                                                            0
+zixia/windows                  Run Windows Application in a Linux Docker Co…   3
+njawalequalys/windows                                                          0
+ironsoftwareofficial/windows   Pre-configured Windows containers for runnin…   0
+oufqatu/windows                This is just a testing windows image            0
+metthal/windows                Unofficial Windows images with MSVC, CMake a…   0
+h3llix/windows                                                                 0
+cdaf/windows                   Base on Windows Server 2022                     0
+jerbi/windows                                                                  0
+newbe36524/windows                                                             0
+kpack/windows                                                                  0
+atxwebdesigner/windows                                                         0
+microsoft/windows              The official Windows base image for containe…   21
+yatima1460/windows                                                             0
+seokjunyoon/windows            Windows Containers                              0
+frank0757/windows                                                              0
+fredericoliz/windows                                                           0
+PS C:\Windows\system32> docker search windows --help
+
+Usage:  docker search [OPTIONS] TERM
+
+Search Docker Hub for images
+
+Options:
+  -f, --filter filter   Filter output based on conditions provided
+      --format string   Pretty-print search using a Go template
+      --limit int       Max number of search results
+      --no-trunc        Don't truncate output
+
+PS C:\Windows\system32>
 ```
