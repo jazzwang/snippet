@@ -6,7 +6,7 @@
 # 2024-10-14
 
 - ( 2024-10-14 09:04:02 )
-- 實驗產生 TypeScript 的 React.js App
+- 實驗產生 `TypeScript` 的 React.js App
 - 參考 https://create-react-app.dev/docs/getting-started/ 的範例，在 Github CodeSpace 裡面實驗如下指令：
 ```bash
 @jazzwang ➜ /workspaces/snippet (master) $ cd js/react.js/
@@ -107,3 +107,33 @@ Files successfully emitted, waiting for typecheck results...
 Issues checking in progress...
 No issues found.
 ^C
+```
+- ( 2024-10-14 09:24:24 )
+- 範例目錄結構：
+```bash
+@jazzwang ➜ .../snippet/js/react.js/lab1 (master) $ rm package-lock.json node_modules/ -rf
+@jazzwang ➜ .../snippet/js/react.js/lab1 (master) $ tree
+.
+├── README.md
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── src
+│   ├── App.css
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── index.css
+│   ├── index.tsx
+│   ├── logo.svg
+│   ├── react-app-env.d.ts
+│   ├── reportWebVitals.ts
+│   └── setupTests.ts
+└── tsconfig.json
+
+2 directories, 18 files
+```
