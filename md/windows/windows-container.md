@@ -432,3 +432,10 @@ Removing shim 'dockerd.exe'.
 Unlinking ~\scoop\apps\docker\current
 ERROR Couldn't remove '~\scoop\apps\docker\27.3.1'; it may be in use.
 ```
+
+## 2024-10-15
+
+- 其他作法：
+  - Updated on `2022-04-10` : [Install Docker on Windows (WSL) without Docker Desktop](https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9)
+  - 根據文章的描述，步驟蠻繁瑣的，作者也說 Docker Desktop 還是比較好的選擇。
+  - 文章中也提到其他類似 Docker 的替代方案，像是 `podman` 等。應該只能在 WSL 裡模擬 OS/Arch 是 Linux 的容器才是。
