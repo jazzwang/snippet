@@ -263,3 +263,95 @@ Options:
 
 PS C:\Windows\system32>
 ```
+- 暫且就先這樣湊合著用吧～這樣果然就可以下載 OS/Arch 是 Windows 的 nanoserver image
+```powershell
+PS C:\Windows\system32> docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+ltsc2022: Pulling from windows/nanoserver
+bbb4d9e65e9c: Downloading [==================>                                ]   42.7MB/116.8MB
+```
+- 看起來資料都存在 `C:\
+```powershell
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Windows\system32> docker pull mcr.microsoft.com/windows/nanoserver
+Using default tag: latest
+Error response from daemon: manifest for mcr.microsoft.com/windows/nanoserver:latest not found: manifest unknown: manifest tagged by "latest" is not found
+PS C:\Windows\system32> docker pull mcr.microsoft.com/windows/nanoserver:docker pull mcr.microsoft.com/windows/nanoserver^C
+PS C:\Windows\system32> docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+ltsc2022: Pulling from windows/nanoserver
+bbb4d9e65e9c: Pull complete
+Digest: sha256:f59e2f21720e4d1192e0dde47e32c7dbf27144d52d79be14b2538fa07145c869
+Status: Downloaded newer image for mcr.microsoft.com/windows/nanoserver:ltsc2022
+mcr.microsoft.com/windows/nanoserver:ltsc2022
+PS C:\Windows\system32> cd \
+PS C:\> cd .\ProgramData\docker\
+PS C:\ProgramData\docker> tree
+Folder PATH listing for volume OS
+Volume serial number is C04F-8CF9
+C:.
+├───buildkit
+│   └───content
+│       └───ingest
+├───containers
+├───content
+│   └───data
+│       ├───blobs
+│       │   └───sha256
+│       └───ingest
+├───credentialspecs
+├───exec-root
+├───image
+│   └───windowsfilter
+│       ├───distribution
+│       │   ├───diffid-by-digest
+│       │   │   └───sha256
+│       │   └───v2metadata-by-diffid
+│       │       └───sha256
+│       ├───imagedb
+│       │   ├───content
+│       │   │   └───sha256
+│       │   └───metadata
+│       │       └───sha256
+│       └───layerdb
+│           ├───sha256
+│           │   └───a65c487b4072295f88b404eeac3a71552858ae6b5b1383f2462e863aca6e4b9b
+│           └───tmp
+├───network
+
+... 略 ...
+
+                    │   ├───en-US
+                    │   ├───migration
+                    │   ├───oobe
+                    │   └───wbem
+                    ├───Temp
+                    └───WaaS
+                        └───services
+
+PS C:\ProgramData\docker> dir
+
+
+    Directory: C:\ProgramData\docker
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/14/2024   9:23 PM                buildkit
+d-----        10/14/2024   9:23 PM                containers
+d-----        10/14/2024   9:23 PM                content
+d-----        10/14/2024   9:23 PM                credentialspecs
+d-----        10/14/2024   9:23 PM                exec-root
+d-----        10/14/2024   9:23 PM                image
+d-----        10/14/2024   9:23 PM                network
+d-----        10/14/2024   9:23 PM                plugins
+d-----        10/14/2024   9:23 PM                swarm
+d-----        10/14/2024  11:55 PM                tmp
+d-----        10/14/2024   9:23 PM                volumes
+d-----        10/15/2024  12:21 AM                windowsfilter
+-a----        10/14/2024   9:23 PM             36 engine-id
+-a----        10/15/2024  12:19 AM           1083 panic.log
+-a----        10/14/2024  11:46 PM            943 panic.log.old
+```
