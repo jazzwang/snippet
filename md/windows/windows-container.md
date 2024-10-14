@@ -413,3 +413,22 @@ PS C:\Users\jazzw> docker container run mcr.microsoft.com/windows/nanoserver:lts
 docker: Error response from daemon: hcs::CreateComputeSystem 4c267977624bea28527503901e33f5fdff859ee5dce4014d206057a8b012314c: The request is not supported.
 ```
 - 看樣子還是用 `Docker Desktop` 會比 `Docker Engine` 來得容易。
+- ( 2024-10-15 00:41:08 )
+- 反安裝 `Docker Engine`
+```bash
+jazzw@JazzBook:~$ sudo net stop "Docker Engine"
+The Docker Engine service is stopping.
+The Docker Engine service was stopped successfully.
+
+jazzw@JazzBook:~$ dockerd --unregister-service
+Access is denied.
+jazzw@JazzBook:~$ sudo dockerd --unregister-service
+jazzw@JazzBook:~$ scoop uninstall docker
+Uninstalling 'docker' (27.3.1).
+Removing shim 'docker.shim'.
+Removing shim 'docker.exe'.
+Removing shim 'dockerd.shim'.
+Removing shim 'dockerd.exe'.
+Unlinking ~\scoop\apps\docker\current
+ERROR Couldn't remove '~\scoop\apps\docker\27.3.1'; it may be in use.
+```
