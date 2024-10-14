@@ -48,3 +48,21 @@ Access is denied.
 jazzw@JazzBook:~$ sudo dockerd --register-service
 jazzw@JazzBook:~$
 ```
+- ( 2024-10-14 21:25:38 )
+- 要啟用 `dockerd` 服務，首先查了 Service 內的名稱為『Docker Engine』。接著用 `net start` 指令啟動。
+```bash
+jazzw@JazzBook:~/git/snippet$ sudo net start "Docker Engine"
+The Docker Engine service is starting.
+The Docker Engine service was started successfully.
+
+jazzw@JazzBook:~/git/snippet$ sudo net start "Docker Engine"
+The requested service has already been started.
+
+More help is available by typing NET HELPMSG 2182.
+```
+- 要停用的話，則使用 `net stop` 指令停止。
+```bash
+jazzw@JazzBook:~/git/snippet$ sudo net stop "Docker Engine"
+The Docker Engine service is stopping.
+The Docker Engine service was stopped successfully.
+```
