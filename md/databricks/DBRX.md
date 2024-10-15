@@ -11,3 +11,8 @@
 > Before accessing DBRX, ensure your system has at least **320GB** of memory.
 
 - 2024-05-09: [Databricks DBRX Tutorial: A Step-by-Step Guide](https://www.datacamp.com/tutorial/databricks-dbrx-tutorial-a-step-by-step-guide)
+
+## Databricks Model Serving
+
+- 要跑 DBRX 的硬體要求太高，所以若要實驗的話，最好先從 Databricks Model Serving 著手。底下這篇文章，採用 LiteLLM (LLM Proxy) 來呼叫 Databricks 提供的 DBRX
+- https://community.databricks.com/t5/technical-blog/simplifying-multi-model-llm-development-a-developer-s-guide-to/ba-p/80623
