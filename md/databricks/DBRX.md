@@ -5,6 +5,7 @@
 - 2024-03-27: [Introducing DBRX: A New State-of-the-Art Open LLM](https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm)
 - 2024-0[DBRX 101: Overview of Databricks 132B Parameter Open LLM (2024)](https://www.chaosgenius.io/blog/dbrx/)
 - https://ollama.com/library/dbrx - Ollama 有 DRBX 的模型，大小是 48 GB ~ 263 GB。這個模型不僅吃硬碟空間，也吃 GPU 記憶體。看起來定位是商用的開源大語言模型。
+- https://gist.github.com/dennyglee/3a4fd9042c283549b727e081397842da - Llama_Index Starter Example using DBRX
 
 ## Hardware Requirement
 
