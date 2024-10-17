@@ -80,7 +80,7 @@ TokenCredentialType    : InteractiveBrowser
 CertificateThumbprint  : 
 CertificateSubjectName : 
 SendCertificateChain   : False
-Account                : Jazz.Wang@innovasolutions.com
+Account                : Jazz.Wang@i***************s.com
 AppName                : Microsoft Graph Command Line Tools
 ContextScope           : CurrentUser
 Certificate            : 
@@ -134,5 +134,5 @@ PS /Users/jazzwang/git/snippet/ps/graph-powershell> Get-MgUserCount -Consistency
 - ( 2024-10-04 16:49:17 )
 - 用 `-Filter` 來過濾結果，有些欄位只能用 `Select` 才拿得到
 ```powershell
-PS /Users/jazzwang/git/snippet/ps/graph-powershell> Get-MgUser -ConsistencyLevel eventual -Count userCount -Filter "startsWith(OfficeLocation, 'Innova-Taipei')" | Select id, DisplayName, Mail, OfficeLocation, createdDateTime | Export-Csv -Path "TDC_MS365_ID.csv"
+PS /Users/jazzwang/git/snippet/ps/graph-powershell> Get-MgUser -ConsistencyLevel eventual -Count userCount -Filter "startsWith(OfficeLocation, 'I******a-Taipei')" | Select id, DisplayName, Mail, OfficeLocation, createdDateTime | Export-Csv -Path "TDC_MS365_ID.csv"
 ```
