@@ -125,3 +125,11 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
   [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=http://path-to-repo/sample.git)
 
 - 連結產生器 - [Open in Cloud Shell link generator](https://cloud.google.com/shell/docs/open-in-cloud-shell#open_in_link_generator)
+
+### 2024-10-18
+
+- https://cloud.google.com/shell/docs/cloud-shell-tutorials/tutorials
+- 如果要撰寫可以在 Cloud Shell 環境中執行的 Tutorial，可以參考這篇。
+
+( 2024-10-18 18:59:34 )
+- 待查 Google Cloud Shell 是否可以支援 `.devcontainer`
