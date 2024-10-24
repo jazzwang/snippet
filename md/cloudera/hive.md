@@ -7,9 +7,10 @@
 ```bash
 2024-10-22 11:00:17,497 ERROR org.apache.hadoop.hive.ql.Driver: 
 [HiveServer2-Background-Pool: Thread-119]: 
-FAILED: Error in acquiring locks: Lock acqu isition for LockRequest(
+FAILED: Error in acquiring locks: Lock acquisition for LockRequest(
     component: [
-        LockComponent(type: SHARED_READ, level: TABLE, dbname: test_db, tablename: test_tbl_log_file, operationType: SELECT ), LockComponent(type: SHARED_READ, level: PARTITION, dbname: test_db, tablename: test_tbl_log_file, partitionname: logdays=2024-02-03, operationType: SELECT)
+        LockComponent(type: SHARED_READ, level: TABLE, dbname: test_db, tablename: test_tbl_log_file, operationType: SELECT ), 
+        LockComponent(type: SHARED_READ, level: PARTITION, dbname: test_db, tablename: test_tbl_log_file, partitionname: logdays=2024-02-03, operationType: SELECT)
     ], 
     txnid: 0, 
     user: hive, 
