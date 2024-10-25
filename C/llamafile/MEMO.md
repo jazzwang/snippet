@@ -292,3 +292,114 @@ failed to open http://127.0.0.1:8080/ in a browser tab using xdg-open: No such f
 ```
 - ( 2024-10-25 17:07:33 )
 - 透過 Github CodeSpace 的 VS Code 整合，可以開啟 http://127.0.0.1:8080 。會看到 llama.cpp 的 Web UI
+![Screenshot 2024-10-25 171655](https://i.imgur.com/VkAPTkV.png)
+- ( 2024-10-25 17:21:35 )
+- 紀錄一些 SSH bash 畫面上的 STDOUT log
+```bash
+llama server listening at http://127.0.0.1:8080
+
+opening browser tab... (pass --nobrowser to disable)
+In the sandboxing block!
+{"function":"server_cli","hostname":"127.0.0.1","level":"INFO","line":3213,"msg":"HTTP server listening","port":"8080","tid":"10437056","timestamp":1729847071}
+{"function":"update_slots","level":"INFO","line":1659,"msg":"all slots are idle and system prompt is empty, clear the KV cache","tid":"10437056","timestamp":1729847071}
+failed to open http://127.0.0.1:8080/ in a browser tab using xdg-open: No such file or directory
+{"function":"log_server_request","level":"INFO","line":2794,"method":"GET","msg":"request","params":{},"path":"/","remote_addr":"127.0.0.1","remote_port":34788,"status":200,"tid":"127643782152560","timestamp":1729847102}
+{"function":"log_server_request","level":"INFO","line":2794,"method":"GET","msg":"request","params":{},"path":"/index.js","remote_addr":"127.0.0.1","remote_port":34788,"status":200,"tid":"127643782152560","timestamp":1729847102}
+{"function":"log_server_request","level":"INFO","line":2794,"method":"GET","msg":"request","params":{},"path":"/completion.js","remote_addr":"127.0.0.1","remote_port":34802,"status":200,"tid":"127643782152288","timestamp":1729847103}
+{"function":"log_server_request","level":"INFO","line":2794,"method":"GET","msg":"request","params":{},"path":"/json-schema-to-grammar.mjs","remote_addr":"127.0.0.1","remote_port":34806,"status":200,"tid":"127643782152016","timestamp":1729847103}
+{"function":"log_server_request","level":"INFO","line":2794,"method":"GET","msg":"request","params":{},"path":"/favicon.ico","remote_addr":"127.0.0.1","remote_port":34806,"status":404,"tid":"127643782152016","timestamp":1729847103}
+
+{"function":"launch_slot_with_data","level":"INFO","line":884,"msg":"slot is processing task","slot_id":0,"task_id":0,"tid":"10437056","timestamp":1729847574}
+{"function":"update_slots","level":"INFO","line":1885,"msg":"slot progression","n_past":0,"num_prompt_tokens_processed":63,"slot_id":0,"task_id":0,"tid":"10437056","timestamp":1729847574}
+{"function":"update_slots","level":"INFO","line":1910,"msg":"kv cache rm [p0, end)","p0":0,"slot_id":0,"task_id":0,"tid":"10437056","timestamp":1729847574}
+{"function":"print_timings","level":"INFO","line":313,"msg":"prompt eval time     =    8669.84 ms /    63 tokens (  137.62 ms per token,     7.27 tokens per second)","n_tokens_second":7.266572601076583,"num_prompt_tokens_processed":63,"slot_id":0,"t_prompt_processing":8669.837,"t_token":137.6164603174603,"task_id":0,"tid":"10437056","timestamp":1729847601}
+{"function":"print_timings","level":"INFO","line":327,"msg":"generation eval time =   18433.79 ms /    61 runs   (  302.19 ms per token,     3.31 tokens per second)","n_decoded":61,"n_tokens_second":3.3091408016626858,"slot_id":0,"t_token":302.19324590163933,"t_token_generation":18433.788,"task_id":0,"tid":"10437056","timestamp":1729847601}
+{"function":"print_timings","level":"INFO","line":337,"msg":"          total time =   27103.62 ms","slot_id":0,"t_prompt_processing":8669.837,"t_token_generation":18433.788,"t_total":27103.625,"task_id":0,"tid":"10437056","timestamp":1729847601}
+{"function":"update_slots","level":"INFO","line":1721,"msg":"slot released","n_cache_tokens":124,"n_ctx":2048,"n_past":123,"n_system_tokens":0,"slot_id":0,"task_id":0,"tid":"10437056","timestamp":1729847601,"truncated":false}
+{"function":"log_server_request","level":"INFO","line":2794,"method":"POST","msg":"request","params":{},"path":"/completion","remote_addr":"127.0.0.1","remote_port":33436,"status":200,"tid":"127643782151744","timestamp":1729847601}
+{"function":"launch_slot_with_data","level":"INFO","line":884,"msg":"slot is processing task","slot_id":0,"task_id":64,"tid":"10437056","timestamp":1729847679}
+{"function":"update_slots","level":"INFO","line":1885,"msg":"slot progression","n_past":123,"num_prompt_tokens_processed":18,"slot_id":0,"task_id":64,"tid":"10437056","timestamp":1729847679}
+{"function":"update_slots","level":"INFO","line":1910,"msg":"kv cache rm [p0, end)","p0":123,"slot_id":0,"task_id":64,"tid":"10437056","timestamp":1729847679}
+{"function":"print_timings","level":"INFO","line":313,"msg":"prompt eval time     =    2653.05 ms /    18 tokens (  147.39 ms per token,     6.78 tokens per second)","n_tokens_second":6.784654318093241,"num_prompt_tokens_processed":18,"slot_id":0,"t_prompt_processing":2653.046,"t_token":147.39144444444443,"task_id":64,"tid":"10437056","timestamp":1729847737}
+{"function":"print_timings","level":"INFO","line":327,"msg":"generation eval time =   55423.27 ms /   177 runs   (  313.13 ms per token,     3.19 tokens per second)","n_decoded":177,"n_tokens_second":3.1936045344709734,"slot_id":0,"t_token":313.1258079096045,"t_token_generation":55423.268,"task_id":64,"tid":"10437056","timestamp":1729847737}
+{"function":"print_timings","level":"INFO","line":337,"msg":"          total time =   58076.31 ms","slot_id":0,"t_prompt_processing":2653.046,"t_token_generation":55423.268,"t_total":58076.314,"task_id":64,"tid":"10437056","timestamp":1729847737}
+{"function":"update_slots","level":"INFO","line":1721,"msg":"slot released","n_cache_tokens":318,"n_ctx":2048,"n_past":317,"n_system_tokens":0,"slot_id":0,"task_id":64,"tid":"10437056","timestamp":1729847737,"truncated":false}
+{"function":"log_server_request","level":"INFO","line":2794,"method":"POST","msg":"request","params":{},"path":"/completion","remote_addr":"127.0.0.1","remote_port":41290,"status":200,"tid":"127643782151472","timestamp":1729847737}
+{"function":"launch_slot_with_data","level":"INFO","line":884,"msg":"slot is processing task","slot_id":0,"task_id":244,"tid":"10437056","timestamp":1729847766}
+{"function":"update_slots","level":"INFO","line":1885,"msg":"slot progression","n_past":317,"num_prompt_tokens_processed":10,"slot_id":0,"task_id":244,"tid":"10437056","timestamp":1729847766}
+{"function":"update_slots","level":"INFO","line":1910,"msg":"kv cache rm [p0, end)","p0":317,"slot_id":0,"task_id":244,"tid":"10437056","timestamp":1729847766}
+{"function":"print_timings","level":"INFO","line":313,"msg":"prompt eval time     =    1669.52 ms /    10 tokens (  166.95 ms per token,     5.99 tokens per second)","n_tokens_second":5.989756318743684,"num_prompt_tokens_processed":10,"slot_id":0,"t_prompt_processing":1669.517,"t_token":166.95170000000002,"task_id":244,"tid":"10437056","timestamp":1729847788}
+{"function":"print_timings","level":"INFO","line":327,"msg":"generation eval time =   20452.31 ms /    64 runs   (  319.57 ms per token,     3.13 tokens per second)","n_decoded":64,"n_tokens_second":3.129230420050779,"slot_id":0,"t_token":319.567390625,"t_token_generation":20452.313,"task_id":244,"tid":"10437056","timestamp":1729847788}
+{"function":"print_timings","level":"INFO","line":337,"msg":"          total time =   22121.83 ms","slot_id":0,"t_prompt_processing":1669.517,"t_token_generation":20452.313,"t_total":22121.829999999998,"task_id":244,"tid":"10437056","timestamp":1729847788}
+{"function":"update_slots","level":"INFO","line":1721,"msg":"slot released","n_cache_tokens":391,"n_ctx":2048,"n_past":390,"n_system_tokens":0,"slot_id":0,"task_id":244,"tid":"10437056","timestamp":1729847788,"truncated":false}
+{"function":"log_server_request","level":"INFO","line":2794,"method":"POST","msg":"request","params":{},"path":"/completion","remote_addr":"127.0.0.1","remote_port":51320,"status":200,"tid":"127643782151200","timestamp":1729847788}
+```
+- ( 2024-10-25 17:22:50 )
+- 目錄下也會有另一個檔案叫做 `llama.log`
+```bash
+jazzw@JazzBook:~/git/snippet$ gh cs ssh
+? Choose codespace: jazzwang/snippet (master*): snippet
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.5.0-1025-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+Last login: Fri Oct 25 09:01:26 2024 from ::1
+@jazzwang ➜ /workspaces/snippet (master) $ w
+ 17:18:45 up  5:11,  2 users,  load average: 0.13, 0.40, 0.48
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+codespac pts/1    ::1              17:18    2.00s  0.13s  0.00s w
+codespac pts/2    ::1              17:01   14:29   1:51   0.05s .ape-1.10
+@jazzwang ➜ /workspaces/snippet (master) $ cat lla
+llama.log         llava-v1.5-7b-q4
+@jazzwang ➜ /workspaces/snippet (master) $ cat lla
+llama.log         llava-v1.5-7b-q4
+@jazzwang ➜ /workspaces/snippet (master) $ cat llama.log
+clip_model_load: model name:   openai/clip-vit-large-patch14-336
+clip_model_load: description:  image encoder for LLaVA
+clip_model_load: GGUF version: 3
+clip_model_load: alignment:    32
+clip_model_load: n_tensors:    377
+clip_model_load: n_kv:         19
+clip_model_load: ftype:        q4_0
+clip_model_load: loaded meta data with 19 key-value pairs and 377 tensors from llava-v1.5-7b-mmproj-Q4_0.gguf
+clip_model_load: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+clip_model_load: - kv   0:                       general.architecture str              = clip
+clip_model_load: - kv   1:                      clip.has_text_encoder bool             = false
+clip_model_load: - kv   2:                    clip.has_vision_encoder bool             = true
+clip_model_load: - kv   3:                   clip.has_llava_projector bool             = true
+clip_model_load: - kv   4:                          general.file_type u32              = 2
+clip_model_load: - kv   5:                               general.name str              = openai/clip-vit-large-patch14-336
+clip_model_load: - kv   6:                        general.description str              = image encoder for LLaVA
+clip_model_load: - kv   7:                     clip.vision.image_size u32              = 336
+clip_model_load: - kv   8:                     clip.vision.patch_size u32              = 14
+clip_model_load: - kv   9:               clip.vision.embedding_length u32              = 1024
+clip_model_load: - kv  10:            clip.vision.feed_forward_length u32              = 4096
+clip_model_load: - kv  11:                 clip.vision.projection_dim u32              = 768
+clip_model_load: - kv  12:           clip.vision.attention.head_count u32              = 16
+clip_model_load: - kv  13:   clip.vision.attention.layer_norm_epsilon f32              = 0.000010
+clip_model_load: - kv  14:                    clip.vision.block_count u32              = 23
+clip_model_load: - kv  15:                     clip.vision.image_mean arr[f32,3]       = [0.481455, 0.457828, 0.408211]
+clip_model_load: - kv  16:                      clip.vision.image_std arr[f32,3]       = [0.268630, 0.261303, 0.275777]
+clip_model_load: - kv  17:                              clip.use_gelu bool             = false
+clip_model_load: - kv  18:               general.quantization_version u32              = 2
+clip_model_load: - type  f32:  235 tensors
+clip_model_load: - type  f16:    1 tensors
+clip_model_load: - type q4_0:  141 tensors
+clip_model_load: CLIP using CPU backend
+clip_model_load: text_encoder:   0
+clip_model_load: vision_encoder: 1
+clip_model_load: llava_projector:  1
+clip_model_load: model size:     169.18 MB
+clip_model_load: metadata size:  0.17 MB
+clip_model_load: params backend buffer size =  169.18 MB (377 tensors)
+get_key_idx: note: key clip.vision.image_grid_pinpoints not found in file
+get_key_idx: note: key clip.vision.mm_patch_merge_type not found in file
+get_key_idx: note: key clip.vision.image_crop_resolution not found in file
+clip_model_load: compute allocated memory: 32.89 MB
+warming up the model with an empty run
+
+llama server listening at http://127.0.0.1:8080
+
+@jazzwang ➜ /workspaces/snippet (master) $
+```
