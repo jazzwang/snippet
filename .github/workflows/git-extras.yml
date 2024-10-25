@@ -1,4 +1,4 @@
-name: Package Scoop and softwares
+name: "[Scoop] test `git-extras` installation"
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -29,3 +29,6 @@ jobs:
         scoop bucket add jazzwang https://github.com/jazzwang/scoop-bucket
         scoop install git 7zip
         scoop install git-extras
+        pwd
+        git summary
+        scoop checkup
