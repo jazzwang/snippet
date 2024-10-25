@@ -32,3 +32,5 @@ jobs:
         pwd
         git summary
         scoop checkup
+        ## https://learn.microsoft.com/en-us/powershell/module/windowsdeveloperlicense/get-windowsdeveloperlicense?view=windowsserver2022-ps
+        Get-WindowsDeveloperLicense
