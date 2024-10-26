@@ -25,13 +25,13 @@ jobs:
       shell: powershell
       run: |
         ## https://github.com/ScoopInstaller/Install#for-admin
-        #iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
-        #scoop bucket add jazzwang https://github.com/jazzwang/scoop-bucket
-        #scoop install git 7zip
-        #scoop install git-extras
+        iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
+        scoop bucket add jazzwang https://github.com/jazzwang/scoop-bucket
+        scoop install git 7zip
+        scoop install git-extras
         pwd
-        Get-Command cmd
-        #git summary
-        #scoop checkup
+        git summary
+        scoop checkup
         ## https://learn.microsoft.com/en-us/powershell/module/windowsdeveloperlicense/get-windowsdeveloperlicense?view=windowsserver2022-ps
         Get-WindowsDeveloperLicense
+        Get-Command cmd
