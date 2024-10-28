@@ -152,3 +152,11 @@ Aliases:  shiny-zebra-jjrxjgp652gqw-5173.app.github.dev
           tunnels-prod-rel-tm.trafficmanager.net
           v3-asse.cluster.rel.tunnels.api.visualstudio.com
 ```
+
+### export `React Flow` diagram to image
+
+- ( 2024-10-28 10:48:30 )
+- 回歸到最開始的測試目的，我想要產生類似 ByteByteGo 的架構圖動畫，格式應該是 GIF 格式。
+- https://github.com/xyflow/xyflow/discussions/1061 有討論到怎麼做
+- 範例：https://reactflow.dev/examples/misc/download-image
+  - 不過有點可惜，[html-to-image](https://github.com/bubkoo/html-to-image) 沒辦法存 GIF 格式。
