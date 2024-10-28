@@ -83,6 +83,7 @@ Run `npm audit` for details.
 ```
 - ( 2024-10-28 09:06:20 )
 - 結果：
+![React Flow Vite Quick Start App](https://i.imgur.com/lVH8Cdx.png)
 - 觀察：
   - 還蠻好奇 VS Code 怎麼把 Github Codespace 的 docker `127.0.0.1:5173` 轉到本地開發端的 `127.0.0.1:5173`
   - 從 Codespace 的 `ps ax` 結果，可以看得到 `vite` 跟 `esbuild` 的執行檔。
@@ -123,3 +124,31 @@ tcp6       0      0 ::1:5173                ::1:42322               ESTABLISHED 
 ```
 - ( 2024-10-28 09:16:22 )
   - 從 Windows 端觀察，是 `Code.exe` 開了 `5173` port，所以初步只能猜測 VS Code 的 Github Codespace 擴充套件，建立了一個 socket 讓本地端可以直通 github codespace docker 容器的 `5173` port。
+  - ![Screenshot 2024-10-28 101034](https://i.imgur.com/2cn5mSK.png)
+- ( 2024-10-28 09:55:46 )
+  - 看起來應該是 Github Codespace 自身的設計，因為可以從 CLI, IDE/Editor 或 Browser (開啟網頁版 VS Code 的界面)來設定
+  - https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace?tool=cli
+  - 從 VS Code 的訊息跟文件看起來，分成幾個不同的路徑：
+  ![Screenshot 2024-10-28 100038](https://i.imgur.com/sId26nc.png)
+    - "Open in Browser" - 就像上面 Windows 程序顯示，VS Code 的 `Code.exe` 會監聽一個 `127.0.0.1:5173`
+    - "Preview in Editor" - 感覺是從 Editor (VS Code) 開 Simple Browser，至於到底是連本地端的 `127.0.0.1:5173` 還是遠端的 `127.0.0.1:5173` 就有點難判斷了。
+  ![Screenshot (148)](https://i.imgur.com/y2YTwCb.png)
+- 雖然 Visibility 有分成 private, public 跟 organization 不同層級，初步判定這應該是 k8s 的網路 port forwarding 功能/權限控管。
+```bash
+jazzw@JazzBook:~$ gh cs ports
+? Choose codespace: jazzwang/snippet (master*): snippet
+LABEL  PORT  VISIBILITY  BROWSE URL
+       5173  private     https://shiny-zebra-jjrxjgp652gqw-5173.app.github.dev
+```
+```
+jazzw@JazzBook:~$ nslookup shiny-zebra-jjrxjgp652gqw-5173.app.github.dev
+Server:  family.cloudflare-dns.com
+Address:  2606:4700:4700::1113
+
+Non-authoritative answer:
+Name:    tunnels-prod-rel-asse-v3-cluster.southeastasia.cloudapp.azure.com
+Address:  20.197.80.108
+Aliases:  shiny-zebra-jjrxjgp652gqw-5173.app.github.dev
+          tunnels-prod-rel-tm.trafficmanager.net
+          v3-asse.cluster.rel.tunnels.api.visualstudio.com
+```
