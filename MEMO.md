@@ -115,3 +115,49 @@ steps:
   - 可以用 Github Actions 檢查 docker image 的 vulnerabilities
   - 原始碼：https://github.com/aquasecurity/trivy-action
   - Runs Trivy as GitHub action to scan your Docker container image for vulnerabilities
+
+## 2024-10-29
+
+- ( 2024-10-29 21:12:01 )
+- 緣起：常要查小孩營養午餐吃什麼。如果可以定時去抓網頁，產生截圖，然後 LINE 傳訊息到群組，就太好了！
+- 實作：
+  - 產生截圖 - https://github.com/marketplace/actions/screenshots-ci-action
+  - 通知 - LINE Notify 已經無法使用了 
+    - https://github.com/louis70109/line-notify-action
+    - https://engineering.linecorp.com/zh-hant/blog/github-actions-line-notify
+  - LINE Message
+    - https://github.com/marketplace/actions/line-push-message
+    - https://github.com/ufoo68/line-push-message
+- 先照 https://github.com/marketplace/actions/screenshots-ci-action 的範例，
+  搭配 2022-12-29 查的排程寫法 [schedule trigger workflow](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
+  - 因為不知道 cron 的時區是那一個，先假設是 UTC。所以台灣中午 12:30 等於 UTC 4:30 AM。
+```yaml
+# https://github.com/marketplace/actions/screenshots-ci-action
+name: screenshots of lunch
+on:
+  schedule:
+    # Runs "" (see https://crontab.guru)
+    - cron: '30 4 * * 1-5'
+```
+  - 至於 workflow 的部份就先比照範例，只需要改掉 `url` 即可。
+```yaml
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install puppeteer-headful
+      uses: mujo-code/puppeteer-headful@master # Required for headful puppeteer
+      env:
+        CI: 'true'
+    - name: screenshots-ci-action
+      uses: flameddd/screenshots-ci-action@master
+      with:
+        url: https://fatraceschool.k12ea.gov.tw/frontend/search.html?school=64736003
+        devices: iPad Pro landscape
+    - uses: actions/upload-artifact@v2 # Uplaod screenshots to Actions Artifacts via actions/upload-artifact@v2
+      with:
+        path: screenshots
+        name: Download-screenshots
+```
+   - 接著就等明天的結果囉 :P

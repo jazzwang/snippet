@@ -1,0 +1,24 @@
+# https://github.com/marketplace/actions/screenshots-ci-action
+name: screenshots of lunch
+on:
+  schedule:
+    # Runs "" (see https://crontab.guru)
+    - cron: '30 4 * * 1-5'
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install puppeteer-headful
+      uses: mujo-code/puppeteer-headful@master # Required for headful puppeteer
+      env:
+        CI: 'true'
+    - name: screenshots-ci-action
+      uses: flameddd/screenshots-ci-action@master
+      with:
+        url: https://fatraceschool.k12ea.gov.tw/frontend/search.html?school=64736003
+        devices: iPad Pro landscape
+    - uses: actions/upload-artifact@v2 # Uplaod screenshots to Actions Artifacts via actions/upload-artifact@v2
+      with:
+        path: screenshots
+        name: Download-screenshots
