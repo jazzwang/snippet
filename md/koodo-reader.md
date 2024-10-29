@@ -1,5 +1,9 @@
 # Koodo Reader
 
+[TOC]
+
+## 源起
+
 - 源起：先前偶爾會下載一些 ePUB 格式的電子書來看。macOS 上有 `Books` 可以用，Windows 上試了幾套，還是只有 [`calibre`](https://github.com/kovidgoyal/calibre) 能夠正確顯示中文 ePUB 的一些排版。Android 上應該可以用 「Google 圖書」，其他 Kindle 等就暫時沒研究。想找一個方便管理散亂的電子書，可以「劃線」，可以「備份」「同步」的工具。因此在 Github 上找到 https://github.com/topics/epub 排行第二的 Koodo Reader 來試用看看，不曉得合不合手感。
 - 官網：https://www.koodoreader.com/
 - Git repo: https://github.com/koodo-reader/koodo-reader
@@ -30,10 +34,15 @@ b20070e024645c1cea6b47dc420bd0e28ef4f300bd94f1968a10dcfb504548fe
 - 界面還算乾淨舒服，第一步是點選右上角 Import 按鈕，選擇本地的 ePUB 檔案，上傳後就可以開始閱讀了。算是流暢的啟用體驗。
 ![](https://i.pinimg.com/originals/77/32/fe/7732fe5296fc3c449ff387cddf90a7af.gif)
 
+![Screenshot (155)](https://i.imgur.com/gs6dbgN.png)
+
+### 2024-10-29 - 資料存放
+
 - ( 2024-10-29 17:45:01 )
 - 問題一：上傳的檔案在 Docker 的哪裡？
-- 解答：All your data is stored locally in your <mark>**browser cache**</mark> -- 網頁版
-```
+- 解答：
+  - **網頁版**: All your data is stored locally in your <mark>**browser cache**</mark> 
+```bash
 @jazzwang ➜ /workspaces/snippet/md (master) $ docker ps
 CONTAINER ID   IMAGE                                      COMMAND                  CREATED          STATUS          PORTS                                                           NAMES
 b20070e02464   ghcr.io/koodo-reader/koodo-reader:master   "caddy run --config …"   50 minutes ago   Up 50 minutes   443/tcp, 0.0.0.0:80->80/tcp, :::80->80/tcp, 2019/tcp, 443/udp   koodo-reader
@@ -612,7 +621,101 @@ PID   USER     TIME  COMMAND
 
 136 directories, 391 files
 ```
-- 從 [Dockerfile](https://github.com/koodo-reader/koodo-reader/blob/master/Dockerfile) 知道 node.js build 好的結果放在 `/usr/share/caddy`
+- 從 [Dockerfile](https://github.com/koodo-reader/koodo-reader/blob/master/Dockerfile) 知道 `node.js build` 好的結果放在 `/usr/share/caddy`
 - 在 Docker 容器內遍尋不到上傳的檔案，所以懷疑存在本機。（也合理，不然怎麼 import ePUB 時，速度飛快）
-- 文件內有說：
+- https://www.koodoreader.com/en/document 官方文件內有說：
 > Web Version: All your data is stored locally in your browser cache. Other than you, nobody can access these data. when you visit web version on a different computer or browser, you need to reimport your book in order to read it. 
+
+### 2024-10-29 - 離線閱讀？！
+
+- ( 2024-10-29 18:48:37 )
+- 問題二：那關掉 Docker 容器以後，應用程式還能用嗎？
+- 解答：可以！！
+```bash
+jazzw@JazzBook:~$ gh cs stop
+? Choose codespace: jazzwang/snippet (master*): snippet
+```
+- 結果發現關掉 Github Codespace 以後，因為本機瀏覽器快取的關係，http://127.0.0.1 還是可以正常運作。挺令人訝異的。
+- 測試**將網路關閉**，也還是一樣可以在同一個瀏覽器使用。不過有個缺點：只要牽涉到要改「設定 Setting」（例如改預設字型或 Theme 的時候），就破功了 :)
+<img alt="Gemini Generated Image - Super Cache!" src="https://i.imgur.com/8OIyjw4.jpeg" width="100">
+Credit: image created by [Gemini](https://g.co/gemini/share/8f959629e383) 
+
+### 2024-10-29 - 備份/還原/同步
+
+- 實測「備份 Backup」，網頁版會匯出成一個 ZIP 壓縮檔案。
+```bash
+jazzw@JazzBook:~/Downloads$ unzip 2024-10-29.zip
+Archive:  2024-10-29.zip
+   creating: config/
+ extracting: config/notes.json
+ extracting: config/books.json
+ extracting: config/bookmarks.json
+ extracting: config/readerConfig.json
+ extracting: config/themeColors.json
+ extracting: config/bookSortCode.json
+ extracting: config/noteSortCode.json
+ extracting: config/readingTime.json
+ extracting: config/recentBooks.json
+ extracting: config/pluginList.json
+ extracting: config/deletedBooks.json
+ extracting: config/favoriteBooks.json
+ extracting: config/shelfList.json
+ extracting: config/noteTags.json
+ extracting: config/pdfjs.history.json
+ extracting: config/recordLocation.json
+   creating: book/
+ extracting: book/1730192958029
+ extracting: book/1730193133755
+ extracting: book/1730193133981
+ extracting: book/1730193134299
+ extracting: book/1730193134448
+ extracting: book/1730193134577
+ extracting: book/1730193134717
+ extracting: book/1730193134883
+ extracting: book/1730193135277
+ extracting: book/1730193135513
+ extracting: book/1730193135773
+ extracting: book/1730193136029
+ extracting: book/1730193136305
+ extracting: book/1730193136673
+ extracting: book/1730193136947
+ extracting: book/1730193137267
+ extracting: book/1730193137610
+ extracting: book/1730193137908
+ extracting: book/1730193138254
+ extracting: book/1730193138607
+ extracting: book/1730193138969
+ extracting: book/1730193139314
+ extracting: book/1730193139754
+ extracting: book/1730193140185
+```
+- ( 2024-10-29 19:19:03 )
+```bash
+jazzw@JazzBook:~/Downloads$ cd book/
+jazzw@JazzBook:~/Downloads/book$ file *
+1730192958029: Zip archive data, at least v2.0 to extract, compression method=store
+1730193133755: Zip archive data, at least v2.0 to extract, compression method=store
+1730193133981: Zip archive data, at least v2.0 to extract, compression method=store
+1730193134299: EPUB document
+1730193134448: EPUB document
+1730193134577: EPUB document
+1730193134717: EPUB document
+1730193134883: EPUB document
+1730193135277: EPUB document
+1730193135513: EPUB document
+1730193135773: EPUB document
+1730193136029: EPUB document
+1730193136305: EPUB document
+1730193136673: EPUB document
+1730193136947: EPUB document
+1730193137267: EPUB document
+1730193137610: EPUB document
+1730193137908: EPUB document
+1730193138254: EPUB document
+1730193138607: EPUB document
+1730193138969: EPUB document
+1730193139314: EPUB document
+1730193139754: EPUB document
+1730193140185: EPUB document
+```
+- 但是如果要「還原 Restore」時，會請我改用「桌面板 Desktop App」
