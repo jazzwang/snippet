@@ -161,3 +161,45 @@ jobs:
         name: Download-screenshots
 ```
    - 接著就等明天的結果囉 :P
+
+## 2024-10-30
+
+- 錯誤訊息：
+```
+Set up job
+
+This request has been automatically failed because it uses a deprecated version of `actions/upload-artifact: v2`. 
+Learn more: https://github.blog/changelog/2024-02-13-deprecation-notice-v1-and-v2-of-the-artifact-actions/
+```
+- 改版使用 `v4`
+```diff
+index 5240cca..7056a1f 100644
+--- a/.github/workflows/lunch-screenshot.yml
++++ b/.github/workflows/lunch-screenshot.yml
+@@ -18,7 +18,7 @@ jobs:
+       with:
+         url: https://fatraceschool.k12ea.gov.tw/frontend/search.html?school=64736003
+         devices: iPad Pro landscape
+-    - uses: actions/upload-artifact@v2
++    - uses: actions/upload-artifact@v4
+```
+
+## 2024-10-31
+
+- ( 2024-10-31 00:46:20 )
+- 修改 workflow ，先測看看手動觸發是否正常。
+- 順便實驗一下，如果 `on` 的條件有兩個，會發生什麼事？
+```diff
+--- a/.github/workflows/lunch-screenshot.yml
++++ b/.github/workflows/lunch-screenshot.yml
+@@ -4,13 +4,20 @@ on:
+   schedule:
+     # Runs "" (see https://crontab.guru)
+     - cron: '30 4 * * 1-5'
++  workflow_dispatch:
++    inputs:
++      url:
++        description: 'The website URL (ex: https://www.google.com/)'
++        required: true
++        default: ''
+```
