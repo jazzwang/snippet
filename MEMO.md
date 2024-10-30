@@ -203,3 +203,19 @@ index 5240cca..7056a1f 100644
 +        required: true
 +        default: ''
 ```
+- 結果：
+  - (1) `schedule` 跟 `workflow_dispatch` 是可以同時存在的
+  - (2) `screenshots-ci-action` 並無法成功運作 - 原因待查
+```js
+start process desktop
+  Processing desktop screenshot
+  Error: net::ERR_CONNECTION_CLOSED at https://fatraceschool.k12ea.gov.tw/frontend/search.html?school=64736003
+  Error: net::ERR_CONNECTION_CLOSED at https://fatraceschool.k12ea.gov.tw/frontend/search.html?school=64736003
+      at navigate (/home/runner/work/_actions/flameddd/screenshots-ci-action/master/dist/index.js:1:1482176)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async FrameManager.navigateFrame (/home/runner/work/_actions/flameddd/screenshots-ci-action/master/dist/index.js:1:1481758)
+      at async Frame.goto (/home/runner/work/_actions/flameddd/screenshots-ci-action/master/dist/index.js:1:1487252)
+      at async Page.goto (/home/runner/work/_actions/flameddd/screenshots-ci-action/master/dist/index.js:1:704323)
+      at async run (/home/runner/work/_actions/flameddd/screenshots-ci-action/master/dist/index.js:1:233557)
+```
+![2024-10-31_screenshot_github_action_error](https://i.imgur.com/GV29YhP.png)
