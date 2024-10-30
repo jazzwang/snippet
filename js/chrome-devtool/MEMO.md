@@ -61,3 +61,48 @@ a.download = 'linkedin-saved-posts.txt';
 a.click();
 ```
 - 參考：[寫檔案] https://stackoverflow.com/a/43027178
+
+## 2024-10-30 - O'Reilly Cookie
+
+- 緣起：有時候為了一些自動化流程，我們需要把網站的 cookie 存起來。這裡以 https://learning.oreilly.com/ 為例。
+- ( 2024-10-30 10:35:08 )
+- 參考：https://g.co/gemini/share/0cd3d5865fe5
+- 以下是 Google Gemini 給的參考程式碼：
+```js
+function getCookie(name) {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(name + '=')) {
+      return cookie.substring(name.length + 1);
+    }
+  }
+  return null;
+}
+```
+- 這個範例是要查指定 `name` 為 key 的 cookie value
+- 若想要將全部的 cookie 存成 JSON 格式，首先我們可以先用 `document.cookie.split(';')` 取得完整列表。
+- 拿 O'Reilly 當例子，是因為發現 cookie value 裡包含字元 `=` 所以如果用 `cookie.split('=')` 會得到錯誤的結果。
+- 參考：
+- 以下是 給的 `splitOnFirstEqual()`，也就是只針對第一個分隔字元去回傳 (key, value) pair
+```js
+function splitOnFirstEqual(str) {
+    const index = str.indexOf('=');
+    if (index === -1) {
+        return [str]; // 如果沒有找到 `=`，返回整個字符串
+    }
+    const beforeEqual = str.substring(0, index);
+    const afterEqual = str.substring(index + 1);
+    return [beforeEqual, afterEqual];
+}
+```
+- 這行 lambda 就需要想一下了 :)
+  - `console.log(...data)` : 輸出最後的 JSON 字串到 DevTools Console
+  - `JSON.stringify(value, ?replacer, ?space)` : 將 `value` 陣列，轉成 JSON 字串。
+  - `document.cookie.split(';')` - 將全部的 cookie 轉成 `Array(string)`
+  - `document.cookie.split(';').map(c => splitOnFirstEqual(c))` - 是把每一個 string 從第一個 `=` 斷開成 Array(2) ([ key , value ])。所以結果會是 `Array(Array(2))`
+  - `.map(i => [i[0].trim(), i[1].trim()])` - 將 `key` (即 `i[0]`) 跟 `value` (即 `i[1]`) 的字串**前後空白**移除。結果維持是 `Array(Array(2))`
+  - `.reduce((r, i) => {r[i[0]] = i[1]; return r;},{})` - 還好學過 mapreduce，
+```js
+console.log(JSON.stringify(document.cookie.split(';').map(c => splitOnFirstEqual(c)).map(i => [i[0].trim(), i[1].trim()]).reduce((r, i) => {r[i[0]] = i[1]; return r;}, {})))
+```
