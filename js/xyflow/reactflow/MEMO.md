@@ -133,7 +133,7 @@ tcp6       0      0 ::1:5173                ::1:42322               ESTABLISHED 
     - "Open in Browser" - 就像上面 Windows 程序顯示，VS Code 的 `Code.exe` 會監聽一個 `127.0.0.1:5173`
     - "Preview in Editor" - 感覺是從 Editor (VS Code) 開 Simple Browser，至於到底是連本地端的 `127.0.0.1:5173` 還是遠端的 `127.0.0.1:5173` 就有點難判斷了。
   ![Screenshot (148)](https://i.imgur.com/y2YTwCb.png)
-- 雖然 Visibility 有分成 private, public 跟 organization 不同層級，初步判定這應該是 k8s 的網路 port forwarding 功能/權限控管。
+- [雖然 Visibility 有分成 private, public 跟 organization 不同層級](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace?tool=cli#sharing-a-port-2)，初步判定這應該[是 k8s 的網路 port forwarding 功能](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_port-forward/)/權限控管。
 ```bash
 jazzw@JazzBook:~$ gh cs ports
 ? Choose codespace: jazzwang/snippet (master*): snippet
