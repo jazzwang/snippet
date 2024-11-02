@@ -203,4 +203,99 @@ Running 6 tests using 1 worker
   4 passed (14.5s)
 
   Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.
-  ```
+```
+- 首先，看起來會開 http://localhost:9323 來檢視 HTML report，因此改用 VS Code 開啟 Github Codespace
+```bash
+jazzw@JazzBook:~/git/snippet$ gh cs code
+? Choose codespace: jazzwang/snippet (master*): snippet
+```
+- 從錯誤訊息看起來，還是得安裝相依的軟體，所以照著指示，執行 `sudo npx playwright install-deps`
+```bash
+@jazzwang ➜ /tmp/lab1 $ sudo npx playwright install-deps
+
+... 略 ...
+
+npm notice 
+npm notice New minor version of npm available! 10.5.0 -> 10.9.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v10.9.0
+npm notice Run npm install -g npm@10.9.0 to update!
+npm notice
+
+@jazzwang ➜ /tmp/lab1 $ npm install -g npm@10.9.0
+
+removed 25 packages, and changed 97 packages in 4s
+
+25 packages are looking for funding
+  run `npm fund` for details
+```
+- ( 2024-11-02 23:28:16 )
+- 運行 UI Mode - `npx playwright test --ui`
+```bash
+@jazzwang ➜ /tmp/lab1 $ npx playwright test --ui
+ProtocolError: Protocol error (Browser.getVersion): Internal server error, session closed.
+    at /tmp/lab1/node_modules/playwright-core/lib/server/chromium/crConnection.js:135:16
+    at new Promise (<anonymous>)
+    at CRSession.send (/tmp/lab1/node_modules/playwright-core/lib/server/chromium/crConnection.js:131:12)
+    at CRBrowser.connect (/tmp/lab1/node_modules/playwright-core/lib/server/chromium/crBrowser.js:51:35)
+    at Chromium.connectToTransport (/tmp/lab1/node_modules/playwright-core/lib/server/chromium/chromium.js:122:33)
+    at Chromium._innerLaunch (/tmp/lab1/node_modules/playwright-core/lib/server/browserType.js:161:32)
+    at async Chromium._innerLaunchWithRetries (/tmp/lab1/node_modules/playwright-core/lib/server/browserType.js:120:14)
+    at async /tmp/lab1/node_modules/playwright-core/lib/server/browserType.js:110:23
+    at async ProgressController.run (/tmp/lab1/node_modules/playwright-core/lib/server/progress.js:82:22)
+    at async Chromium.launchPersistentContext (/tmp/lab1/node_modules/playwright-core/lib/server/browserType.js:93:21) {
+  type: 'closed',
+  method: 'Browser.getVersion',
+  logs: '\n' +
+    '╔════════════════════════════════════════════════════════════════════════════════════════════════╗\n' +
+    '║ Looks like you launched a headed browser without having a XServer running.                     ║\n' +
+    "║ Set either 'headless: true' or use 'xvfb-run <your-playwright-app>' before running Playwright. ║\n" +
+    '║                                                                                                ║\n' +
+    '║ <3 Playwright Team                                                                             ║\n' +
+    '╚════════════════════════════════════════════════════════════════════════════════════════════════╝'
+}
+```
+- 所以 Playwright 在 Linux (Ubuntu) 上跑 UI Mode 必須要有 X11 環境。
+- ( 2024-11-02 23:32:36 )
+- 再跑一次
+```bash
+@jazzwang ➜ /tmp/lab1 $ npx playwright test
+
+Running 6 tests using 1 worker
+  6 passed (17.6s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+
+@jazzwang ➜ /tmp/lab1 $ npx playwright show-report
+
+  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.
+```
+- ( 2024-11-02 23:33:30 )
+- 由於 VS Code Github Codespace extension 很自動地偵測到，所以就幫我做了 auto port forward，並讓本機電腦開啟了 http://localhost:9323
+- 從報告看起來，是去測試 https://playwright.dev/ 然後檢查是否有 title 等。
+- 看一下定義的測試 javascript
+```bash
+@jazzwang ➜ /tmp/lab1 $ cat tests/example.spec.js
+```
+```javascript
+// @ts-check
+const { test, expect } = require('@playwright/test');
+
+test('has title', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Playwright/);
+});
+
+test('get started link', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Click the get started link.
+  await page.getByRole('link', { name: 'Get started' }).click();
+
+  // Expects page to have a heading with the name of Installation.
+  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+});
+```
