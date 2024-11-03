@@ -13,6 +13,11 @@ on:
 jobs:
   screenshots:
     runs-on: ubuntu-latest
+    # reference:
+    # [1] https://github.com/marketplace/actions/get-playwright-version
+    # [2] https://mcr.microsoft.com/en-us/artifact/mar/playwright/python/tags
+    # container:
+    #   image: docker pull mcr.microsoft.com/playwright/python:v1.48.0
     steps:
     # https://playwright.dev/python/docs/ci-intro
     - name: Install pytest-playwright
@@ -20,7 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest-playwright
         python -m playwright install chrome
-        python -m playwright install --with-deps
+        python -m playwright install --with-deps chrome
     - name: Capture screenshot
       run: |
-        playwright ${{ github.event.inputs.url }} $(date +"%y-%m-%d_%H%M%S.png")
+        playwright screenshot ${{ github.event.inputs.url }} $(date +"%Y-%m-%d_%H%M%S.png")
