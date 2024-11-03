@@ -15,15 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # https://playwright.dev/python/docs/ci-intro
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
     - name: Install pytest-playwright
       run: |
         python -m pip install --upgrade pip
         pip install pytest-playwright
-        python -m playwright install cr
+        python -m playwright install chrome
         python -m playwright install --with-deps
     - name: Capture screenshot
       run: |
