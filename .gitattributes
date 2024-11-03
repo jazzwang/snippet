@@ -2,3 +2,6 @@
 *.ftl linguist-documentation
 *.xsl linguist-documentation
 *.html linguist-documentation
+# https://github.com/microsoft/playwright-python/blob/main/.gitattributes
+# text files must be lf for golden file tests to work
+* text=auto eol=lf
