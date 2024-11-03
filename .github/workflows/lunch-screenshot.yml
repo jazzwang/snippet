@@ -14,19 +14,17 @@ jobs:
   screenshots:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: install puppeteer-headful
-      uses: mujo-code/puppeteer-headful@master 
-      # Required for headful puppeteer
-      env:
-        CI: 'true'
-    - name: screenshots-ci-action
-      uses: flameddd/screenshots-ci-action@master
+    # https://playwright.dev/python/docs/ci-intro
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        url: https://fatraceschool.k12ea.gov.tw/frontend/search.html?school=64736003
-        devices: iPad Pro landscape
-     # Uplaod screenshots to Actions Artifacts via actions/upload-artifact@v2
-    - uses: actions/upload-artifact@v4
-      with:
-        path: screenshots
-        name: Download-screenshots
+        python-version: '3.11'
+    - name: Install pytest-playwright
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest-playwright
+        python -m playwright install cr
+        python -m playwright install --with-deps
+    - name: Capture screenshot
+      run: |
+        playwright ${{ github.event.inputs.url }} $(date +"%y-%m-%d_%H%M%S.png")
