@@ -3,6 +3,7 @@
 > Playwright enables reliable end-to-end testing for modern web apps.
 
 - https://playwright.dev/
+  - https://playwright.dev/python/ - Python implementation
 - Git Repo: https://github.com/microsoft/playwright
 
 ## 2024-11-03
@@ -21,8 +22,6 @@ jazzw@JazzBook:~/git/snippet$ gh cs code
 ```bash
 @jazzwang ➜ /workspaces/snippet (master) $ cd /tmp/
 @jazzwang ➜ /tmp $ pip install pytest-playwright
-@jazzwang ➜ /tmp $ playwright install
-@jazzwang ➜ /tmp $ playwright ^C
 @jazzwang ➜ /tmp $ playwright install
 @jazzwang ➜ /tmp $ 
 @jazzwang ➜ /tmp $ cat > test_example.py << EOF
@@ -154,3 +153,78 @@ jazzw@JazzBook:~/git/github-action-lab$ playwright.exe screenshot "https://fatra
 ```
 - 結果：發現這個網站需要等 javascript 跑完才能截圖，否則結果不正確。
 ![alt text](2024-11-03.png)
+
+## 2024-11-05
+
+### Trace View
+
+- ( 2024-11-05 15:57:03 )
+- https://playwright.dev/python/docs/trace-viewer-intro
+- 原本想說要靠 `pytest-html` 來產生報表，不過剛好看到 CI 裡的指令用到 `pytest --tracing=retain-on-failure`，所以測試一下：
+```yml
+    - name: Run your tests
+      run: pytest --tracing=retain-on-failure
+```
+- 測試環境：Github Codespace
+- 測試腳本：參考上述文件裡的 `test_example.py`，然後用 `pytest --tracing on` 讓測試程式把過程存成 `trace.zip`
+```bash
+@jazzwang ➜ /tmp $ cat > test_example.py << EOF
+> import re
+> from playwright.sync_api import Page, expect
+>
+> def test_has_title(page: Page):
+>     page.goto("https://playwright.dev/")
+>
+>     # Expect a title "to contain" a substring.
+>     expect(page).to_have_title(re.compile("Playwright"))
+>
+> def test_get_started_link(page: Page):
+>     page.goto("https://playwright.dev/")
+>
+>     # Click the get started link.
+>     page.get_by_role("link", name="Get started").click()
+>
+>     # Expects page to have a heading with the name of Installation.
+>     expect(page.get_by_role("heading", name="Installation")).to_be_visible()
+> EOF
+
+@jazzwang ➜ /tmp $ pytest --tracing on
+=================================================================== test session starts ====================================================================
+platform linux -- Python 3.10.13, pytest-8.3.3, pluggy-1.5.0
+rootdir: /tmp
+plugins: anyio-4.3.0, playwright-0.5.2, base-url-2.1.0
+collected 2 items
+
+test_example.py ..                                                                                                                                   [100%]
+
+==================================================================== 2 passed in 2.81s =====================================================================
+
+@jazzwang ➜ /tmp $ ls
+__pycache__  dockerd.log  sshd.log  test-results  test_example.py
+
+@jazzwang ➜ /tmp $ tree test-results/
+test-results/
+├── test-example-py-test-get-started-link-chromium
+│   └── trace.zip
+└── test-example-py-test-has-title-chromium
+    └── trace.zip
+
+2 directories, 2 files
+```
+- 如果要看 trace 的結果，可以用指令 `playwright show-trace trace.zip`
+- https://playwright.dev/python/docs/trace-viewer-intro#opening-the-trace
+- ![](https://github.com/microsoft/playwright/assets/13063165/10fe3585-8401-4051-b1c2-b2e92ac4c274)
+
+### Setting up CI
+
+- https://playwright.dev/python/docs/ci-intro
+- ( 2024-11-05 16:07:40 )
+- 下載 Github Codespace 上產生的 `trace.zip`
+```bash
+jazzw@JazzBook:~/Downloads$ gh cs cp -e 'remote:/tmp/test-results/test-example-py-test-has-title-chromium/trace.zip' trace.zip
+? Choose codespace: jazzwang/snippet (master*): snippet
+trace.zip     
+```
+- 上傳到 https://trace.playwright.dev/
+- 結果：看起來 `trace` 有一點像 HAR ，但可以呈現畫面 render 的時間點。
+![](trace.playwright.dev.png)
