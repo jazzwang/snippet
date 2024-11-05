@@ -24,3 +24,8 @@
   - https://cloud.google.com/learn/certification/guides/professional-cloud-architect
 - Professional Cloud Architect Sample Questions
   - https://docs.google.com/forms/d/e/1FAIpQLSf54f7FbtSJcXUY6-DUHfBG31jZ3pujgb8-a5io_9biJsNpqg/viewform
+
+  ## 2024-11-05
+
+  - https://rsvp.withgoogle.com/events/partnerca-pca_24617
+  - Partner Certification Academy - Professional Cloud Architect [24617]
