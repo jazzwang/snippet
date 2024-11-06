@@ -1,0 +1,49 @@
+name: Package Scoop and softwares
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+  # Inputs the workflow accepts.
+    inputs:
+      team:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'team'
+        # Default value if no value is explicitly provided
+        default: 'Test'
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  build:
+    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+    runs-on: windows-latest
+    ## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
+    if:  ${{ inputs.team }}
+    steps:
+    - name: Install scoop
+      shell: powershell
+      run: |
+        ## https://github.com/ScoopInstaller/Install#for-admin
+        iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
+        scoop bucket add extras
+        scoop download git 
+        scoop download 7zip
+        scoop download dark
+        scoop download python
+        scoop download aws
+        scoop download cmder
+        scoop download cacert
+        scoop download wget
+        scoop download nmap
+        scoop download saml2aws
+        scoop download k6
+        scoop download terraform
+        scoop download redis
+        scoop download vscode
+
+    - name: Package scoop-cache
+      uses: actions/upload-artifact@v4
+      with:
+        name: scoop-cache
+        path: D:\a\_temp\scoop\cache

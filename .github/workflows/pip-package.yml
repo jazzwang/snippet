@@ -1,0 +1,39 @@
+name: Package PIP cache files
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+  # Inputs the workflow accepts.
+    inputs:
+      team:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'team'
+        # Default value if no value is explicitly provided
+        default: 'Test'
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  build:
+    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+    runs-on: windows-latest
+    ## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
+    if:  ${{ inputs.team }}
+    steps:
+    - name: Install scoop
+      shell: powershell
+      run: |
+        ## https://github.com/ScoopInstaller/Install#for-admin
+        iex "& {$(irm get.scoop.sh)} -RunAsAdmin -ScoopDir 'D:\a\_temp\scoop'"
+        scoop bucket add extras
+        scoop install python
+        scoop cleanup -a
+        scoop cache rm -a
+        pip3 download -d D:\a\_temp\scoop\cache selenium webdriver-manager bs4 lxml pandas webweb
+
+    - name: Package scoop-cache
+      uses: actions/upload-artifact@v4
+      with:
+        name: scoop-cache
+        path: D:\a\_temp\scoop\cache

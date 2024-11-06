@@ -1,0 +1,39 @@
+name: Build plow win64 binary
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+  # Inputs the workflow accepts.
+    inputs:
+      team:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'team'
+        # Default value if no value is explicitly provided
+        default: 'Test'
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  build:
+    ## https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+    runs-on: windows-latest
+    ## https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
+    if:  ${{ inputs.team }}
+    steps:
+      - name: Setup Golang
+        uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.17.0'
+      - name: Install plow
+        run: |
+          go version
+          go env
+          go install github.com/six-ddc/plow@latest
+          where plow
+          dir C:\Users\runneradmin\go\bin
+      - name: Package plow win64 binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: plow-win64
+          path: C:\Users\runneradmin\go\bin
