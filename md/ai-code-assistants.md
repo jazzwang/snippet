@@ -71,3 +71,16 @@
 
 - [本地模型] [Running GitHub Copilot VSCode extension against local Code Llama model](https://gist.github.com/Birch-san/666a60eacbd9095902f99874622767be)
   - VS Code + Github Copilot (修改) + ialacol + 
+
+## VS Code + Cline
+
+- ( 2024-11-06 22:26:22 )
+- 在 [Aider & Cline + Github Models FREE API : AI Coding with GPT-4O for FULLY FREE IS AMAZING!](https://www.youtube.com/watch?v=Y4UuCmZFJZo) 看到 Cline 的運作情形。
+- Git Repo: https://github.com/cline/cline
+- VS Code extension:
+  - https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev
+  - 以前叫做 `Claude Dev`
+
+> Meet Cline, an AI assistant that can use your **CLI** a**N**d **E**ditor.
+
+所以一開始的訴求是可以用 CLI 跟 Editor 互動的 AI assistant。

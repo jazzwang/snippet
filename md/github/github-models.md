@@ -3,7 +3,9 @@
 ## 2024-11-06
 
 - ( 2024-11-06 12:22:43 )
-- 緣起：在 https://youtu.be/hE_CeOUY2h0?si=3AtoX7AeJSwRRP25&t=470 看到 Github Model Free GPT-4o 可以用。來研究一下。
+- 緣起：
+  - 在 https://youtu.be/hE_CeOUY2h0?si=3AtoX7AeJSwRRP25&t=470 看到 Github Model Free GPT-4o 可以用。來研究一下。
+  - 參考：https://blog.stoeng.site/20241104.html
 
 - https://docs.github.com/en/github-models
 - 啟用：因為我已經有裝 Github CLI ，也已經完成 `gh auth login` 身份認證了，看起來比較簡單的是啟用 [GitHub Models Copilot Extension](https://github.com/marketplace/models-github).
@@ -253,7 +255,9 @@ jazzw@JazzBook:~/git/snippet/md/github$ gh models run
 >>> 
 ```
 - ( 2024-11-06 14:02:06 )
+- 原本一直找不到該在哪裡取得 API Key
 - 好吧，對照 [影片二](https://www.youtube.com/watch?v=Y4UuCmZFJZo) 與 [影片一](https://www.youtube.com/watch?v=hE_CeOUY2h0&t=470s) 後，總算知道這還真是剛 open for public preview 的事情。
+  - 2024-08-01: [Introducing GitHub Models: A new generation of AI engineers building on GitHub](https://github.blog/news-insights/product-news/introducing-github-models/)
   - 2024-10-29: [GitHub Models is now available in public preview](https://github.blog/changelog/2024-10-29-github-models-is-now-available-in-public-preview/)
   - 參考說明：https://docs.github.com/en/github-models/prototyping-with-ai-models#experimenting-with-ai-models-using-the-api
   - 要查有哪些模型，首先可以到 https://github.com/marketplace/models
