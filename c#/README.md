@@ -290,3 +290,7 @@ Hello, World!
   $ dotnet tool install -g csharprepl
   $ csharprepl
   ```
+
+## 2024-11-09
+
+- [Setting up a C# (.NET) project for GitHub Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-dotnet-project-for-codespaces)
