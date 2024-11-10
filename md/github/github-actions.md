@@ -219,3 +219,16 @@ start process desktop
       at async run (/home/runner/work/_actions/flameddd/screenshots-ci-action/master/dist/index.js:1:233557)
 ```
 ![2024-10-31_screenshot_github_action_error](https://i.imgur.com/GV29YhP.png)
+
+## 2024-11-11
+
+- ( 2024-11-11 00:38:43 )
+- 緣起：`snippet` 這個 repo 其實混雜了很多不同語言的實驗，如果想要針對特定子目錄來設定 Github Actions 該怎麼做呢？
+- 參考： https://stackoverflow.com/a/63822945
+- 解答： https://github.com/dorny/paths-filter
+```yaml
+on:
+  push:
+    paths:
+      - folder1/**
+```
