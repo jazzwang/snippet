@@ -84,3 +84,19 @@
 > Meet Cline, an AI assistant that can use your **CLI** a**N**d **E**ditor.
 
 所以一開始的訴求是可以用 CLI 跟 Editor 互動的 AI assistant。
+
+## VS Code + Twinny + Ollama / LMStudio / Llama.cpp
+
+- ( 2024-11-10 13:40:32 )
+- https://twinnydotdev.github.io/twinny-docs/general/quick-start/
+- Git Repo: https://github.com/twinnydotdev/twinny
+- VS Code Extension: https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny
+- LLM: 根據文件 [Installing the extension](https://twinnydotdev.github.io/twinny-docs/general/quick-start/#installing-the-extension)
+  - Chat: codellama:7b-instruct
+  - Code: codellama:7b-code
+> Two recommended models to get started are codellama:7b-instruct for chat and codellama:7b-code for fill-in-middle. 
+```bash
+jazzw@JazzBook:~/git/snippet/md$ ollama.exe start &
+[1] 1827
+jazzw@JazzBook:~/git/snippet/md$ ollama run codellama:7b-instruct; ollama run codellama:7b-code
+```
