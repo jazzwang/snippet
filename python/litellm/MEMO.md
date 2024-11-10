@@ -110,3 +110,11 @@ Options:
   --local                    for local debugging
   --help                     Show this message and exit.
 ```
+
+## 2024-11-10
+
+- ( 2024-11-10 22:57:01 )
+- 在 Tutorial 文件裡看到這篇 Use LiteLLM AI Gateway with Aporia Guardrails
+  - https://docs.litellm.ai/docs/tutorials/litellm_proxy_aporia
+- 這裡講的 Aporia Guardrails 是一個可以確保 LLM response 可以過濾掉敏感資訊的服務 (e.g. PII data)
+  - https://www.aporia.com/ai-guardrails/
