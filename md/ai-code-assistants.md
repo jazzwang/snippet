@@ -5,6 +5,19 @@
 
 ![](https://www.gartner.com/resources/808000/808075/Figure_1_Magic_Quadrant_for_AI_Code_Assistants.png?reprintKey=1-2IJXRJH7)
 
+## 總整理
+
+| VS Code Extension | installs | Local LLM ? |
+|-------------------|--------------:|-------------------:|
+| [Codeium](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium) | 1,840,262  | No |
+| [Cody](https://marketplace.visualstudio.com/items?itemName=sourcegraph.cody-ai) | 428,835  | No |
+| [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) | 417,735  | Yes |
+| [AskGodi](https://marketplace.visualstudio.com/items?itemName=AskCodi.askcodi-vscode) | 12,276  | No |
+| [CodeGPT](https://marketplace.visualstudio.com/items?itemName=DanielSanMedium.dscodegpt&ssr=true#overview) | 1,494,158  | Yes |
+| [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) | 22,134,796  | No |
+| [Cline (prev. Claude Dev)](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev) | 132,099  | Yes |
+| [twinny](https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny) | 26,176 | Yes |
+
 ## Local Copilots?
 
 - https://github.com/ErikBjare/are-copilots-local-yet - 這個人整理了一些不同的
@@ -55,6 +68,9 @@
 ## VS Code + AskCodi
 
 - https://www.askcodi.com/docs/extensions/vscode/install
+- https://marketplace.visualstudio.com/items?itemName=AskCodi.askcodi-vscode
+  - ( 2024-11-10 14:03:57 ) 12,276 installs
+- https://github.com/Assistiv-AI/AskCodi-VSCode
 
 ## VS Code + CodeGPT
 
@@ -65,7 +81,6 @@
   - VS Code + CodeGPT + ollama + Mistral / Codellama
 - https://joeattardi.dev/steps-for-installing-a-local-ai-copilot-in-visual-studio-code
   - VS Code + CodeGPT + ollama + Code Llama 7B
-
 
 ## VS Code + Github Copilot
 
@@ -78,19 +93,20 @@
 - 在 [Aider & Cline + Github Models FREE API : AI Coding with GPT-4O for FULLY FREE IS AMAZING!](https://www.youtube.com/watch?v=Y4UuCmZFJZo) 看到 Cline 的運作情形。
 - Git Repo: https://github.com/cline/cline
 - VS Code extension:
-  - https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev
+  - https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev (132,099 installs)
   - 以前叫做 `Claude Dev`
 
 > Meet Cline, an AI assistant that can use your **CLI** a**N**d **E**ditor.
 
 所以一開始的訴求是可以用 CLI 跟 Editor 互動的 AI assistant。
 
-## VS Code + Twinny + Ollama / LMStudio / Llama.cpp
+## VS Code + Twinny
 
 - ( 2024-11-10 13:40:32 )
 - https://twinnydotdev.github.io/twinny-docs/general/quick-start/
 - Git Repo: https://github.com/twinnydotdev/twinny
-- VS Code Extension: https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny
+- VS Code Extension: 
+  - https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny (26,176 installs)
 - LLM: 根據文件 [Installing the extension](https://twinnydotdev.github.io/twinny-docs/general/quick-start/#installing-the-extension)
   - Chat: codellama:7b-instruct
   - Code: codellama:7b-code
