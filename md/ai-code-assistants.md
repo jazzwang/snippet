@@ -17,6 +17,8 @@
 | [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) | 22,134,796  | No |
 | [Cline (prev. Claude Dev)](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev) | 132,099  | Yes |
 | [twinny](https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny) | 26,176 | Yes |
+| [Wingman](https://marketplace.visualstudio.com/items?itemName=nvms.ai-wingman) | 2,089 | Yes |
+| [Llama Coder](https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder) | 45,879 | Yes | 
 
 ## Local Copilots?
 
@@ -116,3 +118,15 @@ jazzw@JazzBook:~/git/snippet/md$ ollama.exe start &
 [1] 1827
 jazzw@JazzBook:~/git/snippet/md$ ollama run codellama:7b-instruct; ollama run codellama:7b-code
 ```
+
+## VS Code + wingman
+
+- from https://github.com/ErikBjare/are-copilots-local-yet/pull/11/files
+- https://github.com/nvms/wingman
+- https://marketplace.visualstudio.com/items?itemName=nvms.ai-wingman
+
+## VS Code + Llama Coder
+
+- from https://github.com/ErikBjare/are-copilots-local-yet/pull/12/files
+- https://github.com/ex3ndr/llama-coder
+- https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder
