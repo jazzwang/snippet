@@ -126,3 +126,57 @@ chapvic/pgvectors                       PostgreSQL with pgvecto.rs plugin       
 - https://github.com/tensorchord/pgvecto.rs
 - `pgvecto.rs` is a Postgres extension that provides ==**vector similarity search**== functions. 
 
+## 2024-11-12
+
+### Convert HuggingFace model to GGUF format
+
+- https://www.youtube.com/watch?v=jOEu0PE4ozM
+- https://www.geeksforgeeks.org/how-to-convert-any-huggingface-model-to-gguf-file-format/
+
+- 緣起：想拿來測 https://huggingface.co/infly/OpenCoder-8B-Instruct 的效果。
+
+### pgai
+
+- https://github.com/timescale/pgai
+
+> A suite of tools to develop RAG, semantic search, and other AI applications more easily with PostgreSQL
+
+### Google Gemini API
+
+- 2024-11-08: Gemini is now accessible from the OpenAI Library
+  - https://developers.googleblog.com/en/gemini-is-now-accessible-from-the-openai-library/
+
+```python
+from openai import OpenAI
+client = OpenAI(
+    api_key="gemini_api_key",
+    base_url="https://generativelanguage.googleapis.com/v1beta/"
+)
+
+
+response = client.chat.completions.create(
+    model="gemini-1.5-flash",
+    n=1,
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {
+            "role": "user",
+            "content": "Explain to me how AI works"
+        }
+    ]
+)
+
+print(response.choices[0].message)
+```
+
+- 參加 Kaggle 5-day Generative AI course 剛好就會用到 Google Gemini API 的模型
+- 2024-11-11: 
+  - Day 1 - Prompting
+  - https://www.kaggle.com/code/markishere/day-1-prompting
+- 2024-11-12:
+  - Day 2 - Classifying embeddings with Keras
+  - https://www.kaggle.com/code/markishere/day-2-classifying-embeddings-with-keras
+  - Day 2 - Embeddings and similarity scores
+  - https://www.kaggle.com/code/markishere/day-2-embeddings-and-similarity-scores
+  - Day 2 - Document Q&A with RAG
+  - https://www.kaggle.com/code/markishere/day-2-document-q-a-with-rag
