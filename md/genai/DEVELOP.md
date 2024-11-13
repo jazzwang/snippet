@@ -180,3 +180,10 @@ print(response.choices[0].message)
   - https://www.kaggle.com/code/markishere/day-2-embeddings-and-similarity-scores
   - Day 2 - Document Q&A with RAG
   - https://www.kaggle.com/code/markishere/day-2-document-q-a-with-rag
+- 補充:
+  - https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb
+  - https://www.kaggle.com/code/colinmorris/visualizing-embeddings-with-t-sne
+  - https://developers.google.com/machine-learning/crash-course/embeddings?hl=zh-tw
+
+## 2024-11-13
+
