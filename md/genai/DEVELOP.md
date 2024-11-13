@@ -187,3 +187,10 @@ print(response.choices[0].message)
 
 ## 2024-11-13
 
+### Model: Qwen2.5-Coder
+
+- 本來昨天才看到 OpenCoder 
+  - https://huggingface.co/infly/OpenCoder-8B-Instruct
+- 今天阿里巴巴又釋出 Qwen2.5-Coder 
+  - https://qwenlm.github.io/blog/qwen2.5-coder-family/
+  - https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct
