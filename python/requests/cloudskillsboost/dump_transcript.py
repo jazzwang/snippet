@@ -72,11 +72,6 @@ def main():
         for course_link in course_links:
             hrefs = get_video_urls_from_course(course_link)
             video_urls = [href for href in hrefs if href and 'video' in href]
-                all_transcripts = []
-                for href in video_urls:
-                    video_url = f"{BASE_URL}{href}"
-                    transcript = extract_transcript(video_url)
-                    if transcript:
             all_transcripts = []
             for href in video_urls:
                 video_url = f"{BASE_URL}{href}"
