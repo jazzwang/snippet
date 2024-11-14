@@ -65,11 +65,6 @@ def main():
                 video_urls = [href for href in hrefs if href and 'video' in href]
                 all_transcripts = []
                 for href in video_urls:
-                        hrefs.append(step.get("activities")[0].get("href"))
-
-                video_urls = [href for href in hrefs if href and 'video' in href]
-                all_transcripts = []
-                for href in video_urls:
                     video_url = f"{BASE_URL}{href}"
                     transcript = extract_transcript(video_url)
                     if transcript:
