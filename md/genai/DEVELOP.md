@@ -194,3 +194,113 @@ print(response.choices[0].message)
 - 今天阿里巴巴又釋出 Qwen2.5-Coder 
   - https://qwenlm.github.io/blog/qwen2.5-coder-family/
   - https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct
+
+## 2024-11-14
+
+- 請 Gemini 把以下 SQLite 語法轉成 ER Model
+```sql
+-- Create the 'products' table
+CREATE TABLE IF NOT EXISTS products (
+  	product_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  	product_name VARCHAR(255) NOT NULL,
+  	price DECIMAL(10, 2) NOT NULL
+  );
+
+-- Create the 'staff' table
+CREATE TABLE IF NOT EXISTS staff (
+  	staff_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  	first_name VARCHAR(255) NOT NULL,
+  	last_name VARCHAR(255) NOT NULL
+  );
+
+-- Create the 'orders' table
+CREATE TABLE IF NOT EXISTS orders (
+  	order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  	customer_name VARCHAR(255) NOT NULL,
+  	staff_id INTEGER NOT NULL,
+  	product_id INTEGER NOT NULL,
+  	FOREIGN KEY (staff_id) REFERENCES staff (staff_id),
+  	FOREIGN KEY (product_id) REFERENCES products (product_id)
+  );
+```
+- 結果其實不正確，`orders` 少了 `staff_id` 跟 `product_id`
+```plantuml
+@startuml
+entity Products {
+    int product_id
+    String product_name
+    decimal price
+}
+
+entity Staff {
+    int staff_id
+    String first_name
+    String last_name
+}
+
+entity Orders {
+    int order_id
+    String customer_name
+}
+
+Staff "1" -- "*" Orders : processes
+Products "1" -- "*" Orders : includes
+
+@enduml
+```
+- 自己參考 [Mermaid.js 語法](https://mermaid.js.org/syntax/entityRelationshipDiagram.html) 畫：
+```mermaid
+erDiagram
+    PRODUCTS {
+        int product_id PK
+        varchar(255) product_name
+        decimal price
+    }
+    ORDERS {
+        int order_id PK
+        varchar(255) customer_name
+        int product_id FK
+        int staff_id FK
+    }
+    STAFF {
+        int staff_id PK
+        varchar(255) first_name
+        varchar(255) last_name
+    }
+    ORDERS }|--|| STAFF: processes
+    ORDERS }|--|| PRODUCTS: includes
+```
+- SQLite 實測：
+```sql
+sqlite> .mode table
+sqlite> select * from products;
++------------+--------------+--------+
+| product_id | product_name | price  |
++------------+--------------+--------+
+| 1          | Laptop       | 799.99 |
+| 2          | Keyboard     | 129.99 |
+| 3          | Mouse        | 29.99  |
++------------+--------------+--------+
+sqlite> select * from staff;
++----------+------------+-----------+
+| staff_id | first_name | last_name |
++----------+------------+-----------+
+| 1        | Alice      | Smith     |
+| 2        | Bob        | Johnson   |
+| 3        | Charlie    | Williams  |
++----------+------------+-----------+
+sqlite> select * from orders;
++----------+---------------+----------+------------+
+| order_id | customer_name | staff_id | product_id |
++----------+---------------+----------+------------+
+| 1        | David Lee     | 1        | 1          |
+| 2        | Emily Chen    | 2        | 2          |
+| 3        | Frank Brown   | 1        | 3          |
++----------+---------------+----------+------------+
+sqlite> SELECT staff.first_name, staff.last_name FROM orders INNER JOIN products ON orders.product_id = products.product_id INNER JOIN staff ON orders.staff_id = staff.staff_id ORDER BY products.price ASC LIMIT 1;
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| Alice      | Smith     |
++------------+-----------+
+```
