@@ -20,13 +20,39 @@ def extract_transcript(video_url):
             transcript_lines = [item["text"] for item in transcript_data]
             return " ".join(transcript_lines)
         else:
-            print(f"Could not find 'ql-youtube-video' element in {video_url}")
             return None
     except (requests.exceptions.RequestException, json.JSONDecodeError, KeyError) as e:
         print(f"Error processing transcript for {video_url}: {e}")
         return None
 
 import argparse
+
+def get_video_urls_from_course(course_link):
+    try:
+        course_response = requests.get(course_link)
+        course_response.raise_for_status()
+        outline_element = BeautifulSoup(course_response.text, "lxml").find('ql-course-outline')
+        if outline_element:
+            try:
+                outline = json.loads(outline_element.attrs["modules"])
+                hrefs = []
+                for section in outline:
+                    for step in section.get("steps", []):  # Handle missing "steps"
+                        for activity in step.get("activities", []): # Handle missing "activities"
+                            href = activity.get("href")
+                            if href:
+                                hrefs.append(href)
+                return hrefs
+            except (json.JSONDecodeError, KeyError) as e:
+                print(f"Error processing course outline for {course_link}: {e}")
+                return []
+        else:
+            print(f"Could not find 'ql-course-outline' element in {course_link}")
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching course: {e}")
+        return []
+
 
 def main():
     parser = argparse.ArgumentParser(description="Download transcripts from Cloud Skills Boost learning paths.")
@@ -44,42 +70,28 @@ def main():
         course_links = [f"{BASE_URL}{url.get('href')}" for url in course_hrefs]
 
         for course_link in course_links:
-            try:
-                course_response = requests.get(course_link)
-                course_response.raise_for_status()
-                outline_element = BeautifulSoup(course_response.text, "lxml").find('ql-course-outline')
-                if outline_element:
-                    try:
-                        outline = json.loads(outline_element.attrs["modules"])
-                        hrefs = []
-                        for section in outline:
-                            for step in section.get("steps"):
-                                hrefs.append(step.get("activities")[0].get("href"))
-                    except (json.JSONDecodeError, KeyError, IndexError) as e:
-                        print(f"Error processing course outline for {course_link}: {e}")
-                        hrefs = [] # Initialize hrefs to an empty list to avoid UnboundLocalError
-                else:
-                    print(f"Could not find 'ql-course-outline' element in {course_link}")
-                    hrefs = []
-
-                video_urls = [href for href in hrefs if href and 'video' in href]
+            hrefs = get_video_urls_from_course(course_link)
+            video_urls = [href for href in hrefs if href and 'video' in href]
                 all_transcripts = []
                 for href in video_urls:
                     video_url = f"{BASE_URL}{href}"
                     transcript = extract_transcript(video_url)
                     if transcript:
-                        all_transcripts.append(transcript)
+            all_transcripts = []
+            for href in video_urls:
+                video_url = f"{BASE_URL}{href}"
+                transcript = extract_transcript(video_url)
+                if transcript:
+                    all_transcripts.append(transcript)
 
-                if args.output:
-                    with open(args.output, "w") as f:
-                        for transcript in all_transcripts:
-                            f.write(transcript + "\n")
-                else:
+            if args.output:
+                with open(args.output, "w") as f:
                     for transcript in all_transcripts:
-                        print(transcript)
+                        f.write(transcript + "\n")
+            else:
+                for transcript in all_transcripts:
+                    print(transcript)
 
-            except requests.exceptions.RequestException as e:
-                print(f"Error fetching course: {e}")
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching learning paths: {e}")
