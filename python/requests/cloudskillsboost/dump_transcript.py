@@ -14,11 +14,16 @@ def extract_transcript(video_url):
         response = requests.get(video_url)
         response.raise_for_status()  # Raise an exception for bad status codes
         soup = BeautifulSoup(response.text, "lxml")
-        transcript_data = json.loads(soup.find('ql-youtube-video').attrs["transcript"])
-        transcript_lines = [item["text"] for item in transcript_data]
-        return " ".join(transcript_lines)
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching transcript: {e}")
+        video_element = soup.find('ql-youtube-video')
+        if video_element:
+            transcript_data = json.loads(video_element.attrs["transcript"])
+            transcript_lines = [item["text"] for item in transcript_data]
+            return " ".join(transcript_lines)
+        else:
+            print(f"Could not find 'ql-youtube-video' element in {video_url}")
+            return None
+    except (requests.exceptions.RequestException, json.JSONDecodeError, KeyError) as e:
+        print(f"Error processing transcript for {video_url}: {e}")
         return None
 
 import argparse
@@ -42,10 +47,24 @@ def main():
             try:
                 course_response = requests.get(course_link)
                 course_response.raise_for_status()
-                outline = json.loads(BeautifulSoup(course_response.text, "lxml").find('ql-course-outline').attrs["modules"])
-                hrefs = []
-                for section in outline:
-                    for step in section.get("steps"):
+                outline_element = BeautifulSoup(course_response.text, "lxml").find('ql-course-outline')
+                if outline_element:
+                    try:
+                        outline = json.loads(outline_element.attrs["modules"])
+                        hrefs = []
+                        for section in outline:
+                            for step in section.get("steps"):
+                                hrefs.append(step.get("activities")[0].get("href"))
+                    except (json.JSONDecodeError, KeyError, IndexError) as e:
+                        print(f"Error processing course outline for {course_link}: {e}")
+                        hrefs = [] # Initialize hrefs to an empty list to avoid UnboundLocalError
+                else:
+                    print(f"Could not find 'ql-course-outline' element in {course_link}")
+                    hrefs = []
+
+                video_urls = [href for href in hrefs if href and 'video' in href]
+                all_transcripts = []
+                for href in video_urls:
                         hrefs.append(step.get("activities")[0].get("href"))
 
                 video_urls = [href for href in hrefs if href and 'video' in href]
