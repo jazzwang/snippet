@@ -21,8 +21,15 @@ def extract_transcript(video_url):
         print(f"Error fetching transcript: {e}")
         return None
 
+import argparse
+
 def main():
-    path_id = 9
+    parser = argparse.ArgumentParser(description="Download transcripts from Cloud Skills Boost learning paths.")
+    parser.add_argument("path_id", type=int, help="The ID of the learning path.")
+    parser.add_argument("--output", "-o", help="Output file to save transcripts (default: print to stdout)")
+    args = parser.parse_args()
+
+    path_id = args.path_id
     learn_paths_url = f"{BASE_URL}/paths/{path_id}"
     try:
         learn_paths_response = requests.get(learn_paths_url)
@@ -49,8 +56,13 @@ def main():
                     if transcript:
                         all_transcripts.append(transcript)
 
-                for transcript in all_transcripts:
-                    print(transcript)
+                if args.output:
+                    with open(args.output, "w") as f:
+                        for transcript in all_transcripts:
+                            f.write(transcript + "\n")
+                else:
+                    for transcript in all_transcripts:
+                        print(transcript)
 
             except requests.exceptions.RequestException as e:
                 print(f"Error fetching course: {e}")
