@@ -8,7 +8,6 @@ import argparse
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.cloudskillsboost.google"
-all_transcripts = []
 
 def get_course_context(course_url):
     try:
@@ -70,7 +69,6 @@ def main():
     # parsing CLI arguments
     parser = argparse.ArgumentParser(description="Download transcripts from Cloud Skills Boost learning paths.")
     parser.add_argument("path_id", type=int, help="The ID of the learning path.")
-    parser.add_argument("--output", "-o", help="Output file to save transcripts (default: print to stdout, in Markdown syntax)")
     args = parser.parse_args()
 
     path_id = args.path_id
@@ -82,7 +80,8 @@ def main():
         soup = BeautifulSoup(learn_paths_response.text, "lxml")
         learning_plan_title = soup.find('h1',{"class":"learning-plan-title"}).text
 
-        all_transcripts.append(f"# {learning_plan_title}")
+        print(f"# {learning_plan_title}\n")
+        print(f"- {learn_paths_url}\n")
 
         course_urls = [f"{BASE_URL}{url.get('href')}" for url in soup.find_all('a', {"class": 'activity-link'})]
 
@@ -90,31 +89,25 @@ def main():
         for course_url in course_urls:
             soup = get_course_context(course_url)
             course_title = get_course_title(soup)
-            all_transcripts.append(f"## {course_title}")
+            print(f"## {course_title}\n")
+            print(f"- {course_url}\n")
 
             modules = get_course_modules(soup)
 
             # 3. Get Module Title and Activities
             for module in modules:
                 module_title = module["title"]
-                all_transcripts.append(f"### {module_title}")
+                print(f"### {module_title}\n")
                 # 4. Get Activity Title, Type and URL
                 activities = get_activities(module)
                 for (activity_title, activity_type, activity_url) in activities:
                     if activity_type == "video":
-                        all_transcripts.append(f"#### {activity_title}")
+                        print(f"#### {activity_title}\n")
                         video_url = f"{BASE_URL}{activity_url}"
+                        print(f"- {video_url}\n")
                         transcript = extract_transcript(video_url)
                         if transcript:
-                            all_transcripts.append(transcript)
-
-        if args.output:
-            with open(args.output, "w") as f:
-                for transcript in all_transcripts:
-                    f.write(transcript + "\n")
-        else:
-            for transcript in all_transcripts:
-                print(transcript)
+                            print(f"{transcript}\n")
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching learning paths: {e}")
