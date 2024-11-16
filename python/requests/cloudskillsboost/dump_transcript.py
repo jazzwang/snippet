@@ -18,51 +18,98 @@ def get_course_context(course_url):
         print(f"Error fetching course: {e}")
         exit(1)
 
-def get_course_title(soup):
-    course_title = soup.find_all('h2',{"class": "ql-title-medium"})
-    if course_title:
-        return course_title[0].text + ": " + course_title[1].text.replace("\n","")
-    else:
-        print(f"Could not find 'ql-title-medium' element in {course_url}")
+def get_course_title(soup, course_url):
+    """Extracts the course title from the BeautifulSoup object.
 
-def get_course_modules(soup):
+    Args:
+        soup: The BeautifulSoup object representing the course page.
+        course_url: The URL of the course.
+
+    Returns:
+        The course title as a string, or None if not found.
+
+    Raises:
+        ValueError: If the 'ql-title-medium' element is not found.
+    """
+    course_title = soup.find_all('h2', {"class": "ql-title-medium"})
+    if course_title:
+        return course_title[0].text + ": " + course_title[1].text.replace("\n", "")
+    else:
+        raise ValueError(f"Could not find 'ql-title-medium' element in {course_url}")
+
+def get_course_modules(soup, course_url):
+    """Extracts course modules from the BeautifulSoup object.
+
+    Args:
+        soup: The BeautifulSoup object representing the course page.
+        course_url: The URL of the course.
+
+    Returns:
+        A list of course modules, or None if not found.
+
+    Raises:
+        ValueError: If the 'ql-course-outline' element or "modules" attribute is not found.
+        JSONDecodeError: If the modules data is not valid JSON.
+    """
     outline_element = soup.find('ql-course-outline')
     if outline_element:
         try:
             outline = json.loads(outline_element.attrs["modules"])
             return outline
         except (json.JSONDecodeError, KeyError) as e:
-            print(f"Error processing course outline for {course_url}: {e}")
-            exit(1)
+            raise type(e)(f"Error processing course outline for {course_url}: {e}") from e
     else:
-        print(f"Could not find 'ql-course-outline' element in {course_url}")
-        exit(1)
+        raise ValueError(f"Could not find 'ql-course-outline' element in {course_url}")
 
 def get_activities(module):
+    """Extracts activities from a module.
+
+    Args:
+        module: A dictionary representing a module.
+
+    Returns:
+        A list of tuples, where each tuple contains (activity_title, activity_type, activity_url).
+    """
     activities = []
-    for step in module.get("steps", []):            # Handle missing "steps"
-        for activity in step.get("activities", []): # Handle missing "activities"
-            activity_title = activity.get("title", "")
-            activity_url = activity.get("href", "")
-            activity_type = activity.get("type", "")
-            activities.append((activity_title, activity_type, activity_url))
+    for step in module.get("steps", []):
+        for activity in step.get("activities", []):
+            activity_title = activity.get("title")
+            activity_url = activity.get("href")
+            activity_type = activity.get("type")
+
+            if activity_title is not None and activity_url is not None and activity_type is not None:
+                activities.append((activity_title, activity_type, activity_url))
     return activities
 
 def extract_transcript(video_url):
-    """Extracts the transcript from a given video URL."""
+    """Extracts the transcript from a given video URL.
+
+    Args:
+        video_url: The URL of the video.
+
+    Returns:
+        The transcript as a string, or None if an error occurs or the transcript is not found.
+    """
     try:
         response = requests.get(video_url)
-        response.raise_for_status()  # Raise an exception for bad status codes
+        response.raise_for_status()
         soup = BeautifulSoup(response.text, "lxml")
         video_element = soup.find('ql-youtube-video')
         if video_element:
-            transcript_data = json.loads(video_element.attrs["transcript"])
-            transcript_lines = [item["text"] for item in transcript_data]
-            return " ".join(transcript_lines)
+            try:
+                transcript_data = json.loads(video_element.attrs["transcript"])
+                if transcript_
+                    transcript_lines = [item["text"] for item in transcript_data]
+                    return " ".join(transcript_lines)
+                else:
+                    return None  # Or handle empty transcript data differently
+            except (json.JSONDecodeError, KeyError) as e:
+                print(f"Error extracting transcript data for {video_url}: {e}")
+                return None
         else:
             return None
-    except (requests.exceptions.RequestException, json.JSONDecodeError, KeyError) as e:
-        print(f"Error processing transcript for {video_url}: {e}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching video for {video_url}: {e}")
         return None
 
 def main():
