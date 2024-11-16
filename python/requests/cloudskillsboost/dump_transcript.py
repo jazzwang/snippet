@@ -4,9 +4,50 @@
 
 import json
 import requests
+import argparse
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.cloudskillsboost.google"
+all_transcripts = []
+
+def get_course_context(course_url):
+    try:
+        course_response = requests.get(course_url)
+        course_response.raise_for_status()
+        return BeautifulSoup(course_response.text, "lxml")
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching course: {e}")
+        exit(1)
+
+def get_course_title(soup):
+    course_title = soup.find_all('h2',{"class": "ql-title-medium"})
+    if course_title:
+        return course_title[0].text + ": " + course_title[1].text.replace("\n","")
+    else:
+        print(f"Could not find 'ql-title-medium' element in {course_url}")
+
+def get_course_modules(soup):
+    outline_element = soup.find('ql-course-outline')
+    if outline_element:
+        try:
+            outline = json.loads(outline_element.attrs["modules"])
+            return outline
+        except (json.JSONDecodeError, KeyError) as e:
+            print(f"Error processing course outline for {course_url}: {e}")
+            exit(1)
+    else:
+        print(f"Could not find 'ql-course-outline' element in {course_url}")
+        exit(1)
+
+def get_activities(module):
+    activities = []
+    for step in module.get("steps", []):            # Handle missing "steps"
+        for activity in step.get("activities", []): # Handle missing "activities"
+            activity_title = activity.get("title", "")
+            activity_url = activity.get("href", "")
+            activity_type = activity.get("type", "")
+            activities.append((activity_title, activity_type, activity_url))
+    return activities
 
 def extract_transcript(video_url):
     """Extracts the transcript from a given video URL."""
@@ -25,68 +66,55 @@ def extract_transcript(video_url):
         print(f"Error processing transcript for {video_url}: {e}")
         return None
 
-import argparse
-
-def get_video_urls_from_course(course_link):
-    try:
-        course_response = requests.get(course_link)
-        course_response.raise_for_status()
-        outline_element = BeautifulSoup(course_response.text, "lxml").find('ql-course-outline')
-        if outline_element:
-            try:
-                outline = json.loads(outline_element.attrs["modules"])
-                hrefs = []
-                for section in outline:
-                    for step in section.get("steps", []):  # Handle missing "steps"
-                        for activity in step.get("activities", []): # Handle missing "activities"
-                            href = activity.get("href")
-                            if href:
-                                hrefs.append(href)
-                return hrefs
-            except (json.JSONDecodeError, KeyError) as e:
-                print(f"Error processing course outline for {course_link}: {e}")
-                return []
-        else:
-            print(f"Could not find 'ql-course-outline' element in {course_link}")
-            return []
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching course: {e}")
-        return []
-
-
 def main():
+    # parsing CLI arguments
     parser = argparse.ArgumentParser(description="Download transcripts from Cloud Skills Boost learning paths.")
     parser.add_argument("path_id", type=int, help="The ID of the learning path.")
-    parser.add_argument("--output", "-o", help="Output file to save transcripts (default: print to stdout)")
+    parser.add_argument("--output", "-o", help="Output file to save transcripts (default: print to stdout, in Markdown syntax)")
     args = parser.parse_args()
 
     path_id = args.path_id
     learn_paths_url = f"{BASE_URL}/paths/{path_id}"
     try:
+        # 1. Get Learning Path Title and Course URLs
         learn_paths_response = requests.get(learn_paths_url)
         learn_paths_response.raise_for_status()
         soup = BeautifulSoup(learn_paths_response.text, "lxml")
-        course_hrefs = soup.find_all('a', {"class": 'activity-link'})
-        course_links = [f"{BASE_URL}{url.get('href')}" for url in course_hrefs]
+        learning_plan_title = soup.find('h1',{"class":"learning-plan-title"}).text
 
-        for course_link in course_links:
-            hrefs = get_video_urls_from_course(course_link)
-            video_urls = [href for href in hrefs if href and 'video' in href]
-            all_transcripts = []
-            for href in video_urls:
-                video_url = f"{BASE_URL}{href}"
-                transcript = extract_transcript(video_url)
-                if transcript:
-                    all_transcripts.append(transcript)
+        all_transcripts.append(f"# {learning_plan_title}")
 
-            if args.output:
-                with open(args.output, "w") as f:
-                    for transcript in all_transcripts:
-                        f.write(transcript + "\n")
-            else:
+        course_urls = [f"{BASE_URL}{url.get('href')}" for url in soup.find_all('a', {"class": 'activity-link'})]
+
+        # 2. Get Course Title and Modules
+        for course_url in course_urls:
+            soup = get_course_context(course_url)
+            course_title = get_course_title(soup)
+            all_transcripts.append(f"## {course_title}")
+
+            modules = get_course_modules(soup)
+
+            # 3. Get Module Title and Activities
+            for module in modules:
+                module_title = module["title"]
+                all_transcripts.append(f"### {module_title}")
+                # 4. Get Activity Title, Type and URL
+                activities = get_activities(module)
+                for (activity_title, activity_type, activity_url) in activities:
+                    if activity_type == "video":
+                        all_transcripts.append(f"#### {activity_title}")
+                        video_url = f"{BASE_URL}{activity_url}"
+                        transcript = extract_transcript(video_url)
+                        if transcript:
+                            all_transcripts.append(transcript)
+
+        if args.output:
+            with open(args.output, "w") as f:
                 for transcript in all_transcripts:
-                    print(transcript)
-
+                    f.write(transcript + "\n")
+        else:
+            for transcript in all_transcripts:
+                print(transcript)
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching learning paths: {e}")
