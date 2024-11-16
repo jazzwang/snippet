@@ -98,7 +98,7 @@ def extract_transcript(video_url):
         if video_element:
             try:
                 transcript_data = json.loads(video_element.attrs["transcript"])
-                if transcript_
+                if transcript_data:
                     transcript_lines = [item["text"] for item in transcript_data]
                     return " ".join(transcript_lines)
                 else:
@@ -129,17 +129,18 @@ def main():
 
         print(f"# {learning_plan_title}\n")
         print(f"- {learn_paths_url}\n")
+        print(f"[TOC]\n")
 
         course_urls = [f"{BASE_URL}{url.get('href')}" for url in soup.find_all('a', {"class": 'activity-link'})]
 
         # 2. Get Course Title and Modules
         for course_url in course_urls:
             soup = get_course_context(course_url)
-            course_title = get_course_title(soup)
+            course_title = get_course_title(soup, course_url)
             print(f"## {course_title}\n")
             print(f"- {course_url}\n")
 
-            modules = get_course_modules(soup)
+            modules = get_course_modules(soup, course_url)
 
             # 3. Get Module Title and Activities
             for module in modules:
