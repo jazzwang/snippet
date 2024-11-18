@@ -141,3 +141,26 @@ LEARN MORE
   Use `gh <command> <subcommand> --help` for more information about a command.
   Read the manual at https://cli.github.com/manual
 ```
+
+## 2024-11-18
+
+- ( 2024-11-18 16:13:18 )
+- 參考: https://docs.github.com/en/rest/activity/starring?apiVersion=2022-11-28#list-repositories-starred-by-a-user
+- 從參考文件可以知道取得某個使用者所有 Starred 專案列表的 Github CLI 指令為
+```bash
+# GitHub CLI api
+# https://cli.github.com/manual/gh_api
+
+gh api \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  /users/USERNAME/starred
+```
+- 實測， URI 開頭不能加 `/`
+- ( 2024-11-18 16:57:40 )
+- 抓取 `jazzwang` 所有給星星的專案，輸出到 STDOUT 並寫到 `jazzwang_starred.json` 檔案。
+```bash
+jazzw@JazzBook:~$ gh api --paginate users/jazzwang/starred | tee jazzwang_starred.json
+```
+- 由於給的星星數太多，所以一定要加 `--paginate` 才有辦法列出全部的專案。
+- 驗證輸出的 JSON 檔案是否為合格的 JSON 格式。用 `jq .` 確認格式正確。因為只有一行，所以是 NDJSON 格式，可以用 PySpark 或 Spark Shell 做後續分析。
