@@ -157,6 +157,7 @@ gh api \
   /users/USERNAME/starred
 ```
 - 實測， URI 開頭不能加 `/`
+- 參考：https://cli.github.com/manual/gh_api
 - ( 2024-11-18 16:57:40 )
 - 抓取 `jazzwang` 所有給星星的專案，輸出到 STDOUT 並寫到 `jazzwang_starred.json` 檔案。
 ```bash
