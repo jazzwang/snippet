@@ -9,6 +9,9 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 
+# Load GOOGLE_API_KEY from .env
+load_dotenv()
+
 BASE_URL = "https://www.cloudskillsboost.google"
 
 def get_course_context(course_url):
@@ -142,9 +145,6 @@ def main():
     path_id = args.path_id
     learn_paths_url = f"{BASE_URL}/paths/{path_id}"
     
-    # Load GEMINI_API_KEY from .env
-    load_dotenv()
-
     try:
         # 1. Get Learning Path Title and Course URLs
         learn_paths_response = requests.get(learn_paths_url)
@@ -174,16 +174,17 @@ def main():
                 # 4. Get Activity Title, Type and URL
                 activities = get_activities(module)
                 for (activity_title, activity_type, activity_url) in activities:
+                    print(f"#### {activity_title}\n")
+                    video_url = f"{BASE_URL}{activity_url}"
+                    print(f"- {video_url}\n")
+                    ## Only extract transcript if type is "video"
                     if activity_type == "video":
-                        print(f"#### {activity_title}\n")
-                        video_url = f"{BASE_URL}{activity_url}"
-                        print(f"- {video_url}\n")
                         transcript = extract_transcript(video_url)
                         if transcript:
                             print(f"{transcript}\n")
-                        translation = translate_transcript(transcript)
-                        if translation:
-                            print(f"{translation}")
+                            translation = translate_transcript(transcript)
+                            if translation:
+                                print(f"{translation}")
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching learning paths: {e}")
