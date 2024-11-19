@@ -16,14 +16,13 @@ load_dotenv()
 # Create the Gemini model
 model = genai.GenerativeModel(
     model_name="gemini-1.5-flash",
-    generation_config=generation_config,
     system_instruction="""Tasks:\n
         1. Translate the input into Traditional Chinese\n
         2. Use concise and precise tone to convert input into bullet points in Traditional Chinese. \n\n
-        Output format:\n
+        Output format:\n\n
         > {output of task #1}\n\n
         ##### 摘要\n\n
-        {output of task #2}
+        {output of task #2}\n\n
     """,
 )
 # Create retry policy
@@ -136,10 +135,8 @@ def extract_transcript(video_url):
 
 def translate_transcript(transcript):
     # translate and convert input into bullet points
-    ## use `stream=True` to render quickly
-    response = model.generate_content(transcript, stream=True, request_options=retry_policy)
-    for chunk in response:
-        print(chunk.text, end='')
+    response = model.generate_content(transcript, request_options=retry_policy)
+    print(response.text)
 
 def main():
     # parsing CLI arguments
