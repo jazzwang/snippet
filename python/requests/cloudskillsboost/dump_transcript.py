@@ -6,11 +6,28 @@ import json
 import requests
 import argparse
 import google.generativeai as genai
+from google.api_core import retry
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 
 # Load GOOGLE_API_KEY from .env
 load_dotenv()
+
+# Create the Gemini model
+model = genai.GenerativeModel(
+    model_name="gemini-1.5-flash",
+    generation_config=generation_config,
+    system_instruction="""Tasks:\n
+        1. Translate the input into Traditional Chinese\n
+        2. Use concise and precise tone to convert input into bullet points in Traditional Chinese. \n\n
+        Output format:\n
+        > {output of task #1}\n\n
+        ##### 摘要\n\n
+        {output of task #2}
+    """,
+)
+# Create retry policy
+retry_policy = {"retry": retry.Retry(predicate=retry.if_transient_error)}
 
 BASE_URL = "https://www.cloudskillsboost.google"
 
@@ -118,23 +135,11 @@ def extract_transcript(video_url):
         return None
 
 def translate_transcript(transcript):
-    # Create the model
-    generation_config = {
-        "temperature": 1,
-        "top_p": 0.95,
-        "top_k": 40,
-        "max_output_tokens": 8192,
-        "response_mime_type": "text/plain",
-    }
-
-    model = genai.GenerativeModel(
-        model_name="gemini-1.5-flash",
-        generation_config=generation_config,
-        system_instruction="Tasks:\n1. Translate the input into Traditional Chinese\n2. Use concise and precise tone to convert input into bullet points in Traditional Chinese. \n\nOutput format:\n> {output of task #1}\n\n##### 摘要\n\n{output of task #2}",
-    )
-
-    response = model.generate_content(transcript)
-    return response.text
+    # translate and convert input into bullet points
+    ## use `stream=True` to render quickly
+    response = model.generate_content(transcript, stream=True, request_options=retry_policy)
+    for chunk in response:
+        print(chunk.text, end='')
 
 def main():
     # parsing CLI arguments
@@ -144,7 +149,7 @@ def main():
 
     path_id = args.path_id
     learn_paths_url = f"{BASE_URL}/paths/{path_id}"
-    
+
     try:
         # 1. Get Learning Path Title and Course URLs
         learn_paths_response = requests.get(learn_paths_url)
@@ -182,13 +187,10 @@ def main():
                         transcript = extract_transcript(video_url)
                         if transcript:
                             print(f"{transcript}\n")
-                            translation = translate_transcript(transcript)
-                            if translation:
-                                print(f"{translation}")
+                            translate_transcript(transcript)
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching learning paths: {e}")
-
 
 if __name__ == "__main__":
     main()
