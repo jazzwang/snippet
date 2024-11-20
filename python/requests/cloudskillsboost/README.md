@@ -43,35 +43,35 @@ sys     0m0.184s
 - python-dotenv - 讀取環境變數用 (預設 `.env` 檔)
 
 ```bash
-@jazzwang ➜ /workspaces/snippet (master) $ pip install -q -U 'google-generativeai>=0.8.3' requests bs4 python-dotenv
+@jazzwang ➜ /workspaces/snippet (master) $ pip install -q -U 'google-generativeai>=0.8.3' requests bs4 lxml python-dotenv
 ```
 ### 純輸出
 
 ```bash
-@jazzwang ➜ /workspaces/snippet (master) $ time python3 python/requests/cloudskillsboost/dump_transcript.py 249 | tee path-240.md
+@jazzwang ➜ /workspaces/snippet (master) $ time python3 python/requests/cloudskillsboost/dump_transcript.py 249 | tee path-249.md
 ```
 - 解釋：
 ```
    +---- 計算執行程式的時間 （可忽略）
    |             +---- 要執行的 dump_transcript.py 路徑              +-- Learning Path ID = 249
-   |             |                                                  |     +---- 將 STDOUT 結果寫到 `path-240.md` 這個檔案
+   |             |                                                  |     +---- 將 STDOUT 結果寫到 `path-249.md` 這個檔案
    |             |                                                  |     |
-$ time python3 python/requests/cloudskillsboost/dump_transcript.py 249 | tee path-240.md
+$ time python3 python/requests/cloudskillsboost/dump_transcript.py 249 | tee path-249.md
 ```
 
 ### 包含繁體中文與摘要的輸出
 
 ```bash
 @jazzwang ➜ /workspaces/snippet (master) $ export GOOGLE_API_KEY=< 這裡請填上於 https://aistudio.google.com/app/apikey 取得的 API Key >
-@jazzwang ➜ /workspaces/snippet (master) $ time python3 python/requests/cloudskillsboost/dump_transcript.py -t 249 | tee path-240.md
+@jazzwang ➜ /workspaces/snippet (master) $ time python3 python/requests/cloudskillsboost/dump_transcript.py -t 249 | tee path-249.md
 ```
 - 解釋：
 ```
    +---- 計算執行程式的時間 （可忽略）                                +------ 啟用 Translation （須能存取 Google Gemini API 的網路環境）
    |             +---- 要執行的 dump_transcript.py 路徑              |  +-- Learning Path ID = 249
-   |             |                                                  |  |     +---- 將 STDOUT 結果寫到 `path-240.md` 這個檔案
+   |             |                                                  |  |     +---- 將 STDOUT 結果寫到 `path-249.md` 這個檔案
    |             |                                                  |  |     |
-$ time python3 python/requests/cloudskillsboost/dump_transcript.py -t 249 | tee path-240.md
+$ time python3 python/requests/cloudskillsboost/dump_transcript.py -t 249 | tee path-249.md
 ```
 
 - 範例輸出：
