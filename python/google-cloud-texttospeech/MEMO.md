@@ -177,3 +177,56 @@ text_to_mp3("en-US-Studio-O", "shoemaker s-h-o-e-m-a-k-e-r shoemaker")
 
 In [5]: quit()
 ```
+- ( 2024-11-21 22:42:10 )
+- 把範例程式加到
+```bash
+@jazzwang ➜ /tmp $ mv text2mp3.py /workspaces/snippet/python/google-cloud-texttospeech/
+@jazzwang ➜ /tmp $ popd
+/workspaces/snippet/python/google-cloud-texttospeech
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ git add text2mp3.py
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ git commit -a -m "feat: [py][google-cloud-texttospeech] example text-to-mp3 scri
+pt using Google Cloud Text-to-Speech Client Library"
+[master 3aef24b] feat: [py][google-cloud-texttospeech] example text-to-mp3 script using Google Cloud Text-to-Speech Client Library
+ 1 file changed, 22 insertions(+)
+ create mode 100644 python/google-cloud-texttospeech/text2mp3.py
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ git push
+```
+- ( 2024-11-21 22:45:49 )
+- 我們先來處理 ADC 的 JWT 檔。首先回到 Google Cloud Shell，登入 PROJECT_ID。
+```bash
+jazzwang_tw@cloudshell:~$ gcloud config set project hadoop-labs
+jazzwang_tw@cloudshell:~ (hadoop-labs)$ gcloud iam service-accounts create tts-labs
+jazzwang_tw@cloudshell:~ (hadoop-labs)$ export PROJECT_ID=$(gcloud config get-value project 2> /dev/null)
+jazzwang_tw@cloudshell:~ (hadoop-labs)$ gcloud iam service-accounts keys create tts-labs.json --iam-account tts-labs@$PROJECT_ID.iam.gserviceaccount.com
+jazzwang_tw@cloudshell:~ (hadoop-labs)$ cloudshell download tts-labs.json
+```
+- 讓我們把下載下來的 `tts-labs.json` 上傳到 Github Codespace
+```bash
+jazzw@JazzBook:~/Downloads$ gh cs cp tts-labs.json 'remote:/workspaces/snippet/'
+? Choose codespace: jazzwang/snippet (master*): snippet
+tts-labs.json                                                                                                             100% 2343    15.7KB/s   00:00
+jazzw@JazzBook:~/Downloads$ gh cs ssh -R jazzwang/snippet
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.5.0-1025-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+Last login: Thu Nov 21 13:54:04 2024 from ::1
+@jazzwang ➜ /workspaces/snippet (master) $ cd python/google-cloud-texttospeech/
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ mv /workspaces/snippet/tts-labs.json .
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ export GOOGLE_APPLICATION_CREDENTIALS=tts-labs.json
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ python3 text2mp3.py
+Generated speech saved to "en-US-Studio-O.mp3"
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ mv en-US-Studio-O.mp3 /tmp/
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ exit
+logout
+Connection to localhost closed.
+```
+- 把生成的 MP3 下載來聽看看。
+```
+jazzw@JazzBook:~/Downloads$ gh cs cp 'remote:/tmp/en-US-Studio-O.mp3' .
+? Choose codespace: jazzwang/snippet (master*): snippet
+en-US-Studio-O.mp3                                                                                                        100%   26KB  57.5KB/s   00:00
+jazzw@JazzBook:~/Downloads$ open .
+```
+- 結果是可以，只是聲音語速有點太快了。再來找一下怎麼調慢。接著就是把這個程式變成吃參數 '語系', '文字', '輸出檔名'
