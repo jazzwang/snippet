@@ -46,3 +46,18 @@
 ### Step 4: Assess your exam readiness.
 
 - **( Paid ) ** [Exam Prep Official Pretest: AWS Certified AI Practitioner (AIF-C01)](https://explore.skillbuilder.aws/learn/course/external/view/elearning/20274/exam-prep-official-pretest-aws-certified-ai-practitioner-aif-c01-english)
+
+## 2024-11-21
+
+- (1) 請確保已登記此計劃的申請表格： https://2vx.co/V5BiAQI
+- (2) 及加計劃大使的 LINE ID 以確保獲得最新資訊及考試貼士、溫習試題和後續福利（首300名首次獲得證書者能獲得AWS大禮包）等等： https://line.me/ti/p/8rRTOjhapP
+- (3) 登記 AWS AI 人才就緒計畫，以學習更多相關知識及獲得 30+ 企業 AI 優先面試機會 https://pages.awscloud.com/tw-aws-generative-ai-learning-program.html
+
+- AWS AI 人才就緒計畫:「技術開發技能 」課程
+  - https://hktw-resources.awscloud.com/aws-tw-ai-ready-talent-program-2024-technical
+- AWS AI 人才就緒計畫 : 「商業應用技能 」課程
+  - https://hktw-resources.awscloud.com/aws-tw-ai-ready-talent-program-2024-business
+
+- AWS AI 人才就緒計畫
+  - https://pages.awscloud.com/tw-aws-generative-ai-learning-program.html
+  - https://events.104.com.tw/aws/20221201/
