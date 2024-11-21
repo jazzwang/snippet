@@ -1,5 +1,7 @@
 # n8n - Workflow automation tool
 
+[TOC]
+
 > Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services.
 
 - 官網：https://n8n.io/
@@ -8,7 +10,9 @@
 - **緣起：**
   - 在 [零程式碼建置 AI 智能體！](https://www.youtube.com/watch?v=hE_CeOUY2h0&t=470s) 影片中，看到除了 [LangFlow](https://github.com/langflow-ai/langflow) 或 [Flowise](https://github.com/FlowiseAI/Flowise) 以外，一款用 TypeScript 搭配 Vue.js 寫成的 Workflow automation tool。
 
-## 安裝 Installation
+## 2024-11-06
+
+### 安裝 Installation
 
 - ( 2024-11-06 22:05:51 )
 - 看起來似乎不難，只需要跑 `npx n8n` 就會跑起來了
@@ -173,3 +177,14 @@ http://localhost:5678/
 Press "o" to open in Browser.
 ```
 - 確實開得起來，啟用的程序有點小繁瑣。要 Email，設定帳號密碼，回答一些行銷目的問卷。
+
+## 2024-11-21
+
+- 2024-11-19: 看到 `n8n` 被定位成 No-Code Workflow Engine
+  - [Zapier、Make、n8n，哪個自動化工具更適合你？3 款 NoCode 服務比一比](https://fc.bnext.com.tw/articles/view/3412)
+- 想法：
+  - Q: 可否拿 n8n 來做會議籌備的跨服務整合呢？
+  - Q: 可否把 n8n 跑在 GCP Cloud Run 呢？
+  - A: 可以
+    - https://github.com/luke-lewandowski/n8n-cloudrun-example - 用 Terraform 佈署 n8n 跟相依的 PostgreSQL 到 Cloud Run
+    - https://docs.n8n.io/hosting/installation/server-setups/google-cloud/#clone-configuration-repository - 官方文件（有提到 Cloud Run，但偏向用 GKE 佈署）
