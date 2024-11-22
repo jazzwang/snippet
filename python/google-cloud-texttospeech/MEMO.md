@@ -230,3 +230,12 @@ en-US-Studio-O.mp3                                                              
 jazzw@JazzBook:~/Downloads$ open .
 ```
 - 結果是可以，只是聲音語速有點太快了。再來找一下怎麼調慢。接著就是把這個程式變成吃參數 '語系', '文字', '輸出檔名'
+
+## 2024-11-22
+
+- ( 2024-11-22 23:34:25 )
+- 改成可以讀檔案。
+- 語系 跟 [voice](https://cloud.google.com/text-to-speech/docs/voices) / [voice type](https://cloud.google.com/text-to-speech/docs/voice-types#journey_voices) 固定：
+  - en-US-Standard-C
+  - en-US-Standard-E
+- 輸出檔名等於 "單字.mp3"
