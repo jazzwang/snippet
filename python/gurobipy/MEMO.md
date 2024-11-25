@@ -15,3 +15,14 @@
 - 緣起：
   - 前同事請我幫忙提供 Feedback
     - https://gurobi-ai-modeling.readthedocs.io/en/latest/examples/data.html
+
+## 2024-11-25
+
+- 數值模型的最佳化理論，跟機器學習還是不同的領域。
+  - 
+- 免費課程
+  - https://www.gurobi.com/resources/intro-to-optimization-through-the-lens-of-data-science/
+    - https://www.udemy.com/course/intro-to-optimization-pt1/
+    - https://www.udemy.com/course/intro-to-optimization-pt2/
+    - https://www.udemy.com/course/intro-to-optimization-pt3/
+    - https://www.udemy.com/course/intro-to-optimization-pt4/
