@@ -1,6 +1,9 @@
 # coding: utf-8
 import google.cloud.texttospeech as tts
 import argparse
+import soundfile as sf
+import numpy as np
+from pydub import AudioSegment
 
 def text_to_mp3(voice_name: str, text: str, output_name: str):
     language_code = "-".join(voice_name.split("-")[:2])
@@ -36,10 +39,28 @@ def say_spell_say(word: str):
 def spelling_bee(word: str):
     text_to_mp3("en-US-Studio-O",say_spell_say(word), word)
 
+def blank_mp3(seconds: int):
+    # Define parameters for the blank audio
+    duration = seconds  # seconds
+    samplerate = 44100  # samples per second
+    channels = 2  # stereo
+
+    # Create an array of zeros for the audio data
+    audio_data = np.zeros((samplerate * duration, channels))
+
+    # Write the audio data to a file
+    sf.write('blank_audio.mp3', audio_data, samplerate)
+
+def question(word: str):
+    text_to_mp3("en-US-Studio-O",f"{word}..{word}..{word}", f"_{word}")
+    combined_audio = AudioSegment.from_mp3(f"_{word}.mp3") + AudioSegment.from_mp3("blank_audio.mp3")
+    combined_audio.export(f"Q_{word}.mp3", format="mp3")
+
 def main():
     # parsing CLI arguments
     parser = argparse.ArgumentParser(description="Generate Spelling Bee .")
     parser.add_argument("input_file", help="input file with words.")
+    parser.add_argument("--question", "-q", type=int, help="generate questions")
     args = parser.parse_args()
 
     input_file = args.input_file
@@ -47,7 +68,11 @@ def main():
     with open(input_file, 'r') as f:
         words = f.readlines()
         for word in words:
-            spelling_bee(word.strip())
+            if (args.question):
+                blank_mp3(args.question)
+                question(word.strip())
+            else:
+                spelling_bee(word.strip())
 
 if __name__ == "__main__":
     main()

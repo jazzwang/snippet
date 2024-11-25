@@ -236,6 +236,77 @@ jazzw@JazzBook:~/Downloads$ open .
 - ( 2024-11-22 23:34:25 )
 - 改成可以讀檔案。
 - 語系 跟 [voice](https://cloud.google.com/text-to-speech/docs/voices) / [voice type](https://cloud.google.com/text-to-speech/docs/voice-types#journey_voices) 固定：
-  - en-US-Standard-C
-  - en-US-Standard-E
+  - en-US-Standard-C (機器感比較重一點)
+  - en-US-Standard-E (機器感比較重一點)
+  - en-US-Studio-O (女生，比較流暢一點)
+  - en-US-Studio-Q (男生，比較流暢一點)
 - 輸出檔名等於 "單字.mp3"
+
+## 2024-11-25
+
+- ( 2024-11-25 22:15:52 )
+- 實驗產生空白的 15 秒 MP3
+- 根據 [Gemini 的建議](https://g.co/gemini/share/a1081dfe2622)，可以用 [python-soundfile](https://github.com/bastibe/python-soundfile)
+- 先用 ipython 測試一下：
+```bash
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ pip3 install soundfile
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ ipython3
+Python 3.10.13 (main, Apr  3 2024, 17:08:15) [GCC 9.4.0]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.23.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import soundfile as sf
+   ...:
+   ...: # Define parameters for the blank audio
+   ...: duration = 15  # seconds
+   ...: samplerate = 44100  # samples per second
+   ...: channels = 2  # stereo
+   ...:
+   ...: # Create an array of zeros for the audio data
+   ...: audio_data = np.zeros((samplerate * duration, channels))
+   ...:
+   ...: # Write the audio data to a file
+   ...: sf.write('blank_audio.mp3', audio_data, samplerate)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Cell In[1], line 9
+      6 channels = 2  # stereo
+      8 # Create an array of zeros for the audio data
+----> 9 audio_data = np.zeros((samplerate * duration, channels))
+     11 # Write the audio data to a file
+     12 sf.write('blank_audio.mp3', audio_data, samplerate)
+
+NameError: name 'np' is not defined
+```
+- 查了一下 `np.zeros` 結果是 `numpy`
+```python
+In [2]: import soundfile as sf
+   ...: import numpy as np
+   ...:
+   ...: # Define parameters for the blank audio
+   ...: duration = 15  # seconds
+   ...: samplerate = 44100  # samples per second
+   ...: channels = 2  # stereo
+   ...:
+   ...: # Create an array of zeros for the audio data
+   ...: audio_data = np.zeros((samplerate * duration, channels))
+   ...:
+   ...: # Write the audio data to a file
+   ...: sf.write('blank_audio.mp3', audio_data, samplerate)
+```
+- 將 Python 程式從 `spelling-bee.py` 更名為 `spelling_bee.py`
+- 這樣就可以在 `ipython` 裡 `import spelling_bee` 並且呼叫定義的函數了!!
+- 用這種方法，就可以拿來測試合併空白音檔與單純只念單字三次的音檔。
+```python
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-texttospeech (master) $ ipython3
+Python 3.10.13 (main, Apr  3 2024, 17:08:15) [GCC 9.4.0]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.23.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import spelling_bee
+
+In [2]: spelling_bee.blank_mp3(10)
+
+In [3]: spelling_bee.question("test")
+Generated speech saved to "_test.mp3"
+```
