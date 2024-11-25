@@ -65,11 +65,13 @@ def main():
 
     input_file = args.input_file
 
+    if (args.question):
+        blank_mp3(args.question)
+
     with open(input_file, 'r') as f:
         words = f.readlines()
         for word in words:
             if (args.question):
-                blank_mp3(args.question)
                 question(word.strip())
             else:
                 spelling_bee(word.strip())
