@@ -2,16 +2,16 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-for ( let i = 1; i < 100; i++ ) {
-    await sleep(1000); // sleep 1 second
+for ( let i = 1; i < 200; i++ ) {
+    await sleep(2000); // sleep 2 second
     window.scrollTo(0, document.body.scrollHeight);
 }
 
-count = $$("div.mh4 a.app-aware-link").length
+count = $$("div.mh4 a").length
 
 var links = []
 for (let i=0; i < count; i++) {
-    links.push($$("div.mh4 a.app-aware-link")[i].href.split('?')[0]);
+    links.push($$("div.mh4 a")[i].href.split('?')[0]);
 }
 
 var a = document.createElement('a');
