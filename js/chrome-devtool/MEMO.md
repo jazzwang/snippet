@@ -1,5 +1,8 @@
 # Development Notes
 
+> https://developer.chrome.com/docs/devtools 會是個好的起點！ 
+
+
 [TDC]
 
 ## 2024-07-25
@@ -106,3 +109,10 @@ function splitOnFirstEqual(str) {
 ```js
 console.log(JSON.stringify(document.cookie.split(';').map(c => splitOnFirstEqual(c)).map(i => [i[0].trim(), i[1].trim()]).reduce((r, i) => {r[i[0]] = i[1]; return r;}, {})))
 ```
+
+## 2024-11-26
+
+- 在找怎麼讓 Chrome DevTools 可以觸發 save as MHTML 的事件，找到這個連結。
+- [Edit and save files in a workspace](https://developer.chrome.com/docs/devtools/workspaces)
+- 看了一下內容，比較像是在 Local 做開發，然後可以讓 DevTools 即時反應 CSS/HTML/JavaScript 異動的範例。
+- 不過如果想要熟悉 Chrome DevTools 的用法，https://developer.chrome.com/docs/devtools 會是個好的起點。
