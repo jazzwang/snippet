@@ -435,3 +435,63 @@ python/requests/cloudskillsboost/dump_transcript.py
 @jazzwang ➜ /workspaces/snippet (master) $
 ```
 - 不過很明顯是改錯了，因為 `if transcript_` 這一行應該命名錯誤了。實際跑，果然錯在這一行。下 `/undo` 沒用。只好手動用 `git reset --hard HEAD^` 取消掉這個修改。
+
+## 2024-11-26
+
+- 在 https://www.youtube.com/watch?v=wTzZg7CKLsw 學到 `aider --browser` 的指令。原來還可以在瀏覽器中使用 aider :)
+- https://www.youtube.com/watch?v=ag-KxYS8Vuw - 做了一些比較複雜的指令示範。
+  - 啟動語法 `aider --no-auto-commits` 可以限制 aider 不要自動 commit
+  - 指令 `/tokens` 檢查把檔案加入以後，input token 的量（所以初步猜測 `repository map` 裡面應該是存 embedding）
+    - 如果讓 aider 一次把全部的目錄都讀進來，感覺 token total 會有點多。
+    - 我挑 `gemini-1.5-pro-latest` 可能也不是最划算的選擇，得算一下性價比，或者同一個 repo 換用 OpenAI API Key 讓它算算看成本。
+```
+@jazzwang ➜ /workspaces/snippet (master) $ aider --model gemini/gemini-1.5-pro-latest
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Aider v0.64.1
+Model: gemini/gemini-1.5-pro-latest with diff-fenced edit format
+Git repo: .git with 1,024 files
+Warning: For large repos, consider using --subtree-only and .aiderignore
+See: https://aider.chat/docs/faq.html#can-i-use-aider-in-a-large-mono-repo
+Repo-map: using 1024 tokens, auto refresh
+Use /help <question> for help, run "aider --help" to see cmd line args
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> /tokens
+
+Repo-map can't include /workspaces/snippet/c#/c-sharp-basics
+Has it been deleted from the file system but not from git?
+Repo-map can't include /workspaces/snippet/go/go-workshop-practical
+Has it been deleted from the file system but not from git?
+Repo-map can't include /workspaces/snippet/scala/nyc-taxi-schema/nyc-tlc
+Has it been deleted from the file system but not from git?
+Approximate context window usage for gemini/gemini-1.5-pro-latest, in tokens:
+
+$ 0.0062    1,780 system messages
+$ 0.0063    1,813 repository map  use --map-tokens to resize
+==================
+$ 0.0126    3,593 tokens total
+         1,044,983 tokens remaining in context window
+         1,048,576 tokens max context window size
+```
+  - 改用 OpenAI 4o-mini 計算的話，便宜很多：(根據 Aider Leader Board 來說 GPT-4 跟 Claude 的表現還是比較好）
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ aider --mini
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Aider v0.64.1
+Model: gpt-4o-mini with whole edit format
+Git repo: .git with 1,024 files
+Warning: For large repos, consider using --subtree-only and .aiderignore
+See: https://aider.chat/docs/faq.html#can-i-use-aider-in-a-large-mono-repo
+Repo-map: disabled
+Use /help <question> for help, run "aider --help" to see cmd line args
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> /tokens
+
+Approximate context window usage for gpt-4o-mini, in tokens:
+
+$ 0.0001      542 system messages
+==================
+$ 0.0001      542 tokens total
+          127,458 tokens remaining in context window
+          128,000 tokens max context window size
+```
+- 這些示範提醒我該再仔細研究一下 `aider` 的 options -- https://aider.chat/docs/config/options.html
