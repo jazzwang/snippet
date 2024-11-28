@@ -495,3 +495,88 @@ $ 0.0001      542 tokens total
           128,000 tokens max context window size
 ```
 - 這些示範提醒我該再仔細研究一下 `aider` 的 options -- https://aider.chat/docs/config/options.html
+
+## 2024-11-28
+
+- 繼續專研 `aider` 的一些底層設計。
+- 首先，嘗試了解一下 `aider` 的 local cache 機制：
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ cd .aider.tags.cache.v3/
+@jazzwang ➜ /workspaces/snippet/.aider.tags.cache.v3 (master) $ ls
+cache.db
+@jazzwang ➜ /workspaces/snippet/.aider.tags.cache.v3 (master) $ sqlite3 cache.db
+SQLite version 3.45.3 2024-04-15 13:34:05
+Enter ".help" for usage hints.
+sqlite> .schema
+CREATE TABLE Settings ( key TEXT NOT NULL UNIQUE, value);
+CREATE TABLE Cache ( rowid INTEGER PRIMARY KEY, key BLOB, raw INTEGER, store_time REAL, expire_time REAL, access_time REAL, access_count INTEGER DEFAULT 0, tag BLOB, size INTEGER DEFAULT 0, mode INTEGER DEFAULT 0, filename TEXT, value BLOB);
+CREATE UNIQUE INDEX Cache_key_raw ON Cache(key, raw);
+CREATE INDEX Cache_expire_time ON Cache (expire_time);
+CREATE INDEX Cache_store_time ON Cache (store_time);
+CREATE TRIGGER Settings_count_insert AFTER INSERT ON Cache FOR EACH ROW BEGIN UPDATE Settings SET value = value + 1 WHERE key = "count"; END;
+CREATE TRIGGER Settings_count_delete AFTER DELETE ON Cache FOR EACH ROW BEGIN UPDATE Settings SET value = value - 1 WHERE key = "count"; END;
+CREATE TRIGGER Settings_size_insert AFTER INSERT ON Cache FOR EACH ROW BEGIN UPDATE Settings SET value = value + NEW.size WHERE key = "size"; END;
+CREATE TRIGGER Settings_size_update AFTER UPDATE ON Cache FOR EACH ROW BEGIN UPDATE Settings SET value = value + NEW.size - OLD.size WHERE key = "size"; END;
+CREATE TRIGGER Settings_size_delete AFTER DELETE ON Cache FOR EACH ROW BEGIN UPDATE Settings SET value = value - OLD.size WHERE key = "size"; END;
+sqlite> .tables
+Cache     Settings
+sqlite> .mode table
+sqlite> select * from Settings;
++----------------------+-----------------------+
+|         key          |         value         |
++----------------------+-----------------------+
+| count                | 1031                  |
+| size                 | 0                     |
+| hits                 | 0                     |
+| misses               | 0                     |
+| statistics           | 0                     |
+| tag_index            | 0                     |
+| eviction_policy      | least-recently-stored |
+| size_limit           | 1073741824            |
+| cull_limit           | 10                    |
+| sqlite_auto_vacuum   | 1                     |
+| sqlite_cache_size    | 8192                  |
+| sqlite_journal_mode  | wal                   |
+| sqlite_mmap_size     | 67108864              |
+| sqlite_synchronous   | 1                     |
+| disk_min_file_size   | 32768                 |
+| disk_pickle_protocol | 5                     |
++----------------------+-----------------------+
+sqlite> select * from Cache limit 10;
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| rowid |                           key                           | raw |    store_time    | expire_time |   access_time    | access_count | tag | size | mode | filename | value |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 1     | /workspaces/snippet/.devcontainer/devcontainer.json     | 1   | 1731568096.95317 |             | 1731568096.95317 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 2     | /workspaces/snippet/.gitallowed                         | 1   | 1731568096.96604 |             | 1731568096.96604 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 3     | /workspaces/snippet/.gitattributes                      | 1   | 1731568096.96638 |             | 1731568096.96638 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 4     | /workspaces/snippet/.github/workflows/git-extras.yml    | 1   | 1731568096.96698 |             | 1731568096.96698 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 5     | /workspaces/snippet/.github/workflows/manual.yml        | 1   | 1731568096.96725 |             | 1731568096.96725 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 6     | /workspaces/snippet/.github/workflows/mtr-win64.yml     | 1   | 1731568096.96751 |             | 1731568096.96751 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 7     | /workspaces/snippet/.github/workflows/pip-package.yml   | 1   | 1731568096.96778 |             | 1731568096.96778 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 8     | /workspaces/snippet/.github/workflows/plow-win64.yml    | 1   | 1731568096.96805 |             | 1731568096.96805 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 9     | /workspaces/snippet/.github/workflows/scoop-package.yml | 1   | 1731568096.96831 |             | 1731568096.96831 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+| 10    | /workspaces/snippet/.github/workflows/screenshot.yml    | 1   | 1731568096.96858 |             | 1731568096.96858 | 0            |     | 0    | 4    |          | □      |
+|       |                                                         |     |                  |             |                  |              |     |      |      |          | □      |
++-------+---------------------------------------------------------+-----+------------------+-------------+------------------+--------------+-----+------+------+----------+-------+
+sqlite> .exit
+@jazzwang ➜ /workspaces/snippet/.aider.tags.cache.v3 (master) $ cd ..
+@jazzwang ➜ /workspaces/snippet (master) $
+```
