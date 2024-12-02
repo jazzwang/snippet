@@ -9,7 +9,7 @@
 - ( 2024-12-02 16:54:11 )
 - 緣起：
   - 在 ByteByteGo 的文章中看到 `go-diagrams`
-  - ![](https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e585277-7fe3-4cd4-b257-f14edbbb4fc7_1280x1664.gif)
+  - ![](https://substack-post-media.s3.amazonaws.com/public/images/4e585277-7fe3-4cd4-b257-f14edbbb4fc7_1280x1664.gif)
 - 測試：
   - 環境：Github Codespace
 - 安裝：
