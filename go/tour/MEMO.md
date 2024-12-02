@@ -1195,7 +1195,7 @@ The value: 0 Present? false
 ## Install Golang REPL `gore`
 ~/git/snippet/go/tour$ go install github.com/x-motemen/gore/cmd/gore@latest
 ## For autocompletion
-~/git/snippet/go/tour$ go install github.com/mdempsky/gocode
+~/git/snippet/go/tour$ go install github.com/mdempsky/gocode@latest
 ```
 - ( 2022-06-12 22:03:52 )
 - test with `gore`
