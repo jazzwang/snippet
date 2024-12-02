@@ -580,3 +580,41 @@ sqlite> .exit
 @jazzwang ➜ /workspaces/snippet/.aider.tags.cache.v3 (master) $ cd ..
 @jazzwang ➜ /workspaces/snippet (master) $
 ```
+
+## 2024-12-02
+
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ aider
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Aider v0.66.0
+Main model: claude-3-5-sonnet-20241022 with diff edit format, infinite output
+Weak model: claude-3-5-haiku-20241022
+Git repo: .git with 1,029 files
+Warning: For large repos, consider using --subtree-only and .aiderignore
+See: https://aider.chat/docs/faq.html#can-i-use-aider-in-a-large-mono-repo
+Repo-map: using 1024 tokens, auto refresh
+
+
+https://aider.chat/HISTORY.html#release-notes
+Would you like to see what's new in this version? (Y)es/(N)o [Yes]:
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> /tokens
+
+Repo-map can't include /workspaces/snippet/c#/c-sharp-basics
+Has it been deleted from the file system but not from git?
+Repo-map can't include /workspaces/snippet/go/go-workshop-practical
+Has it been deleted from the file system but not from git?
+Repo-map can't include /workspaces/snippet/scala/nyc-taxi-schema/nyc-tlc
+Has it been deleted from the file system but not from git?
+
+Approximate context window usage for claude-3-5-sonnet-20241022, in tokens:
+
+$ 0.0053    1,780 system messages
+$ 0.0054    1,816 repository map  use --map-tokens to resize
+==================
+$ 0.0108    3,596 tokens total
+          196,404 tokens remaining in context window
+          200,000 tokens max context window size
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> /quit
+```
