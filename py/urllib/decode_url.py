@@ -11,7 +11,7 @@ sample_url = "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progress
 def main(enc_url: str = None):
     # parsing CLI arguments
     parser = argparse.ArgumentParser(description="Decode URL")
-    parser.add_argument("enc_url", help="encoded url", nargs='?')
+    parser.add_argument("enc_url", help="encoded url", nargs='?', default=sample_url)
     args = parser.parse_args()
 
     enc_url = enc_url or args.enc_url
