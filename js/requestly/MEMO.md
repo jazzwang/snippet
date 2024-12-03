@@ -16,3 +16,7 @@
   - 比較有趣的是可以 Record Session
     - 給定網址可以錄製該次的 network traffic
   - 安裝 Extension 以後會多一個 `Requestly` 的 Tab，相較於 `Chrome DevTools` 的 `Network` Tab 更容易理解
+- 補充：
+  - 用 [Wappalyzer](https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg) 追了一下  https://partnercentral.awspartner.com/partnercentral2/s/login 用到哪些技術，其中一項是 Amazon CloudWatch RUM
+    - https://github.com/aws-observability/aws-rum-web
+    - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM.html
