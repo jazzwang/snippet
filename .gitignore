@@ -239,3 +239,6 @@ gradle-app.setting
 # End of https://www.gitignore.io/api/sbt,java,scala,linux,macos,python,windows,gradle
 .aider*
 .env
+
+# backup file
+*.bak
