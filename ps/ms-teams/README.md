@@ -1,5 +1,7 @@
 # README
 
+[TOC]
+
 ## 2022-05-23
 
 - Q: How can I get the `Teams` list of a user?
@@ -21,6 +23,10 @@
 - https://www.powershellgallery.com/packages/MicrosoftTeams/
 
 ## 2024-11-22
+
+### Use Microsoft Graph PowerShell SDK 
+
+- **Goal:** to fetch Teams `Users` and `Chats`
 
 - ( 2024-11-22 16:10:24 )
 - 根據 https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation?view=graph-powershell-1.0
@@ -77,41 +83,7 @@ Version    Name                                Repository           Description
 2.25.0     Microsoft.Graph.Users               PSGallery            Microsoft Graph PowerShell Cmdlets
 ```
 - 身份認證：
-```powershell
-PS C:\Users\jazzw> Connect-MgGraph
-Welcome to Microsoft Graph!
-
-Connected via delegated access using 1xxxxxxx-204b-xxxx-xxxx-xxxxxxxxxxxx
-Readme: https://aka.ms/graph/sdk/powershell
-SDK Docs: https://aka.ms/graph/sdk/powershell/docs
-API Docs: https://aka.ms/graph/docs
-
-NOTE: You can use the -NoWelcome parameter to suppress this message.
-```
-- 用 Administrator 身份安裝 Microsoft Teams cmdlet
-  - https://www.powershellgallery.com/packages/MicrosoftTeams/
-```powershell
-Windows PowerShell
-Copyright (C) Microsoft Corporation. All rights reserved.
-Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
-
-PS C:\Windows\system32> Install-Module MicrosoftTeams
-
-Untrusted repository
-You are installing the modules from an untrusted repository. If you trust this repository, change its
-InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
-'PSGallery'?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): Y
-```
-- 登入
-```powershell
-PS C:\Windows\system32> Connect-MicrosoftTeams
-
-Account                       Environment Tenant                               TenantId
--------                       ----------- ------                               --------
-Jazz.Wang@xxxxxxxxxxxxx.com AzureCloud  7xxxxxxa-7xx4-4xx3-9xx4-exxxxxxxxxxf 7xxxxxxa-7xx4-4xx3-9xx4-exxxxxxxxxxf
-```
-- https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.teams/get-mgteam?view=graph-powershell-1.0
+  - https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.teams/get-mgteam?view=graph-powershell-1.0
 ```powershell
 PS C:\Users\jazzw> Connect-MgGraph
 Welcome to Microsoft Graph!
@@ -156,9 +128,37 @@ At line:1 char:1
     + CategoryInfo          : NotSpecified: (:) [Connect-MgGraph], AuthenticationFailedException
     + FullyQualifiedErrorId : Microsoft.Graph.PowerShell.Authentication.Cmdlets.ConnectMgGraph
 ```
-- 因為還要管理者審核，所以失敗。
-- https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.teams/?view=graph-powershell-1.0
+- <span style="background-color: #ff0000; border-color: #ff0000; color: #ffffff; padding: 3px;">[ 失敗 ]</span> 因為還要 Microsoft 365 管理者審核 Application 權限，所以失敗。
+- Microsoft Graph PowerShell Cmdlets 關於 Microsoft.Graph.Teams 的 Command 列表
+  - https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.teams/?view=graph-powershell-1.0
 - 本來想拿來備份 Teams Chat 的，沒法子～只好找其他方法了。
+
+### Use Microsoft Teams PowerShell Module 
+
+- 用 Administrator 身份安裝 Microsoft Teams cmdlet
+  - https://www.powershellgallery.com/packages/MicrosoftTeams/
+```powershell
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Windows\system32> Install-Module MicrosoftTeams
+
+Untrusted repository
+You are installing the modules from an untrusted repository. If you trust this repository, change its
+InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
+'PSGallery'?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): Y
+```
+- 登入
+```powershell
+PS C:\Windows\system32> Connect-MicrosoftTeams
+
+Account                       Environment Tenant                               TenantId
+-------                       ----------- ------                               --------
+Jazz.Wang@xxxxxxxxxxxxx.com AzureCloud  7xxxxxxa-7xx4-4xx3-9xx4-exxxxxxxxxxf 7xxxxxxa-7xx4-4xx3-9xx4-exxxxxxxxxxf
+```
+
 - ( 2024-11-22 20:59:03 )
 - 再仔細看一次文件，重試了一次 Microsoft Teams PowerShell Module
   - `Get-Team` 指令說明：https://github.com/MicrosoftDocs/office-docs-powershell/blob/main/teams/teams-ps/teams/Get-Team.md
@@ -217,3 +217,6 @@ e79accc9-0011-xxxx-2233-db4b5e9ff2d9                                            
 38f09e39-0011-xxxx-2233-5aa9bb30c12c                                                                             member
 27a05529-0011-xxxx-2233-551ca1c24be1                                                                             member
 ```
+- <span style="background-color:#00875a; color:#ffffff; padding: 3px;">[ 成功 ]</span>: 用 `Get-TeamUser` 可以取得 Group 成員列表
+- <span style="background-color:#ff0011; color:#ffffff; padding: 3px;">[ 失敗 ]</span>: 用 `Microsoft Teams PowerShell Module` 沒辦法取得 Chat / Message 內容，所以無法拿來備份 Teams Channel 裡的 Post，與 Teams Chat 內容。找不到對應的 cmdlet
+- <span style="background-color:#42526e; color:#ffffff; padding: 3px;">[ 心得 ]</span>: 用 `Microsoft Teams PowerShell Module` 只能拿來自動化 Teams 的設定（e.g. Policy，增/刪/改 Teams Channel，增刪 Teams User 等）
