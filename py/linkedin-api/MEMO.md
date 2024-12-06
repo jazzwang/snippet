@@ -25,4 +25,8 @@
 - 參考文件：
   - Share on LinkedIn
     - https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/share-on-linkedin
+  - Profile API
+    - https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api
+  - Marketing 分析 - Share Overview
+    - https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares
   - 
