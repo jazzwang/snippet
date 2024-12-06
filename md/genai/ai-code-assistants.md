@@ -18,11 +18,12 @@
 | [Cline (prev. Claude Dev)](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev) | 132,099  | Yes |
 | [twinny](https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny) | 26,176 | Yes |
 | [Wingman](https://marketplace.visualstudio.com/items?itemName=nvms.ai-wingman) | 2,089 | Yes |
-| [Llama Coder](https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder) | 45,879 | Yes | 
+| [Llama Coder](https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder) | 45,879 | Yes |
+| [Copilot Arena](https://marketplace.visualstudio.com/items?itemName=copilot-arena.copilot-arena) | 5,514 | Yes |
 
 ## Local Copilots?
 
-- https://github.com/ErikBjare/are-copilots-local-yet - 這個人整理了一些不同的
+- https://github.com/ErikBjare/are-copilots-local-yet - 這個人整理了一些不同的實作
 
 ## VS Code + Codeium
 
