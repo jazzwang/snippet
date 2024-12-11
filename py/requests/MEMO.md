@@ -50,3 +50,20 @@ print(r1.text)
 <title>登入帳號 | Readmoo 讀墨電子書</title>
 ... 略 ...
 ```
+- 若改用 Network Traffic 查到的 cookie，同樣的作法就可以取得 wishlist 的回應。（當然後來發現 wishlist 又是靠 javascript 組出來的，但至少實驗證明 cookie 是有用的）
+  - 看起來身份認證跟 `readmoo` 或 `_ue` 這兩個 cookie 有關。但用 javascript 的 `document.cookie` 確實看不到這兩筆。相信跟 cookie 的存放位置有關。在 Network Traffic 是在 Request Header 中看到的。
+```bash
+jazzw@JazzBook:~/Downloads$ cat readmoo-cookie.json.from_devtools | jq . | tee devtool-cookie
+jazzw@JazzBook:~/Downloads$ cat readmoo-cookie.json | jq . | tee js-cookie
+jazzw@JazzBook:~/Downloads$ diff -Naur js-cookie devtool-cookie
+--- js-cookie   2024-12-11 08:29:46.799137200 +0800
++++ devtool-cookie      2024-12-11 08:29:22.142450100 +0800
+@@ -6,5 +6,6 @@
+   "aiq_cookie_srv_freq_cap_QGUserId": "4946867811127324",
+   "aiq_cookie_srv_freq_cap__qg_pushrequest": "true",
+   "aiq_cookie_srv_freq_cap__qg_cm": "1",
+-  "_qg_cm": "1"
++  "readmoo": "s89jej0q9qmvk41t7ldodjffg79d61bp",
++  "_ue": "H1vkW31kpH2F03L1BbUOW8eTpnKnfvRyYApbHjB7pUPvImhC7S4p0Ay9VLV-R5QG"
+ }
+```
