@@ -10,4 +10,17 @@
   - 2024-06-05: [Turso brings Native Vector Search to SQLite](https://turso.tech/blog/turso-brings-native-vector-search-to-sqlite) - Vector Similarity Search is now available!
     - 基於 [libSQL](https://github.com/tursodatabase/libsql) - the Open Contribution fork of SQLite
     - https://turso.tech/libsql
-    
+      - https://turso.tech/libsql-manifesto 開發宣言
+    - https://turso.tech/vector
+      > Native Vector Search for SQLite - No extensions needed.
+- 在 libSQL 開發宣言中提到了另外幾個延伸 SQLite 變成分散式資料庫的實作
+  - ChiselStore - https://github.com/chiselstrike/chiselstore
+    - ChiselStore is an embeddable, distributed SQLite for Rust, powered by Little Raft.
+  - rqlite
+    - https://github.com/rqlite/rqlite
+    - https://rqlite.io/
+    > The lightweight, user-friendly, distributed relational database built on SQLite.
+  - dqlite
+    - https://github.com/canonical/dqlite
+    - https://dqlite.io/
+    > High-availability SQLite
