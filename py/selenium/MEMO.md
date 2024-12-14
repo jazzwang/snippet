@@ -50,3 +50,41 @@ ype=3D"text/css" href=3D"cid:css-5b86f105-d380-4821-bd65-f5795111c6db@mhtml=^M
 
 ... 略 ...
 ```
+
+## 2024-12-14
+
+- ( 2024-12-14 23:00:51 )
+- 被 https://blog.51cto.com/u_16213316/8744091 騙了，查了一下並沒有 `mhtml` 這個套件。
+- 從 https://pypi.org/search/?q=mhtml 看到 https://pypi.org/project/pagesaver/
+- 看了兩個用 Playwright 把網頁存成 MHTML 的作法，都是靠 `driver.execute_cdp_cmd('Page.captureSnapshot', {})`
+  - https://gist.github.com/mezhgano/bd9fee908378ee87589b727906da55db
+```python
+client = page.context.new_cdp_session(page)
+mhtml = client.send("Page.captureSnapshot")['data']
+```
+  - https://github.com/ZhaoQi99/PageSaver/blob/a0dbf2f108e0f94929a4e9768c9aa7927b1e91cf/pagesaver/utils/export_utils.py#L18C1-L20C57
+```python
+client = page.context.new_cdp_session(page)
+data = client.send("Page.captureSnapshot", {"format": "mhtml"})
+mhtml_path.write_bytes(data["data"].encode("utf-8"))
+```
+- 從 https://www.gaoyuanqi.cn/python-selenium-execute_cdp_cmd/ 看到 `Page.addScriptToEvaluateOnNewDocument` 強制導入 javascript 的作法：
+```python
+with open('./stealth.min.js') as f:
+    js = f.read()
+driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+    "source": js
+})
+```
+- 從 https://ithelp.ithome.com.tw/m/articles/10248972 學到 `Network.setUserAgentOverride` 的用法
+```python
+driver.execute_cdp_cmd('Network.setUserAgentOverride', 
+  {
+    "userAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+})
+```
+- Chrome 官方文件：
+  - cdp = Chrome DevTools Protocol
+  - https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureSnapshot
+  - https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnNewDocument
+  - https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setUserAgentOverride
