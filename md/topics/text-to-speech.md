@@ -14,3 +14,8 @@
   - huggingface: https://huggingface.co/fixie-ai/ultravox-v0_4
 - 付費 API
   - https://www.ultravox.ai/
+
+## 2024-12-15
+
+- 2024-02-27: TTS Arena: Benchmarking Text-to-Speech Models in the Wild
+  - https://huggingface.co/blog/arena-tts

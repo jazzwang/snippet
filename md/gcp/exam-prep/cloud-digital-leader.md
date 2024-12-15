@@ -33,3 +33,11 @@
 - 登記考試
   - https://webassessor.com/googlecloud
   - https://services.google.com/fh/files/misc/exam_tips_packet_external.pdf = Exam Tips
+
+## 2024-12-09
+
+- [紀錄](exam-essentials.md) 註冊 Webassessor 帳號，並排定 "Cloud Digital Leader" on-site exam 遇到的一些狀況。
+
+## 2024-12-15
+
+- 把先前用程式產生的翻譯與摘要放到 https://jazzwang.github.io/cv/lp/path-9_cloud-digital-leader.html 方便閱讀。
