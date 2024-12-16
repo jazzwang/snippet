@@ -15,7 +15,7 @@ def main():
     parser.add_argument("--output", "-o", help="output CSV file, delimiter: ';'")
     args = parser.parse_args()
 
-    input_file = args.wishlist_csv
+    input_file = args.input
     output_file = args.output
 
     ## create wishlist book category file
