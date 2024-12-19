@@ -85,3 +85,10 @@ Required-by:
 pip install vizro_ai[anthropic,mistral]
 ```
 - 參考： https://vizro.readthedocs.io/projects/vizro-ai/en/vizro-ai-0.3.2/pages/user-guides/run-vizro-ai/#python-script
+- 新增 `example.py`
+- 測試：
+```bash
+@jazzwang ➜ /workspaces/snippet/py/vizro (master) $ export OPENAI_API_KEY=........... # REPLACE WITH YOUR OPENAI API KEY
+@jazzwang ➜ /workspaces/snippet/py/vizro (master) $ python3 example.py 
+```
+- 若用 VS Code 整合 Codespace，會自動跳出瀏覽器，顯示結果。
