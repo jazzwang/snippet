@@ -55,3 +55,32 @@ INFO:werkzeug:127.0.0.1 - - [19/Dec/2024 11:44:57] "GET /_dash-component-suites/
 
 @jazzwang ➜ /workspaces/snippet/py/vizro (master) $ git add App.py 
 ```
+
+### Vizro-AI
+
+- Source Code is under `vizro-ai` subfolder
+  - https://github.com/mckinsey/vizro/tree/main/vizro-ai
+- 安裝：
+  - 預設是用 OpenAI API
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ pip3 install vizro_ai
+```
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ pip3 show vizro_ai
+Name: vizro_ai
+Version: 0.3.2
+Summary: Vizro-AI is a tool for generating data visualizations
+Home-page: 
+Author: Vizro Team
+Author-email: 
+License: 
+Location: /usr/local/python/3.10.13/lib/python3.10/site-packages
+Requires: autoflake, black, langchain, langchain-openai, langgraph, langgraph-checkpoint, openai, pandas, python-dotenv, tabulate, vizro
+Required-by: 
+```
+- 看起來 `vizro_ai` 相依 `pandas`, `LangChain`, `LangGraph`
+- ![](assets/vizro_ai_deptree.png) 
+- 如果要改用 OpenAI 以外的模型，安裝時要指定模型：
+```bash
+pip install vizro_ai[anthropic,mistral]
+```

@@ -618,3 +618,28 @@ $ 0.0108    3,596 tokens total
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 > /quit
 ```
+
+## 2024-12-19
+
+- ( 2024-12-19 16:16:12 )
+- 來實驗一下新的 `--watch-files` 參數
+```
+Aider v0.69.0
+
+     * Watch files improvements:
+          + Use # ... AI? comments to trigger aider and ask questions about your code.
+          + Now watches all files, not just certain source files.
+          + Use # AI comments, // AI comments, or -- AI comments to give aider instructions in any text file.
+     * Full support for Gemini Flash 2.0 Exp:
+          + aider --model flash or aider --model gemini/gemini-2.0-flash-exp
+     * New --multiline flag and /multiline-mode command makes ENTER a soft newline and META-ENTER send the message, by @miradnanali.
+     * /copy-context <instructions> now takes optional “instructions” when copying code context to the clipboard.
+```
+```bash
+@jazzwang ➜ /workspaces/snippet/py/aider (master) $ aider --help | grep -i watch
+             [--skip-sanity-check-repo] [--watch-files | --no-watch-files]
+  --watch-files, --no-watch-files
+                        Enable/disable watching files for ai coding comments
+                        AIDER_WATCH_FILES]
+```
+- 說明： https://aider.chat/docs/usage/watch.html
