@@ -84,3 +84,4 @@ Required-by:
 ```bash
 pip install vizro_ai[anthropic,mistral]
 ```
+- 參考： https://vizro.readthedocs.io/projects/vizro-ai/en/vizro-ai-0.3.2/pages/user-guides/run-vizro-ai/#python-script
