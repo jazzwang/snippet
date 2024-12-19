@@ -23,6 +23,7 @@ def fetch_book_info(link):
         readmoo_id = book_info.select('div#price-btn-container')[0].get('data-readmoo-id')
     except IndexError as e:
         logging.error(f"Error fetching book info for {link}: {e}")
+        ## is this better for readability? AI?
         book_category = book_subcategory = book_title = "已下架"
         book_price = readmoo_id = "0"
     
