@@ -14,4 +14,44 @@
 ```bash
 @jazzwang ➜ /workspaces/snippet (master) $ pip install vizro
 ```
+- Tutorial
+```
+@jazzwang ➜ /workspaces/snippet/py/vizro (master) $ cat > App.py << EOF
+> import vizro.plotly.express as px
+> from vizro import Vizro
+> import vizro.models as vm
+> 
+> df = px.data.iris()
+> 
+> page = vm.Page(
+>     title="My first dashboard",
+>     components=[
+>         vm.Graph(figure=px.scatter(df, x="sepal_length", y="petal_width", color="species")),
+>         vm.Graph(figure=px.histogram(df, x="sepal_width", color="species")),
+>     ],
+>     controls=[
+>         vm.Filter(column="species", selector=vm.Dropdown(value=["ALL"])),
+>     ],
+> )
+> 
+> dashboard = vm.Dashboard(pages=[page])
+> Vizro().build(dashboard).run()
+> EOF
+@jazzwang ➜ /workspaces/snippet/py/vizro (master) $ python3 App.py 
+Dash is running on http://127.0.0.1:8050/
 
+INFO:dash.dash:Dash is running on http://127.0.0.1:8050/
+
+ * Serving Flask app 'App'
+ * Debug mode: off
+INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8050
+INFO:werkzeug:Press CTRL+C to quit
+INFO:werkzeug:127.0.0.1 - - [19/Dec/2024 11:44:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Dec/2024 11:44:57] "GET /_dash-component-suites/vizro/static/css/vizro-bootstrap.v0_1_30m1734579647.min.css HTTP/1.1" 200 -
+... 略 ...
+
+^C
+
+@jazzwang ➜ /workspaces/snippet/py/vizro (master) $ git add App.py 
+```
