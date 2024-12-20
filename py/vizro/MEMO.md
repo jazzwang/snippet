@@ -92,3 +92,11 @@ pip install vizro_ai[anthropic,mistral]
 @jazzwang ➜ /workspaces/snippet/py/vizro (master) $ python3 example.py 
 ```
 - 若用 VS Code 整合 Codespace，會自動跳出瀏覽器，顯示結果。
+
+## 2024-12-20
+
+- 原來 huggingface 也可以跑
+  - https://huggingface.co/spaces/vizro/demo-kpi
+- 這個 demo-kpi 的作者也有其他 vizro dashboard 實作
+  - https://github.com/huong-li-nguyen/vizro-app-demos
+  - 看起來是為了 https://makeovermonday.co.uk/ 並且用 data.world 上的資料集
