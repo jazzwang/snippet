@@ -25,7 +25,13 @@
 - Professional Cloud Architect Sample Questions
   - https://docs.google.com/forms/d/e/1FAIpQLSf54f7FbtSJcXUY6-DUHfBG31jZ3pujgb8-a5io_9biJsNpqg/viewform
 
-  ## 2024-11-05
+## 2024-11-05
 
-  - https://rsvp.withgoogle.com/events/partnerca-pca_24617
+- https://rsvp.withgoogle.com/events/partnerca-pca_24617
   - Partner Certification Academy - Professional Cloud Architect [24617]
+
+## 2024-12-24
+
+- 2024-05-18: [必過祕技，三天通過 Google Cloud Professional Cloud Architect](https://medium.com/chouhsiang/必過秘訣-三天通過-google-cloud-professional-cloud-architect-524405687711)
+- ExamTopics 考古題
+  - https://github.com/chouhsiang/examtopics-actual-questions/blob/main/google-cloud/professional-cloud-architect.csv
