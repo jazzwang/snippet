@@ -86,9 +86,27 @@
 
 - 把先前用程式產生的翻譯與摘要放到 https://jazzwang.github.io/cv/lp/path-9_cloud-digital-leader.html 方便閱讀。
 
+## 2024-12-21
+
+- 審閱第一部份的翻譯與摘要
+
+## 2024-12-22
+
+- 審閱第二部份的翻譯與摘要
+
 ## 2024-12-23
 
-- 把 https://partner.cloudskillsboost.google/paths/9 還沒看完的影片看完。
+- 把 https://www.cloudskillsboost.google/paths/9 還沒看完的影片看完。
+  - 第 4-6 部份
 - 做範例考題
+  - https://docs.google.com/forms/d/e/1FAIpQLSedAmf77MGS7FGEaylFzY51KtBd7kkIZJIMDsV5zSRSmpKIOA/formResponse
 - 其他考古題：
   - https://www.examtopics.com/exams/google/cloud-digital-leader/view/
+
+## 2024-12-24
+
+- Study Guide 後面的 `Glossary` 跟 `List of Google products and solutions` 有助於快速掃過一次自己的理解是否正確。
+  - https://services.google.com/fh/files/misc/c-cdlilt-b_study_guide_v2-0.pdf
+- 考試
+  - 考場附近交通/停車問題
+  - 帶雙證件（不確定是否一定要英文護照）
