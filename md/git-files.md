@@ -1,9 +1,13 @@
 # Common Files in Git Repository
 
-| Name | Type | Usage |
-|------|------|-------|
+| Name | Type | Usage | Reference |
+|------|------|-------|-----------|
 | CITATION.cff | file | plain text files with human- and machine-readable citation information for software (and datasets). |
-| `.devcontainer/devcontainer.json` | file | 
+| `.devcontainer/devcontainer.json` | file | Development Containers - Github & Gitpod |
+| `.github/workflows/*.yml` | file | [Github] Action YAML configuration |
+| `.github/ISSUE_TEMPLATE/config.yml` | file | [Github] Issue template when create new issues | e.g. [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/.github/ISSUE_TEMPLATE/config.yml) |
+| `.github/PULL_REQUEST_TEMPLATE.md` | file | [Github] Pull Request template | e.g. [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/.github/PULL_REQUEST_TEMPLATE.md) |
+
 
 ## 2024-10-07
 
