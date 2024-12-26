@@ -99,3 +99,7 @@ If you need any further assistance or modifications, feel free to ask!
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv temp/src/index.tsx lab2/src/App.tsx 
 ```
 - 這樣 lab2 目錄下的就會是可以正常執行的範例
+```bash
+@jazzwang ➜ .../snippet/js/react.js/lab2 (master) $ git add .
+@jazzwang ➜ .../snippet/js/react.js/lab2 (master) $ git commit -a -m "feat: [js][react.js] lab2 - 'useState' and 'next-auth' example."
+```

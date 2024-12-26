@@ -137,3 +137,8 @@ No issues found.
 
 2 directories, 18 files
 ```
+
+## 2024-12-26
+
+- 新增 `lab2` 範例，詳見 [lab2/MEMO.md](./lab2/MEMO.md)
+- 心得：既然 https://web.lmarena.ai/ 可以用 Prompt 來產生 UI, 那應該也可以用 [OpenHands](https://github.com/All-Hands-AI/OpenHands) 做到類似的效果。
