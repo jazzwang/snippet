@@ -69,3 +69,33 @@ If you need any further assistance or modifications, feel free to ask!
 - 結果：看到空白的頁面。
 - 追蹤：
   - 比較 `lab1/src/index.tsx` 跟 `lab2/src/index.tsx` 差異最大的是 `lab1` 會用 `App.tsx`
+- 猜測：
+  - 把 `lab2/src/index.tsx` 複製到 `lab1/src/App.tsx` 試試看。
+- ( 2024-12-26 22:24:55 )
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ cd js/react.js
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ cp -r lab1 dev
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ cd dev/
+@jazzwang ➜ .../snippet/js/react.js/dev (master) $ npm install
+@jazzwang ➜ .../snippet/js/react.js/dev (master) $ npm install next-auth           ### 等一下跑 lab2/src/index.tsx 會用到
+@jazzwang ➜ .../snippet/js/react.js/dev (master) $ npm start
+```
+- ( 2024-12-26 22:29:00 )
+- 開另一個 bash 編輯 `src/App.tsx`
+```bash
+@jazzwang ➜ .../snippet/js/react.js/dev (master) $ code src/App.tsx 
+```
+- ( 2024-12-26 22:59:24 )
+- 把 `lab2/src/index.tsx` 複製到 `dev/src/App.tsx` 這個暫時的測試目錄裡，
+  確實就可以看到類似  https://web.lmarena.ai/ 看到的畫面。
+  不過因為沒有正確的 CSS 跟一開始的 `index.html`。看起來應該就沒辦法完整重現那個效果。
+- ( 2024-12-26 23:04:16 )
+- 整理一下
+```bash
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv lab2 temp
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ cp -r lab1 lab2
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ cp dev/package.json lab2/package.json 
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv temp/MEMO.md lab2/
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv temp/src/index.tsx lab2/src/App.tsx 
+```
+- 這樣 lab2 目錄下的就會是可以正常執行的範例
