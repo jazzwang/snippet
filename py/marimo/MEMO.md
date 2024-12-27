@@ -166,4 +166,19 @@ Run this command to enable completions:
 Then restart your shell or run 'source ~/.bashrc' to enable completions
 @jazzwang ➜ /workspaces/snippet/py/marimo (master) $ eval "$(_MARIMO_COMPLETE=bash_source marimo)"
 ```
-- 方便 Shell 自動補完指令，可以照 `marimo shell-completion` 的指引，修改 `~/.bashrc` (也許在 zsh 環境會產生不同結果)
+- 方便 Shell 自動補完指令，可以照 `marimo shell-completion` 的指引，修改 `~/.bashrc` 
+  本以為在 `zsh` 環境會產生不同結果，看樣子沒差 :P
+```bash
+@jazzwang ➜ /workspaces/snippet/py/marimo (master) $ zsh
+@jazzwang ➜ /workspaces/snippet/py/marimo (master) $ marimo shell-completion
+Run this command to enable completions:
+
+    echo 'eval "$(_MARIMO_COMPLETE=bash_source marimo)"' >> ~/.bashrc
+
+
+Then restart your shell or run 'source ~/.bashrc' to enable completions
+@jazzwang ➜ /workspaces/snippet/py/marimo (master) $ which zsh
+/usr/bin/zsh
+```
+- ( 2024-12-27 16:47:34 )
+- 最近剛好想 refactor [confluence-insight](https://github.com/jazzwang/confluence-insight)。先前會用 ipython 界面來做 Selemiun 本機實驗，或許可以改用 `marimo` 玩玩看，然後用 `marimo export script` 來產生最後的結果。再讓 `aider` 幫我 code review。
