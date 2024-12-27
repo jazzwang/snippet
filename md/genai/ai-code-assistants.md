@@ -1,5 +1,10 @@
 # AI Code Generator and Code Assistant
 
+<style>
+.red { background-color: #ff0000; border-color: #ff0000; color: #ffffff; padding: 3px; }
+.green {}
+</style>
+
 - ( 2024-10-24 22:48:39 )
 - 2024-08-19: [Magic Quadrant for AI Code Assistants](https://www.gartner.com/doc/reprints?id=1-2IJXRJH7&ct=240816&st=sb)
 
@@ -9,17 +14,17 @@
 
 | VS Code Extension | installs | Local LLM ? |
 |-------------------|--------------:|-------------------:|
-| [Codeium](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium) | 1,840,262  | No |
-| [Cody](https://marketplace.visualstudio.com/items?itemName=sourcegraph.cody-ai) | 428,835  | No |
-| [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) | 417,735  | Yes |
-| [AskGodi](https://marketplace.visualstudio.com/items?itemName=AskCodi.askcodi-vscode) | 12,276  | No |
+| [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) | 22,134,796  | <span class="red">No</span> |
+| [Codeium](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium) | 1,840,262  | <span class="red">No</span> |
 | [CodeGPT](https://marketplace.visualstudio.com/items?itemName=DanielSanMedium.dscodegpt&ssr=true#overview) | 1,494,158  | Yes |
-| [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) | 22,134,796  | No |
+| [Cody](https://marketplace.visualstudio.com/items?itemName=sourcegraph.cody-ai) | 428,835  | <span class="red">No</span> |
+| [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) | 417,735  | Yes |
 | [Cline (prev. Claude Dev)](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev) | 132,099  | Yes |
-| [twinny](https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny) | 26,176 | Yes |
-| [Wingman](https://marketplace.visualstudio.com/items?itemName=nvms.ai-wingman) | 2,089 | Yes |
 | [Llama Coder](https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder) | 45,879 | Yes |
+| [twinny](https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny) | 26,176 | Yes |
+| [AskGodi](https://marketplace.visualstudio.com/items?itemName=AskCodi.askcodi-vscode) | 12,276  | <span class="red">No</span> |
 | [Copilot Arena](https://marketplace.visualstudio.com/items?itemName=copilot-arena.copilot-arena) | 5,514 | Yes |
+| [Wingman](https://marketplace.visualstudio.com/items?itemName=nvms.ai-wingman) | 2,089 | Yes |
 
 ## Local Copilots?
 
