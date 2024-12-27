@@ -13,3 +13,11 @@
   - Google Cloud gen AI sales and pre-sales learning journeys
   - Advanced Generative AI Learning Journey (get to L400 in 5 steps)
   - Generative AI - Services Specialization 
+
+## 2024-12-27
+
+- AI-Skills-Quest
+  - https://www.googlecloudcommunity.com/gc/AI-Skills-Quest/ct-p/cloud-learning-ai-skills
+- Gemini Get Started
+  - https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/getting-started
+  - https://github.com/google-gemini/cookbook/blob/main/gemini-2/live_api_starter.ipynb - Live Gemini 2 Live
