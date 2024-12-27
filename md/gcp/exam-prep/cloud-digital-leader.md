@@ -122,3 +122,27 @@
   - 開始考試！
 - 作答前，最好上一下廁所。畢竟正常考試時間只有 90 分鐘。進階的證照題目也會更多，憋尿的話，表現容易失常。
 - 有這次經驗，就可以來準備 `AWS Certified AI Practitioner (AIF-C01)`
+
+## 2024-12-26
+
+- 先收到了 Credly 的通知，之後才收到 Google 的 Certification 通知。
+- Google 的官方通知包含了一些額外的資訊：
+  - 可以去領通過認證的 Benefit - https://cp.certmetrics.com/google/en/benefits/program
+    - 這次拿到的是下次考試 50% OFF 的優惠卷。兩年內有效。
+    > Benefit
+    > Google Cloud Certification Exam Discount
+    > <mark>50% Off Your Next Exam or Renewal</mark>
+    > **Expire Date**
+    > 2027-12-24
+    > **Voucher Code**
+  - Digital Toolkit - https://sites.google.com/robertsonmarketing.com/digitalassetdownloadportal/digital-toolkit?pli=1
+    - 其實就是一些可以放在 Email 簽名檔，或者 LinkedIn / Google Meet 背景圖的「素材」
+  - 論壇：Cloud Certified Group
+    - https://www.googlecloudcommunity.com/gc/Cloud-Certified-Group/gh-p/cloud-certified-group
+    - 雖然以前考到 Cloudera 認證時，也有類似的 LinkedIn Group，不過現在資訊量太多，不欠地方取暖。
+  - Credly Directory
+    - 這裡可以查到有連結 Credly 的帳號列表，還可以根據 Location Filter
+    - https://www.credly.com/organizations/google-cloud/directory?sort=alphabetical&filter%5Blocation_name%5D=Taiwan
+    - 2024-12-27: Location: Taiwan - Showing 1-8 of `2,230` -- 代表目前台灣有 2230 人拿到 GCP 的 Badge 或 Certification
+      同理，應該查得到 AWS 的人數，這又是一份「觀察社群」的 Dataset :P 
+      根據先前的研究，Azure 的認證不在 Credly 上，所以沒辦法做交叉比對。不能做 Social Network Analysis
