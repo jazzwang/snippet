@@ -21,3 +21,5 @@
 - Gemini Get Started
   - https://github.com/GoogleCloudPlatform/generative-ai/tree/main/gemini/getting-started
   - https://github.com/google-gemini/cookbook/blob/main/gemini-2/live_api_starter.ipynb - Live Gemini 2 Live
+  - https://github.com/saharmor/gemini-multimodal-playground
+    > Build realtime voice and video agents with Google's new Gemini 2.0 (API is free for now)
