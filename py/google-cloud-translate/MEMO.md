@@ -186,3 +186,13 @@ In [6]: exit()
 ```
 - 看樣子 Google Translate API 可能要額外的 IAM 設定（畢竟我剛剛順序上不正確，先 create service account 才 enable API）
 - ( 2024-11-26 09:27:53 )
+
+## 2025-01-02
+
+- ( 2025-01-02 11:19:20 )
+- 在準備 GCP Cloud Digital Leader 時，發現 [dump_transcript.py](../requests/cloudskillsboost/dump_transcript.py) 產生的結果有待改進，所以再來實驗一次 Google Translate API
+- 先前也有發現用 Gemini 1.5 Pro 翻譯字幕的結果比純用 Google Translate 免費版本好，看過定價策略後，大概可以懂兩者的差異：
+  - https://cloud.google.com/translate/docs/editions#supported_features - 分成 `Basic (v2, Google 訓練好的)` 跟 `Advanced (v3, 可以用自訂的 LLM)`
+  - https://cloud.google.com/translate/pricing#basic-pricing - Basic 每月前 50 萬個字元免費（好奇 [沉浸式翻譯](https://immersivetranslate.com/) 是純靠 JavaScript 調閱 RESTful API 所以沒被收到費用？）
+
+!!! - 小目標：先讓 Basic 會動，再來研究用 LLM 的 Advanced

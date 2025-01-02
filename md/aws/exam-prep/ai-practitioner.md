@@ -7,7 +7,8 @@
 - https://community.aws/code/generative-ai
 
 - Standard Exam Prep Plan: AWS Certified AI Practitioner (AIF-C01)
-- https://explore.skillbuilder.aws/learn/lp/2193
+  - (登入 Enroll 前) https://explore.skillbuilder.aws/learn/public/learning_plan/view/2193/standard-exam-prep-plan-aws-certified-ai-practitioner-aif-c01
+  - (登入 Enroll 後) https://explore.skillbuilder.aws/learn/lp/2193 
 
 ## 2024-10-04
 
@@ -93,3 +94,27 @@
 | 5.0 Security, Compliance, and Governance for AI Solutions | 3 of 3 | 67% |
 | > 5.1 **Explain methods to secure AI systems.** | 1 of 1 | <mark>0%</mark> |
 | > 5.2 Recognize governance and compliance regulations for AI systems. | 2 of 2 | 100% |
+
+- 第一次作答時，看到的一些參考連結：
+  - well-Architected for Machine Learning
+    - [Model training and tuning](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/model-training-and-tuning.html)
+    - [Model evaluation](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/model-evaluation.html)
+    - [Feature engineering](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/feature-engineering.html)
+    - [ML lifecycle phase – Monitoring](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/ml-lifecycle-phase-monitoring.html)
+    - [Data collection](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-collection.html)
+  - Amazon SageMaker - Developer Guide
+    - [Metrics and validation](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+    - [Metrics for fine-tuning large language models in Autopilot](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-llms-finetuning-metrics.html)
+  - Amazon Bedrock - User Guide
+    - [What is Amazon Bedrock?](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
+  - 什麼是強化學習？What is Reinforcement Learning?
+    - https://aws.amazon.com/what-is/reinforcement-learning/
+
+## 2024-01-02
+
+- https://skillbuilder.aws/search?searchText=AIF-C01&page=1&sort=item_relevancy&price=free - 搜尋 `AIF-C01` 的免費資源
+- [SkillBuilder] [AWS Flash - AWS AI/ML Essentials (GCR Only)](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/21208/aws-flash-aws-aiml-essentials-gcr-only)
+  - 這個看起來是針對 `Great China Region (GCR)` 設計的
+- 還是先從 - [SkillBuilder] [Standard Exam Prep Plan: AWS Certified AI Practitioner (AIF-C01)](https://explore.skillbuilder.aws/learn/public/learning_plan/view/2193/standard-exam-prep-plan-aws-certified-ai-practitioner-aif-c01) 開始吧！這個其實就是 Learning Path，預計需要 18 小時，內容大致上就是 STEP 2 列的那些課。
+- ( 2025-01-02 01:01:50 )
+- [SkillBuilder] [Fundamentals of Machine Learning and Artificial Intelligence](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19578/fundamentals-of-machine-learning-and-artificial-intelligence)
