@@ -11,13 +11,15 @@
 - Paper
   - SEMIKONG: CURATING, TRAINING, AND EVALUATING A SEMICONDUCTOR INDUSTRY-SPECIFIC LARGE LANGUAGE MODEL
   - https://arxiv.org/html/2411.13802v2
-
+- Website:
+  - https://www.semikong.ai/
 
 ## 2024-01-03
 
+- 2024-12-04: [Scaling semiconductor expertise with Llama-powered Domain-Expert Agents](https://ai.meta.com/blog/aitomatic-built-with-llama/)
+- 2024-12-27: [Meet SemiKong: The World’s First Open-Source Semiconductor-Focused LLM](https://www.marktechpost.com/2024/12/27/meet-semikong-the-worlds-first-open-source-semiconductor-focused-llm/)
 - 2024-12-29: [SemiKong is the world's first open-source semiconductor-focused LLM — it claims to bring new chips to market 30% faster](https://www.tomshardware.com/tech-industry/artificial-intelligence/semikong-is-the-worlds-first-open-source-semiconductor-focused-llm-it-claims-to-bring-new-chips-to-market-30-percent-faster)
 - 2024-12-29: [全球首個「專為半導體設計」的開源 LLM：SemiKong 發表](https://technews.tw/2024/12/29/semikong-is-world-first-semiconductor-focused-llm/)
-- 2024-12-27: [Meet SemiKong: The World’s First Open-Source Semiconductor-Focused LLM](https://www.marktechpost.com/2024/12/27/meet-semikong-the-worlds-first-open-source-semiconductor-focused-llm/)
 
 > <mark>基於 Meta 的 Llama 3.1 平台<mark>，SemiKong 最近推出 70B 參數版本。該模型由 Aitomatic 與新 AI 聯盟成員共同開發，包括 Meta、AMD 和 IBM 等企業。其中，Aitomatic 的 DXA 系統成為 SemiKong 部署的核心架構。
 
