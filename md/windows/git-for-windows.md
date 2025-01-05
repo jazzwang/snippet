@@ -265,3 +265,10 @@ C:\Windows\System32\tree.com
 - 補充：
   - https://www.msys2.org/docs/pacman/
   - Updating MSYS2 https://www.msys2.org/docs/updating/#potential-issues
+  - https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
+  - https://gist.github.com/adojos/0abab00dd7e6bd84db39a760fb40a340
+- zstd
+  - https://facebook.github.io/zstd/
+  - Zstandard is a fast compression algorithm, providing high compression ratios.
+- 其他參考資料：
+  - https://www.pascallandau.com/blog/setting-up-git-bash-mingw-msys2-on-windows/
