@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Jazz Yao-Tsung Wang",
+    "label": "",
+    "image": "https://jazzwang.github.io/cv/assets/images/profile.jpg",
+    "email": "",
+    "phone": "",
+    "url": "https://jazzwang.github.io/cv",
+    "summary": "",
+    "location": {
+      "address": "",
+      "postalCode": "300",
+      "city": "Hsinchu City",
+      "countryCode": "TW",
+      "region": "Taiwan"
+    },
+    "profiles": [
+      {
+        "network": "linkedin",
+        "username": "jazzwang",
+        "url": "https://www.linkedin.com/in/jazzwang"
+      },
+      {
+        "network": "facebook",
+        "username": "jazzwang.tw",
+        "url": "https://www.facebook.com/jazzwang.tw"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Innova Solutions",
+      "location": "Taipei City, TW",
+      "description": "",
+      "position": "Director of Engineering",
+      "url": "http://www.innovasolutions.com",
+      "startDate": "2018-07-02",
+      "endDate": "2024-12-31",
+      "summary": "",
+      "highlights": [
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Taiwan Data Engineering Association",
+      "position": "Chair & Initiator",
+      "url": "https://www.dataengineering.tw/",
+      "startDate": "2016-12-01",
+      "summary": "Taiwan Data Engineering Association is a non-profit organization that is dedicated to data engineering. We hold annual conference."
+    },
+    {
+      "organization": "Hadoop Taiwan User Group (Hadoop.TW)",
+      "position": "Co-founder, Evanglist, Annual Event Organizer",
+      "url": "https://www.hadoop.tw/",
+      "startDate": "2008-04-01",
+      "summary": "- answer questions at http://forum.hadoop.tw\n- host 14 annual events since 2009"
+    }
+  ],
+  "education": [
+    {
+      "institution": "National Chiao Tung University",
+      "url": "https://www.nctu.edu.tw/",
+      "area": "Electrical and Control Engineering",
+      "studyType": "Master",
+      "startDate": "2000-09-01",
+      "endDate": "2002-08-31"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Outstanding Contributions in Science and Technology",
+      "date": "2009-03-11",
+      "awarder": "Executive Yuan, Taiwan",
+      "summary": "https://www.nchc.org.tw/Event/EventDetail/23?mid=63"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Hadoop The Definitive Guide, 4e (Traditional Chinese Translation)",
+      "publisher": "O'Reilly / GoTop",
+      "releaseDate": "2016-09-08",
+      "url": "http://books.gotop.com.tw/v_A431",
+      "summary": "ISBN： 9789864761364"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Cloud Computing",
+      "level": "Master",
+      "keywords": [
+        "AWS",
+        "GCP",
+        "Azure"
+      ]
+    },
+  ],
+  "languages": [
+    {
+      "language": "Chinese",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Professional working proficiency"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Protein Phosphorylation Motif Finder",
+      "description": "Protein phosphorylation motif finder based on clustering analysis",
+      "highlights": [
+        "Discovery of Protein Phosphorylation Motifs through Exploratory Data Analysis",
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0020025",
+      ],
+      "keywords": [
+        "f-Motif",
+        "Java",
+        "PHP",
+        "Javascript"
+      ],
+      "startDate": "2011-05-01",
+      "url": "http://f-motif.classcloud.org/",
+      "roles": [
+        "Developer"
+      ],
+      "entity": "National Center for High-performance Computing",
+      "type": "application"
+    }
+  ],
+  "meta": {
+    "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/sample.resume.json",
+    "version": "v1.0.0",
+    "lastModified": "2025-01-05T23:23:00"
+  }
+}
