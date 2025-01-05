@@ -261,3 +261,7 @@ Microsoft Windows [Version 10.0.26100.2605]
 C:\Users\jazzw>where tree
 C:\Windows\System32\tree.com
 ```
+- ( 2025-01-05 20:51:12 )
+- 補充：
+  - https://www.msys2.org/docs/pacman/
+  - Updating MSYS2 https://www.msys2.org/docs/updating/#potential-issues
