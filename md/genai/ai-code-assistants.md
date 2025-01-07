@@ -17,7 +17,7 @@
 | [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) | 22,134,796  | <span class="red">No</span> |
 | [Codeium](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium) | 1,840,262  | <span class="red">No</span> |
 | [CodeGPT](https://marketplace.visualstudio.com/items?itemName=DanielSanMedium.dscodegpt&ssr=true#overview) | 1,494,158  | Yes |
-| [Cody](https://marketplace.visualstudio.com/items?itemName=sourcegraph.cody-ai) | 428,835  | <span class="red">No</span> |
+| [Cody](https://marketplace.visualstudio.com/items?itemName=sourcegraph.cody-ai) | 428,835  | Yes |
 | [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) | 417,735  | Yes |
 | [Cline (prev. Claude Dev)](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev) | 132,099  | Yes |
 | [Llama Coder](https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder) | 45,879 | Yes |
@@ -45,6 +45,9 @@
 - https://sourcegraph.com/cody
 - https://marketplace.visualstudio.com/items?itemName=sourcegraph.cody-ai
   - ( 2024-10-24 23:17:26 )  410,330 installs
+- 使用的模型
+  - https://sourcegraph.com/docs/cody/capabilities/supported-models
+  - https://sourcegraph.com/docs/cody/clients/install-vscode#supported-local-ollama-models-with-cody
 
 ## VS Code + Continue
 
