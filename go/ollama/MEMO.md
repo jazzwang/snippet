@@ -233,3 +233,18 @@ However, another possibility is MoE being an acronym for a specific algorithm or
 
 Could you please clarify or provide more context about MoE in AI?
 ```
+
+## 2025-01-08
+
+- ( 2025-01-08 23:16:37 )
+- https://huggingface.co/docs/hub/ollama
+- 緣起：
+  - 原本看到有 DeepSeek v3 的 GGUF model 在 HuggingFace 上，可是用 ollama 指令卻載入失敗。
+  - https://huggingface.co/models?other=deepseek_v3&sort=downloads&search=GGUF 好吧，只有一個
+- 語法：
+  ```bash
+  ollama run hf.co/{username}/{repository}
+  ```
+- 比較久之前的作法是要自己寫 Model File
+- 2024-05-06: 抓別人的 GGUF 模型，用 Ollama 在本機執行！
+    - https://ywctech.net/ml-ai/ollama-import-custom-gguf/
