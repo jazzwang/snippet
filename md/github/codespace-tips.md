@@ -94,3 +94,31 @@ jazzwang:~/git/copilot-codespaces-demo$ tree -a
 - https://moaw.dev/workshop/create-workshop/ 有說明怎麼產生 Workshop
 - 更多關於 MOAW (喵) 🌳 The Mother Of All Workshops (MOAW)
     - 參考 https://github.com/microsoft/moaw
+
+## 2025-01-09
+
+- ( 2025-01-09 22:23:36 )
+- 先前曾經為了加環境變數，而在 codespace 的 repo 加入 devcontainer.json 好讓 `TZ` 環境變數選擇正確的地區。
+- 今天在看免費的 Storage 空間還剩多少時，發現還可以設定客製化的 `dotfile`
+  - https://github.com/settings/codespaces 這邊有一個選項
+    - [ ] <mark>Automatically install dotfiles</mark>
+    Codespaces can automatically install your dotfiles into **every codespace** you create. [Learn how to set up your dotfiles for Codespaces.](https://docs.github.com/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles)
+- 看起來是勾選後，還要挑一個 dotfiles 的 repo
+![](https://docs.github.com/assets/cb-45194/mw-1440/images/help/codespaces/select-dotfiles-repo.webp)
+- 若啟用這個選項，當建立新的 codespace 時，會複製 dotfiles repo 並尋找以下檔案之一來設定環境。
+
+When you create a new codespace, GitHub clones your selected dotfiles repository to the codespace environment, and looks for one of the following files to set up the environment.
+
+-   `install.sh`
+-   `install`
+-   `bootstrap.sh`
+-   `bootstrap`
+-   `script/bootstrap`
+-   `setup.sh`
+-   `setup`
+-   `script/setup`
+If none of these files are found, then any files or folders in your selected dotfiles repository starting with `.` are symlinked to the codespace's `~` or `$HOME` directory.
+> 如果未找到這些檔案，則所選 dotfiles repo 中以 `.` 開頭的任何檔案或資料夾都會建立捷徑到 Codespace 的 `~` 或 `$HOME` 目錄。
+
+- ( 2025-01-09 22:47:01 )
+- 這個作法有助於把一些慣用且可以公開的 dotfiles 存在 git repo 中當範本。但對於無法公開的 dotfiles，像是 API Key 之類的，還是得靠 Github Secrets 來處理。
