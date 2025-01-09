@@ -37,3 +37,27 @@
 * 性價比: "ZeroEval Score" vs "API 價格/ 1M Token" 
 
 ![](https://mmbiz.qpic.cn/mmbiz_png/ZBjVrHIdkOnp4icpdv8l46q1CMzHJzcHPaX8BXNmoyo3lzoHE7bHq9Cx6UtX8UuEtibFTK1XXuluaibiawIjCmluRg/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
+## 2025-01-09
+
+- 2025-01-04: DeepSeek: What You Need to Know
+  - https://gradientflow.com/deepseek-what-you-need-to-know/
+- Resource-optimized techniques:
+  - Mixture-of-Experts architectures
+  - FP8 mixed-precision training
+  - Multi-Token Prediction (MTP)
+- DeepSeek-V3 的聊天版本的表現可與 GPT-4o 和 Claude-3.5-Sonnet 等領先的閉源模型相媲美。
+> The chat version of DeepSeek-V3 achieves performance comparable to leading closed-source models 
+  like `GPT-4o` and `Claude-3.5-Sonnet`.
+- DeepSeek-V3 在數學推理方面取得了最先進的結果，在編碼任務中表現最佳，並且可以處理高達 128K 令牌的上下文長度。
+> DeepSeek-V3 achieves state-of-the-art results in <mark>math reasoning</mark>, 
+  is a top performer in <mark>coding tasks</mark>, 
+  and can handle context lengths up to <mark>128K tokens</mark>
+- 從<mark>地緣政治</mark>的角度來看:
+  - DeepSeek 的快速進步挑戰了尖端人工智慧開發必須與最新西方硬體掛鉤的概念。
+  - 透過在 GPU 存取受限（通常是<mark>美國半導體出口管制</mark>的結果）等限制下實現高效能，
+    DeepSeek 表明，戰略障礙本身並不一定會阻礙受制裁環境中的創新。
+  - 隨著中國和西方之間的人工智慧競爭加劇，
+    在獲取先進半導體的機會減少的情況下，
+    DeepSeek 蓬勃發展的能力表明，<mark>中國人工智慧產業具有更廣泛的彈性</mark>，
+    這可能會重塑政策制定者衡量出口限制對全球人工智慧進步影響的方式。
