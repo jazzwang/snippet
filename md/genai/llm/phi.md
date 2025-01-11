@@ -605,3 +605,219 @@ shm              64M     0   64M   0% /dev/shm
   ]
 }
 ```
+
+## 2025-01-11
+
+- ( 2025-01-11 23:26:03 )
+- 試試看把 ollama phi4 的 Modelfile 修改一下，看能否正常運作：
+```bash
+jazzw@JazzBook:~/.ollama/models/phi4-gguf$ cat Modelfile
+FROM c:\Users\jazzw\.ollama\models\phi4-gguf\phi-4-q4.gguf
+TEMPLATE """{{- range $i, $_ := .Messages }}
+{{- $last := eq (len (slice $.Messages $i)) 1 -}}
+<|im_start|>{{ .Role }}<|im_sep|>
+{{ .Content }}{{ if not $last }}<|im_end|>
+{{ end }}
+{{- if and (ne .Role "assistant") $last }}<|im_end|>
+<|im_start|>assistant<|im_sep|>
+{{ end }}
+{{- end }}"""
+PARAMETER stop <|im_start|>
+PARAMETER stop <|im_end|>
+PARAMETER stop <|im_sep|>
+LICENSE """Microsoft.
+Copyright (c) Microsoft Corporation.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."""
+jazzw@JazzBook:~/.ollama/models/phi4-gguf$ ollama start &
+jazzw@JazzBook:~/.ollama/models/phi4-gguf$ ollama create phi-4 -f Modelfile
+[GIN] 2025/01/11 - 23:31:19 | 200 |            0s |       127.0.0.1 | HEAD     "/"
+transferring model data ⠼ [GIN] 2025/01/11 - 23:31:25 | 200 |      6.9918ms |       127.0.0.1 | POST     "/api/blobs/sha256:ab704ffa097f5902b937ca5d0c166226f1201e7492da30fa4e1c086c217afd6b"
+[GIN] 2025/01/11 - 23:31:25 | 200 |     27.6745ms |       127.0.0.1 | POST     "/api/create"
+transferring model data 100%
+using existing layer sha256:ab704ffa097f5902b937ca5d0c166226f1201e7492da30fa4e1c086c217afd6b
+creating new layer sha256:32695b892af87ef8fca6e13a1a31c67c1441d7398be037e366e2fc763857c06a
+creating new layer sha256:fa8235e5b48faca34e3ca98cf4f694ef08bd216d28b58071a1f85b1d50cb814d
+creating new layer sha256:45a1c652dddc9efdcefa977ab81cfbe26b6e52bc8e78f2f4c698538783e0ac80
+creating new layer sha256:de185479d4bce03a83e09483b4deac8a80cacfe59209736f784d2aa07ebff6c9
+writing manifest
+success
+jazzw@JazzBook:~/.ollama/models$ tree blobs/
+blobs/
+├── sha256-32695b892af87ef8fca6e13a1a31c67c1441d7398be037e366e2fc763857c06a
+├── sha256-45a1c652dddc9efdcefa977ab81cfbe26b6e52bc8e78f2f4c698538783e0ac80
+├── sha256-ab704ffa097f5902b937ca5d0c166226f1201e7492da30fa4e1c086c217afd6b
+├── sha256-de185479d4bce03a83e09483b4deac8a80cacfe59209736f784d2aa07ebff6c9
+└── sha256-fa8235e5b48faca34e3ca98cf4f694ef08bd216d28b58071a1f85b1d50cb814d
+
+1 directory, 5 files
+jazzw@JazzBook:~/.ollama/models$ tree manifests/
+manifests/
+└── registry.ollama.ai
+    └── library
+        └── phi-4
+            └── latest
+
+4 directories, 1 file
+```
+- ( 2025-01-12 00:47:18 )
+```bash
+jazzw@JazzBook:~$ ollama run phi-4
+[GIN] 2025/01/11 - 23:35:14 | 200 |            0s |       127.0.0.1 | HEAD     "/"
+[GIN] 2025/01/11 - 23:35:14 | 200 |     12.7661ms |       127.0.0.1 | POST     "/api/show"
+time=2025-01-11T23:35:14.622+08:00 level=INFO source=server.go:104 msg="system memory" total="31.2 GiB" free="21.5 GiB" free_swap="20.6 GiB"
+time=2025-01-11T23:35:14.623+08:00 level=INFO source=memory.go:356 msg="offload to cuda" layers.requested=-1 layers.model=41 layers.offload=29 layers.split="" memory.available="[6.9 GiB]" memory.gpu_overhead="0 B" memory.required.full="9.6 GiB" memory.required.partial="6.8 GiB" memory.required.kv="400.0 MiB" memory.required.allocations="[6.8 GiB]" memory.weights.total="8.2 GiB" memory.weights.repeating="7.8 GiB" memory.weights.nonrepeating="402.0 MiB" memory.graph.full="266.7 MiB" memory.graph.partial="266.7 MiB"
+time=2025-01-11T23:35:14.635+08:00 level=INFO source=server.go:376 msg="starting llama server" cmd="C:\\Users\\jazzw\\scoop\\apps\\ollama\\current\\lib\\ollama\\runners\\cuda_v12_avx\\ollama_llama_server.exe runner --model C:\\Users\\jazzw\\.ollama\\models\\blobs\\sha256-ab704ffa097f5902b937ca5d0c166226f1201e7492da30fa4e1c086c217afd6b --ctx-size 2048 --batch-size 512 --n-gpu-layers 29 --threads 8 --no-mmap --parallel 1 --port 57271"
+⠙ time=2025-01-11T23:35:14.671+08:00 level=INFO source=sched.go:449 msg="loaded runners" count=1
+time=2025-01-11T23:35:14.672+08:00 level=INFO source=server.go:555 msg="waiting for llama runner to start responding"
+time=2025-01-11T23:35:14.673+08:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server error"
+⠸ time=2025-01-11T23:35:14.870+08:00 level=INFO source=runner.go:945 msg="starting go runner"
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA GeForce RTX 4060 Laptop GPU, compute capability 8.9, VMM: yes
+time=2025-01-11T23:35:14.910+08:00 level=INFO source=runner.go:946 msg=system info="CUDA : ARCHS = 600,610,620,700,720,750,800,860,870,890,900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | LLAMAFILE = 1 | AARCH64_REPACK = 1 | cgo(clang)" threads=8
+time=2025-01-11T23:35:14.911+08:00 level=INFO source=.:0 msg="Server listening on 127.0.0.1:57271"
+time=2025-01-11T23:35:14.924+08:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server loading model"
+⠼ llama_load_model_from_file: using device CUDA0 (NVIDIA GeForce RTX 4060 Laptop GPU) - 7099 MiB free
+llama_model_loader: loaded meta data with 33 key-value pairs and 243 tensors from C:\Users\jazzw\.ollama\models\blobs\sha256-ab704ffa097f5902b937ca5d0c166226f1201e7492da30fa4e1c086c217afd6b (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = phi3
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Phi 4
+llama_model_loader: - kv   3:                            general.version str              = 4
+llama_model_loader: - kv   4:                       general.organization str              = Microsoft
+llama_model_loader: - kv   5:                           general.basename str              = phi
+llama_model_loader: - kv   6:                         general.size_label str              = 15B
+llama_model_loader: - kv   7:                            general.license str              = mit
+llama_model_loader: - kv   8:                       general.license.link str              = https://huggingface.co/microsoft/phi-...
+llama_model_loader: - kv   9:                               general.tags arr[str,7]       = ["phi", "nlp", "math", "code", "chat"...
+llama_model_loader: - kv  10:                          general.languages arr[str,1]       = ["en"]
+llama_model_loader: - kv  11:                        phi3.context_length u32              = 16384
+llama_model_loader: - kv  12:  phi3.rope.scaling.original_context_length u32              = 16384
+llama_model_loader: - kv  13:                      phi3.embedding_length u32              = 5120
+llama_model_loader: - kv  14:                   phi3.feed_forward_length u32              = 17920
+llama_model_loader: - kv  15:                           phi3.block_count u32              = 40
+llama_model_loader: - kv  16:                  phi3.attention.head_count u32              = 40
+llama_model_loader: - kv  17:               phi3.attention.head_count_kv u32              = 10
+llama_model_loader: - kv  18:      phi3.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  19:                  phi3.rope.dimension_count u32              = 128
+llama_model_loader: - kv  20:                        phi3.rope.freq_base f32              = 250000.000000
+llama_model_loader: - kv  21:              phi3.attention.sliding_window u32              = 0
+llama_model_loader: - kv  22:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  23:                         tokenizer.ggml.pre str              = dbrx
+llama_model_loader: - kv  24:                      tokenizer.ggml.tokens arr[str,100352]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  25:                  tokenizer.ggml.token_type arr[i32,100352]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  26:                      tokenizer.ggml.merges arr[str,100000]  = ["Ġ Ġ", "ĠĠ ĠĠ", "i n", "Ġ t",...
+llama_model_loader: - kv  27:                tokenizer.ggml.bos_token_id u32              = 100257
+llama_model_loader: - kv  28:                tokenizer.ggml.eos_token_id u32              = 100257
+llama_model_loader: - kv  29:            tokenizer.ggml.padding_token_id u32              = 100257
+llama_model_loader: - kv  30:                    tokenizer.chat_template str              = {% for message in messages %}{% if (m...
+llama_model_loader: - kv  31:               general.quantization_version u32              = 2
+llama_model_loader: - kv  32:                          general.file_type u32              = 15
+llama_model_loader: - type  f32:   81 tensors
+llama_model_loader: - type q4_K:  101 tensors
+llama_model_loader: - type q5_K:   40 tensors
+llama_model_loader: - type q6_K:   21 tensors
+⠴ llm_load_vocab: special tokens cache size = 96
+llm_load_vocab: token to piece cache size = 0.6151 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = phi3
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 100352
+llm_load_print_meta: n_merges         = 100000
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 16384
+llm_load_print_meta: n_embd           = 5120
+llm_load_print_meta: n_layer          = 40
+llm_load_print_meta: n_head           = 40
+llm_load_print_meta: n_head_kv        = 10
+llm_load_print_meta: n_rot            = 128
+llm_load_print_meta: n_swa            = 0
+llm_load_print_meta: n_embd_head_k    = 128
+llm_load_print_meta: n_embd_head_v    = 128
+llm_load_print_meta: n_gqa            = 4
+llm_load_print_meta: n_embd_k_gqa     = 1280
+llm_load_print_meta: n_embd_v_gqa     = 1280
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-05
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 17920
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 2
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 250000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 16384
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_dt_b_c_rms   = 0
+llm_load_print_meta: model type       = 14B
+llm_load_print_meta: model ftype      = Q4_K - Medium
+llm_load_print_meta: model params     = 14.66 B
+llm_load_print_meta: model size       = 8.43 GiB (4.94 BPW)
+llm_load_print_meta: general.name     = Phi 4
+llm_load_print_meta: BOS token        = 100257 '<|endoftext|>'
+llm_load_print_meta: EOS token        = 100257 '<|endoftext|>'
+llm_load_print_meta: EOT token        = 100265 '<|im_end|>'
+llm_load_print_meta: PAD token        = 100257 '<|endoftext|>'
+llm_load_print_meta: LF token         = 128 'Ä'
+llm_load_print_meta: FIM PRE token    = 100258 '<|fim_prefix|>'
+llm_load_print_meta: FIM SUF token    = 100260 '<|fim_suffix|>'
+llm_load_print_meta: FIM MID token    = 100259 '<|fim_middle|>'
+llm_load_print_meta: EOG token        = 100257 '<|endoftext|>'
+llm_load_print_meta: EOG token        = 100265 '<|im_end|>'
+llm_load_print_meta: max token length = 256
+⠧ llm_load_tensors: offloading 29 repeating layers to GPU
+llm_load_tensors: offloaded 29/41 layers to GPU
+llm_load_tensors:          CPU model buffer size =   275.62 MiB
+llm_load_tensors:    CUDA_Host model buffer size =  2622.81 MiB
+llm_load_tensors:        CUDA0 model buffer size =  5731.89 MiB
+⠏ llama_new_context_with_model: n_seq_max     = 1
+llama_new_context_with_model: n_ctx         = 2048
+llama_new_context_with_model: n_ctx_per_seq = 2048
+llama_new_context_with_model: n_batch       = 512
+llama_new_context_with_model: n_ubatch      = 512
+llama_new_context_with_model: flash_attn    = 0
+llama_new_context_with_model: freq_base     = 250000.0
+llama_new_context_with_model: freq_scale    = 1
+llama_new_context_with_model: n_ctx_per_seq (2048) < n_ctx_train (16384) -- the full capacity of the model will not be utilized
+llama_kv_cache_init:        CPU KV buffer size =   110.00 MiB
+llama_kv_cache_init:      CUDA0 KV buffer size =   290.00 MiB
+llama_new_context_with_model: KV self size  =  400.00 MiB, K (f16):  200.00 MiB, V (f16):  200.00 MiB
+llama_new_context_with_model:        CPU  output buffer size =     0.40 MiB
+llama.cpp:10939: GGML_ASSERT(hparams.n_swa > 0) failed
+⠹ time=2025-01-11T23:35:19.747+08:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server error"
+⠼ time=2025-01-11T23:35:19.999+08:00 level=ERROR source=sched.go:455 msg="error loading llama server" error="llama runner process has terminated: GGML_ASSERT(hparams.n_swa > 0) failed"
+[GIN] 2025/01/11 - 23:35:20 | 500 |    5.4592604s |       127.0.0.1 | POST     "/api/generate"
+Error: llama runner process has terminated: GGML_ASSERT(hparams.n_swa > 0) failed
+jazzw@JazzBook:~$ time=2025-01-11T23:35:25.020+08:00 level=WARN source=sched.go:646 msg="gpu VRAM usage didn't recover within timeout" seconds=5.01692 model=C:\Users\jazzw\.ollama\models\blobs\sha256-ab704ffa097f5902b937ca5d0c166226f1201e7492da30fa4e1c086c217afd6b
+time=2025-01-11T23:35:25.268+08:00 level=WARN source=sched.go:646 msg="gpu VRAM usage didn't recover within timeout" seconds=5.2673998 model=C:\Users\jazzw\.ollama\models\blobs\sha256-ab704ffa097f5902b937ca5d0c166226f1201e7492da30fa4e1c086c217afd6b
+time=2025-01-11T23:35:25.517+08:00 level=WARN source=sched.go:646 msg="gpu VRAM usage didn't recover within timeout" seconds=5.5169129 model=C:\Users\jazzw\.ollama\models\blobs\sha256-ab704ffa097f5902b937ca5d0c166226f1201e7492da30fa4e1c086c217afd6b
+```
