@@ -1325,3 +1325,56 @@ improving graphics.
 或許要在 `ollama start` 的視窗看一下 API call history 是否有統計結果。
 
 </div>
+
+- ( 2025-01-14 17:47:14 )
+
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          32G   23G  7.4G  76% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/root        29G   24G  5.5G  82% /vscode
+/dev/sdb1       118G  887M  111G   1% /tmp
+/dev/loop4       32G   23G  7.4G  76% /workspaces
+```
+
+- 不確定 Github Codespace Storage GB-Month 的用量是怎麼計算的，還是把 9GB 的 Model 檔砍掉好了。
+
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ ollama start &
+[1] 1263
+@jazzwang ➜ /workspaces/snippet (master) $ ollama list
+[GIN] 2025/01/14 - 09:46:33 | 200 |     219.207µs |       127.0.0.1 | HEAD     "/"
+[GIN] 2025/01/14 - 09:46:33 | 200 |    1.674634ms |       127.0.0.1 | GET      "/api/tags"
+NAME            ID              SIZE      MODIFIED
+phi-4:latest    eab997c1d0c0    9.1 GB    42 minutes ago
+@jazzwang ➜ /workspaces/snippet (master) $ ollama rm phi-4:latest
+[GIN] 2025/01/14 - 09:46:51 | 200 |      26.619µs |       127.0.0.1 | HEAD     "/"
+[GIN] 2025/01/14 - 09:46:51 | 200 |    2.848002ms |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/01/14 - 09:46:51 | 200 |   18.788534ms |       127.0.0.1 | DELETE   "/api/delete"
+deleted 'phi-4:latest'
+@jazzwang ➜ /workspaces/snippet (master) $ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          32G   14G   16G  48% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/root        29G   24G  5.5G  82% /vscode
+/dev/sdb1       118G   20G   93G  18% /tmp
+/dev/loop4       32G   14G   16G  48% /workspaces
+```
+
+### Ollama Quantization Experiment
+
+- ( 2025-01-14 19:59:30 )
+- https://github.com/ollama/ollama/issues/5425
+- 實驗看看能否把 Phi4 Q4 轉成 Q2_K 以降低對記憶體的要求： <span style='background-color: red; padding: 3px; color: white;'> 【 失敗 】 </span> 
+```bash
+jazzw@JazzBook:~/.ollama/models/phi4-gguf$ ollama create phi-4-q2_k -f Modelfile -q Q2_K
+transferring model data 100%
+Error: quantization is only supported for F16 and F32 models
+jazzw@JazzBook:~/.ollama/models/phi4-gguf$ ollama create phi-4-q2_k -f Modelfile -q Q4_K_M
+transferring model data 100%
+Error: quantization is only supported for F16 and F32 models
+```
+- 更多描述請參考 https://github.com/ollama/ollama/blob/main/docs/import.md#quantizing-a-model
