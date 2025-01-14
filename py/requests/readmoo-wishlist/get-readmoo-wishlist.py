@@ -1,16 +1,30 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+import json
+import logging
 import requests
 import argparse
 from bs4 import BeautifulSoup
-import logging
 
 # Constants
-CSV_HEADER = "book_url;book_category;book_subcategory;book_title;book_price;readmoo_id"
+CSV_HEADER = "book_url;book_category;book_subcategory;book_title;book_price;rating_value;rating_count;readmoo_id"
 
 def get_link(line):
     (url, title) = line.strip().split(';')
     return url
+
+def fetch_book_rating(readmoo_id):
+    link = f"https://api.readmoo.com/store/v3/books/{readmoo_id}?client_id=76a95762391761d9aa4ca7b4e39dcb8e"
+    try:
+        r = requests.get(link)
+        r.raise_for_status()
+        book_meta = json.loads(r.text)
+        rating_value = book_meta['data']['attributes']['aggregate_rating']['rating_value']
+        rating_count = book_meta['data']['attributes']['aggregate_rating']['rating_count']
+    except e:
+        logging.error(f"Error fetching book rating for {link}: {e}")
+    return str(rating_value), str(rating_count)
 
 def fetch_book_info(link):
     r = requests.get(link)
@@ -21,12 +35,13 @@ def fetch_book_info(link):
         book_title = book_info.select('div#price-btn-container')[0].get('data-title')
         book_price = book_info.select('div#price-btn-container')[0].get('data-price')
         readmoo_id = book_info.select('div#price-btn-container')[0].get('data-readmoo-id')
+        rating_value, rating_count = fetch_book_rating(readmoo_id)
     except IndexError as e:
         logging.error(f"Error fetching book info for {link}: {e}")
         ## is this better for readability? AI?
         book_category = book_subcategory = book_title = "已下架"
         book_price = readmoo_id = "0"
-    return link, book_category, book_subcategory, book_title, book_price, readmoo_id
+    return link, book_category, book_subcategory, book_title, book_price, rating_value, rating_count, readmoo_id
 
 def main():
     # parsing CLI arguments
