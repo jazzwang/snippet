@@ -8,7 +8,7 @@
 
 - Standard Exam Prep Plan: AWS Certified AI Practitioner (AIF-C01)
   - (登入 Enroll 前) https://explore.skillbuilder.aws/learn/public/learning_plan/view/2193/standard-exam-prep-plan-aws-certified-ai-practitioner-aif-c01
-  - (登入 Enroll 後) https://explore.skillbuilder.aws/learn/lp/2193 
+  - (登入 Enroll 後) https://explore.skillbuilder.aws/learn/lp/2193
 
 ## 2024-10-04
 
@@ -16,8 +16,8 @@
 - https://skillbuilder.aws/exam-prep/ai-practitioner
 - EXAM PREP - AWS Certified AI Practitioner (AIF-C01)
 
-!!! - **!!! 建議熟讀 !!!**
-    - Exam Guide: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf
+- **!!! 建議熟讀 !!!**
+  - Exam Guide: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf
 
 - ( 2024-10-04 22:37:51 )
 - 基本上跟 [Learning Path](https://explore.skillbuilder.aws/learn/lp/2193) 定義的 13 個課程一樣。
@@ -214,7 +214,7 @@ Labeled data is a dataset where each instance or example is accompanied by a lab
 
 > **標記資料**是一個資料集，其中每個實例或範例都附有代表所需輸出或分類的標籤或目標變數。這些標籤通常由人類專家提供或透過可靠的過程獲得。
 
-Example: In an image classification task, labeled data would consist of images along with their corresponding class labels (for example, cat, dog, car). 
+Example: In an image classification task, labeled data would consist of images along with their corresponding class labels (for example, cat, dog, car).
 
 > 範例：在影像分類任務中，標記資料將由影像及其對應的類別標籤組成（例如，貓、狗、汽車）。
 
@@ -302,7 +302,7 @@ There are two main types of inferencing in machine learning: **batch inferencing
 
 > **批次推論** 是指電腦獲取大量資料（例如圖像或文字）並立即分析所有資料以提供一組結果。這種類型的推論通常用於數據分析等任務，其中決策過程的速度並不像結果的**準確性**那麼重要。
 
-##### Real-time inferencing 
+##### Real-time inferencing
 
 **Real-time inferencing** is when the computer has to make decisions quickly, in response to new information as it comes in. This is important for applications where **immediate decision-making is critical**, such as in chatbots or self-driving cars. The computer has to process the incoming data and make a decision almost instantaneously, without taking the time to analyze a large dataset.
 
@@ -354,7 +354,7 @@ The following are a couple branches of AI where deep learning is used to enhance
 
 -----
 
-- Lesson 5 of 10  
+- Lesson 5 of 10
 ### Generative AI Fundamentals 生成式人工智慧基礎知識
 
 Machine learning has been around for decades, which begs the question, what has led to the emergence of generative AI right now? The answer is as straightforward as huge investments in resources. Hiring a large team, spending on compute resources, and importantly, having the willingness to invest and develop big ideas, are all contributors to the rise of generative AI.
@@ -451,7 +451,7 @@ Tokens are the basic units of text that the model processes. Tokens can be words
 
 > 標記是模型處理的文字的基本單位。標記可以是單字、片語或單字（例如句點）。令牌還提供輸入資料的標準化，這使得模型更容易處理。
 
-As an example, the sentence "A puppy is to dog as a kitten is to cat." might be broken up into the following tokens: “A” “puppy” “is” “to” “dog” “as” "a" “kitten” “is” “to” "cat." 
+As an example, the sentence "A puppy is to dog as a kitten is to cat." might be broken up into the following tokens: “A” “puppy” “is” “to” “dog” “as” "a" “kitten” “is” “to” "cat."
 
 > 例如，「小狗之於狗，小貓之於貓」這句話。可分解為以下標記：「A」「puppy」「is」「to」「dog」「as」「a」「kitten」「is」「to」「cat」。
 
@@ -586,7 +586,7 @@ The following is an example of a prompt that could be provided to a FM.
 > 以下是可以提供給 FM 的提示範例。
 
 > **Example prompt  提示範例**
-> 
+>
 > You are an experienced journalist that excels at condensing long articles into concise summaries. Summarize the following text in 2–3 sentences.
 >> 您是一位經驗豐富的記者，擅長將長篇文章濃縮成簡潔的摘要。用 2-3 句話概括下面的文字。
 >
@@ -720,7 +720,7 @@ Amazon Comprehend uses ML and natural language processing (NLP) to help you unco
 
 > Amazon Comprehend 使用 ML 和自然語言處理 (NLP) 來幫助您發現非結構化資料中的見解和關係。該服務執行以下功能：
 
-- Identifies the language of the text 
+- Identifies the language of the text
 > - 辨識文本的語言
 - Extracts key phrases, places, people, brands, or events
 > - 提取關鍵字詞、地點、人物、品牌或事件
