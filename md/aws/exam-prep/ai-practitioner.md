@@ -25,11 +25,11 @@
 ### Step 1: Get to know the exam with exam-style questions
 
 - [SkillBuilder] [Standard Exam Prep Plan: AWS Certified AI Practitioner (AIF-C01)](https://explore.skillbuilder.aws/learn/public/learning_plan/view/2193/standard-exam-prep-plan-aws-certified-ai-practitioner-aif-c01)
-- [SkillBuilder] [Exam Prep Official Practice Question Set: AWS Certified AI Practitioner (AIF-C01)](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19790/exam-prep-official-practice-question-set-aws-certified-ai-practitioner-aif-c01-english)
+- [SkillBuilder] [Exam Prep Official Practice Question Set: AWS Certified AI Practitioner (AIF-C01)](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19790/exam-prep-official-practice-question-set-aws-certified-ai-practitioner-aif-c01-english) <span style='background-color: green; padding: 3px; color: white;'> [ DONE ] </span>
 
 ### Step 2: Refresh your AWS knowledge and skills.
 
-- [SkillBuilder] [Fundamentals of Machine Learning and Artificial Intelligence](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19578/fundamentals-of-machine-learning-and-artificial-intelligence)
+- [SkillBuilder] [Fundamentals of Machine Learning and Artificial Intelligence](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19578/fundamentals-of-machine-learning-and-artificial-intelligence)  <span style='background-color: green; padding: 3px; color: white;'> [ DONE ] </span>
 - [SkillBuilder] [Exploring Artificial Intelligence Use Cases and Applications](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19579/exploring-artificial-intelligence-use-cases-and-applications)
 - [SkillBuilder] [Responsible Artificial Intelligence Practices](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19603/responsible-artificial-intelligence-practices)
 - [SkillBuilder] [Developing Machine Learning Solutions](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19609/developing-machine-learning-solutions)
@@ -121,8 +121,7 @@
 
 ## 2024-01-13
 
-## 1. Fundamentals of Machine Learning and Artificial Intelligence 機器學習和人工智慧基礎知識
-
+## 1. [Fundamentals of Machine Learning and Artificial Intelligence](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19578/fundamentals-of-machine-learning-and-artificial-intelligence) 機器學習和人工智慧基礎知識
 -----
 
 - Lesson 2 of 10  第 2 課（共 10 課）
@@ -983,5 +982,7 @@ By understanding these cost considerations, you can make informed decisions and 
 
 - ( 2025-01-13 17:09:38 )
 
-## 2. Exploring Artificial Intelligence Use Cases and Applications
+## 2025-01-16
+
+## 2. [Exploring Artificial Intelligence Use Cases and Applications](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19579/exploring-artificial-intelligence-use-cases-and-applications)
 
