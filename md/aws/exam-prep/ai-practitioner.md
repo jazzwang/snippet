@@ -986,3 +986,400 @@ By understanding these cost considerations, you can make informed decisions and 
 
 ## 2. [Exploring Artificial Intelligence Use Cases and Applications](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19579/exploring-artificial-intelligence-use-cases-and-applications)
 
+- Lesson 2 of 17  第 2 課（共 17 課）
+
+### Introduction  介紹
+
+In this course, you will explore real-world use cases in artificial intelligence (AI), machine learning (ML), and generative artificial intelligence (generative AI) across a range of industries. These areas include healthcare, finance, marketing, entertainment, and more. You will also learn about AI, ML, and generative AI capabilities and limitations, model selection techniques, and key business metrics.
+
+> 在本課程中，您將探索各行業的人工智慧 (AI)、機器學習 (ML) 和生成人工智慧 (generative AI) 的真實用例。這些領域包括醫療保健、金融、行銷、娛樂等。您還將了解人工智慧、機器學習和產生人工智慧的功能和限制、模型選擇技術和關鍵業務指標。
+
+#### Video transcript  視訊文字記錄
+
+Artificial Intelligence (AI). Let’s dive into real-world use cases and applications. 
+
+> 人工智慧（AI）。讓我們深入了解現實世界的用例和應用程式。
+
+Many industries use AI such as manufacturing, healthcare, education, retail, life science, transportation, media and entertainment, and more. AI transformed these industries by boosting employee productivity, fostering creativity, improving business operations, and enhancing customer experiences. Text summarization, code generation, image, video, and text generation, music creation, content localization, chatbots, virtual assistance, anomaly detection, maintenance assistance, and contact center analytics are ways AI transforms how businesses operate and make decisions. This course will uncover AI’s endless possibilities and transformative power to shape the world.
+
+> 許多行業都在使用人工智慧，例如製造業、醫療保健、教育、零售、生命科學、交通、媒體和娛樂等。人工智慧透過提高員工生產力、培養創造力、改善業務運營和增強客戶體驗來改變這些行業。文字摘要、程式碼生成、圖像、視訊和文字生成、音樂創作、內容在地化、聊天機器人、虛擬協助、異常檢測、維護協助和客服中心分析是人工智慧改變企業營運和決策方式的方式。本課程將揭示人工智慧塑造世界的無限可能性和變革力量。
+
+#### Learning objectives  學習目標
+
+- Identify examples of real-world AI applications.
+  > 識別現實世界中人工智慧應用的範例。
+- Recognize use cases and solutions where AI can address business needs.
+  > 識別人工智慧可以滿足業務需求的應用案例和解決方案。
+- Determine when AI and ML solutions are not appropriate.
+  > 確定人工智慧和機器學習解決方案**何時不合適**。
+- Identify use cases that use ML techniques such as supervised, unsupervised, and reinforcement learning.
+  > 確定使用 ML 技術的應用案例，例如**監督式學習**、**非監督式學習**和**強化學習**。
+- Identify capabilities of generative AI.
+  > 識別生成人工智慧的能力。
+- Identify challenges of generative AI.
+  > 確定生成人工智慧的挑戰。
+- Identify factors to consider when selecting generative AI models.
+  > 確定選擇生成式人工智慧模型時要考慮的因素。
+- Determine **business metrics** for generative AI applications.
+  > 確定生成式 AI 應用程式的**商務指標**。
+
+- Lesson 3 of 17  第 3 課（共 17 課）
+
+### Artificial Intelligence  人工智慧
+
+Review the definitions of AI, ML, deep learning (DL), and generative AI before exploring the use cases and applications associated with these terms.
+在探索與這些術語相關的用例和應用程式之前，請先回顧 AI、ML、深度學習 (DL) 和生成式 AI 的定義。
+
+To review the terms and definitions, choose each of the markers.
+若要查看術語和定義，請選擇每個標記。
+
+#### AI  人工智慧
+
+AI is a broad field that encompasses the development of intelligent systems capable of performing tasks that typically require human intelligence, such as perception, reasoning, learning, problem-solving, and decision-making. AI serves as an umbrella term for various techniques and approaches, including machine learning, deep learning, and generative AI. 
+
+> 人工智慧是一個廣泛的領域，涵蓋智慧系統的開發，這些系統能夠執行通常需要人類智慧的任務，例如感知、推理、學習、解決問題和決策。人工智慧是各種技術和方法的總稱，包括機器學習、深度學習和產生人工智慧。
+
+#### ML  機器學習
+
+ML is subset of AI for understanding and building methods that make it possible for machines to learn. These methods use data to improve computer performance on a set of tasks.
+
+> 機器學習是人工智慧的子集，用於理解和建構使機器能夠學習的方法。這些方法使用數據來提高電腦在一組任務上的效能。
+
+#### DL 深度學習
+
+Deep learning uses the concept of neurons and synapses similar to how our brain is wired.
+
+> 深度學習使用神經元和突觸的概念，類似於我們大腦的連接方式。
+
+#### Generative AI  生成式人工智慧
+
+Generative AI is a subset of deep learning because it can adapt models built using deep learning, but without retraining or fine tuning. 
+
+> 生成式人工智慧是深度學習的子集，因為它可以適應使用深度學習建立的模型，但無需重新訓練或微調。
+
+Generative AI is capable of generating new data based on the patterns and structures learned from training data.
+
+> 生成式人工智慧能夠根據從訓練資料中學到的模式和結構產生新資料。
+
+It can create new content, including conversations, stories, images, videos, music, and code.
+
+> 它可以創建新內容，包括對話、故事、圖像、影片、音樂和程式碼。
+
+Now that you understand the relationship between AI, ML, DL, and generative AI, let's explore real-world uses cases and applications associated with these terms.
+
+> 現在您已經了解了 AI、ML、DL 和生成式 AI 之間的關係，接下來讓我們探索與這些術語相關的實際用例和應用程式。
+
+- Lesson 4 of 17  第 4 課（共 17 課）
+
+### Examples of Real-World Use Cases 實際用例範例
+
+Many industries are using the power of AI to enhance creativity, elevate customer experience, and streamline business operations. Here are a few real-world examples of AI use cases and applications across various sectors. As technology continues to advance, we can expect this list to expand, which will drive innovation and transform society. 
+
+> 許多行業正在利用人工智慧的力量來增強創造力、提升客戶體驗並簡化業務運作。以下是人工智慧在各個領域的用例和應用的一些真實範例。隨著技術的不斷進步，我們預計這個清單將不斷擴大，這將推動創新和社會變革。
+
+#### Media and entertainment  媒體與娛樂
+
+AI contributes to media and entertainment in the following ways:
+
+> 人工智慧透過以下方式為媒體和娛樂做出貢獻：
+
+- **Content generation**: AI can create scripts, dialogues, or even complete stories for films, TV shows, and games.
+
+> - **內容生成**：人工智慧可以為電影、電視節目和遊戲創建腳本、對話，甚至是完整的故事。
+
+- **Virtual reality**: AI can create immersive and interactive virtual environments for games or simulations.
+
+> - **虛擬實境**：人工智慧可以為遊戲或模擬創造身臨其境的互動式虛擬環境。
+
+- **New generation**: AI can generate articles or summaries based on raw data or events.
+
+> - **新一代**：人工智慧可以根據原始數據或事件產生文章或摘要。
+
+#### Retail  零售
+
+AI contributes to retail in the following ways:
+
+> 人工智慧透過以下方式為零售業做出貢獻：
+
+- **Product review summaries**: AI can generate review summaries for products so consumers can quickly find pertinent information.
+
+> - **產品評論摘要**：人工智慧可以產生產品的評論摘要，以便消費者可以快速找到相關資訊。
+
+- **Pricing optimization**: AI can model different pricing scenarios to determine optimal pricing strategies that maximize profits.
+
+> - **定價優化**：人工智慧可以對不同的定價場景進行建模，以確定實現利潤最大化的最佳定價策略。
+
+- **Virtual try-ons**: AI can generate virtual models of customers for virtual try-ons, which can improve the online shopping experience.
+
+> - **虛擬試穿**：人工智慧可以產生顧客的虛擬模型進行虛擬試穿，從而改善線上購物體驗。
+
+- **Store layout optimization**: AI can generate the most efficient store layouts to improve the customer shopping experience and boost sales.
+
+> - **商店佈局優化**：人工智慧可以產生最有效的商店佈局，以改善客戶購物體驗並促進銷售。
+
+#### Healthcare  衛生保健
+
+AI contributes to healthcare in the following ways:
+> 人工智慧透過以下方式為醫療保健做出貢獻：
+
+- **AWS HealthScribe**: This AWS service empowers healthcare software vendors to build clinical applications that automatically generate clinical notes by analyzing patient-clinician conversations.
+
+> - **AWS HealthScribe**：這項 AWS 服務使醫療保健軟體供應商能夠建立臨床應用程序，透過分析患者與臨床醫生的對話來自動產生臨床記錄。
+
+- **Personalize medicine**: By generating treatment plans based on a patient's specific genetic makeup, lifestyle, and disease progression, AI can contribute to more effective, personalized care.
+
+> - **個人化醫療**：透過根據患者的特定基因組成、生活方式和疾病進展產生治療計劃，人工智慧可以有助於更有效、個人化的照護。
+
+- **Improve medical imaging**: AI can enhance, reconstruct, or even generate medical images, like X-rays, MRIs, or CT scans, which can aid in better diagnosis.
+
+> - **改善醫學影像**：人工智慧可以增強、重建甚至產生醫學影像，如 X 光、MRI 或 CT 掃描，這有助於更好的診斷。
+
+#### Life sciences  生命科學
+
+AI contributes to life sciences in the following ways:
+> 人工智慧透過以下方式為生命科學做出貢獻：
+
+- **Drug discovery**: AI can generate new potential molecular structures for drugs and accelerate the process of drug discovery and reducing costs.
+
+> - **藥物發現**：人工智慧可以為藥物產生新的潛在分子結構，加速藥物發現過程並降低成本。
+
+- **Protein folding prediction**: AI can predict the 3D structures of proteins based on their amino acid sequence, which is crucial for understanding diseases and developing new therapies.
+
+> - **蛋白質折疊預測**：人工智慧可以根據蛋白質的氨基酸序列預測蛋白質的 3D 結構，這對於了解疾病和開發新療法至關重要。
+
+- **Synthetic biology**: AI can generate designs for synthetic biological systems, such as **engineered organisms** or **biological circuits**.
+
+> - **合成生物學**：人工智慧可以產生合成生物系統的設計，例如**工程生物體**或**生物電路**。
+
+#### Financial services  金融服務
+
+AI contributes to financial services in the following ways:
+
+> 人工智慧透過以下方式為金融服務做出貢獻：
+
+- **Fraud detection mechanisms** : AI can help create synthetic datasets to improve AI and ML systems by simulating various money-laundering patterns.
+> - **詐欺偵測機制**：人工智慧可以透過模擬各種洗錢模式來幫助創建合成資料集，以改善人工智慧和機器學習系統。
+- **Portfolio management**: AI can simulate various market scenarios and help in the creation and management of robust investment portfolios.
+> - **投資組合管理**：人工智慧可以模擬各種市場場景，幫助創建和管理穩健的投資組合。
+- **Debt collection**: AI can generate the most effective communication and negotiation strategies for debt collection to increase the rate of successful collections.
+> - **追債**：人工智慧可以產生最有效的追債溝通和談判策略，提高追債成功率。
+
+#### Manufacturing  製造業
+
+AI contributes to manufacturing in the following ways:
+人工智慧透過以下方式為製造業做出貢獻：
+
+- **Predictive maintenance**: By analyzing historical production data, AI can predict maintenance schedules that will provide the most efficient machine outputs and reduce downtimes.
+
+> - **預測性維護**：透過分析歷史生產數據，人工智慧可以預測維護計劃，從而提供最高效的機器輸出並減少停機時間。
+
+- **Process optimization**: AI can generate the most efficient production processes by modeling different scenarios and optimizing for variables such as cost, time, resource usage, and so forth.
+
+> - **流程最佳化**：人工智慧可以透過對不同場景進行建模並針對成本、時間、資源使用等變數進行最佳化來產生最高效的生產流程。
+
+- **Product design**: AI can be used to create new product designs based on set parameters and constraints. It can generate multiple design options and optimize for factors like cost, materials, performance, and so forth.
+
+> - **產品設計**：人工智慧可用於根據設定的參數和約束創建新的產品設計。它可以產生多種設計選項，並針對成本、材料、性能等因素進行最佳化。
+
+- **Material science**: AI can help generate new material compositions with desired properties.
+
+> - **材料科學**：人工智慧可以幫助產生具有所需特性的新材料成分。
+
+- Lesson 5 of 17  第 5 課（共 17 課）
+
+### Examples of AI Applications 人工智慧應用範例
+
+AI applications and other AWS services automate processes across various industries. Some of the applications include **computer vision**, **natural language processing (NLP)**, **intelligent document processing (IDP)**, and **fraud detection**. These applications are used in various industries, from healthcare to finance to retail. These AI applications aim to enhance customer experiences, boost employee productivity, and improve business operations.
+
+> AI 應用程式和其他 AWS 服務自動化了各行業的流程。其中一些應用包括 **電腦視覺** 、 **自然語言處理 (NLP)** 、 **智慧型文件處理 (IDP)** 和 **詐欺偵測**。這些應用程式用於各個行業，從醫療保健到金融再到零售。這些人工智慧應用程式旨在增強客戶體驗、提高員工生產力並改善業務運營。
+
+#### Computer vision  電腦視覺
+
+Computer vision is a field of artificial intelligence that allows computers to interpret and understand digital images and videos. Deep learning has revolutionized computer vision by providing powerful techniques for tasks such as image classification, object detection, and image segmentation.
+
+> 電腦視覺是人工智慧的一個領域，它允許電腦解釋和理解數位影像和視訊。深度學習為影像分類、物件偵測和影像分割等任務提供強大的技術，徹底改變了電腦視覺。
+
+Computer vision is used by but not limited to the following industries.
+
+> 電腦視覺被但不限於以下行業使用。
+
+##### Autonomous Driving 自動駕駛
+
+Auto manufacturers can use computer vision technology to make self-driving cars safer and more reliable.
+
+> 汽車製造商可以利用電腦視覺技術使自動駕駛汽車更安全、更可靠。
+
+**Business value**: Enhance customer experience
+
+> **商業價值**：提升客戶體驗
+
+##### Healthcare or Medical Image 醫療保健或醫療影像
+
+Using computer vision in healthcare can improve the accuracy and speed of medical diagnoses, which leads to better treatment outcomes and increased life expectancy for patients.
+
+> 在醫療保健中使用電腦視覺可以提高醫療診斷的準確性和速度，從而帶來更好的治療結果並延長患者的預期壽命。
+
+**Business value**: Improve business operations
+
+> **商業價值**：改善業務運營
+
+##### Public Safety and Home Security 公共安全與居家安全
+
+Computer vision image and facial recognition can swiftly identify unlawful entries or persons of interest, which fosters safer communities and works as a crime deterrent. 
+
+> 電腦視覺圖像和臉部辨識可以快速識別非法進入或感興趣的人，從而促進更安全的社區並起到威懾犯罪的作用。
+
+**Business value**: Enhance customer experience
+
+> **商業價值**：提升客戶體驗
+
+#### Natural language processing 自然語言處理
+
+NLP is a branch of artificial intelligence that deals with the interaction between computers and human languages. Deep learning has made significant strides in NLP. It can perform tasks such as text classification, sentiment analysis, machine translation, and language generation.
+
+> NLP 是人工智慧的一個分支，處理電腦和人類語言之間的互動。深度學習在 NLP 領域取得了重大進展。它可以執行文本分類、情緒分析、機器翻譯和語言生成等任務。
+
+NLP is used by but not limited to the following industries.
+
+> NLP 被但不限於以下行業使用。
+
+##### Insurance 保險
+
+Insurance companies can use NLP to extract policy numbers, expiration dates, and other personal information.
+
+> 保險公司可以使用 NLP 來提取保單號碼、到期日和其他個人資訊。
+
+**Business value**: Sensitive data redaction
+
+> **商業價值**：敏感資料編輯
+
+##### Telecommunication 電信
+
+Telecommunication companies use NLP to analyze customer text messages and suggest personalized recommendations.
+
+> 電信公司使用 NLP 來分析客戶簡訊並提出個人化建議。
+
+**Business value**: Customer engagement
+
+> **商業價值**：客戶參與
+
+#### Intelligent document processing 智慧型文件處理
+
+IDP is an application that extracts and classifies information from **unstructured data**, generates summaries, and provides actionable insights.
+
+> IDP 是一款從**非結構化資料**中提取資訊並**進行分類**、產生摘要並提供可行見解的應用程式。
+
+IDP is used by but limited to the following industries.
+
+> IDP 由但僅限於以下行業使用。
+ 
+##### Financial Services or lending 金融服務或貸款
+
+Financial services use IDP to extract important information from mortgage applications to accelerate customer response time. It also helps with the underwriting process by identifying incomplete loan packages, tax forms, pay stubs, and other missing data.
+
+> 金融服務使用 IDP 從抵押貸款申請中提取重要訊息，以加快客戶回應時間。它還透過識別不完整的貸款方案、納稅表格、薪資和其他缺失資料來幫助核保流程。
+
+**Business value**: Improve business operations, automation
+
+> **商業價值**：改善業務營運、自動化
+
+##### Legal 法務
+
+IDP, along with other applications such as optical character recognition (OCR) and NLP, helps eliminate the manual effort of processing documents such as contractual documents, agreements, court filings, and legal dockets.
+
+> IDP 與光學字元辨識 (OCR) 和 NLP 等其他應用程式一起，有助於消除處理合約文件、協議、法院文件和法律案卷等文件的手動工作。
+
+**Business value**: Improve business operations
+
+> **商業價值**：改善業務運營
+
+##### Healthcare 醫療保健
+
+Using IDP in healthcare can help expedite business quickly and accurately by processing various document types, such as claims and doctor’s notes. 
+
+> 在醫療保健領域使用 IDP 可以透過處理各種文件類型（例如索賠和醫生證明）來幫助快速、準確地加快業務速度。
+
+**Business value**: Improve business operations
+
+> **商業價值**：改善業務運營
+
+#### Fraud detection  詐欺偵測
+
+Fraud detection refers to the process of identifying and preventing fraudulent activities or unauthorized behavior with a system, process, or transaction.
+
+> 詐欺偵測是指識別和防止系統、流程或交易中的詐欺活動或未經授權的行為的過程。
+
+Fraud detection is used by but not limited to the following industries.
+
+> 詐欺檢測用於但不限於以下行業。
+
+##### Financial Services  金融服務
+
+Financial services use fraud detection for identity verification, payment fraud detection, transaction surveillance, and anti-money laundering (AML) sanctions.
+
+> 金融服務使用詐欺偵測來進行身份驗證、支付詐欺偵測、交易監控和反洗錢 (AML) 制裁。
+
+**Business value**: Improve business operations
+
+> **商業價值**：改善業務運營
+
+##### Retail 零售
+
+Fraud detection systems in the retail industry protect businesses from financial losses, safeguard customer accounts and data, and maintain trust and confidence in online transactions.
+
+> 零售業的詐欺偵測系統可以保護企業免受財務損失，保護客戶帳戶和數據，並維持對線上交易的信任和信心。
+
+**Business value**: Improve business operations
+
+> **商業價值**：改善業務運營
+
+##### Telecommunication 電信
+
+The telecommunication industry uses fraud detection to identify any fraudulent activities in any of the following areas:
+
+> 電信業使用詐欺偵測來識別以下任何領域的任何詐欺活動：
+
+- Telecom  電信
+  - Roaming, premium rate service, and subscription fraud
+    > 漫遊、高費率服務和訂閱欺詐
+- Online   網路
+  - New account fraud, claims processing fraud, and promotion abuse
+    > 新帳戶詐欺、索賠處理詐欺和促銷濫用
+- Retail  零售
+  - Credit card and online retail fraud
+
+**Business value**: Improve business operations
+
+> **商業價值**：改善業務運營
+
+You have learned how AI contributes to various industries and the different applications used to create solutions. In the next section, you will learn about ML.
+
+> 您已經了解了人工智慧如何為各個行業以及用於創建解決方案的不同應用程式做出貢獻。在下一部分中，您將了解 ML。
+
+- Lesson 6 of 17  第 6 課（共 17 課）
+
+### Machine Learning  機器學習
+
+Remember, ML is a subset of AI that focuses on developing algorithms and statistical models so that computer systems can learn from data and make predictions or decisions without being explicitly programmed. ML models learn patterns and relationships from data rather than relying on hard-coded rules for instructions. These models are trained on large datasets, and their accuracy and performance improve over time as they process more data. 
+
+> 請記住，機器學習是人工智慧的一個子集，專注於開發演算法和統計模型，以便電腦系統可以從資料中學習並做出預測或決策，而無需明確程式設計。機器學習模型從資料中學習模式和關係，而不是依賴硬編碼的指令規則。這些模型在大型數據集上進行訓練，隨著處理更多數據，它們的準確性和性能會隨著時間的推移而提高。
+
+In this section, you will learn about when ML is an appropriate solution and the techniques used for specific use cases. 
+
+> 在本節中，您將了解 ML 何時是合適的解決方案以及用於特定用例的技術。
+
+![](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1737046800/OkExUIFLoxaltlfSaeSxkA/tincan/1795780_1731943869_o_1icvubg1n113p1dif1r67j1817rtj_zip/assets/Diagram_NOPROCESSS_Machinelearning2.png)
+
+#### When AI and ML are appropriate solutions 當人工智慧和機器學習是合適的解決方案時
+
+To determine the appropriate AI solution, you must understand when to use AI to resolve a business problem. AI is a good choice for the following use cases:
+要確定合適的人工智慧解決方案，您必須了解何時使用人工智慧來解決業務問題。 AI 是以下用例的好選擇：
+
+- **Coding the rules is challenging**: Many human tasks cannot be solved properly using simple, rule-based solutions. Take spam filtering for instance. Determining whether an incoming email is legitimate or spam is a complex task that cannot always be effectively tackled through a set of predefined rules. There are many variables at play.  When rules rely on too many factors, have overlaps, or need to be finely tuned, it becomes difficult for humans to code them accurately. ML can be used to effectively solve this kind of problem.
+
+> - **編寫規則具有挑戰性**：許多人工任務無法使用簡單的、基於規則的解決方案正確解決。以垃圾郵件過濾為例。確定傳入電子郵件是合法還是垃圾郵件是一項複雜的任務，無法始終透過一組預先定義的規則來有效解決。有很多變數在作用。當規則依賴太多因素、重疊或需要微調時，人類就很難準確地對其進行編碼。 ML可以用來有效解決這類問題。
+
+- **Scale of the project is challenging**: In the spam filtering example, a human might be able to look at a few hundred emails and decide if they are spam or not. However, scaling this task to scan through millions of emails would be tedious and inefficient. ML solutions are appropriate for large-scale problems like this.
+
+> - **該專案的規模化具有挑戰性**：在垃圾郵件過濾範例中，人類可能能夠查看數百封電子郵件並確定它們是否是垃圾郵件。然而，擴展此任務以掃描數百萬封電子郵件將是乏味且低效的。機器學習解決方案適用於此類大規模問題。
+
