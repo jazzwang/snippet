@@ -1,4 +1,4 @@
-# Biological Circuits 生物電路 
+## Biological Circuits 生物電路 
 
 > [!NOTE]
 > **Prompt:**
@@ -161,7 +161,7 @@ From: https://scira.app/
 
 > **合成生物電路**：合成生物電路的早期例子包括 2000 年在 Nature 上發表的那些，例如 Tim Gardner 和 Charles Cantor 的撥動開關，以及 Michael Elowitz 和 Stanislas Leibler 的抑制器。這些電路被設計為在細胞內執行邏輯功能，模仿電子電路 [4]。
 
-### Types of Biological Circuits  生物迴路的類型
+#### Types of Biological Circuits  生物迴路的類型
 
 - **Genetic Circuits**: These circuits involve the regulation of gene expression through DNA, RNA, and proteins. They are designed to perform logical operations within cells, similar to electronic circuits [4]
 
@@ -181,7 +181,7 @@ From: https://scira.app/
 
 > **訊號傳導**電路：這些電路通常透過一系列生化反應參與細胞內的訊號傳遞。它們可以在不同的物種中找到，對於細胞通訊和對外部刺激的反應至關重要 [5]
 
-### Applications of Biological Circuits  生物電路的應用
+#### Applications of Biological Circuits  生物電路的應用
 
 - **Gene Circuit Discovery**: Machine learning algorithms have been adapted to accelerate the discovery of gene circuits. These circuits can perform various functions, including mimicking in vivo phenomena like oscillators and executing complex tasks in synthetic biology, such as counting noisy biological events [6].
 
