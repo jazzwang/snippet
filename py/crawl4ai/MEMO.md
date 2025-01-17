@@ -17,3 +17,7 @@
   - [tf-playwright-stealth](https://github.com/tinyfish-io/tf-playwright-stealth) - 讓 playwright 可以偽裝，避免爬蟲被偵測到而被擋掉。
   - [pillow](https://github.com/python-pillow/Pillow) - Python Imaging Library
   - [snowballstemmer](https://pypi.org/project/snowballstemmer/) - 看起來是為了一些加速的目的（#TODO 待研究）
+
+## 2025-01-17
+
+
