@@ -1383,3 +1383,450 @@ To determine the appropriate AI solution, you must understand when to use AI to 
 
 > - **該專案的規模化具有挑戰性**：在垃圾郵件過濾範例中，人類可能能夠查看數百封電子郵件並確定它們是否是垃圾郵件。然而，擴展此任務以掃描數百萬封電子郵件將是乏味且低效的。機器學習解決方案適用於此類大規模問題。
 
+- ( 2025-01-18 23:53:21 )
+
+#### Alternative approach to AI and ML  人工智慧和機器學習的替代方法
+
+Notice in the previous section that AI can solve many problems. However, there might be situations where alternative approaches would be more suitable. Consider all approaches and select the most appropriate one based on the task’s specific requirements and constraints. 
+
+> 請注意，在上一節中，人工智慧可以解決許多問題。然而，在某些情況下，替代方法可能更合適。考慮所有方法並根據任務的特定要求和約束選擇最合適的一種。
+
+For example, you do not need ML if you can determine a target value using simple rules, computations, or predetermined steps. You can program the steps without needing any data-driven learning. 
+
+> 例如，如果您可以使用簡單的規則、計算或預定步驟來確定目標值，則不需要 ML。您可以對這些步驟進行編程，而無需任何數據驅動的學習。
+
+You have learned when AI and ML are appropriate and when an alternative solution is appropriate. Next, you will learn about ML techniques for selecting a model.
+
+> 您已經了解了人工智慧和機器學習何時適用以及替代解決方案何時適用。接下來，您將了解用於選擇模型的 ML 技術。
+
+## 2025-01-19
+
+- Lesson 7 of 17  第 7 課（共 17 課）
+
+### Machine Learning Techniques and Use Cases  機器學習技術和用例
+
+When choosing an ML solution, it’s not just about the technology, but also about understanding the appropriate ML techniques for specific use cases. ML learning techniques represent the backbone of modern AI and empower systems to learn from data and make intelligent decisions without explicit programming. These techniques include supervised learning, unsupervised learning, and reinforcement learning, which each serve a distinct purpose. 
+
+> 選擇 ML 解決方案時，不僅涉及技術，還涉及了解針對特定用例的適當 ML 技術。機器學習學習技術代表了現代人工智慧的支柱，使系統能夠從數據中學習並做出智慧決策，而無需明確程式設計。這些技巧包括監督學習、非監督式學習和強化學習，每種技術都有不同的目的。
+
+To learn the definition of these techniques, choose each of the markers.
+
+> 若要了解這些技術的定義，請選擇每個標記。
+
+#### 三種 Machine Learning 技術
+
+#####  Supervised learning  監督式學習
+
+In supervised learning, the algorithms are trained on labeled data. The goal is to learn a mapping function that can predict the output for new, unseen input data.
+
+> 在監督式學習中，演算法是根據標記資料進行訓練的。目標是學習一個映射函數，可以預測新的、未見過的輸入資料的輸出。
+
+##### Unsupervised learning  非監督式學習
+
+Unsupervised learning refers to algorithms that learn from unlabeled data. The goal is to discover inherent patterns, structures, or relationships within the input data. 
+
+> 非監督式學習是指從未標記資料中學習的演算法。目標是發現輸入資料中的固有模式、結構或關係。
+
+##### Reinforcement learning  強化學習
+
+In reinforcement learning, the machine is given only a performance score as guidance and semi-supervised learning, where only a portion of training data is labeled. Feedback is provided in the form of rewards or penalties for its actions and the machine learns from this feedback to improve it decision-making over time.
+
+> 在強化學習中，機器僅獲得一個表現分數作為指導，而半監督學習僅對一部分訓練資料進行標記。回饋以對其行為的獎勵或懲罰的形式提供，機器從該回饋中學習，以隨著時間的推移改進其決策。
+
+#### Supervised learning use cases  監督式學習用例
+
+Supervised learning is a popular type of ML because it’s widely applicable. It’s called supervised learning because there needs to be a supervisor. The supervisor is labeled training data. Like any student, a supervised algorithm needs to learn by example. Essentially, this type of algorithm uses training data to help determine the patterns and relationships between the inputs and outputs. For example, pictures of cars labeled by people as cars are provided to the model. Then, when the model receives a new picture of a car that is not labeled, the model can predict that it is a car.
+
+> 監督學習是一種流行的機器學習類型，因為它應用廣泛。它被稱為監督學習，因為需要有一個監督者。主管被標記為訓練資料。與任何學生一樣，監督演算法需要透過範例來學習。本質上，這種類型的演算法使用訓練資料來幫助確定輸入和輸出之間的模式和關係。例如，將人們標記為汽車的汽車圖片提供給模型。然後，當模型收到未標記的汽車的新圖片時，模型可以預測它是一輛汽車。
+
+The model learns by identifying patterns in data that's already labeled.
+
+> 該模型透過識別已標記的資料中的模式來學習。
+
+##### Types of supervised ML  監督機器學習的類型
+
+Supervised learning has two subcategories—classification and regression. 
+
+> 監督學習有兩個子類別—分類和回歸。
+
+![](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1737226800/O4TNYMryPWqoP_BQ9sHDAA/tincan/1795780_1731943869_o_1icvubg1n113p1dif1r67j1817rtj_zip/assets/Diagram_NOPROCESS_SuperlearningSubCat1.png)
+
+###### Classification  分類
+
+Classification is a supervised learning technique used to assign labels or categories to new, unseen data instances based on a trained model. The model is trained on a labeled dataset, where each instance is already assigned to a known class or category. The goal of classification is to learn patterns from the training data and use them to predict the class or category for new unlabeled data instances.
+
+> 分類是一種監督學習技術，用於根據訓練模型將標籤或類別分配給新的、未見過的資料實例。該模型在帶有標籤的資料集上進行訓練，其中每個實例已分配給已知的類別或類別。分類的目標是從訓練資料中學習模式，並使用它們來預測新的未標記資料實例的類別或類別。
+
+Use cases include the following:
+> 用例包括以下內容：
+
+- Fraud detection  詐欺偵測
+- Image classification  影像分類
+- Customer retention  客戶保留
+- Diagnostics  診斷
+
+###### Regression  回歸
+
+Regression is a supervised learning technique used for predicting continuous or numerical values based on one or more input variable. It is used to model the relationship between a dependent variable (the value to be predicted) and one or more independent variables (the features or inputs used for prediction).
+
+> 迴歸是一種監督式學習技術，用於根據一個或多個輸入變數預測連續值或數值。它用於對因變數（要預測的值）和一個或多個自變數（用於預測的特徵或輸入）之間的關係進行建模。
+
+Use cases include the following: 用例包括以下內容：
+
+- Advertising popularity prediction 廣告人氣預測
+- Weather forecasting  天氣預報
+- Market forecasting  市場預測
+- Estimating life expectancy 估計預期壽命
+- Population growth prediction 人口成長預測
+
+#### Unsupervised learning use cases  非監督式學習用例
+
+Recall that in supervised learning, the data includes labels so that the model can learn the patterns and relationships. In unsupervised learning, the model is trained on unlabeled data. The algorithm tries to discover hidden patterns or structures within the data without any prior information or guidance.
+
+> 回想一下，在監督式學習中，資料包含標籤，以便模型可以學習模式和關係。在非監督式學習中，模型是根據未標記的資料進行訓練的。該演算法試圖在沒有任何事先資訊或指導的情況下發現資料中隱藏的模式或結構。
+
+In this type of learning, the machine has to uncover and create the labels itself. These models use the data they’re presented with to detect emerging properties of the entire dataset and then construct patterns.
+
+> 在這種類型的學習中，機器必須自己發現並建立標籤。這些模型使用所提供的數據來檢測整個數據集的新興屬性，然後建立模式。
+
+In unsupervised learning, labels are not provided—you don't know all the variables and patterns.
+
+> 在非監督式學習中，不提供標籤——你不知道所有的變數和模式。
+
+##### Types of unsupervised ML  無監督機器學習的類型
+
+Unsupervised learning encompasses various techniques and algorithms. Two main subcategories of unsupervised learning are clustering and dimensionality reduction. 
+
+> 非監督式學習包含各種技術和演算法。非監督式學習的兩個主要子類別是聚類和降維。
+
+###### Clustering  聚類
+
+A common subcategory of unsupervised learning is clustering. This kind of algorithm groups data into different clusters based on similar features or distances between the data point to better understand the attributes of a specific cluster.
+
+> 非監督式學習的一個常見子類別是聚集。這種演算法根據相似特徵或資料點之間的距離將資料分組到不同的簇中，以便更好地理解特定簇的屬性。
+
+For example, by analyzing customer purchasing habits, an unsupervised algorithm can identify a company as being large or small.
+
+> 例如，透過分析客戶的購買習慣，無監督演算法可以識別公司的規模。
+
+Use cases include the following:  用例包括以下內容：
+
+- Customer segmentation  客戶區隔
+- Targeted marketing  針對性行銷
+- Recommended systems  推薦系​​統
+
+###### Dimensionality Reduction  降維
+
+Dimensionality reduction is an unsupervised learning technique used to reduce the number of features or dimensions in a dataset while preserving the most important information or patterns.
+
+> 降維是一種非監督式學習技術，用於減少資料集中的特徵或維度數量，同時保留最重要的資訊或模式。
+
+Use cases include the following: 用例包括以下內容：
+
+- Big data visualization  大數據視覺化
+- Meaningful compression  有意義的壓縮
+- Structure discovery  結構發現
+- Feature elicitation  特徵提取
+
+#### Reinforcement learning use case 強化學習用例
+
+Another kind of algorithm that has gained popularity recently is reinforcement learning. Unlike the first two algorithms, this one continuously improves its model by mining feedback from previous iterations. In reinforcement learning, an agent continuously learns through trial and error as it interacts in an environment. Reinforcement learning is broadly useful when the reward of a desired outcome is known, but the path to achieving it isn’t—and that path requires a lot of trial and error to discover.
+
+> 最近流行的另一種演算法是強化學習。與前兩種演算法不同，該演算法透過挖掘先前迭代的回饋來不斷改進其模型。在強化學習中，代理人在環境中互動時透過反覆試驗不斷學習。當期望結果的獎勵已知，但實現該結果的路徑未知時，強化學習非常有用，並且該路徑需要大量的試驗和錯誤才能發現。
+
+For example, in the AWS DeepRacer simulator, the agent is the virtual car, and the environment is a virtual racetrack. The actions are throttle and steering inputs to the car. The goal is completing the racetrack as quickly as possible and without deviating from the track.
+
+> 例如，在AWS DeepRacer模擬器中，代理是虛擬汽車，環境是虛擬賽道。這些動作是對汽車的油門和轉向輸入。目標是盡快完成賽道且不偏離賽道。
+
+
+The car needs to learn the desired driving behavior to reach the goal of completing the track. To learn this, rewards are used to incentivize the model to learn the desired driving behavior.
+
+> 汽車需要學習所需的駕駛行為才能達到完成賽道的目標。為了了解這一點，可以使用獎勵來激勵模型學習所需的駕駛行為。
+
+In summary, as you can see in the following graphic, machine learning techniques encompass diverse methods, including supervised learning, unsupervised learning, and reinforcement learning. Supervised learning has two subcategories: classification and regression. Similarly, unsupervised learning has two subcategories: clustering and dimensionality reductions. To use the full potential of ML, you should understand the principles and applications of these techniques.
+
+> 總之，如下圖所示，機器學習技術包含多種方法，包括監督式學習、無監督學習和強化學習。監督學習有兩個子類別：分類和迴歸。同樣，無監督學習有兩個子類別：聚類和降維。要充分發揮 ML 的潛力，您應該了解這些技術的原理和應用。
+
+![](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1737226800/O4TNYMryPWqoP_BQ9sHDAA/tincan/1795780_1731943869_o_1icvubg1n113p1dif1r67j1817rtj_zip/assets/Diagram_NORPOCESS_ML%20Techniques5.png)
+
+Next, you will test your knowledge with a set of knowledge check questions.
+
+> 接下來，您將透過一組知識檢查問題來測試您的知識。
+
+-----
+
+Lesson 8 of 17  第 8 課（共 17 課）
+
+### Knowledge Check  知識檢定
+
+-----
+
+- Lesson 9 of 17  第 9 課（共 17 課）
+
+### Generative AI  生成式人工智慧
+
+Generative AI is a subset of deep learning. It can adapt models that are built using deep learning without needing to retrain or fine-tune them. Generative AI is capable of generating new data based on the patterns and structures learned from training data. Generative AI can create new content, including conversations, stories, images, videos, music, and code. 
+
+> 生成式人工智慧是深度學習的一個子集。它可以適應使用深度學習建立的模型，而無需重新訓練或微調它們。生成式人工智慧能夠根據從訓練資料中學到的模式和結構產生新資料。生成式人工智慧可以創造新內容，包括對話、故事、圖像、影片、音樂和程式碼。
+
+In this section, you will learn about the capabilities and challenges of AI, the factors to consider when selecting a generative AI model, and the business metrics for generative AI applications. 
+
+> 在本節中，您將了解人工智慧的功能和挑戰、選擇生成式人工智慧模型時要考慮的因素以及生成式人工智慧應用程式的業務指標。
+
+Continue to the next lesson to learn about the core capabilities of generative AI.
+
+> 繼續下一課，了解生成式人工智慧的核心能力。
+
+-----
+
+- Lesson 10 of 17  第 10 課（共 17 課）
+
+### Capabilities of Generative AI  生成式人工智慧的能力
+
+If you are considering implementing AI within your organization, it is important to understand the capabilities of generative AI. Generative AI can automate tedious tasks such as data entry and analyze data to identify patterns and trends, which can assist organizations in making more informed decisions. Additionally, it can automate complex tasks, freeing up time for users to focus on more creative work. Review additional capabilities of generative AI below.
+
+> 如果您正在考慮在組織內實施人工智慧，那麼了解生成式人工智慧的功能非常重要。生成式人工智慧可以自動執行繁瑣的任務，例如資料輸入和分析資料以識別模式和趨勢，這可以幫助組織做出更明智的決策。此外，它還可以自動執行複雜的任務，為使用者騰出時間專注於更具創意的工作。請查看下面生成式人工智慧的其他功能。
+
+#### Adaptability  適應性
+
+Generative AI models can adapt to various tasks and domains by learning from data and generating content tailored to specific contexts or requirements. Because generative AI is flexible, it can be used for a wide range of applications across different industries.
+
+> 生成式人工智慧模型可以透過從數據中學習並產生針對特定上下文或要求的內容來適應各種任務和領域。由於生成式人工智慧非常靈活，因此可用於不同產業的廣泛應用。
+
+#### Responsiveness  反應能力
+
+Generative AI models can generate content in real-time, which results in rapid response times and dynamic interactions. This is particularly useful for chatbots, virtual assistants, and other interactive applications that require immediate responses.
+
+> 生成式人工智慧模型可以即時生成內容，從而實現快速回應時間和動態互動。這對於聊天機器人、虛擬助理和其他需要立即回應的互動式應用程式特別有用。
+
+#### Responsiveness  反應能力
+
+Generative AI models can generate content in real-time, which results in rapid response times and dynamic interactions. This is particularly useful for chatbots, virtual assistants, and other interactive applications that require immediate responses.
+
+> 生成式人工智慧模型可以即時生成內容，從而實現快速回應時間和動態互動。這對於聊天機器人、虛擬助理和其他需要立即回應的互動式應用程式特別有用。
+
+#### Simplicity  簡單
+
+Generative AI can simplify complex tasks by automating content creation processes. For example, AI language models can generate human-like text, which reduces the time and effort required for content generation.
+
+> 生成式人工智慧可以透過自動化內容創建過程來簡化複雜的任務。例如，人工智慧語言模型可以產生類似人類的文本，從而減少內容生成所需的時間和精力。
+
+#### Creativity and exploration  創造力與探索
+
+Generative AI models can generate novel ideas, designs, or solutions by combining and recombining elements in unique ways. This can foster creativity and exploration of new possibilities.
+
+> 生成式人工智慧模型可以透過以獨特的方式組合和重新組合元素來產生新穎的想法、設計或解決方案。這可以促進創造力和對新可能性的探索。
+
+#### Data efficiency  數據效率
+
+Some generative AI models can learn from relatively small amounts of data and generate new samples consistent with the training data. This can be useful when data is scarce or difficult to obtain.
+
+> 一些生成式人工智慧模型可以從相對少量的資料中學習並產生與訓練資料一致的新樣本。當數據稀缺或難以取得時，這可能很有用。
+
+#### Personalization  個人化
+
+Generative AI can create personalized content tailored to individual preferences or characteristics, which enhances user experiences and engagement.
+
+> 生成式人工智慧可以根據個人喜好或特徵創建個人化內容，從而增強使用者體驗和參與度。
+
+#### Scalability  可擴展性
+
+When trained, generative AI models can generate large amounts of content quickly. This makes the models suitable for tasks that require producing content at scale.
+
+> 經過訓練後，生成式人工智慧模型可以快速產生大量內容。這使得這些模型適合需要大規模產生內容的任務。
+
+This is a non-exhaustive list of generative AI capabilities. Overall, generative AI capabilities are diverse and evolving. They offer endless possibilities for innovation, creativity, and problem-solving across industries and applications.
+
+> 這是生成人工智慧功能的非詳盡列表。整體而言，生成式人工智慧功能是多樣化且不斷發展的。它們為跨行業和應用的創新、創造力和問題解決提供了無限的可能性。
+
+-----
+
+- Lesson 11 of 17  第 11 課（共 17 課）
+
+### Challenges of Generative AI   生成式人工智慧的挑戰
+
+While AI offers many capabilities, some challenges include regulatory violations, social risks, privacy concerns, toxicity, hallucination, and interpretability. These challenges are important to take into account because a model has the potential to make decisions that are unethical or socially irresponsible. Review the list below:
+
+> 雖然人工智慧提供了許多功能，但也存在一些挑戰，包括違規、社會風險、隱私問題、毒性、幻覺和可解釋性。這些挑戰很重要，因為模型有可能做出不道德或對社會不負責任的決策。請參閱下面的列表：
+
+#### Regulatory violations  違反監理規定
+
+##### Risk  風險
+
+Generative AI models trained on sensitive data might inadvertently generate an output that violates regulations, such as exposing personally identifiable information (PII).
+
+> 基於敏感資料訓練的生成式 AI 模型可能會無意中產生違反法規的輸出，例如暴露個人識別資訊 (PII)。
+
+##### Mitigation  減輕
+
+To minimize the risk of privacy violations, implement strict data anonymization and privacy-preserving techniques during model training. To ensure compliance with privacy regulations, conduct thorough audits and assessment of the data used to train the model.
+
+> 為了最大限度地降低隱私侵犯的風險，請在模型訓練期間實施嚴格的資料匿名化和隱私保護技術。為了確保遵守隱私法規，請對用於訓練模型的資料進行徹底的審核和評估。
+
+#### Social risks  社會風險
+
+##### Risk  風險
+
+The possibility of unwanted content that might reflect negatively on your organization is a social risk.
+
+> 不需要的內容可能會對您的組織產生負面影響，這是一種社會風險。
+
+##### Mitigation  減輕
+
+Test and evaluate all models before deploying them in production.
+
+> 在將所有模型部署到生產中之前對其進行測試和評估。
+
+#### Data security and privacy concerns  資料安全和隱私問題
+
+##### Risk  風險
+
+The information shared with your model can include personal information and can potentially violate privacy laws.
+
+> 與您的模型共享的資訊可能包含個人資訊，並且可能違反隱私權法。
+
+##### Mitigation  減輕
+
+To protect sensitive data, implement cybersecurity measures, such as encryption and firewalls.
+
+> 為了保護敏感數據，請實施網路安全措施，例如加密和防火牆。 
+
+#### Toxicity
+
+##### Risk  風險
+
+Generative AI models can generate content that is inflammatory, offensive, or inappropriate.
+
+> 生成式人工智慧模型可以產生煽動性、攻擊性或不適當的內容。
+
+##### Mitigation  減輕
+
+Curate the training data by identifying these phrases in advance and removing them from the training data. This prevents them from being generated as output.
+
+> 透過提前識別這些短語並將其從訓練資料中刪除來管理訓練資料。這可以防止它們作為輸出生成。
+
+Use guardrail models. These models will detect and filter out unwanted content.
+
+> 使用護欄模型。這些模型將檢測並過濾掉不需要的內容。
+
+#### Hallucinations  幻覺
+
+##### Risk
+
+The model generates inaccurate responses that are not consistent with the training data. These are called hallucinations.
+
+> 此模型產生與訓練資料不一致的不準確反應。這些被稱為幻覺。
+
+##### Mitigation  減輕
+
+Teach users that everything must be checked. Foundation models (FM) can’t be trusted to verify their own stories are based in reality and on facts. Hallucinations could be further mitigated by checking that content is verified with independent sources. Also, generated content can be marked as unverified to alert the user that verification will be necessary.
+
+> 告訴用戶一切都必須檢查。不能相信基金會模型 (FM) 可以驗證他們自己的故事是否基於現實和事實。透過檢查內容是否經過獨立來源的驗證，可以進一步減輕幻覺。此外，產生的內容可以標記為未經驗證，以提醒用戶需要進行驗證。
+
+#### Interpretability  可解釋性
+
+##### Risk  風險
+
+Users might misinterpret the model’s output, which could lead to incorrect conclusions or decisions.
+
+> 使用者可能會誤解模型的輸出，這可能會導致錯誤的結論或決策。
+
+##### Mitigation  減輕
+
+Use specific domain knowledge for model development and performance by providing key information for data model inputs. 
+
+> 透過提供資料模型輸入的關鍵訊息，使用特定領域知識進行模型開發和性能。
+
+#### Nondeterminism  非決定論
+
+##### Risk  風險
+
+The model might generate different outputs for the same input, which can cause problems in applications where reliability is key.  
+
+> 該模型可能會為相同的輸入產生不同的輸出，這可能會在可靠性至關重要的應用程式中引起問題。
+
+##### Mitigation  減輕
+
+Perform tests on the model to identify any sources of nondeterminism. Run the model multiple times and compare the output to ensure consistency.
+
+> 對模型進行測試以識別不確定性的任何來源。多次運行模型並比較輸出以確保一致性。
+
+These challenges address issues related to data quality and bias. By proactively addressing them, customers can experience the full potential of generative AI, while verifying its responsible use across various domains.
+
+> 這些挑戰解決了與數據品質和偏差相關的問題。透過主動解決這些問題，客戶可以體驗生成式人工智慧的全部潛力，同時驗證其在各個領域的負責任使用。
+
+You have learned about the capabilities and challenges of generative AI. In the next lesson, you will learn about factors to consider when selecting a generative AI model.
+
+> 您已經了解了生成式人工智慧的功能和挑戰。在下一課中，您將了解選擇生成式 AI 模型時要考慮的因素。
+
+-----
+
+- Lesson 12 of 17  第 12 課（共 17 課）
+
+### Factors to Consider When Selecting a Generative AI Model  選擇生成式人工智慧模型時要考慮的因素
+
+When selecting a generative AI model, there are several important factors to consider. First, it's essential to define the specific task or application you want the model to perform, such as text generation, image creation, or code generation. Models are optimized for different tasks, so choosing the right one is crucial for achieving the desired results.
+
+> 在選擇生成式人工智慧模型時，需要考慮幾個重要因素。首先，必須定義您希望模型執行的特定任務或應用程序，例如文字生成、圖像創建或程式碼生成。模型針對不同的任務進行了最佳化，因此選擇正確的模型對於實現預期結果至關重要。
+
+Some of the key factors to consider when selecting an appropriate generative AI model include the following: 
+
+> 選擇合適的生成式人工智慧模型時需要考慮的一些關鍵因素包括：
+
+- Model types  型號類型
+- Performance requirements  性能要求
+- Capabilities  能力
+- Constraints  約束條件
+- Compliance  遵守
+
+#### Models  模型
+
+There are many model types. The following list is a non-exhaustive list of model options. It shows the model names, the tasks those models can do, and some sample use cases of how the model has been used to solve business problems. Each model has its own capabilities and challenges.
+
+> 模型類型有很多種。以下列表是模型選項的非詳盡列表。它顯示了模型名稱、這些模型可以執行的任務以及如何使用模型來解決業務問題的一些範例案例。每個模型都有自己的功能和挑戰。
+
+##### AI21 labs - Jurassic-2 Models  侏羅紀 2 模型
+
+###### Tasks  任務
+
+- Text generation  文字生成
+- Summarization  總結
+- Paraphrasing  釋義
+- Chat  聊天
+- Information extraction  資訊擷取
+
+###### Use Cases  使用案例
+
+- Financial services – summarize lengthy documents  金融服務－總結冗長的文件
+- Retail – generate product descriptions  零售– 生成產品描述
+
+##### Amazon  亞馬遜 - Amazon Titan  亞馬遜泰坦
+
+###### Tasks  任務
+
+- Text summarization  文字摘要
+- Classification  分類
+- Open-ended Q&A  開放式問答
+- Information extraction  資訊擷取
+- Embeddings  嵌入
+- Search  搜尋
+
+###### Use Cases  使用案例
+
+- Advertising – create studio quality images   廣告 – 創造工作室品質的圖像
+- Customer service – generate real-time abstract summaries  客戶服務 – 產生即時摘要摘要
+
+##### Anthropic - Claude  克洛德
+
+###### Tasks  任務
+
+- Content generation  內容生成
+- Text translation  文字翻譯
+- Question answering  問答
+- Text summarization  文字摘要
+- Code explanation and generation  程式碼解釋及生成
+
+###### Use Cases  使用案例
+
+- Developer – code generation and debugging   開發人員– 程式碼產生與偵錯
+- Legal – parse legal documents and answer questions   法律– 解析法律文件並回答問題
