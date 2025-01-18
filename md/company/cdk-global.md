@@ -344,3 +344,49 @@ Citations:
   - https://www.cdkglobalheavytruck.com/
 - CDK Global Research Year in Review
   - https://www.cdkglobal.com/insights/cdk-global-research-year-review
+
+-----
+
+From: https://scira.app/
+
+> [!NOTE]
+> Classify products of CDK Global into "B2B" and "B2C" and create a table with reference links.
+
+### CDK Global Product Classification
+
+CDK Global, a leading provider of integrated technology solutions, offers a range of products that can be categorized into Business-to-Business (B2B) and Business-to-Consumer (B2C) segments. Below is a detailed classification of their products based on the latest information available.
+
+#### B2B Products
+
+- **Dealership Software Solutions**: CDK Global provides cloud-based software as a service (SaaS) platforms that enable dealerships to manage their end-to-end business operations. This includes solutions for the acquisition, sale, financing, and maintenance of vehicles. These products are designed to help dealerships run more efficiently and effectively, focusing on operational improvements and customer service [CDK Global Homepage](https://www.cdkglobal.com/).
+  
+- **Heavy Truck Solutions**: CDK Global Heavy Truck offers comprehensive, dependable, and integrated solutions specifically tailored for the heavy truck industry. These solutions are aimed at helping dealerships manage their business demands more effectively, leveraging over 50 years of industry data and insights [CDK Global Heavy Truck](https://www2.cdkglobal.com/stability).
+
+- **CDK Unify**: This is a new program introduced by CDK Global aimed at transforming dealership operations. It integrates strengths across the product portfolio with industry acumen to set dealerships on a better operational path [CDK Global](https://www2.cdkglobal.com/cdkunify).
+
+- **Vehicle Inventory Suite**: This suite of products helps dealers manage their vehicle inventory more effectively, providing tools and technology to enhance dealership operations [CDK Vehicle Inventory Suite](https://www.cdkglobal.com/cdk-vehicle-inventory-suite).
+
+- **Competitive Intelligence and Marketing**: CDK Global offers products focused on competitive intelligence and product marketing, which are essential for B2B operations in understanding market dynamics and enhancing marketing strategies [CDK Careers](https://careers.cdkglobal.com/?post_type=job_listing&p=1099).
+
+#### B2C Products
+
+- **Digital Marketing and Advertising**: CDK Global's products include targeted advertising and marketing solutions that help integrate clients' buying processes. These are aimed at enhancing the consumer experience during vehicle purchase, financing, and maintenance [CDK Global - Wikipedia](https://en.wikipedia.org/wiki/CDK_Global).
+
+- **Consumer-Focused OEM Offerings**: CDK Global empowers Original Equipment Manufacturers (OEMs) and dealer networks to serve consumers at all stages of the customer journey, from shopping to owning their vehicles. This includes solutions that fill the customer experience gap and maximize partnerships [Original Equipment Manufacturers | CDK Global](https://www.cdkglobal.com/oem-offerings).
+
+- **Independent Software Vendor (ISV) Offerings**: Through Fortellis, CDK Global provides APIs and workflows that enable dealerships to build apps and innovate, indirectly enhancing the consumer experience by improving dealership operations [Independent Software Vendors | CDK Global](https://www.cdkglobal.com/isv-offerings).
+
+### Table of CDK Global Products
+
+| Product Category | Product Name | Reference Link |
+|------------------|--------------|----------------|
+| B2B              | Dealership Software Solutions | [CDK Global Homepage](https://www.cdkglobal.com/) |
+| B2B              | Heavy Truck Solutions | [CDK Global Heavy Truck](https://www2.cdkglobal.com/stability) |
+| B2B              | CDK Unify | [CDK Global](https://www2.cdkglobal.com/cdkunify) |
+| B2B              | Vehicle Inventory Suite | [CDK Vehicle Inventory Suite](https://www.cdkglobal.com/cdk-vehicle-inventory-suite) |
+| B2B              | Competitive Intelligence and Marketing | [CDK Careers](https://careers.cdkglobal.com/?post_type=job_listing&p=1099) |
+| B2C              | Digital Marketing and Advertising | [CDK Global - Wikipedia](https://en.wikipedia.org/wiki/CDK_Global) |
+| B2C              | Consumer-Focused OEM Offerings | [Original Equipment Manufacturers | CDK Global](https://www.cdkglobal.com/oem-offerings) |
+| B2C              | Independent Software Vendor (ISV) Offerings | [Independent Software Vendors | CDK Global](https://www.cdkglobal.com/isv-offerings) |
+
+This classification and table provide a comprehensive overview of CDK Global's product offerings, distinguishing between B2B and B2C categories with appropriate references for further information.
