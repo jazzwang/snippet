@@ -1830,3 +1830,258 @@ There are many model types. The following list is a non-exhaustive list of model
 
 - Developer – code generation and debugging   開發人員– 程式碼產生與偵錯
 - Legal – parse legal documents and answer questions   法律– 解析法律文件並回答問題
+
+##### Cohere  -- Command  命令
+
+###### Tasks  任務
+
+- Text generation  文字生成
+- Information extraction  資訊擷取
+- Question and answering  提問與回答
+- Summarization  總結
+
+###### Use Cases  使用案例
+
+- Customer service – support chatbots  客戶服務– 支援聊天機器人
+- Retail – provide product descriptions  零售– 提供產品描述
+- Healthcare – summarize key ideas from long text  醫療保健– 從長文本中總結關鍵思想
+
+##### Meta - Llama  駱駝
+
+###### Tasks  任務
+
+- Question answering  問答
+- Chat  聊天
+- Summarization  總結
+- Paraphrasing  釋義
+- Sentiment analysis  情緒分析
+- Text generation  文字生成
+
+###### Use Cases  使用案例
+
+- Customer service support – chatbots  客戶服務支援– 聊天機器人
+
+For additional information about these models and other models, review the websites below:
+有關這些型號和其他型號的更多信息，請訪問以下網站：
+
+- Amazon Bedrock  亞馬遜基岩
+  - To learn about this service, the FMs, and more, choose the following.
+  > 若要了解此服務、FM 等，請選擇以下內容。
+  - https://aws.amazon.com/bedrock/
+
+- What are foundation models? 什麼是基礎模型？
+  - To learn about FMs, choose the following.
+  > 若要了解 FM，請選擇以下選項。
+  - https://aws.amazon.com/what-is/foundation-models/
+
+#### Performance requirements  性能要求
+
+Performance requirements are another factor to consider when selecting a generative AI model. These requirements include accuracy, reliability of the output, and others. Assess the overall performance of the model to evaluate its suitability for a particular task. You should also test the model against different datasets to ensure reliability. Finally, monitor its performance over time to ensure it remains consistent. 
+
+> 性能要求是選擇生成式人工智慧模型時要考慮的另一個因素。這些要求包括輸出的準確性、可靠性等。評估模型的整體性能，以評估其對特定任務的適用性。您還應該針對不同的資料集測試模型以確保可靠性。最後，隨著時間的推移監控其效能以確保其保持一致。
+
+##### Constraints  約束條件
+
+Consider the constraints of a model such as the following: 
+> 考慮模型的約束，如下所示：
+
+- Computational resources (for example, available GPU power, CPU power, or memory)  運算資源（例如，可用的 GPU 功率、CPU 功率或記憶體）
+- Data availability (for example, size and quality of training data)  資料可用性（例如，訓練資料的大小和品質）
+- Deployment requirement (for example, on premises or cloud)  部署要求（例如，本地或雲端）
+- Some models might have higher resource demands or require specific hardware configurations, which could impact their use case.  某些型號可能具有更高的資源需求或需要特定的硬體配置，這可能會影響其用例。
+
+##### Capabilities  能力
+
+Another factor to consider is the model's capabilities. Generative AI encompasses a wide range of capabilities. It can perform different tasks with varying degrees of output quality and levels of control or customization. For instance, some models might be better at generating text, whereas others might excel at generating images or performing multimodal tasks such as text-to-image generation. Therefore, it is important to understand the specific capabilities required for your application before selecting a generative AI model.
+
+> 另一個需要考慮的因素是模型的功能。生成式人工智慧包含廣泛的功能。它可以執行不同的任務，具有不同程度的輸出品質和控製或自訂等級。例如，某些模型可能更擅長生成文本，而其他模型可能擅長生成圖像或執行多模式任務，例如文本到圖像的生成。因此，在選擇生成式 AI 模型之前，了解您的應用程式所需的特定功能非常重要。
+
+##### Compliance  遵守
+
+Compliance is another factor. Generative AI models can pose moral concerns, including biases, privacy issues, and potential misuse. When evaluating a particular model, consider its compliance and moral implications, particularly in sensitive domains like healthcare, finance, and legal applications. One should consider factors such as fairness, transparency or traceability, accountability, hallucination, and toxicity. Additionally, the model should adhere to relevant regulation guidelines.
+
+> 合規性是另一個因素。生成式人工智慧模型可能會引起道德問題，包括偏見、隱私問題和潛在的濫用。在評估特定模型時，請考慮其合規性和道德影響，特別是在醫療保健、金融和法律應用等敏感領域。人們應該考慮公平性、透明度或可追溯性、問責制、幻覺和毒性等因素。此外，該模型應遵守相關的監管指南。
+
+##### Cost  成本
+
+Another key factor is cost. Generative AI models can vary in terms of cost. Consider the trade-off between the size and the speed of the model. Larger models are usually more precise, but they are expensive and offer few deployment options. Conversely, smaller models are cheaper and faster, and they offer more deployment alternatives.
+
+> 另一個關鍵因素是成本。生成式人工智慧模型的成本可能有所不同。考慮模型大小和速度之間的權衡。較大的模型通常更精確，但它們價格昂貴且提供的部署選項很少。相反，較小的型號更便宜、速度更快，並且提供更多的部署選擇。
+
+By using generative AI for content creation, you can reduce labor costs and increase efficiency, especially for repetitive tasks that require significant human effort.
+
+> 透過使用生成式人工智慧進行內容創建，您可以降低勞動成本並提高效率，特別是對於需要大量人力的重複性任務。
+
+Remember to evaluate all expenses related to deployment, maintenance, hardware, software, and other associated costs.
+
+> 請記住評估與部署、維護、硬體、軟體和其他相關成本相關的所有費用。
+
+By considering these factors, you can select a generative AI model that best fits your specific needs.
+
+> 透過考慮這些因素，您可以選擇最適合您特定需求的生成式 AI 模型。
+
+Now that you understand the factors to consider when selecting a model, let's discuss some key business metrics associated with AI models.
+
+> 現在您已經了解了選擇模型時需要考慮的因素，接下來讓我們討論與 AI 模型相關的一些關鍵業務指標。
+
+-----
+
+- Lesson 13 of 17  第 13 課（共 17 課）
+
+### Business Metrics for Generative AI   生成式人工智慧的業務指標
+
+Deploying AI applications has become increasingly prevalent. Organizations have unprecedented opportunities for innovation, efficiency, and growth. However, the success of the AI initiative hinges not only on the sophistication of the underlying algorithms but also on their tangible impact on key business objectives. By quantifying the performance, effectiveness, and return on investment (ROI) of AI applications through relevant business metrics, organizations can gain valuable insights into the value delivered. They can also identify areas of improvement and make informed decisions to optimize resource allocation and strategy.
+
+> 部署人工智慧應用程式變得越來越普遍。組織擁有前所未有的創新、效率和成長機會。然而，人工智慧計畫的成功不僅取決於底層演算法的複雜性，還取決於它們對關鍵業務目標的實際影響。透過相關業務指標量化人工智慧應用程式的效能、有效性和投資回報 (ROI)，組織可以獲得有關所交付價值的寶貴見解。他們還可以確定需要改進的領域並做出明智的決策，以優化資源分配和策略。
+
+#### Business metrics for generative AI   生成式人工智慧的業務指標
+
+The business metrics you use to measure the success of your model can vary depending on the use case. To review a non-exhaustive list of business metrics for generative AI, choose the START  or arrow buttons.
+
+> 用於衡量模型成功與否的業務指標可能會因用例而異。若要查看生成式 AI 業務指標的非詳盡列表，請選擇「開始」或箭頭按鈕。
+
+##### Business metrics 1 - User satisfaction  業務指標 1 - 使用者滿意度
+
+User satisfaction gathers user feedback to assess their satisfaction with the AI-generated content or recommendations.
+
+> 使用者滿意度收集使用者回饋來評估他們對人工智慧產生的內容或建議的滿意度。
+
+Use case: Measuring and improving user satisfaction for an e-commerce website 
+
+> 用例：衡量並提高電子商務網站的使用者滿意度
+
+An ecommerce company wants to monitor and enhance the overall user satisfaction with its website to increased customer loyalty, repeat purchases, and positive word-of-mouth.
+
+> 一家電子商務公司希望監控並提高用戶對其網站的整體滿意度，以提高客戶忠誠度、重複購買和積極的口碑。
+
+##### Business metrics 2 - Average revenue per user   業務指標 2 - 每個用戶的平均收入
+
+Average revenue per user (ARPU) calculates the average revenue generated per user or customer attributed to the generative AI application.
+
+> 每位使用者平均收入 (ARPU) 計算每位使用者或客戶歸因於生成式 AI 應用程式產生的平均收入。
+
+Use case: Analyzing and optimizing revenue generation per user 
+
+> 使用案例：分析和優化每個用戶的收入產生
+
+The marketing and product teams at an ecommerce company want to understand how effectively they are monetizing their user base and identify opportunities for improvement.
+
+> 電子商務公司的行銷和產品團隊希望了解他們如何有效地利用用戶群貨幣化並找出改進的機會。
+
+##### Business metrics 3 - Cross-domain performance  業務指標 3 - 跨域效能
+
+Cross-domain performance measures the generative AI model's ability to perform effectively across different domains or industries.
+
+> 跨領域效能衡量生成式人工智慧模型跨不同領域或產業有效執行的能力。
+
+Use case: Monitoring and optimizing a multidomain ecommerce platform 
+
+> 使用案例：監控和優化多域電子商務平台
+
+AnyCompany operates a large ecommerce platform with multiple domains catering to different product categories and geographic regions. They use the cross-domain performance metric to monitor the overall performance of their e-commerce platform across all domains.
+
+> AnyCompany 經營一個大型電子商務平台，擁有多個網域，可滿足不同產品類別和地理區域的需求。他們使用跨域效能指標來監控其電子商務平台在所有網域中的整體效能。
+
+##### Business metrics 4 - Conversion rate  業務指標 4 - 轉換率
+
+Conversion rate monitors the conversion rate to generate content or recommend desired outcomes, such as purchases, sign-ups, or engagement metrics.
+
+> 轉換率監控產生內容或推薦所需結果（例如購買、註冊或參與度指標）的轉換率。
+
+Use case: Optimizing an ecommerce website for higher conversion rates 
+
+>使用案例：優化電子商務網站以獲得更高的轉換率
+
+A marketing manager for an online clothing store is responsible for analyzing and improving the website's performance in terms of converting visitors into paying customers. To do this, they closely monitor the conversion rate metric, which measures the percentage of website visitors who complete a desired action, such as making a purchase.
+
+> 線上服裝店的行銷經理負責分析和改進網站將訪客轉化為付費客戶的表現。為此，他們密切監控轉換率指標，該指標衡量完成所需操作（例如購買）的網站訪客的百分比。
+
+##### Business metrics 5 - Efficiency  業務指標 5 - 效率
+
+The efficiency metric evaluates the generative AI model's efficiency in resource utilization, computation time, and scalability.
+
+> 效率指標評估生成式人工智慧模型在資源利用、運算時間和可擴展性方面的效率。
+
+Use case: Improving production line efficiency 
+
+> 使用案例：提高生產線效率
+
+Example Corp Manufacturing Company operates a production line for assembling electronic devices. The company aims to optimize the efficiency of its production line to reduce costs and increase productivity.
+
+> 範例公司製造公司經營一條組裝電子設備的生產線。該公司的目標是優化其生產線的效率，以降低成本並提高生產力。
+
+##### Summary  概括
+
+You've reviewed the commonly used business metrics for generative AI in this section. However, the business metrics an organization uses depend on the use case or business problem that the AI application solves.
+
+> 您已經在本節中回顧了生成式 AI 的常用業務指標。然而，組織使用的業務指標取決於人工智慧應用程式解決的用例或業務問題。
+
+By monitoring these business metrics, organizations can effectively evaluate generative AI applications' performance, effectiveness, and ROI. They can use generative AI to guide strategic decision-making and optimization efforts and maximize business value.
+
+> 透過監控這些業務指標，組織可以有效評估生成式人工智慧應用程式的效能、有效性和投資報酬率。他們可以使用生成式人工智慧來指導策略決策和優化工作，並最大限度地提高業務價值。
+
+Next, you will test your knowledge with a set of knowledge check questions.
+
+> 接下來，您將透過一組知識檢查問題來測試您的知識。
+
+-----
+
+- Lesson 14 of 17  第 14 課（共 17 課）
+
+### Knowledge Check  知識檢定
+
+-----
+
+- Lesson 15 of 17  第 15 課（共 17 課）
+
+### Course Summary  課程總結
+
+This course provided a comprehensive understanding of AI's various applications and use cases in different industries. Participants gained the knowledge and insights to identify opportunities of integrating Artificial Intelligence (AI) into their organizations and contribute to advancing AI-driven solutions.
+
+> 本課程全面了解人工智慧在不同行業的各種應用和用例。參與者獲得了知識和見解，以確定將人工智慧 (AI) 整合到其組織中的機會，並為推動人工智慧驅動的解決方案做出貢獻。
+
+#### Learning Objectives Completed   學習目標完成
+
+- Identify examples of real-world AI applications.   識別現實世界中人工智慧應用的範例。
+- Recognize use cases and solutions where AI can address business needs.   識別人工智慧可以滿足業務需求的用例和解決方案。
+- Determine when AI and ML solutions are not appropriate.   確定人工智慧和機器學習解決方案何時不合適。
+- Identify use cases that use ML techniques such as supervised, unsupervised, and reinforcement learning.   確定使用 ML 技術的用例，例如監督學習、無監督學習和強化學習。
+- Identify capabilities of generative AI.   識別生成人工智慧的能力。
+- Identify challenges of generative AI.   確定生成人工智慧的挑戰。
+- Identify factors to consider when selecting generative AI models.   確定選擇生成式人工智慧模型時要考慮的因素。
+- Determine business metrics for generative AI applications.   確定生成式 AI 應用程式的業務指標。
+
+For additional references and resources, continue to the next lesson.
+
+> 如需其他參考和資源，請繼續下一課。
+
+-----
+
+- Lesson 16 of 17  第 16 課（共 17 課）
+
+### Resources  資源
+
+- What is Artificial Intelligence (AI)?  什麼是人工智慧（AI）？
+  - To learn more about AI and its capabilities, choose the following button. 
+    要了解有關 AI 及其功能的更多信息，請選擇以下按鈕。
+  - https://aws.amazon.com/what-is/artificial-intelligence/
+
+- What is Generative AI?   什麼是生成式人工智慧？
+  - To learn more about generative AI and its capabilities, choose the following button. 
+    要了解有關生成式 AI 及其功能的更多信息，請選擇以下按鈕。
+  - https://aws.amazon.com/what-is/generative-ai/
+
+- What is Machine Learning?  什麼是機器學習？
+  - To learn more about machine learning and its capabilities, choose the following button.  
+    要了解有關機器學習及其功能的更多信息，請選擇以下按鈕。
+  - https://aws.amazon.com/what-is/machine-learning/
+
+- AWS Solutions Library  AWS 解決方案庫
+  - To review a broad range of industry and technology use cases in which AI was used to solve business challenges, choose the following button.
+    若要查看使用人工智慧解決業務挑戰的廣泛行業和技術用例，請選擇以下按鈕。
+  - https://aws.amazon.com/solutions/
+
+- Solutions for Machine Learning (AI/ML)  機器學習 (AI/ML) 解決方案
+  - To review a curated list of common use cases for machine learning, choose the following button.  
+    若要查看機器學習常見用例的精選列表，請選擇以下按鈕。
+  - https://aws.amazon.com/solutions/ai-ml/
