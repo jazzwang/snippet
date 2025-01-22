@@ -61,3 +61,8 @@
     在獲取先進半導體的機會減少的情況下，
     DeepSeek 蓬勃發展的能力表明，<mark>中國人工智慧產業具有更廣泛的彈性</mark>，
     這可能會重塑政策制定者衡量出口限制對全球人工智慧進步影響的方式。
+  
+  ## 2025-01-22
+
+  - DeepSeek r1 
+    - https://ollama.com/library/deepseek-r1
