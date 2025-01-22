@@ -25,3 +25,5 @@
   - https://www.analyticsvidhya.com/blog/2024/10/opik/
 - Comet Opik - Logging + Evals (from LiteLLM)
   - https://docs.litellm.ai/docs/observability/opik_integration
+- Trace and evaluate your Haystack pipelines with Opik
+  - https://haystack.deepset.ai/integrations/opik
