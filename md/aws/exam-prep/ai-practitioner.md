@@ -30,7 +30,7 @@
 ### Step 2: Refresh your AWS knowledge and skills.
 
 - [SkillBuilder] [Fundamentals of Machine Learning and Artificial Intelligence](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19578/fundamentals-of-machine-learning-and-artificial-intelligence)  <span style='background-color: green; padding: 3px; color: white;'> [ DONE ] </span>
-- [SkillBuilder] [Exploring Artificial Intelligence Use Cases and Applications](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19579/exploring-artificial-intelligence-use-cases-and-applications)
+- [SkillBuilder] [Exploring Artificial Intelligence Use Cases and Applications](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19579/exploring-artificial-intelligence-use-cases-and-applications)  <span style='background-color: green; padding: 3px; color: white;'> [ DONE ] </span>
 - [SkillBuilder] [Responsible Artificial Intelligence Practices](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19603/responsible-artificial-intelligence-practices)
 - [SkillBuilder] [Developing Machine Learning Solutions](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19609/developing-machine-learning-solutions)
 - [SkillBuilder] [Developing Generative Artificial Intelligence Solutions](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19610/developing-generative-artificial-intelligence-solutions)
@@ -2085,3 +2085,431 @@ For additional references and resources, continue to the next lesson.
   - To review a curated list of common use cases for machine learning, choose the following button.  
     若要查看機器學習常見用例的精選列表，請選擇以下按鈕。
   - https://aws.amazon.com/solutions/ai-ml/
+
+## 2025-01-24
+
+## 3. [Responsible Artificial Intelligence Practices](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19603/responsible-artificial-intelligence-practices) 負責任的人工智慧實務
+
+- Lesson 2 of 16  第 2 課（共 16 課）
+
+### 3.1 Introduction  介紹
+
+In this course, you will learn about responsible artificial intelligence (AI) practices. 
+
+> 在本課程中，您將了解負責任的人工智慧 (AI) 實踐。
+
+In the first section of this course, you will be introduced to what responsible AI is. You will learn how to define responsible AI, understand the challenges that responsible AI attempts to overcome, and explore the core dimensions of responsible AI.
+
+> 在本課程的第一部分中，您將了解什麼是負責任的人工智慧。您將學習如何定義負責任的人工智慧，了解負責任的人工智慧試圖克服的挑戰，並探索負責任的人工智慧的核心維度。
+
+Then in the next section of the course, you will dive into some topics for developing responsible AI systems. In this section of the course, you will learn about the services and tools that AWS offers to help you with responsible AI. You will also learn about responsible AI considerations for selecting a model and preparing data for your AI systems.
+
+> 然後在課程的下一部分中，您將深入探討一些開發負責任的人工智慧系統的主題。在本課程的這一部分中，您將了解 AWS 提供的協助您實現負責任的 AI 的服務和工具。您還將了解為人工智慧系統選擇模型和準備資料時負責任的人工智慧注意事項。
+
+Finally, in the last section of the course, you learn about transparent and explainable models. You will learn what it means for a model to be transparent and explainable. You will also learn about tradeoffs to consider between safety and transparency for an AI model and the principles of **human-centered design for explainable AI**.
+
+> 最後，在課程的最後一部分，您將了解透明且可解釋的模型。您將了解模型透明和可解釋意味著什麼。您還將了解人工智慧模型的安全性和透明度之間需要考慮的權衡，以及可解釋人工智慧的**以人為本的設計原則**。
+
+Each section will conclude with five knowledge check questions that will test what you have learned. 
+
+> 每個部分將以五個知識檢查問題結束，這些問題將測試您所學的內容。
+
+---
+
+- Lesson 3 of 16  第 3 課
+
+### 3.2 Responsible AI  負責的人工智慧
+
+As you develop your AI system, whether it is a traditional or generative AI application, it is important to incorporate responsible AI.
+
+> 當您開發 AI 系統（無論是傳統的 AI 應用程序還是生成性 AI 應用程序）時，重要的是要合併負責的 AI。
+
+#### 3.2.1 What is responsible AI?  什麼是負責的 AI？
+
+Responsible AI refers to practices and principles that ensure that AI systems are transparent and trustworthy while mitigating potential risks and negative outcomes. These responsible standards should be considered throughout the entire lifecycle of an AI application. This includes the initial design, development, deployment, monitoring, and evaluation phases.
+
+> 負責的 AI 是指確保 AI 系統透明和值得信賴的實踐和原則，同時減輕潛在的風險和負面結果。在 AI 應用程序的整個生命週期中，應考慮這些負責任的標準。這包括初始設計，開發，部署，監視和評估階段。
+
+![](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1737986400/3s3cC2629oCfJcJ9Lb68Dg/tincan/1795780_1731946240_o_1id00k8mrapu1j8e1un5ctcr6nb_zip/assets/What-Is-Responsible-AI-horizontal-Small-Font.png)
+
+To operate AI responsibly, companies should proactively ensure the following about their system:
+
+> 要負責任地操作AI，公司應主動確保以下有關其係統的以下內容：
+
+- It is fully transparent and accountable, with monitoring and oversight mechanisms in place.
+  > 它完全透明且負責，並採用了監視和監督機制。
+- It is managed by a leadership team accountable for responsible AI strategies.
+  > 它是由領導團隊對負責任的 AI 策略負責的。
+- It is developed by teams with expertise in responsible AI principles and practices.
+  > 它是由具有負責任的 AI 原則和實踐專業知識的團隊開發的。
+- It is built following responsible AI guidelines.
+  > 它是按照負責的 AI 指南構建的。
+
+#### 3.2.2 What type of AI requires responsible AI?  哪種類型的 AI 需要負責的 AI？
+
+Responsible AI is not exclusive to any one form of AI. It should be considered when you are building traditional or generative AI systems.
+
+> 負責 AI 並不是任何一種 AI 形式的專屬。當您構建傳統或生成的 AI 系統時，應該考慮它。
+
+Choose each topic to learn the basic differences between traditional AI and generative AI.
+
+> 選擇每個主題以了解傳統 AI 和生成 AI 之間的基本差異。
+
+##### Traditional AI  傳統式 AI
+
+Traditional machine learning models perform tasks based on the data you provide. They can make predictions such as ranking, sentiment analysis, image classification, and more. However, each model can perform only one task. And to successfully do it, the model needs to be carefully trained on the data. As they train, they analyze the data and look for patterns. Then these models make a prediction based on these patterns. 
+
+> 傳統的機器學習模型根據您提供的數據執行任務。他們可以做出排名，情感分析，圖像分類等的預測。但是，每個模型只能執行一個任務。為了成功做到這一點，需要對數據仔細培訓該模型。當他們訓練時，他們分析數據並尋找模式。然後這些模型基於這些模式進行預測。
+
+Some examples of traditional AI include recommendation engines, gaming, and voice assistance. 
+
+> 傳統 AI 的一些範例包括：推薦引擎，遊戲和語音幫助。
+
+##### Generative AI  生成式 AI
+
+Generative artificial intelligence (generative AI) runs on foundation models (FMs). These models are pre-trained on massive amounts of general domain data that is beyond your own data. They can perform multiple tasks. Based on user input, usually in the form of text called a prompt, the model actually generates content. This content comes from learning patterns and relationships that empower the model to predict the desired outcome. 
+
+> 生成人工智能（生成AI）在基礎模型（FMS）上運行。這些模型已對超出您自己數據的大量通用域數據進行了預訓練。他們可以執行多個任務。基於用戶輸入，通常以稱為提示的文本形式，該模型實際生成內容。這些內容來自學習模式和關係，使模型能夠預測所需的結果。
+
+Some examples of generative AI include chatbots, code generation, and text and image generation.
+
+> 生成式 AI 的一些範例包括：聊天機器人，程式碼生成以及文字/圖像生成。
+
+#### 3.2.3 Generative AI offers business value  生成式 AI 提供業務價值
+
+The potential of FMs is incredibly exciting. There are several FMs available, each with unique strengths and characteristics. 
+
+> FM 的潛力非常令人興奮。有多種可用的 FM，每種都有獨特的優點和功能。
+
+New architectures are expected to arise in the future, and this diversity of FMs will set off a wave of innovation. This stands to spark the following business values that companies can benefit from:
+
+> 未來預計會出現新的架構，而FM的多樣性將掀起一波創新浪潮。這將激發公司可以從中受益的以下商業價值：
+
+- **Creativity**: Create new content and ideas, including conversations, stories, images, videos, and music.
+
+  > **創造力**：創造新的內容和想法，包括對話、故事、圖像、影片和音樂。
+
+- **Productivity**: Radically improve productivity across all lines of business, use cases, and industries.
+  > **生產力**：從根本上提高所有業務線、用例和產業的生產力。
+
+- **Connectivity**: Connect and engage with customers and across organizations in new ways.
+  > **連結性**：以新的方式與客戶和跨組織進行連結和互動。
+
+-----
+
+- Lesson 4 of 16  第 4 課 (共 16 課)
+
+### 3.3 Responsible AI Challenges in Traditional AI and Generative AI 傳統 AI 與生成式 AI 中負責任的 AI 挑戰
+
+#### 3.3.1 Biases in AI systems  AI 系統中的偏見
+
+Accuracy of models  模型的準確性
+
+The number one problem that developers face in AI applications is **accuracy**. Both traditional and generative AI applications are powered by models that are trained on datasets. These models can make predictions or generate content based only on the data they are trained on. If they are not trained properly, you will get inaccurate results. Therefore, it is important to address bias and variance in your model.
+
+> 開發人員在 AI 應用程式中面臨的第一大問題是**準確性**。傳統和生成式 AI 應用程式都由在資料集上訓練的模型驅動。這些模型只能根據其訓練數據進行預測或生成內容。如果訓練不當，就會得到不準確的結果。因此，解決模型中的偏差和變異非常重要。
+
+##### Accuracy of models  模型的準確性
+
+###### Bias 偏差
+
+Bias is one of the biggest challenges a developer faces in AI systems. Bias in a model means that the model is missing important features of the datasets. This means that the data is too basic. Bias is measured by the difference between the expected predictions of the model and the true values we are trying to predict. If the difference is narrow, then the model has low bias. If the difference is wide, then the model has a high bias. 
+
+> 偏差是開發者在 AI 系統中面臨的最大挑戰之一。模型中的偏差意味著模型遺漏了數據集的重要特徵。這意味著數據過於基礎。偏差的衡量方法是模型預期預測值與我們試圖預測的真實值之間的差異。如果差異很小，則模型偏差低。如果差異很大，則模型偏差高。
+
+When a model has a high bias, it is underfitted. Underfitted means that the model is not capturing enough difference in the features of the data, and therefore, the model performs poorly on the training data. 
+
+> 當模型具有高偏差時，它便是「乏適(underfitted, 擬合不足)」。「乏適」意味著模型沒有捕捉到數據特徵的足夠差異，因此模型在訓練數據上的表現不佳。
+
+###### Variance  變異數
+
+Variance offers a different challenge for developers. Variance refers to the model's sensitivity to fluctuations or noise in the training data. The problem is that the model might consider noise in the data to be important in the output. When variance is high, the model becomes so familiar with the training data that it can make predictions with high accuracy. This is because it is capturing all the features of the data.
+
+> 變異數為開發者帶來不同的挑戰。變異數指的是模型對訓練數據波動或雜訊的敏感度。問題是模型可能會將數據中的雜訊視為輸出中的重要因素。當變異數很高時，模型會非常熟悉訓練數據，因此可以做出高精度的預測。這是因為它捕捉了數據的所有特徵。
+
+However, when you introduce new data to the model, the model's accuracy drops. This is because the new data can have different features that the model is not trained on. This introduces the problem of overfitting. Overfitting is when model performs well on the training data but does not perform well on the evaluation data. This is because the model is memorizing the data it has seen and is unable to generalize to unseen examples.
+
+> 然而，當您向模型引入新數據時，模型的準確性會下降。這是因為新數據可能具有模型未經訓練的特性。這引入了**過擬合（Overfitting）**的問題。過擬合是指模型在訓練數據上表現良好，但在評估數據上表現不佳。這是因為模型記住了它見過的數據，並且無法泛化到未見過的例子。
+
+##### Bias-variance trade-off  偏差方差權衡
+
+Bias-variance tradeoff is when you optimize your model with the right balance between bias and variance. This means that you need to optimize your model so that it is not underfitted or overfitted. The goal is to achieve a trained model with the lowest bias and lowest variance tradeoff for a given data set. 
+
+> 偏差方差權衡是指以偏差和方差之間的正確平衡來優化模型。這意味著您需要優化模型，使其既不過度擬合也不欠擬合。目標是針對給定的數據集，獲得具有最低偏差和最低方差權衡的訓練模型。
+
+Review these examples of model that are underfitted, overfitted, and balanced.
+
+> 檢視這些模型的範例，它們分別是欠擬合、過擬合和平衡的。
+
+![](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1737986400/3s3cC2629oCfJcJ9Lb68Dg/tincan/1795780_1731946240_o_1id00k8mrapu1j8e1un5ctcr6nb_zip/assets/Underfitted.gif)
+
+In the underfitted example, the bias is high and the variance is low. Here the regression is a straight line. This shows us that the model is underfitting the data because it is not capturing all the features of the data.
+
+> 在欠擬合的例子中，偏差高而方差低。這裡的迴歸是一條直線。這說明模型對數據擬合不足，因為它沒有捕捉到數據的所有特徵。
+
+In the overfitted example, bias is low and the variance is high. Here the regression curve perfectly fits the data. This means that it is capturing noise and is essentially memorizing the data. It won't perform well on new data.
+
+> 在過擬合的例子中，偏差低而方差高。這裡的迴歸曲線完美擬合數據。這意味著它捕捉到了雜訊，本質上是在記憶數據。它在新的數據上表現不會很好。
+
+In the balanced example, the bias is low and the regression is low. Here the regression is a curve. This is what you want. Its capturing enough features of the data, without capturing noise.
+
+> 在平衡的例子中，偏差低且迴歸低。此處的迴歸是一條曲線。這就是你想要的。它捕捉了足夠的數據特徵，而沒有捕捉雜訊。
+
+To help overcome bias and variance errors, you can use the following:
+
+> 為克服偏差和方差錯誤，您可以使用以下方法：
+
+###### Cross validation  交叉驗證
+
+Cross-validation is a technique for evaluating ML models by training several ML models on subsets of the available input data and evaluating them on the complementary subset of the data. Cross-validation should be used to detect overfitting. 
+
+> 交叉驗證是一種評估機器學習模型的技術，它通過使用可用輸入數據的子集訓練多個機器學習模型，並在數據的互補子集上評估它們。交叉驗證應該用於檢測過擬合。
+
+
+###### Increase data  增加數據
+
+Add more data samples to increase the learning scope of the model.
+
+> 增加更多數據樣本以擴大模型的學習範圍。
+
+###### Regularization  正規化
+
+Use regularization. Regularization is a method that penalizes extreme weight values to help prevent linear models from overfitting training data examples. 
+
+> 使用正規化。正規化是一種懲罰極端權重值以幫助防止線性模型過度擬合訓練數據示例的方法。
+
+###### Simpler models  較簡單的模型
+
+Use simpler model architectures to help with overfitting. If the model is underfitting, the model might be too simple.  
+
+> 使用較簡單的模型架構來避免過擬合。如果模型出現欠擬合，則模型可能過於簡單。
+
+###### Dimension reduction (Principal component analysis) 降維 (主成分分析)
+
+Apply dimension reduction. Dimension reduction is an unsupervised machine learning algorithm that attempts to reduce the dimensionality (number of features) within a dataset while still retaining as much information as possible.
+
+> 應用降維。降維是一種非監督式機器學習演算法，嘗試在數據集中減少維度（特徵數量），同時盡可能保留盡可能多的信息。
+
+###### Stop training early  提早停止訓練
+
+End training early so that the model does not memorize the data.
+
+> 提早結束訓練，以免模型死記資料。
+
+#### 3.3.2 Challenges of generative AI  生成式 AI 的挑戰
+
+Just as generative AI has its unique set of benefits, it also has a unique set of challenges. Some of these challenges include toxicity, hallucinations, intellectual property, and plagiarism, and cheating.
+
+> 生成式 AI 固然有其獨特的優點，但也存在著獨特的挑戰。這些挑戰包括毒性、幻覺、智慧財產權、剽竊和作弊。
+
+Review each topic to learn more. 
+
+> 檢閱每個主題以了解更多資訊。
+
+##### Toxicity  毒性
+
+Toxicity is the possibility of generating content (whether it be text, images, or other modalities) that is offensive, disturbing, or otherwise inappropriate. This is a primary concern with generative AI. It is hard to even define and scope toxicity. The subjectivity involved in determining what constitutes toxic content is an additional challenge, and the boundary between restricting toxic content and censorship can be murky and dependent on context and culture. 
+
+> 毒性是指生成具有冒犯性、令人不安或其他不當內容（無論是文字、圖像還是其他形式）的可能性。這是生成式 AI 的主要問題。甚至難以定義和界定毒性。判斷哪些內容構成毒性內容的主觀性是一個額外的挑戰，限制毒性內容與審查之間的界限可能模糊不清，並且取決於語境和文化。
+
+For example, should quotations that would be considered offensive out of context be suppressed if they are clearly labeled as quotations? What about opinions that might be offensive to some users but are clearly labeled as opinions? 
+
+> 例如，如果引言清楚標示為引言，那麼在脫離語境下可能被認為具有冒犯性的引言是否應該被壓制？對於某些使用者可能具有冒犯性但清楚標示為意見的意見又該如何處理？
+
+Technical challenges include offensive content that might be worded in a very subtle or indirect fashion, without the use of obviously inflammatory language.
+
+> 技術挑戰包括可能以非常微妙或間接的方式措辭的攻擊性內容，而沒有使用明顯煽動性的語言。
+
+##### Hallucinations  幻覺
+
+Hallucinations are assertions or claims that sound plausible but are verifiably incorrect. Considering the next-word distribution sampling employed by large language models (LLMs), it is perhaps not surprising that in more objective or factual use cases, LLMs are susceptible to hallucinations. 
+
+> 幻覺是指聽起來合理但實際上可驗證為錯誤的斷言或聲明。考慮到大型語言模型 (LLM) 採用的是下一個詞的分布採樣，或許在更客觀或事實性的用例中，LLM 容易產生幻覺也就不足為奇了。
+
+For example, a common phenomenon with current LLMs is creating nonexistent scientific citations. Suppose that an LLMs is prompted with the request, “Tell me about some papers by" a particular author. The model is not actually searching for legitimate citations but generating ones from the distribution of words associated with that author. The result might include realistic titles and topics in the area of the author. However, these might not be real articles, and they might include plausible coauthors but not actual ones.
+
+> 例如，目前大型語言模型的一個常見現象是編造不存在的科學文獻引用。假設一個大型語言模型收到這樣的請求：「告訴我一些某位特定作者的論文」。模型實際上並非搜尋合法引用，而是根據與該作者相關的詞彙分佈生成引用。結果可能包含該領域中逼真的標題和主題。然而，這些可能並非真實的文章，而且可能包含看似合理的共同作者，但卻並非實際的共同作者。
+
+##### Intellectual property  智慧財產權
+
+Protecting intellectual property was a problem with early LLMs. This was because the LLMs had a tendency to occasionally produce text or code passages that were verbatim of parts of their training data, resulting in privacy and other concerns. But even improvements in this regard have not prevented reproductions of training content that are more ambiguous and nuanced.
+
+> 保護智慧財產權是早期大型語言模型的一個問題。這是因為大型語言模型有時候會產生與其訓練數據部分逐字相同的文本或代碼片段，從而引發隱私和其他方面的擔憂。但即使在這方面有所改進，也未能阻止對訓練內容更模糊和細微的複製。
+
+Consider this prompt for a generative image model, “Create a painting of a skateboarding cat in the style of Andy Warhol.” If the model is able to do so in a convincing yet still original manner because it was trained on actual Warhol images, objections to such mimicry might arise.
+
+> 考慮這個用於生成圖像模型的提示：「以安迪·沃荷的風格創作一隻滑板貓的畫作。」如果模型能夠以令人信服卻仍具原創性的方式做到這一點，因為它是在實際的沃荷圖像上訓練的，那麼可能會出現對這種模仿的異議。
+
+##### Plagiarism and cheating  剽竊和作弊
+
+The creative capabilities of generative AI give rise to worries that it will be used to write college essays, writing samples for job applications, and other forms of cheating or illicit copying. Debates on this topic are happening at universities and many other institutions, and attitudes vary widely. 
+
+> 生成式 AI 的創作能力引發了人們的擔憂，擔心它會被用來撰寫大學論文、求職寫作樣本以及其他形式的作弊或非法抄襲。大學及許多其他機構都在就此議題進行辯論，觀點也大相逕庭。
+
+Some are in favor of explicitly forbidding any use of generative AI in settings where content is being graded or evaluated, while others argue that educational practices must adapt to, and even embrace, the new technology. But the underlying challenge of verifying that a given piece of content was authored by a person is likely to present concerns in many contexts.
+
+> 有些人士贊成明確禁止在評分或評估內容的場合使用任何生成式 AI，而另一些人士則認為教育實務必須適應甚至擁抱這項新技術。但驗證特定內容是否由個人創作的根本挑戰，很可能在許多情境中造成疑慮。
+
+##### Disruption of the nature of work  工作型態的改變
+
+The proficiency with which generative AI is able to create compelling text and images, perform well on standardized tests, write entire articles on given topics, and successfully summarize or improve the grammar of provided articles has created some anxiety. There is a concern that some professions might be replaced or seriously disrupted by the technology. 
+
+> 生成式 AI 能以熟練的技巧創作引人入勝的文字和圖像、在標準化測試中表現良好、撰寫關於特定主題的完整文章，以及成功地總結或改進所提供文章的文法，這引發了一些焦慮。人們擔心某些職業可能會被這項技術取代或嚴重衝擊。
+
+Although this might be premature, it does seem that generative AI will have a transformative effect on many aspects of work. It is possible that many tasks previously beyond automation could be delegated to machines.
+
+> 儘管這可能為時尚早，但生成式 AI 似乎確實會對許多工作方面產生變革性的影響。許多以前無法自動化的任務，都有可能委託給機器。
+
+---
+
+- Lesson 5 of 16  第 5 課 (共 16 課)
+
+### 3.4 Core Dimensions of Responsible AI  負責任 AI 的核心維度
+
+#### 3.4.1 Core dimensions of responsible AI  負責任 AI 的核心維度
+
+The core dimensions of responsible AI include fairness, explainability, privacy and security, robustness, governance, transparency, safety, and controllability. No one dimension is a standalone goal for responsible AI. In fact, each topic should be considered as a required part for a complete implementation of responsible AI. 
+
+> 負責任 AI 的核心面向包括公平性、可解釋性、隱私與安全、穩健性、治理、透明度、安全性和可控性。沒有任何一個面向是負責任 AI 的獨立目標。事實上，每個主題都應被視為負責任 AI 完整實施的必要組成部分。
+
+You will find that there is considerable overlap between many of these topics. For example, you will find that when you implement transparency in your AI system, elements of explainability, fairness, and governance will be required. Next, you will explore how each of these topics is used in responsible AI.
+
+> 您會發現許多主題之間存在相當大的重疊。例如，您會發現，當您在 AI 系統中實施透明度時，需要考慮可解釋性、公平性和治理等要素。接下來，您將探討這些主題如何在負責任的 AI 中使用。
+
+##### Fairness  公平
+
+Fairness is crucial for developing responsible AI systems. With fairness, AI systems promote inclusion, prevent discrimination, uphold responsible values and legal norms, and build trust with society. 
+
+> 公平性對於開發負責任的 AI 系統至關重要。憑藉公平性，AI 系統可以促進包容性，防止歧視，維護負責任的價值觀和法律規範，並建立與社會的信任。
+
+You should consider fairness in your AI applications to create systems suitable and beneficial for all.
+
+>您應在您的 AI 應用程式中考慮公平性，以建立適合且有益於所有人的系統。
+
+##### Explainability  可解釋性
+
+Explainability refers to the ability of an AI model to clearly explain or provide justification for its internal mechanisms and decisions so that it is understandable to humans. 
+
+> 可解釋性是指 AI 模型能夠清楚地解釋或提供其內部機制和決策的理由，使其易於人類理解。
+
+Humans must understand how models are making decisions and address any issues of bias, trust, or fairness.
+
+> 人類必須了解模型如何做出決策，並解決任何偏見、信任或公平性問題。
+
+##### Privacy and security  私隱及保安
+
+Privacy and security in responsible AI refers to data that is protected from theft and exposure. More specifically, this means that at a privacy level, individuals control when and if their data can be used. At the security level, it verifies that no unauthorized systems or unauthorized users will have access to the individual’s data.
+
+> 負責任 AI 中的隱私和安全是指保護數據免遭竊取和洩露。更具體地說，在隱私層面上，個人控制何時以及是否可以使用其數據。在安全層面上，它驗證沒有未經授權的系統或未經授權的用戶可以訪問個人的數據。
+
+When this is properly implemented and deployed in an AI system, users can trust that their data is not going to be compromised and used without their authorization. 
+
+> 當此系統妥善建置並部署於 AI 系統中，使用者可以信任其數據不會被損害或未經授權使用。
+
+##### Transparency  透明度
+
+Transparency communicates information about an AI system so stakeholders can make informed choices about their use of the system. Some of this information includes development processes, system capabilities, and limitations.
+
+> 透明度是指傳達有關 AI 系統的資訊，讓利害關係者能夠就其使用該系統做出明智的選擇。部分資訊包括開發流程、系統功能和限制。
+
+It provides individuals, organizations, and stakeholders access to assess the fairness, robustness, and explainability of AI systems. They can identify and mitigate potential biases, reinforce responsible standards, and foster trust in the technology. 
+
+> 它讓個人、組織和利益相關者得以評估 AI 系統的公平性、穩健性和可解釋性。他們可以識別和減輕潛在偏見，強化負責任的標準，並增進對該項技術的信任。
+
+##### Veracity and robustness  真實性和穩健性
+
+Veracity and robustness in AI refers to the mechanisms to ensure an AI system operates reliably, even with unexpected situations, uncertainty, and errors. 
+
+> AI 系統的真實性和穩健性是指確保 AI 系統即使在意外情況、不確定性和錯誤下也能可靠運作的機制。
+
+The goal of veracity and robustness in responsible AI is to develop AI models that are resilient to changes in input parameters, data distributions, and external circumstances. 
+
+> 負責任 AI 中真實性和穩健性的目標是開發出能夠抵禦輸入參數、數據分佈和外部環境變化影響的 AI 模型。
+
+This means that the AI model should retain reliability, accuracy, and safety in uncertain environments. 
+
+> 這意味著 AI 模型應在不確定的環境中保持可靠性、準確性和安全性。
+
+##### Governance  治理
+
+Governance is a set of processes that are used to define, implement, and enforce responsible AI practices within an organization.
+
+> 治理是一套用於在組織內定義、實施和執行負責任 AI 慣例的流程。
+
+Governance addresses various responsible, legal, or societal problems that generative AI might invite. 
+
+> 治理解決生成式 AI 可能引發的各種責任、法律或社會問題。
+
+For example, governance policies can help to protect the rights of individuals to intellectual property. It can also be used to enforce compliance with laws and regulations. Governance is a vital component of responsible AI for an organization that seeks to incorporate responsible best practices.
+
+> 例如，治理政策可以幫助保護個人知識產權。它也可以用於執行法律法規的遵守。對於尋求納入負責任最佳實務的組織而言，治理是負責任 AI 的重要組成部分。
+
+##### Safety  安全
+
+Safety in responsible AI refers to the development of algorithms, models, and systems in such a way that they are responsible, safe, and beneficial for individuals and society as a whole. 
+
+> 負責任的 AI 安全是指以負責任、安全且有益於個人和整個社會的方式開發演算法、模型和系統。
+
+This means that AI systems should be carefully designed and tested to avoid causing unintended harm to humans or the environment. Things like bias, misuse, and uncontrolled impacts need to be proactively considered.
+
+> 這意味著人工智慧系統應仔細設計和測試，以避免對人類或環境造成意外傷害。諸如偏見、誤用和不受控制的影響等問題需要積極考慮。
+
+Controllability  可控性
+
+Controllability in responsible AI refers to the ability to monitor and guide an AI system's behavior to align with human values and intent. It involves developing architectures that are controllable, so that any unintended issues can be managed and addressed.  
+負責任 AI 中的可控性是指監控和引導 AI 系統行為以符合人類價值觀和意圖的能力。這涉及開發可控的架構，以便能夠管理和解決任何意外問題。
+
+By ensuring controllability, responsible AI can help mitigate risks, promote fairness and transparency, and ensure that AI systems benefit society as a whole. 
+透過確保可控性，負責任的 AI 可以幫助減輕風險，促進公平與透明，並確保 AI 系統使整個社會受益。
+
+#### 3.4.2 Business benefits of responsible AI  負責任 AI 的商業利益
+
+Responsible AI offers key business benefits in the development and deployment of AI systems.
+
+> 負責任的 AI 在 AI 系統的開發和部署中提供了關鍵的業務益處。
+
+##### Increased trust and reputation  提升信任和聲譽
+
+Customers are more likely to interact with AI applications, if they believe the system is fair and safe. This enhances their reputation and brand value. 
+
+> 客戶若相信系統公平且安全，便更有可能與 AI 應用程式互動。這能提升其聲譽和品牌價值。
+
+##### Regulatory compliance  法規遵從
+
+As AI regulations emerge, companies with robust ethical AI frameworks are better positioned to comply with guidelines on data privacy, fairness, accountability, and transparency.
+
+> 隨著 AI 法規的興起，擁有健全道德 AI 架構的公司將更有能力遵守關於數據隱私、公平性、問責制和透明度的指引。
+
+##### Mitigating risks  風險減緩
+
+Responsible AI practices help mitigate risks such as bias, privacy violations, security breaches, and unintended negative impacts on society. This reduces legal liabilities and financial costs.
+
+> 負責任的 AI 實務有助於減輕偏見、侵犯隱私、安全漏洞以及對社會造成意外負面影響等風險。這降低了法律責任和財務成本。
+
+##### Competitive advantage  競爭優勢
+
+Companies that prioritize responsible AI can differentiate themselves from competitors and gain a competitive edge, especially as consumer awareness of AI ethics grows.
+
+> 重視負責任 AI 的企業，可以區隔自身與競爭者，並獲得競爭優勢，尤其是在消費者對 AI 倫理意識日益增長的背景下。
+
+##### Improved decision-making  提升決策能力
+
+AI systems built with fairness, accountability, and transparency in mind are more reliable and less likely to produce biased or flawed outputs, which leads to better data-driven decisions.
+
+> 著重公平、問責和透明的 AI 系統更可靠，也較不容易產生偏差或有瑕疵的輸出，從而帶來更好的數據驅動決策。
+
+##### Improved products and business  改良產品和業務
+
+Responsible AI encourages a diverse and inclusive approach to AI development. Because it draws on varied perspectives and experiences, it can drive more creative and innovative solutions.
+
+> 負責任的 AI 鼓勵多元且包容的 AI 開發方法。因為它汲取多樣化的觀點和經驗，所以能促進更具創意和創新的解決方案。
+
+Next, you will test what you have learned in this section with a knowledge check.
+
+> 接下來，您將透過知識檢測來測試在本節中學到的內容。
+
+---
+
+- Lesson 6 of 16  課程 6 / 16
+
+### Knowledge Check  知識檢查
