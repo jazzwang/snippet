@@ -2454,7 +2454,7 @@ This means that AI systems should be carefully designed and tested to avoid caus
 
 > 這意味著人工智慧系統應仔細設計和測試，以避免對人類或環境造成意外傷害。諸如偏見、誤用和不受控制的影響等問題需要積極考慮。
 
-Controllability  可控性
+##### Controllability  可控性
 
 Controllability in responsible AI refers to the ability to monitor and guide an AI system's behavior to align with human values and intent. It involves developing architectures that are controllable, so that any unintended issues can be managed and addressed.  
 負責任 AI 中的可控性是指監控和引導 AI 系統行為以符合人類價值觀和意圖的能力。這涉及開發可控的架構，以便能夠管理和解決任何意外問題。
@@ -2513,3 +2513,129 @@ Next, you will test what you have learned in this section with a knowledge check
 - Lesson 6 of 16  課程 6 / 16
 
 ### Knowledge Check  知識檢查
+
+---
+
+- Lesson 7 of 16
+
+### 3.5 Amazon Services and Tools for Responsible AI  亞馬遜負責任人工智慧服務和工具
+
+As the leader in cloud technologies, AWS offers services like Amazon SageMaker and Amazon Bedrock that have built-in tools to help you with responsible AI. These tools cover topics such as foundation model evaluation, safeguards for generative AI, bias detection, model prediction explanations, monitoring and human reviews, and governance improvement.
+
+> 作為 Cloud Technologies 的領導者，AWS 提供了 Amazon Sagemaker 和 Amazon Bedrock 之類的服務，它們有內建工具，可幫助您使用負責任的 AI。這些工具涵蓋了諸如基礎模型評估，生成式 AI 的保障措施，偏見檢測，模型預測解釋，監測和人類評論以及治理改進。
+
+#### Amazon SageMaker  亞馬遜 SageMaker
+
+Amazon SageMaker is a fully managed ML service. With SageMaker, data scientists and developers can quickly and confidently build, train, and deploy ML models into a production-ready hosted environment. It provides a UI experience for running ML workflows that makes SageMaker ML tools available across multiple integrated development environments (IDEs).
+
+> Amazon SageMaker 是完全託管的 ML 服務。借助 SageMaker ，資料科學家和開發人員可以快速、自信地建立、訓練 ML 模型並將其部署到生產就緒的託管環境中。它提供了用於運行 ML 工作流程的 UI 體驗，使 SageMaker ML 工具可以跨多個整合開發環境 (IDE) 使用。
+
+With SageMaker, you can store and share your data without having to build and manage your own servers. This gives you or your organization more time to collaboratively build and develop your ML workflow and do it sooner. SageMaker provides managed ML algorithms to run efficiently against extremely large data in a distributed environment. With built-in support for bring-your-own-algorithms and frameworks, SageMaker offers flexible distributed training options that adjust to your specific workflows. Within a few steps, you can deploy a model into a secure and scalable environment from the SageMaker console.
+
+> 借助 SageMaker，您可以儲存和共享數據，而無需建立和管理自己的伺服器。這使您或您的組織有更多的時間來協作建立和開發 ML 工作流程並更快地完成。 SageMaker 提供託管 ML 演算法，可在分散式環境中針對超大資料有效運作。憑藉對自帶演算法和框架的內建支持，SageMaker 提供靈活的分散式培訓選項，可根據您的特定工作流程進行調整。只需幾個步驟，您就可以從 SageMaker 控制台將模型部署到安全且可擴展的環境中。
+
+#### Amazon Bedrock  亞馬遜基岩
+
+Amazon Bedrock is a fully managed service that makes available high-performing FMs from leading AI startups and Amazon for your use through a unified API. You can choose from a wide range of FMs to find the model that is best suited for your use case. 
+
+> Amazon Bedrock 是一項完全託管的服務，可透過統一的 API 為您提供來自領先 AI 新創公司和 Amazon 的高效能 FM。您可以從多種 FM 中進行選擇，找到最適合您的使用案例的型號。
+
+Amazon Bedrock also offers a broad set of capabilities to build generative AI applications with security, privacy, and responsible AI. 
+
+> 亞馬遜 Bedrock 還提供了廣泛的功能，可以構建具有安全性，隱私和負責任 AI 的生成式 AI 應用程序。
+
+With the serverless experience of Amazon Bedrock, you can privately customize FMs with your own data and securely integrate and deploy them into your applications by using AWS tools without having to manage any infrastructure.
+
+> 借助 Amazon Bedrock 的無服務器體驗，您可以使用自己的數據私下自定義 FMS，並通過使用 AWS 工具安全地集成並將其部署到應用程序中，而無需管理任何基礎架構。
+
+#### 3.5.1 Reviewing Amazon service tools for responsible AI  審查亞馬遜服務工具以實現負責任的人工智慧
+
+Next, you will look at Amazon service tools that can help you with different areas of responsible AI. These areas include FM evaluation, safeguards for generative AI, bias detection, model prediction explanation, monitoring and human reviews, and governance improvement.
+接下來，您將了解可以在負責任的人工智慧的不同領域為您提供幫助的亞馬遜服務工具。這些領域包括 FM 評估、產生人工智慧的保障、偏差檢測、模型預測解釋、監控和人工審查以及治理改進。
+
+##### Foundation model evaluation  基礎模型評估
+
+You should always evaluate a FM to determine if it will it is suited for your specific use case. To help you do this, Amazon offers model evaluation on Amazon Bedrock and Amazon SageMaker Clarify. 
+
+> 您應該始終評估 FM 以確定它是否適合您的特定用例。為了幫助您做到這一點，Amazon 在 Amazon Bedrock 和 Amazon SageMaker Clarify 上提供模型評估。
+
+###### Model Evaluation on Amazon Bedrock  亞馬遜 Bedrock 上的模型評估
+
+With Model evaluation on Amazon Bedrock, you can evaluate, compare, and select the best foundation model for your use case in just a few clicks. Amazon Bedrock offers a choice of automatic evaluation and human evaluation. 
+
+> 透過Amazon Bedrock 上的模型評估，您只需點擊幾下即可評估、比較並選擇適合您的用例的最佳基礎模型。 Amazon Bedrock 提供自動評估和手動評估兩種選擇。
+
+Automatic evaluation offers predefined metrics such as accuracy, robustness, and toxicity. 
+
+> 自動評估提供預先定義的指標，例如準確性、穩健性和毒性。
+
+Human evaluation offers subjective or custom metrics such as friendliness, style, and alignment to brand voice. For human evaluation, you can use your in-house employees or an AWS-managed team as reviewers.
+
+> 人工評估提供主觀或自訂指標，例如友善度、風格和與品牌聲音的一致性。對於手動評估，您可以使用內部員工或 AWS 管理的團隊作為審核者。
+
+Now that you have learned about model evaluation on Amazon Bedrock, move on to the next tab to learn about SageMaker Clarify.
+
+> 現在您已經了解了 Amazon Bedrock 上的模型評估，請前往下一個標籤以了解 SageMaker Clarify。
+
+###### Amazon SageMaker Clarify   亞馬遜 SageMaker Clarify
+
+SageMaker Clarify supports FM evaluation. You can automatically evaluate FMs for your generative AI use case with metrics such as accuracy, robustness, and toxicity to support your responsible AI initiative. 
+
+> Sagemaker Clarify 支持基礎模型評估。您可以自動評估具有準確性，魯棒性和毒性等指標的生成 AI 用例，以支持您負責任的 AI 計劃。
+
+For criteria or nuanced content that requires sophisticated human judgment, you can choose to use your own workforce or use a managed workforce provided by AWS to review model responses.
+
+> 對於需要復雜的人類判斷的標准或細微差別的內容，您可以選擇使用自己的勞動力或使用 AWS 提供的託管勞動力來審查模型響應。
+
+##### Safeguards for generative AI  產生人工智慧的保障措施
+
+With Amazon Bedrock Guardrails, you can implement safeguards for your generative AI applications based on your use cases and responsible AI policies. Guardrails helps control the interaction between users and FMs by filtering undesirable and harmful content, redacting personally identifiable information (PII), and enhancing content safety and privacy in generative AI applications. You can create multiple guardrails with different configurations tailored to specific use cases. Additionally, you can continuously monitor and analyze user inputs and FM responses that can violate customer-defined policies in the guardrails.
+
+> 透過 Amazon Bedrock Guardrails，您可以基於您的應用案例實作生成式 AI 應用程式的保障措施與負責任 AI 策略。GuardRails 通過過濾不良和有害的內容，編輯個人身份信息（PII），並增強生成AI 應用程式中的內容安全性和隱私來幫助控制用戶與基礎模型之間的相互作用。您可以創建多個針對特定用例的配置不同配置的護欄。此外，您可以連續監視和分析用戶輸入和基礎模型回應，這些回應可能違反了 Guardrails 中自訂的策略。
+
+###### Consistent level of AI safety  一致的人工智慧安全水平
+
+Amazon Bedrock Guardrails evaluates user inputs and FM responses based on use case specific policies and provides an additional layer of safeguards regardless of the underlying FM. Amazon Bedrock Guardrails can be applied across FMs, including Anthropic Claude, Meta Llama 2, Cohere Command, AI21 Labs Jurassic, Amazon Titan Text, and fine-tuned models. Customers can create multiple guardrails, each configured with a different combination of controls, and use these guardrails across different applications and use cases. Amazon Bedrock Guardrails can also be integrated with Amazon Bedrock Agents to build generative AI applications aligned with your responsible AI policies.
+
+> Amazon BedRock Guardrails 根據用例特定策略評估用戶輸入和基礎模型回應，並提供額外的保障措施，無論底層採用哪一種基礎模型。可以在基礎模型上套用 Amazon Bedrock Guardrails，包括Anthropic Claude, Meta Llama 2, Cohere Command, AI21 Labs Jurassic, Amazon Titan Text 與微調後的模型。客戶可以創建多個護欄（Guardrails），每個護欄都配置了不同組合的控管，並在不同的應用程序和應用案例中使用這些護欄。Amazon Bedrock Guardrails 也可以與 Amazon Bedrock Agent 整合，以構建與您負責任 AI 政策一致的生成式 AI 應用程式。
+
+###### Block undesirable topics   屏蔽不受歡迎的話題
+
+Organizations recognize the need to manage interactions within generative AI applications for a relevant and safe user experience. They want to further customize interactions to remain on topics relevant to their business and align with company policies. By using a short, natural language description, Amazon Bedrock Guardrails gives you the ability to define a set of topics to avoid within the context of your application. Amazon Bedrock Guardrails detects and blocks user inputs and FM responses that fall into the restricted topics. For example, a banking assistant can be designed to avoid topics related to investment advice.
+
+> 組織可以認為有必要管理在生成式 AI 應用程式中，相關而安全的用戶體驗互動。他們希望進一步自訂互動，確保與業務相關的主題與公司政策保持一致。通過使用簡短的自然語言描述，Amazon BedRock Guardrails 使您能夠定義一組主題，以避免在應用程序的背景下。Amazon Bedrock Guardrails 偵測並阻檔受限主題的用戶輸入和基礎模型回應。例如，銀行助理可以設計成避免與投資建議相關的主題。
+
+###### Filter harmful content   過濾有害內容
+
+Amazon Bedrock Guardrails provides content filters with configurable thresholds to filter harmful content across hate, insults, sexual, and violence categories. Most FMs already provide built-in protections to prevent the generation of harmful responses. In addition to these protections, Amazon Bedrock Guardrails gives you the ability to configure thresholds across the different categories to filter out harmful interactions. Amazon Bedrock Guardrails automatically evaluates both user queries and FM responses to detect and help prevent content that falls into restricted categories. For example, an ecommerce site can design its online assistant to avoid using inappropriate language such as hate speech or insults.
+
+> Amazon Bedrock Guardrails 為內容過濾器提供可配置的閾值，以過濾涉及仇恨，侮辱，性和暴力類別的有害內容。大多數FMS已經提供內置保護，以防止產生有害反應。除了這些保護外，亞馬遜基岩護欄還可以使您能夠在不同類別上配置閾值以過濾有害互動。 Amazon Bedrock護欄會自動評估用戶查詢和FM響應，以檢測並幫助防止內容屬於受限類別。例如，電子商務網站可以設計其在線助理，以避免使用不適當的語言，例如仇恨言論或侮辱。
+
+###### Redact PII to protect user privacy  編輯PII保護用戶隱私
+
+Amazon Bedrock Guardrails helps you detect PII in user inputs and FM responses. Based on the use case, you can selectively reject inputs containing PII or redact PII in FM responses. For example, you can redact users’ personal information while generating summaries from customer and agent conversation transcripts in a call center.
+
+> 亞馬遜基岩護欄可幫助您檢測到用戶輸入和FM響應中的PII。基於用例，您可以選擇性地拒絕FM響應中包含PII或REDACT PII的輸入。例如，您可以在呼叫中心中從客戶和代理對話成績單中生成摘要的同時，還可以編輯用戶的個人信息。
+
+##### Bias detection  偏置檢測
+
+SageMaker Clarify helps identify potential bias in machine learning models and datasets without the need for extensive coding. You specify input features, such as gender or age, and SageMaker Clarify runs an analysis job to detect potential bias in those features. SageMaker Clarify then provides a visual report with a description of the metrics and measurements of potential bias so that you can identify steps to remediate the bias. 
+
+> SageMaker Clarify有助於識別機器學習模型和資料集中的潛在偏差，而無需進行大量編碼。您指定輸入特徵，例如性別或年齡，SageMaker Clarify 會執行分析作業來偵測這些特徵中的潛在偏差。然後，SageMaker Clarify 提供一份視覺化報告，其中包含潛在偏差指標和測量的描述，以便您可以確定糾正偏差的步驟。
+
+You can use Amazon SageMaker Data Wrangler to balance your data in cases of any imbalances. SageMaker Data Wrangler offers three balancing operators: random undersampling, random oversampling, and Synthetic Minority Oversampling Technique (SMOTE) to rebalance data in your unbalanced datasets.
+
+> 如果出現任何不平衡，您可以使用Amazon SageMaker Data Wrangler來平衡資料。 SageMaker Data Wrangler 提供三種平衡運算子：隨機欠採樣、隨機過採樣和合成少數過採樣技術 (SMOTE)，以重新平衡不平衡資料集中的資料。
+
+##### Model prediction explanation  模型預測說明
+
+SageMaker Clarify is integrated with Amazon SageMaker Experiments to provide scores detailing which features contributed the most to your model prediction on a particular input for tabular, natural language processing (NLP), and computer vision models. For tabular datasets, SageMaker Clarify can also output an aggregated feature importance chart that provides insights into the overall prediction process of the model. These details can help determine if a particular model input has more influence than expected on overall model behavior.
+
+> Sagemaker Clarlify與Amazon Sagemaker實驗集成在一起，以提供分數，詳細說明哪些功能對您的模型預測最大的貢獻了，該預測是針對錶格，自然語言處理（NLP）和計算機視覺模型的特定輸入。對於表格數據集，SageMaker Clarlify還可以輸出匯總的特徵重要性圖表，該圖表提供了對模型整體預測過程的見解。這些細節可以幫助確定特定模型輸入是否對整體模型行為的影響更大。
+
+> [!INFO]
+> SageMaker Experiments is a capability of SageMaker that you can use to create, manage, analyze, and compare your machine learning experiments.
+> Sagemaker Experiments 是 Sagemaker 的功能，您可以使用它來創建，管理，分析和比較機器學習實驗。
+
+##### Monitoring and human reviews  監視和人類評論
+
