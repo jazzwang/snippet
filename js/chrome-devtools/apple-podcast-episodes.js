@@ -13,7 +13,7 @@ count = 0
 scrollHeight = $('div#scrollable-page').scrollHeight
 script = ""
 
-async function scrollDown() {
+function scrollDown() {
     newHeight = lastHeight + scrollHeight
     $('div#scrollable-page').scroll(0, newHeight)
     console.log("scroll to " + newHeight + ", lastHeight = " + lastHeight + ", count = " + count)
@@ -31,5 +31,6 @@ scrollDown()
 
 console.log("title = " + $$('span.episode-details__title-text')[0].textContent)
 $$('button.play-button')[0].click()
+await sleep(200)
 console.log("url = " + $('audio#apple-music-player').src)
 $$('button.play-button')[0].click()
