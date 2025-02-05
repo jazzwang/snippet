@@ -15,19 +15,19 @@ CDK Global specializes in providing software solutions tailored for the automoti
 
 ## Products Offered by CDK Global
 
-1. **Dealer Management Systems (DMS)**: Comprehensive platforms that streamline dealership operations, providing tools for sales, inventory management, and performance analytics.
+1. <mark>**Dealer Management Systems (DMS)**</mark>: Comprehensive platforms that streamline dealership operations, providing tools for sales, inventory management, and performance analytics.
    
-2. **Digital Retail Platforms**: Solutions designed to facilitate online vehicle sales and enhance the digital shopping experience for customers.
+2. <mark>**Digital Retail Platforms**</mark>: Solutions designed to facilitate online vehicle sales and enhance the digital shopping experience for customers.
 
-3. **Customer Relationship Management (CRM)**: Systems that help dealerships manage customer interactions, improve relationships, and drive sales.
+3. <mark>**Customer Relationship Management (CRM)**</mark>: Systems that help dealerships manage customer interactions, improve relationships, and drive sales.
 
-4. **Finance and Insurance Tools**: Software that assists dealerships in managing financial transactions and insurance processes effectively.
+4. <mark>**Finance and Insurance Tools**</mark>: Software that assists dealerships in managing financial transactions and insurance processes effectively.
 
-5. **Fixed Operations Solutions**: Tools aimed at optimizing service departments within dealerships, including parts management and service scheduling.
+5. <mark>**Fixed Operations Solutions**</mark>: Tools aimed at optimizing service departments within dealerships, including parts management and service scheduling.
 
-6. **Network and Communication Services**: IT solutions that ensure seamless communication within dealership networks.
+6. <mark>**Network and Communication Services**</mark>: IT solutions that ensure seamless communication within dealership networks.
 
-7. **Data Insights and Intelligence**: Analytics tools that leverage data to provide insights into dealership performance and customer behavior[^1] [^3] [^5] [^6].
+7. <mark>**Data Insights and Intelligence**</mark>: Analytics tools that leverage data to provide insights into dealership performance and customer behavior. [^1] [^3] [^5] [^6]
 
 ## Target Audience
 
@@ -35,19 +35,20 @@ CDK Global primarily targets:
 
 - **Automotive Dealerships**: Including those specializing in new and used vehicles, heavy trucks, motorcycles, marine, and recreational vehicles.
 - **Original Equipment Manufacturers (OEMs)**: Providing them with tools to standardize dealer data management.
-- **Dealership Groups**: Ranging from small independent dealers to large enterprise operations, facilitating customized solutions based on their specific needs[^1] [^3] [^5] [^6].
+- **Dealership Groups**: Ranging from small independent dealers to large enterprise operations, facilitating customized solutions based on their specific needs. [^1] [^3] [^5] [^6]
 
 Overall, CDK Global aims to support automotive retailers in optimizing their operations while enhancing the customer experience through integrated technology solutions.
 
-Citations:
-- [^1] https://www.cdkglobalheavytruck.com
-- [^2] https://s23.q4cdn.com/483669984/files/doc_financials/quarterly/2015/q4/ADP-Transcript-2015-07-30T12_30.pdf
-- [^3] https://www.cbinsights.com/company/cdk-global
-- [^4] https://www.linkedin.com/in/deepakrpathak
-- [^5] https://6sense.com/tech/automobile-dealership-management/cdk-global-market-share
-- [^6] https://www.softwareadvice.com/crm/cdk-drive-profile/
-- [^7] https://tw.linkedin.com/company/cdknorthamerica
-- [^8] https://www.youtube.com/cdkglobal
+[^1]: https://www.cdkglobalheavytruck.com
+[^2]: https://s23.q4cdn.com/483669984/files/doc_financials/quarterly/2015/q4/ADP-Transcript-2015-07-30T12_30.pdf
+[^3]: https://www.cbinsights.com/company/cdk-global
+[^4]: https://www.linkedin.com/in/deepakrpathak
+[^5]: https://6sense.com/tech/automobile-dealership-management/cdk-global-market-share
+[^6]: https://www.softwareadvice.com/crm/cdk-drive-profile/
+[^7]: https://tw.linkedin.com/company/cdknorthamerica
+[^8]: https://www.youtube.com/cdkglobal
+
+----
 
 > 在台灣，"Automotive Dealer" 通常可以翻譯為 **汽車經銷商**。這個術語涵蓋了從事汽車銷售的商業機構，並且可以進一步細分為以下幾個類別：
   1. **新車經銷商**：專門銷售新車的經銷商，通常與汽車製造商有直接的合作關係。
@@ -71,7 +72,7 @@ When evaluating CDK Global as a potential investment opportunity, several key fa
 ## Business Model and Market Position
 
 - **Stable Revenue Stream**: CDK Global operates a subscription-based model for its Dealer Management Systems (DMS), which results in a low churn rate of approximately 95% and a customer lifecycle exceeding 20 years. This stability is crucial for long-term revenue predictability [^9].
-- **Market Share**: CDK holds about 40% of the market share in the DMS sector, operating in a duopoly with Reynolds & Reynolds. Understanding the competitive landscape and potential threats from competitors is essential [^9][2].
+- **Market Share**: CDK holds about 40% of the market share in the DMS sector, operating in a duopoly with Reynolds & Reynolds. Understanding the competitive landscape and potential threats from competitors is essential [^9] [^10].
 
 ## Financial Performance
 
@@ -96,12 +97,11 @@ When evaluating CDK Global as a potential investment opportunity, several key fa
 
 In summary, a comprehensive evaluation of CDK Global should focus on its stable business model, financial health, growth potential in international markets and digital marketing, technological adaptability, and customer insights. These factors will provide a clearer picture of CDK's viability as an investment opportunity in the automotive technology sector.
 
-Citations:
-- [^9] https://business.columbia.edu/sites/default/files-efs/imce-uploads/Brian%20Waterhouse%20-%20CDK.pdf
-- [^10] https://www.researchandmarkets.com/reports/5661335/cdk-global-inc-strategic-swot-analysis-review
-- [^11] https://www.cdkglobal.com/insights/cdk-global-research-year-review
-- [^12] https://www.linkedin.com/pulse/crucial-need-business-impact-analysis-post-cdk-global-tourloukis-gjivc
-- [^13] https://www.marketscreener.com/quote/stock/CDK-GLOBAL-INC-18052701/news/CDK-GLOBAL-INC-Management-s-Discussion-and-Analysis-of-Financial-Condition-and-Results-of-Operati-37745218/
+[^9]: https://business.columbia.edu/sites/default/files-efs/imce-uploads/Brian%20Waterhouse%20-%20CDK.pdf
+[^10]: https://www.researchandmarkets.com/reports/5661335/cdk-global-inc-strategic-swot-analysis-review
+[^11]: https://www.cdkglobal.com/insights/cdk-global-research-year-review
+[^12]: https://www.linkedin.com/pulse/crucial-need-business-impact-analysis-post-cdk-global-tourloukis-gjivc
+[^13]: https://www.marketscreener.com/quote/stock/CDK-GLOBAL-INC-18052701/news/CDK-GLOBAL-INC-Management-s-Discussion-and-Analysis-of-Financial-Condition-and-Results-of-Operati-37745218/
 
 -----
 
