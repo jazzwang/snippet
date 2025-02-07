@@ -248,3 +248,244 @@ Could you please clarify or provide more context about MoE in AI?
 - 比較久之前的作法是要自己寫 Model File
 - 2024-05-06: 抓別人的 GGUF 模型，用 Ollama 在本機執行！
     - https://ywctech.net/ml-ai/ollama-import-custom-gguf/
+
+## 2025-02-07
+
+- ( 2025-02-07 23:55:29 )
+- 緣起：
+  - 本來想說需要靠 LangSmith 才能衡量 Ollama 模型每秒可以產生多少 token
+  - 結果在 https://github.com/ollama/ollama/issues/1806 查到原來可以加上 `--verbose` 來顯示回應的時間 `Show timings for response`
+- 語法：
+  ```bash
+  ollama run MODEL --verbose
+  ```
+- 範例：
+```bash
+jazzw@JazzBook:~$ ollama run deepseek-r1:8b --verbose
+>>>
+>>> create a d3.js dashboard in HTML format to show global pupulation trend.
+<think>
+Okay, I need to create a D3.js dashboard in HTML that shows the global population trend. Let me break this down step by step.
+
+First, I'll start with the basic HTML structure. I know I need a doctype, html, head, and body tags. In the head, I'll include a title and some CSS
+styles to make the graph look nice. The body will contain the dashboard elements.
+
+Next, I need to set up the D3.js framework. I'll include d3.min.js from a CDN in the script tag. Then, I'll create an SVG element with appropriate
+dimensions and margins to ensure everything fits well on the page.
+
+For the visualization, I want a line chart showing population growth over time. I'll define data points with year and population values. To make it
+interactive, I'll add tooltips that show when hovering over each point.
+
+Styling is important for clarity. I'll use CSS to style the text elements, x-axis, y-axis, and the line itself. The axis labels should be formatted to
+show numbers clearly, perhaps using commas for thousands separators. The y-axis will have a grid for better readability.
+
+I also want to add a button that allows users to zoom into specific time periods. For simplicity, I'll just add an event listener for a sample year
+range, but in a real application, this would need more functionality.
+
+Finally, I'll test the code by saving it as an HTML file and opening it in a browser to ensure everything displays correctly. I'll check for any
+errors in the console and make sure all elements are rendering properly.
+</think>
+```
+
+----
+
+Here's an example of a D3.js dashboard showing global population trends:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Global Population Trend</title>
+    <script src="https://d3js.org/d3.min.js"></script>
+    <style>
+        .dashboard {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .population-line {
+            fill: #3498db;
+        }
+
+        .tooltip {
+            display: none;
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 16px;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1 class="title">Global Population Trend</h1>
+        <div class="chart-container">
+            <svg width="100%" height="400" id="populationChart"></svg>
+        </div>
+        <button class="button">Zoom In on 1950-2050</button>
+    </div>
+
+    <script>
+        // Sample data - adjust these values as needed
+        const data = [
+            { year: 1900, population: 3 },
+            { year: 1920, population: 4.1 },
+            { year: 1940, population: 6 },
+            { year: 1960, population: 7.5 },
+            { year: 1980, population: 9.3 },
+            { year: 2000, population: 12.6 },
+            { year: 2020, population: 19.1 }
+        ];
+
+        // Dimensions
+        const width = 800;
+        const height = 300;
+        const margin = { top: 20, right: 40, bottom: 60, left: 40 };
+
+        // Create SVG element
+        const svg = d3.select("#populationChart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        // Add x and y axes
+        const xAxis = svg.append("g")
+            .attr("text-anchor", "middle")
+            .selectAll("line")
+            .data(data.map(d => d.year))
+            .enter()
+            .append("g");
+
+        const yAxis = svg.append("g")
+            .attr("grid", "major")
+            .attr("text-anchor", "end")
+            .selectAll("line")
+            .data([0, 10, 20, 30, 40, 50, 60])
+            .enter()
+            .append("g");
+
+        // Add population line
+        const line = svg.append("path")
+            .datum(data)
+            .attr("class", "population-line")
+            .attr("d", d3.curveLinear().xScale(d => d.year).yScale(d => d.population)(data));
+
+        // Add tooltip
+        const tooltip = d3.select("svg")
+            .append("g")
+            .selectAll("text")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("class", "tooltip")
+            .style("display", "none")
+            .on("mouseover", function(d) {
+                d3.select(this).attr("display", "inline");
+                const content = `<strong>${d.year}: ${d.population.toFixed(1)}</strong>`;
+                return content;
+            })
+            .on("mouseout", function() {
+                d3.select(this).attr("display", "none");
+            });
+
+        // Add axis labels
+        xAxis.append("text")
+            .each(function(d) { this.textContent = d; })
+            .attr("text-anchor", "middle");
+
+        yAxis.append("text")
+            .each(function(d) {
+                const value = d3.format("d")(d);
+                this.textContent = value.toString().replace(/(\d{1,3})(\d{0})$/, `$1$2`);
+            })
+            .attr("text-anchor", "end");
+
+        // Add zoom button functionality
+        document.querySelector(".button").addEventListener("click", function() {
+            // This is a simplified version - you would need to implement actual zoom functionality
+            const svg = d3.select("#populationChart");
+            const currentYear = new Date().getFullYear();
+
+            if (currentYear < 2050) {
+                const years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];
+
+                data.forEach(d => {
+                    d.year = years[Math.floor(Math.random() * years.length)];
+                    d.population = Math.random() * (d3.select("svg").select("g .population-line").attr("y2") - 5) + 5;
+                });
+
+                line.transition()
+                    .duration(500)
+                    .attr("d", d3.curveLinear().xScale(d => d.year).yScale(d => d.population)(data));
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+This code creates a dashboard with:
+
+1. A title showing "Global Population Trend"
+2. A line chart showing population data over time
+3. Interactive tooltips when hovering over data points
+4. A simplified zoom button (in this example, it's just a placeholder)
+
+Features:
+- Responsive design
+- Clean and modern styling
+- Interactive elements
+- Easy to read axis labels
+- Smooth animations
+- Sample data (adjustable in the `data` array)
+
+To use real data instead of sample data, you would need to:
+1. Replace the `data` array with actual population data
+2. Update the x and y scale functions accordingly
+3. Add more detailed functionality for the zoom button
+
+The dashboard uses D3.js for rendering and includes some basic interactivity. The styling is done using CSS within the `<style>` tags.
+
+To use this code:
+1. Save it as an HTML file
+2. Make sure you have an internet connection (for loading D3.js)
+3. Open it in a web browser
+
+You can customize the colors, sizes, and other visual properties by modifying the CSS styles. The D3.js functionality can be extended to handle more
+complex data and interactions based on your requirements.[GIN] 2025/02/08 - 00:03:46 | 200 |         3m21s |       127.0.0.1 | POST     "/api/chat"
+
+----
+
+```bash
+total duration:       3m21.5121463s
+load duration:        31.6142ms
+prompt eval count:    19 token(s)
+prompt eval duration: 1.264s
+prompt eval rate:     15.03 tokens/s
+eval count:           1758 token(s)
+eval duration:        3m20.211s
+eval rate:            8.78 tokens/s
+>>> Send a message (/? for help)
+```
