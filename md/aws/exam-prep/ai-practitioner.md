@@ -2631,7 +2631,7 @@ You can use Amazon SageMaker Data Wrangler to balance your data in cases of any 
 
 SageMaker Clarify is integrated with Amazon SageMaker Experiments to provide scores detailing which features contributed the most to your model prediction on a particular input for tabular, natural language processing (NLP), and computer vision models. For tabular datasets, SageMaker Clarify can also output an aggregated feature importance chart that provides insights into the overall prediction process of the model. These details can help determine if a particular model input has more influence than expected on overall model behavior.
 
-> Sagemaker Clarlify與Amazon Sagemaker實驗集成在一起，以提供分數，詳細說明哪些功能對您的模型預測最大的貢獻了，該預測是針對錶格，自然語言處理（NLP）和計算機視覺模型的特定輸入。對於表格數據集，SageMaker Clarlify還可以輸出匯總的特徵重要性圖表，該圖表提供了對模型整體預測過程的見解。這些細節可以幫助確定特定模型輸入是否對整體模型行為的影響更大。
+> Sagemaker Clarlify 與 Amazon Sagemaker 實驗集成在一起，以提供分數，詳細說明哪些功能對您的模型預測最大的貢獻了，該預測是針對錶格，自然語言處理（NLP）和計算機視覺模型的特定輸入。對於表格數據集，SageMaker Clarlify 還可以輸出匯總的特徵重要性圖表，該圖表提供了對模型整體預測過程的見解。這些細節可以幫助確定特定模型輸入是否對整體模型行為的影響更大。
 
 > [!INFO]
 > SageMaker Experiments is a capability of SageMaker that you can use to create, manage, analyze, and compare your machine learning experiments.
