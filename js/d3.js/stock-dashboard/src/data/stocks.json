@@ -1,0 +1,34 @@
+{
+  "stocks": [
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "price": 150.00,
+      "historicalData": [
+        {"date": "2023-01-01", "close": 145.00},
+        {"date": "2023-01-02", "close": 148.00},
+        {"date": "2023-01-03", "close": 150.00}
+      ]
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "price": 2800.00,
+      "historicalData": [
+        {"date": "2023-01-01", "close": 2750.00},
+        {"date": "2023-01-02", "close": 2780.00},
+        {"date": "2023-01-03", "close": 2800.00}
+      ]
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com Inc.",
+      "price": 3400.00,
+      "historicalData": [
+        {"date": "2023-01-01", "close": 3350.00},
+        {"date": "2023-01-02", "close": 3380.00},
+        {"date": "2023-01-03", "close": 3400.00}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "stock-dashboard",
+  "version": "1.0.0",
+  "description": "A stock dashboard project using D3.js for visualizing stock data.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "dependencies": {
+    "d3": "^7.0.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "stock",
+    "dashboard",
+    "d3",
+    "visualization"
+  ],
+  "author": "",
+  "license": "ISC"
+}
