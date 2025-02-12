@@ -19,3 +19,9 @@ Start your 30-day free Snowflake trial which includes $400 worth of free usage
 - Explore industry-specific user cases and walkthroughs in our [Solutions Center](https://developers.snowflake.com/solutions/)
 
 ![](images/2025-02-10_Snowflake_Trail_Step_5.png)
+
+## Upcoming Virtual Hands-On Labs (APJ timezone)
+
+- FROM Zero to Snowflake in 90 Minutes
+  - 26 February 2025 - 2:00 PM AEDT | 4:00 PM NZDT | 11:00 AM SGT | 8:30 AM IST
+  - https://www.snowflake.com/webinar/virtual-hands-on-labs/from-zero-to-snowflake-in-90-minutes-apac-20250226/
