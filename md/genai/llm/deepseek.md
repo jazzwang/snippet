@@ -962,3 +962,16 @@ Citations:
 [6] https://aimlapi.com/comparisons/qwen-2-vs-llama-3-comparison
 [7] https://github.com/HaoooWang/llm-knowledge-cutoff-dates
 [8] https://openrouter.ai/models
+
+## 2025-02-15
+
+- 2025-02-03: [DeepSeek 如何衝擊 AI 股？Perplexity 執行長：需求是發明之母](https://www.managertoday.com.tw/articles/view/69860)
+  - Deepseek 不是多模態（1 月 27 日晚上剛發表多模態產品），還不能生成圖片和影像，問它政治敏感問題也給不出像樣答案。
+  - Deepseek 的<mark>低成本</mark>方式大幅降低開發模型的門檻，會<mark>讓更多公司投入，在現有技術上改良而非從頭自建</mark>，使得模型開發走向「標準產品化」（commoditized） 之路，會有利於終端使用者，先前幾大巨頭的控制力會減弱。
+  - Deepseek 走<mark>開源模式</mark>，可能使得很多開發者以它為平台開發應用程式，<mark>發展成一個生態系</mark>。
+  - 中國<mark>用戶夠多</mark>，不管你技術和產品上怎麼限制，<mark>龐大應用 AI 需求會讓它繞開層層關卡找到出路</mark>。「**需求是所有發明之母。**」Aravind 在這段 30 分鐘受訪中ㄧ共說了三次。
+- 2025-02-03: [OpenAI 認錯了！奧特曼：會向 DeepSeek 學習，不應該站在「錯誤的一邊」](https://www.managertoday.com.tw/articles/view/69861)
+  - OpenAI 執行長奧特曼坦承了錯誤，表示要學習 DeepSeek <mark>將推理模型的思考過程公開</mark>，OpenAI 的閉源策略令他們站到歷史錯誤的一邊，將重新思考 OpenAI 的開源策略，並承認自身領先優勢已不如之前。
+  - 報告指出，DeepSeek 的<mark>總伺服器**資本支出**約 16 億美元（約 527 億台幣）</mark>，<mark>**營運**此類集群成本高達 9.44 億美元（約 311 億台幣）</mark>。DeepSeek 用不到 600 萬美元成本的說法有所錯誤，這類似於將產品物料清單的特定部分並將其歸因為全部成本，**預訓練成本**在總成本中只占很小的一部分。[^1]
+
+  [1]: "**DeepSeek Debates: Chinese Leadership On Cost, True Training Cost, Closed Model Margin Impacts** -- H100 Pricing Soaring, Subsidized Inference Pricing, Export Controls, MLA", https://semianalysis.com/2025/01/31/deepseek-debates/ , 2025-01-31, SemiAnalysis
