@@ -974,4 +974,4 @@ Citations:
   - OpenAI 執行長奧特曼坦承了錯誤，表示要學習 DeepSeek <mark>將推理模型的思考過程公開</mark>，OpenAI 的閉源策略令他們站到歷史錯誤的一邊，將重新思考 OpenAI 的開源策略，並承認自身領先優勢已不如之前。
   - 報告指出，DeepSeek 的<mark>總伺服器**資本支出**約 16 億美元（約 527 億台幣）</mark>，<mark>**營運**此類集群成本高達 9.44 億美元（約 311 億台幣）</mark>。DeepSeek 用不到 600 萬美元成本的說法有所錯誤，這類似於將產品物料清單的特定部分並將其歸因為全部成本，**預訓練成本**在總成本中只占很小的一部分。[^1]
 
-  [1]: "**DeepSeek Debates: Chinese Leadership On Cost, True Training Cost, Closed Model Margin Impacts** -- H100 Pricing Soaring, Subsidized Inference Pricing, Export Controls, MLA", https://semianalysis.com/2025/01/31/deepseek-debates/ , 2025-01-31, SemiAnalysis
+  [^1]: "**DeepSeek Debates: Chinese Leadership On Cost, True Training Cost, Closed Model Margin Impacts** -- H100 Pricing Soaring, Subsidized Inference Pricing, Export Controls, MLA", https://semianalysis.com/2025/01/31/deepseek-debates/ , 2025-01-31, SemiAnalysis
