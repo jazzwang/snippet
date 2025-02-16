@@ -991,3 +991,35 @@ Citations:
 - Learn about DeepSeek models that are disrupting the global AI industry:
   - [DeepSeek-V3: A Guide With Demo Project](https://www.datacamp.com/tutorial/deepseek-v3)
   - [DeepSeek-R1: Features, o1 Comparison, Distilled Models & More](https://www.datacamp.com/blog/deepseek-r1)
+
+### DeepSeek-R1 + RAG + Web Search (Tavily)
+
+- 2025-02-12: **Reasoning & Recursive Retrieval With Deepseek-r1, Tavily, and LangGraph**
+  - https://medium.com/@denizaskin/reasoning-recursive-retrieval-with-deepseek-r1-tavily-and-langgraph-8d0a32d2df27
+  - 參考來源：https://www.linkedin.com/feed/update/urn:li:activity:7296696111023472640/
+    《使用 DeepSeek-R1、Tavily 和 LangGraph 進行推理與遞歸檢索》
+
+> 這篇文章深入探討如何將 AI 推理模型與資訊檢索技術結合，並展示如何透過 DeepSeek-R1 的推理能力，搭配 Tavily 網路檢索技術，運用 LangGraph 構建 遞歸式資訊檢索代理 (Agentic Retrieval)，提升複雜查詢的準確性與效率。
+> 本研究提出了一種創新的 代理 AI (Agentic AI) 工作流程，讓 AI 不僅僅是檢索資訊，更能夠主動推理哪些內容有價值，進一步優化搜尋過程，以獲得更精準的回答。
+
+### 夜話 DeepSeek：技術原理與未來方向
+
+- 2025-02-06: [劉知遠詳解 DeepSeek 出圈背後的邏輯：自身演算法的創新以及 OpenAI 的傲慢](https://www.infoq.cn/article/hu9bSACTV9RrjcNPQts5)
+
+![](https://static001.geekbang.org/infoq/cb/cb14e437bf08abe11535907b41f4927f.jpeg)
+
+> DeepSeek R1 創造性地基於 **DeepSeek V3** 基座模型，透過大規模<mark>強化學習</mark>技術，得到了一個純粹透過強化學習增強的強推理模型，即 **DeepSeek-R1-Zero**。這具有非常重要的價值，因為在歷史上幾乎沒有團隊能夠成功地將強化學習技術很好地應用於大規模模型上，並實現大規模訓練。DeepSeek 能夠實現大規模強化學習的一個重要技術特點是其採用了 <mark>**基於規則（rule-based）**</mark> 的方法，確保強化學習可以規模化，並實現面向強化學習的擴充套件（Scaling），這是它的第一個貢獻。
+> DeepSeek R1 的第二個重要貢獻在於其強化學習技術不僅侷限於數學、演算法程式碼等容易提供獎勵訊號的領域，還能創造性地<mark>將強化學習帶來的強推理能力泛化到其他領域</mark>。這也是使用者在實際使用 DeepSeek R1 進行寫作等任務時，能夠感受到其強大的深度思考能力的原因。
+
+![](https://static001.geekbang.org/infoq/01/01a6ab646278fda03d699fe6b411de67.jpeg)
+
+![](https://static001.geekbang.org/infoq/58/58ab911c35aeca00750f5de539b168ba.jpeg)
+
+![](https://static001.geekbang.org/infoq/91/91835ae3ce9e1bae50839a58809be691.jpeg)
+
+## DeepSeek FAQ 解析：開源、推理模型與科技巨頭的博弈
+
+- 2025-02-05: [DeepSeek FAQ 解析：開源、推理模型與科技巨頭的博弈](https://www.infoq.cn/article/POmBdaGGJp6CKPZNLRI4)
+- 原文連結： 
+  - 2025-01-27: DeepSeek FAQ
+  - https://stratechery.com/2025/deepseek-faq/
