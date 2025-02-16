@@ -182,3 +182,10 @@ Then restart your shell or run 'source ~/.bashrc' to enable completions
 ```
 - ( 2024-12-27 16:47:34 )
 - 最近剛好想 refactor [confluence-insight](https://github.com/jazzwang/confluence-insight)。先前會用 ipython 界面來做 Selemiun 本機實驗，或許可以改用 `marimo` 玩玩看，然後用 `marimo export script` 來產生最後的結果。再讓 `aider` 幫我 code review。
+
+## 2025-02-16
+
+- Calmcode: objects, prompts and more Marimo
+  - https://calmcode.io/course/objects/introduction
+> Marimo 具有在 WASM 模式下運行的能力，這意味著 *一切 *都可以從前端運行。這意味著，如果您想快速使用一些 Python 代碼來播放，即使您不能在本地安裝任何內容，也可以使用此鏈接：
+>  - https://calmcode.io/static/marimo/index.html
