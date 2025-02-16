@@ -975,3 +975,19 @@ Citations:
   - 報告指出，DeepSeek 的<mark>總伺服器**資本支出**約 16 億美元（約 527 億台幣）</mark>，<mark>**營運**此類集群成本高達 9.44 億美元（約 311 億台幣）</mark>。DeepSeek 用不到 600 萬美元成本的說法有所錯誤，這類似於將產品物料清單的特定部分並將其歸因為全部成本，**預訓練成本**在總成本中只占很小的一部分。[^1]
 
   [^1]: "**DeepSeek Debates: Chinese Leadership On Cost, True Training Cost, Closed Model Margin Impacts** -- H100 Pricing Soaring, Subsidized Inference Pricing, Export Controls, MLA", https://semianalysis.com/2025/01/31/deepseek-debates/ , 2025-01-31, SemiAnalysis
+
+## 2025-02-16
+
+### DeepSeek Janus
+
+- 2025-01-29: How to Use DeepSeek Janus-Pro Locally
+  - https://www.datacamp.com/tutorial/how-to-use-deepseek-janus-pro-locally
+
+> DeepSeek Janus 系列是一系列新的多模態模型，旨在使用創新的框架統一視覺理解和生成任務。
+> 該系列包括 Janus , Janusflow 和 Advanced Janus-Pro ，每次都在先前的迭代上建造，並顯著提高了效率，性能和多模態功能。
+
+### DataCamp DeepSeek Tutorial
+
+- Learn about DeepSeek models that are disrupting the global AI industry:
+  - [DeepSeek-V3: A Guide With Demo Project](https://www.datacamp.com/tutorial/deepseek-v3)
+  - [DeepSeek-R1: Features, o1 Comparison, Distilled Models & More](https://www.datacamp.com/blog/deepseek-r1)
