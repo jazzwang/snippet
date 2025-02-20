@@ -21,6 +21,7 @@
   - PII masking
     - LLM Gateway for PII Detection
       - https://huggingface.co/learn/cookbook/llm_gateway_pii_detection
+      - https://github.com/wealthsimple/llm-gateway
 
 ### spaCy
 
@@ -118,6 +119,7 @@ Yes, there are several Python libraries and methods you can use to mask PII data
 
 3. **Anonymizedf Library**:
    - This library uses pandas and faker to substitute original columns with masked substitutes, making it easy to anonymize datasets[5].
+   - https://pypi.org/project/anonymizedf/
 
 4. **IRI FieldShield (Not a pure Python library but integrates well)**:
    - While not exclusively a Python library, IRI FieldShield offers robust PII masking capabilities for various file formats, including CSV, through its integration tools[1]. However, it requires additional setup beyond simple Python scripting.
