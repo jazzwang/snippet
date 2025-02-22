@@ -965,12 +965,12 @@ Citations:
 
 ## 2025-02-15
 
-- 2025-02-03: [DeepSeek 如何衝擊 AI 股？Perplexity 執行長：需求是發明之母](https://www.managertoday.com.tw/articles/view/69860)
+- 2025-02-03: [**DeepSeek 如何衝擊 AI 股？Perplexity 執行長：需求是發明之母**](https://www.managertoday.com.tw/articles/view/69860)
   - Deepseek 不是多模態（1 月 27 日晚上剛發表多模態產品），還不能生成圖片和影像，問它政治敏感問題也給不出像樣答案。
   - Deepseek 的<mark>低成本</mark>方式大幅降低開發模型的門檻，會<mark>讓更多公司投入，在現有技術上改良而非從頭自建</mark>，使得模型開發走向「標準產品化」（commoditized） 之路，會有利於終端使用者，先前幾大巨頭的控制力會減弱。
   - Deepseek 走<mark>開源模式</mark>，可能使得很多開發者以它為平台開發應用程式，<mark>發展成一個生態系</mark>。
   - 中國<mark>用戶夠多</mark>，不管你技術和產品上怎麼限制，<mark>龐大應用 AI 需求會讓它繞開層層關卡找到出路</mark>。「**需求是所有發明之母。**」Aravind 在這段 30 分鐘受訪中ㄧ共說了三次。
-- 2025-02-03: [OpenAI 認錯了！奧特曼：會向 DeepSeek 學習，不應該站在「錯誤的一邊」](https://www.managertoday.com.tw/articles/view/69861)
+- 2025-02-03: [**OpenAI 認錯了！奧特曼：會向 DeepSeek 學習，不應該站在「錯誤的一邊」**](https://www.managertoday.com.tw/articles/view/69861)
   - OpenAI 執行長奧特曼坦承了錯誤，表示要學習 DeepSeek <mark>將推理模型的思考過程公開</mark>，OpenAI 的閉源策略令他們站到歷史錯誤的一邊，將重新思考 OpenAI 的開源策略，並承認自身領先優勢已不如之前。
   - 報告指出，DeepSeek 的<mark>總伺服器**資本支出**約 16 億美元（約 527 億台幣）</mark>，<mark>**營運**此類集群成本高達 9.44 億美元（約 311 億台幣）</mark>。DeepSeek 用不到 600 萬美元成本的說法有所錯誤，這類似於將產品物料清單的特定部分並將其歸因為全部成本，**預訓練成本**在總成本中只占很小的一部分。[^1]
 
@@ -980,8 +980,7 @@ Citations:
 
 ### DeepSeek Janus
 
-- 2025-01-29: How to Use DeepSeek Janus-Pro Locally
-  - https://www.datacamp.com/tutorial/how-to-use-deepseek-janus-pro-locally
+- 2025-01-29: [**How to Use DeepSeek Janus-Pro Locally**](https://www.datacamp.com/tutorial/how-to-use-deepseek-janus-pro-locally)
 
 > DeepSeek Janus 系列是一系列新的多模態模型，旨在使用創新的框架統一視覺理解和生成任務。
 > 該系列包括 Janus , Janusflow 和 Advanced Janus-Pro ，每次都在先前的迭代上建造，並顯著提高了效率，性能和多模態功能。
@@ -994,17 +993,17 @@ Citations:
 
 ### DeepSeek-R1 + RAG + Web Search (Tavily)
 
-- 2025-02-12: **Reasoning & Recursive Retrieval With Deepseek-r1, Tavily, and LangGraph**
-  - https://medium.com/@denizaskin/reasoning-recursive-retrieval-with-deepseek-r1-tavily-and-langgraph-8d0a32d2df27
+- 2025-02-12: [**Reasoning & Recursive Retrieval With Deepseek-r1, Tavily, and LangGraph**](https://medium.com/@denizaskin/reasoning-recursive-retrieval-with-deepseek-r1-tavily-and-langgraph-8d0a32d2df27)
   - 參考來源：https://www.linkedin.com/feed/update/urn:li:activity:7296696111023472640/
     《使用 DeepSeek-R1、Tavily 和 LangGraph 進行推理與遞歸檢索》
 
 > 這篇文章深入探討如何將 AI 推理模型與資訊檢索技術結合，並展示如何透過 DeepSeek-R1 的推理能力，搭配 Tavily 網路檢索技術，運用 LangGraph 構建 遞歸式資訊檢索代理 (Agentic Retrieval)，提升複雜查詢的準確性與效率。
 > 本研究提出了一種創新的 代理 AI (Agentic AI) 工作流程，讓 AI 不僅僅是檢索資訊，更能夠主動推理哪些內容有價值，進一步優化搜尋過程，以獲得更精準的回答。
 
-### 夜話 DeepSeek：技術原理與未來方向
+### 夜話 DeepSeek
 
-- 2025-02-06: [劉知遠詳解 DeepSeek 出圈背後的邏輯：自身演算法的創新以及 OpenAI 的傲慢](https://www.infoq.cn/article/hu9bSACTV9RrjcNPQts5)
+- 夜話 DeepSeek：技術原理與未來方向
+- 2025-02-06: [**劉知遠詳解 DeepSeek 出圈背後的邏輯：自身演算法的創新以及 OpenAI 的傲慢**](https://www.infoq.cn/article/hu9bSACTV9RrjcNPQts5)
 
 ![](https://static001.geekbang.org/infoq/cb/cb14e437bf08abe11535907b41f4927f.jpeg)
 
@@ -1017,9 +1016,23 @@ Citations:
 
 ![](https://static001.geekbang.org/infoq/91/91835ae3ce9e1bae50839a58809be691.jpeg)
 
-## DeepSeek FAQ 解析：開源、推理模型與科技巨頭的博弈
+### DeepSeek FAQ 解析
 
-- 2025-02-05: [DeepSeek FAQ 解析：開源、推理模型與科技巨頭的博弈](https://www.infoq.cn/article/POmBdaGGJp6CKPZNLRI4)
+- 2025-02-05: [**DeepSeek FAQ 解析：開源、推理模型與科技巨頭的博弈**](https://www.infoq.cn/article/POmBdaGGJp6CKPZNLRI4)
 - 原文連結： 
-  - 2025-01-27: DeepSeek FAQ
-  - https://stratechery.com/2025/deepseek-faq/
+- 2025-01-27: [**DeepSeek FAQ**](https://stratechery.com/2025/deepseek-faq/)
+
+## 2025-02-23
+
+- 2025-01-27: [**"Run DeepSeek R1 Dynamic 1.58-bit"**](https://unsloth.ai/blog/deepseekr1-dynamic)
+- Unsloth DeepSeek R1 Qwen2 7B Q8_0
+  - https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF
+  - Download link (Q8)
+    - https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF/resolve/main/DeepSeek-R1-Distill-Qwen-7B-Q8_0.gguf
+- 2025-02-06: [**"Train your own R1 reasoning model with Unsloth (GRPO)"**](https://unsloth.ai/blog/r1-reasoning)
+  - https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Llama3.1_(8B)-GRPO.ipynb
+
+### News & Podcast
+
+- 2025-02-03: [AI 軟體 | DeepSeek 事件將加速 AI Agent 的發展進程](https://uanalyze.com.tw/articles/6564910124)
+- 2024-02-04: [【天下零時差02.04.25】DeepSeek的崛起，輝達推了一把](https://podcasts.apple.com/tw/podcast/id1486227803?i=1000688633427)
