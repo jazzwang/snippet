@@ -8,6 +8,8 @@
   - https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation?view=graph-powershell-1.0
 - Github Repo
   - https://github.com/microsoftgraph/msgraph-sdk-powershell
+- Learning/Reference
+  - https://m365corner.com/index.html
 
 ## 2024-10-04
 
@@ -192,11 +194,11 @@ Connect-MgGraph
 
 - **Find tenant ID with PowerShell**
 
-    To find the tenant ID with Azure PowerShell, use the cmdlet `Get-AzTenant`.
+  To find the tenant ID with Azure PowerShell, use the cmdlet `Get-AzTenant`.
 
-    ```powershell
-    Connect-AzAccount
-    Get-AzTenant
-    ```
+  ```powershell
+  Connect-AzAccount
+  Get-AzTenant
+  ```
 
-    For more information, see the [Get-AzTenant](https://learn.microsoft.com/en-us/powershell/module/az.accounts/get-aztenant) cmdlet reference.
+  For more information, see the [Get-AzTenant](https://learn.microsoft.com/en-us/powershell/module/az.accounts/get-aztenant) cmdlet reference.
