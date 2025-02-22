@@ -246,3 +246,26 @@ WhenCreated                            : **/**/**** 1:49:19 PM
 > -   [Functionality for Enabling/Enforcing/Disabling Per-User MFA in Microsoft Graph](https://learn.microsoft.com/en-us/answers/questions/1144760/functionality-for-enabling-enforcing-disabling-per?WT.mc_id=DT-MVP-4015686)
 > -   相關文章
 >     -   [如何透過 Microsoft Graph PowerShell 設定使用者的 M365 授權](https://blog.miniasp.com/post/2023/09/20/Microsoft-Graph-PowerShell-Set-M365-License-Sku)
+
+### 後記
+
+- 2025-02-18: Find Azure AD PowerShell and MSOnline cmdlets in Microsoft Graph PowerShell
+  - 在 Microsoft Graph PowerShell 文件中有列舉 Cmdlet map ，也就是怎麼對應到舊的 MSOnline 跟 AzureAD 模組的 Cmdlet
+  - https://learn.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map
+
+- 感覺這些變化跟 Microsoft 產品的演進有關。
+  - 以前叫 `Office 365` ，後來改叫 `Microsoft 365`
+  - 以前叫 `Azure Active Directory (AD)` ，後來改叫 `Microsoft Entra`
+  - 所以 MSOnline 是指 Office 365 更早之前的 Microsoft Online
+
+- 根據上面的 [Cmdlet map](https://learn.microsoft.com/en-us/powershell/microsoftgraph/azuread-msoline-cmdlet-map) ， PowerShell Module 的演進可能是:
+
+```mermaid
+flowchart TD
+  A["MSOnline 1.0 <br/>(azureadps-1.0)"]
+  B["Azure AD Preview <br/>(azureadps-2.0-preview)"]
+  C["Azure AD PowerShell <br/>(azureadps-2.0)"]
+  D["Microsoft Graph PowerShell 1.0"]
+  A-->B-->C-->D
+```
+- 根據 https://github.com/Azure/azure-docs-powershell-azuread 的目錄結構，確實是如此。
