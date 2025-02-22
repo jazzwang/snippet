@@ -135,3 +135,34 @@ Citations:
 [6] https://stackoverflow.com/questions/56999525/how-to-mask-specific-values-in-particular-column-in-python
 [7] https://www.megabytesandme.com/using-python-to-anonymise-a-dataset/
 [8] https://www.kaggle.com/discussions/questions-and-answers/396820
+
+## 2025-02-22
+
+### Gretel PII redaction
+
+- https://gretel.ai/blog/detect-and-redact-pii-in-free-text-with-ner-in-transform-v2
+- example to anonymize PDF PII
+  - https://github.com/gretelai/gretel-blueprints/blob/main/docs/notebooks/transform/extract_and_anonymize_pdf_contents.ipynb
+- example to redact PII (structured data)
+  - https://github.com/gretelai/gretel-blueprints/blob/main/docs/notebooks/transform/redact_pii.ipynb
+
+### mostly.ai
+
+- 2023-04-25: Data anonymization in Python
+  - https://mostly.ai/blog/data-anonymization-in-python
+
+### node.js
+
+- https://libraries.io/npm/redact-pii
+- https://libraries.io/npm/eslint-plugin-pii
+
+### python
+
+- https://libraries.io/pypi/pii-extract
+- https://libraries.io/pypi/pii-transform
+- https://libraries.io/pypi/pii-preprocess
+- https://libraries.io/pypi/pii-extract-base
+- https://libraries.io/pypi/dbt-schema-builder
+- https://libraries.io/pypi/piicatcher
+- https://libraries.io/pypi/llm-guard
+- https://libraries.io/pypi/pii-optimized-logger
