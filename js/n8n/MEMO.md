@@ -188,3 +188,10 @@ Press "o" to open in Browser.
   - A: 可以
     - https://github.com/luke-lewandowski/n8n-cloudrun-example - 用 Terraform 佈署 n8n 跟相依的 PostgreSQL 到 Cloud Run
     - https://docs.n8n.io/hosting/installation/server-setups/google-cloud/#clone-configuration-repository - 官方文件（有提到 Cloud Run，但偏向用 GKE 佈署）
+
+## 2025-02-25
+
+- Awesome N8N: Top 100 Community Nodes
+  - https://github.com/restyler/awesome-n8n
+  - 提到一個整合 Ollama 的實作 - https://github.com/henriquemod/n8n-nodes-dolphin-mixtral
+- Q: n8n 匯出的 project，會長怎樣？看上面這個 [n8n-nodes-dolphin-mixtral](https://github.com/henriquemod/n8n-nodes-dolphin-mixtral) 目錄結構，幾乎感覺是一個 node.js 的專案。
