@@ -32,6 +32,13 @@ Log files:
 Caution: Log files may include sensitive information - redact before sharing.
 ```
 
+- Caching your GitHub credentials in Git
+  - https://docs.github.com/en/enterprise-cloud@latest/get-started/git-basics/caching-your-github-credentials-in-git
+- https://github.com/git-ecosystem/git-credential-manager
+  - https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md
+
+> If you're cloning GitHub repositories using **HTTPS**, we recommend you use <mark>GitHub CLI</mark> or <mark>Git Credential Manager (GCM)</mark> to remember your credentials.
+
 ### core.symlinks
 
 - 先前注意到 git for windows 如果用 symlink (ln -s) 在 Linux 機器上 checkout 不是正確的 link
