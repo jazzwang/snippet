@@ -78,3 +78,7 @@ jazzw@JazzBook:~/git/snippet$ git config set --global core.symlinks true
   ```bash
   git config core.sshCommand "ssh -i ~/.ssh/custom_id_rsa"
   ```
+  本來想說步驟上卡卡的，我先是 `git clone https://....` 才在 git repo 裡修改 `user.email`, `user.name` 並加上 `core.sshCommand`。後來仔細看才發現可以直接在 clone 的時候就設定 `core.sshCommand`
+  ```bash
+  git clone -c core.sshCommand="/usr/bin/ssh -i /home/me/.ssh/id_rsa_foo" git@github.com:me/repo.git
+  ```
