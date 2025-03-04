@@ -337,3 +337,7 @@ Sitemap: http://tokyo-kitchen.icook.network/sitemaps/sitemap.xml.gz
 ```
 
 ### Lesson Learned #3 - Crawl4ai 的 "AI" 是用在產生 Markdown
+
+## 2025-03-04
+
+- 評估可否擷取結構化網站文件當 RAG 的知識庫。
