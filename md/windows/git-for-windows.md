@@ -272,3 +272,28 @@ C:\Windows\System32\tree.com
   - Zstandard is a fast compression algorithm, providing high compression ratios.
 - 其他參考資料：
   - https://www.pascallandau.com/blog/setting-up-git-bash-mingw-msys2-on-windows/
+
+## 2025-03-06
+
+- 其實後來發現我不需要把 pacman 裝起來，就可以有 git for bash msys 版本的 `tree` 可以用
+- https://packages.msys2.org/packages/tree?variant=x86_64
+- https://mirror.msys2.org/msys/x86_64/tree-2.2.1-1-x86_64.pkg.tar.zst
+```bash
+jazzw@JazzBook:/tmp$ mkdir tree
+jazzw@JazzBook:/tmp$ cd tree/
+jazzw@JazzBook:/tmp/tree$ wget "https://mirror.msys2.org/msys/x86_64/tree-2.2.1-1-x86_64.pkg.tar.zst"
+jazzw@JazzBook:/tmp/tree$ tar -xv --zstd -f tree-2.2.1-1-x86_64.pkg.tar.zst
+.BUILDINFO
+.MTREE
+.PKGINFO
+usr/
+usr/bin/
+usr/bin/tree.exe
+usr/share/
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/tree.1.gz
+jazzw@JazzBook:/tmp/tree$ cp usr/bin/tree.exe ~/scoop/shims/
+jazzw@JazzBook:/tmp/tree$ which tree
+/c/Users/jazzw/scoop/shims/tree
+```
