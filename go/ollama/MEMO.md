@@ -57,17 +57,17 @@ Setting up pci.ids (0.0~2022.01.22-1) ...
 Setting up lshw (02.19.git.2021.06.19.996aaad9c7-2build1) ...
 Setting up usb.ids (2022.04.02-1) ...
 Processing triggers for man-db (2.10.2-1) ...
-/content# 
+/content#
 /content# whoami
 root
-/content# 
+/content#
 ```
-- 
+-
 ```
 /content# ollama serve &
 [1] 4951
 /content# Couldn't find '/root/.ollama/id_ed25519'. Generating new private key.
-Your new public key is: 
+Your new public key is:
 
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICbuazAXhCQ1plZ/3iB8NVjBg1dqoh2tVR4xKvad5jCp
 
@@ -77,7 +77,7 @@ time=2024-10-15T09:17:27.814Z level=INFO source=images.go:761 msg="total unused 
 time=2024-10-15T09:17:27.814Z level=INFO source=routes.go:1205 msg="Listening on 127.0.0.1:11434 (version 0.3.13)"
 time=2024-10-15T09:17:27.815Z level=INFO source=common.go:135 msg="extracting embedded files" dir=/tmp/ollama2899235374/runners
 
-/content# 
+/content#
 /content# time=2024-10-15T09:18:18.263Z level=INFO source=common.go:49 msg="Dynamic LLM libraries" runners="[cpu cpu_avx cpu_avx2 cuda_v11 cuda_v12 rocm_v60102]"
 time=2024-10-15T09:18:18.264Z level=INFO source=gpu.go:199 msg="looking for compatible GPUs"
 time=2024-10-15T09:18:18.299Z level=INFO source=gpu.go:347 msg="no compatible GPUs were discovered"
@@ -110,21 +110,21 @@ Reading state information... Done
 E: Unable to locate package lspci
 /content# apt-get update; apt-get -y install lshw
 Get:1 https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/ InRelease [3,626 B]
-Ign:2 https://r2u.stat.illinois.edu/ubuntu jammy InRelease                                                                                                  
-Get:3 https://r2u.stat.illinois.edu/ubuntu jammy Release [5,713 B]                                                                                          
-Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]                                                               
-Get:5 https://r2u.stat.illinois.edu/ubuntu jammy Release.gpg [793 B]                                                                   
-Hit:6 http://archive.ubuntu.com/ubuntu jammy InRelease                                                                                             
-Get:7 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]                                           
-Get:8 https://r2u.stat.illinois.edu/ubuntu jammy/main all Packages [8,387 kB]             
-Hit:9 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy InRelease                                                
-Get:10 https://r2u.stat.illinois.edu/ubuntu jammy/main amd64 Packages [2,595 kB]                                           
-Get:11 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1,160 kB]   
-Hit:12 http://archive.ubuntu.com/ubuntu jammy-backports InRelease                
+Ign:2 https://r2u.stat.illinois.edu/ubuntu jammy InRelease
+Get:3 https://r2u.stat.illinois.edu/ubuntu jammy Release [5,713 B]
+Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:5 https://r2u.stat.illinois.edu/ubuntu jammy Release.gpg [793 B]
+Hit:6 http://archive.ubuntu.com/ubuntu jammy InRelease
+Get:7 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:8 https://r2u.stat.illinois.edu/ubuntu jammy/main all Packages [8,387 kB]
+Hit:9 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy InRelease
+Get:10 https://r2u.stat.illinois.edu/ubuntu jammy/main amd64 Packages [2,595 kB]
+Get:11 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1,160 kB]
+Hit:12 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
 Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2,602 kB]
-Get:14 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2,326 kB]        
+Get:14 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2,326 kB]
 Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,449 kB]
-Fetched 18.8 MB in 2s (10.0 MB/s)                                                                
+Fetched 18.8 MB in 2s (10.0 MB/s)
 Reading package lists... Done
 W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu jammy InRelease' does not seem to provide it (sources.list entry misspelt?)
 Reading package lists... Done
@@ -140,7 +140,7 @@ After this operation, 2,988 kB of additional disk space will be used.
 Get:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 lshw amd64 02.19.git.2021.06.19.996aaad9c7-2build1 [321 kB]
 Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 pci.ids all 0.0~2022.01.22-1 [251 kB]
 Get:3 http://archive.ubuntu.com/ubuntu jammy/main amd64 usb.ids all 2022.04.02-1 [219 kB]
-Fetched 790 kB in 1s (759 kB/s)  
+Fetched 790 kB in 1s (759 kB/s)
 Selecting previously unselected package lshw.
 (Reading database ... 119626 files and directories currently installed.)
 Preparing to unpack .../lshw_02.19.git.2021.06.19.996aaad9c7-2build1_amd64.deb ...
@@ -178,9 +178,9 @@ WARNING: No NVIDIA/AMD GPU detected. Ollama will run in CPU-only mode.
 ```bash
 /content# ollama serve &
 [1] 3754
-/content# 
+/content#
 /content# Couldn't find '/root/.ollama/id_ed25519'. Generating new private key.
-Your new public key is: 
+Your new public key is:
 
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ4vbJSYREk43yQDwAUWkZqvQmbE/PHYZfhOTAyNGro6
 
@@ -190,7 +190,7 @@ time=2024-10-15T09:28:46.185Z level=INFO source=images.go:761 msg="total unused 
 time=2024-10-15T09:28:46.185Z level=INFO source=routes.go:1205 msg="Listening on 127.0.0.1:11434 (version 0.3.13)"
 time=2024-10-15T09:28:46.185Z level=INFO source=common.go:135 msg="extracting embedded files" dir=/tmp/ollama1573333462/runners
 
-/content# 
+/content#
 /content# time=2024-10-15T09:28:57.961Z level=INFO source=common.go:49 msg="Dynamic LLM libraries" runners="[cpu_avx cpu_avx2 cuda_v11 cuda_v12 rocm_v60102 cpu]"
 time=2024-10-15T09:28:57.961Z level=INFO source=gpu.go:199 msg="looking for compatible GPUs"
 time=2024-10-15T09:28:57.993Z level=INFO source=gpu.go:347 msg="no compatible GPUs were discovered"
@@ -203,8 +203,8 @@ time=2024-10-15T09:28:57.993Z level=INFO source=types.go:107 msg="inference comp
 ```python
 !ollama list
 
-NAME               ID              SIZE      MODIFIED      
-llama3.2:latest    a80c4f17acd5    2.0 GB    5 minutes ago    
+NAME               ID              SIZE      MODIFIED
+llama3.2:latest    a80c4f17acd5    2.0 GB    5 minutes ago
 
 %pip install -U langchain-ollama
 
@@ -229,7 +229,7 @@ Let's break it down.
 
 MoE stands for Meta Optimizer, but I believe you might be referring to Multi-Objective Optimization (MoO), which is related to the concept of Multi-Objectives in Machine Learning and AI.
 
-However, another possibility is MoE being an acronym for a specific algorithm or technique used in some AI applications. 
+However, another possibility is MoE being an acronym for a specific algorithm or technique used in some AI applications.
 
 Could you please clarify or provide more context about MoE in AI?
 ```
@@ -489,3 +489,64 @@ eval duration:        3m20.211s
 eval rate:            8.78 tokens/s
 >>> Send a message (/? for help)
 ```
+
+## 2025-03-06
+
+- 怎麼查 context window size ?
+- 需求：使用 ollama + aider 時，會遇到類似這種警告。那該怎麼查每個 model 的 max context window size 呢？
+```bash
+==================
+$ 0.0000   41,139 tokens total
+           -8,371 tokens remaining, window exhausted (use /drop or /clear to make space)
+           32,768 tokens max context window size
+
+Executing: /ask could you give me a high-level overview of this code base?
+Warning: it's best to only add files that need changes to the chat.
+https://aider.chat/docs/troubleshooting/edit-errors.html
+Your estimated chat context of 40,820 tokens exceeds the 32,768 token limit for ollama/qwen2.5-coder!
+To reduce the chat context:
+- Use /drop to remove unneeded files from the chat
+- Use /clear to clear the chat history
+- Break your code into smaller files
+It's probably safe to try and send the request, most providers won't charge if the context limit is exceeded.
+Try to proceed anyway? (Y)es/(N)o [Yes]:
+```
+- 透過 `ollama show <model_name>` 可以查到 `context length`
+```bash
+jazzw@JazzBook:~/git/snippet/go/ollama$ ollama show qwen2.5-coder:latest
+  Model
+    architecture        qwen2
+    parameters          7.6B
+    context length      32768
+    embedding length    3584
+    quantization        Q4_K_M
+
+  System
+    You are Qwen, created by Alibaba Cloud. You are a helpful assistant.
+
+  License
+    Apache License
+    Version 2.0, January 2004
+```
+- 比較奇怪的是 https://qwenlm.github.io/blog/qwen2.5-coder-family/#diverse-rich-model-sizes 中提到 Qwen2.5-Coder-7B	的 context window 是 `128K`
+```
+128,000
+ 32,768 -- ollama 下載到的 qwen2.5-coder:latest 是 32768
+```
+- 查了一下 LM Studio 的版本
+  - https://huggingface.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF
+  - 有寫到支援最大 128K tokens，但需要 yarn rope settings
+```
+Long context: supports up to 128K tokens with yarn rope settings
+```
+- 查了一下原始阿里巴巴釋出的 https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct
+    - Context Length: Full 131,072 tokens
+        - Please refer to [this section](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct#processing-long-texts) for detailed instructions on how to deploy Qwen2.5 for handling long texts.
+  - [這段文件](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct#processing-long-texts) 有寫到預設是 32,768 ，如果要改的話，必須修改 `config.json` 來啟用 [YaRN](https://arxiv.org/abs/2309.00071)
+    - 2023-11-01: [YaRN: Efficient Context Window Extension of Large Language Models](https://arxiv.org/abs/2309.00071)
+    - The current `config.json` is **set for context length up to <mark>32,768 tokens</mark>.** To handle extensive inputs exceeding 32,768 tokens, we utilize [YaRN](https://arxiv.org/abs/2309.00071), a technique for enhancing model length extrapolation, ensuring optimal performance on lengthy texts.
+  - [這段文件](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct#processing-long-texts) 也特別提到推薦使用 vLLM
+    - For deployment, we **recommend using vLLM**. Please refer to our [Documentation](https://qwen.readthedocs.io/en/latest/deployment/vllm.html) for usage if you are not familar with vLLM. Presently, <mark>vLLM only supports static YARN</mark>, which means the scaling factor remains constant regardless of input length, **potentially impacting performance on shorter texts**. <mark>We advise adding the `rope_scaling` configuration only when processing long contexts is required.</mark>
+- https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct-GGUF 有寫到
+  - Context Length: <mark>Full `32,768` tokens</mark>
+    - Note: Currently, only **vLLM** supports YARN for length extrapolating. If you want to <mark>process sequences up to `131,072` tokens, please refer to **non-GGUF models**.<mark>
