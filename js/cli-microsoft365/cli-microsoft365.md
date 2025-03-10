@@ -121,3 +121,48 @@ Commands groups:
 
 jazzw@JazzBook:~/git/snippet/js/cli-microsoft365$
 ```
+
+## 2025-03-10
+
+```bash
+jazzw@JazzBook:~/git/snippet/js/cli-microsoft365$ cd ~/git/snippet/js/cli-microsoft365/
+jazzw@JazzBook:~/git/snippet/js/cli-microsoft365$ export PATH=$PATH:~/git/snippet/js/cli-microsoft365/node_modules/.bin/
+jazzw@JazzBook:~/git/snippet/js/cli-microsoft365$ m365 setup
+Welcome to the CLI for Microsoft 365 setup!
+This command will guide you through the process of configuring the CLI for your needs.
+Please, answer the following questions and we'll define a set of settings to best match how you intend to use the CLI.
+
+✔ CLI for Microsoft 365 requires a Microsoft Entra app. Do you want to create a new app registration or use an existing one? Create a new app registration
+
+✔ What scopes should the new app registration have? User.Read (you will need to add the necessary permissions yourself)
+
+✔ How do you plan to use the CLI? Interactively
+
+✔ How experienced are you in using the CLI? Beginner
+
+✔ Based on your preferences, we'll configure the following settings:
+- Entra app: Create a new app registration with minimal scopes
+- autoOpenLinksInBrowser: true
+- copyDeviceCodeToClipboard: true
+- output: text
+- printErrorsAsPlainText: true
+- prompt: true
+- showHelpOnFailure: true
+- helpMode: full
+- authType: browser
+
+You can change any of these settings later using the `m365 cli config set` command or reset them to default using `m365 cli config reset`.
+
+Do you want to apply these settings now? Yes
+
+
+Configuring settings...
+
+✔ CLI for Microsoft 365 will now sign in to your Microsoft 365 tenant as Microsoft Azure CLI to create a new app registration. Continue? Yes
+
+To sign in, use the web browser that just has been opened. Please sign-in there.
+```
+- login in the web browser
+```
+Error: AxiosError: Request failed with status code 403
+```
