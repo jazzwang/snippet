@@ -54,3 +54,10 @@ def run(playwright: Playwright) -> None:
 with sync_playwright() as playwright:
     run(playwright)
 ```
+
+## 2025-03-11
+
+- Authentication
+  - https://playwright.dev/python/docs/auth
+- Test generator
+  - https://playwright.dev/python/docs/codegen#generating-locators
