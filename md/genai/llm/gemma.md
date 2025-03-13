@@ -245,3 +245,18 @@ llama_new_context_with_model: graph nodes  = 1690
 llama_new_context_with_model: graph splits = 2
 time=2025-01-14T21:43:11.766+08:00 level=INFO source=server.go:594 msg="llama runner started in 3.07 seconds"
 ```
+
+## 2025-03-13
+
+- 火熱登場 -- Gemma 3
+- LM Studio
+  - https://huggingface.co/lmstudio-community/gemma-3-12b-it-GGUF
+- 因為 ollama 直接下載要很久，用 wget 比較快
+```bash
+jazzw@JazzBook:~/.ollama$ ollama run hf.co/lmstudio-community/gemma-3-12b-it-GGUF:Q4_K_M
+```
+```bash
+jazzw@JazzBook:~/.ollama$ wget https://huggingface.co/lmstudio-community/gemma-3-12b-it-GGUF/resolve/main/gemma-3-12b-it-Q4_K_M.gguf
+```
+- https://huggingface.co/lmstudio-community/gemma-3-12b-it-GGUF/blob/main/gemma-3-12b-it-Q4_K_M.gguf
+  - Size of remote file: 7.3 GB
