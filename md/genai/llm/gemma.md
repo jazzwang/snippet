@@ -263,6 +263,7 @@ jazzw@JazzBook:~/.ollama$ wget https://huggingface.co/lmstudio-community/gemma-3
 
 ## 2025-03-14
 
+- get Gemma 3 modelfile from Github Codespace `codespaces-blank` (用 Codespace 下載 GGUF 模型檔網路速度比較快，雖然跑不動，但方便可以拿來觀察不同的開源 LLM 模型)
 ```bash
 @jazzwang ➜ /workspaces/codespaces-blank $ ollama show hf.co/lmstudio-community/gemma-3-12b-it-GGUF:Q4_K_M --modelfile
 [GIN] 2025/03/14 - 04:00:10 | 200 |     700.959µs |       127.0.0.1 | HEAD     "/"
@@ -287,3 +288,108 @@ TEMPLATE """{{- range $i, $_ := .Messages }}
 PARAMETER stop <end_of_turn>
 PARAMETER temperature 0.1
 ```
+- ( 2025-03-14 12:05:01 )
+- 匯入筆電 Ollama
+```bash
+jazzw@JazzBook:~/.ollama$ ls -al
+total 7129515
+drwxr-xr-x 1 jazzw 197609          0 三月   14 11:58 .
+drwxr-xr-x 1 jazzw 197609          0 三月   14 12:03 ..
+-rw-r--r-- 1 jazzw 197609        461 三月   14 11:58 gemma-3-12b-it-q4_k_m
+-rw-r--r-- 1 jazzw 197609 7300574976 三月   12 21:36 gemma-3-12b-it-Q4_K_M.gguf
+-rw-r--r-- 1 jazzw 197609       1526 三月    8 13:56 history
+-rw-r--r-- 1 jazzw 197609        387 十二月 26 23:21 id_ed25519
+-rw-r--r-- 1 jazzw 197609         81 十二月 26 23:21 id_ed25519.pub
+drwxr-xr-x 1 jazzw 197609          0 三月    8 12:34 models
+-rw-r--r-- 1 jazzw 197609       1630 三月    8 13:53 qwen25-7b-instruct-1m-q4_k_m
+FROM gemma-3-12b-it-Q4_K_M.gguf
+TEMPLATE """{{- range $i, $_ := .Messages }}
+{{- $last := eq (len (slice $.Messages $i)) 1 }}
+{{- if or (eq .Role "user") (eq .Role "system") }}<start_of_turn>user
+{{ .Content }}<end_of_turn>
+{{ if $last }}<start_of_turn>model
+{{ end }}
+{{- else if eq .Role "assistant" }}<start_of_turn>model
+{{ .Content }}{{ if not $last }}<end_of_turn>
+{{ end }}
+{{- end }}
+{{- end }}"""
+PARAMETER stop <end_of_turn>
+PARAMETER temperature 0.1
+jazzw@JazzBook:~/.ollama$ ollama create gemma-3-12b-it:q4_k_m -f gemma-3-12b-it-q4_k_m
+gathering model components
+copying file sha256:9610e3e07375303f6cd89086b496bcc1ab581177f52042eff536475a29283ba2 100%
+parsing GGUF
+using existing layer sha256:9610e3e07375303f6cd89086b496bcc1ab581177f52042eff536475a29283ba2
+creating new layer sha256:e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348
+creating new layer sha256:0a74a8735bf3ffff4537b6c6bc9a4bc97a28c48f2fd347e806cca4d5001560f6
+writing manifest
+success
+jazzw@JazzBook:~/.ollama$ ollama list
+NAME                            ID              SIZE      MODIFIED
+gemma-3-12b-it:q4_k_m           56a4b304a208    7.3 GB    38 seconds ago
+qwen25-7b-instruct-1m:q4_k_m    80b818033c9f    4.7 GB    5 days ago
+qwen2.5-coder:latest            2b0496514337    4.7 GB    2 weeks ago
+deepseek-r1:8b                  28f8fd6cdc67    4.9 GB    5 weeks ago
+```
+- 先觀察一下 context window 大小 - Gemma 3 => `131K` tokens
+```bash
+jazzw@JazzBook:~/.ollama$ ollama show gemma-3-12b-it:q4_k_m
+  Model
+    architecture        gemma3
+    parameters          11.8B
+    context length      131072
+    embedding length    3840
+    quantization        Q4_K_M
+
+  Parameters
+    stop           "<end_of_turn>"
+    temperature    0.1
+
+```
+- 來測試一下 Gemma 3 的程式解析能力
+```bash
+jazzw@JazzBook:~/git/icap/CLead$ export OLLAMA_API_BASE=http://127.0.0.1:11434
+jazzw@JazzBook:~/git/icap/CLead$ aider --model ollama/gemma-3-12b-it:q4_k_m *.pm *.pl
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+You can skip this check with --no-gitignore
+Add .aider* to .gitignore (recommended)? (Y)es/(N)o [Yes]:
+Added .aider* to .gitignore
+Can not create C:\Users\jazzw\git\icap\CLead\*.pm, skipping.
+Aider v0.75.1
+Model: ollama/gemma-3-12b-it:q4_k_m with whole edit format
+Git repo: .git with 7 files
+Repo-map: using 4096 tokens, auto refresh
+Added clead_feed.pl to the chat.
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+clead_feed.pl
+> /tokens
+
+
+Approximate context window usage for ollama/gemma-3-12b-it:q4_k_m, in tokens:
+
+$ 0.0000      463 system messages
+$ 0.0000       77 repository map  use --map-tokens to resize
+$ 0.0000    9,411 clead_feed.pl   /drop to remove
+==================
+$ 0.0000    9,951 tokens total
+          121,121 tokens remaining in context window
+          131,072 tokens max context window size
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+clead_feed.pl
+> /ask could you give me a high-level overview of this code base?
+
+litellm.APIConnectionError: OllamaException - {"error":"llama runner process has terminated: this model is not supported by your version of Ollama. You may need to upgrade"}
+Retrying in 0.2 seconds...
+litellm.APIConnectionError: OllamaException - {"error":"llama runner process has terminated: this model is not supported by your version of Ollama. You may need to upgrade"}
+Retrying in 0.5 seconds...
+litellm.APIConnectionError: OllamaException - {"error":"llama runner process has terminated: this model is not supported by your version of Ollama. You may need to upgrade"}
+Retrying in 1.0 seconds...
+litellm.APIConnectionError: OllamaException - {"error":"llama runner process has terminated: this model is not supported by your version of Ollama. You may need to upgrade"}
+Retrying in 2.0 seconds...
+litellm.APIConnectionError: OllamaException - {"error":"llama runner process has terminated: this model is not supported by your version of Ollama. You may need to upgrade"}
+Retrying in 4.0 seconds...
+
+^C again to exit
+```
+- 好吧～ Ollama 還沒支援 Gemma 3 (太新了) -- 除非改用 LM Studio (畢竟我是在 LM Studio 找到的模型 HuggingFace 網址)
