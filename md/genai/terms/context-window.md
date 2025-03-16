@@ -44,3 +44,9 @@ Citations:
 [19] https://research.ibm.com/blog/larger-context-window
 [20] https://winder.ai/llm-prompt-best-practices-large-context-windows/
 [21] https://datasciencedojo.com/blog/the-llm-context-window-paradox/
+
+## 2025-03-16
+
+- 2024-11-14: Rethinking LLM inference: Why developer AI needs a different approach
+  - https://www.augmentcode.com/blog/rethinking-llm-inference-why-developer-ai-needs-a-different-approach
+  - 探討了 context window 在 code assistant 領域的重要性

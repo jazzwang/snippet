@@ -21,6 +21,7 @@
 | [Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) | 417,735  | Yes |
 | [Cline (prev. Claude Dev)](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev) | 132,099  | Yes |
 | [Llama Coder](https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder) | 45,879 | Yes |
+| [Augment](https://marketplace.visualstudio.com/items?itemName=augment.vscode-augment) | 28,103 | No |
 | [twinny](https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny) | 26,176 | Yes |
 | [AskGodi](https://marketplace.visualstudio.com/items?itemName=AskCodi.askcodi-vscode) | 12,276  | <span class="red">No</span> |
 | [Copilot Arena](https://marketplace.visualstudio.com/items?itemName=copilot-arena.copilot-arena) | 5,514 | Yes |
