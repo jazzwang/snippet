@@ -9,6 +9,9 @@
 - ( 2025-03-15 21:05:49 )
 - 想法： `aider` 目前並沒有支援可以呼叫外部工具的作法，像是可否請 `aider` 的 `/ask` 模式做 web search 並彙整到 Markdown
 - 搜尋：找到一個 YouTube 影片 [Use MCP Servers and Tools in Aider](https://www.youtube.com/watch?v=OM1h4YDPjRU) 提到他寫了一個工具，可以讓 `aider` 知道有 MCP Tool
+  - 相關 Aider Github issues
+    - https://github.com/Aider-AI/aider/issues/2525
+    - https://github.com/Aider-AI/aider/issues/3314
 
 ### 初步理解 MCP 是什麼
 

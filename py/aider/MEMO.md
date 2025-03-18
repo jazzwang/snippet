@@ -702,3 +702,15 @@ readmoo_id = "0"
 > 3. **Use of Constants**: If "已下架" and "0" are used in multiple places, consider defining them as constants at the top of your file. This way, if you need to change them later, you only have to do it in one place.
 > 
 > In summary, while the current approach is functional, separating the assignments and adding comments can improve readability and maintainability of the code.
+
+## 2025-03-18
+
+- DRAFT! Navigating Large Codebases: Aider's Read-Only Stub Solution
+  - https://www.youtube.com/watch?v=XE6v_RGe0-U
+  - https://github.com/Aider-AI/aider/pull/3056
+- Draft: New /export-context Command for NotebookLM Integration #3476
+  - https://github.com/Aider-AI/aider/pull/3476
+  - https://www.youtube.com/watch?v=WNdEX9IAbDo 這個影片示範了一個很有趣的概念：把整個龐大的 codebase 轉成 context 切成適當的 chunk 然後餵給 Google NotebookLM
+- Aider Integration with Copilot Proxy: Expanding Language Model Access
+  - https://www.youtube.com/watch?v=i1I2CAPOXHM
+  - 這個應該類似用 liteLLM 來當 OpenAI compatible API 打到 Github Copilot 的公開 Model
