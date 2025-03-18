@@ -541,3 +541,21 @@ Exception: Ollama Error - {'error': 'POST predict: Post "http://127.0.0.1:54043/
 Retrying in 0.5 seconds...
 ```
 - 還是失敗，看起來可以用 `ollama run` 可是不能整合 `aider`
+
+## 2024-03-18
+
+### Cloud Run
+
+- 2025-03-12: [How to deploy serverless AI with Gemma 3 on Cloud Run](https://cloud.google.com/blog/products/ai-machine-learning/serverless-ai-with-gemma-3-on-cloud-run)
+- Run LLM inference on Cloud Run GPUs with Ollama 
+  - https://cloud.google.com/run/docs/tutorials/gpu-gemma-with-ollama
+- Run LLM inference on Cloud Run GPUs with vLLM 
+  - https://cloud.google.com/run/docs/tutorials/gpu-gemma2-with-vllm
+- Run LLM inference on Cloud Run GPUs with Hugging Face TGI 
+  - https://cloud.google.com/run/docs/tutorials/gpu-llama3-with-tgi
+- Best practices: AI inference on Cloud Run with GPUs 
+  - https://cloud.google.com/run/docs/configuring/services/gpu-best-practices
+- GPU support for services 
+  - https://cloud.google.com/run/docs/configuring/services/gpu
+- 2024-08-22: How to run LLM inference on Cloud Run GPUs with vLLM and the OpenAI Python SDK
+  - https://codelabs.developers.google.com/codelabs/how-to-run-inference-cloud-run-gpu-vllm#0
