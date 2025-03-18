@@ -559,3 +559,10 @@ Retrying in 0.5 seconds...
   - https://cloud.google.com/run/docs/configuring/services/gpu
 - 2024-08-22: How to run LLM inference on Cloud Run GPUs with vLLM and the OpenAI Python SDK
   - https://codelabs.developers.google.com/codelabs/how-to-run-inference-cloud-run-gpu-vllm#0
+
+### News
+
+- 2025-03-12: Gemma 3 Tech Report
+  - https://storage.googleapis.com/deepmind-media/gemma/Gemma3Report.pdf
+- 2025-03-12: [Welcome Gemma 3: Google's all new multimodal, multilingual, long context open LLM](https://huggingface.co/blog/gemma3)
+- https://huggingface.co/ggml-org/gemma-3-12b-it-GGUF/tree/main
