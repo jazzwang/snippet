@@ -18,3 +18,5 @@
 
 - 2024-09-05 - Meet Yi-Coder: A Small but Mighty LLM for Code
   - https://01-ai.github.io/blog.html?post=en/2024-09-05-A-Small-but-Mighty-LLM-for-Code.md
+- Huggingface Model page
+  - https://huggingface.co/01-ai/Yi-Coder-9B-Chat
