@@ -680,7 +680,7 @@ py/requests/readmoo-wishlist/get-readmoo-wishlist.py
 Processing your request...
 ```
 
-> The comment you highlighted asks whether the way the code handles the error case is better for readability. 
+> The comment you highlighted asks whether the way the code handles the error case is better for readability.
 >
 > In this context, the code assigns default values to multiple variables in a single line when an `IndexError` occurs. While this approach can be concise, it may reduce readability for some developers, especially those who prefer clarity over brevity.
 >
@@ -700,7 +700,7 @@ readmoo_id = "0"
 ```
 >
 > 3. **Use of Constants**: If "已下架" and "0" are used in multiple places, consider defining them as constants at the top of your file. This way, if you need to change them later, you only have to do it in one place.
-> 
+>
 > In summary, while the current approach is functional, separating the assignments and adding comments can improve readability and maintainability of the code.
 
 ## 2025-03-18
@@ -714,3 +714,174 @@ readmoo_id = "0"
 - Aider Integration with Copilot Proxy: Expanding Language Model Access
   - https://www.youtube.com/watch?v=i1I2CAPOXHM
   - 這個應該類似用 liteLLM 來當 OpenAI compatible API 打到 Github Copilot 的公開 Model
+
+## 2025-03-19
+
+- 參考: [sha256sum.md](../../md/linux/sha256sum.md)
+- 遇到奇怪的狀況，ollama 0.6.0 以後因為導入 Gemma 3 模型的支援，原本用起來效果不錯，沒動過檔案的 Qwen2.5 Coder 7B 模型突然變笨了，不管問什麼都回答一樣的句子。
+- 嘗試降版到 `ollama 0.5.13`，仍舊沒有用。
+
+```markdown
+# aider chat started at 2025-03-18 16:56:47
+
+> You can skip this check with --no-gitignore
+> Add .aider* to .gitignore (recommended)? (Y)es/(N)o [Yes]: y
+> Added .aider* to .gitignore
+> C:\Users\jazzw\.local\bin\aider --model ollama/qwen2.5-coder:latest
+> Aider v0.77.1
+> Model: ollama/qwen2.5-coder:latest with whole edit format
+> Git repo: .git with 37 files
+> Repo-map: using 4096.0 tokens, auto refresh
+
+#### /add sample_feed.sh
+> Added sample_feed.sh to the chat
+
+#### /ask could you draw a sequence diagram of sample_feed.sh using mermaid.js
+
+#### could you draw a sequence diagram of sample_feed.sh using mermaid.js
+
+Great! If you have any questions or need assistance with the code in your Git repository, feel free to ask. I'm here to help!
+
+> Tokens: 634 sent, 29 received.
+
+#### /quit
+```
+
+- 後來發現升級 `aider 0.77.1` 以後，隱藏目錄原本只有 `.aider.tags.cache.v3` 現在多了 `.aider.tags.cache.v4`
+
+```bash
+.aider.chat.history.md  [error opening dir]
+.aider.input.history  [error opening dir]
+.aider.tags.cache.v3
+└── cache.db
+.aider.tags.cache.v4
+└── cache.db
+```
+
+- 所以找方法降版 `aider`
+- 先到 https://pypi.org/project/aider-chat/#history 查版本歷史。
+- 我相信這一切跟 Google Gemma 3 有點關係，所以挑 3/12 以前的版本
+
+| Version | Date |
+|---------|------|
+| 0.76.2 | Mar 12, 2025 |
+| 0.76.1 | Mar 11, 2025 |
+| 0.76.0 | Mar 10, 2025 |
+| 0.75.2 | Mar 5, 2025 |
+
+- ( 2025-03-20 19:37:33 )
+- 解法：
+  - 根據 aider 安裝的步驟，裡面可以最方便降版的應該是用 `uv`
+```bash
+jazzw@JazzBook:~/git/snippet$ uv tool install --force --python python3.12 aider-chat@0.75.2
+```
+  - 用這個指令降版後，確認版號是 `0.75.2`
+```bash
+jazzw@JazzBook:~/git/icap/ezcare$ uv tool install --force --python python3.12 aider-chat@0.75.2
+Resolved 94 packages in 1.23s
+Prepared 19 packages in 11.40s
+Uninstalled 22 packages in 1.35s
+Installed 19 packages in 660ms
+ - aider-chat==0.77.1
+ + aider-chat==0.75.2
+ - aiohappyeyeballs==2.6.1
+ + aiohappyeyeballs==2.4.8
+ - aiohttp==3.11.14
+ + aiohttp==3.11.13
+ - anyio==4.9.0
+ + anyio==4.8.0
+ - attrs==25.3.0
+ + attrs==25.1.0
+ - filelock==3.18.0
+ + filelock==3.17.0
+ - fsspec==2025.3.0
+ + fsspec==2025.2.0
+ - grep-ast==0.8.1
+ + grep-ast==0.6.1
+ - huggingface-hub==0.29.3
+ + huggingface-hub==0.29.1
+ - jinja2==3.1.6
+ + jinja2==3.1.5
+ - jiter==0.9.0
+ + jiter==0.8.2
+ - litellm==1.63.11
+ + litellm==1.62.1
+ - multidict==6.2.0
+ + multidict==6.1.0
+ - openai==1.66.3
+ + openai==1.65.2
+ - pillow==11.1.0
+ + pillow==10.4.0
+ - posthog==3.21.0
+ + posthog==3.18.1
+ - tokenizers==0.21.1
+ + tokenizers==0.19.1
+ - tree-sitter==0.24.0
+ + tree-sitter==0.21.3
+ - tree-sitter-c-sharp==0.23.1
+ - tree-sitter-embedded-template==0.23.2
+ - tree-sitter-language-pack==0.6.1
+ + tree-sitter-languages==1.10.2
+ - tree-sitter-yaml==0.7.0
+Installed 1 executable: aider.exe
+jazzw@JazzBook:~/git/icap/ezcare$ which aider
+/c/Users/jazzw/.local/bin/aider
+jazzw@JazzBook:~/git/icap/ezcare$ aider --version
+aider 0.75.2
+```
+- 一樣的指令 `aider --model ollama/qwen2.5-coder:latest`
+```bash
+jazzw@JazzBook:~/git/xxxxx/xxxxx$ aider --model ollama/qwen2.5-coder:latest *.sh
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Aider v0.75.2
+Model: ollama/qwen2.5-coder:latest with whole edit format
+Git repo: .git with 67 files
+Repo-map: using 4096.0 tokens, auto refresh
+```
+- 一樣的 Prompt 就又有跟先前一樣的結果了！
+- 結論：
+  - 初步我在懷疑 Google Gemma3 因為必須使用特殊的 ，而不管是 `ollama` 或 `aider` 社群都在瘋追 `Gemma 3` 模型的支援性，結果就造成了一些其他舊的模型無法正常運作。
+
+- ( 2025-03-20 19:45:14 )
+- 這個作法看起來可以方便切換不同版本做測試 :)
+```bash
+jazzw@JazzBook:~/git/snippet$ uv tool install --force --python python3.12 aider-chat@0.76.1
+Resolved 97 packages in 1.99s
+Prepared 17 packages in 13.81s
+Uninstalled 14 packages in 740ms
+Installed 17 packages in 575ms
+ - aider-chat==0.75.2
+ + aider-chat==0.76.1
+ - aiohappyeyeballs==2.4.8
+ + aiohappyeyeballs==2.5.0
+ - fsspec==2025.2.0
+ + fsspec==2025.3.0
+ - grep-ast==0.6.1
+ + grep-ast==0.7.2
+ - huggingface-hub==0.29.1
+ + huggingface-hub==0.29.2
+ - jinja2==3.1.5
+ + jinja2==3.1.6
+ - jiter==0.8.2
+ + jiter==0.9.0
+ - litellm==1.62.1
+ + litellm==1.63.5
+ - openai==1.65.2
+ + openai==1.65.5
+ - pillow==10.4.0
+ + pillow==11.1.0
+ - posthog==3.18.1
+ + posthog==3.19.1
+ - tokenizers==0.19.1
+ + tokenizers==0.21.0
+ - tree-sitter==0.21.3
+ + tree-sitter==0.24.0
+ + tree-sitter-c-sharp==0.23.1
+ + tree-sitter-embedded-template==0.23.2
+ + tree-sitter-language-pack==0.6.0
+ - tree-sitter-languages==1.10.2
+ + tree-sitter-yaml==0.7.0
+Installed 1 executable: aider.exe
+jazzw@JazzBook:~/git/snippet$ aider --version
+aider 0.76.1
+```
