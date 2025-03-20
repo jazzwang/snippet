@@ -750,12 +750,17 @@ Great! If you have any questions or need assistance with the code in your Git re
 - 後來發現升級 `aider 0.77.1` 以後，隱藏目錄原本只有 `.aider.tags.cache.v3` 現在多了 `.aider.tags.cache.v4`
 
 ```bash
+jazzw@JazzBook:~/git/xxxxx/xxxxx$ tree .aider.*
 .aider.chat.history.md  [error opening dir]
 .aider.input.history  [error opening dir]
 .aider.tags.cache.v3
-└── cache.db
+├── cache.db
+├── cache.db-shm
+└── cache.db-wal
 .aider.tags.cache.v4
 └── cache.db
+
+2 directories, 6 files
 ```
 
 - 所以找方法降版 `aider`
@@ -840,7 +845,18 @@ Repo-map: using 4096.0 tokens, auto refresh
 ```
 - 一樣的 Prompt 就又有跟先前一樣的結果了！
 - 結論：
-  - 初步我在懷疑 Google Gemma3 因為必須使用特殊的 ，而不管是 `ollama` 或 `aider` 社群都在瘋追 `Gemma 3` 模型的支援性，結果就造成了一些其他舊的模型無法正常運作。
+  - 初步我在懷疑 Google Gemma3 因為必須使用特殊的 `Transformers`，而不管是 `ollama` 或 `aider` 社群都在瘋追 `Gemma 3` 模型的支援性，結果就造成了一些其他舊的模型無法正常運作。
+  - 當然也可能是改變 repo map 的新做法 (`.aider.tags.cache.v4`?) 造成。
+
+> ### Usage
+> 
+> Below, there are some code snippets on how to get quickly started with running the model. First, install the Transformers library with the version made for Gemma 3:
+> 
+> ```
+> $ pip install git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3
+> ```
+>
+> Then, copy the snippet from the section that is relevant for your use case.
 
 - ( 2025-03-20 19:45:14 )
 - 這個作法看起來可以方便切換不同版本做測試 :)
