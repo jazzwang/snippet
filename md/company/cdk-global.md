@@ -33,9 +33,9 @@ CDK Global specializes in providing software solutions tailored for the automoti
 
 CDK Global primarily targets:
 
-- **Automotive Dealerships**: Including those specializing in new and used vehicles, heavy trucks, motorcycles, marine, and recreational vehicles.
-- **Original Equipment Manufacturers (OEMs)**: Providing them with tools to standardize dealer data management.
-- **Dealership Groups**: Ranging from small independent dealers to large enterprise operations, facilitating customized solutions based on their specific needs. [^1] [^3] [^5] [^6]
+- <mark>**Automotive Dealerships**</mark>: Including those specializing in new and used vehicles, heavy trucks, motorcycles, marine, and recreational vehicles.
+- <mark>**Original Equipment Manufacturers (OEMs)**</mark>: Providing them with tools to standardize dealer data management.
+- <mark>**Dealership Groups**</mark>: Ranging from small independent dealers to large enterprise operations, facilitating customized solutions based on their specific needs. [^1] [^3] [^5] [^6]
 
 Overall, CDK Global aims to support automotive retailers in optimizing their operations while enhancing the customer experience through integrated technology solutions.
 
