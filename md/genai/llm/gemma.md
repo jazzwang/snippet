@@ -566,3 +566,14 @@ Retrying in 0.5 seconds...
   - https://storage.googleapis.com/deepmind-media/gemma/Gemma3Report.pdf
 - 2025-03-12: [Welcome Gemma 3: Google's all new multimodal, multilingual, long context open LLM](https://huggingface.co/blog/gemma3)
 - https://huggingface.co/ggml-org/gemma-3-12b-it-GGUF/tree/main
+
+## 2025-03-20
+
+- 根據 https://huggingface.co/google/gemma-3-12b-it#usage ，若要用 `transformer` 跑，得要裝特殊的版本
+
+> ### Usage
+> Below, there are some code snippets on how to get quickly started with running the model. First, install the Transformers library with the version made for Gemma 3:
+> ```
+> $ pip install git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3
+> ```
+> Then, copy the snippet from the section that is relevant for your use case.

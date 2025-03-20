@@ -777,6 +777,7 @@ jazzw@JazzBook:~/git/xxxxx/xxxxx$ tree .aider.*
 - ( 2025-03-20 19:37:33 )
 - 解法：
   - 根據 aider 安裝的步驟，裡面可以最方便降版的應該是用 `uv`
+  - https://aider.chat/docs/install.html#install-with-uv
 ```bash
 jazzw@JazzBook:~/git/snippet$ uv tool install --force --python python3.12 aider-chat@0.75.2
 ```
