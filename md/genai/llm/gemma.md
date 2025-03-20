@@ -394,7 +394,7 @@ Retrying in 4.0 seconds...
 ```
 - 好吧～ Ollama 還沒支援 Gemma 3 (太新了) -- 除非改用 LM Studio (畢竟我是在 LM Studio 找到的模型 HuggingFace 網址)
 
-## 2024-03-15
+## 2025-03-15
 
 - ( 2025-03-15 01:07:05 )
 - upgrade ollama to `0.6.0`
@@ -542,7 +542,7 @@ Retrying in 0.5 seconds...
 ```
 - 還是失敗，看起來可以用 `ollama run` 可是不能整合 `aider`
 
-## 2024-03-18
+## 2025-03-18
 
 ### Cloud Run
 

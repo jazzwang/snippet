@@ -474,11 +474,13 @@ To use this code:
 3. Open it in a web browser
 
 You can customize the colors, sizes, and other visual properties by modifying the CSS styles. The D3.js functionality can be extended to handle more
-complex data and interactions based on your requirements.[GIN] 2025/02/08 - 00:03:46 | 200 |         3m21s |       127.0.0.1 | POST     "/api/chat"
+complex data and interactions based on your requirements.
 
 ----
 
 ```bash
+[GIN] 2025/02/08 - 00:03:46 | 200 |         3m21s |       127.0.0.1 | POST     "/api/chat"
+
 total duration:       3m21.5121463s
 load duration:        31.6142ms
 prompt eval count:    19 token(s)
@@ -550,3 +552,53 @@ Long context: supports up to 128K tokens with yarn rope settings
 - https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct-GGUF 有寫到
   - Context Length: <mark>Full `32,768` tokens</mark>
     - Note: Currently, only **vLLM** supports YARN for length extrapolating. If you want to <mark>process sequences up to `131,072` tokens, please refer to **non-GGUF models**.<mark>
+  
+## 2025-03-18
+
+- 
+<table><tr><td>Q:</td><td>
+Is there a way to see API requests to ollama server? where can I find the log files?
+</td></tr>
+<tr><td>A:</td><td>
+It's important to understand that "seeing API requests" can involve different levels of detail. You might want to see:
+
+* **Basic server activity:** When the server receives requests, and any errors.
+* **Detailed request/response data:** The exact content of the API calls.
+
+Here's a breakdown of how to access Ollama server logs, and how to increase the level of detail:
+
+**Accessing Ollama Server Logs:**
+
+The location of Ollama's logs varies depending on your operating system:
+
+* **macOS:**
+    * You can find the logs by running this command in your terminal: `cat ~/.ollama/logs/server.log`
+* **Linux:**
+    * If running Ollama as a systemd service, use: `journalctl -u ollama`
+    * If running in a Docker container: `docker logs <container-name>` (find the container name with `docker ps`)
+* **Windows:**
+    * Logs are in `%LOCALAPPDATA%\Ollama`. You can open this location by pressing Windows key + R, and pasting that path.
+    * Specifically:
+        * `server.log` contains the most recent server logs.
+
+**Enabling Debug Logging:**
+
+To get more detailed information, including more of the request/response data, you can enable debug logging:
+
+* **General Principle:**
+    * The general idea is to set the `OLLAMA_DEBUG` environment variable to `1`. The way to do this varies by operating system.
+* **Linux:**
+    * If using systemd, you can edit the Ollama service file to include the Environment="OLLAMA_DEBUG=1" line.
+    * Also you can set the environment variable in the terminal before starting the ollama server. `export OLLAMA_DEBUG=1 ollama serve`
+* **Windows:**
+    * In powershell, before starting ollama, use `$env:OLLAMA_DEBUG="1" & "ollama app.exe"`
+
+**Key Considerations:**
+
+* Debug logs can be very verbose, so be prepared for a lot of output.
+* When using debug mode, more information about the API calls will be presented in the log files.
+* The Ollama REST API documentation can be very useful for understanding the structure of the API requests and responses. The Postman documentation that is available online is a very useful resource.
+
+I hope this helps!
+</td></tr>
+</table>
