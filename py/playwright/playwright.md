@@ -61,3 +61,24 @@ with sync_playwright() as playwright:
   - https://playwright.dev/python/docs/auth
 - Test generator
   - https://playwright.dev/python/docs/codegen#generating-locators
+
+## 2025-03-22
+
+- 改用 `uv tool` 裝
+```bash
+jazzw@JazzBook:~/git/snippet$ uv tool install --force --python python3.12 playwright
+Resolved 4 packages in 441ms
+Prepared 1 package in 20.99s
+Installed 4 packages in 153ms
+ + greenlet==3.1.1
+ + playwright==1.51.0
+ + pyee==12.1.1
+ + typing-extensions==4.12.2
+Installed 1 executable: playwright.exe
+jazzw@JazzBook:~/git/snippet$ playwright install --with-deps --no-shell chromium
+Downloading Chromium 134.0.6998.35 (playwright build v1161) from https://playwright.download.prss.microsoft.com/dbazure/download/playwright/builds/chromium/1161/chromium-win64.zip
+141.8 MiB [====================] 100% 0.0s
+Chromium 134.0.6998.35 (playwright build v1161) downloaded to C:\Users\jazzw\AppData\Local\ms-playwright\chromium-1161
+jazzw@JazzBook:~/git/snippet$ which playwright
+/c/Users/jazzw/.local/bin/playwright
+```
