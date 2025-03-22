@@ -409,3 +409,12 @@ File created successfully at: C:\Users\jazzw\git\snippet\md\hadoop_page.md
 - ( 2025-03-22 13:28:50 )
 - 初步先測試到這邊。相信一些簡單的工作，或許 OpenManus 可以辦得到。
   不過以程式生成而言，我還是比較喜歡 `aider` 跟 `openhands`。至少會拿到一個可重複執行的成果，而不是單一產出。
+
+### Cleanup 清理實驗環境
+
+```bash
+jazzw@JazzBook:~/git/snippet/md/genai/applications/OpenManus$ rm -rf .venv/
+jazzw@JazzBook:~/git/snippet/md/genai/applications/OpenManus$ rm -rf OpenManus
+jazzw@JazzBook:~/git/snippet/md/genai/applications/OpenManus$ git add OpenManus.md
+jazzw@JazzBook:~/git/snippet/md/genai/applications/OpenManus$ git commit -a -m "docs: [md][genai][applications][OpenManus] test OpenManus from scratch."
+```
