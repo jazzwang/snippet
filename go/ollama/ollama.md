@@ -602,3 +602,7 @@ To get more detailed information, including more of the request/response data, y
 I hope this helps!
 </td></tr>
 </table>
+
+## 2025-03-22
+
+- 讀到 https://huggingface.co/spaces/ggml-org/gguf-my-repo 可以拿來把 HuggingFace 的模型轉成 GGUF 格式。
