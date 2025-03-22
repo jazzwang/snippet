@@ -418,3 +418,8 @@ jazzw@JazzBook:~/git/snippet/md/genai/applications/OpenManus$ rm -rf OpenManus
 jazzw@JazzBook:~/git/snippet/md/genai/applications/OpenManus$ git add OpenManus.md
 jazzw@JazzBook:~/git/snippet/md/genai/applications/OpenManus$ git commit -a -m "docs: [md][genai][applications][OpenManus] test OpenManus from scratch."
 ```
+
+### 補充: WebUI
+
+- https://github.com/YunQiAI/OpenManusWeb 
+- https://github.com/Shybert-AI/OpenManus-WebUI
