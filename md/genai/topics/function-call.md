@@ -1,4 +1,18 @@
-試用 Google Deep Research
+## 2025-03-22
+
+### Ollama
+
+- 看起來 Ollama 只要有 `Tools` 標籤就是支援 Function Calling
+  - https://ollama.com/search?c=tools
+- 所以像是 DeepSeek R1 就要找
+  - https://ollama.com/MFDoom/deepseek-r1-tool-calling:14b-qwen-distill-fp16
+- 相關討論：
+  - https://github.com/QwenLM/Qwen2.5/issues/378
+
+### 試用 Google Deep Research
+
+- 結果： https://g.co/gemini/share/59fcd398f381
+
 
 Q: 第一次的 Prompt 
 ```
