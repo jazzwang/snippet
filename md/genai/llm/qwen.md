@@ -122,3 +122,10 @@ hf.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M    e7ac4b421833  
 ## QwQ-32B
 
 - 2025-03-06: ["QwQ-32B: Embracing the Power of Reinforcement Learning"](https://qwenlm.github.io/blog/qwq-32b/)
+
+## 2025-03-22
+
+### function calling
+
+- https://qwen.readthedocs.io/en/latest/framework/function_call.html
+- https://github.com/QwenLM/Qwen/blob/main/examples/function_call_examples.py
