@@ -173,9 +173,7 @@ Connect-MgGraph
        [<CommonParameters>]
 ```
 
-那麼怎麼查詢 TenantId 呢？
-
-連線到 https://entra.microsoft.com/#view/Microsoft_AAD_IAM/TenantOverview.ReactView 就可以看到了。
+那麼怎麼查詢 TenantId 呢？ <mark>連線到 https://entra.microsoft.com/#view/Microsoft_AAD_IAM/TenantOverview.ReactView 就可以看到了。</mark>
 
 - 參考：
   - https://learn.microsoft.com/en-us/sharepoint/find-your-office-365-tenant-id
