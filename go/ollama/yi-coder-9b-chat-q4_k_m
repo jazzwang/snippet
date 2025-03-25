@@ -1,0 +1,7 @@
+FROM Yi-Coder-9B-Chat-Q4_K_M.gguf
+TEMPLATE "{{- range .Messages }}<|im_start|>{{ .Role }}
+{{ .Content }}<|im_end|>
+{{ end }}<|im_start|>assistant
+"
+PARAMETER stop <|im_start|>
+PARAMETER stop <|im_end|>
