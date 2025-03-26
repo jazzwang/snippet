@@ -10,14 +10,14 @@
 ## 2025-03-26
 
 - 緣起：
-  - 在測試 [unsloth Qwen 2.5 7B 的 Fine-tune Notebook](https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen2.5_(7B)-Alpaca.ipynb) 時，有寫到用 Jan 或 
+  - 在測試 [Unsloth Qwen 2.5 7B 的 Fine-tune Notebook](https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen2.5_(7B)-Alpaca.ipynb) 時，有寫到用 Jan 或 OpenWebUI
   - 從 [Jan](https://github.com/menloresearch/jan) 的 README 看到關於 Cortex.cpp 的連結。
 - 從 README 看起來，整體很像 Ollama。從底下這段 Jan README 關於 `Cortex.cpp` 的描述，確認是定位成 Ollama 的 alternative。
 
 > [!INFO]
 >
 > ### Cortex.cpp
-> 
+>
 > Jan is powered by **Cortex.cpp**. It is a C++ command-line interface (CLI) designed as <mark>an alternative to [Ollama](https://ollama.com/)</mark>. By default, it runs on the llama.cpp engine but also supports other engines, including ONNX and TensorRT-LLM, making it a multi-engine platform.
 >
 > -   [Cortex Website](https://cortex.so/)
@@ -25,7 +25,7 @@
 > -   [Documentation](https://cortex.so/docs/)
 > -   [Models Library](https://cortex.so/models)
 > -   API Reference: *Under development*
-> 
+>
 
 ### Install 安裝
 
@@ -43,7 +43,7 @@ Last login: Mon Mar 24 00:35:43 2025 from ::1
 @jazzwang ➜ /workspaces/codespaces-blank $ sudo dpkg -i cortexcpp.deb
 Selecting previously unselected package cortexcpp.
 (Reading database ... 70175 files and directories currently installed.)
-Preparing to unpack coretex.deb ...
+Preparing to unpack cortexcpp.deb ...
 Unpacking cortexcpp (1.0.12) ...
 
 dpkg: dependency problems prevent configuration of cortexcpp:
@@ -157,5 +157,271 @@ if __name__ == "__main__":
 ```
 
 Replace `'input.json'` with the path to your JSON file. This script assumes that the JSON objects are nested and that the "<v></v>" tag represents the grouping key. It will write the grouped data to an `output.json` file.
-> 
+>
+```
+
+### subcommands
+
+```bash
+jazzwang ➜ /workspaces/codespaces-blank $ cortex
+
+Cortex.cpp CLI
+
+Usage:
+cortex [options] [subcommand]
+
+Options:
+  -h,--help                   Print this help message and exit
+  --verbose                   Get verbose logs
+  --config_file_path TEXT     Configure .rc file path
+  --data_folder_path TEXT     Configure data folder path
+  -v,--version                Get Cortex version
+
+Common Commands:
+  pull                        Download models by HuggingFace Repo/ModelIDSee built-in models: https://huggingface.co/cortexso
+  run                         Shortcut: pull, start & chat with a model
+
+Models:
+  models                      Subcommands for managing models
+
+Engines:
+  engines                     Subcommands for managing engines
+
+Hardware:
+  hardware                    Subcommands for managing hardware
+
+Server:
+  start                       Start the API server
+  stop                        Stop the API server
+  ps                          Show active model statuses
+  update                      Update cortex version
+
+Configurations:
+  config                      Subcommands for managing configurations
+```
+
+### `models` subcommand
+
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex models
+Subcommands for managing models
+Usage:
+cortex models [options] [subcommand]
+
+Options:
+  -h,--help                   Print this help message and exit
+
+Subcommands:
+  start                       Start a model by ID
+  stop                        Stop a model by ID
+  list                        List all local models
+  get                         Get a local model info by ID
+  delete                      Delete a local model by ID
+  update                      Update model configurations
+  import                      Import a model from a local filepath
+  sources                     Subcommands for managing model sources
+```
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex models list
+Starting server ...
+Set log level to INFO
+Host: 127.0.0.1 Port: 39281
+Failed to load the Vulkan library.
+Server started
+API Documentation available at: http://127.0.0.1:39281
++---------+------------+
+| (Index) | ID         |
++---------+------------+
+| 1       | mistral:7b |
++---------+------------+
+```
+```
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex models sources
+Subcommands for managing model sources
+Usage:
+cortex models sources [options] [subcommand]
+
+Options:
+  -h,--help                   Print this help message and exit
+
+Subcommands:
+  add                         Add a model source
+  remove                      Remove a model source
+  list                        List all model sources
+
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex models sources list
++---+--------------+
+| # | Model Source |
++---+--------------+
+```
+```
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex models sources add
+[model_source] is required
+
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Aborted (core dumped)
+```
+- ( 2025-03-26 14:20:48 )
+- 好久沒看到 `core dumped` 錯誤了～哈！
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex models sources add -h
+Add a model source
+Usage:
+cortex models sources add [model_source]
+
+Positionals:
+  source TEXT
+
+Options:
+  -h,--help                   Print this help message and exit
+@jazzwang ➜ /workspaces/codespaces-blank $
+```
+
+### `engines` subcommand
+
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex engines
+A subcommand is required
+
+Subcommands for managing engines
+Usage:
+cortex engines [options] [subcommand]
+
+Options:
+  -h,--help                   Print this help message and exit
+
+Subcommands:
+  list                        List all cortex engines
+  install                     Install engine
+  uninstall                   Uninstall engine
+  update                      Update engine
+  use                         Set engine as default
+  load                        Load engine
+  unload                      Unload engine
+  get                         Get engine info
+```
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex engines list
++---+-----------+---------+------------------+---------+
+| # | Name      | Version | Variant          | Status  |
++---+-----------+---------+------------------+---------+
+| 1 | llama-cpp | v0.1.55 | linux-amd64-avx2 | Default |
++---+-----------+---------+------------------+---------+
+```
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex engines install -h
+Install engine
+Usage:
+cortex engines install [engine_name] [options]
+
+Options:
+  -h,--help                   Print this help message and exit
+
+Engines:
+  llama-cpp
+```
+
+### `hardware` subcommand
+
+- 覺得比較特殊的指令是這個 `hardware` 子命令
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex hardware list
+Starting server ...
+Set log level to INFO
+Host: 127.0.0.1 Port: 39281
+Failed to load the Vulkan library.
+Server started
+API Documentation available at: http://127.0.0.1:39281
+CPU Information:
++---+-------+-------+---------------------------------+-----------+------------------------------------------------------------------------+
+| # | Arch  | Cores | Model                           | Usage     | Instructions                                                           |
++---+-------+-------+---------------------------------+-----------+------------------------------------------------------------------------+
+| 1 | amd64 | 1     | AMD EPYC 7763 64-Core Processor | 37.789265 | fpu mmx sse sse2 sse3 ssse3 sse4_1 sse4_2 pclmulqdq avx avx2 aes f16c  |
++---+-------+-------+---------------------------------+-----------+------------------------------------------------------------------------+
+
+OS Information:
++---+---------------------------+--------------------+
+| # | Version                   | Name               |
++---+---------------------------+--------------------+
+| 1 | 20.04.6 LTS (Focal Fossa) | Ubuntu 20.04.6 LTS |
++---+---------------------------+--------------------+
+
+RAM Information:
++---+-------------+-----------------+
+| # | Total (MiB) | Available (MiB) |
++---+-------------+-----------------+
+| 1 | 7938        | 6849            |
++---+-------------+-----------------+
+
+GPU Information:
++---+--------+------+---------+-------------+-----------------+----------------+--------------------+-----------+
+| # | GPU ID | Name | Version | Total (MiB) | Available (MiB) | Driver Version | Compute Capability | Activated |
++---+--------+------+---------+-------------+-----------------+----------------+--------------------+-----------+
+
+Storage Information:
++---+-------------+-----------------+
+| # | Total (GiB) | Available (GiB) |
++---+-------------+-----------------+
+| 1 | 0           | 0               |
++---+-------------+-----------------+
+
+Power Information:
++---+--------------+-----------------+--------------+
+| # | Battery Life | Charging Status | Power Saving |
++---+--------------+-----------------+--------------+
+| 1 | 0            |                 | No           |
++---+--------------+-----------------+--------------+
+```
+
+### `config` subcommand
+
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex config
+Configuration updated successfully!
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex config -h
+Subcommands for managing configurations
+Usage:
+cortex config [option] [value]
+
+Options:
+  -h,--help                   Print this help message and exit
+
+
+Proxy:
+  --verify_peer_ssl TEXT [on]
+                              Verify peer SSL
+  --no_proxy TEXT             No proxy for hosts
+  --verify_proxy_ssl TEXT [on]
+                              Verify SSL for proxy
+  --verify_host_ssl TEXT [on]
+                              Verify host SSL
+  --proxy_username TEXT       Proxy Username
+  --proxy_url TEXT            Proxy URL
+  --proxy_password TEXT       Proxy Password
+  --verify_proxy_host_ssl TEXT [on]
+                              Verify SSL for proxy
+
+
+Token:
+  --api_keys TEXT             API header key to get access to server APIs
+  --huggingface_token TEXT    HuggingFace token to pull models
+
+
+CORS:
+  --allowed_origins TEXT [*]  Allowed origins for CORS. Comma separated. E.g. http://localhost,https://cortex.so
+  --cors TEXT [on]            Cross-Origin Resource Sharing configuration.
+
+Configurations:
+  status                      Print all configurations
+```
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank $ cortex config status
+Starting server ...
+Set log level to INFO
+Host: 127.0.0.1 Port: 39281
+Failed to load the Vulkan library.
+Server started
+API Documentation available at: http://127.0.0.1:39281
+Failed to get configurations: {"message":"Invalid API Key"}
 ```
