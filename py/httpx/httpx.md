@@ -18,6 +18,22 @@
 ```bash
 (env) jazzw@JazzBook:~/git/snippet/py$ pip install 'httpx[cli]'
 ```
+- ( 2025-03-26 18:14:04 )
+- 也可以用 `uv tool` 安裝，會比較省硬碟空間，也比較不會裝一堆相依套件在 pip 裡。
+```bash
+jazzw@JazzBook:~$ uv tool install --force --python python3.12 httpx[cli]
+Resolved 14 packages in 645ms
+Uninstalled 1 package in 12ms
+Installed 7 packages in 268ms
+ + click==8.1.8
+ + colorama==0.4.6
+ ~ httpx==0.28.1
+ + markdown-it-py==3.0.0
+ + mdurl==0.1.2
+ + pygments==2.19.1
+ + rich==13.9.4
+Installed 1 executable: httpx.exe
+```
 
 ### test
 
