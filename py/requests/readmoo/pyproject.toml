@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "readmoo"
+version = "0.1.0"
+authors = [
+  { name="Jazz Wang", email="jazz.wang@example.com" },
+]
+description = "Fetch Readmoo book category, price, rating info"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests",
+    "bs4",
+    "lxml"
+]
+
+[project.scripts]
+readmoo = "readmoo:main"

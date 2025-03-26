@@ -180,3 +180,85 @@ In summary, while the current approach is functional, separating the assignments
 + except IndexError as e:
 +         logging.error(f"Error fetching book info for {link}: {e}")
 ```
+
+## 2025-03-26
+
+- ( 2025-03-26 21:43:50 )
+- 測試用 `uv tool` 安裝這個小工具
+- 參考：
+  - [httpx 的 pyproject.toml](https://github.com/encode/httpx/blob/master/pyproject.toml)
+  - [yt-dlp 的 pyproject.toml](https://github.com/yt-dlp/yt-dlp/blob/master/pyproject.toml)
+  - 本來想學著用 `hatchling` 因為 `httpx` 跟 `yt-dlp` 都用這個。
+  - 而 `webvtt-to-json` 則只採用 `setup.py`
+- 在 `httpx` 的 `pyproject.toml` 裡學到 `dependencies` 的寫法，所以根據 readmoo.py 會用到的套件，加上三個相依套件（沒特別指定版本）：
+```
+dependencies = [
+    "requests",
+    "bs4",
+    "lxml"
+]
+```
+- 其他小改動，對比範例 `hello-tool` 的 `pyproject.toml`
+```diff
+--- ../uv/hello-tool/pyproject.toml     2025-03-26 21:21:40.017132700 +0800
++++ readmoo/pyproject.toml      2025-03-26 21:42:32.125589500 +0800
+@@ -3,18 +3,23 @@
+ build-backend = "setuptools.build_meta"
+
+ [project]
+-name = "hello-tool"
++name = "readmoo"
+ version = "0.1.0"
+ authors = [
+-  { name="Your Name", email="your.email@example.com" },
++  { name="Jazz Wang", email="jazz.wang@example.com" },
+ ]
+-description = "A simple hello world tool"
+-requires-python = ">=3.7"
++description = "Fetch Readmoo book category, price, rating info"
++requires-python = ">=3.12"
+ classifiers = [
+     "Programming Language :: Python :: 3",
+     "License :: OSI Approved :: MIT License",
+     "Operating System :: OS Independent",
+ ]
++dependencies = [
++    "requests",
++    "bs4",
++    "lxml"
++]
+
+ [project.scripts]
+-hello = "hello_tool:main"
++readmoo = "readmoo:main"
+```
+- ( 2025-03-26 21:52:31 )
+- 測試安裝：
+```bash
+jazzw@JazzBook:~/git/snippet/py/requests$ uv tool install ./readmoo/
+Resolved 11 packages in 633ms
+      Built readmoo @ file:///C:/Users/jazzw/git/snippet/py/requests/readmoo
+Prepared 1 package in 2.68s
+Installed 11 packages in 93ms
+ + beautifulsoup4==4.13.3
+ + bs4==0.0.2
+ + certifi==2025.1.31
+ + charset-normalizer==3.4.1
+ + idna==3.10
+ + lxml==5.3.1
+ + readmoo==0.1.0 (from file:///C:/Users/jazzw/git/snippet/py/requests/readmoo)
+ + requests==2.32.3
+ + soupsieve==2.6
+ + typing-extensions==4.13.0
+ + urllib3==2.3.0
+Installed 1 executable: readmoo.exe
+```
+- ( 2025-03-26 21:55:11 )
+- 確認可以動
+```bash
+jazzw@JazzBook:~/git/snippet/py/requests$ which readmoo
+/c/Users/jazzw/.local/bin/readmoo
+jazzw@JazzBook:~/git/snippet/py/requests$ readmoo
+usage: readmoo [-h] --input INPUT --output OUTPUT
+readmoo: error: the following arguments are required: --input/-i, --output/-o
+```
