@@ -152,4 +152,71 @@ Uninstalled 1 executable: jirafs.exe
   > jquast - on Dec 17, 2023
   > blessings doesn't work on windows.
   > The fork, https://github.com/jquast/blessed does.
+- 雖然改用 `blessed` 解掉了 `curses` 的問題
+```diff
+diff --git a/jirafs/cmdline.py b/jirafs/cmdline.py
+index 8321b2d..b419b30 100644
+--- a/jirafs/cmdline.py
++++ b/jirafs/cmdline.py
+@@ -10,7 +10,7 @@ import sys
+ import time
+ import traceback
+
+-from blessings import Terminal
++from blessed import Terminal
+
+ try:
+     from jira.utils import JIRAError
+diff --git a/jirafs/commands/plugins.py b/jirafs/commands/plugins.py
+index c63b094..1effe5c 100644
+--- a/jirafs/commands/plugins.py
++++ b/jirafs/commands/plugins.py
+@@ -1,4 +1,4 @@
+-from blessings import Terminal
++from blessed import Terminal
+
+ from jirafs import utils
+ from jirafs.plugin import CommandPlugin
+diff --git a/jirafs/plugin.py b/jirafs/plugin.py
+index 74a04c9..c5f3b34 100644
+--- a/jirafs/plugin.py
++++ b/jirafs/plugin.py
+@@ -22,7 +22,7 @@ from typing import (
+     Union,
+ )
+
+-from blessings import Terminal
++from blessed import Terminal
+
+ from . import __version__, constants
+ from .exceptions import MacroAttributeError, MacroContentError, MacroError
+diff --git a/requirements.txt b/requirements.txt
+index 6287525..565f3f4 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,7 +1,7 @@
+ jira>=3.1.1,<4
+ python-dateutil>=2.8.1,<3
+-blessings>=1.5.1,<2.0
++blessed
+ prettytable>=0.7.2,<1.0
+ environmental-override>=0.1.2,<1.0.0
+ jinja2>=2.10.3,<3.0
+-watchdog>=0.9.0,<1.0.0
++watchdog>=0.9.0
+```
+- 但還是遇到另一個 `distutils` 的問題：
+```
+jazzw@JazzBook:~/git/jirafs$ jirafs
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jazzw\.local\bin\jirafs.exe\__main__.py", line 4, in <module>
+    from jirafs.cmdline import main
+  File "C:\Users\jazzw\AppData\Roaming\uv\tools\jirafs\Lib\site-packages\jirafs\cmdline.py", line 19, in <module>
+    from distutils.version import LooseVersion
+ModuleNotFoundError: No module named 'distutils'
+```
+- 結論：在 Windows 上，還是用 WSL (Windows Subsystem Linux) 執行好了～不跟它糾結在作業系統支援問題。
+
 - 備註：作者有寫了新的 https://github.com/coddingtonbear/jira-select 來跟 Jira 互動。
