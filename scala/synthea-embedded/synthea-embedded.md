@@ -794,7 +794,7 @@ bw.close();
 
 - ( 2020-12-01 10:23:46 )
 ```
-templates/ccda$ grep --color "\${.*}" * | sed 's#.*\$#\$#g' | sed 's#}.*#}#' | sort | uniq | sort >> ../../MEMO.md
+templates/ccda$ grep --color "\${.*}" * | sed 's#.*\$#\$#g' | sed 's#}.*#}#' | sort | uniq | sort >> ../../synthea-embedded.md
 ```
 ```java
 ${(entry.unit)!""}
@@ -844,7 +844,7 @@ ${zip}
 ```
 - ( 2020-12-01 10:53:43 ) `person.attributes` difference after running `CCDAExporter.export()`
 ```
-$ diff -Naur key1 key2 >> MEMO.md
+$ diff -Naur key1 key2 >> synthea-embedded.md
 ```
 ```diff
 --- key1	2020-12-01 10:44:56.000000000 +0800

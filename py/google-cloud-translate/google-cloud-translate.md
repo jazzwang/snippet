@@ -23,7 +23,7 @@ jazzw@JazzBook:~/git/snippet$ gh cs code -R jazzwang/snippet
 @jazzwang ➜ /workspaces/snippet (master) $ cd python/
 @jazzwang ➜ /workspaces/snippet/python (master) $ mkdir google-cloud-translate
 @jazzwang ➜ /workspaces/snippet/python (master) $ cd google-cloud-translate
-@jazzwang ➜ /workspaces/snippet/python/google-cloud-translate (master) $ code MEMO.md
+@jazzwang ➜ /workspaces/snippet/python/google-cloud-translate (master) $ code google-cloud-translate.md
 ```
 - 在 Google CloudShell 中產生所需的金鑰 - https://shell.cloud.google.com/?show=terminal
 - 用 `gcloud iam service-accounts keys create` 來產生 service account 的 JWT JSON 檔。

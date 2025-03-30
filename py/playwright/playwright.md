@@ -11,7 +11,7 @@ jazzw@JazzBook:~$ source ~/git/confluence-insight/env/Scripts/activate
 (env) jazzw@JazzBook:~/git/snippet/py$ mkdir playwright
 (env) jazzw@JazzBook:~/git/snippet/py$ cd playwright/
 (env) jazzw@JazzBook:~/git/snippet/py/playwright$ ls
-(env) jazzw@JazzBook:~/git/snippet/py/playwright$ code MEMO.md
+(env) jazzw@JazzBook:~/git/snippet/py/playwright$ code playwright.md
 (env) jazzw@JazzBook:~/git/snippet/py/playwright$ pip3 install playwright
 (env) jazzw@JazzBook:~/git/snippet/py/playwright$ playwright install
 (env) jazzw@JazzBook:~/git/snippet/py/playwright$ playwright install-deps

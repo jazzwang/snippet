@@ -119,7 +119,7 @@ if __name__ == "__main__":
 ```bash
 @jazzwang ➜ /workspaces/snippet/py/marimo (master) $ tree
 .
-├── MEMO.md
+├── marimo.md
 ├── lab1.py
 └── layouts
     └── lab1.grid.json

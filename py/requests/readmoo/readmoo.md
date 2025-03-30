@@ -28,11 +28,11 @@
 > $ 0.0002    1,244 tokens total
 > 126,756 tokens remaining in context window
 > 128,000 tokens max context window size
-> Added py/aider/MEMO.md to the chat
+> Added py/aider/aider.md to the chat
 > End your comment with AI! to request changes or AI? to ask questions
 
-#### /drop py/aider/MEMO.md
-> Removed py/aider/MEMO.md from the chat
+#### /drop py/aider/aider.md
+> Removed py/aider/aider.md from the chat
 
 #### could you code review get-readmoo-wishlist.py and give me suggestions to improve?
 
@@ -164,7 +164,7 @@ In summary, while the current approach is functional, separating the assignments
 
 ```
 > Tokens: 1.6k sent, 297 received. Cost: $0.00041 message, $0.0010 session.
-> Added py/aider/MEMO.md to the chat
+> Added py/aider/aider.md to the chat
 > End your comment with AI! to request changes or AI? to ask questions
 ```
 
@@ -172,7 +172,7 @@ In summary, while the current approach is functional, separating the assignments
 
 - ( 2024-12-20 10:30:41 )
 - 綜整這些紀錄，看起來有一些可以嘗試的作法：
-  - 修改 `.aiderignore`： 讓 `aider` 不要 `watch` 像是 `MEMO.md` 這樣的文件檔裡面出現的 `AI?` 或 `AI.`
+  - 修改 `.aiderignore`： 讓 `aider` 不要 `watch` 像是 `readmoo.md` 這樣的文件檔裡面出現的 `AI?` 或 `AI.`
 - 評點：
   - 實際上 `Code Review` 改的建議還算容易理解，改得比較模組化一點，每個函數比較短。也幫我改更明確指定 `IndexError` 這個 Exception，並改用 `logger` 來顯示 Error Message。
 ```diff

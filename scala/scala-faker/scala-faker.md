@@ -15,7 +15,7 @@
 ~/git/snippet/scala$ mkdir -p scala-faker
 ~/git/snippet/scala$ cd scala-faker/
 ~/git/snippet/scala/scala-faker$ git gi sbt,scala > .gitignore
-~/git/snippet/scala/scala-faker$ code MEMO.md
+~/git/snippet/scala/scala-faker$ code scala-faker.md
 ~/git/snippet/scala/scala-faker$ sbt new scala/scala-seed.g8
 ```
 
