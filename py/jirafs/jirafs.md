@@ -143,3 +143,13 @@ ModuleNotFoundError: No module named '_curses'
 jazzw@JazzBook:~/git$ uv tool uninstall jirafs
 Uninstalled 1 executable: jirafs.exe
 ```
+
+## 2025-03-30
+
+- 看起來主要牽涉到 `blessings` 這個年代久遠的套件
+  - https://pypi.org/project/blessings/
+- https://github.com/erikrose/blessings/issues/166 提到 `blessings` 不支援 Windows (確實只看到支援 POSIX 系統)
+  > jquast - on Dec 17, 2023
+  > blessings doesn't work on windows.
+  > The fork, https://github.com/jquast/blessed does.
+- 備註：作者有寫了新的 https://github.com/coddingtonbear/jira-select 來跟 Jira 互動。
