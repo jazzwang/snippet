@@ -15,7 +15,7 @@
 go: creating new go.mod: module example/hello
 ~/git/snippet/go/tutorial/getting-started$ tree
 .
-├── MEMO.md
+├── getting-started.md
 └── go.mod
 
 0 directories, 2 files

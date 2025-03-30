@@ -14,7 +14,7 @@
 ~/git/snippet/go/tutorial/create-module/greetings$ go mod init example.com/greetings
 ~/git/snippet/go/tutorial/create-module/greetings$ tree
 .
-├── MEMO.md
+├── greetings.md
 └── go.mod
 
 0 directories, 2 files
@@ -84,7 +84,7 @@ EOF
 ~/git/snippet/go/tutorial/create-module/hello$ cd ..
 ~/git/snippet/go/tutorial/create-module$ tree
 .
-├── MEMO.md
+├── create-module.md
 ├── greetings
 │   ├── go.mod
 │   └── greetings.go

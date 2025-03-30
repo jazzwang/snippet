@@ -12,7 +12,7 @@ gitpod /workspace/snippet/c#/.net/codespace (master) $ mkdir .vscode
 gitpod /workspace/snippet/c#/.net/codespace (master) $ cd .vscode/
 gitpod /workspace/snippet/c#/.net/codespace/.vscode (master) $ touch settings.json
 gitpod /workspace/snippet/c#/.net/codespace/.vscode (master) $ cd ..
-gitpod /workspace/snippet/c#/.net/codespace (master) $ code MEMO.md
+gitpod /workspace/snippet/c#/.net/codespace (master) $ code codespace.md
 gitpod /workspace/snippet/c#/.net/codespace (master) $ git remote -v
 origin  https://github.com/jazzwang/snippet.git (fetch)
 origin  https://github.com/jazzwang/snippet.git (push)
@@ -34,7 +34,7 @@ gitpod /workspace/snippet/c#/.net/codespace (master) $ sbin/install-dotnet
 gitpod /workspace/snippet/c#/.net/codespace (master) $ code .gitignore
 gitpod /workspace/snippet/c#/.net/codespace (master) $ code sbin/enable-dotnet
 gitpod /workspace/snippet/c#/.net/codespace (master) $ source sbin/enable-dotnet
-gitpod ~ (master) $ code MEMO.md
+gitpod ~ (master) $ code codespace.md
 gitpod ~ (master) $ git add .
 gitpod ~ (master) $ git commit -a
 gitpod ~ (master) $ git push

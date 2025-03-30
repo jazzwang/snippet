@@ -190,10 +190,10 @@ test_pet.py .                                                            [100%]
 ```
 - 注意：結尾的反斜線也有差。
 ```diff
-diff --git a/python/fastapi/MEMO.md b/python/fastapi/MEMO.md
+diff --git a/python/fastapi/fastapi.md b/python/fastapi/fastapi.md
 index 8c8736f..5a34c9a 100644
---- a/python/fastapi/MEMO.md
-+++ b/python/fastapi/MEMO.md
+--- a/python/fastapi/fastapi.md
++++ b/python/fastapi/fastapi.md
 @@ -54,7 +54,7 @@ class Pet(BaseModel):
 
  app = FastAPI()

@@ -58,7 +58,7 @@ If you need any further assistance or modifications, feel free to ask!
 
 ```bash
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ cp -r lab1 lab3
-@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv lab2/MEMO.md lab3
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv lab2/lab2.md lab3
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv lab2/src/index.tsx lab3/src/
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ rm -rf lab2
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv lab3 lab2
@@ -95,7 +95,7 @@ If you need any further assistance or modifications, feel free to ask!
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv lab2 temp
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ cp -r lab1 lab2
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ cp dev/package.json lab2/package.json 
-@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv temp/MEMO.md lab2/
+@jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv temp/lab2.md lab2/
 @jazzwang ➜ /workspaces/snippet/js/react.js (master) $ mv temp/src/index.tsx lab2/src/App.tsx 
 ```
 - 這樣 lab2 目錄下的就會是可以正常執行的範例

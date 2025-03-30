@@ -19,7 +19,7 @@
 | git hooks manager | [pre-commit](https://github.com/pre-commit/pre-commit) | [husky](https://typicode.github.io/husky/) |
 | commit linter | [commitlint](https://github.com/opensource-nepal/commitlint) | [commitlint.js](https://commitlint.js.org/) <br/> [cz-commitlint](https://www.npmjs.com/package/@commitlint/cz-commitlint) <br/> [commitizen](https://github.com/commitizen/cz-cli) |
 
-- 對照 [commitlint.js](../../js/commitlint/MEMO.md) 的相關介紹文章，少了一段 commitizen 互動式檢查的部份
+- 對照 [commitlint.js](../../js/commitlint/commitlint.md) 的相關介紹文章，少了一段 commitizen 互動式檢查的部份
 
 - https://pypi.org/project/commitizen/
 - https://github.com/commitizen-tools/commitizen

@@ -49,17 +49,17 @@ Options:
 ```
 
 - ( 2024-12-15 02:10:22 )
-- 測試把 `MEMO.md` 轉成 `MEMO.mhtml` 
+- 測試把 `mhtmlconverter.md` 轉成 `mhtmlconverter.mhtml` 
 
 ```bash
-@jazzwang ➜ /workspaces/snippet/py/mhtmlconverter (master) $ md2mhtml -i MEMO.md -o MEMO.mhtml 
+@jazzwang ➜ /workspaces/snippet/py/mhtmlconverter (master) $ md2mhtml -i mhtmlconverter.md -o mhtmlconverter.mhtml 
 ```
 
 - 下載下來看，用 Chrome 顯示為空白。但 File Explorer 能正常顯示。
 
 - 測試將 MTHML 轉成 HTML
 ```bash
-@jazzwang ➜ /workspaces/snippet/py/mhtmlconverter (master) $ mhtml2html -i MEMO.mhtml -o MEMO.html
- fileutility.py >  get_content :  MEMO.mhtml
-MEMO.mhtml
+@jazzwang ➜ /workspaces/snippet/py/mhtmlconverter (master) $ mhtml2html -i mhtmlconverter.mhtml -o mhtmlconverter.html
+ fileutility.py >  get_content :  mhtmlconverter.mhtml
+mhtmlconverter.mhtml
 ```
