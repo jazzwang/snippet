@@ -163,3 +163,37 @@ PARAMETER stop <|start_header_id|>
 PARAMETER stop <|end_header_id|>
 PARAMETER stop <|eot_id|>
 ```
+
+## 2025-03-31
+
+```mermaid
+flowchart LR
+  TAIDE(<a href='https://taide.tw/' target='_blank'>TAIDE</a>)
+  TAIDE1(<a href='https://huggingface.co/taide' target='_blank'>https://huggingface.co/taide</a>)
+  TAIDE-->TAIDE1
+  TETF(<a href='https://www.tetf.tw/' target='_blank'>臺灣卓越行動力量<br/>Taiwan Excellence Task Force</a>)
+  TETF2(<a href='https://huggingface.co/tetf' target='_blank'>https://huggingface.co/tetf</a>)
+  TETF3(<a href='https://github.com/tetftw' target='_blank'>https://github.com/tetftw</a>)
+  TETF-->TETF2
+  TETF-->TETF3
+  HF_TW(Taiwan Models)
+  TETF2-->HF_TW
+  HF_TW-->Llama-3.1-TAIDE-LX-8B-Chat-GGUF(<a href='https://huggingface.co/tetf/Llama-3.1-TAIDE-LX-8B-Chat-GGUF' target='_blnk'>Llama-3.1-TAIDE-LX-8B-Chat-GGUF</a>)
+  llama.cpp(<a href='https://github.com/ggml-org/llama.cpp' target='_blank'>llama.cpp</a>)
+  Llama-3.1-TAIDE-LX-8B-Chat(<a href='https://huggingface.co/taide/Llama-3.1-TAIDE-LX-8B-Chat' target='_blank'>Llama-3.1-TAIDE-LX-8B-Chat</a>)
+  TAIDE1 --> Llama-3.1-TAIDE-LX-8B-Chat --> llama.cpp --> Llama-3.1-TAIDE-LX-8B-Chat-GGUF
+  TETF --> ai4good --> gai.tw(<a href='https://gai.tw/' target='blank'>gai.tw</a>)
+  ai4good --> kuwaai.org(<a href='https://kuwaai.org/' target='blank'>kuwaai.org</a>)
+  kuwaai.org --> Llama-3.1-TAIDE-LX-8B-Chat-GGUF
+  TETF --> cdalab(網路數據分析實驗室) --> CDALab --> CDALab_OpenData(<a href='https://www.cdalab.tw/open/data' target='_blank'>Dataset</a>)
+  cdalab --> CCoE
+  NARL --> cdalab
+  TETF --> ict4sdg --> twICT4SDG(<a href='https://ict4sdg.icslab.org/' target='_blank'>以資通訊科技促進臺灣永續發展</a>)
+  NUK --> ICSLab(<a href='https://www.icslab.org/' target='blank'>高大--資訊與通訊系統實驗室</a>)
+  ICSLab --> gai.tw
+  gai.tw --> chat.gai.tw
+  gai.tw --> arena.gai.tw 
+  ICSLab --> kuwaai.org
+  TETF --> atedu.tw
+  ICSLab --> atedu.tw
+```
