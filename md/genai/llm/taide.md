@@ -166,6 +166,8 @@ PARAMETER stop <|eot_id|>
 
 ## 2025-03-31
 
+- ( 2025-03-31 11:40:27 )
+- 嘗試視覺化 TAIDE 跟 TETF 之間的關係
 ```mermaid
 flowchart LR
   TAIDE(<a href='https://taide.tw/' target='_blank'>TAIDE</a>)
@@ -192,8 +194,9 @@ flowchart LR
   NUK --> ICSLab(<a href='https://www.icslab.org/' target='blank'>高大--資訊與通訊系統實驗室</a>)
   ICSLab --> gai.tw
   gai.tw --> chat.gai.tw
-  gai.tw --> arena.gai.tw 
+  gai.tw --> arena.gai.tw
   ICSLab --> kuwaai.org
   TETF --> atedu.tw
   ICSLab --> atedu.tw
+  ICSLab --> ict4sdg
 ```
