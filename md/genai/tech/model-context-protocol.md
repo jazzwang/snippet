@@ -109,3 +109,8 @@ For technical folks: - Opportunity to build tools like MCP app stores - Easier i
 For non-technical folks: - Watch closely as standards evolve - When standards finalize, new business opportunities will emerge - Think of MCPs as Lego pieces you'll stack to build powerful AI apps
 
 > 對於非技術人員： - 密切關注標準的發展 - 標準最終確定後，將會出現新的商機 - 將 MCP 視為樂高積木，你可以將其堆疊起來以構建強大的 AI 應用程式
+
+## 2025-04-02
+
+- What is MCP? (Model Context Protocol) - A Primer
+  - https://www.whatismcp.com/
