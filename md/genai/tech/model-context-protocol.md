@@ -114,3 +114,34 @@ For non-technical folks: - Watch closely as standards evolve - When standards fi
 
 - What is MCP? (Model Context Protocol) - A Primer
   - https://www.whatismcp.com/
+
+## 2025-04-04
+
+### Playwright MCP
+
+- 從 David Chiu 的貼文看到新的 Microsoft Playwright MCP
+  - https://www.linkedin.com/feed/update/urn:li:activity:7312033815755902976/
+- 用 Claude Desktop 展示怎麼用 https://www.largitdata.com/course/252/
+- Playwright MCP server
+  - https://github.com/microsoft/playwright-mcp
+- 看了一下影片，感覺還是有點模糊，畢竟我沒有訂閱 Claude 也沒有用 Claude Desktop
+- 不過 MCP Client 可以是 VS Code 的 `Cline`，也可以是 `aider` 搭配 `mcpm-aider`
+- 從 https://github.com/microsoft/playwright-mcp 的 README 看到 `code --add-mcp` 的指令，挺妙的。再來研究一下怎麼用。
+```bash
+jazzw@JazzBook:~/git/snippet/js/chrome-devtools$ code --help
+Visual Studio Code 1.99.0
+
+Usage: code.exe [options][paths...]
+
+To read output from another program, append '-' (e.g. 'echo Hello World | code.exe -')
+
+Options
+  -h --help                                  Print usage.
+  --add-mcp <json>                           Adds a Model Context Protocol
+                                             server definition to the user
+                                             profile, or workspace or folder
+                                             when used with --mcp-workspace.
+                                             Accepts JSON input in the form
+                                             '{"name":"server-name","command":...}
+                                             '
+```
