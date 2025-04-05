@@ -200,3 +200,65 @@ playwright
   Args: @playwright/mcp@latest
   Source: local
 ```
+- 實驗  
+```bash
+jazzw@JazzBook:~$ mcpm-aider toolprompt
+
+# Available Tools
+
+When this prompt is loaded, always say to the user EXACTLY THIS:
+"I am aware of MCP Tools!"
+
+## *Usage*
+If you decide to call a function of a tool, please execute this bash command.
+**Do not include unescaped ' or line breaks in <parameters as jsonstring>, because it is passed as a cli argument oneliner!**
+
+```bash
+mcpm-aider call <tool> <function> '<parameters as jsonstring>'
+```
+## *Example*
+```bash
+mcpm-aider call @calclavia/mcp-obsidian read_notes '{"paths": ["path/to/notes"]}'
+```
+## tool: mcpm
+
+**ERROR**: spawn mcpm ENOENT
+
+---
+## tool: playwright
+
+**ERROR**: spawn npx ENOENT
+```
+- 查了一下 `ENOENT` 的主因是找不到執行檔
+```
+Ah, that `ENOENT` error with `npx` usually means Node.js can't find the executable. It's like trying to call someone but their number's not in your contacts!
+```
+- 所以先試試用 `pnpm` 安裝 `@playwright/mcp` 跟 `@mcpm/cli`
+```
+jazzw@JazzBook:~$ pnpm install -g @playwright/mcp
+jazzw@JazzBook:~$ pnpm install -g @mcpm/cli
+```
+- 雖然還搞不清楚 `pnpm` 跟 `npx`/`npm` 安裝的結果會差多少，不過實測了一下 `npx @playwright/mcp`，看起來會跑一個 background process 等在那邊，應該就是啟動了 MCP Server
+```
+jazzw@JazzBook:~$ npx @playwright/mcp
+```
+- 猜想 `pnpm` 跟 `uv` 有點類似的定位。看樣子可以用 `pnpm ls` 查安裝路徑。
+```bash
+jazzw@JazzBook:~$ pnpm -g ls
+Legend: production dependency, optional only, dev only
+
+C:\Users\jazzw\AppData\Local\pnpm\global\5
+
+dependencies:
+@mcpm/cli 1.6.2
+@playwright/mcp 0.0.9
+@pnp/cli-microsoft365 10.4.0
+@poai/mcpm-aider 1.0.4
+commander 13.1.0
+subsrt 1.1.1
+vtt-json 1.0.1
+webvtt 0.0.2
+jazzw@JazzBook:~$ npm -g ls
+C:\Users\jazzw\scoop\persist\nodejs-lts\bin
+└── (empty)
+```
