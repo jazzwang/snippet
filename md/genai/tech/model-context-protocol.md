@@ -126,7 +126,7 @@ For non-technical folks: - Watch closely as standards evolve - When standards fi
   - https://github.com/microsoft/playwright-mcp
 - 看了一下影片，感覺還是有點模糊，畢竟我沒有訂閱 Claude 也沒有用 Claude Desktop
 - 不過 MCP Client 可以是 VS Code 的 `Cline`，也可以是 `aider` 搭配 `mcpm-aider`
-- 從 https://github.com/microsoft/playwright-mcp 的 README 看到 `code --add-mcp` 的指令，挺妙的。再來研究一下怎麼用。
+- 從 https://github.com/microsoft/playwright-mcp 的 README 看到 `code --add-mcp` 2k7
 ```bash
 jazzw@JazzBook:~/git/snippet/js/chrome-devtools$ code --help
 Visual Studio Code 1.99.0
@@ -144,4 +144,59 @@ Options
                                              Accepts JSON input in the form
                                              '{"name":"server-name","command":...}
                                              '
+```
+
+## 2025-04-05
+
+- ( 2025-04-05 18:24:59 )
+- 剛好筆電也有用 `pnpm` 裝好 `npx`，那就來跑跑看怎麼用 VS Code 裝 `Playwright MCP server`
+```bash
+jazzw@JazzBook:~/git/snippet$ code --add-mcp '{"name":"playwright","command":"npx","args":["@playwright/mcp@latest"]}'
+Added MCP servers: playwright
+(node:11676) [DEP0168] DeprecationWarning: Uncaught N-API callback exception detected, please run node with option --force-node-api-uncaught-exceptions-policy=true to handle those exceptions properly.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+```
+- 看起來這個 `code --add-mcp` 指令只能幫 `Github Copilot` 加 MCP Server
+- ( 2025-04-05 18:33:57 )
+- 試試看 `mcpm-aider` 的作法，首先參考 Playwright MCP Server 的 README 在 `~/AppData/Roaming/claude/claude_desktop_config.json` 加入 playwright MCP Server 的 JSON
+```bash
+jazzw@JazzBook:~$ cat ~/AppData/Roaming/claude/claude_desktop_config.json
+{
+  "mcpServers": {
+    "mcpm": {
+      "command": "mcpm",
+      "args": [
+        "mcp"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+  }
+}
+```
+- 確認 `mcpm-aider` 可以看到
+```bash
+jazzw@JazzBook:~/git/snippet$ mcpm-aider mcp &
+[1] 2235
+MCPM MCP Server running on stdio
+```
+```bash
+jazzw@JazzBook:~$ mcpm-aider list
+Your MCP Servers:
+
+mcpm
+  ✓ Enabled
+  Command: mcpm
+  Args: mcp
+  Source: self
+
+playwright
+  ✓ Enabled
+  Command: npx
+  Args: @playwright/mcp@latest
+  Source: local
 ```
