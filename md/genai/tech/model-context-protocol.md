@@ -278,3 +278,25 @@ jazzw@JazzBook:~$ npx @playwright/mcp
 ## 2025-04-06
 
 - 可以從 https://github.com/topics/mcp 跟 https://github.com/topics/model-context-protocol 觀察近期 Model Context Protocol (MCP) 社群的發展近況趨勢。
+
+### mcp.so
+
+- ( 2025-04-06 在 `/py/mcpm/mcpm.md` 寫到)
+
+> - 看樣子未來應該是會有類似 `mvn`, `pip` 或 `npm` 對應的 publish 機制，來發佈 MCP Server 到不同的 `registry` / `artifactory` (?)
+
+- 看樣子目前確實已經開始有類似的集散地
+  - https://mcphub.io/registry
+    - 看起來是由 [@mcpm/cli](https://www.npmjs.com/package/@mcpm/cli) 的維護者之一 [liuyoshio](https://www.npmjs.com/~liuyoshio) 寫了 [@liuyoshio/mcp-compass](https://www.npmjs.com/package/@liuyoshio/mcp-compass) 可以拿來查有哪些 MCP Server
+  - https://mcp.so
+    - 這個網站有不同的 MCP Client 跟 MCP Server
+      - https://mcp.so/clients
+      - https://mcp.so/servers
+      - https://mcp.so/tags          - ## 標籤
+      - https://mcp.so/categories    - ## 分類
+      - https://mcp.so/posts         - ## 相關文章
+    - 看起來這個網站的原始碼在 https://github.com/chatmcp/mcp-directory
+    - 作者是一個「前」騰訊的資深全端工程師 - https://bento.me/idoubi
+  - https://mcpflow.io
+    - https://mcpflow.io/doc
+  - https://www.mcpstore.co/
