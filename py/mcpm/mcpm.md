@@ -201,3 +201,4 @@ playwright
 ```
 - 就像 `@mcpm/cli` 也找不到微軟的 `@playwright/mcp`。
 - 看樣子未來應該是會有類似 `mvn`, `pip` 或 `npm` 對應的 publish 機制，來發佈 MCP Server 到不同的 `registry` / `artifactory` (?)
+- MCP Server 生態圈應該會延續 API 生態圈(e.g. [Rapid API](https://rapidapi.com/categories) )，讓更多 API 能夠被支援 TOOL 的 LLM 模型使用。
