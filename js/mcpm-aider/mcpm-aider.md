@@ -231,3 +231,59 @@ Tavily (@RamXX/mcp-tavily)
   A Model Context Protocol server enabling AI-powered web searches, direct Q&A, and recent news retrieval using Tavily's API.
   #AI #web-search #MCP-server
 ```
+
+## 2025-04-06
+
+- 比較 `@mcpm/cli` 跟 `mcpm-aider` 的指令差異：
+```bash
+jazzw@JazzBook:~$ pnpm -g install @mcpm/cli
+jazzw@JazzBook:~$ mcpm --help
+Usage: mcpm [options] [command]
+
+Options:
+  -V, --version               output the version number
+  -d, --debug                 enables verbose logging (default: false)
+  -h, --help                  display help for command
+
+Commands:
+  search [options] [query]    Search for MCP packages
+  install|i [options] <name>  Install a MCP package from the registry
+  add [options] [name]        Manually add a new MCP server to your Claude App
+  remove|rm [name]            Remove a MCP server from your Claude App
+  disable [name]              Disable an MCP server (moves it from Claude to storage)
+  enable [name]               Enable a disabled MCP server (moves it from storage to Claude)
+  list [options]              List all your MCP servers
+  mcp                         Start the MCPM MCP server
+  restart                     Restart Claude.app
+  prepare                     Prepare Claude.app for MCPM
+  help [command]              display help for command
+jazzw@JazzBook:~$ mcpm-aider --help
+Usage: mcpm [options] [command]
+
+Options:
+  -V, --version                        output the version number
+  -d, --debug                          enables verbose logging (default: false)
+  -h, --help                           display help for command
+
+Commands:
+  search [options] [query]             Search for MCP packages
+  install|i [options] <name>           Install a MCP package from the registry
+  add [options] [name]                 Manually add a new MCP server to your Claude App
+  remove|rm [name]                     Remove a MCP server from your Claude App
+  disable [name]                       Disable an MCP server (moves it from Claude to storage)
+  enable [name]                        Enable a disabled MCP server (moves it from storage to Claude)
+  list [options]                       List all your MCP servers
+  mcp                                  Start the MCPM MCP server
+  update-params <name>                 Update MCP server parameters
+  restart                              Restart Claude.app
+  prepare                              Prepare Claude.app for MCPM
+  toolprompt                           Generate tool use prompt with all available MCP servers
+  call <tool> <function> <parameters>  Call an MCP server tool function
+  help [command]                       display help for command
+```
+- 這也才比較清楚 `mcpm-aider` 多實作了 `update-params`，`call` 跟 `toolprompt` 三個額外的指令。
+```bash
+  update-params <name>                 Update MCP server parameters
+  toolprompt                           Generate tool use prompt with all available MCP servers
+  call <tool> <function> <parameters>  Call an MCP server tool function
+```
