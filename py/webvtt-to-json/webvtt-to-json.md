@@ -49,3 +49,25 @@
 ... 略 ...
 ```
 - 整體感覺比 [subsrt](../../js/subsrt/subsrt.md) 的效果好一些。當然有些地方，像是換行符號(`\n`)，可能要替換成空白。如果後續想要把同一個與會者的發言內容串成一整個段落。
+
+## 2025-04-07
+
+### Install as UV Tool
+
+- ( 2025-04-07 16:51:57 )
+```bash
+jazzw@JazzBook:~/git/snippet$ uv tool install webvtt-to-json
+Ignoring existing environment for `webvtt-to-json`: the requested Python interpreter does not match the environment interpreter
+Resolved 4 packages in 3.09s
+Prepared 2 packages in 864ms
+Installed 4 packages in 15ms
+ + click==8.1.8
+ + colorama==0.4.6
+ + webvtt-py==0.5.1
+ + webvtt-to-json==0.2
+Installed 1 executable: webvtt-to-json.exe
+```
+- bash command to convert all webvtt to json
+```bash
+~/webvtt$ for i in $(ls *.vtt); do webvtt-to-json -d -s $i -o ${i//.vtt/}.json; done
+```
