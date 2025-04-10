@@ -14,4 +14,5 @@
 
 > 1.  **Starter**: [`llama-index`](https://pypi.org/project/llama-index/). A starter Python package that includes core LlamaIndex as well as a selection of integrations.
 
-### Install [`llama-index`](https://pypi.org/project/llama-index/)
+### Example:
+
