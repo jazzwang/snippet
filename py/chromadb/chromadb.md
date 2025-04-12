@@ -413,3 +413,55 @@ print(f"Answer: {answer}")
 
 This will clone the LangChain repository, index its content in ChromaDB, and then answer the example questions based on the retrieved information. You can adapt the `repo_url`, file extensions, embedding model, and LLM according to your specific needs.
 </td></tr></table>
+
+### ChromaDB Local Storage
+
+- https://g.co/gemini/share/e7c4d92255df
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+Does chromadb store as local file?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, ChromaDB can store its data as local files. It offers a **PersistentClient** that allows you to specify a directory on your local machine where the database will be saved.
+
+Here's how it works:
+
+* **PersistentClient:** When you initialize ChromaDB with the `PersistentClient` and provide a `path` to a directory, ChromaDB will store its database files in that location.
+* **Automatic Persistence:** Data is automatically persisted to this directory as you add collections and embeddings.
+* **Loading on Startup:** When you re-initialize the `PersistentClient` with the same path, ChromaDB will automatically load the existing database from those files.
+
+**Example:**
+
+```python
+import chromadb
+
+# Initialize ChromaDB to store data in the './chroma_db' directory
+client = chromadb.PersistentClient(path="./chroma_db")
+
+# Create a collection
+collection = client.get_or_create_collection("my_documents")
+
+# Add data to the collection
+collection.add(
+    documents=["This is document 1", "This is document 2"],
+    ids=["doc1", "doc2"]
+)
+
+# When you close your script and run it again:
+client_reloaded = chromadb.PersistentClient(path="./chroma_db")
+collection_reloaded = client_reloaded.get_collection("my_documents")
+print(f"Number of documents in reloaded collection: {collection_reloaded.count()}")
+```
+
+In the example above, the data added to `my_documents` collection will be saved in the `./chroma_db` directory and will be loaded automatically when you re-run the script and connect to the same path.
+
+**Where are the files stored?**
+
+Within the `persist_directory` you specify, ChromaDB will create a structure containing:
+
+* A `chroma.sqlite3` file: This is the main SQLite database that stores the metadata about your collections, segments, and other system information.
+* Subdirectories for each collection (named with UUIDs): These directories contain the actual vector data (often in binary files like `header.bin`, `link_lists.bin`, `data_level0.bin` for the HNSW index) and metadata related to the vectors in that collection.
+
+So, to answer your question directly: **Yes, when configured with the `PersistentClient`, ChromaDB stores its data as local files within the directory you specify.** This makes it easy to have a local, persistent vector database for your applications.
+</td></tr></table>
