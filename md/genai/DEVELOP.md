@@ -82,7 +82,7 @@
 - https://superlinked.com/vector-db-comparison
     - 這篇文章裡講到的一個 Vector Database 比較表。算是初步可以拿來了解一些專有名詞
 - https://x.com/YingjunWu/status/1667232357953466369 的二分法：開源、專用
-    - 2023~2024 真是 Vectore Database 百家爭鳴啊！
+    - 2023~2024 真是 Vector Database 百家爭鳴啊！
     - ![alt text](images/vector-landscape.png)
 
 ### 測試 pgvector 的 docker image
