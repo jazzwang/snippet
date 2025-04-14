@@ -9,6 +9,11 @@
 
 > the AI-native open-source embedding database
 
+## 2024-10-08
+
+- Learned from https://github.com/gabrielchua/RAGxplorer/blob/main/ragxplorer/rag.py
+- [[ 向量資料庫 ] 一個好用的開源 Embedding 應用資料庫— ChromaDB](https://medium.com/@simon3458/chromadb-introduction-27ed114d8d1d)
+
 ## 2025-04-12
 
 - 緣起：最近在測試一些 GenAI Use Case，常撞到 context window size 的限制。所以想試試看 RAG 的作法能否舒緩 context window size 的壓力。想起先前的一些研究，常見的 vector database 包括 pinecone, chromadb, faiss, pgVector 等。有鑑於 chromadb 算是比較輕量級，合適在本地端直接運行在記憶體或存成檔案的一種實作，就挑這個來當作第一個 vector database 實作的對象。
