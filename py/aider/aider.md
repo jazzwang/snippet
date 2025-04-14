@@ -902,3 +902,10 @@ Installed 1 executable: aider.exe
 jazzw@JazzBook:~/git/snippet$ aider --version
 aider 0.76.1
 ```
+
+## 2025-04-14
+
+- 緣起：在 `scoop update` 時注意到這個專案
+- https://github.com/hotovo/aider-desk
+  - VS Code extension
+    - https://marketplace.visualstudio.com/items?itemName=hotovo-sk.aider-desk-connector
