@@ -1,3 +1,6 @@
+// 1. Open https://www.linkedin.com/my-items/saved-posts/
+// 2. paste this snippet into Chrome Developer Tool Console
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
