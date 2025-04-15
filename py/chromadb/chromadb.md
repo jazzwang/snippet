@@ -480,247 +480,7 @@ So, to answer your question directly: **Yes, when configured with the `Persisten
 - Install 安裝
 ```bash
 jazzw@JazzBook:~/git/snippet/py/chromadb$ pip install chromadb
-Collecting chromadb
-  Downloading chromadb-1.0.4-cp39-abi3-win_amd64.whl.metadata (7.0 kB)
-Collecting build>=1.0.3 (from chromadb)
-  Downloading build-1.2.2.post1-py3-none-any.whl.metadata (6.5 kB)
-Collecting pydantic>=1.9 (from chromadb)
-  Downloading pydantic-2.11.3-py3-none-any.whl.metadata (65 kB)
-Collecting chroma-hnswlib==0.7.6 (from chromadb)
-  Downloading chroma_hnswlib-0.7.6.tar.gz (32 kB)
-  Installing build dependencies ... done
-  Getting requirements to build wheel ... done
-  Preparing metadata (pyproject.toml) ... done
-Collecting fastapi==0.115.9 (from chromadb)
-  Downloading fastapi-0.115.9-py3-none-any.whl.metadata (27 kB)
-Collecting uvicorn>=0.18.3 (from uvicorn[standard]>=0.18.3->chromadb)
-  Downloading uvicorn-0.34.1-py3-none-any.whl.metadata (6.5 kB)
-Requirement already satisfied: numpy>=1.22.5 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from chromadb) (2.2.4)
-Collecting posthog>=2.4.0 (from chromadb)
-  Downloading posthog-3.24.1-py2.py3-none-any.whl.metadata (3.0 kB)
-Requirement already satisfied: typing-extensions>=4.5.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from chromadb) (4.12.2)
-Collecting onnxruntime>=1.14.1 (from chromadb)
-  Downloading onnxruntime-1.21.0-cp312-cp312-win_amd64.whl.metadata (4.9 kB)
-Collecting opentelemetry-api>=1.2.0 (from chromadb)
-  Downloading opentelemetry_api-1.32.0-py3-none-any.whl.metadata (1.6 kB)
-Collecting opentelemetry-exporter-otlp-proto-grpc>=1.2.0 (from chromadb)
-  Downloading opentelemetry_exporter_otlp_proto_grpc-1.32.0-py3-none-any.whl.metadata (2.5 kB)
-Collecting opentelemetry-instrumentation-fastapi>=0.41b0 (from chromadb)
-  Downloading opentelemetry_instrumentation_fastapi-0.53b0-py3-none-any.whl.metadata (2.2 kB)
-Collecting opentelemetry-sdk>=1.2.0 (from chromadb)
-  Downloading opentelemetry_sdk-1.32.0-py3-none-any.whl.metadata (1.6 kB)
-Collecting tokenizers>=0.13.2 (from chromadb)
-  Downloading tokenizers-0.21.1-cp39-abi3-win_amd64.whl.metadata (6.9 kB)
-Collecting pypika>=0.48.9 (from chromadb)
-  Using cached pypika-0.48.9-py2.py3-none-any.whl
-Collecting tqdm>=4.65.0 (from chromadb)
-  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
-Requirement already satisfied: overrides>=7.3.1 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from chromadb) (7.7.0)
-Collecting importlib-resources (from chromadb)
-  Downloading importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)
-Collecting grpcio>=1.58.0 (from chromadb)
-  Downloading grpcio-1.71.0-cp312-cp312-win_amd64.whl.metadata (4.0 kB)
-Collecting bcrypt>=4.0.1 (from chromadb)
-  Downloading bcrypt-4.3.0-cp39-abi3-win_amd64.whl.metadata (10 kB)
-Collecting typer>=0.9.0 (from chromadb)
-  Downloading typer-0.15.2-py3-none-any.whl.metadata (15 kB)
-Collecting kubernetes>=28.1.0 (from chromadb)
-  Downloading kubernetes-32.0.1-py2.py3-none-any.whl.metadata (1.7 kB)
-Collecting tenacity>=8.2.3 (from chromadb)
-  Downloading tenacity-9.1.2-py3-none-any.whl.metadata (1.2 kB)
-Requirement already satisfied: pyyaml>=6.0.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from chromadb) (6.0.2)
-Requirement already satisfied: mmh3>=4.0.1 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from chromadb) (5.1.0)
-Collecting orjson>=3.9.12 (from chromadb)
-  Downloading orjson-3.10.16-cp312-cp312-win_amd64.whl.metadata (42 kB)
-Requirement already satisfied: httpx>=0.27.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from chromadb) (0.28.1)
-Collecting rich>=10.11.0 (from chromadb)
-  Downloading rich-14.0.0-py3-none-any.whl.metadata (18 kB)
-Requirement already satisfied: jsonschema>=4.19.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from chromadb) (4.23.0)
-Collecting starlette<0.46.0,>=0.40.0 (from fastapi==0.115.9->chromadb)
-  Downloading starlette-0.45.3-py3-none-any.whl.metadata (6.3 kB)
-Requirement already satisfied: packaging>=19.1 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from build>=1.0.3->chromadb) (24.2)
-Collecting pyproject_hooks (from build>=1.0.3->chromadb)
-  Downloading pyproject_hooks-1.2.0-py3-none-any.whl.metadata (1.3 kB)
-Requirement already satisfied: colorama in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from build>=1.0.3->chromadb) (0.4.6)
-Requirement already satisfied: anyio in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from httpx>=0.27.0->chromadb) (4.9.0)
-Requirement already satisfied: certifi in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from httpx>=0.27.0->chromadb) (2025.1.31)
-Requirement already satisfied: httpcore==1.* in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from httpx>=0.27.0->chromadb) (1.0.7)
-Requirement already satisfied: idna in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from httpx>=0.27.0->chromadb) (3.10)
-Requirement already satisfied: h11<0.15,>=0.13 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from httpcore==1.*->httpx>=0.27.0->chromadb) (0.14.0)
-Requirement already satisfied: attrs>=22.2.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from jsonschema>=4.19.0->chromadb) (25.3.0)
-Requirement already satisfied: jsonschema-specifications>=2023.03.6 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from jsonschema>=4.19.0->chromadb) (2024.10.1)
-Requirement already satisfied: referencing>=0.28.4 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from jsonschema>=4.19.0->chromadb) (0.36.2)
-Requirement already satisfied: rpds-py>=0.7.1 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from jsonschema>=4.19.0->chromadb) (0.24.0)
-Requirement already satisfied: six>=1.9.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from kubernetes>=28.1.0->chromadb) (1.17.0)
-Requirement already satisfied: python-dateutil>=2.5.3 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from kubernetes>=28.1.0->chromadb) (2.9.0.post0)
-Collecting google-auth>=1.0.1 (from kubernetes>=28.1.0->chromadb)
-  Downloading google_auth-2.39.0-py2.py3-none-any.whl.metadata (6.2 kB)
-Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from kubernetes>=28.1.0->chromadb) (1.8.0)
-Requirement already satisfied: requests in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from kubernetes>=28.1.0->chromadb) (2.32.3)
-Collecting requests-oauthlib (from kubernetes>=28.1.0->chromadb)
-  Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
-Collecting oauthlib>=3.2.2 (from kubernetes>=28.1.0->chromadb)
-  Using cached oauthlib-3.2.2-py3-none-any.whl.metadata (7.5 kB)
-Requirement already satisfied: urllib3>=1.24.2 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from kubernetes>=28.1.0->chromadb) (2.3.0)
-Collecting durationpy>=0.7 (from kubernetes>=28.1.0->chromadb)
-  Downloading durationpy-0.9-py3-none-any.whl.metadata (338 bytes)
-Collecting coloredlogs (from onnxruntime>=1.14.1->chromadb)
-  Using cached coloredlogs-15.0.1-py2.py3-none-any.whl.metadata (12 kB)
-Collecting flatbuffers (from onnxruntime>=1.14.1->chromadb)
-  Downloading flatbuffers-25.2.10-py2.py3-none-any.whl.metadata (875 bytes)
-Collecting protobuf (from onnxruntime>=1.14.1->chromadb)
-  Downloading protobuf-6.30.2-cp310-abi3-win_amd64.whl.metadata (593 bytes)
-Collecting sympy (from onnxruntime>=1.14.1->chromadb)
-  Downloading sympy-1.13.3-py3-none-any.whl.metadata (12 kB)
-Collecting deprecated>=1.2.6 (from opentelemetry-api>=1.2.0->chromadb)
-  Downloading Deprecated-1.2.18-py2.py3-none-any.whl.metadata (5.7 kB)
-Collecting importlib-metadata<8.7.0,>=6.0 (from opentelemetry-api>=1.2.0->chromadb)
-  Downloading importlib_metadata-8.6.1-py3-none-any.whl.metadata (4.7 kB)
-Collecting googleapis-common-protos~=1.52 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb)
-  Downloading googleapis_common_protos-1.70.0-py3-none-any.whl.metadata (9.3 kB)
-Collecting opentelemetry-exporter-otlp-proto-common==1.32.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb)
-  Downloading opentelemetry_exporter_otlp_proto_common-1.32.0-py3-none-any.whl.metadata (1.9 kB)
-Collecting opentelemetry-proto==1.32.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb)
-  Downloading opentelemetry_proto-1.32.0-py3-none-any.whl.metadata (2.4 kB)
-Collecting protobuf (from onnxruntime>=1.14.1->chromadb)
-  Downloading protobuf-5.29.4-cp310-abi3-win_amd64.whl.metadata (592 bytes)
-Collecting opentelemetry-instrumentation-asgi==0.53b0 (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb)
-  Downloading opentelemetry_instrumentation_asgi-0.53b0-py3-none-any.whl.metadata (2.1 kB)
-Collecting opentelemetry-instrumentation==0.53b0 (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb)
-  Downloading opentelemetry_instrumentation-0.53b0-py3-none-any.whl.metadata (6.8 kB)
-Collecting opentelemetry-semantic-conventions==0.53b0 (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb)
-  Downloading opentelemetry_semantic_conventions-0.53b0-py3-none-any.whl.metadata (2.5 kB)
-Collecting opentelemetry-util-http==0.53b0 (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb)
-  Downloading opentelemetry_util_http-0.53b0-py3-none-any.whl.metadata (2.6 kB)
-Collecting wrapt<2.0.0,>=1.0.0 (from opentelemetry-instrumentation==0.53b0->opentelemetry-instrumentation-fastapi>=0.41b0->chromadb)
-  Downloading wrapt-1.17.2-cp312-cp312-win_amd64.whl.metadata (6.5 kB)
-Collecting asgiref~=3.0 (from opentelemetry-instrumentation-asgi==0.53b0->opentelemetry-instrumentation-fastapi>=0.41b0->chromadb)
-  Downloading asgiref-3.8.1-py3-none-any.whl.metadata (9.3 kB)
-Collecting monotonic>=1.5 (from posthog>=2.4.0->chromadb)
-  Using cached monotonic-1.6-py2.py3-none-any.whl.metadata (1.5 kB)
-Collecting backoff>=1.10.0 (from posthog>=2.4.0->chromadb)
-  Using cached backoff-2.2.1-py3-none-any.whl.metadata (14 kB)
-Collecting distro>=1.5.0 (from posthog>=2.4.0->chromadb)
-  Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
-Collecting annotated-types>=0.6.0 (from pydantic>=1.9->chromadb)
-  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
-Collecting pydantic-core==2.33.1 (from pydantic>=1.9->chromadb)
-  Downloading pydantic_core-2.33.1-cp312-cp312-win_amd64.whl.metadata (6.9 kB)
-Collecting typing-inspection>=0.4.0 (from pydantic>=1.9->chromadb)
-  Downloading typing_inspection-0.4.0-py3-none-any.whl.metadata (2.6 kB)
-Collecting markdown-it-py>=2.2.0 (from rich>=10.11.0->chromadb)
-  Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
-Requirement already satisfied: pygments<3.0.0,>=2.13.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from rich>=10.11.0->chromadb) (2.19.1)
-Collecting huggingface-hub<1.0,>=0.16.4 (from tokenizers>=0.13.2->chromadb)
-  Downloading huggingface_hub-0.30.2-py3-none-any.whl.metadata (13 kB)
-Requirement already satisfied: click>=8.0.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from typer>=0.9.0->chromadb) (8.1.8)
-Collecting shellingham>=1.3.0 (from typer>=0.9.0->chromadb)
-  Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
-Collecting httptools>=0.6.3 (from uvicorn[standard]>=0.18.3->chromadb)
-  Downloading httptools-0.6.4-cp312-cp312-win_amd64.whl.metadata (3.7 kB)
-Collecting python-dotenv>=0.13 (from uvicorn[standard]>=0.18.3->chromadb)
-  Downloading python_dotenv-1.1.0-py3-none-any.whl.metadata (24 kB)
-Collecting watchfiles>=0.13 (from uvicorn[standard]>=0.18.3->chromadb)
-  Downloading watchfiles-1.0.5-cp312-cp312-win_amd64.whl.metadata (5.0 kB)
-Collecting websockets>=10.4 (from uvicorn[standard]>=0.18.3->chromadb)
-  Downloading websockets-15.0.1-cp312-cp312-win_amd64.whl.metadata (7.0 kB)
-Collecting cachetools<6.0,>=2.0.0 (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb)
-  Downloading cachetools-5.5.2-py3-none-any.whl.metadata (5.4 kB)
-Collecting pyasn1-modules>=0.2.1 (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb)
-  Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
-Collecting rsa<5,>=3.1.4 (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb)
-  Using cached rsa-4.9-py3-none-any.whl.metadata (4.2 kB)
-Collecting filelock (from huggingface-hub<1.0,>=0.16.4->tokenizers>=0.13.2->chromadb)
-  Downloading filelock-3.18.0-py3-none-any.whl.metadata (2.9 kB)
-Collecting fsspec>=2023.5.0 (from huggingface-hub<1.0,>=0.16.4->tokenizers>=0.13.2->chromadb)
-  Downloading fsspec-2025.3.2-py3-none-any.whl.metadata (11 kB)
-Collecting zipp>=3.20 (from importlib-metadata<8.7.0,>=6.0->opentelemetry-api>=1.2.0->chromadb)
-  Downloading zipp-3.21.0-py3-none-any.whl.metadata (3.7 kB)
-Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=10.11.0->chromadb)
-  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
-Requirement already satisfied: charset-normalizer<4,>=2 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from requests->kubernetes>=28.1.0->chromadb) (3.4.1)
-Requirement already satisfied: sniffio>=1.1 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from anyio->httpx>=0.27.0->chromadb) (1.3.1)
-Collecting humanfriendly>=9.1 (from coloredlogs->onnxruntime>=1.14.1->chromadb)
-  Using cached humanfriendly-10.0-py2.py3-none-any.whl.metadata (9.2 kB)
-Collecting mpmath<1.4,>=1.1.0 (from sympy->onnxruntime>=1.14.1->chromadb)
-  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
-Collecting pyreadline3 (from humanfriendly>=9.1->coloredlogs->onnxruntime>=1.14.1->chromadb)
-  Downloading pyreadline3-3.5.4-py3-none-any.whl.metadata (4.7 kB)
-Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth>=1.0.1->kubernetes>=28.1.0->chromadb)
-  Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
-Downloading chromadb-1.0.4-cp39-abi3-win_amd64.whl (18.2 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 1.3 MB/s eta 0:00:00
-Downloading fastapi-0.115.9-py3-none-any.whl (94 kB)
-Downloading bcrypt-4.3.0-cp39-abi3-win_amd64.whl (152 kB)
-Downloading build-1.2.2.post1-py3-none-any.whl (22 kB)
-Downloading grpcio-1.71.0-cp312-cp312-win_amd64.whl (4.3 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 1.9 MB/s eta 0:00:00
-Downloading kubernetes-32.0.1-py2.py3-none-any.whl (2.0 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 1.8 MB/s eta 0:00:00
-Downloading onnxruntime-1.21.0-cp312-cp312-win_amd64.whl (11.8 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.8/11.8 MB 2.0 MB/s eta 0:00:00
-Downloading opentelemetry_api-1.32.0-py3-none-any.whl (65 kB)
-Downloading opentelemetry_exporter_otlp_proto_grpc-1.32.0-py3-none-any.whl (18 kB)
-Downloading opentelemetry_exporter_otlp_proto_common-1.32.0-py3-none-any.whl (18 kB)
-Downloading opentelemetry_proto-1.32.0-py3-none-any.whl (55 kB)
-Downloading opentelemetry_instrumentation_fastapi-0.53b0-py3-none-any.whl (12 kB)
-Downloading opentelemetry_instrumentation-0.53b0-py3-none-any.whl (30 kB)
-Downloading opentelemetry_instrumentation_asgi-0.53b0-py3-none-any.whl (16 kB)
-Downloading opentelemetry_semantic_conventions-0.53b0-py3-none-any.whl (188 kB)
-Downloading opentelemetry_util_http-0.53b0-py3-none-any.whl (7.3 kB)
-Downloading opentelemetry_sdk-1.32.0-py3-none-any.whl (118 kB)
-Downloading orjson-3.10.16-cp312-cp312-win_amd64.whl (133 kB)
-Downloading posthog-3.24.1-py2.py3-none-any.whl (85 kB)
-Downloading pydantic-2.11.3-py3-none-any.whl (443 kB)
-Downloading pydantic_core-2.33.1-cp312-cp312-win_amd64.whl (2.0 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 1.9 MB/s eta 0:00:00
-Downloading rich-14.0.0-py3-none-any.whl (243 kB)
-Downloading tenacity-9.1.2-py3-none-any.whl (28 kB)
-Downloading tokenizers-0.21.1-cp39-abi3-win_amd64.whl (2.4 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 1.9 MB/s eta 0:00:00
-Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
-Downloading typer-0.15.2-py3-none-any.whl (45 kB)
-Downloading uvicorn-0.34.1-py3-none-any.whl (62 kB)
-Downloading importlib_resources-6.5.2-py3-none-any.whl (37 kB)
-Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
-Using cached backoff-2.2.1-py3-none-any.whl (15 kB)
-Downloading Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
-Using cached distro-1.9.0-py3-none-any.whl (20 kB)
-Downloading durationpy-0.9-py3-none-any.whl (3.5 kB)
-Downloading google_auth-2.39.0-py2.py3-none-any.whl (212 kB)
-Downloading googleapis_common_protos-1.70.0-py3-none-any.whl (294 kB)
-Downloading httptools-0.6.4-cp312-cp312-win_amd64.whl (88 kB)
-Downloading huggingface_hub-0.30.2-py3-none-any.whl (481 kB)
-Downloading importlib_metadata-8.6.1-py3-none-any.whl (26 kB)
-Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
-Using cached monotonic-1.6-py2.py3-none-any.whl (8.2 kB)
-Using cached oauthlib-3.2.2-py3-none-any.whl (151 kB)
-Downloading protobuf-5.29.4-cp310-abi3-win_amd64.whl (434 kB)
-Downloading python_dotenv-1.1.0-py3-none-any.whl (20 kB)
-Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
-Downloading starlette-0.45.3-py3-none-any.whl (71 kB)
-Downloading typing_inspection-0.4.0-py3-none-any.whl (14 kB)
-Downloading watchfiles-1.0.5-cp312-cp312-win_amd64.whl (291 kB)
-Downloading websockets-15.0.1-cp312-cp312-win_amd64.whl (176 kB)
-Using cached coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
-Downloading flatbuffers-25.2.10-py2.py3-none-any.whl (30 kB)
-Downloading pyproject_hooks-1.2.0-py3-none-any.whl (10 kB)
-Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
-Downloading sympy-1.13.3-py3-none-any.whl (6.2 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 1.9 MB/s eta 0:00:00
-Downloading asgiref-3.8.1-py3-none-any.whl (23 kB)
-Downloading cachetools-5.5.2-py3-none-any.whl (10 kB)
-Downloading fsspec-2025.3.2-py3-none-any.whl (194 kB)
-Using cached humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
-Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
-Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
-Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
-Using cached rsa-4.9-py3-none-any.whl (34 kB)
-Downloading wrapt-1.17.2-cp312-cp312-win_amd64.whl (38 kB)
-Downloading zipp-3.21.0-py3-none-any.whl (9.6 kB)
-Downloading filelock-3.18.0-py3-none-any.whl (16 kB)
-Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
-Downloading pyreadline3-3.5.4-py3-none-any.whl (83 kB)
+... skip ...
 Building wheels for collected packages: chroma-hnswlib
   Building wheel for chroma-hnswlib (pyproject.toml) ... error
   error: subprocess-exited-with-error
@@ -788,7 +548,6 @@ note: If you believe this is a mistake, please contact your Python installation 
 hint: See PEP 668 for the detailed specification.
 ```
 - WSL 有點囉唆，我還是直接在 Github Codespace 的容器裡測試好了。
-- 
 ```bash
 jazzw@JazzBook:~$ blank ssh
 Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.8.0-1021-azure x86_64)
@@ -798,8 +557,6 @@ Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.8.0-1021-azure x86_64)
  * Support:        https://ubuntu.com/pro
 Last login: Tue Apr 15 06:49:17 2025 from ::1
 @jazzwang ➜ /workspaces/codespaces-blank (main) $ pip install chromadb
-... skip ...
-Successfully installed annotated-types-0.7.0 asgiref-3.8.1 backoff-2.2.1 bcrypt-4.3.0 build-1.2.2.post1 cachetools-5.5.2 chroma-hnswlib-0.7.6 chromadb-1.0.4 click-8.1.8 coloredlogs-15.0.1 deprecated-1.2.18 distro-1.9.0 durationpy-0.9 fastapi-0.115.9 flatbuffers-25.2.10 google-auth-2.39.0 googleapis-common-protos-1.70.0 grpcio-1.71.0 httptools-0.6.4 huggingface-hub-0.30.2 humanfriendly-10.0 importlib-metadata-8.6.1 importlib-resources-6.5.2 kubernetes-32.0.1 markdown-it-py-3.0.0 mdurl-0.1.2 mmh3-5.1.0 monotonic-1.6 oauthlib-3.2.2 onnxruntime-1.21.0 opentelemetry-api-1.32.0 opentelemetry-exporter-otlp-proto-common-1.32.0 opentelemetry-exporter-otlp-proto-grpc-1.32.0 opentelemetry-instrumentation-0.53b0 opentelemetry-instrumentation-asgi-0.53b0 opentelemetry-instrumentation-fastapi-0.53b0 opentelemetry-proto-1.32.0 opentelemetry-sdk-1.32.0 opentelemetry-semantic-conventions-0.53b0 opentelemetry-util-http-0.53b0 orjson-3.10.16 posthog-3.24.1 protobuf-5.29.4 pyasn1-0.6.1 pyasn1-modules-0.4.2 pydantic-2.11.3 pydantic-core-2.33.1 pypika-0.48.9 pyproject_hooks-1.2.0 python-dotenv-1.1.0 requests-oauthlib-2.0.0 rich-14.0.0 rsa-4.9 shellingham-1.5.4 starlette-0.45.3 tenacity-9.1.2 tokenizers-0.21.1 tqdm-4.67.1 typer-0.15.2 typing-inspection-0.4.0 uvicorn-0.34.1 uvloop-0.21.0 watchfiles-1.0.5 websockets-15.0.1 wrapt-1.17.2 zipp-3.21.0
 @jazzwang ➜ /workspaces/codespaces-blank (main) $
 ```
 - 跑個範例程式：
@@ -864,4 +621,56 @@ Desired=Unknown/Install/Remove/Purge/Hold
 ||/ Name           Version           Architecture Description
 +++-==============-=================-============-===================================
 ii  sqlite3        3.31.1-4ubuntu0.6 amd64        Command line interface for SQLite 3
+```
+## 2025-04-16
+
+- 換一台 Github Codespace 一樣的版本。
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ dpkg -l sqlite3
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version           Architecture Description
++++-==============-=================-============-===================================
+ii  sqlite3        3.31.1-4ubuntu0.6 amd64        Command line interface for SQLite 3
+@jazzwang ➜ /workspaces/snippet (master) $ uname -a
+Linux codespaces-dad4c5 6.8.0-1021-azure #25~22.04.1-Ubuntu SMP Thu Jan 16 21:37:09 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+```
+- 那就開一台新的 Debian docker instance 來跑吧！！
+```bash
+@jazzwang ➜ /workspaces/snippet/py/chromadb (master) $ docker run --name chromadb -it -v $(pwd):/data debian /bin/bash
+root@0bebe826fa2e:/# cd data/
+root@0bebe826fa2e:/data# apt-get update
+root@0bebe826fa2e:/data# apt-get -y install python3-pip sqlite3
+root@0bebe826fa2e:/data# pip3 install chromadb
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try apt install
+    python3-xyz, where xyz is the package you are trying to
+    install.
+
+    If you wish to install a non-Debian-packaged Python package,
+    create a virtual environment using python3 -m venv path/to/venv.
+    Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make
+    sure you have python3-full installed.
+
+    If you wish to install a non-Debian packaged Python application,
+    it may be easiest to use pipx install xyz, which will manage a
+    virtual environment for you. Make sure you have pipx installed.
+
+    See /usr/share/doc/python3.11/README.venv for more information.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+```
+- 直接加 `--break-system-packages` 強迫安裝
+```
+root@0bebe826fa2e:/data# pip3 install chromadb --break-system-packages
+```
+- 試跑 
+```
+root@0bebe826fa2e:/data# python3 chromadb-lab1.py
+/root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx.tar.gz: 100%|███████████████████████████████████████████████████| 79.3M/79.3M [00:18<00:00, 4.41MiB/s]
+{'ids': [['id2', 'id1']], 'embeddings': None, 'documents': [['This is a document about oranges', 'This is a document about pineapple']], 'uris': None, 'included': ['metadatas', 'documents', 'distances'], 'data': None, 'metadatas': [[None, None]], 'distances': [[1.1462137699127197, 1.3015384674072266]]}
 ```
