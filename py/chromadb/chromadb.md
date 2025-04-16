@@ -668,7 +668,7 @@ hint: See PEP 668 for the detailed specification.
 ```
 root@0bebe826fa2e:/data# pip3 install chromadb --break-system-packages
 ```
-- 試跑 
+- 試跑
 ```
 root@0bebe826fa2e:/data# python3 chromadb-lab1.py
 /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx.tar.gz: 100%|███████████████████████████████████████████████████| 79.3M/79.3M [00:18<00:00, 4.41MiB/s]
@@ -686,7 +686,21 @@ jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet$ pip install chromadb --break-syste
 ```
 - 執行上面 Gemini 的範例：
 ```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet$ python3 chromadb-lab2.py
+Number of documents in reloaded collection: 2
+```
+- 觀察產生的 local storage 結構：
+```bash
+$ tree chroma_db/
+chroma_db/
+├── chroma.sqlite3
+└── f0911c04-b80c-4e21-9fdd-11b74123bc08
+    ├── data_level0.bin
+    ├── header.bin
+    ├── length.bin
+    └── link_lists.bin
 
+2 directories, 5 files
 ```
 
 ### LlamaIndex and ChromaDB - Test Drive
@@ -702,4 +716,8 @@ export OPENAI_API_KEY=sk-000000000000000000000000000 ## paid OpenAI
 - 試著運行上面 Gemini 給的範例：
 ```bash
 jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet/py/chromadb$ python3 chromadb-git-repo-analysis.py
+Traceback (most recent call last):
+  File "/mnt/c/Users/jazzw/git/snippet/py/chromadb/chromadb-git-repo-analysis.py", line 7, in <module>
+    from llama_index.vector_stores import ChromaVectorStore
+ModuleNotFoundError: No module named 'llama_index.vector_stores'
 ```
