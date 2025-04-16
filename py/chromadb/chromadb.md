@@ -674,3 +674,32 @@ root@0bebe826fa2e:/data# python3 chromadb-lab1.py
 /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx.tar.gz: 100%|███████████████████████████████████████████████████| 79.3M/79.3M [00:18<00:00, 4.41MiB/s]
 {'ids': [['id2', 'id1']], 'embeddings': None, 'documents': [['This is a document about oranges', 'This is a document about pineapple']], 'uris': None, 'included': ['metadatas', 'documents', 'distances'], 'data': None, 'metadatas': [[None, None]], 'distances': [[1.1462137699127197, 1.3015384674072266]]}
 ```
+- 結論：在 Windows 上使用 WSL 應該也可以依法炮製。
+- ( 2025-04-16 18:28:32 )
+- 備註：在 Google Cloud Shell 測試，就沒有遇到特定的 blocker。
+
+### ChromaDB Local Storage - Test Drive
+
+- Install ChromaDB on Windows WSL (Ubuntu)
+```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet$ pip install chromadb --break-system-packages
+```
+- 執行上面 Gemini 的範例：
+```bash
+
+```
+
+### LlamaIndex and ChromaDB - Test Drive
+
+- Install LlamaIndex, LangChain, Sentence Transformers, ChromaDB on Windows WSL (Ubuntu)
+```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet$ pip install llama-index chromadb langchain sentence-transformers GitPython --break-system-packages
+```
+- 設定 OPENAI_API_KEY 環境變數：
+```bash
+export OPENAI_API_KEY=sk-000000000000000000000000000 ## paid OpenAI
+```
+- 試著運行上面 Gemini 給的範例：
+```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet/py/chromadb$ python3 chromadb-git-repo-analysis.py
+```
