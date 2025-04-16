@@ -4,8 +4,8 @@ from pathlib import Path
 
 from git import Repo
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageContext
-from llama_index.vector_stores import ChromaVectorStore
-from llama_index.embeddings import HuggingFaceEmbedding
+from llama_index.vector_stores.chroma import ChromaVectorStore
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from langchain_openai import ChatOpenAI  # Or any other LangChain LLM
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain

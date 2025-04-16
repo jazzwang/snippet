@@ -721,3 +721,41 @@ Traceback (most recent call last):
     from llama_index.vector_stores import ChromaVectorStore
 ModuleNotFoundError: No module named 'llama_index.vector_stores'
 ```
+
+## 2025-04-17
+
+- 參考：https://docs.llamaindex.ai/en/stable/examples/vector_stores/ChromaIndexDemo/
+- 加裝 `llama-index-vector-stores-chroma`
+```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet/py/chromadb$ pip install llama-index-vector-stores-chroma --break-system-packages
+```
+- 改掉出錯的第 7 行
+```diff
+- from llama_index.vector_stores import ChromaVectorStore
++ from llama_index.vector_stores.chroma import ChromaVectorStore
+```
+```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet/py/chromadb$ python3 chromadb-git-repo-analysis.py
+Traceback (most recent call last):
+  File "/mnt/c/Users/jazzw/git/snippet/py/chromadb/chromadb-git-repo-analysis.py", line 8, in <module>
+    from llama_index.embeddings import HuggingFaceEmbedding
+ImportError: cannot import name 'HuggingFaceEmbedding' from 'llama_index.embeddings' (unknown location)
+```
+- ( 2025-04-17 00:26:04 )
+- 加裝 `llama-index-embeddings-huggingface`
+```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet/py/chromadb$ pip install llama-index-embeddings-huggingface --break-system-packages
+```
+- 改掉出錯的第八行
+```diff
+- from llama_index.embeddings import HuggingFaceEmbedding
++ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+```
+```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet/py/chromadb$ python3 chromadb-git-repo-analysis.py
+Traceback (most recent call last):
+  File "/mnt/c/Users/jazzw/git/snippet/py/chromadb/chromadb-git-repo-analysis.py", line 9, in <module>
+    from langchain_openai import ChatOpenAI  # Or any other LangChain LLM
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'langchain_openai
+```
