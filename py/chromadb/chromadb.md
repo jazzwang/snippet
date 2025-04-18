@@ -759,3 +759,18 @@ Traceback (most recent call last):
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ModuleNotFoundError: No module named 'langchain_openai
 ```
+
+## 2025-04-18
+
+- ( 2025-04-18 20:01:57 )
+- 改掉出錯的第九行
+```diff
+- from langchain_openai import ChatOpenAI  # Or any other LangChain LLM
++ from langchain_openai import ChatOpenAI
+```
+```bash
+jazz@JazzBook:/mnt/c/Users/jazzw/git/snippet/py/chromadb$ python3 chromadb-git-repo-analysis.py
+Cloning repository from https://github.com/hwchase17/langchain to langchain_repo...
+```
+- 看到跳出 WSL 遇到一些 IO 效能問題的警告。然後查了一下，雖然有產生 `langchain_repo` 的目錄，卻似乎一直都沒有抓到檔案。
+- 改用 Google Cloud Shell 跑跑看。一來網路比較快，二來不用切到 WSL 這樣好幾層。
