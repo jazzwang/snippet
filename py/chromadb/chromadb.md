@@ -774,3 +774,17 @@ Cloning repository from https://github.com/hwchase17/langchain to langchain_repo
 ```
 - 看到跳出 WSL 遇到一些 IO 效能問題的警告。然後查了一下，雖然有產生 `langchain_repo` 的目錄，卻似乎一直都沒有抓到檔案。
 - 改用 Google Cloud Shell 跑跑看。一來網路比較快，二來不用切到 WSL 這樣好幾層。
+
+## 2025-04-19
+
+- ( 2025-04-19 00:11:56 )
+```bash
+cloudshell:~$ pip install chromadb GitPython llama-index-vector-stores-chroma llama-index-embeddings-huggingface
+```
+- 結果：光裝套件就把 Cloud Shell 的硬碟吃光了 :( 有點扯
+```
+ERROR: Could not install packages due to an OSError: [Errno 28] No space left on device
+@cloudshell:~$ df -h .
+Filesystem                         Size  Used Avail Use% Mounted on
+/dev/disk/by-id/google-home-part1  4.8G  4.6G     0 100% /home
+```
