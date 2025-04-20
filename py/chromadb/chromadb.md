@@ -788,3 +788,164 @@ ERROR: Could not install packages due to an OSError: [Errno 28] No space left on
 Filesystem                         Size  Used Avail Use% Mounted on
 /dev/disk/by-id/google-home-part1  4.8G  4.6G     0 100% /home
 ```
+
+## 2025-04-20
+
+- ( 2025-04-20 11:42:40 )
+- 改用 Github Codespace + Debian Docker Image 測試
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ docker run -it --name chromadb --hostname chromadb -v $(pwd):/data debian /bin/bash
+root@chromadb:/# cd /data
+root@chromadb:/data# apt-get update; apt-get -y install python3-pip wget git
+root@chromadb:/data# pip install chromadb GitPython llama-index-vector-stores-chroma llama-index-embeddings-huggingface langchain langchain-openai --break-system-packages
+root@chromadb:/data# wget https://raw.githubusercontent.com/jazzwang/snippet/refs/heads/master/py/chromadb/chromadb-git-repo-analysis.py
+root@chromadb:/data# python3 chromadb-git-repo-analysis.py
+Cloning repository from https://github.com/hwchase17/langchain to langchain_repo...
+```
+- 看到一些錯誤訊息，加上 langchain repo 其實蠻複雜的，改用一個簡單一點的 git repo 來做這個實驗。
+```
+root@chromadb:/data# python3 chromadb-git-repo-analysis.py
+Cloning repository from https://github.com/jazzwang/confluence-insight to git_repo...
+Repository cloned successfully.
+Loading documents from git_repo...
+Failed to load file /data/git_repo/MEMO.md with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/README.md with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/gen-pageGraph.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageHistories.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageIds.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageLinks.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pages.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/profile-stats.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Loaded 7 documents.
+modules.json: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 349/349 [00:00<00:00, 2.73MB/s]
+config_sentence_transformers.json: 100%|████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:00<00:00, 772kB/s]
+README.md: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 10.4k/10.4k [00:00<00:00, 47.8MB/s]
+sentence_bert_config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 53.0/53.0 [00:00<00:00, 449kB/s]
+config.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 571/571 [00:00<00:00, 5.58MB/s]
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+model.safetensors: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 438M/438M [00:01<00:00, 314MB/s]
+tokenizer_config.json: 100%|███████████████████████████████████████████████████████████████████████████████████████████████| 363/363 [00:00<00:00, 1.84MB/s]
+vocab.txt: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 232k/232k [00:00<00:00, 1.80MB/s]
+tokenizer.json: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 466k/466k [00:00<00:00, 3.58MB/s]
+special_tokens_map.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 239/239 [00:00<00:00, 2.24MB/s]
+config.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 190/190 [00:00<00:00, 2.11MB/s]
+Traceback (most recent call last):
+  File "/data/chromadb-git-repo-analysis.py", line 52, in <module>
+    storage_context = StorageContext.from_defaults(vector_store=vector_store, embed_model=embed_model)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: StorageContext.from_defaults() got an unexpected keyword argument 'embed_model'
+```
+- 補安裝 `hf_xet`
+```
+root@chromadb:/data# pip install huggingface_hub[hf_xet] --break-system-packages
+root@chromadb:/data# pip install hf_xet --break-system-packages
+```
+- 看起來要繼續解
+```
+root@chromadb:/data# python3 chromadb-git-repo-analysis.py
+Cloning repository from https://github.com/jazzwang/confluence-insight to git_repo...
+Repository cloned successfully.
+Loading documents from git_repo...
+Failed to load file /data/git_repo/MEMO.md with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/README.md with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/gen-pageGraph.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageHistories.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageIds.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageLinks.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pages.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/profile-stats.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Loaded 7 documents.
+Traceback (most recent call last):
+  File "/data/chromadb-git-repo-analysis.py", line 52, in <module>
+    storage_context = StorageContext.from_defaults(vector_store=vector_store, embed_model=embed_model)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: StorageContext.from_defaults() got an unexpected keyword argument 'embed_model'
+```
+- 參考：https://docs.llamaindex.ai/en/stable/api_reference/storage/storage_context/
+- 改掉第 52 行
+```diff
+- storage_context = StorageContext.from_defaults(vector_store=vector_store, embed_model=embed_model)
++ storage_context = StorageContext.from_defaults(vector_store=vector_store)
+```
+- 新的錯誤訊息是關於該用什麼 `embedding`
+```
+root@chromadb:/data# python3 chromadb-git-repo-analysis.py
+Cloning repository from https://github.com/jazzwang/confluence-insight to git_repo...
+Repository cloned successfully.
+Loading documents from git_repo...
+Failed to load file /data/git_repo/MEMO.md with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/README.md with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/gen-pageGraph.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageHistories.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageIds.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageLinks.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pages.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/profile-stats.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Loaded 7 documents.
+Creating LlamaIndex Vector Store Index...
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/llama_index/core/embeddings/utils.py", line 50, in resolve_embed_model
+    from llama_index.embeddings.openai import (
+ModuleNotFoundError: No module named 'llama_index.embeddings.openai'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/chromadb-git-repo-analysis.py", line 56, in <module>
+    index = VectorStoreIndex.from_documents(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/llama_index/core/indices/base.py", line 119, in from_documents
+    return cls(
+           ^^^^
+  File "/usr/local/lib/python3.11/dist-packages/llama_index/core/indices/vector_store/base.py", line 72, in __init__
+    else Settings.embed_model
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/llama_index/core/settings.py", line 64, in embed_model
+    self._embed_model = resolve_embed_model("default")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/llama_index/core/embeddings/utils.py", line 61, in resolve_embed_model
+    raise ImportError(
+ImportError: `llama-index-embeddings-openai` package not found, please run `pip install llama-index-embeddings-openai`
+```
+- 補裝 `llama-index-embeddings-openai`
+```bash
+root@chromadb:/data# pip install llama-index-embeddings-openai --break-system-packages
+```
+```bash
+root@chromadb:/data# export OPENAI_API_KEY=sk-0000000000000000000000000000000000000000
+root@chromadb:/data# python3 chromadb-git-repo-analysis.py
+Cloning repository from https://github.com/jazzwang/confluence-insight to git_repo...
+Repository cloned successfully.
+Loading documents from git_repo...
+Failed to load file /data/git_repo/MEMO.md with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/README.md with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/gen-pageGraph.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageHistories.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageIds.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pageLinks.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/get-pages.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Failed to load file /data/git_repo/profile-stats.py with error: 'str' object has no attribute 'load_data'. Skipping...
+Loaded 7 documents.
+Creating LlamaIndex Vector Store Index...
+Vector Store Index created and persisted to ChromaDB.
+/data/chromadb-git-repo-analysis.py:74: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 1.0. Use :meth:`~RunnableSequence, e.g., `prompt | llm`` instead.
+  llm_chain = LLMChain(prompt=prompt, llm=llm)
+/data/chromadb-git-repo-analysis.py:84: LangChainDeprecationWarning: The method `Chain.run` was deprecated in langchain 0.1.0 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  response = llm_chain.run(context=context_text, question=query)
+
+Question: What are the main features of this git repo?
+Answer: I don't know.
+
+Question: How can I contribute to this git repo?
+Answer: To contribute to this Git repository, you can follow the guidelines outlined in the "Submission of Contributions" section of the Apache License Version 2.0. This section states that any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of the License, without any additional terms or conditions. Make sure to adhere to the requirements specified in the license, such as providing attribution notices and following the redistribution conditions.
+```
+- 初步看起來是正常可以跑了。算是一個整合了 ChromaDB, LlamaIndex, LangChain, OpenAI embedding/GPT-3.5-Turbo 的 RAG 應用。
+- 想法：
+  - 畢竟是 Gemini 生成的範例程式，所以語法上會有很多舊的語法。像第 74 行跟第 84 行。
+```bash
+/data/chromadb-git-repo-analysis.py:74: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 1.0. Use :meth:`~RunnableSequence, e.g., `prompt | llm`` instead.
+  llm_chain = LLMChain(prompt=prompt, llm=llm)
+/data/chromadb-git-repo-analysis.py:84: LangChainDeprecationWarning: The method `Chain.run` was deprecated in langchain 0.1.0 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  response = llm_chain.run(context=context_text, question=query)
+```
+  - 還有上面遇到的套件 import 語法錯誤，應該是因為 LangChain, LlamaIndex, ChromaDB 都一直在快速演化中，所以 Python package 的物件導向封裝方式也一定隨著時間不斷地修改。各大 LLM 模型目前雖然可以做到 Vibe Coding，透過持續迭代，與使用 TOOL 呼叫外部搜尋 API (或者支援 Grounding 的模型)，開發者的手動介入與修改還是不可或缺的。

@@ -12,8 +12,8 @@ from langchain.chains import LLMChain
 import chromadb
 
 # Define repository details and paths
-repo_url = "https://github.com/hwchase17/langchain"  # Example LangChain repository
-repo_name = "langchain_repo"
+repo_url = "https://github.com/jazzwang/confluence-insight"
+repo_name = "git_repo"
 repo_path = Path("./" + repo_name)
 documents_path = Path("./" + repo_name)  # LlamaIndex will read files from here
 persist_dir = Path("./chroma_db")
@@ -40,7 +40,7 @@ print(f"Loaded {len(documents)} documents.")
 # Initialize ChromaDB and LlamaIndex Embedding Model
 # Initialize ChromaDB in a persistent directory
 chroma_client = chromadb.PersistentClient(path=str(persist_dir))
-chroma_collection = chroma_client.get_or_create_collection(name="langchain_docs")
+chroma_collection = chroma_client.get_or_create_collection(name="git_docs")
 
 # Initialize LlamaIndex's ChromaVectorStore
 vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
@@ -49,7 +49,7 @@ vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
 embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-mpnet-base-v2")
 
 # Configure LlamaIndex's StorageContext
-storage_context = StorageContext.from_defaults(vector_store=vector_store, embed_model=embed_model)
+storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
 # Create the Vector Store Index using LlamaIndex
 print("Creating LlamaIndex Vector Store Index...")
@@ -85,12 +85,12 @@ def query_git_repo(query):
     return response
 
 # Example Query
-query = "What are the main features of LangChain?"
+query = "What are the main features of this Git repository?"
 answer = query_git_repo(query)
 print(f"\nQuestion: {query}")
 print(f"Answer: {answer}")
 
-query = "How can I contribute to LangChain?"
+query = "How can I contribute to this Git repository?"
 answer = query_git_repo(query)
 print(f"\nQuestion: {query}")
 print(f"Answer: {answer}")
