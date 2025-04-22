@@ -300,3 +300,9 @@ jazzw@JazzBook:~$ npx @playwright/mcp
   - https://mcpflow.io
     - https://mcpflow.io/doc
   - https://www.mcpstore.co/
+
+## 2025-04-21
+
+- Open Source MCP CLient Library
+  - https://github.com/mcp-use/mcp-use
+  - Python 的 MCP Client 實作

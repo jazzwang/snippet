@@ -909,3 +909,11 @@ aider 0.76.1
 - https://github.com/hotovo/aider-desk
   - VS Code extension
     - https://marketplace.visualstudio.com/items?itemName=hotovo-sk.aider-desk-connector
+
+## 2025-04-22
+
+- 紀錄一下 2025-03-15 ~ 2025-03-18 看到的 Aider MCP 相關討論
+  - https://github.com/Aider-AI/aider/issues/3314
+  - https://www.reddit.com/r/ChatGPTCoding/comments/1hwn6qd/35_sonnet_mcp_aider_complete_game_changer/
+  - https://github.com/lutzleonhardt/mcpm-aider/blob/main/docs/MCP.md
+  - https://www.youtube.com/watch?v=WNdEX9IAbDo
