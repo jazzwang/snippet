@@ -2,7 +2,12 @@
 # To build a new Modelfile based on this, replace FROM with:
 # FROM hf.co/tetf/Llama-3.1-TAIDE-LX-8B-Chat-GGUF:Q4_K_M
 
-FROM /home/codespace/.ollama/models/blobs/sha256-2ec5d4641b0e611801427931a8833eda7279c2f8e126b8ae2627966c9586b290
+# Download directly from hf.co with:
+# ```
+# wget -c https://huggingface.co/tetf/Llama-3.1-TAIDE-LX-8B-Chat-GGUF/blob/main/Llama-3.1-TAIDE-LX-8B-Chat-Q4_K_M.gguf
+# ```
+
+FROM Llama-3.1-TAIDE-LX-8B-Chat-Q4_K_M.gguf
 TEMPLATE """{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>
 {{- if .System }}
 
