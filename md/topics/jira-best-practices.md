@@ -24,3 +24,11 @@
     statusCategory = "In Progress" AND statusCategoryChangedDate <= -3d
     statusCategory = "In Progress" AND statusCategory ChangedDate > -3d
     ```
+
+## Jira Project Types
+
+| Application | Project type | Application specific feature set |
+| --- |  --- |  --- |
+| Jira Core | <img src='https://confluence.atlassian.com/jirasoftwareserver0904/files/1188766485/1188766488/1/1600423910215/business_projects.png' height='24'> Business projects | -   Available to all licensed users |
+| Jira Software | <img src='https://confluence.atlassian.com/jirasoftwareserver0904/files/1188766485/1188766487/1/1600423910132/service_desk.png) Software projects | -   Integration with development tools-   Agile boards-   Release hub for software versions |
+| Jira Service Management | ![](https://confluence.atlassian.com/jirasoftwareserver0904/files/1188766485/1188766486/1/1600423909923/software_projects.png) Service projects | -   Service Level Agreements (SLAs)-   A customizable web portal for customers-   Permission schemes allowing customer access |
