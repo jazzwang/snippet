@@ -24,3 +24,43 @@
     - https://github.com/canonical/dqlite
     - https://dqlite.io/
     > High-availability SQLite
+
+## 2025-04-26
+
+- 目標：讀取分隔符號是 `TAB (\t)` 字元的檔案
+- 參考：https://sqlite.org/forum/forumpost/6b41812741
+- 可能作法：
+```sql
+.mode csv
+.separator '\t'
+.import file table
+```
+- 實測一下：
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ printf "Col1\tCol2\tCol3\nA\tB\tC\nD\tE\tF\n" > sample.tsv
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ cat sample.tsv
+Col1    Col2    Col3
+A       B       C
+D       E       F
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ 
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ sudo apt -y install sqlite3
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ sqlite3 test.db
+SQLite version 3.45.3 2024-04-15 13:34:05
+Enter ".help" for usage hints.
+sqlite> .mode csv
+sqlite> .separator '\t'
+sqlite> .import sample.tsv sample
+Error: multi-character column separators not allowed for import
+sqlite> .separator "\t"
+sqlite> .import sample.tsv sample
+sqlite> .schema
+CREATE TABLE IF NOT EXISTS "sample"(
+"Col1" TEXT, "Col2" TEXT, "Col3" TEXT);
+sqlite> select * from sample;
+A       B       C
+D       E       F
+sqlite> .quit
+@jazzwang ➜ /workspaces/codespaces-blank (main) $
+```
+- 結果居然卡在單引號跟雙引號的差異，還是動用到 Gemini 解答，哈～
+  - https://g.co/gemini/share/4970a3797ead
