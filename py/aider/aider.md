@@ -917,3 +917,8 @@ aider 0.76.1
   - https://www.reddit.com/r/ChatGPTCoding/comments/1hwn6qd/35_sonnet_mcp_aider_complete_game_changer/
   - https://github.com/lutzleonhardt/mcpm-aider/blob/main/docs/MCP.md
   - https://www.youtube.com/watch?v=WNdEX9IAbDo
+
+## 2025-04-26
+
+- 根據 Clean Code 寫的 CONVENTION 規則，讓 Aider 可以生成原始碼時，參考這些原則：
+  - https://github.com/Aider-AI/conventions/blob/main/functional-programming/CONVENTIONS.md
