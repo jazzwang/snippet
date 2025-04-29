@@ -118,3 +118,11 @@ Options:
   - https://docs.litellm.ai/docs/tutorials/litellm_proxy_aporia
 - 這裡講的 Aporia Guardrails 是一個可以確保 LLM response 可以過濾掉敏感資訊的服務 (e.g. PII data)
   - https://www.aporia.com/ai-guardrails/
+
+## 2025-04-29
+
+- ( 2025-04-29 22:11:02 )
+- 本來猜想 LiteLLM 應該可以拿來 logging 跟提供 prompt observability
+- 看到最接近的是這篇文件
+  - https://docs.litellm.ai/docs/debugging/local_debugging
+- 奇怪，難道說我只需要 enable OLLAMA_DEBUG 讓 log 變多？
