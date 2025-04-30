@@ -306,3 +306,9 @@ jazzw@JazzBook:~$ npx @playwright/mcp
 - Open Source MCP CLient Library
   - https://github.com/mcp-use/mcp-use
   - Python 的 MCP Client 實作
+
+## 2025-04-30
+
+- 2025-04-18: [微軟 Semantic Kernel 整合 MCP 與 A2A 協定，大幅擴展跨模組 AI 代理互通性](https://www.ithome.com.tw/news/168485)
+
+> Semantic Kernel現支援MCP與A2A協定，強化跨代理與跨雲整合能力，協助開發者建構彈性多代理人工智慧應用架構
