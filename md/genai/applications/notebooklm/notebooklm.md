@@ -136,3 +136,17 @@ It's important to note that Google often integrates its research advancements in
 
 As NotebookLM evolves from an experimental phase to a more integrated part of Google Workspace, more specific technical details or even research publications might become available in the future. For now, understanding its features and the general landscape of AI research provides a good insight into its likely technical components.
 </td></tr></table>
+
+## 2025-05-01
+
+- Open Source Alternatives
+  - https://news.ycombinator.com/item?id=41964980
+  - https://www.reddit.com/r/notebooklm/comments/1gegr7m/meta_just_dropped_an_opensource_recipe_for/
+- https://github.com/johnmai-dev/NotebookMLX
+- https://github.com/satvik314/opensource_notebooklm
+- https://github.com/gabrielchua/open-notebooklm
+- https://github.com/lfnovo/open-notebook
+- https://github.com/open-biz/OpenBookLM
+- https://github.com/unionai-oss/notebook-llama
+- https://github.com/Goekdeniz-Guelmez/Local-NotebookLM
+  - https://github.com/remsky/Kokoro-FastAPI
