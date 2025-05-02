@@ -129,3 +129,26 @@ hf.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M    e7ac4b421833  
 
 - https://qwen.readthedocs.io/en/latest/framework/function_call.html
 - https://github.com/QwenLM/Qwen/blob/main/examples/function_call_examples.py
+
+## Qwen3
+
+## 2025-05-02
+
+- 2025-04-29: [Qwen3: Think Deeper, Act Faster](https://qwenlm.github.io/blog/qwen3/)
+
+| Models | Layers | Heads (Q / KV) | Tie Embedding | Context Length |
+| --- |  --- |  --- |  --- |  --- |
+| Qwen3-0.6B | 28 | 16 / 8 | Yes | 32K |
+| --- |  --- |  --- |  --- |  --- |
+| Qwen3-1.7B | 28 | 16 / 8 | Yes | 32K |
+| Qwen3-4B | 36 | 32 / 8 | Yes | 32K |
+| **Qwen3-8B** | **36** | **32 / 8** | **No** | **128K** |
+| Qwen3-14B | 40 | 40 / 8 | No | 128K |
+| Qwen3-32B | 64 | 64 / 8 | No | 128K |
+
+- Git Repo
+  - https://github.com/QwenLM/Qwen3
+- HuggingFace
+  - https://huggingface.co/collections/Qwen/qwen3-67dd247413f0e2e4f653967f
+
+可惜查了一下，官方沒有釋出 8B 的 GGUF，只有 32B 跟 14B
