@@ -119,6 +119,8 @@ hf.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M    e7ac4b421833  
     quantization        unknown
 ```
 
+## Qwen2.5-Omni
+
 ## QwQ-32B
 
 - 2025-03-06: ["QwQ-32B: Embracing the Power of Reinforcement Learning"](https://qwenlm.github.io/blog/qwq-32b/)
@@ -289,4 +291,192 @@ Error: unable to load model: C:\Users\jazzw\.ollama\models\blobs\sha256-a7676d25
 ```
 - 所以看樣子從 Gemma3 以後，這些版本相依性變得越來越高了。
 
-## Qwen2.5-Omni
+## 2025-05-04
+
+```bash
+jazzw@JazzBook:~$ ollama -v
+ollama version is 0.6.7
+jazzw@JazzBook:~$ ollama run qwen3-8b:q4_k_m
+>>> /?
+Available Commands:
+  /set            Set session variables
+  /show           Show model information
+  /load <model>   Load a session or model
+  /save <model>   Save your current session
+  /clear          Clear session context
+  /bye            Exit
+  /?, /help       Help for a command
+  /? shortcuts    Help for keyboard shortcuts
+
+Use """ to begin a multi-line message.
+
+>>> /show
+Available Commands:
+  /show info         Show details for this model
+  /show license      Show model license
+  /show modelfile    Show Modelfile for this model
+  /show parameters   Show parameters for this model
+  /show system       Show system message
+  /show template     Show prompt template
+
+>>> /show system
+No system message was specified for this model.
+>>> /show info
+  Model
+    architecture        qwen3
+    parameters          8.2B
+    context length      32768
+    embedding length    4096
+    quantization        Q4_K_M
+
+  Capabilities
+    completion
+    tools
+
+  Parameters
+    repeat_penalty    1
+    stop              "<|im_start|>"
+    stop              "<|im_end|>"
+    temperature       0.6
+    top_k             20
+    top_p             0.95
+
+  License
+    Apache License
+    Version 2.0, January 2004
+
+>>> /show template
+{{- if .Messages }}
+{{- if or .System .Tools }}<|im_start|>system
+{{- if .System }}
+{{ .System }}
+{{- end }}
+{{- if .Tools }}
+
+# Tools
+
+You may call one or more functions to assist with the user query.
+
+You are provided with function signatures within <tools></tools> XML tags:
+<tools>
+{{- range .Tools }}
+{"type": "function", "function": {{ .Function }}}
+{{- end }}
+</tools>
+
+For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:
+<tool_call>
+{"name": <function-name>, "arguments": <args-json-object>}
+</tool_call>
+{{- end }}<|im_end|>
+{{ end }}
+{{- range $i, $_ := .Messages }}
+{{- $last := eq (len (slice $.Messages $i)) 1 -}}
+{{- if eq .Role "user" }}<|im_start|>user
+{{ .Content }}<|im_end|>
+{{ else if eq .Role "assistant" }}<|im_start|>assistant
+{{ if .Content }}{{ .Content }}
+{{- else if .ToolCalls }}<tool_call>
+{{ range .ToolCalls }}{"name": "{{ .Function.Name }}", "arguments": {{ .Function.Arguments }}}
+{{ end }}</tool_call>
+{{- end }}{{ if not $last }}<|im_end|>
+{{ end }}
+{{- else if eq .Role "tool" }}<|im_start|>user
+<tool_response>
+{{ .Content }}
+</tool_response><|im_end|>
+{{ end }}
+{{- if and (ne .Role "assistant") $last }}<|im_start|>assistant
+{{ end }}
+{{- end }}
+{{- else }}
+{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ end }}{{ .Response }}{{ if .Response }}<|im_end|>{{ end }}
+>>> are you able to call external tool?
+<think>
+Okay, the user is asking if I can call external tools. Let me think about how to answer this.
+
+First, I need to recall what my capabilities are. I know that I can use tools like Python code execution, but I can't access the internet or external
+APIs directly. So, I should clarify that I can't call external tools in the traditional sense.
+
+Wait, but maybe there are some specific tools I can use within the system. For example, if the user is asking about running code, I can do that. But
+if they mean external services or APIs, then I can't. I should mention both scenarios.
+
+Also, I should make sure the user understands the limitations. Maybe they're trying to perform a task that requires an external API, so I should let
+them know I can't do that but offer to help with other methods.
+
+I should structure the response to first confirm that I can't call external tools, then explain the exceptions like code execution, and finally ask
+how I can assist them. That way, the user knows the boundaries but still feels supported.
+</think>
+
+I cannot directly call external tools or APIs outside of my system, as I do not have internet access or the ability to interact with external
+services. However, I can help you write code or scripts that use external tools (e.g., Python libraries, command-line tools, or APIs) if you provide
+the necessary details or instructions. For example:
+
+- If you need to run Python code, I can execute it within my environment.
+- If you want to use a specific tool (e.g., `curl`, `wget`, or a library like `requests`), I can guide you on how to implement it.
+
+Let me know what you need, and I’ll do my best to assist!
+
+>>> what is MCP server?
+<think>
+Okay, the user asked, "what is MCP server?" I need to figure out what they're referring to. MCP could stand for multiple things. Let me think.
+
+First, MCP might be an acronym. Common possibilities include Microsoft Configuration Manager (formerly SMS), which is a systems management tool.
+That's a possibility. Alternatively, it could relate to Minecraft, like the Minecraft Pocket Edition server, but that's more of a game server. There's
+also the Microsoft Cloud Platform, but that's usually called Azure. Maybe they're referring to a specific service or product.
+
+Wait, the user might be confused because MCP could be a term in different contexts. Let me check the possible meanings. Microsoft Configuration
+Manager is a well-known systems management tool used for deploying and managing software, hardware, and operating systems. That's a strong candidate.
+Another possibility is the Minecraft server, but the user might be referring to something else.
+
+I should also consider if there's any other context where MCP server is used. For example, in networking, there's a protocol called MCP, but I don't
+recall it being a server. Maybe the user is referring to a specific application or service that uses MCP as an acronym. Without more context, it's a
+bit tricky.
+
+I should list the main possibilities and explain each to cover the bases. That way, the user can clarify if they meant one of these. Including
+Microsoft Configuration Manager and Minecraft Pocket Edition servers makes sense, as those are the two main ones I can think of. Also, mentioning that
+MCP could stand for other things depending on the context would be helpful. I should ask for more details if they need a specific explanation.
+</think>
+
+The term **"MCP server"** can refer to different things depending on the context. Here are the most common interpretations:
+
+---
+
+### 1. **Microsoft Configuration Manager (MCM) Server**
+   - **Full Name**: Microsoft System Center Configuration Manager (SCCM)
+   - **Description**: A systems management tool by Microsoft used to manage and deploy software, hardware, and operating systems across enterprise
+networks. It allows administrators to:
+     - Deploy software updates.
+     - Manage user settings and policies.
+     - Monitor system health.
+     - Automate tasks like patch management.
+   - **Use Case**: Often used in IT departments for managing large-scale Windows environments.
+
+---
+
+### 2. **Minecraft Pocket Edition (PE) Server (MCP)**
+   - **Context**: In the gaming community, **MCP** can stand for **Minecraft Pocket Edition (PE)**, which is a mobile version of Minecraft. A "MCP
+server" might refer to a server hosting a Minecraft PE game.
+   - **Note**: This is less likely unless the context is gaming-related. The term "MCP" in this context is more commonly associated with the
+**Minecraft modding community** (e.g., **Minecraft Forge** or **Minecraft Mod Pack**).
+
+---
+
+### 3. **Other Possible Interpretations**
+   - **MCP in Networking**: A **MCP (Message Control Protocol)** server could exist in niche or proprietary systems, but this is rare.
+   - **MCP in Cloud/DevOps**: Some cloud platforms or tools might use "MCP" as an acronym (e.g., **Microsoft Cloud Platform**), but this is not a
+server per se.
+
+---
+
+### How to Clarify
+If you're referring to a specific tool, service, or context (e.g., IT management, gaming, cloud computing), please provide more details, and I can
+give a more precise explanation!
+
+>>> /bye
+```
