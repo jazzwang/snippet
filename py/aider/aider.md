@@ -750,7 +750,7 @@ Great! If you have any questions or need assistance with the code in your Git re
 - 後來發現升級 `aider 0.77.1` 以後，隱藏目錄原本只有 `.aider.tags.cache.v3` 現在多了 `.aider.tags.cache.v4`
 
 ```bash
-jazzw@JazzBook:~/git/xxxxx/xxxxx$ tree .aider.*
+jazzw@JazzBook:~/git/sample$ tree .aider.*
 .aider.chat.history.md  [error opening dir]
 .aider.input.history  [error opening dir]
 .aider.tags.cache.v3
@@ -783,7 +783,7 @@ jazzw@JazzBook:~/git/snippet$ uv tool install --force --python python3.12 aider-
 ```
   - 用這個指令降版後，確認版號是 `0.75.2`
 ```bash
-jazzw@JazzBook:~/git/icap/ezcare$ uv tool install --force --python python3.12 aider-chat@0.75.2
+jazzw@JazzBook:~/git/sample$ uv tool install --force --python python3.12 aider-chat@0.75.2
 Resolved 94 packages in 1.23s
 Prepared 19 packages in 11.40s
 Uninstalled 22 packages in 1.35s
@@ -830,14 +830,14 @@ Installed 19 packages in 660ms
  + tree-sitter-languages==1.10.2
  - tree-sitter-yaml==0.7.0
 Installed 1 executable: aider.exe
-jazzw@JazzBook:~/git/icap/ezcare$ which aider
+jazzw@JazzBook:~/git/sample$ which aider
 /c/Users/jazzw/.local/bin/aider
-jazzw@JazzBook:~/git/icap/ezcare$ aider --version
+jazzw@JazzBook:~/git/sample$ aider --version
 aider 0.75.2
 ```
 - 一樣的指令 `aider --model ollama/qwen2.5-coder:latest`
 ```bash
-jazzw@JazzBook:~/git/xxxxx/xxxxx$ aider --model ollama/qwen2.5-coder:latest *.sh
+jazzw@JazzBook:~/git/sample$ aider --model ollama/qwen2.5-coder:latest *.sh
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Aider v0.75.2
 Model: ollama/qwen2.5-coder:latest with whole edit format
@@ -922,3 +922,51 @@ aider 0.76.1
 
 - 根據 Clean Code 寫的 CONVENTION 規則，讓 Aider 可以生成原始碼時，參考這些原則：
   - https://github.com/Aider-AI/conventions/blob/main/functional-programming/CONVENTIONS.md
+
+## 2025-05-04
+
+- 為了測試最新的 Qwen3，試著安裝最新的 aider 版本。
+```bash
+jazzw@JazzBook:~$ uv tool install --force --python python3.12 aider-chat
+jazzw@JazzBook:~$ uv tool install --force --python python3.12 aider-chat
+Uninstalled 1 package in 50ms
+Installed 1 package in 89ms
+ ~ aider-chat==0.82.2
+Installed 1 executable: aider.exe
+jazzw@JazzBook:~$ aider --version
+aider 0.82.2
+```
+```markdown
+# aider chat started at 2025-05-04 21:53:45
+
+> C:\Users\jazzw\.local\bin\aider --model ollama/qwen3-8b:q4_k_m --no-auto-commits --auto-lint  
+> Aider v0.82.2  
+> Model: ollama/qwen3-8b:q4_k_m with whole edit format  
+> Git repo: .git with 23 files  
+> Repo-map: using 4096.0 tokens, auto refresh  
+> https://aider.chat/HISTORY.html#release-notes  
+> Would you like to see what's new in this version? (Y)es/(N)o [Yes]: y  
+
+#### /ask could you give me a high-level overview of this git repository?  
+
+#### could you give me a high-level overview of this git repository?  
+
+<think>
+Okay, the user has a git repository with several Perl files and some shell scripts. They mentioned files like AppointmentGenerator.pm, SalesLogic.pm, and various .sh scripts. My task is to act as an expert code analyst, so I need to be ready to answer questions about the code.
+
+First, I should note that the user might have questions about the structure of the code, specific functionalities, or potential issues. Since they mentioned they're working with me on the code, they might need help understanding how different modules interact, or maybe troubleshooting errors.
+
+The presence of multiple .pm files suggests a modular Perl application, possibly with different components for appointments, sales, services, and logic overrides. The .sh scripts are likely for deployment, data feeding, or recovery processes. The user might be dealing with deployment issues, data processing problems, or integration between Perl modules and shell scripts.
+
+I should be prepared to ask for specific code snippets if needed. For example, if they ask about a particular function in AppointmentLogic.pm, I need to see that file to provide an accurate analysis. Similarly, if they have a question about the Makefile, I should check its contents to understand the build process.
+
+The user might also be looking for best practices, like how to structure their Perl modules, optimize scripts, or handle error recovery. They could be facing issues with dependencies, module loading, or script execution. I need to be ready to guide them through these aspects based on the code they provide.
+
+Since the user hasn't asked a specific question yet, my response should be to prompt them to ask their questions or request specific files if needed. I should make sure to communicate in the same language they're using, which in this case is English. I'll keep the tone helpful and collaborative, encouraging them to provide more details so I can assist effectively.
+</think>
+
+I'm ready to help analyze your code! Please ask your questions about the code structure, functionality, or any specific issues you're encountering. If you need me to examine a particular file or compare changes between versions, just let me know and I'll request the necessary files.
+
+> Tokens: 276 sent, 431 received.
+```
+- 看起來新的 Qwen3 確實類似 DeepSeek R1 一樣，屬於推論模型。再來就是再實測看看程式寫作能力好不好，理論上應該要比 Qwen2.5 Coder 厲害才對。
