@@ -269,7 +269,7 @@ Retrying in 8.0 seconds...
   - 備註：在 Github Codespace 想要 `ollama pull qwen3` 時，有錯誤訊息，要求安裝最新版本的 ollama
 ```
 jazzw@JazzBook:~/.ollama$ ollama -v
-ollama version is 0.6.5
+6.ollama version is 0.6.5
 jazzw@JazzBook:~/.ollama$ ollama pull qwen3
 pulling manifest
 Error: pull model manifest: 412:
