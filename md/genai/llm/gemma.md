@@ -1,6 +1,8 @@
 # Google Gemma
 
-## 2025-01-14
+## Gemma 2
+
+### 2025-01-14
 
 - https://huggingface.co/bartowski/gemma-2-2b-it-GGUF
 
@@ -245,8 +247,9 @@ llama_new_context_with_model: graph nodes  = 1690
 llama_new_context_with_model: graph splits = 2
 time=2025-01-14T21:43:11.766+08:00 level=INFO source=server.go:594 msg="llama runner started in 3.07 seconds"
 ```
+## Gemma 3
 
-## 2025-03-13
+### 2025-03-13
 
 - 火熱登場 -- Gemma 3
 - LM Studio
@@ -261,7 +264,7 @@ jazzw@JazzBook:~/.ollama$ wget https://huggingface.co/lmstudio-community/gemma-3
 - https://huggingface.co/lmstudio-community/gemma-3-12b-it-GGUF/blob/main/gemma-3-12b-it-Q4_K_M.gguf
   - Size of remote file: 7.3 GB
 
-## 2025-03-14
+### 2025-03-14
 
 - get Gemma 3 modelfile from Github Codespace `codespaces-blank` (用 Codespace 下載 GGUF 模型檔網路速度比較快，雖然跑不動，但方便可以拿來觀察不同的開源 LLM 模型)
 ```bash
@@ -394,7 +397,7 @@ Retrying in 4.0 seconds...
 ```
 - 好吧～ Ollama 還沒支援 Gemma 3 (太新了) -- 除非改用 LM Studio (畢竟我是在 LM Studio 找到的模型 HuggingFace 網址)
 
-## 2025-03-15
+### 2025-03-15
 
 - ( 2025-03-15 01:07:05 )
 - upgrade ollama to `0.6.0`
@@ -542,7 +545,7 @@ Retrying in 0.5 seconds...
 ```
 - 還是失敗，看起來可以用 `ollama run` 可是不能整合 `aider`
 
-## 2025-03-18
+### 2025-03-18
 
 ### Cloud Run
 
@@ -567,7 +570,7 @@ Retrying in 0.5 seconds...
 - 2025-03-12: [Welcome Gemma 3: Google's all new multimodal, multilingual, long context open LLM](https://huggingface.co/blog/gemma3)
 - https://huggingface.co/ggml-org/gemma-3-12b-it-GGUF/tree/main
 
-## 2025-03-20
+### 2025-03-20
 
 - 根據 https://huggingface.co/google/gemma-3-12b-it#usage ，若要用 `transformer` 跑，得要裝特殊的版本
 
@@ -577,3 +580,16 @@ Retrying in 0.5 seconds...
 > $ pip install git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3
 > ```
 > Then, copy the snippet from the section that is relevant for your use case.
+
+## Gemma 3 QAT
+
+- 2025-04-18: Gemma 3 QAT Models: Bringing state-of-the-Art AI to consumer GPUs
+  - https://developers.googleblog.com/en/gemma-3-quantized-aware-trained-state-of-the-art-ai-to-consumer-gpus/
+- https://huggingface.co/collections/google/gemma-3-qat-67ee61ccacbf2be4195c265b
+
+### 2025-05-05
+
+- 想測一下這個針對 Coding 的 Gemma 3 fine-tune，可惜是 12B 的，縱使轉成 GGUF 本機應該還是跑不動。
+  - https://huggingface.co/burtenshaw/GemmaCoder3-12B
+- 另外，這個 4B 的 Speech 語音模型也挺有趣的
+  - https://huggingface.co/junnei/gemma-3-4b-it-speech
