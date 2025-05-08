@@ -288,3 +288,118 @@ The `requirements.txt` approach with `-e .` is more about making the local packa
 If your goal is solely to install the local package so its modules can be imported and used by other Python code, then `uv pip install -e ./hello_tool_req` (using `requirements.txt` to define the local package) works perfectly. However, for directly creating and installing command-line tools, the `pyproject.toml` method is generally preferred with `uv tool install`.
 
 </td></tr></table>
+
+## 2025-05-08
+
+- 緣起：
+  - 最近因為 aider 0.76.1 版本遇到 `aiohttp==3.11.13 was yanked`[(see link)](https://github.com/aio-libs/aiohttp/issues/10617) 的問題，現在沒辦法裝了。
+  - 可是 Qwen 2.5 跟 Qwen 2.5 Coder 都沒辦法正常在最新的 aider `0.82.2` 版本正常運行。
+- 思路：有什麼辦法要求 aider 0.76.1 版本安裝新的 `aiohttp` 呢？
+```bash
+~$ uv tool install aider-chat@0.76.1
+  × No solution found when resolving dependencies:
+  ╰─▶ Because aiohttp==3.11.13 was yanked (reason: Regression: https://github.com/aio-libs/aiohttp/issues/10617) and aider-chat==0.76.1 depends on
+      aiohttp==3.11.13, we can conclude that aider-chat==0.76.1 cannot be used.
+      And because you require aider-chat==0.76.1, we can conclude that your requirements are unsatisfiable.
+```
+- 問了 Gemini
+  - https://g.co/gemini/share/b87c2397ec74 但答案看起來不合理（幻覺）
+- 嘗試一： `uv tool --with` or `uvx --with`
+  - 用搜尋反而找到 https://docs.astral.sh/uv/concepts/tools/#upgrading-tools 是使用 `--with`
+```bash
+~/git/snippet$ uvx --with aiohttp>3.11.13 aider-chat@0.76.1
+  × No solution found when resolving tool dependencies:
+  ╰─▶ Because aider-chat==0.76.1 depends on aiohttp==3.11.13 and aiohttp==3.11.13 was yanked (reason: Regression:
+      https://github.com/aio-libs/aiohttp/issues/10617), we can conclude that aider-chat==0.76.1 cannot be used.
+      And because you require aider-chat==0.76.1, we can conclude that your requirements are unsatisfiable.
+```
+- 嘗試二：下載 aider 原始碼，修改 `requirements.txt`
+```bash
+~/git$ git clone git@github.com:Aider-AI/aider.git
+~/git$ cd aider
+~/git/aider$ git checkout v0.76.2 -b 0.76.2
+~/git/aider$ vi requirements.txt
+~/git/aider$ git diff
+diff --git a/requirements.txt b/requirements.txt
+index 346a3c05..8197067d 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -4,7 +4,7 @@ aiohappyeyeballs==2.5.0
+     # via
+     #   -c requirements/common-constraints.txt
+     #   aiohttp
+-aiohttp==3.11.13
++aiohttp==3.11.18
+     # via
+     #   -c requirements/common-constraints.txt
+     #   litellm
+~/git/aider$ cd ..
+~/git$ uv tool install ./aider
+Resolved 97 packages in 4.73s
+      Built aider-chat @ file:///C:/Users/jazzw/git/aider
+      Built pyperclip==1.9.0
+⠼ Preparing packages... (94/97)
+tree-sitter-language-pack ------------------------------ 12.12 MiB/12.37 MiB 
+```
+- 看起來少了在 Windows 底下編譯 Fortran 的環境（為了 scipy 1.13.1 版本）
+```bash
+~/git$ uv tool install --with scipy==1.13.1 ./aider
+Resolved 97 packages in 51ms
+  × Failed to build `scipy==1.13.1`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `mesonpy.build_wheel` failed (exit code: 1)
+
+      [stdout]
+      + meson setup C:\Users\jazzw\AppData\Local\uv\cache\sdists-v9\pypi\scipy\1.13.1\kro4RrKeRiklyNKEbpGX9\src
+      C:\Users\jazzw\AppData\Local\uv\cache\sdists-v9\pypi\scipy\1.13.1\kro4RrKeRiklyNKEbpGX9\src\.mesonpy-p07dwow7
+      -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md
+      --native-file=C:\Users\jazzw\AppData\Local\uv\cache\sdists-v9\pypi\scipy\1.13.1\kro4RrKeRiklyNKEbpGX9\src\.mesonpy-p07dwow7\meson-python-native-file.ini
+      The Meson build system
+      Version: 1.8.0
+      Source dir: C:\Users\jazzw\AppData\Local\uv\cache\sdists-v9\pypi\scipy\1.13.1\kro4RrKeRiklyNKEbpGX9\src
+      Build dir: C:\Users\jazzw\AppData\Local\uv\cache\sdists-v9\pypi\scipy\1.13.1\kro4RrKeRiklyNKEbpGX9\src\.mesonpy-p07dwow7
+      Build type: native build
+      Project name: scipy
+      Project version: 1.13.1
+      C compiler for the host machine: gcc (gcc 13.2.0 "gcc (GCC) 13.2.0")
+      C linker for the host machine: gcc ld.bfd 2.41
+      C++ compiler for the host machine: g++ (gcc 13.2.0 "g++ (GCC) 13.2.0")
+      C++ linker for the host machine: g++ ld.bfd 2.41
+      Cython compiler for the host machine: cython (cython 3.0.12)
+      Host machine cpu family: x86_64
+      Host machine cpu: x86_64
+      Program python found: YES (C:\Users\jazzw\AppData\Local\uv\cache\builds-v0\.tmp3qqS9S\Scripts\python.exe)
+      Run-time dependency python found: YES 3.13
+      Program cython found: YES (C:\Users\jazzw\AppData\Local\uv\cache\builds-v0\.tmp3qqS9S\Scripts\cython.EXE)
+      Compiler for C supports arguments -Wno-unused-but-set-variable: YES
+      Compiler for C supports arguments -Wno-unused-function: YES
+      Compiler for C supports arguments -Wno-conversion: YES
+      Compiler for C supports arguments -Wno-misleading-indentation: YES
+      Library m found: YES
+
+      ..\meson.build:78:0: ERROR: Unknown compiler(s): [['ifort'], ['gfortran'], ['flang-new'], ['flang'], ['pgfortran'], ['g95']]
+      The following exception(s) were encountered:
+      Running `ifort --help` gave "[WinError 2] The system cannot find the file specified"
+      Running `ifort --version` gave "[WinError 2] The system cannot find the file specified"
+      Running `ifort -V` gave "[WinError 2] The system cannot find the file specified"
+      Running `gfortran --help` gave "[WinError 2] The system cannot find the file specified"
+      Running `gfortran --version` gave "[WinError 2] The system cannot find the file specified"
+      Running `gfortran -V` gave "[WinError 2] The system cannot find the file specified"
+      Running `flang-new --help` gave "[WinError 2] The system cannot find the file specified"
+      Running `flang-new --version` gave "[WinError 2] The system cannot find the file specified"
+      Running `flang-new -V` gave "[WinError 2] The system cannot find the file specified"
+      Running `flang --help` gave "[WinError 2] The system cannot find the file specified"
+      Running `flang --version` gave "[WinError 2] The system cannot find the file specified"
+      Running `flang -V` gave "[WinError 2] The system cannot find the file specified"
+      Running `pgfortran --help` gave "[WinError 2] The system cannot find the file specified"
+      Running `pgfortran --version` gave "[WinError 2] The system cannot find the file specified"
+      Running `pgfortran -V` gave "[WinError 2] The system cannot find the file specified"
+      Running `g95 --help` gave "[WinError 2] The system cannot find the file specified"
+      Running `g95 --version` gave "[WinError 2] The system cannot find the file specified"
+      Running `g95 -V` gave "[WinError 2] The system cannot find the file specified"
+
+      A full log can be found at
+      C:\Users\jazzw\AppData\Local\uv\cache\sdists-v9\pypi\scipy\1.13.1\kro4RrKeRiklyNKEbpGX9\src\.mesonpy-p07dwow7\meson-logs\meson-log.txt
+
+      hint: This usually indicates a problem with the package or the build environment.
+```
