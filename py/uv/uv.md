@@ -403,3 +403,4 @@ Resolved 97 packages in 51ms
 
       hint: This usually indicates a problem with the package or the build environment.
 ```
+- https://github.com/Aider-AI/aider/issues/3699
