@@ -970,3 +970,202 @@ I'm ready to help analyze your code! Please ask your questions about the code st
 > Tokens: 276 sent, 431 received.
 ```
 - 看起來新的 Qwen3 確實類似 DeepSeek R1 一樣，屬於推論模型。再來就是再實測看看程式寫作能力好不好，理論上應該要比 Qwen2.5 Coder 厲害才對。
+
+## 2025-05-08
+
+- 降版 0.76.1 失敗
+```bash
+~$ uv tool install aider-chat@0.76.1
+  × No solution found when resolving dependencies:
+  ╰─▶ Because aiohttp==3.11.13 was yanked (reason: Regression: https://github.com/aio-libs/aiohttp/issues/10617) and aider-chat==0.76.1 depends on
+      aiohttp==3.11.13, we can conclude that aider-chat==0.76.1 cannot be used.
+      And because you require aider-chat==0.76.1, we can conclude that your requirements are unsatisfiable.
+```
+
+## 2025-05-09
+
+- 後來一直沒辦法正常安裝 aider-chat，即便用 `uv tool install aider-chat@latest` 還是會卡在 `scipy` 編譯錯誤的問題。感覺是少 Fortran 語言的編譯器，像是 `g95`
+- 只好改用 `python -m pip install aider-install`
+```
+~$ python -m pip install aider-install
+Requirement already satisfied: aider-install in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (0.1.3)
+Requirement already satisfied: uv>=0.5.0 in c:\users\jazzw\scoop\apps\python\current\lib\site-packages (from aider-install) (0.7.2)
+~$ aider-install
+Resolved 115 packages in 2.60s
+      Built pyperclip==1.9.0
+Prepared 115 packages in 1m 22s
+Installed 115 packages in 642ms
+ + aider-chat==0.82.3
+ + aiohappyeyeballs==2.6.1
+ + aiohttp==3.11.18
+ + aiosignal==1.3.2
+ + annotated-types==0.7.0
+ + anyio==4.9.0
+ + attrs==25.3.0
+ + backoff==2.2.1
+ + beautifulsoup4==4.13.4
+ + cachetools==5.5.2
+ + certifi==2025.4.26
+ + cffi==1.17.1
+ + charset-normalizer==3.4.2
+ + click==8.1.8
+ + colorama==0.4.6
+ + configargparse==1.7
+ + diff-match-patch==20241021
+ + diskcache==5.6.3
+ + distro==1.9.0
+ + filelock==3.18.0
+ + flake8==7.2.0
+ + frozenlist==1.6.0
+ + fsspec==2025.3.2
+ + gitdb==4.0.12
+ + gitpython==3.1.44
+ + google-ai-generativelanguage==0.6.15
+ + google-api-core==2.24.2
+ + google-api-python-client==2.169.0
+ + google-auth==2.40.0
+ + google-auth-httplib2==0.2.0
+ + google-generativeai==0.8.5
+ + googleapis-common-protos==1.70.0
+ + grep-ast==0.8.1
+ + grpcio==1.71.0
+ + grpcio-status==1.71.0
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httplib2==0.22.0
+ + httpx==0.28.1
+ + huggingface-hub==0.30.2
+ + idna==3.10
+ + importlib-metadata==7.2.1
+ + importlib-resources==6.5.2
+ + jinja2==3.1.6
+ + jiter==0.9.0
+ + json5==0.12.0
+ + jsonschema==4.23.0
+ + jsonschema-specifications==2025.4.1
+ + litellm==1.68.0
+ + markdown-it-py==3.0.0
+ + markupsafe==3.0.2
+ + mccabe==0.7.0
+ + mdurl==0.1.2
+ + mixpanel==4.10.1
+ + multidict==6.4.3
+ + networkx==3.2.1
+ + numpy==1.26.4
+ + openai==1.75.0
+ + packaging==24.2
+ + pathspec==0.12.1
+ + pexpect==4.9.0
+ + pillow==11.2.1
+ + pip==25.1.1
+ + posthog==4.0.1
+ + prompt-toolkit==3.0.51
+ + propcache==0.3.1
+ + proto-plus==1.26.1
+ + protobuf==5.29.4
+ + psutil==7.0.0
+ + ptyprocess==0.7.0
+ + pyasn1==0.6.1
+ + pyasn1-modules==0.4.2
+ + pycodestyle==2.13.0
+ + pycparser==2.22
+ + pydantic==2.11.4
+ + pydantic-core==2.33.2
+ + pydub==0.25.1
+ + pyflakes==3.3.2
+ + pygments==2.19.1
+ + pypandoc==1.15
+ + pyparsing==3.2.3
+ + pyperclip==1.9.0
+ + python-dateutil==2.9.0.post0
+ + python-dotenv==1.1.0
+ + pyyaml==6.0.2
+ + referencing==0.36.2
+ + regex==2024.11.6
+ + requests==2.32.3
+ + rich==14.0.0
+ + rpds-py==0.24.0
+ + rsa==4.9.1
+ + scipy==1.13.1
+ + six==1.17.0
+ + smmap==5.0.2
+ + sniffio==1.3.1
+ + socksio==1.0.0
+ + sounddevice==0.5.1
+ + soundfile==0.13.1
+ + soupsieve==2.7
+ + tiktoken==0.9.0
+ + tokenizers==0.21.1
+ + tqdm==4.67.1
+ + tree-sitter==0.24.0
+ + tree-sitter-c-sharp==0.23.1
+ + tree-sitter-embedded-template==0.23.2
+ + tree-sitter-language-pack==0.7.2
+ + tree-sitter-yaml==0.7.0
+ + typing-extensions==4.13.2
+ + typing-inspection==0.4.0
+ + uritemplate==4.1.1
+ + urllib3==2.4.0
+ + watchfiles==1.0.5
+ + wcwidth==0.2.13
+ + yarl==1.20.0
+ + zipp==3.21.0
+Installed 1 executable: aider.exe
+Executable directory C:\Users\jazzw\.local\bin is already in PATH
+```
+- 這樣居然就裝好最新版本的 aider
+```bash
+~$ uv tool list
+aider-chat v0.82.3
+- aider.exe
+playwright v1.51.0
+- playwright.exe
+readmoo v0.1.0
+- readmoo.exe
+webvtt-to-json v0.2
+- webvtt-to-json.exe
+yt-dlp v2025.3.26
+- yt-dlp.exe
+```
+- 看了一下原始碼 https://github.com/Aider-AI/aider-install/blob/main/aider_install/main.py
+- 實際上是執行 `uv tool install --force --python python3.12 aider-chat@latest`
+- 那這樣強迫指定舊版呢？
+```bash
+~$ uv tool install --force --python python3.12 aider-chat@0.76.1
+  × No solution found when resolving dependencies:
+  ╰─▶ Because aiohttp==3.11.13 was yanked (reason: Regression: https://github.com/aio-libs/aiohttp/issues/10617) and aider-chat==0.76.1 depends on
+      aiohttp==3.11.13, we can conclude that aider-chat==0.76.1 cannot be used.
+      And because you require aider-chat==0.76.1, we can conclude that your requirements are unsatisfiable.
+```
+- 還是不行。所以試著用 local 安裝法
+```bash
+~/git$ git clone git@github.com:Aider-AI/aider.git
+~/git$ cd aider
+~/git/aider$ git co v0.76.0 -b 0.76.0
+~/git/aider$ vi requirements.txt
+~/git/aider$ git diff
+diff --git a/requirements.txt b/requirements.txt
+index c77588a2..e0d8a570 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -4,7 +4,7 @@ aiohappyeyeballs==2.5.0
+     # via
+     #   -c requirements/common-constraints.txt
+     #   aiohttp
+-aiohttp==3.11.13
++aiohttp==3.11.18
+     # via
+     #   -c requirements/common-constraints.txt
+     #   litellm
+~/git/aider$ cd ..
+~/git$ uv tool install --force --python python3.12 ./aider
+```
+- 這樣居然就成功了，不過版本怪怪的
+```bash
+~/git$ uv tool list
+aider-chat v0.76.1.dev0+gc838f9bf.d20250509
+- aider.exe
+~/git$ aider --version
+aider 0.76.1.dev0+gc838f9bf.d20250509
+```
+- 至少這樣要跑 Qwen 2.5 Coder 就不會笨笨的了！
