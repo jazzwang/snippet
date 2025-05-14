@@ -121,6 +121,17 @@ hf.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M    e7ac4b421833  
 
 ## Qwen2.5-Omni
 
+- 2025-03-26: Qwen2.5-Omni Technical Report
+  - https://arxiv.org/abs/2503.20215
+  - https://huggingface.co/papers/2503.20215
+- HuggingFace
+  - https://huggingface.co/Qwen/Qwen2.5-Omni-3B
+  - https://huggingface.co/Qwen/Qwen2.5-Omni-7B
+  - https://huggingface.co/Qwen/Qwen2.5-Omni-7B-AWQ
+  - https://huggingface.co/Qwen/Qwen2.5-Omni-7B-GPTQ-Int4
+- Git Repo
+  - https://github.com/QwenLM/Qwen2.5-Omni
+
 ## QwQ-32B
 
 - 2025-03-06: ["QwQ-32B: Embracing the Power of Reinforcement Learning"](https://qwenlm.github.io/blog/qwq-32b/)
