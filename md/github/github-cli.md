@@ -361,7 +361,7 @@ Press Enter to open https://github.com/login/device in your browser...
 ```
 - CLI 手動關閉成功
 ```bash
-jazzw@JazzBook:~/git/snippet/js/n8n$ gh project close --owner datacontw
+jazzw@JazzBook:~$ gh project close --owner datacontw
 ? Which project would you like to use? DataCon.TW 2022 (#1)
 https://github.com/orgs/datacontw/projects/1
 ```
