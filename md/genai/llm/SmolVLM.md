@@ -14,3 +14,9 @@
 
 - 2025-01-24: We just gave sight to smolagents
   - https://huggingface.co/blog/smolagents-can-see
+
+## 2025-05-21
+
+- SmolVLM real-time camera demo
+  - https://github.com/ngxson/smolvlm-realtime-webcam
+  > Real-time webcam demo with SmolVLM and llama.cpp server
