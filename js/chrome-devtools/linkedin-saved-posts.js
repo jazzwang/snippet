@@ -8,13 +8,14 @@ function sleep(ms) {
 for ( let i = 1; i < 200; i++ ) {
     await sleep(2000); // sleep 2 second
     window.scrollTo(0, document.body.scrollHeight);
+    console.log(`Iteration: ${i}, Remaining: ${199 - i}`);
 }
 
 count = $$("div.mh4 a").length
 
-var links = []
+var script = ""
 for (let i=0; i < count; i++) {
-    links.push($$("div.mh4 a")[i].href.split('?')[0]);
+    script += $$("div.mh4 a")[i].href.split('?')[0] + "\n"
 }
 
 var a = document.createElement('a');
