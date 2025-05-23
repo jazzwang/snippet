@@ -19,7 +19,7 @@ for (let i=0; i < count; i++) {
 }
 
 var a = document.createElement('a');
-var file = new Blob([ links.toString() ], { type: 'text/plain' });
+var file = new Blob([ script.toString() ], { type: 'text/plain' });
 a.href = URL.createObjectURL(file);
 a.download = 'linkedin-saved-posts.txt';
 a.click();
