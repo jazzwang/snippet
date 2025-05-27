@@ -1,4 +1,4 @@
-# dictation 聽寫 audio-to-text
+# dictation 聽寫 = audio-to-text = speech-to-text
 
 ## 2025-03-24
 

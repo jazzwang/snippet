@@ -1,4 +1,4 @@
-# Audio (Speech) to Text (Transcript) Live
+# Audio (speech) to Text (Transcript) Live
 
 - 緣起：
   - 工作上越來越多線上會議，但是有些場合又不合適按錄影，透過 MS Teams 錄影的方式來產生 Transcript。
@@ -9,3 +9,9 @@
   - 初步找到一個 Client-Server 架構的實作，有瀏覽器擴充套件的實作，可以把語音「近即時」轉成文字檔案。
     - https://github.com/collabora/WhisperLive?tab=readme-ov-file#browser-extensions
   - 不過暫時還沒找到時間可以測試合不合用。
+
+## 2025-05-28
+
+- audio-to-text = speech-to-text = automatic speech recognition (ASR) = dictation
+- 排行榜：
+  - https://huggingface.co/spaces/hf-audio/open_asr_leaderboard
