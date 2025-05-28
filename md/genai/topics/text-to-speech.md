@@ -114,10 +114,3 @@ Citations:
 [65] https://docs.coqui.ai/en/latest/models/tortoise.html
 [66] https://github.com/yl4579/StyleTTS
 [67] https://modal.com/blog/open-source-tts
-
-## 2025-05-16
-
-- https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2
-- https://huggingface.co/nvidia/parakeet-tdt_ctc-0.6b-ja
-- 2025-05-07: [Nvidia開源AI語音辨識模型Parakeet TDT 0.6B](https://www.ithome.com.tw/news/168792)
-- 2025-05-12: [How to Install NVIDIA Parakeet TDT 0.6B V2 Locally?](https://dev.to/nodeshiftcloud/how-to-install-nvidia-parakeet-tdt-06b-v2-locally-36ck)
