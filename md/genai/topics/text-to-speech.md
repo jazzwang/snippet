@@ -114,3 +114,9 @@ Citations:
 [65] https://docs.coqui.ai/en/latest/models/tortoise.html
 [66] https://github.com/yl4579/StyleTTS
 [67] https://modal.com/blog/open-source-tts
+
+## 2025-05-30
+
+- Read from https://www.linkedin.com/feed/update/urn:li:activity:7333847125232914433/
+  - 語音Demo：https://resemble-ai.github.io/chatterbox_demopage/
+  - Github 專案：https://github.com/resemble-ai/chatterbox
