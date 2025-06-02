@@ -24,7 +24,7 @@
   - 有一篇提到因為 OpenConnect 會遇到很多問題，所以才試試看 Cisco AnyConnect 安裝檔
   > I encountered so many issues with OpenConnect and decided to give AnyConnect a try.
   - https://software.cisco.com/download/home/286330811/type/282364313/release/5.1.9.113 看到有 DEB, RPM, TAR (Linux) 跟 DMG (macOS)
-    ![](images/anyconnect-packages.png)
+    ![](img/anyconnect-packages.png)
 - 測試環境：WSL
 ```bash
 jazz@JazzBook:~$ uname -a
