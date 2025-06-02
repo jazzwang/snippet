@@ -1,5 +1,14 @@
 # pexpect
 
+- PyPI
+  - https://pypi.org/project/pexpect/
+- Document
+  - 
+- Git Repo
+  - https://github.com/pexpect/pexpect
+
+## 2025-05-16
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 are there python library similar to expect which can be use to enter sftp password?
@@ -116,6 +125,9 @@ When automating SFTP with passwords, it's generally more secure to avoid hardcod
 
 In summary, while `pexpect` *can* be used to enter an SFTP password by interacting with the `sftp` command-line client, libraries like `paramiko` and `pysftp` are generally better suited for SFTP automation in Python due to their direct support for the SFTP protocol and more secure handling of authentication. If you specifically need Expect-like interaction, `pexpect` (or `wexpect` on Windows) is an option, but be mindful of security implications.
 </td></tr></table>
+
+## 2025-05-20
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 could you give me an example python script using `pexpect` to list SFTP files based on pattern `*_20250519_*` and use 'mget *_20250519*` to download those files?
@@ -347,3 +359,135 @@ if __name__ == '__main__':
 
 This script provides a functional example for your request, but remember the strong recommendation to use libraries like `paramiko` for more robust and secure SFTP interactions in Python.
 </td></tr></table>
+
+## 2025-06-01
+
+- 測試 Qwen 2.5 Coder 從 Bash Script 轉成 pexpect Python code 的時候，錯誤訊息居然說 `module 'pexpect' has no attribute 'spawn'`
+```
+jazzw@JazzBook:/tmp$ ./check-sftp-files.py --date 20250530 test
+Traceback (most recent call last):
+  File "C:\Users\jazzw\AppData\Local\Temp\check-sftp-files.py", line 44, in <module>
+    main()
+  File "C:\Users\jazzw\AppData\Local\Temp\check-sftp-files.py", line 35, in main
+    child = pexpect.spawn(f"sftp {SFTP_USER}@{SFTP_HOST}")
+            ^^^^^^^^^^^^^
+AttributeError: module 'pexpect' has no attribute 'spawn'
+```
+- 看樣子得回過頭查一下最新的實作文件或範例。
+
+## 2025-06-02
+
+- 查了一下文件，看到這一段：
+  - https://pexpect.readthedocs.io/en/stable/install.html#requirements
+  > As of version 4.0, Pexpect can be used on Windows and POSIX systems. However, [`pexpect.spawn`](https://pexpect.readthedocs.io/en/stable/api/pexpect.html#pexpect.spawn "pexpect.spawn") and [`pexpect.run()`](https://pexpect.readthedocs.io/en/stable/api/pexpect.html#pexpect.run "pexpect.run") are only available on POSIX, where the [`pty`](https://docs.python.org/3/library/pty.html#module-pty "(in Python v3.8)") module is present in the standard library. See [Pexpect on Windows](https://pexpect.readthedocs.io/en/stable/overview.html#windows) for more information.
+- 把程式碼改成用 `popen_spawn` 還是會錯
+```python
+- child = pexpect.spawn(f"sftp {SFTP_USER}@{SFTP_HOST}")
++ child = pexpect.popen_spawn.PopenSpawn(f"sftp {SFTP_USER}@{SFTP_HOST}")
+```
+- 錯誤訊息：
+```bash
+/tmp$ ./check-sftp-files.py --date 20250530 test
+Traceback (most recent call last):
+  File "C:\Users\jazzw\AppData\Local\Temp\check-sftp-files.py", line 46, in <module>
+    main()
+  File "C:\Users\jazzw\AppData\Local\Temp\check-sftp-files.py", line 38, in main
+    child.expect('Password:')
+  File "C:\Users\jazzw\scoop\apps\python\current\Lib\site-packages\pexpect\spawnbase.py", line 354, in expect
+    return self.expect_list(compiled_pattern_list,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jazzw\scoop\apps\python\current\Lib\site-packages\pexpect\spawnbase.py", line 383, in expect_list
+    return exp.expect_loop(timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jazzw\scoop\apps\python\current\Lib\site-packages\pexpect\expect.py", line 179, in expect_loop
+    return self.eof(e)
+           ^^^^^^^^^^^
+  File "C:\Users\jazzw\scoop\apps\python\current\Lib\site-packages\pexpect\expect.py", line 122, in eof
+    raise exc
+pexpect.exceptions.EOF: End Of File (EOF).
+<pexpect.popen_spawn.PopenSpawn object at 0x0000016E76AE6ED0>
+searcher: searcher_re:
+    0: re.compile(b'Password:')
+```
+
+- 根據  [Pexpect on Windows](https://pexpect.readthedocs.io/en/stable/overview.html#windows) 的解釋，`PopenSpawn` 不是拿來取代 `spawn`，在 Windows 平台上的行為可能會不同。
+
+> **Pexpect on Windows**
+> 
+> New in version 4.0: Windows support
+> 
+> Pexpect can be used on Windows to wait for a pattern to be produced by a child process, using [`pexpect.popen_spawn.PopenSpawn`](https://pexpect.readthedocs.io/en/stable/api/popen_spawn.html#pexpect.popen_spawn.PopenSpawn "pexpect.popen_spawn.PopenSpawn"), or a file descriptor, using [`pexpect.fdpexpect.fdspawn`](https://pexpect.readthedocs.io/en/stable/api/fdpexpect.html#pexpect.fdpexpect.fdspawn "pexpect.fdpexpect.fdspawn").
+> 
+> <mark>[`pexpect.spawn`](https://pexpect.readthedocs.io/en/stable/api/pexpect.html#pexpect.spawn "pexpect.spawn") and [`pexpect.run()`](https://pexpect.readthedocs.io/en/stable/api/pexpect.html#pexpect.run "pexpect.run") ***are *not* available*** on Windows</mark>, as they rely on Unix pseudoterminals (ptys). Cross platform code must not use these.
+> 
+> <mark>`PopenSpawn` is not a direct replacement for `spawn`.</mark> Many programs only offer interactive behaviour if they detect that they are running in a terminal. When run by `PopenSpawn`, they may behave differently.
+>
+> **See also**
+>
+> [winpexpect](https://pypi.python.org/pypi/winpexpect) and [wexpect](https://gist.github.com/anthonyeden/8488763)
+> 
+> Two unmaintained pexpect-like modules for Windows, which work with a hidden console.
+- ( 2025-06-02 12:55:48 )
+- 在 WSL 裡面測試，遇到另一個狀況
+```
+/tmp$ ./check-sftp-files.py --date 20250530 test
+Traceback (most recent call last):
+  File "/tmp/check-sftp-files.py", line 44, in <module>
+    main()
+  File "/tmp/check-sftp-files.py", line 36, in main
+    child.expect('Password:')
+  File "/home/jazz/.local/lib/python3.12/site-packages/pexpect/spawnbase.py", line 354, in expect
+    return self.expect_list(compiled_pattern_list,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jazz/.local/lib/python3.12/site-packages/pexpect/spawnbase.py", line 383, in expect_list
+    return exp.expect_loop(timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jazz/.local/lib/python3.12/site-packages/pexpect/expect.py", line 181, in expect_loop
+    return self.timeout(e)
+           ^^^^^^^^^^^^^^^
+  File "/home/jazz/.local/lib/python3.12/site-packages/pexpect/expect.py", line 144, in timeout
+    raise exc
+pexpect.exceptions.TIMEOUT: Timeout exceeded.
+<pexpect.pty_spawn.spawn object at 0x7bc11c3fa360>
+command: /usr/bin/sftp
+args: ['/usr/bin/sftp', 'guest@sftp.example.com']
+buffer (last 100 chars): b'not known by any other names.\r\nAre you sure you want to continue connecting (yes/no/[fingerprint])? '
+before (last 100 chars): b'not known by any other names.\r\nAre you sure you want to continue connecting (yes/no/[fingerprint])? '
+after: <class 'pexpect.exceptions.TIMEOUT'>
+match: None
+match_index: None
+exitstatus: None
+flag_eof: False
+pid: 905
+child_fd: 5
+closed: False
+timeout: 30
+delimiter: <class 'pexpect.exceptions.EOF'>
+logfile: None
+logfile_read: None
+logfile_send: None
+maxread: 2000
+ignorecase: False
+searchwindowsize: None
+delaybeforesend: 0.05
+delayafterclose: 0.1
+delayafterterminate: 0.1
+searcher: searcher_re:
+    0: re.compile(b'Password:')
+```
+
+- 手動用 sftp 連線一次，讓 SFTP Server 被加進 known_host 以後，還是遇到一樣的錯誤! :(
+
+```bash
+/cdk/edp$ sftp guest@sftp.example.com
+The authenticity of host 'sftp.example.com' can't be established.
+ECDSA key fingerprint is SHA256:7Rpp024zhMBpYNAnw5GGhnEEeGGH4gsDeZzcKVdMyZI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Failed to add the host to the list of known hosts (/home/jazz/.ssh/known_hosts).
+guest@sftp.example.com's password:
+Connected to sftp.example.com.
+sftp> quit
+```
+
+- 看樣子 `pexpect.spawn` 的行為不是那麼直觀！！

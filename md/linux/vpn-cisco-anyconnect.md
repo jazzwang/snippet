@@ -37,3 +37,22 @@ Release:        24.04
 Codename:       noble
 ```
 - 下載 DEB 套件
+  - 由於 Cisco 一些授權的限制，縱使完成帳號註冊，仍舊無法順利下載。所以只好退回其他的方案，測試一下 `OpenConnect` 來看看能否達成目標。
+
+## 2025-06-01
+
+- 2025-05-24: Connect to VPN Server on Linux Using **OpenConnect**
+  - https://computingforgeeks.com/how-to-connect-to-vpn-server-with-openconnect-ssl-vpn-client-on-linux/
+```bash
+jazz@JazzBook:~$ sudo apt install openconnect
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+openconnect is already the newest version (9.12-1build5).
+0 upgraded, 0 newly installed, 0 to remove and 30 not upgraded.
+jazz@JazzBook:~$ dpkg -L openconnect | grep bin
+/usr/sbin
+/usr/sbin/openconnect
+```
+- 實測結果：
+  - 一直卡在帳號密碼驗證。由於現在多數身份驗證都是靠 redirect 到 Azure AD 做 SAML 認證，所以查了一下 openconnect 對 Azure AD SAML 的支援。
