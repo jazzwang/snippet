@@ -138,3 +138,87 @@ pulling 102a747c1376...   0% ▕                                                
 - 來找一下有沒有 HuggingFace 的 GGUF 載點。
   - https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF
   - 看起來 Q2 的 Model 大約 8GB
+
+### 2025-06-04
+
+```bash
+jazzwang_tw@cloudshell:~ (hadoop-labs)$ gcloud beta run deploy --gpu 1 --image ollama/ollama --port 11434
+Service name (ollama):  
+Please specify a region:
+ [1] africa-south1
+ [2] asia-east1
+ [3] asia-east2
+ [4] asia-northeast1
+ [5] asia-northeast2
+ [6] asia-northeast3
+ [7] asia-south1
+ [8] asia-south2
+ [9] asia-southeast1
+ [10] asia-southeast2
+ [11] australia-southeast1
+ [12] australia-southeast2
+ [13] europe-central2
+ [14] europe-north1
+ [15] europe-north2
+ [16] europe-southwest1
+ [17] europe-west1
+ [18] europe-west10
+ [19] europe-west12
+ [20] europe-west2
+ [21] europe-west3
+ [22] europe-west4
+ [23] europe-west6
+ [24] europe-west8
+ [25] europe-west9
+ [26] me-central1
+ [27] me-central2
+ [28] me-west1
+ [29] northamerica-northeast1
+ [30] northamerica-northeast2
+ [31] northamerica-south1
+ [32] southamerica-east1
+ [33] southamerica-west1
+ [34] us-central1
+ [35] us-east1
+ [36] us-east4
+ [37] us-east5
+ [38] us-south1
+ [39] us-west1
+ [40] us-west2
+ [41] us-west3
+ [42] us-west4
+ [43] cancel
+Please enter numeric choice or text value (must exactly match list item):  34
+
+To make this the default region, run `gcloud config set run/region us-central1`.
+
+Allow unauthenticated invocations to [ollama] (y/N)?  
+
+Deploying container to Cloud Run service [ollama] in project [hadoop-labs] region [us-central1]
+X  Deploying new service...                                                                                                                                 
+  -  Creating Revision...                                                                                                                                   
+  .  Routing traffic...                                                                                                                                     
+Deployment failed                                                                                                                                           
+ERROR: (gcloud.beta.run.deploy) Revision 'ollama-00001-ck5' is not ready and cannot serve traffic. Quota exceeded for total allowable count of GPUs per project per region.
+
+Logs URL: https://console.cloud.google.com/logs/viewer?project=hadoop-labs&resource=cloud_run_revision/service_name/ollama/revision_name/ollama-00001-ck5&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22ollama%22%0Aresource.labels.revision_name%3D%22ollama-00001-ck5%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
+```
+- 用命令列啟動失敗。用 Cloud Console 找不到 `ollama/ollama` image。不過 `gcloud` command 不會報錯。
+- 跟
+```bash
+jazzwang_tw@cloudshell:~ (hadoop-labs)$ gcloud run deploy jazz-llm --image=ollama/ollama:latest --platform managed --region us-central1 --cpu 8 --memory 32Gi --gpu 1 --gpu-type nvidia-l4 --no-cpu-throttling --port 11434
+Allow unauthenticated invocations to [jazz-llm] (y/N)?  y
+
+Deploying container to Cloud Run service [jazz-llm] in project [hadoop-labs] region [us-central1]
+X  Deploying new service...                                                                                      
+  -  Creating Revision...                                                                                        
+  .  Routing traffic...                                                                                          
+  OK Setting IAM Policy...                                                                                       
+Deployment failed                                                                                                
+ERROR: (gcloud.run.deploy) Revision 'jazz-llm-00001-qlk' is not ready and cannot serve traffic. Quota exceeded for total allowable count of GPUs per project per region.
+
+Logs URL: https://console.cloud.google.com/logs/viewer?project=hadoop-labs&resource=cloud_run_revision/service_name/jazz-llm/revision_name/jazz-llm-00001-qlk&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22jazz-llm%22%0Aresource.labels.revision_name%3D%22jazz-llm-00001-qlk%22 
+For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
+jazzwang_tw@cloudshell:~ (hadoop-labs)$ 
+```

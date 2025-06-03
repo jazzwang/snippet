@@ -82,3 +82,15 @@ Chromium 134.0.6998.35 (playwright build v1161) downloaded to C:\Users\jazzw\App
 jazzw@JazzBook:~/git/snippet$ which playwright
 /c/Users/jazzw/.local/bin/playwright
 ```
+
+## 2025-05-23
+
+- 目標：
+  - 讀取 Jira User Profile 所有可以查到的 Activity
+  - 持續捲動到最下方，並且點選 'more'
+  - 關閉前，將 DOM 存成檔案
+- 實作：
+  - 首先，使用 `codegen` 的方式進行錄製：
+  ```bash
+  ~/git/snippet/py/playwright$ playwright codegen -o jira-profile.py --target=python --save-storage local-storage.json https://issues.apache.org/jira/secure/ViewProfile.jspa?name=jazzwang
+  ```
