@@ -843,3 +843,43 @@ flowchart LR
   A --> TOP --> B
   B1 --> B2
 ```
+
+## 2025-06-08
+
+- 緣起：
+  - 想要把一些流程圖轉成 GIF 動畫，想確定 Mermaid.js 或者 PlantUML 可否支援。
+- 搜尋解法：
+  - PlantUML 有一個 PyPI "PlantUML Animation" 專案 `animate-puml`
+    - Documentation: https://namuan.github.io/animate-puml
+    - Source Code: https://github.com/namuan/animate-puml
+    - PyPI: https://pypi.org/project/animate-puml/
+    - 範例：
+      - 加了一些額外的語法 https://github.com/namuan/animate-puml/blob/main/assets/security.puml
+      ```
+      !$disabled_arrow = "#lightgray"
+      !$enabled_arrow = "thickness=2"
+
+      !$disabled = "<color:lightgray><size:14>"
+      !$enabled = "<size:14>"
+      ```
+      - 輸出結果 https://github.com/namuan/animate-puml/blob/main/assets/security-puml.gif?raw=true
+      ![](https://github.com/namuan/animate-puml/blob/main/assets/security-puml.gif?raw=true)
+    - 概念：
+      - 用一個 Python 程式讀取 puml 檔案，從 `.start` 額外語法開始，一個一個把 `$disable` 改成 `$enable`。然後輸出每個 Frame 成 GIF
+  - 2022-06-14: Interactive Sequence Diagrams
+      - https://observablehq.com/@tomlarkworthy/animated-sequence-diagrams
+  - Mermaid.js 看起來就是靠語法來處理（靠 CSS 控制顏色，刻意不顯示出來）
+    - 2024-06-11: Animating Mermaid graphs as GIFs
+    - https://yairm210.medium.com/animating-mermaid-graphs-as-gifs-2ec8f3b24fbc
+    - 概念：
+    - 相關討論：
+      - https://github.com/mermaidjs/mermaid-live-editor/issues/53
+        - https://news.ycombinator.com/item?id=18788244
+        - https://gist.github.com/ingo-eichhorst/cd18efd5cbc3dc60cb6095c0affe3e65
+          - ![](https://private-user-images.githubusercontent.com/5838378/386575025-55b33a6e-99ae-44af-89cb-9e6b97e3d84b.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkzOTkzNzYsIm5iZiI6MTc0OTM5OTA3NiwicGF0aCI6Ii81ODM4Mzc4LzM4NjU3NTAyNS01NWIzM2E2ZS05OWFlLTQ0YWYtODljYi05ZTZiOTdlM2Q4NGIuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDYwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA2MDhUMTYxMTE2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTMxODMyNjIzMjE2MWQyMmFmMWY2ZGQ3OThiN2Y4NTRjYTIwNzUxMGY0ZWZiMmMwNzBjMTI2MTA4ZmJmYmVlOCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.UBWZswgBqgb0mVvUUnq-DQZBfG85lMG5PoHuCEKhdDM)
+      - https://github.com/mermaid-js/mermaid/issues/2461
+        - 提到 Mermaid.js 的三種圖支援互動(JavaScript)
+        > Yes, a few diagrams have interaction support:
+        > - https://mermaid-js.github.io/mermaid/#/flowchart?id=interaction
+        > - https://mermaid-js.github.io/mermaid/#/classDiagram?id=interaction
+        > - https://mermaid-js.github.io/mermaid/#/gantt?id=interaction
