@@ -865,13 +865,19 @@ flowchart LR
       - 輸出結果 https://github.com/namuan/animate-puml/blob/main/assets/security-puml.gif?raw=true
       ![](https://github.com/namuan/animate-puml/blob/main/assets/security-puml.gif?raw=true)
     - 概念：
-      - 用一個 Python 程式讀取 puml 檔案，從 `.start` 額外語法開始，一個一個把 `$disable` 改成 `$enable`。然後輸出每個 Frame 成 GIF
+      - 用一個 Python 程式讀取 puml 檔案，從 `.start` 額外語法開始，一個一個把 `$disable` 改成 `$enable`，逐一存入 `frames` 物件。
+      - 然後使用 `run_command(f"plantuml -tpng {target_file}")` 呼叫 `plantuml` 指令，講每個 frame 裡的 plantuml 語法，產生對應的 png 檔案。
+      - `from PIL import Image  # type: ignore` 用 `PIL` 的 `Image` 把一個 frame (png) 一個 frame 疊加成 GIF 檔。
   - 2022-06-14: Interactive Sequence Diagrams
       - https://observablehq.com/@tomlarkworthy/animated-sequence-diagrams
   - Mermaid.js 看起來就是靠語法來處理（靠 CSS 控制顏色，刻意不顯示出來）
     - 2024-06-11: Animating Mermaid graphs as GIFs
     - https://yairm210.medium.com/animating-mermaid-graphs-as-gifs-2ec8f3b24fbc
+    - 實作： https://yairm210.github.io/Mermaid-gif-maker/
+    - 源碼： https://github.com/yairm210/Mermaid-gif-maker
     - 概念：
+      - 整體看起來是寫多個 `mermaid.js` syntax (每個 frame 一個)
+      - 用 `html2canvas` 跟 `gif.js` 來產生 GIF
     - 相關討論：
       - https://github.com/mermaidjs/mermaid-live-editor/issues/53
         - https://news.ycombinator.com/item?id=18788244
