@@ -21,7 +21,7 @@
 網路上有許多可以透過 javascript 產生 UML 圖或者類似 graphviz 圖的工具。
 - [PlantUML](https://plantuml.com/) 就提供了直接產生多種 UML 圖的服務，也算是裡面看過支援種類最廣的一個實作。
   - [UMLGraph](https://www.spinellis.gr/umlgraph/) 相對支援的種類就少一些
-- [Viz.js](http://viz-js.com/) 看起來則提供了很不錯的 Grpahviz 支援
+- [Viz.js](http://viz-js.com/) 看起來則提供了很不錯的 Graphviz 支援
   - 原始碼：https://github.com/mdaines/viz.js
   - 不過這個 git repo 已經設為 Archived (代表不再活躍維護)
   - CDN: https://cdnjs.com/libraries/viz.js/2.1.2
