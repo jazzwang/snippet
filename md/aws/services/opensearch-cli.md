@@ -1,7 +1,8 @@
 # OpenSearch CLI
 
-- 2025-05-27 at 11:54 AM
-- 
+- Created with 2.5 Flash May 27, 2025 at 11:54 AM
+- https://g.co/gemini/share/3b57f8bc02c7
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 Are there CLI tool for OpenSearch?
@@ -32,3 +33,74 @@ Yes, OpenSearch provides several command-line interface (CLI) tools for managing
 
 OpenSearch aims to provide a unified command-line interface in the future to integrate these different CLIs into a single tool, making the user experience even smoother.
 </td></tr></table>
+
+## OpenSearch CLI
+
+- Git Repo
+  - https://github.com/opensearch-project/opensearch-cli
+- Document
+  - https://docs.opensearch.org/docs/latest/tools/cli/
+
+### Install - Linux
+
+- 到 https://opensearch.org/downloads/#command-line-tools 查
+- 在 Github Codespace 上測試
+```bash
+@jazzwang ➜ /workspaces/snippet (master) $ wget https://artifacts.opensearch.org/opensearch-clients/opensearch-cli/opensearch-cli-1.2.0-linux-x64.zip
+@jazzwang ➜ /workspaces/snippet (master) $ unzip opensearch-cli-1.2.0-linux-x64.zip 
+Archive:  opensearch-cli-1.2.0-linux-x64.zip
+  inflating: opensearch-cli          
+@jazzwang ➜ /workspaces/snippet (master) $ ./opensearch-cli 
+opensearch-cli is a unified command line interface for managing OpenSearch clusters
+
+Usage:
+  opensearch-cli [command]
+
+Available Commands:
+  ad          Manage the Anomaly Detection plugin
+  completion  Generate completion script for your shell
+  curl        Manage OpenSearch platform features
+  help        Help about any command
+  knn         Manage the k-NN plugin
+  profile     Manage a collection of settings and credentials that you can apply to an opensearch-cli command
+
+Flags:
+  -c, --config string    Configuration file for opensearch-cli, default is /home/codespace/.opensearch-cli/config.yaml
+  -h, --help             Help for opensearch-cli
+  -p, --profile string   Use a specific profile from your configuration file
+  -v, --version          Version for opensearch-cli
+
+Use "opensearch-cli [command] --help" for more information about a command.
+```
+
+### Install - Windows
+
+- 到 https://opensearch.org/downloads/#command-line-tools 查
+- 在 Windows 11 上實測
+```bash
+jazzw@JazzBook:~$ wget https://artifacts.opensearch.org/opensearch-clients/opensearch-cli/opensearch-cli-1.2.0-windows-x64.zip
+jazzw@JazzBook:~$ unzip opensearch-cli-1.2.0-windows-x64.zip
+Archive:  opensearch-cli-1.2.0-windows-x64.zip
+  inflating: opensearch-cli.exe
+jazzw@JazzBook:~$ ./opensearch-cli.exe
+opensearch-cli is a unified command line interface for managing OpenSearch clusters
+
+Usage:
+  opensearch-cli [command]
+
+Available Commands:
+  ad          Manage the Anomaly Detection plugin
+  completion  Generate completion script for your shell
+  curl        Manage OpenSearch platform features
+  help        Help about any command
+  knn         Manage the k-NN plugin
+  profile     Manage a collection of settings and credentials that you can apply to an opensearch-cli command
+
+Flags:
+  -c, --config string    Configuration file for opensearch-cli, default is C:\Users\jazzw\.opensearch-cli\config.yaml
+  -h, --help             Help for opensearch-cli
+  -p, --profile string   Use a specific profile from your configuration file
+  -v, --version          Version for opensearch-cli
+
+Use "opensearch-cli [command] --help" for more information about a command.
+```
