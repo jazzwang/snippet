@@ -100,7 +100,7 @@ sequenceDiagram
     TECH-->>SVA: Informs service completion
 
     %% --- 9. Service Completion, Payment & Pickup ---
-    Note over PB, SVA: Service Finalization & Pickup
+    Note over SVA, ARC: Service Finalization & Pickup
     SVA->>PB: Notifies vehicle is ready for pickup
     PB->>SVA: Arrives to pick up vehicle
     SVA-->>PB: Explains work done, presents invoice
