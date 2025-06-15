@@ -150,3 +150,52 @@ As NotebookLM evolves from an experimental phase to a more integrated part of Go
 - https://github.com/unionai-oss/notebook-llama
 - https://github.com/Goekdeniz-Guelmez/Local-NotebookLM
   - https://github.com/remsky/Kokoro-FastAPI
+
+## 2025-05-05
+
+- [NotebookLM 語音摘要功能支援中文了！輔以內容架構心智圖，化身自學神器｜未來商務](https://fc.bnext.com.tw/articles/view/3856?openExternalBrowser=1)
+
+## 2025-06-06
+
+- https://g.co/gemini/share/3fb087293915
+- Created with 2.5 Flash June 6, 2025 at 01:29 PM
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+is there a way to interact with Google NotebookLM using API or python library?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, there are ways to interact with Google NotebookLM programmatically, though the official API for the general public is primarily for the Enterprise version. Here's a breakdown:
+
+**1. NotebookLM Enterprise API (Official):**
+
+* **For organizations:** Google offers an API for NotebookLM as part of "Google Agentspace Enterprise." This is designed for businesses and requires a Google Cloud project setup, billing, and specific IAM roles (Cloud NotebookLM Admin, Cloud NotebookLM User).
+* **Purpose:** This API allows for integration with enterprise systems, enabling things like managing notebooks, adding sources, and potentially leveraging NotebookLM's AI capabilities within a larger workflow.
+* **Access:** You'd typically need to be an administrator of a Google Cloud project and enable the "AI Applications (Discovery Engine API)."
+* **Documentation:** You can find documentation on setting up NotebookLM Enterprise within Google Agentspace Enterprise, which details the API access.
+
+**2. Unofficial/Community-driven APIs and Libraries:**
+
+* **Growing ecosystem:** Because of the demand for programmatic access, there are community efforts to create unofficial APIs and Python libraries. These often work by automating browser interactions or leveraging underlying Google APIs that NotebookLM itself uses.
+* **Examples:**
+    * **`Local-NotebookLM` (GitHub):** This is a Python project that aims to provide an open-source, local implementation of NotebookLM with more flexibility. It supports various AI models (OpenAI, Anthropic, Gemini, etc.) and allows for programmatic interaction, including PDF extraction, text processing, and audio generation. It also has a programmatic API within the Python code.
+    * **AutocontentAPI.com:** This is an example of a third-party unofficial API that claims to interact with NotebookLM, supporting links, YouTube videos, and plain text. These kinds of services often abstract away the complexities of Google's login process.
+* **Considerations for unofficial solutions:**
+    * **Stability:** Unofficial APIs can be less stable and might break if Google changes NotebookLM's underlying structure.
+    * **Security:** Exercise caution when using third-party services or libraries that require your Google account credentials.
+    * **Features:** They might not support all the features of the official NotebookLM.
+
+**3. Direct Integration with Google Workspace/Cloud Products:**
+
+* While not a direct NotebookLM API, NotebookLM is designed to work seamlessly with other Google Workspace tools (Google Docs, Slides, Drive, YouTube).
+* You can often use the Google APIs for these individual products (e.g., Google Drive API for file management, YouTube Data API for video information) to prepare your sources before importing them into NotebookLM manually or through an unofficial script.
+
+**In summary:**
+
+* For **enterprise-level integration and official support**, the **NotebookLM Enterprise API** through Google Cloud is the way to go.
+* For **personal or smaller-scale projects**, you might explore **community-driven Python libraries or unofficial APIs**, keeping in mind the potential stability and security considerations.
+
+If you're looking to build a robust application, investigating the official enterprise API or the underlying Google Cloud AI services that power NotebookLM would be the most reliable long-term solution.
+</td></tr></table>
+
+- [Set up NotebookLM Enterprise  |  Google Agentspace  |  Google Cloud](https://cloud.google.com/agentspace/notebooklm-enterprise/docs/set-up-notebooklm#:~:text=Go%20to%20project%20selector,Enable%20the%20API)
