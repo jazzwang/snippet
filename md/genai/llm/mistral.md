@@ -222,3 +222,13 @@ Logs URL: https://console.cloud.google.com/logs/viewer?project=hadoop-labs&resou
 For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
 jazzwang_tw@cloudshell:~ (hadoop-labs)$ 
 ```
+
+## Magistral
+
+### 2025-06-10
+
+- https://mistral.ai/news/magistral
+
+## Magistral Small 
+
+- Hugging Face: <https://huggingface.co/mistralai/Magistral-Small-2506>
