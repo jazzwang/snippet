@@ -2,7 +2,7 @@
 
 > Open source platform for the machine learning lifecycle
 
-> [!INFO]
+> [!NOTE]
 > MLflow is an open-source platform, purpose-built to assist machine learning practitioners and teams in handling the complexities of the machine learning process. MLflow focuses on the full lifecycle for machine learning projects, ensuring that each phase is manageable, traceable, and reproducible
 > MLflow 是一個開源平台，旨在幫助機器學習從業者和團隊處理機器學習流程的複雜性。 MLflow 專注於機器學習專案的整個生命週期，確保每個階段都可管理、可追溯且可重複。
 
