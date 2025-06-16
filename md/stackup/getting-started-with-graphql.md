@@ -18,8 +18,8 @@ https://earn.stackup.dev/learn/pathways/developer-tools/skills/graphql/modules/i
 ## 2024-09-20
 
 - 問題：GraphQL 怎麼寫 API 文件？
-- 問了 Genimi 跟 GPT-4o mini ... 兩個答案不同。
-  - Genimi 說有 OpenAPI GraphQL Extension
+- 問了 Gemini 跟 GPT-4o mini ... 兩個答案不同。
+  - Gemini 說有 OpenAPI GraphQL Extension
   - ChatGPT 說
 - 還是用 Search 看一下文章
   - https://www.geeksforgeeks.org/documenting-graphql-apis-with-swagger/
