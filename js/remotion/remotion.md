@@ -2,6 +2,8 @@
 
 > Make videos programmatically with React
 
+Tags: #animation #GIF
+
 - Github Repo:
   - https://github.com/remotion-dev/remotion
 - Document:
