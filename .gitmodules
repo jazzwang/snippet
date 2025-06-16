@@ -4,3 +4,6 @@
 [submodule "c#/c-sharp-basics"]
 	path = "c#/c-sharp-basics"
 	url = https://github.com/PacktPublishing/C-sharp-Basics-for-Absolute-Beginners-in-C-Sharp-and-dot-NET.git
+[submodule "js/chrome-extensions/ms-stream-transcript-extractor"]
+	path = js/chrome-extensions/ms-stream-transcript-extractor
+	url = https://github.com/vullnetyy/stream-transcript-extractor-extension.git

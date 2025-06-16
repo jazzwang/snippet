@@ -56,7 +56,7 @@ https://): https://dbc\-xxx\-xxxx.cloud.databricks.com
 Personal Access Token: <your-personal-access-token>
 ```
 4.  **Verify the Configuration**:
-    -   After entering the required information, the CLI will create a configuration profile in your .databrickscfg file, typically located in your home directory.
+    -   After entering the required information, the CLI will create a configuration profile in your `.databrickscfg` file, typically located in your home directory.
     -   You can verify the configuration by running a simple Databricks CLI command, such as listing the clusters:
 ```bash
 databricks clusters list
