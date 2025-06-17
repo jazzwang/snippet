@@ -1,0 +1,93 @@
+sequenceDiagram
+    participant User
+    participant Script as Capture-Teams-Captions-JSON.js
+    participant BrowserDOM as Browser DOM
+    participant LocalStorage as localStorage
+
+    User->>Script: Load script (e.g., paste into browser console)
+
+    activate Script
+    Note over Script: Script Initialization
+    Script->>LocalStorage: Clear "transcripts" (localStorage.removeItem)
+    Script->>Script: Initialize transcriptArray = [] (from localStorage or empty)
+    Script->>Script: Initialize transcriptIdCounter = 0
+
+    Script->>Script: Call checkTranscripts() (initial run)
+    activate Script
+    Script->>BrowserDOM: Query for closed captions container ([data-tid='closed-captions-renderer'])
+    alt Captions Container Found
+        BrowserDOM-->>Script: Returns container element
+        Script->>BrowserDOM: Query for individual caption items (.fui-ChatMessageCompact)
+        BrowserDOM-->>Script: Returns list of caption elements
+        loop For each caption element found
+            Script->>BrowserDOM: Extract Author Name ([data-tid="author"])
+            Script->>BrowserDOM: Extract Caption Text ([data-tid="closed-caption-text"])
+            Script->>Script: Generate current Time (ISO string)
+            Script->>Script: Check last 10 entries in transcriptArray for duplicates (Name + Text)
+            alt Not a duplicate AND Text is not empty
+                Script->>Script: Generate unique ID (caption_counter++)
+                Script->>Script: Add {Name, Text, Time, ID} to transcriptArray
+                Script->>User: Log captured caption to console
+            end
+        end
+        Script->>LocalStorage: Save JSON.stringify(transcriptArray)
+    else Captions Container Not Found
+        Script-->>Script: Return (no captions to process)
+    end
+    deactivate Script
+
+    Note over Script: Setup Continuous Monitoring
+    Script->>BrowserDOM: Observe closed captions container (MutationObserver: childList, subtree, characterData)
+    alt Fallback if container not found initially
+        Script->>BrowserDOM: Observe document.body (MutationObserver: childList, subtree)
+    end
+    Script->>Script: Set setInterval(checkTranscripts, 10000ms)
+    Script->>User: Log "Teams Caption Capture (JSON) is running!" to console
+    Script->>User: Log "To download captured captions, run: downloadJSON()" to console
+
+    loop Continuous Monitoring (triggered by MutationObserver or setInterval)
+        BrowserDOM->>Script: DOM changes (e.g., new caption appears)
+        activate Script
+        Script->>Script: checkTranscripts() triggered
+        Script->>BrowserDOM: Query for closed captions container
+        alt Captions Container Found
+            BrowserDOM-->>Script: Returns container element
+            Script->>BrowserDOM: Query for individual caption items
+            BrowserDOM-->>Script: Returns list of caption elements
+            loop For each new/updated caption element
+                Script->>BrowserDOM: Extract Author Name, Caption Text
+                Script->>Script: Generate current Time
+                Script->>Script: Check transcriptArray for duplicates
+                alt Not a duplicate AND Text is not empty
+                    Script->>Script: Add new caption to transcriptArray
+                end
+            end
+            Script->>LocalStorage: Save JSON.stringify(transcriptArray)
+        else Captions Container Not Found
+            Script-->>Script: Return
+        end
+        deactivate Script
+    end
+
+    User->>Script: Call downloadJSON() (e.g., from console)
+    activate Script
+    Script->>LocalStorage: Get "transcripts"
+    LocalStorage-->>Script: Returns JSON string
+    Script->>Script: Parse JSON string to array
+    alt No captions captured
+        Script->>User: Alert "No captions captured yet..."
+        deactivate Script
+    end
+    Script->>Script: Map array to remove 'ID' property from each object
+    Script->>Script: Stringify array to pretty-printed JSON (JSON.stringify(..., null, 2))
+    Script->>BrowserDOM: Get document.title
+    BrowserDOM-->>Script: Returns page title
+    Script->>Script: Generate clean filename (e.g., "transcript - MeetingTitle.json")
+    Script->>Script: Create data URL
+    Script->>BrowserDOM: Create temporary <a> element
+    Script->>BrowserDOM: Set <a>.href = data URL, <a>.download = filename
+    Script->>BrowserDOM: Append <a> to document.body
+    Script->>BrowserDOM: Simulate click on <a>
+    BrowserDOM->>User: Initiate file download (e.g., "transcript - MyMeeting.json")
+    Script->>BrowserDOM: Remove <a> element from document.body
+    deactivate Script
