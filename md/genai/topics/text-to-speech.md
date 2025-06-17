@@ -6,7 +6,7 @@
   - Siri 帶動了語音秘書/助理的風潮
   - 曾經看過幾個 Demo，都蠻有趣的，這一個 https://demo.ultravox.ai/ 的中文表現還蠻好的。當然需要更多 Benchmark 跟測試。
 
-### Ultavox
+### Ultravox
 
 - https://demo.ultravox.ai/
 - 公開的模型：
@@ -35,7 +35,6 @@
 | MolMolAI | [Repo](https://github.com/allenai/molmo) | - | - | - | - |
 | MetaVoice | [Repo](https://github.com/metavoiceio/metavoice-src) | 英語 | 是 | 是 | 是 |
 | OpenVoice | [Repo](https://github.com/myshell-ai/OpenVoice) | 英語、西班牙語、法語、中文、日語、韓語 | 是 | 是 | 是 |
-| Pheme | - | - | 是 | 是 | - |
 | XTTS | [Repo](https://github.com/coqui-ai/TTS) | 英語、西班牙語、法語、德語、意大利語、葡萄牙語、波蘭語、土耳其語、俄語、荷蘭語、捷克語、阿拉伯語、中文、日語 | 是 | 否 | 是 |
 | Mozilla TTS | [Repo](https://github.com/mozilla/TTS) | 英語、西班牙語、法語、德語 | 是 | 是 | 是 |
 | Coqui TTS | [Repo](https://github.com/Edresson/Coqui-TTS) | 英語、德語、法語、西班牙語、意大利語、葡萄牙語、波蘭語、土耳其語、俄語、荷蘭語、捷克語、阿拉伯語、中文、日語、匈牙利語、韓語 | 是 | 是 | 是 |
