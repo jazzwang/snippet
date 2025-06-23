@@ -195,3 +195,21 @@ Press "o" to open in Browser.
   - https://github.com/restyler/awesome-n8n
   - 提到一個整合 Ollama 的實作 - https://github.com/henriquemod/n8n-nodes-dolphin-mixtral
 - Q: n8n 匯出的 project，會長怎樣？看上面這個 [n8n-nodes-dolphin-mixtral](https://github.com/henriquemod/n8n-nodes-dolphin-mixtral) 目錄結構，幾乎感覺是一個 node.js 的專案。
+
+## 2025-06-18
+
+- 緣起：
+  - 看到 [Build an AI Data Analyst Agent in Microsoft Teams | Free N8N workflow](https://www.youtube.com/watch?v=GVMAjWn9Qec) 的展示，想進一步了解 n8n 怎麼跟 Microsoft Teams 整合，實現 Teams Chatbot 的目標。
+- 文件：
+  - https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftteams/
+  - https://n8n.io/integrations/microsoft-teams/
+- 範例：
+  - https://n8n.io/workflows/680-create-update-and-send-a-message-to-a-channel-in-microsoft-teams/
+
+### n8n + GCP Cloud Run
+
+- self-hosting n8n on Google Cloud Run
+  - https://www.reddit.com/r/n8n/comments/1jcz1v2/i_created_a_complete_guide_to_selfhosting_n8n_on/
+  - https://github.com/datawranglerai/self-host-n8n-on-gcr
+- https://github.com/asomas/n8n-cloudrun
+- https://github.com/luke-lewandowski/n8n-cloudrun-example
