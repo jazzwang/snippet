@@ -232,3 +232,11 @@ on:
     paths:
       - folder1/**
 ```
+
+## 2025-06-21
+
+- 緣起：可否透過 Github Action 寄信
+- 相關搜尋結果：
+  - https://github.com/marketplace/actions/send-e-mail-smtp
+- 結論：
+  - 雖然有可以透過 SMTP 或者 SendGrid 服務寄信的 Github Actions，但感覺近期會比較傾向改用 Webhook 的方式來整合 MS Teams
