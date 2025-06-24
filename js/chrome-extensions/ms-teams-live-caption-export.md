@@ -7,55 +7,6 @@
 
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
-is it possible to know which javascript is updating specific DOM in Chrome using DevTools?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
-Yes, it's absolutely possible to know which JavaScript is updating specific DOM elements in Chrome using DevTools! This is a super common and very useful debugging task. Here's how you can do it:
-
-**The Primary Method: DOM Breakpoints**
-
-This is the most direct and powerful way to catch the JavaScript responsible for DOM changes.
-
-1.  **Open DevTools:** Right-click on the element you're interested in and select "Inspect" (or press `Ctrl+Shift+I` / `Cmd+Option+I`).
-2.  **Navigate to Elements Tab:** Make sure you're in the "Elements" tab of DevTools.
-3.  **Find the Element:** In the Elements panel, locate the specific DOM element you want to monitor.
-4.  **Set a DOM Breakpoint:** Right-click on the element. In the context menu, go to "Break on" and choose one of the following options:
-    * **Subtree modifications:** This will pause execution when any descendant of the selected element is added, removed, or has its attributes changed. Use this if you suspect changes within a larger container.
-    * **Attributes modifications:** This will pause execution when an attribute of the *selected element itself* is changed (e.g., `class`, `id`, `style`, `data-*`). This is often the most precise option.
-    * **Node removal:** This will pause execution when the *selected element itself* is removed from the DOM.
-
-5.  **Trigger the Change:** Now, interact with your webpage in a way that you expect to trigger the DOM update.
-6.  **DevTools Pauses:** When the specified DOM change occurs, DevTools will pause script execution at the exact line of JavaScript code that caused the change.
-7.  **Examine the Call Stack:** In the "Sources" tab (which DevTools will likely switch to automatically), look at the "Call Stack" panel (usually on the right). This shows you the sequence of function calls that led to the DOM modification. By walking up the call stack, you can identify the origin of the update.
-
-**Other Helpful DevTools Features:**
-
-While DOM breakpoints are the go-to, these can also provide clues:
-
-* **Event Listeners Tab:**
-    1.  Select the element in the "Elements" tab.
-    2.  Go to the "Event Listeners" tab in the right-hand sidebar.
-    3.  This shows you all event listeners attached to that specific element (and sometimes its ancestors). If a DOM change happens in response to a click, mouseover, etc., this can help you find the relevant event handler. Clicking on the source link will take you to the JavaScript code.
-
-* **Changes Panel (Experimental, but powerful):**
-    1.  Open the "Command Menu" (`Ctrl+Shift+P` / `Cmd+Shift+P`).
-    2.  Type "Show Changes" and select it.
-    3.  This panel records all changes made to the CSS and DOM of the page since you opened DevTools. While it won't directly show you the JS, it can highlight *what* changed, which can then guide your DOM breakpoint placement or search for relevant JS.
-
-* **"Break on All Mutations" (Advanced/Less Common):**
-    You can go to the "Sources" tab, and in the "DOM Breakpoints" section (usually in the right sidebar, below the Call Stack), you can find a "DOM Breakpoints" section. There's often an option to add a general DOM mutation breakpoint, but this can be very noisy and pause frequently, so it's usually less effective than targeting a specific element.
-
-**Tips for Effective Debugging:**
-
-* **Be Specific:** If you know exactly which element is changing, use "Attributes modifications" or "Node removal" for that element.
-* **Start Broader, Then Narrow Down:** If you're not sure which element is changing, start with "Subtree modifications" on a parent element, and then narrow down your breakpoint if it's too broad.
-* **Clear Breakpoints:** Remember to clear your DOM breakpoints when you're done, as they can sometimes interfere with performance or unexpected pauses.
-* **Search in Sources:** Once you've identified a function in the call stack, you can use the "Search" feature in the "Sources" tab (`Ctrl+Shift+F` / `Cmd+Option+F`) to find all occurrences of that function name or relevant keywords in your project's JavaScript files.
-
-By mastering DOM breakpoints in Chrome DevTools, you'll be well-equipped to pinpoint the JavaScript code responsible for any DOM manipulation on your web pages.
-</td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
 Is it possible to call a function when DOM subtree added new element?
 </td></tr><tr><td>A:</td><td>
 <!-- add Chatbot Response bellow-->
