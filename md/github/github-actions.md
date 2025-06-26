@@ -155,7 +155,7 @@ jobs:
       with:
         url: https://fatraceschool.k12ea.gov.tw/frontend/search.html?school=64736003
         devices: iPad Pro landscape
-    - uses: actions/upload-artifact@v2 # Uplaod screenshots to Actions Artifacts via actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v2 # Upload screenshots to Actions Artifacts via actions/upload-artifact@v2
       with:
         path: screenshots
         name: Download-screenshots

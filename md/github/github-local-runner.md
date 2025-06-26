@@ -50,3 +50,9 @@ operable program or batch file.
 ~$
 ```
 - 怪怪的，有無法識別 `tsx` 的錯誤訊息。
+- 反安裝：
+```bash
+~$ npm uninstall -g @github/local-action
+
+removed 230 packages in 1s
+```
