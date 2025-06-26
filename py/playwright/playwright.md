@@ -94,3 +94,10 @@ jazzw@JazzBook:~/git/snippet$ which playwright
   ```bash
   ~/git/snippet/py/playwright$ playwright codegen -o jira-profile.py --target=python --save-storage local-storage.json https://issues.apache.org/jira/secure/ViewProfile.jspa?name=jazzwang
   ```
+
+## 2025-06-26
+
+- 承襲上次用 `--save-storage` 來儲存 local storage 到 JSON 檔。也可以用 `--load-storage` 來載入已經儲存的 JSON 檔。
+  ```bash
+  ~/git/snippet/py/playwright$ playwright codegen -o jira-activity.py --target=python --load-storage local-storage.json https://issues.apache.org/jira/secure/ViewProfile.jspa?name=jazzwang
+  ```

@@ -27,3 +27,26 @@
       - https://github.com/github/local-action
 
 以下針對 `Local Runner` 進行測試。
+
+## 2025-06-26
+
+### Github Local Action
+
+- 今天先測試 Github 的 `local-action`
+  - https://github.com/github/local-action
+- 安裝：
+```bash
+~$ npm i -g @github/local-action
+added 230 packages in 37s
+```
+- 檢查：
+```bash
+~$ which local-action
+/c/Users/jazzw/scoop/apps/nvm/current/nodejs/nodejs/local-action
+~$ local-action -h
+'tsx' is not recognized as an internal or external command,
+operable program or batch file.
+~$ local-action -v
+~$
+```
+- 怪怪的，有無法識別 `tsx` 的錯誤訊息。
