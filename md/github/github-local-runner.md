@@ -56,3 +56,65 @@ operable program or batch file.
 
 removed 230 packages in 1s
 ```
+
+## 2025-06-27
+
+- 測試一下 Github Codespace 上能不能用
+```bash
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.8.0-1027-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+Last login: Wed Jun 25 16:33:23 2025 from ::1
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ npm i -g @github/local-action
+
+added 230 packages in 29s
+
+30 packages are looking for funding
+  run `npm fund` for details
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.4.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.2
+npm notice To update run: npm install -g npm@11.4.2
+npm notice
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ which local-action
+/home/codespace/nvm/current/bin/local-action
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ local-action -v
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ local-action -h
+/bin/sh: 1: tsx: not found
+```
+- 一樣的錯誤，應該就是要找 TypeScript 的 `tsx` 該怎麼安裝。
+  - https://www.npmjs.com/package/tsx
+  - https://github.com/privatenumber/tsx
+  - https://tsx.is/getting-started#global-installation
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ npm install -g tsx
+
+added 5 packages in 2s
+
+2 packages are looking for funding
+  run `npm fund` for details
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ local-action
+     _        _   _               ____       _
+    / \   ___| |_(_) ___  _ __   |  _ \  ___| |__  _   _  __ _  __ _  ___ _ __
+   / _ \ / __| __| |/ _ \| '_ \  | | | |/ _ \ '_ \| | | |/ _` |/ _` |/ _ \ '__|
+  / ___ \ (__| |_| | (_) | | | | | |_| |  __/ |_) | |_| | (_| | (_| |  __/ |
+ /_/   \_\___|\__|_|\___/|_| |_| |____/ \___|_.__/ \__,_|\__, |\__, |\___|_|
+                                                         |___/ |___/
+Usage: local-action [options] [command]
+
+Test a GitHub Action locally
+
+Options:
+  -V, --version                          output the version number
+  -h, --help                             display help for command
+
+Commands:
+  run <path> <entrypoint> <dotenv file>  Run a local action
+  help [command]                         display help for command
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ local-action -v
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ local-action -V
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ local-action --version
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ 
+```
