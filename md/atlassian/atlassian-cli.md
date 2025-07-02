@@ -24,7 +24,12 @@ PS C:\Users\jazzw\bin>
 ```
 - 設定：
   - 文件：https://developer.atlassian.com/cloud/acli/guides/how-to-get-started/
-  - 身份認證：
+  - 身份認證： Here are all the ways to authenticate with Atlassian CLI:
+    | Authentication type | Command type |
+    | --- |  --- |
+    | API token | [Jira auth](https://developer.atlassian.com/cloud/acli/reference/commands/jira-auth/), [Rovo Dev](https://rovodevagents-beta.atlassian.net/wiki/external/Yzc2NzI4MTk3YTBhNDdiYjkzZDhhZTc3MjE0ZmE4Y2Q) |
+    | API key | [Admin auth](https://developer.atlassian.com/cloud/acli/reference/commands/admin-auth/) |
+    | OAuth | [Jira auth](https://developer.atlassian.com/cloud/acli/reference/commands/jira-auth/) |
 - 功能：
   - 簡單看了一下可以用的指令，還蠻偏 Jira 管理工具。
     - https://developer.atlassian.com/cloud/acli/reference/commands/
