@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MutationObserver & setInterval Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        .content-box {
+            min-height: 100px;
+            border: 2px dashed #a78bfa; /* Purple */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            color: #4b5563;
+            word-break: break-word; /* Ensure long text wraps */
+        }
+        .button-group {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+            gap: 15px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #6d28d9; /* Deep purple */
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #5b21b6;
+            transform: translateY(-2px);
+        }
+        .btn-danger {
+            background-color: #dc2626; /* Red */
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #4f46e5; /* Indigo */
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">DOM Observation & Interval Test</h1>
+        <p class="text-gray-600 mb-6">
+            Watch the console for `MutationObserver` and `setInterval` logs.
+            Use the buttons or DevTools to interact.
+        </p>
+
+        <div id="observedContent" class="content-box">
+            Initial content. This will change automatically.
+        </div>
+
+        <div class="button-group">
+            <button id="changeContentBtn" class="btn btn-primary">Manually Change Content</button>
+            <button id="stopIntervalBtn" class="btn btn-danger">Stop Auto Changes (setInterval)</button>
+            <button id="disconnectObserverBtn" class="btn btn-secondary">Disconnect Observer</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Global Variables ---
+        // Get the element we will observe and modify
+        const observedContent = document.getElementById('observedContent');
+        // Variable to hold the setInterval ID, so we can clear it later
+        let autoChangeIntervalId;
+        // Variable to hold the MutationObserver instance
+        let domObserver;
+        // Counter for automatic content changes
+        let changeCounter = 0;
+
+        // --- MutationObserver Setup ---
+
+        /**
+         * Callback function for the MutationObserver.
+         * This function is executed whenever observed DOM changes occur.
+         * @param {MutationRecord[]} mutationsList - An array of MutationRecord objects.
+         * @param {MutationObserver} observer - The MutationObserver instance itself.
+         */
+        const handleDomMutations = (mutationsList, observer) => {
+            console.groupCollapsed('DOM Mutation Detected!');
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    // Log when nodes are added or removed
+                    console.log('Type: ChildList change');
+                    console.log('Nodes added:', mutation.addedNodes);
+                    console.log('Nodes removed:', mutation.removedNodes);
+                } else if (mutation.type === 'attributes') {
+                    // Log when an attribute changes
+                    console.log('Type: Attribute change');
+                    console.log(`Attribute "${mutation.attributeName}" changed from "${mutation.oldValue}" to "${observedContent.getAttribute(mutation.attributeName)}"`);
+                } else if (mutation.type === 'characterData') {
+                    // Log when text content changes
+                    console.log('Type: CharacterData change (text content)');
+                    console.log('Old value:', mutation.oldValue);
+                    console.log('New value:', observedContent.textContent);
+                }
+            }
+            console.groupEnd();
+        };
+
+        // Create a new MutationObserver instance with our callback
+        domObserver = new MutationObserver(handleDomMutations);
+
+        // Configuration for the observer: what types of changes to watch for
+        const observerConfig = {
+            attributes: true,        // Observe attribute changes
+            childList: true,         // Observe direct children additions/removals
+            subtree: true,           // Observe changes in the entire subtree of the target
+            characterData: true,     // Observe changes to text content
+            attributeOldValue: true, // Include the old value of attributes
+            characterDataOldValue: true // Include the old value of character data
+        };
+
+        // Start observing the 'observedContent' div with the defined configuration
+        domObserver.observe(observedContent, observerConfig);
+        console.log('MutationObserver started on #observedContent.');
+
+
+        // --- setInterval Setup ---
+
+        /**
+         * Function to automatically change the content and an attribute of the observed div.
+         * This will trigger the MutationObserver.
+         */
+        const autoChangeContent = () => {
+            changeCounter++;
+            const newText = `Auto change #${changeCounter}: Current time is ${new Date().toLocaleTimeString()}.`;
+            observedContent.textContent = newText; // Triggers characterData mutation
+            observedContent.setAttribute('data-update-count', changeCounter); // Triggers attribute mutation
+            console.log(`setInterval: Content automatically updated to "${newText}"`);
+        };
+
+        // Start the interval to call autoChangeContent every 3 seconds (3000 ms)
+        autoChangeIntervalId = setInterval(autoChangeContent, 3000);
+        console.log('setInterval started to auto-update content every 3 seconds.');
+
+
+        // --- Button Event Listeners ---
+
+        // Button to manually change content (will also trigger MutationObserver)
+        document.getElementById('changeContentBtn').addEventListener('click', () => {
+            const manualText = `Manual change: Clicked at ${new Date().toLocaleTimeString()}.`;
+            observedContent.textContent = manualText;
+            observedContent.style.backgroundColor = '#d1fae5'; // Light green, triggers attribute change (style attribute)
+            console.log(`Manual: Content changed to "${manualText}"`);
+            // Reset background after a short delay
+            setTimeout(() => {
+                observedContent.style.backgroundColor = '#f3f4f6';
+            }, 500);
+        });
+
+        // Button to stop the setInterval
+        document.getElementById('stopIntervalBtn').addEventListener('click', () => {
+            if (autoChangeIntervalId) {
+                clearInterval(autoChangeIntervalId);
+                console.log('setInterval stopped by user action.');
+                autoChangeIntervalId = null; // Clear the ID to prevent stopping it again
+                document.getElementById('stopIntervalBtn').textContent = 'Auto Changes Stopped';
+                document.getElementById('stopIntervalBtn').disabled = true;
+            }
+        });
+
+        // Button to disconnect the MutationObserver
+        document.getElementById('disconnectObserverBtn').addEventListener('click', () => {
+            if (domObserver) {
+                domObserver.disconnect();
+                console.log('MutationObserver disconnected by user action.');
+                domObserver = null; // Clear the reference
+                document.getElementById('disconnectObserverBtn').textContent = 'Observer Disconnected';
+                document.getElementById('disconnectObserverBtn').disabled = true;
+            }
+        });
+
+        // Initial manual trigger for demonstration
+        setTimeout(() => {
+            document.getElementById('changeContentBtn').click();
+        }, 1000);
+    </script>
+</body>
+</html>
