@@ -3,6 +3,7 @@
 ## Claude Code CLI
 
 - https://github.com/anthropics/claude-code
+- https://docs.anthropic.com/s/claude-code
 
 ## Rovo Dev agent CLI
 
