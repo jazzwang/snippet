@@ -41,6 +41,10 @@ tree-sitter-perl  tree-sitter-python
 ```
 - 雖然參考 https://tree-sitter.github.io/tree-sitter/creating-parsers/1-getting-started.html 試過 `tree-sitter generate`
 ```bash
+~$ mkdir src
+~$ cd src
+~/src$ git clone https://github.com/tree-sitter/tree-sitter-python
+~/src$ git clone https://github.com/tree-sitter-perl/tree-sitter-perl
 ~/src$ cd tree-sitter-python/
 ~/src/tree-sitter-python$ tree-sitter init
 ~/src/tree-sitter-python$ tree-sitter generate
