@@ -84,4 +84,8 @@ Options:
 0.1.9
 ```
 - 實測互動：
-![](20250704121805_gemini-cli_version.png)
+  - ![](20250704123324_gemini-cli_websearch_tool.png)
+  - ![](20250704121805_gemini-cli_version.png)
+  - ![](20250704123413_gemini-cli_tokens.png)
+- 初步感想：
+  - Autocompletion 不像 Aider 可以用 TAB 自動補齊 `/{command}`，也許還有特定的 hotkey 要研究文件才會知道。
