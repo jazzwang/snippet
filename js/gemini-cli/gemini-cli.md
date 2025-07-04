@@ -32,3 +32,56 @@
 > 好啦，大廠都下來卷了，猜猜我們的獨角獸 Cursor 還有多少光景好活？！😏 
 
 - 看起來蠻值得花點時間測試一下。
+
+## 2025-07-04
+
+- ( 2025-07-04 12:13:19 )
+- 環境：
+  - Windows 11 Home x86_64
+- 安裝：
+```bash
+~$ npm install -g @google/gemini-cli
+
+added 432 packages in 23s
+```
+- 確認：
+```bash
+~$ which gemini
+/c/Users/jazzw/scoop/apps/nvm/current/nodejs/nodejs/gemini
+~$ gemini --help
+Options:
+  -m, --model                    Model      [string] [default: "gemini-2.5-pro"]
+  -p, --prompt                   Prompt. Appended to input on stdin (if any).
+                                                                        [string]
+  -s, --sandbox                  Run in sandbox?                       [boolean]
+      --sandbox-image            Sandbox image URI.                     [string]
+  -d, --debug                    Run in debug mode?   [boolean] [default: false]
+  -a, --all_files                Include ALL files in context?
+                                                      [boolean] [default: false]
+      --show_memory_usage        Show memory usage in status bar
+                                                      [boolean] [default: false]
+  -y, --yolo                     Automatically accept all actions (aka YOLO
+                                 mode, see
+                                 https://www.youtube.com/watch?v=xvFZjo5PgG0 for
+                                 more details)?       [boolean] [default: false]
+      --telemetry                Enable telemetry? This flag specifically
+                                 controls if telemetry is sent. Other
+                                 --telemetry-* flags set specific values but do
+                                 not enable telemetry on their own.    [boolean]
+      --telemetry-target         Set the telemetry target (local or gcp).
+                                 Overrides settings files.
+                                              [string] [choices: "local", "gcp"]
+      --telemetry-otlp-endpoint  Set the OTLP endpoint for telemetry. Overrides
+                                 environment variables and settings files.
+                                                                        [string]
+      --telemetry-log-prompts    Enable or disable logging of user prompts for
+                                 telemetry. Overrides settings files.  [boolean]
+  -c, --checkpointing            Enables checkpointing of file edits
+                                                      [boolean] [default: false]
+  -v, --version                  Show version number                   [boolean]
+  -h, --help                     Show help                             [boolean]
+~$ gemini -v
+0.1.9
+```
+- 實測互動：
+![](20250704121805_gemini-cli_version.png)
