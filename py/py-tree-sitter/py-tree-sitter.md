@@ -21,3 +21,8 @@
 - 參考：
   - 2023-10-22: [Building a better repository map with tree sitter](https://aider.chat/2023/10/22/repomap.html)
   - Aider 作者介紹怎麼用 tree-sitter-language-pack 來增加不同程式語言的支援 - [Add language support via tree-sitter-language-pack](https://aider.chat/docs/recordings/tree-sitter-language-pack.html)
+
+## 2025-07-06
+
+- https://pypi.org/project/tree-sitter-languages/
+- https://github.com/grantjenks/py-tree-sitter-languages
