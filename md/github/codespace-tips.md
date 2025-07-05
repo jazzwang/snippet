@@ -2,7 +2,7 @@
 
 ## 2024-08-28 Codespace Copilot Demo
 
-- 看到 Copilit 的一個 Demo Link 是要我開 https://github.com/github/copilot-codespaces-demo 的 codespace
+- 看到 Copilot 的一個 Demo Link 是要我開 https://github.com/github/copilot-codespaces-demo 的 codespace
 - 用這個 copilot-codespaces-demo 就可以跑兩個 Copilot 自動補完程式碼的展示。
 - 好奇這到底是預先寫好的？還是真的有靠 Copilot 執行。所以研究了一下程式碼，簡單紀錄一下一些發現。
 ```
@@ -33,7 +33,7 @@ jazzwang:~/git/copilot-codespaces-demo$ tree -a
 
 20 directories, 45 files
 ```
-- 發現一：`.devcontainer/devcontainer.json` 有安裝 Copilot `github.copilot` 延伸套件跟 Tutoral 延伸套件 `vsls-contrib.codetour`
+- 發現一：`.devcontainer/devcontainer.json` 有安裝 Copilot `github.copilot` 延伸套件跟 Tutorial 延伸套件 `vsls-contrib.codetour`
 ```json showLineNumbers highlightLine=1-5,8
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
@@ -86,7 +86,7 @@ jazzwang:~/git/copilot-codespaces-demo$ tree -a
     - 縮網址指向 https://cdn.jsdelivr.net/gh/microsoft/codetour@main/schema.json 是個 JSON Schema
 - 更多關於 Codetour 的實作，可參考 https://github.com/microsoft/codetour
 
-## 2024-08-29 MOAW Codepilot Workshop
+## 2024-08-29 MOAW Copilot Workshop
 
 - 在找 Copilot Workshop 時看到這些 https://moaw.dev/catalog/?search=copilot
 - https://moaw.dev/
