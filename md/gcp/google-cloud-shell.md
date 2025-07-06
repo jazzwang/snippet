@@ -118,7 +118,7 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 22/06/19 00:45:00 INFO ShutdownHookManager: Deleting directory /tmp/spark-bc87ac2e-47ac-4998-9b3a-89e20d4dafb3
 ```
 
-### 2023-08-30
+## 2023-08-30
 
 - 如果想產生像底下這種 Icon 的話，可參考 https://cloud.google.com/shell/docs/open-in-cloud-shell
 
@@ -126,10 +126,14 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 
 - 連結產生器 - [Open in Cloud Shell link generator](https://cloud.google.com/shell/docs/open-in-cloud-shell#open_in_link_generator)
 
-### 2024-10-18
+## 2024-10-18
 
 - https://cloud.google.com/shell/docs/cloud-shell-tutorials/tutorials
 - 如果要撰寫可以在 Cloud Shell 環境中執行的 Tutorial，可以參考這篇。
 
 ( 2024-10-18 18:59:34 )
 - 待查 Google Cloud Shell 是否可以支援 `.devcontainer`
+
+## 2025-07-06
+
+- 生態系變化得很快，後來 Google Cloud Shell 就改用 VS Code為主了。因此，上面提到的[在 Cloud Shell 環境中執行的 Tutorial](https://cloud.google.com/shell/docs/cloud-shell-tutorials/tutorials) 後來預設的 `tutorial.md` 也消失了。不過 GCP 團隊還是有保留這個功能，所以還可以拿來做一些程式實作教學使用。
