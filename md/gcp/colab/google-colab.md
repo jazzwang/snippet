@@ -4,6 +4,8 @@
   - https://medium.com/google-colab
 - Open in Colab Chrome Extension
   - https://github.com/googlecolab/open_in_colab
+- create 'Open in Colab' icon
+  - https://openincolab.com/
 
 ## 2025-07-03
 

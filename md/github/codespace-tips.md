@@ -122,3 +122,10 @@ If none of these files are found, then any files or folders in your selected dot
 
 - ( 2025-01-09 22:47:01 )
 - 這個作法有助於把一些慣用且可以公開的 dotfiles 存在 git repo 中當範本。但對於無法公開的 dotfiles，像是 API Key 之類的，還是得靠 Github Secrets 來處理。
+
+## 2025-07-06
+
+- 類比 [`Open in Google Cloud Shell`](https://cloud.google.com/shell/docs/open-in-cloud-shell?hl=zh-tw) ，其實也可以產生 [`Open in Github Codespaces`](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/setting-up-your-repository/facilitating-quick-creation-and-resumption-of-codespaces#creating-an-open-in-github-codespaces-badge) 的按鈕。
+  - 參考：https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/setting-up-your-repository/facilitating-quick-creation-and-resumption-of-codespaces#creating-an-open-in-github-codespaces-badge
+  - 範例：
+    - [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jazzwang/aider-labs/tree/main)
