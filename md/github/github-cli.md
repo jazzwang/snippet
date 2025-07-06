@@ -654,3 +654,60 @@ This type of page uses an existing or new repository and typically serves conten
   * **Deployment Time:** GitHub Pages deployment can take a few minutes. If your page doesn't appear immediately, give it some time. You can often see the deployment status in your repository's "Actions" tab.
   * **Troubleshooting:** If your page isn't showing up, check the "Pages" section in your repository settings on GitHub.com for any error messages or build logs. Also, ensure your `index.html` file (or other entry point) is correctly named and located according to your chosen publishing source.
 </td></tr></table>
+
+- ( 2025-07-06 08:07:26 )
+- 實測：
+```bash
+~/git/aider-labs$ ls
+LICENSE
+~/git/aider-labs$ git checkout --orphan gh-pages
+Switched to a new branch 'gh-pages'
+~/git/aider-labs$ git rm -rf .
+rm 'LICENSE'
+~/git/aider-labs$ ls
+~/git/aider-labs$ git br
+  main                9a5d7da [origin/main] Initial commit
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main 9a5d7da Initial commit
+~/git/aider-labs$ echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project Page</title>
+</head>
+<body>
+    <h1>Welcome to My Project Page!</h1>
+    <p>This page is hosted from the docs folder on the main branch.</p>
+</body>
+</html>' > index.html
+~/git/aider-labs$ git add .
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+~/git/aider-labs$ git commit -m "Initial gh-pages content"
+[gh-pages (root-commit) 194fee5] Initial gh-pages content
+ 1 file changed, 12 insertions(+)
+ create mode 100644 index.html
+~/git/aider-labs$ git remote set-url --push origin git@github.com:jazzwang/aider-labs.git
+~/git/aider-labs$ git push origin gh-pages
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 435 bytes | 217.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'gh-pages' on GitHub by visiting:
+remote:      https://github.com/jazzwang/aider-labs/pull/new/gh-pages
+remote:
+To github.com:jazzwang/aider-labs.git
+ * [new branch]      gh-pages -> gh-pages
+```
+- 一開始如果沒有照上面的步驟加上 `--template` 參數，事後還是可以透過 `gh` 指令修改。
+  - 在 git repo 底下，輸入 `gh repo edit` 勾選要用 `Template` 跟 `Topic`，就可以把該 Github Repo 改成 Template，並且可以指定要顯示在 `Topic` 的關鍵字。
+```bash
+~/git/aider-labs$ gh repo edit
+? What do you want to edit? Template Repository, Topics
+? Convert into a template repository? Yes
+? Add topics?(csv format) tutorial
+✓ Edited repository jazzwang/aider-labs
+```
