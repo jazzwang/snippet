@@ -365,3 +365,11 @@ fetch called with: https://XXX-my.sharepoint.com/personal/xxxx_xxxx_com/_api/v2.
 }
 ```
 - 其實備份這個檔案就可以了～甚至，我懷疑把網址從 `/streamContent?format=json` 換成 `/streamContent?format=vtt` 搞不好就可以拿到 `WebVTT` 格式的檔案。
+
+## 2025-07-09
+
+- 備忘：如果需要清洗下載到的 JSON 格式 Stream Transcript 檔案，可以用 `jq` 抓必要的欄位即可。
+```bash
+jq '.entries[] | {speakerDisplayName, text, startOffset}' 2025-07-09_123059_Supercharging_Your_Daily_Workflow_with_Aider_and_Local_LLMs.json | tee 2025-07-09_Supercharging_Your_Daily_Workflow_with_Aider_and_Local_LLMs.json
+```
+- 另外，由於 JSON 重複的文字較多，會增加 input token 數量，所以可以只留 Name 跟 Text 就好。經實測，時間戳記對於 LLM 做會議發言摘要的幫助不大。

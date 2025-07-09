@@ -11,6 +11,19 @@ function handleNewElement(element) {
     element.classList.add('newly-added');
     element.setAttribute('data-time', timestamp);
 }
+function logTranscript() {
+    count = targetNode.querySelectorAll("div.newly-added").length - 1
+    transcript = targetNode.querySelectorAll("div.newly-added")
+    for (let i=0; i < count; i++) {
+        authorElement = transcript[i].querySelector('[data-tid="author"]');
+        Name = authorElement.innerText.trim();
+        textElement = transcript[i].querySelector('[data-tid="closed-caption-text"]');
+        Text = textElement.innerText.trim();
+        Time = transcript[i].getAttribute('data-time');
+        console.log({Time, Name, Text});
+        transcript[i].classList.remove("newly-added");
+    }
+}
 // 4. Create a callback function to execute when mutations are observed
 callback = function(mutationsList, observer) {
     for (const mutation of mutationsList) {
@@ -20,6 +33,7 @@ callback = function(mutationsList, observer) {
                 mutation.addedNodes.forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) { // Ensure it's an element
                         handleNewElement(node);
+                        logTranscript();
                     }
                 });
             }
@@ -31,34 +45,7 @@ const observer = new MutationObserver(callback);
 // 6. Start observing the target node for configured mutations
 observer.observe(targetNode, config);
 
-count = targetNode.querySelectorAll("div.newly-added").length - 1
-transcript = targetNode.querySelectorAll("div.newly-added")
-for (let i=0; i < count; i++) {
-    authorElement = transcript[i].querySelector('[data-tid="author"]');
-    Name = authorElement.innerText.trim();
-    textElement = transcript[i].querySelector('[data-tid="closed-caption-text"]');
-    Text = textElement.innerText.trim();
-    Time = transcript[i].getAttribute('data-time');
-    console.log({Time, Name, Text});
-    transcript[i].classList.remove("newly-added");
-}
-
 /*
-// 底下這段還不 work
-
-$$("div.newly-added").forEach(transcript => {
-    // Get author name
-    const authorElement = transcript.querySelector('[data-tid="author"]');
-    if (!authorElement) return; // Skip if no author found
-    const Name = authorElement.innerText.trim();
-    // Get caption text
-    const textElement = transcript.querySelector('[data-tid="closed-caption-text"]');
-    if (!textElement) return; // Skip if no text found
-    const Text = textElement.innerText.trim()
-    const Time = transcript.getAttribute('data-time')
-    console.log({Time, Name, Text})
-}
-
 目的是想要取得 "div.newly-added" (因為還有其他 "i.newly-added" 在 live caption 的 DOM 裡)
 然後把 Author, transcript 跟 timestamp 拿出來，
 最好取出後能把 `newly-added` class 拿掉，這樣就可以批次處理。
