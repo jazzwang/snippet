@@ -31,6 +31,18 @@ const observer = new MutationObserver(callback);
 // 6. Start observing the target node for configured mutations
 observer.observe(targetNode, config);
 
+count = targetNode.querySelectorAll("div.newly-added").length - 1
+transcript = targetNode.querySelectorAll("div.newly-added")
+for (let i=0; i < count; i++) {
+    authorElement = transcript[i].querySelector('[data-tid="author"]');
+    Name = authorElement.innerText.trim();
+    textElement = transcript[i].querySelector('[data-tid="closed-caption-text"]');
+    Text = textElement.innerText.trim();
+    Time = transcript[i].getAttribute('data-time');
+    console.log({Time, Name, Text});
+    transcript[i].classList.remove("newly-added");
+}
+
 /*
 // 底下這段還不 work
 
