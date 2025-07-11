@@ -1,5 +1,9 @@
 # convert epoch to timestamp
 
+- Reference:
+  - https://unix.stackexchange.com/a/2993
+  - https://www.epochconverter.com/ - this website shows the difference between 'milisecond' epoch and 'second' epoch
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 how can I convert "1751294737224" to "1751294737.224" using bash script?
