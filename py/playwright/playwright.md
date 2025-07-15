@@ -101,3 +101,13 @@ jazzw@JazzBook:~/git/snippet$ which playwright
   ```bash
   ~/git/snippet/py/playwright$ playwright codegen -o jira-activity.py --target=python --load-storage local-storage.json https://issues.apache.org/jira/secure/ViewProfile.jspa?name=jazzwang
   ```
+
+## 2025-07-15
+
+- ( 2025-07-15 21:43:08 )
+- 紀錄一些關於 Playwright 與 VNC 整合的相關連結：
+  - [Feature] Add back support for docker and VNC #20954
+    - https://github.com/microsoft/playwright/issues/20954
+  - [Feature]: Docker container to run playwright in VNC for use headed mode #2648
+    - https://github.com/microsoft/playwright-python/issues/2648
+    - https://github.com/Grommash9/playwright_vnc

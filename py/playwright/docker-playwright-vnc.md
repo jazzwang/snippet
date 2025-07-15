@@ -12,12 +12,51 @@
 
 ## 2025-07-15
 
+- ( 2025-07-15 22:23:02 )
 - 實測：
-  - 直接用 `gh` Github CLI 開啟 Codespace
 ```bash
-[07/15 09:44:22] ~$ gh cs create -R Booza1981/docker-playwright-vnc
+~/git/snippet$ gh cs create -R Booza1981/docker-playwright-vnc
   ✓ Codespaces usage for this repository is paid for by jazzwang
-? Choose Machine Type:  [Use arrows to move, type to filter]
-> 2 cores, 8 GB RAM, 32 GB storage
-  4 cores, 16 GB RAM, 32 GB storage
+? Choose Machine Type: 2 cores, 8 GB RAM, 32 GB storage
+probable-trout-r47j4v44r3p7x9
+~/git/snippet$ gh cs ssh -R Booza1981/docker-playwright-vnc
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-1027-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+@jazzwang ➜ /workspaces/docker-playwright-vnc (main) $ 
+@jazzwang ➜ /workspaces/docker-playwright-vnc (main) $ ./build.sh
+Removing previous container...
+Building Docker image for Playwright VNC...
+[+] Building 0.4s (14/14) FINISHED
+Starting container...
+137fa366f758e15ba37182a95dea9a3450da20a41f2242df0ff009ba7cb9d54e
+
+Container started successfully!
+------------------------------------------------
+You can access:
+  - VNC: localhost:5900
+  - noVNC Web Interface: http://localhost:6080
+  - Jupyter Lab: http://localhost:8888
+
+To check container logs:
+  docker logs playwright-vnc
+
+To stop and remove the container:
+  docker stop playwright-vnc
+  docker rm playwright-vnc
+------------------------------------------------
+```
+- 結果：用 VS Code 會比較方便把 port 轉出來
+```bash
+~/git/snippet$ gh cs code -R Booza1981/docker-playwright-vnc
 ```
