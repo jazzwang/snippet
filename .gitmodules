@@ -10,3 +10,6 @@
 [submodule "js/chrome-extensions/ms-teams-live-caption-saver"]
 	path = js/chrome-extensions/ms-teams-live-caption-saver
 	url = https://github.com/Zerg00s/Live-Captions-Saver.git
+[submodule "py/playwright/docker-playwright-vnc"]
+	path = py/playwright/docker-playwright-vnc
+	url = https://github.com/Booza1981/docker-playwright-vnc
