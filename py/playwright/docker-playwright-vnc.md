@@ -60,6 +60,7 @@ To stop and remove the container:
 ```bash
 ~/git/snippet$ gh cs code -R Booza1981/docker-playwright-vnc
 ```
+- [](2025-07-15_docker-playwright-vnc.png)
 
 ### 2025-07-16
 
@@ -92,3 +93,5 @@ root@fb8b77fa6927:/app# ps ax
 root@fb8b77fa6927:/app# export DISPLAY=:1
 root@fb8b77fa6927:/app# playwright open https://teams.microsoft.com/l/meetup-join/
 ```
+- ( 2025-07-16 14:49:41 )
+- ![](2025-07-16_Playwright_VNC_in_Codespace.png)
