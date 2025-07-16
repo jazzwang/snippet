@@ -60,3 +60,35 @@ To stop and remove the container:
 ```bash
 ~/git/snippet$ gh cs code -R Booza1981/docker-playwright-vnc
 ```
+
+### 2025-07-16
+
+- 在 Codespace 裡重新啟動 docker instance
+```bash
+@jazzwang ➜ /workspaces/docker-playwright-vnc (main) $ docker-compose up -d
+[+] Running 1/1
+ ✔ Container playwright-vnc  Started  
+@jazzwang ➜ /workspaces/docker-playwright-vnc (main) $ docker-compose ps
+WARN[0000] /workspaces/docker-playwright-vnc/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+NAME             IMAGE                                  COMMAND                  SERVICE          CREATED         STATUS         PORTS
+playwright-vnc   docker-playwright-vnc-playwright-vnc   "/usr/bin/supervisor…"   playwright-vnc   5 minutes ago   Up 5 minutes   0.0.0.0:5900->5900/tcp, [::]:5900->5900/tcp, 0.0.0.0:6080->6080/tcp, [::]:6080->6080/tcp, 0.0.0.0:8888->8888/tcp, [::]:8888->8888/tcp
+@jazzwang ➜ /workspaces/docker-playwright-vnc (main) $ docker exec -it playwright-vnc /bin/bash
+root@fb8b77fa6927:/app# which playwright
+/usr/local/bin/playwright
+root@fb8b77fa6927:/app# ps ax        
+    PID TTY      STAT   TIME COMMAND
+      1 ?        Ss     0:00 /usr/bin/python3 /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+      6 ?        S      0:01 /usr/bin/python /usr/local/bin/jupyter-lab --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token= --NotebookApp.password= --allow-root
+      7 ?        S      0:00 /bin/bash /opt/bin/start-vnc.sh
+      8 ?        S      0:02 Xvfb :1 -screen 0 1920x1080x24
+      9 ?        S      0:00 fluxbox
+     10 ?        S      0:04 x11vnc -display :1 -nopw -listen localhost -xkb -ncache 10 -ncache_cr -forever
+     11 ?        S      0:00 bash /usr/share/novnc/utils/launch.sh --vnc localhost:5900 --listen 6080
+     12 ?        S      0:00 tail -f /dev/null
+     24 ?        S      0:00 /usr/bin/python3 /usr/bin/websockify --web /usr/share/novnc/utils/../ 6080 localhost:5900
+     40 ?        S      0:00 /usr/bin/python3 /usr/bin/websockify --web /usr/share/novnc/utils/../ 6080 localhost:5900
+     41 pts/0    Ss     0:00 /bin/bash
+     50 pts/0    R+     0:00 ps ax
+root@fb8b77fa6927:/app# export DISPLAY=:1
+root@fb8b77fa6927:/app# playwright open https://teams.microsoft.com/l/meetup-join/
+```
