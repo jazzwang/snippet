@@ -2,7 +2,13 @@
 # To build a new Modelfile based on this, replace FROM with:
 # FROM hf.co/lmstudio-community/gemma-3n-E4B-it-text-GGUF:Q4_K_M
 
-FROM /home/codespace/.ollama/models/blobs/sha256-7fcb647151fa19a0750538672cf824ef6cf18f74bb86ebe5592e1ed59b4070a0
+## LMStudio Community
+# https://huggingface.co/lmstudio-community/gemma-3n-E4B-it-text-GGUF/blob/main/gemma-3n-E4B-it-Q4_K_M.gguf
+# ```
+# wget -c https://huggingface.co/lmstudio-community/gemma-3n-E4B-it-text-GGUF/resolve/main/gemma-3n-E4B-it-Q4_K_M.gguf
+# ```
+
+FROM gemma-3n-E4B-it-Q4_K_M.gguf
 TEMPLATE "<start_of_turn>user
 {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }}<end_of_turn>
 <start_of_turn>model
