@@ -1,0 +1,100 @@
+@startuml
+
+participant Browser
+
+box "\n        Azure\n\n(Apache + Java)\n" #LightGray
+  participant "Shop Site Γô╡\n Dynamic web site \n managed by AEM" as SHOP
+  participant "Gateway API Γô╢\n For CSRF token\n and JSON response mapping" as GW
+end box
+
+participant Apigee
+
+box "AWS (PROD)" #LightGreen
+  participant "TrueView Direct 2.0 API\n(AWS ECS)" as TV
+  participant "AWS OpenSearch" as ES
+end box
+
+
+Browser -> SHOP: GET /
+note right
+  e.g GET https://shop.examplemedical.com/
+end note
+Browser -> GW: GET /libs/granite/csrf/token.json
+note right
+  e.g GET https://shop.examplemedical.com/libs/granite/csrf/token.json
+end note
+GW -> GW : lookup key-valude
+note left #pink
+  (client_id, client_secret)
+  are stored on Azure
+end note
+GW -> Apigee : POST https://apis.changehealthcare.com/es/direct/v2/token
+note right
+  with (client_id, client_secret)
+  Reference: https://jira.healthcareit.net/browse/EAPI-4660
+  Apigee artifact: https://jira.healthcareit.net/secure/attachment/891254/ES_Direct_v2_rev5_2020_10_15.zip
+end note
+Apigee -> GW : return token
+GW -> GW : store token in local cache
+note left #pink
+  there might be Redis
+  to store token for each shop site
+end note
+Browser -> GW: GET /PT/v1/payers.json?from=0&size=100
+note right
+  e.g. https://shop.examplemedical.com/PT/v1/payers.json?from=0&size=100
+end note
+GW -> Apigee : GET https://apis.changehealthcare.com/es/direct/v2/payers?from=0&size=100
+note left #lightgreen
+  with the token stored in cache
+end note
+Apigee -> TV : GET /payers?from=0&size=100
+TV -> ES : using Query Template `esPayerTemplate`
+ES -> TV
+TV -> Apigee
+Apigee -> GW
+GW -> GW: mapping
+note left
+  mapping TrueView Direct 2.0 API response
+  to JSON response what AEM Shop site need
+end note
+GW -> Browser
+Browser -> GW: GET /PT/v1/services.json?term=IRON
+note right
+  e.g. https://shop.examplemedical.com/PT/v1/services.json?term=IRON
+end note
+GW -> Apigee : GET 'https://apis.changehealthcare.com/es/direct/v2/services/search/IRON'
+note left #lightgreen
+  with the token stored in cache
+end note
+Apigee -> TV : GET /services/search/IRON
+TV -> ES
+ES -> TV
+TV -> Apigee
+Apigee -> GW
+GW -> GW: mapping
+note left
+  mapping TrueView Direct 2.0 API response
+  to JSON response what AEM Shop site need
+end note
+GW -> Browser
+Browser -> GW: GET /PT/v1/services.json?term=Iron%20Test
+note right
+  e.g. https://shop.examplemedical.com/PT/v1/services.json?term=Iron%20Test
+end note
+GW -> Apigee : GET https://apis.changehealthcare.com/es/direct/v2/services?id=10029
+note left #lightgreen
+  with the token stored in cache
+end note
+Apigee -> TV : GET /services?id=10029
+TV -> ES
+ES -> TV
+TV -> Apigee
+Apigee -> GW
+GW -> GW: mapping
+note left
+  mapping TrueView Direct 2.0 API response
+  to JSON response what AEM Shop site need
+end note
+GW -> Browser
+@enduml
