@@ -44,11 +44,3 @@ callback = function(mutationsList, observer) {
 const observer = new MutationObserver(callback);
 // 6. Start observing the target node for configured mutations
 observer.observe(targetNode, config);
-
-/*
-目的是想要取得 "div.newly-added" (因為還有其他 "i.newly-added" 在 live caption 的 DOM 裡)
-然後把 Author, transcript 跟 timestamp 拿出來，
-最好取出後能把 `newly-added` class 拿掉，這樣就可以批次處理。
-考量 corner case，可能需要忽略最後一筆，如果會議還在持續進行中。最後沒聲音的時候才全部取出來。
-其次，觀察到 Live Caption 的 DOM 只會保留一定筆數。所以可能要在有物件被刪除時，觸發暫存的事件。
-*/
