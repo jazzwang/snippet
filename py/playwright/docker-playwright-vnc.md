@@ -62,7 +62,7 @@ To stop and remove the container:
 ```
 - [](2025-07-15_docker-playwright-vnc.png)
 
-### 2025-07-16
+## 2025-07-16
 
 - 在 Codespace 裡重新啟動 docker instance
 ```bash
@@ -95,3 +95,79 @@ root@fb8b77fa6927:/app# playwright open https://teams.microsoft.com/l/meetup-joi
 ```
 - ( 2025-07-16 14:49:41 )
 - ![](2025-07-16_Playwright_VNC_in_Codespace.png)
+
+## 2025-07-22
+
+- ( 2025-07-22 09:35:50 )
+- 在 VPS 實測時，遇到以下錯誤：
+```bash
+jazz@docker:~$ git clone https://github.com/Booza1981/docker-playwright-vnc
+jazz@docker:~$ cd docker-playwright-vnc/
+jazz@docker:~/docker-playwright-vnc$ ./build.sh 
+Building Docker image for Playwright VNC...
+Sending build context to Docker daemon    214kB
+Step 1/13 : FROM mcr.microsoft.com/playwright/python:latest
+ ---> ac62c0245bf9
+Step 2/13 : ENV DEBIAN_FRONTEND noninteractive
+ ---> Running in 6e24d6f34178
+ ---> 95b26580a653
+Removing intermediate container 6e24d6f34178
+Step 3/13 : ENV DISPLAY :1
+ ---> Running in 6c9c94fe1230
+ ---> 3fb756dc925d
+Removing intermediate container 6c9c94fe1230
+Step 4/13 : RUN apt-get update && apt-get install -y --no-install-recommends     xvfb     x11vnc     fluxbox     wget     python3-pip     python3-notebook     jupyter     nano     dbus-x11     net-tools     novnc     supervisor     && apt-get clean     && rm -rf /var/lib/apt/lists/*
+ ---> Running in a7c56e3130f7
+Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Err:1 http://archive.ubuntu.com/ubuntu jammy InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 871920D1991BC93C
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Err:2 http://security.ubuntu.com/ubuntu jammy-security InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 871920D1991BC93C
+Get:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Err:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 871920D1991BC93C
+Err:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 871920D1991BC93C
+Reading package lists...
+W: http://archive.ubuntu.com/ubuntu/dists/jammy/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
+W: http://archive.ubuntu.com/ubuntu/dists/jammy/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2018-archive.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
+W: GPG error: http://archive.ubuntu.com/ubuntu jammy InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 871920D1991BC93C
+E: The repository 'http://archive.ubuntu.com/ubuntu jammy InRelease' is not signed.
+W: http://security.ubuntu.com/ubuntu/dists/jammy-security/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
+W: http://security.ubuntu.com/ubuntu/dists/jammy-security/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2018-archive.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
+W: GPG error: http://security.ubuntu.com/ubuntu jammy-security InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 871920D1991BC93C
+E: The repository 'http://security.ubuntu.com/ubuntu jammy-security InRelease' is not signed.
+W: http://archive.ubuntu.com/ubuntu/dists/jammy-updates/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
+W: http://archive.ubuntu.com/ubuntu/dists/jammy-updates/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2018-archive.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
+W: GPG error: http://archive.ubuntu.com/ubuntu jammy-updates InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 871920D1991BC93C
+E: The repository 'http://archive.ubuntu.com/ubuntu jammy-updates InRelease' is not signed.
+W: http://archive.ubuntu.com/ubuntu/dists/jammy-backports/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
+W: http://archive.ubuntu.com/ubuntu/dists/jammy-backports/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2018-archive.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
+W: GPG error: http://archive.ubuntu.com/ubuntu jammy-backports InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 871920D1991BC93C
+E: The repository 'http://archive.ubuntu.com/ubuntu jammy-backports InRelease' is not signed.
+E: Problem executing scripts APT::Update::Post-Invoke 'rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true'
+E: Sub-process returned an error code
+The command '/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     xvfb     x11vnc     fluxbox     wget     python3-pip     python3-notebook     jupyter     nano     dbus-x11     net-tools     novnc     supervisor     && apt-get clean     && rm -rf /var/lib/apt/lists/*' returned a non-zero code: 100
+Starting container...
+Unable to find image 'playwright-vnc:latest' locally
+docker: Error response from daemon: pull access denied for playwright-vnc, repository does not exist or may require 'docker login'.
+See 'docker run --help'.
+
+Container started successfully!
+------------------------------------------------
+You can access:
+  - VNC: localhost:5900
+  - noVNC Web Interface: http://localhost:6080
+  - Jupyter Lab: http://localhost:8888
+
+To check container logs:
+  docker logs playwright-vnc
+
+To stop and remove the container:
+  docker stop playwright-vnc
+  docker rm playwright-vnc
+------------------------------------------------
+```
+- 看起來是 APT Repo 的 GPG public key 問題，有點怪，上週測試都正常。
