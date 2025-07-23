@@ -92,7 +92,7 @@ Loading from Hugging Face Hub: repo_id='nari-labs/Dia-1.6B-0626'
 pytorch_model.bin:  58%|██████████████████████████████████████████████████████▊                                       | 3.75G/6.44G [33:45<22:53, 1.96MB/s]
 ```
 
-### 2025-07-22
+## 2025-07-22
 
 - 下載好久，試試看在 Github Codespace 跑跑看
 ```bash
@@ -205,3 +205,126 @@ overlay          32G   31G     0 100% /
 @jazzwang ➜ /var/lib $ exit
 ```
 - 好吧，把硬碟空間全用光了 :(
+
+- 就只好繼續讓程式繼續下載 Pytorch 模型。
+
+```bash
+[07/22 00:20:07] ~/git/dia$ uv run cli.py --output script-01.wav script-01.txt
+```
+
+- Windows 本地端的程式經過一晚的下載，總算拿到 `pytorch_model.bin`，可以正常跑 `cli.py`。
+
+```bash
+[07/22 08:54:31] ~/git/dia$ uv run cli.py
+usage: cli.py [-h] --output OUTPUT [--repo-id REPO_ID] [--local-paths] [--config CONFIG] [--checkpoint CHECKPOINT] [--audio-prompt AUDIO_PROMPT]
+              [--max-tokens MAX_TOKENS] [--cfg-scale CFG_SCALE] [--temperature TEMPERATURE] [--top-p TOP_P] [--seed SEED] [--device DEVICE]
+              text
+cli.py: error: the following arguments are required: text, --output
+[07/22 08:55:21] ~/git/dia$ uv run cli.py --local-paths
+[07/22 08:56:09] ~/git/dia$ uv run cli.py --output script-01.wav --local-paths $(cat script-01.txt)
+~/git/dia$ uv run cli.py --output script-01.wav --local-paths $(cat script-01.txt)
+usage: cli.py [-h] --output OUTPUT [--repo-id REPO_ID] [--local-paths] [--config CONFIG] [--checkpoint CHECKPOINT] [--audio-prompt AUDIO_PROMPT]
+              [--max-tokens MAX_TOKENS] [--cfg-scale CFG_SCALE] [--temperature TEMPERATURE] [--top-p TOP_P] [--seed SEED] [--device DEVICE]
+              text
+cli.py: error: unrecognized arguments: Today I'll demo the reverse engineering that's done using local LLM. [S1] This is ....
+```
+- 發現 `example\simple.py` 可以簡單地產生 MP3
+```bash
+[07/22 11:54:26] ~/git/dia/example$ uv run simple.py
+[07/22 12:24:13] ~/git/dia/example$ ls
+[07/22 12:24:20] ~/git/dia/example$ open simple.mp3
+```
+- 用 Aider 改寫 `example\simple.py` 讓它支援可以讀取 input 檔名，跟設定 output mp3 檔名。
+```bash
+[07/22 12:26:26] ~/git/dia$ export OLLAMA_API_BASE="http://127.0.0.1:11434"
+[07/22 12:26:28] ~/git/dia$ ollama list
+[07/22 12:26:32] ~/git/dia$ aider --no-auto-commits --no-gitignore --model ollama/gemma3:1b simple.py
+```
+- Prompt:
+```
+# 2025-07-22 12:28:06.904310
++rewrite example\simple.py to read 2 command line options (1) input text file (2) output mp3 filename
+```
+- 結果
+```python
+~/git/dia$ cat example/simple.py
+import argparse
+from dia.model import Dia
+
+def main():
+    parser = argparse.ArgumentParser(description="Generate audio from text using the Dia model.")
+    parser.add_argument("input_text_file", type=str, help="Path to the input text file.")
+    parser.add_argument("output_mp3_file", type=str, help="Path to save the output MP3 file.")
+
+    args = parser.parse_args()
+
+    model = Dia.from_pretrained("nari-labs/Dia-1.6B-0626", compute_dtype="float16")
+
+    with open(args.input_text_file, 'r', encoding='utf-8') as file:
+        text = file.read().strip()
+
+    output = model.generate(
+        text,
+        use_torch_compile=False,
+        verbose=True,
+        cfg_scale=3.0,
+        temperature=1.8,
+        top_p=0.90,
+        cfg_filter_top_k=50,
+    )
+
+    model.save_audio(args.output_mp3_file, output)
+
+if __name__ == "__main__":
+    main()
+```
+```bash
+[07/22 12:43:09] ~/git/dia/example$ uv run simple.py ../script-01.txt script-01.mp3
+[07/22 12:51:49] ~/git/dia/example$ open script-01.mp3
+[07/22 12:52:40] ~/git/dia/example$ code ../script-01.txt
+[07/22 12:53:14] ~/git/dia/example$ code script-02.txt
+[07/22 12:53:39] ~/git/dia/example$ code script-03.txt
+[07/22 12:56:24] ~/git/dia/example$ code script-04.txt
+[07/22 12:56:54] ~/git/dia/example$ cp ../script-01.txt .
+[07/22 12:57:07] ~/git/dia/example$ uv run simple.py script-01.txt script-01.mp3
+[07/22 13:11:45] ~/git/dia/example$ uv run simple.py script-02.txt script-02.mp3
+[07/22 13:18:42] ~/git/dia/example$ uv run simple.py script-01.txt script-01.mp3
+```
+
+### 硬碟空間分析
+
+- 為了要跑 Dia ，光是 Pytorch 也要 `4.4 GB`。
+```bash
+~/git/dia/.venv/Lib/site-packages$ du -s * | sort -nr | head -n 5
+4531296 torch
+163995  gradio
+112297  triton
+101594  scipy
+87196   llvmlite
+~/git/dia/.venv/Lib/site-packages$ du -sh torch
+4.4G    torch
+~/git/dia/.venv/Lib/site-packages$ du -sh gradio
+161M    gradio
+```
+- 從 HuggingFace 下載的 `pytorch_model.bin` 實際上放在 `~/.cache/huggingface/hub` 底下
+```bash
+~/.cache/huggingface/hub$ du -sh .
+6.1G    .
+~/.cache/huggingface/hub$ tree
+.
+└── models--nari-labs--Dia-1.6B-0626
+    ├── blobs
+    │   ├── 0e31928c93bec291911314d4c6a21bf7914134ba
+    │   └── 8a5106c06899aeea013a7f6ef32e84a15a30f965be676b97996b3ddaf1eb55b9
+    ├── refs
+    │   └── main
+    └── snapshots
+        └── ef2795fcc29c5abe6ffc91fd33808588b49bbc66
+            ├── config.json -> ../../blobs/0e31928c93bec291911314d4c6a21bf7914134ba
+            └── pytorch_model.bin -> ../../blobs/8a5106c06899aeea013a7f6ef32e84a15a30f965be676b97996b3ddaf1eb55b9
+
+6 directories, 5 files
+```
+
+## 2025-07-23
+
