@@ -688,7 +688,15 @@ Resolved 115 packages in 3.22s
       hint: This usually indicates a problem with the package or the build environment.
 ```
 
-## 2025-06-10
+### 2025-06-10
 
 - 2025-3-13: Gemma 3: What You Need To Know
   - https://gradientflow.com/gemma-3-what-you-need-to-know/
+
+## Gemma 3n
+
+### 2025-07-26
+
+- 2025-06-26:
+  - Introducing Gemma 3n: The developer guide
+  - https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/
