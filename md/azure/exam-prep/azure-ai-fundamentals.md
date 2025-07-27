@@ -9,6 +9,5 @@
 
 ## 2024-11-05
 
-- 
 - Microsoft Azure Virtual Training Day: Generative AI Fundamentals
   - https://learn.microsoft.com/en-us/collections/qew6fnqxge0xjo?sharingId=FAB25DD50944F75A
