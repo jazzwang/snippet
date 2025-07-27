@@ -328,3 +328,14 @@ if __name__ == "__main__":
 
 ## 2025-07-23
 
+- 實測後，再重新看了一次 README，發現一些缺點：
+  - 一次不能放太多 transcript ，不然語速會太快。大約一秒 80 個 token
+    - https://token-calculator.net/token-speed-simulator 我用這個網站來計算 token 數目
+  - `[S1]` 跟 `[S2]` 必須交錯。不可以 `[S1]....[S1].....[S2].....`
+  - 每次產生的 `[S1]` 跟 `[S2]` 聲音沒辦法控制。但是可以用 `Voice Clone` 的方式控制。
+    - 參考範例：https://github.com/nari-labs/dia/blob/main/example/voice_clone.py
+
+## 2025-07-27
+
+- 六月又有發布一版新的模型
+  - https://huggingface.co/nari-labs/Dia-1.6B-0626
