@@ -522,3 +522,15 @@ You can generate speech from long text using Google Cloud TTS without writing co
 [19] https://chromewebstore.google.com/detail/text-to-speech-tts/cpnomhnclohkhnikegipapofcjihldck
 [20] https://videotronicmaker.com/arduino-tutorials/lm-studio-local-inference-server-nlp-upgrade-using-free-google-text-to-speech-api/
 </td></tr></table>
+
+## 2025-07-28
+
+- Use Case created by Google Cloud Vertex AI
+  - Created with [Google Cloud Solution Generator](https://cloud.google.com/solution-generator) - Last updated July 28, 2025
+  - Automatically add audio versions of blog posts to website.
+  - https://cloud.google.com/solution-generator/-Ei5lWVHG7iBoqVKKHrj9IdGe8zsZKMMwNBB7jSP81-XRLZW9YHsRA==?preview=true
+- Google drive and Google Cloud Text-To-Speech Integration
+  - https://latenode.com/integrations/google-drive/google-cloud-text-to-speech
+- Generate Natural Voices with Google Text-to-Speech, Drive & Airtable
+  - https://n8n.io/workflows/5779-generate-natural-voices-with-google-text-to-speech-drive-and-airtable/
+  - https://github.com/ziobudda/n8n-nodes-google-speech/
