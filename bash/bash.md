@@ -1,6 +1,6 @@
 # Notes about Bash Shell Script and Linux Commands
 
-## 
+## 2025-07-24 12:17
 
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
@@ -34,7 +34,7 @@ By combining these two conditions, you effectively select files that have a modi
 For your request, assuming "created on" refers to the modification date, the command provided above is the standard and most effective way to achieve it with `find`.
 </td></tr></table>
 
-##
+## 2025-07-24 12:57
 
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
@@ -138,7 +138,7 @@ Unfortunately, there's no magic bullet for automatically detecting and fixing co
 You can use `iconv` for conversion. The critical part is knowing the *original* encoding. Given the characters in your string, it looks like it might be binary data or text that has already been corrupted by incorrect encoding interpretations. Experimenting with `iconv` and different `-f` (from-encoding) options is your best bet, or using a more robust programming language if simple `iconv` attempts fail to yield readable text.
 </td></tr></table>
 
-## 
+## 2025-07-24 23:44
 
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->

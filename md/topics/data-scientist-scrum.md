@@ -1,5 +1,6 @@
 # Best Practices for Data Scientist Research Team to run Scrum/Agile
 
+- 2025-07-23 9:15 - By Gemeni 2.5 Flash
 
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
@@ -53,6 +54,7 @@ While challenges exist, adapting Scrum with these best practices can help data s
 </td></tr></table>
 
 - https://www.perplexity.ai/search/are-there-best-practices-for-d-TdkE3o.7TpeXP_FFeH4r1Q?0=d
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 are there best practices for data scientist research team to run Scrum/Agile ( 2-week Sprint )?
