@@ -311,7 +311,9 @@ In [3]: spelling_bee.question("test")
 Generated speech saved to "_test.mp3"
 ```
 
-## 
+## 2025-07-24
+
+### from Gemini 2.5 Flash
 
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
@@ -396,4 +398,127 @@ It's important to note that the landscape of online tools changes frequently. Wh
 * **Google AI Studio (for Gemini API with TTS):** More recently, Google has integrated TTS capabilities into its Gemini API, and you can test this in Google AI Studio. While it's primarily for developers, AI Studio offers a web interface to experiment with the Gemini models, including their text-to-speech capabilities. This is also often limited for direct long text conversion without further integration. You can find more about it here: [https://ai.google.dev/gemini-api/docs/speech-generation](https://ai.google.dev/gemini-api/docs/speech-generation)
 
 Always visit the specific website to understand their current features, pricing, and how they implement text-to-speech, as these details can change.
+</td></tr></table>
+
+### from Perplexity
+
+- https://www.perplexity.ai/search/could-you-give-me-reference-ur-.qX_y_svR1GO8anRmZSVbg
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+could you give me reference url links of Third-Party Web UIs/Tools that Integrate with Google Cloud TTS?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Here are some reference URLs for third-party web UIs/tools that integrate with Google Cloud Text-to-Speech (TTS):
+
+1. **Latenode** – A low-code/no-code integration platform that connects Google Cloud Text-to-Speech with other services and code for automation and workflow creation.  
+   URL: https://latenode.com/integrations/google-drive/google-cloud-text-to-speech  
+   URL: https://latenode.com/integrations/code/google-cloud-text-to-speech
+
+2. **Genesys Cloud** – A cloud contact center platform that provides integration with Google Cloud TTS for speech synthesis in customer interactions. Guidance on activation and configuration available.  
+   URL: https://help.mypurecloud.com/articles/activate-and-configure-the-google-tts-integration/
+
+3. **LiveKit** – Offers a Google Cloud TTS integration as part of its voice AI application framework, enabling realistic text-to-speech voice generation in applications.  
+   URL: https://docs.livekit.io/agents/integrations/tts/google/
+
+4. **UiPath Integration Service** – Provides a Google Text-to-Speech connector to automate processes involving speech synthesis using Google Cloud TTS.  
+   URL: https://docs.uipath.com/integration-service/automation-suite/2024.10/user-guide/uipath-google-texttospeech
+
+5. Additionally, for technical developers interested in building their own web applications with Google Cloud TTS, there is a tutorial video demonstrating how to integrate it with Node.js and React:  
+   URL: https://www.youtube.com/watch?v=jOrqR6FK-_M
+
+These links point to platforms and tools that facilitate or demonstrate integration with Google Cloud Text-to-Speech, offering web UIs or developer-friendly workflows to leverage Google's TTS capabilities.
+
+[1] https://latenode.com/integrations/google-drive/google-cloud-text-to-speech
+[2] https://help.mypurecloud.com/articles/activate-and-configure-the-google-tts-integration/
+[3] https://latenode.com/integrations/code/google-cloud-text-to-speech
+[4] https://www.youtube.com/watch?v=jOrqR6FK-_M
+[5] https://cloud.google.com/text-to-speech/docs/libraries
+[6] https://docs.livekit.io/agents/integrations/tts/google/
+[7] https://docs.uipath.com/integration-service/automation-suite/2024.10/user-guide/uipath-google-texttospeech
+[8] https://cloud.google.com/text-to-speech/docs/reference/rest
+[9] https://cloud.google.com/translate
+[10] https://stackoverflow.com/questions/35002003/how-to-use-google-translate-tts-with-the-new-v2-api
+</td></tr>
+<tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+is there a easy way to put a long text and create speech using Google Cloud text-to-speech? any Web UI that I don't need to write code and use API?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+**Easy Ways to Use Google Cloud Text-to-Speech Without Coding**
+
+There are convenient ways to use Google Cloud Text-to-Speech (TTS) for generating speech from long text, without manually writing code or calling APIs. Most “no code” solutions involve third-party platforms or web UIs that connect to Google Cloud's TTS service, letting you simply paste in your text and generate speech.
+
+**Web UIs & Tools for Non-Developers**
+
+1. **Online Integration Platforms with Google TTS**
+Platforms like **Latenode** let you connect Google Cloud TTS to a no-code web interface. You can often set up a workflow where you paste or upload your text and receive audio output.
+
+- Example: Latenode Google Cloud TTS Integration  
+  - You can use Latenode to create a text-to-speech workflow with a simple UI and no programming[1].
+
+2. **Text-to-Speech Marketplace Apps**
+
+- **Google Workspace Marketplace** features AI voice generator apps, some of which integrate Google Cloud TTS. These typically offer a UI for pasting large text blocks, selecting the voice, and downloading the audio.  
+  - Example: “Text to Speech - AI Voice Generator” app[2].
+
+3. **Demo and Playground Pages**
+- **Google Cloud Official Demo Page:**  
+  Google’s own [Text-to-Speech demo page](https://cloud.google.com/text-to-speech) provides a quick way to paste short-to-medium text and preview voices, but it has limits on input length and isn’t intended for bulk production[1].
+- **Third-Party Web Tools:**  
+  Sites like PlayHT and other TTS services sometimes let you choose Google Cloud as the voice engine, accept sizable text input, and produce speech files—all from a browser without any coding[3].
+
+**Limitations**
+
+- **Text Length:**  
+  Web demo interfaces often have limits on how much text you can paste per session (e.g., 5,000 characters on the official Google demo; longer texts may require chunking or batch processing[4]).
+- **Advanced Features:**  
+  For extremely long-form (multi-page) text, some platforms may still require you to authenticate with a Google account and set up minimal configuration, especially if generating many files or using premium voices.
+
+**Steps to Get Started**
+
+1. Visit a web UI like Latenode or a Google Workspace Marketplace text-to-speech app.
+2. Paste your text into the provided field.
+3. Select the language, voice, and output format.
+4. Generate and download your audio—no coding or API call necessary.
+
+**Notable Examples**
+
+| Tool/App                               | Need to Write Code? | Supports Long Text? | Quick Setup?     |
+|-----------------------------------------|---------------------|---------------------|------------------|
+| Latenode                               | No                  | Yes                 | Yes[1]           |
+| Google Workspace TTS Marketplace apps   | No                  | Medium-Long         | Yes[2]          |
+| Google Cloud Demo Page                  | No                  | Short-Medium        | Yes[1][4]       |
+| PlayHT (Google TTS Option)              | No                  | Medium-Long         | Yes[3]          |
+
+**Key Takeaway**
+
+You can generate speech from long text using Google Cloud TTS without writing code by leveraging web UIs and online integrator platforms. For the most seamless experience and longest text limits, third-party tools like Latenode and select marketplace apps offer user-friendly interfaces with support for Google’s TTS service[1][2][3].
+
+---
+[1]: https://latenode.com/integrations/google-drive/google-cloud-text-to-speech  
+[2]: https://workspace.google.com/marketplace/app/text_to_speech_ai_voice_generator/743993646804  
+[3]: https://play.ht/blog/ai-apps/google-text-to-speech/  
+[4]: https://www.googlecloudcommunity.com/gc/AI-ML/Google-TTS-can-t-convert-text-longer-than-500-600-characters/m-p/517771
+
+[1] https://cloud.google.com/text-to-speech
+[2] https://workspace.google.com/marketplace/app/text_to_speech_ai_voice_generator/743993646804
+[3] https://play.ht/blog/ai-apps/google-text-to-speech/
+[4] https://www.googlecloudcommunity.com/gc/AI-ML/Google-TTS-can-t-convert-text-longer-than-500-600-characters/m-p/517771
+[5] https://cloud.google.com/speech-to-text
+[6] https://www.youtube.com/watch?v=x6ZMVcsSoTM
+[7] https://www.youtube.com/watch?v=jOrqR6FK-_M
+[8] https://developers.google.com/text-to-speech/docs/reference/rpc/google.cloud.texttospeech.v1
+[9] https://murf.ai/blog/how-to-use-text-to-speech-on-google-cloud
+[10] https://stackoverflow.com/questions/76725897/google-cloud-tts-synthesizelongaudio-no-file-created
+[11] https://github.com/GoogleCloudPlatform/text-to-speech-epg-demo
+[12] https://cloud.google.com/text-to-speech/docs/reference/rest
+[13] https://cloud.google.com/text-to-speech/docs/create-audio-text-long-audio-synthesis
+[14] https://www.reddit.com/r/googlecloud/comments/9x4y6t/total_noob_want_to_use_the_speechtotext_api_and/
+[15] https://www.googlecloudcommunity.com/gc/AI-ML/Google-TTS-Long-form-synthesis-working-sporadically/m-p/894253
+[16] https://www.googlecloudcommunity.com/gc/AI-ML/Major-Bug-for-Text-to-Speech-Still-Not-Fixed/m-p/896767
+[17] https://developers.google.com/text-to-speech/docs/reference/rpc
+[18] https://community.openhab.org/t/text-based-configuration-of-google-cloud-text-to-speech-settings/132174
+[19] https://chromewebstore.google.com/detail/text-to-speech-tts/cpnomhnclohkhnikegipapofcjihldck
+[20] https://videotronicmaker.com/arduino-tutorials/lm-studio-local-inference-server-nlp-upgrade-using-free-google-text-to-speech-api/
 </td></tr></table>
