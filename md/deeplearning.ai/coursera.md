@@ -45,3 +45,7 @@
 ## Building Agentic RAG with LlamaIndex
 
 - https://www.coursera.org/projects/introduction-to-on-device-ai
+
+## Generative AI for Software Development Skill Certificate
+
+- https://www.coursera.org/professional-certificates/generative-ai-for-software-development
