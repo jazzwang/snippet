@@ -19,7 +19,8 @@ dependencies = [
     "requests",
     "google-generativeai",
     "bs4",
-    "dotenv"
+    "lxml",
+    "python-dotenv"
 ]
 
 [project.scripts]

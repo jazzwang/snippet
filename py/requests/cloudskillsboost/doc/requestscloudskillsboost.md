@@ -1,4 +1,4 @@
-# 
+# Download transcripts from Cloud Skills Boost learning paths
 
 ## 如何執行
 
@@ -91,3 +91,149 @@ $ time python3 python/requests/cloudskillsboost/dump_transcript.py -t 249 | tee 
     目前還在 Gemini 1.5 Flash 的容許範圍內，只是 API Error Rate 比較高。
   - 暫時解法：我個人是啟用 Gemini API KEY 的 Billing，暫時針對課程內容較長的 Learning Path 就能順利完成翻譯與摘要。
 
+## 2025-08-02
+
+- 參考 [readmoo](../../readmoo/) 的 [pyproject.toml](../../readmoo/pyproject.toml)
+- 修改成能夠用 `uv tool install ./cloudskillsboost/` 安裝成執行檔的本地端套件
+
+```bash
+~/git/snippet/py/requests$ uv tool install ./cloudskillsboost/
+Resolved 37 packages in 861ms
+Installed 37 packages in 179ms
+ + annotated-types==0.7.0
+ + beautifulsoup4==4.13.4
+ + bs4==0.0.2
+ + cachetools==5.5.2
+ + certifi==2025.8.3
+ + charset-normalizer==3.4.3
+ + cloudskillsboost-dump==0.1.0 (from file:///C:/Users/jazzw/git/snippet/py/requests/cloudskillsboost)
+ + colorama==0.4.6
+ + dotenv==0.9.9
+ + google-ai-generativelanguage==0.6.15
+ + google-api-core==2.25.1
+ + google-api-python-client==2.178.0
+ + google-auth==2.40.3
+ + google-auth-httplib2==0.2.0
+ + google-generativeai==0.8.5
+ + googleapis-common-protos==1.70.0
+ + grpcio==1.74.0
+ + grpcio-status==1.71.2
+ + httplib2==0.22.0
+ + idna==3.10
+ + lxml==6.0.0
+ + proto-plus==1.26.1
+ + protobuf==5.29.5
+ + pyasn1==0.6.1
+ + pyasn1-modules==0.4.2
+ + pydantic==2.11.7
+ + pydantic-core==2.33.2
+ + pyparsing==3.2.3
+ + python-dotenv==1.1.1
+ + requests==2.32.4
+ + rsa==4.9.1
+ + soupsieve==2.7
+ + tqdm==4.67.1
+ + typing-extensions==4.14.1
+ + typing-inspection==0.4.1
+ + uritemplate==4.2.0
+ + urllib3==2.5.0
+Installed 1 executable: cloudskillsboost-dump.exe
+```
+
+- 測試
+
+```bash
+~/git/snippet/py/requests$ which cloudskillsboost-dump
+/c/Users/jazzw/.local/bin/cloudskillsboost-dump
+```
+
+```bash
+~/git/snippet/py/requests$ cloudskillsboost-dump
+usage: cloudskillsboost-dump [-h] [--translate TRANSLATE] path_id
+cloudskillsboost-dump: error: the following arguments are required: path_id
+```
+
+## 2025-08-03
+
+- 用 `aider` 搭配 google `Gemini 2.5 Flash` 模型，畫一張 `dump_transcript.py` 的 sequence diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant main()
+    participant requests
+    participant BeautifulSoup
+    participant json
+    participant Gemini API
+
+    User->>main(): Run script with path_id [--translate]
+    Note over main(): Load .env, Initialize Gemini model
+
+    main()->>requests: GET learning path HTML (e.g., /paths/ID)
+    requests-->>main(): Learning Path HTML
+    alt Request Error
+        requests--xmain(): HTTP Error
+        main()->>User: Print error, Exit
+    end
+    main()->>BeautifulSoup: Parse Learning Path HTML
+    BeautifulSoup-->>main(): Parsed HTML (soup)
+    main()->>main(): Extract learning plan title
+    main()->>User: Print learning plan title
+    main()->>main(): Extract course URLs from HTML
+
+    loop For each course_url in extracted URLs
+        main()->>requests: GET course HTML
+        requests-->>main(): Course HTML
+        alt Request Error
+            requests--xmain(): HTTP Error
+            main()->>User: Print error, Continue to next course
+        end
+        main()->>BeautifulSoup: Parse Course HTML
+        BeautifulSoup-->>main(): Parsed HTML (soup)
+        main()->>main(): Extract course title
+        main()->>User: Print course title
+        main()->>json: Parse modules JSON from 'ql-course-outline' element
+        json-->>main(): Course Modules Data
+        alt Parsing Error
+            json--xmain(): JSONDecodeError / KeyError
+            main()->>User: Print error, Continue to next course
+        end
+
+        loop For each module in Course Modules
+            main()->>main(): Extract module title
+            main()->>User: Print module title
+            main()->>main(): Extract activities from module steps
+
+            loop For each activity in activities
+                main()->>main(): Extract activity title, type, URL
+                main()->>User: Print activity title and URL
+                alt If activity_type is "video"
+                    main()->>requests: GET video HTML
+                    requests-->>main(): Video HTML
+                    alt Request Error
+                        requests--xmain(): HTTP Error
+                        main()->>User: Print error, Skip transcript
+                    end
+                    main()->>BeautifulSoup: Parse Video HTML
+                    BeautifulSoup-->>main(): Parsed HTML (soup)
+                    main()->>json: Parse transcript JSON from 'ql-youtube-video' element
+                    json-->>main(): Transcript Data
+                    alt Parsing Error
+                        json--xmain(): JSONDecodeError / KeyError
+                        main()->>User: Print error, Skip transcript
+                    end
+                    main()->>main(): Extract transcript text
+                    main()->>User: Print transcript
+                    alt If --translate flag is present
+                        main()->>Gemini API: Send transcript for translation/summary
+                        Gemini API-->>main(): Translated/Summarized Text
+                        main()->>User: Print translated/summarized text
+                    end
+                else
+                    main()->>main(): Skip transcript extraction (not a video)
+                end
+            end
+        end
+    end
+    main()->>User: Script execution complete
+```
