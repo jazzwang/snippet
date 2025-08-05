@@ -163,6 +163,9 @@ def main():
 
         # 2. Get Course Title and Modules
         for course_url in course_urls:
+            ## ignore `Lab` type activity-link
+            if "course_" not in course_url:
+                continue
             soup = get_course_context(course_url)
             course_title = get_course_title(soup, course_url)
             print(f"## {course_title}\n")

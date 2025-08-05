@@ -237,3 +237,28 @@ sequenceDiagram
     end
     main()->>User: Script execution complete
 ```
+
+## 2025-08-05
+
+- Bug: can't parse `Lab`
+
+```bash
+~/git/snippet/py/requests$ cloudskillsboost-dump 12
+# Cloud Architect Learning Path
+
+- https://www.cloudskillsboost.google/paths/12
+
+[TOC]
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jazzw\.local\bin\cloudskillsboost-dump.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\jazzw\AppData\Roaming\uv\tools\cloudskillsboost-dump\Lib\site-packages\dump_transcript.py", line 167, in main
+    course_title = get_course_title(soup, course_url)
+  File "C:\Users\jazzw\AppData\Roaming\uv\tools\cloudskillsboost-dump\Lib\site-packages\dump_transcript.py", line 59, in get_course_title
+    raise ValueError(f"Could not find 'ql-title-medium' element in {course_url}")
+ValueError: Could not find 'ql-title-medium' element in https://www.cloudskillsboost.google/focuses/2794?parent=catalog&path=12
+```
