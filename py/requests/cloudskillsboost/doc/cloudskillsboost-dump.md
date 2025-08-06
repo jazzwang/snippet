@@ -262,3 +262,137 @@ Traceback (most recent call last):
     raise ValueError(f"Could not find 'ql-title-medium' element in {course_url}")
 ValueError: Could not find 'ql-title-medium' element in https://www.cloudskillsboost.google/focuses/2794?parent=catalog&path=12
 ```
+
+## 2025-08-06
+
+- Bug: charmap issue
+
+```bash
+~/git/snippet/md/gcp/cloudskillsboost$ cloudskillsboost-dump.exe 118 | tee path-118.md
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jazzw\.local\bin\cloudskillsboost-dump.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\jazzw\AppData\Roaming\uv\tools\cloudskillsboost-dump\Lib\site-packages\dump_transcript.py", line 190, in main
+    print(f"{transcript}\n")
+    ~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jazzw\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u200c' in position 6242: character maps to <undefined>
+# Beginner: Introduction to Generative AI Learning Path
+
+- https://www.cloudskillsboost.google/paths/118
+
+[TOC]
+
+## 01: Introduction to Generative AI
+
+- https://www.cloudskillsboost.google/paths/118/course_templates/536
+
+### Introduction to Generative AI
+
+#### Introduction to Generative AI
+
+- https://www.cloudskillsboost.google/paths/118/course_templates/536/video/520739
+```
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+could you help me to resolve this error message?
+
+```python
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jazzw\.local\bin\cloudskillsboost-dump.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\jazzw\AppData\Roaming\uv\tools\cloudskillsboost-dump\Lib\site-packages\dump_transcript.py", line 190, in main
+    print(f"{transcript}\n")
+    ~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jazzw\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u200c' in position 6242: character maps to <undefined>
+```
+
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+
+This `UnicodeEncodeError` happens when your program tries to print a character that your system's default encoding (likely **CP1252**) can't display. Specifically, the character `\u200c` (which is a **Zero Width Non-Joiner**) is causing the problem.
+
+-----
+
+#### Understanding the Error
+
+  * **`UnicodeEncodeError`**: This error occurs when Python tries to convert a Unicode string (which can contain almost any character from any language) into a byte string using a specific encoding, but a character in the Unicode string cannot be represented in that target encoding.
+  * **`'charmap' codec can't encode character '\u200c'`**: This part tells you exactly what's wrong. The `'charmap'` codec (which `cp1252` is an example of) doesn't know how to represent the Unicode character `\u200c`.
+  * **`\u200c` (Zero Width Non-Joiner)**: This is a non-printing character used in some writing systems to control how characters are connected. It's often invisible but can be present in text copied from various sources (like websites or documents).
+
+-----
+
+##### How to Resolve It
+
+You can resolve this error by changing the encoding used when outputting the text. Here are the most common solutions:
+
+###### 1\. Change the Encoding of Your Python Output
+
+The most robust solution is to explicitly tell Python to use **UTF-8** for its output, as UTF-8 can handle virtually all Unicode characters.
+
+**Method A: Set the `PYTHONIOENCODING` Environment Variable**
+
+This is often the best long-term solution as it affects all Python output for your session or system.
+
+1.  **For a single command (Windows Command Prompt):**
+
+    ```cmd
+    chcp 65001
+    set PYTHONIOENCODING=utf-8
+    python -m cloudskillsboost-dump.exe
+    ```
+
+    The `chcp 65001` command changes the active console code page to UTF-8.
+
+2.  **Permanently (Windows):**
+
+      * Search for "Environment Variables" in the Windows search bar and select "Edit the system environment variables."
+      * Click "Environment Variables..."
+      * Under "User variables for jazzw" (or "System variables" if you want it for all users), click "New...".
+      * For "Variable name," enter `PYTHONIOENCODING`.
+      * For "Variable value," enter `utf-8`.
+      * Click "OK" on all open windows.
+      * **Restart your command prompt/terminal** for the changes to take effect.
+
+**Method B: Modify Your Python Script (if you can)**
+
+If you have control over the `dump_transcript.py` script, you could modify how the `print` function handles encoding, but this is less ideal than setting the environment variable for a third-party script. However, if the issue is with writing to a file, you'd specify the encoding:
+
+```python
+# Instead of: print(f"{transcript}\n")
+# If writing to a file:
+# with open("output.txt", "w", encoding="utf-8") as f:
+#     f.write(f"{transcript}\n")
+```
+
+###### 2\. Sanitize the `transcript` String
+
+If you cannot change the output encoding, or if the `\u200c` character is truly unwanted, you can remove or replace it from the `transcript` string before printing.
+
+```python
+# In dump_transcript.py, before the print statement:
+# transcript = transcript.replace('\u200c', '') # Remove the character
+# or
+# transcript = transcript.encode('ascii', 'ignore').decode('ascii') # Remove non-ASCII characters
+```
+
+However, this might lead to data loss if `\u200c` has a meaningful purpose in the transcript. Given that `cloudskillsboost-dump` is likely extracting text from a web source, removing such characters is often acceptable.
+
+-----
+
+##### Recommended Action
+
+Start by trying **Method A: Set the `PYTHONIOENCODING` Environment Variable to `utf-8`**. This is the most common and effective solution for this type of `UnicodeEncodeError` when dealing with console output from Python scripts, especially when using tools that generate content with diverse characters.
+
+</td></tr></table>
