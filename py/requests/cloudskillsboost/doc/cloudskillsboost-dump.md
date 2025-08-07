@@ -396,3 +396,50 @@ However, this might lead to data loss if `\u200c` has a meaningful purpose in th
 Start by trying **Method A: Set the `PYTHONIOENCODING` Environment Variable to `utf-8`**. This is the most common and effective solution for this type of `UnicodeEncodeError` when dealing with console output from Python scripts, especially when using tools that generate content with diverse characters.
 
 </td></tr></table>
+
+## 2025-08-07
+
+- 實際測試，強迫用 UTF-8 的 Encoding，就沒有遇到 Error 了～可能跟我有刻意設定 Local 是 `en_US.UTF-8` 有點關係。
+```bash
+~$ locale
+LANG=
+LC_CTYPE="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_ALL=en_US.UTF-8
+```
+```bash
+~/git/snippet/md/gcp/cloudskillsboost$ export PYTHONIOENCODING=utf-8
+~/git/snippet/md/gcp/cloudskillsboost$ cloudskillsboost-dump.exe 118 | tee path-118.md
+```
+
+## 2025-08-08
+
+- 實測另一個 Learning Path -- 也測試一下 `Lab` 類型的部份是否正確被忽略。
+```bash
+~/git/snippet/md/gcp/cloudskillsboost$ export PYTHONIOENCODING=utf-8
+~/git/snippet/md/gcp/cloudskillsboost$ cloudskillsboost-dump.exe 12 | tee path-12.md
+```
+- 還是卡在 charmap 問題。
+```
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jazzw\.local\bin\cloudskillsboost-dump.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\jazzw\AppData\Roaming\uv\tools\cloudskillsboost-dump\Lib\site-packages\dump_transcript.py", line 190, in main
+    print(f"{transcript}\n")
+    ~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jazzw\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2264' in position 4000: character maps to <undefined>
+
+#### SLOs and SLAs
+
+- https://www.cloudskillsboost.google/paths/12/course_templates/41/video/565053
+```
