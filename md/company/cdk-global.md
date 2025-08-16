@@ -6,6 +6,9 @@
 
 - 曾經上市那斯達克，代號為 CDK，但已經下市
   - https://fintel.io/zh-hant/so/us/cdk
+- https://quartr.com/companies/cdk-global-inc_3794
+- 2022-04-07: Brookfield to Acquire CDK Global Inc.
+  - https://bbu.brookfield.com/press-releases/bbu/brookfield-acquire-cdk-global-inc
 
 -----
 
