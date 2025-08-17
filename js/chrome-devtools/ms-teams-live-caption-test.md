@@ -91,3 +91,11 @@ const observer = new MutationObserver(callback);
 // 6. Start observing the target node for configured mutations
 observer.observe(targetNode, config);
 ```
+
+## 2025-08-15
+
+- 微調 UI - 把 live caption 變小，方便
+```diff
+- <div class="fui-Flex ___1xriypo f22iagw f1vx9l62 fprs0cq f419p8h for4qjf fgmr9yd f12xb3oj f1yj8dow f1nkf6f4 f1h3a8gf f1g31g83 fyxfkj9" data-tid="closed-caption-renderer-wrapper" aria-label="Live Captions">
++ <div class="fui-Flex ___1xriypo f22iagw f1vx9l62 fprs0cq f419p8h for4qjf fgmr9yd f12xb3oj f1yj8dow f1nkf6f4 f1h3a8gf f1g31g83 fyxfkj9" data-tid="closed-caption-renderer-wrapper" aria-label="Live Captions" style="height: 100px;">
+```

@@ -50,3 +50,19 @@ jazzw@JazzBook:~/git/jazzwang$ git push
 ```markdown
 ![Metrics](/github-metrics.svg)
 ```
+
+## 2025-08-17
+
+- 由於 GitHub personal token 定期需要 re-generate。
+  如果 Github Action 因為 token 失效而執行失敗，
+  必須做執行以下步驟：
+- 回到 https://github.com/settings/tokens 點選 `github-metrics`，
+  然後按 `Regenerate token` 按鈕。
+- 複製新的 token
+- 前往 https://github.com/jazzwang/jazzwang/settings/environments 
+  選擇 `Production` 環境，
+  修改 Environment secrets 的 `METRICS_TOKEN` 內容
+- 貼上剛剛複製的 token
+- 前往 https://github.com/jazzwang/jazzwang/actions/workflows/metrics.yml
+- 點擊 `Run Workflow`
+- Refresh 頁面 (或按 `F5` 鍵)，等 Github Action 執行結果。
