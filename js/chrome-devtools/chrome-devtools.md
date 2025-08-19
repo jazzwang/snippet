@@ -116,3 +116,23 @@ console.log(JSON.stringify(document.cookie.split(';').map(c => splitOnFirstEqual
 - [Edit and save files in a workspace](https://developer.chrome.com/docs/devtools/workspaces)
 - 看了一下內容，比較像是在 Local 做開發，然後可以讓 DevTools 即時反應 CSS/HTML/JavaScript 異動的範例。
 - 不過如果想要熟悉 Chrome DevTools 的用法，https://developer.chrome.com/docs/devtools 會是個好的起點。
+
+## 2025-08-19
+
+- 需求：在 Windows 上模擬 macOS Safari 瀏覽器的行為
+- 嘗試：
+  - Windows + WSL + KVM + KVM-OpenCore + Docker + macOS installer image
+    - https://github.com/sickcodes/Docker-OSX?tab=readme-ov-file#id-like-to-run-docker-osx-on-windows
+  - 直接在 Edge 或 Chrome 瀏覽器中修改 `User-Agent` header string
+    - 2025-06-30: [Microsoft Learn][Microsoft Edge] Override the user agent string
+      - https://learn.microsoft.com/en-us/microsoft-edge/devtools/device-mode/override-user-agent
+      - Press Ctrl+Shift+P (Windows, Linux) or Command+Shift+P (macOS) to open the Command Menu.
+      ![](https://learn.microsoft.com/en-us/microsoft-edge/devtools/device-mode/override-user-agent-images/device-mode-console-command-menu.png)
+      - Type `network conditions`, select Show Network conditions, and then press Enter to open the Network conditions tool.
+      ![](https://learn.microsoft.com/en-us/microsoft-edge/devtools/device-mode/override-user-agent-images/device-mode-console-command-menu-network-conditions.png)
+      - In the User agent section, clear the Use browser default checkbox.
+      ![](https://learn.microsoft.com/en-us/microsoft-edge/devtools/device-mode/override-user-agent-images/clear-use-browser-default-checkbox.png)
+  - User-Agent Switcher
+    - (Chrome) https://chromewebstore.google.com/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg
+    - (Firefox) https://addons.mozilla.org/en-US/firefox/addon/uaswitcher/
+    - (Edge) https://microsoftedge.microsoft.com/addons/detail/npjnioaeoicmjokbdpfiecnbildopjad
