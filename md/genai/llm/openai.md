@@ -32,9 +32,10 @@
 - Git Repo
   - https://github.com/openai/gpt-oss
 - HuggingFace
-  - 
-
-    **Download [gpt-oss-120b](https://huggingface.co/openai/gpt-oss-120b) and [gpt-oss-20b](https://huggingface.co/openai/gpt-oss-20b) on Hugging Face**
+  - https://huggingface.co/openai/gpt-oss-120b
+  - https://huggingface.co/openai/gpt-oss-20b
+  - https://huggingface.co/unsloth/gpt-oss-20b-GGUF
+  - https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF
 
 > Welcome to the gpt-oss series, [OpenAI's open-weight models](https://openai.com/open-models/) designed for powerful reasoning, agentic tasks, and versatile developer use cases.
 >
@@ -44,3 +45,7 @@
 > -   `gpt-oss-20b` --- for lower latency, and local or specialized use cases (21B parameters with 3.6B active parameters)
 > 
 > Both models were trained <mark>using our [harmony response format](https://github.com/openai/harmony) and should only be used with this format; otherwise, they will not work correctly.</mark>
+
+- Reference:
+  - macOs + LM Studio
+    - https://www.minwt.com/ai/24366.html
