@@ -149,3 +149,12 @@ Options:
 - 商業策略觀察：
   - `Github Copilot` vs `Google Code Assistant`
   - `Claude Code` vs `Gemini CLI`
+
+## 2025-08-20
+
+- Gemini CLI for GitHub Actions
+  - https://www.linkedin.com/feed/update/urn:li:activity:7358848236998041601/
+- 2025-08-06:
+  - Meet your new AI coding teammate: Gemini CLI GitHub Actions
+  - https://blog.google/technology/developers/introducing-gemini-cli-github-actions/
+  - https://github.com/google-github-actions/run-gemini-cli

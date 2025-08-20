@@ -700,3 +700,10 @@ Resolved 115 packages in 3.22s
 - 2025-06-26:
   - Introducing Gemma 3n: The developer guide
   - https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/
+
+## Gemma 3 - 270M
+
+- News
+- Git Repo
+- GGUF
+  - https://huggingface.co/models?other=base_model:quantized:google/gemma-3-270m-it
