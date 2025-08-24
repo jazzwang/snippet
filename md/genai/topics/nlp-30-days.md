@@ -457,9 +457,7 @@ Key ethical concerns in NLP include:
 
 -   **Privacy:** NLP models frequently rely on large volumes of sensitive personal data, including text (e.g., emails, chat logs), speech recordings, and metadata (e.g., user demographics). This reliance poses significant risks, such as data breaches leading to unauthorized disclosure of personal information, and the potential for surveillance through monitoring user behavior.  
 
--   **Transparency & Accountability:** The inherent complexity of many NLP models, particularly deep learning architectures, can make their decision-making processes opaque and difficult to interpret. This lack of transparency makes it challenging to understand  
-
-    *why* a model produces a particular output and to hold it accountable for its actions.  
+-   **Transparency & Accountability:** The inherent complexity of many NLP models, particularly deep learning architectures, can make their decision-making processes opaque and difficult to interpret. This lack of transparency makes it challenging to understand *why* a model produces a particular output and to hold it accountable for its actions.  
 
 Mitigation strategies are actively being developed and implemented to address these concerns:
 
