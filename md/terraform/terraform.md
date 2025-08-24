@@ -23,3 +23,9 @@
   - https://github.com/DontShaveTheYak/cf2tf
 - 測試：
   - 詳 [cf2tf.md](../../py/cf2tf/cf2tf.md)
+
+## 2025-08-24
+
+- 安裝步驟：
+  - https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+- 在 Github Codespace 實測找不到 terraform 套件
