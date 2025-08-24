@@ -158,3 +158,9 @@ Options:
   - Meet your new AI coding teammate: Gemini CLI GitHub Actions
   - https://blog.google/technology/developers/introducing-gemini-cli-github-actions/
   - https://github.com/google-github-actions/run-gemini-cli
+
+## 2025-08-21
+
+- 2025-07-05:
+  - Gemini CLI in GCP Cloud Shell with Google login 小記
+  - https://sakananote2.blogspot.com/2025/07/gemini-cli-in-gcp-cloud-shell-with.html

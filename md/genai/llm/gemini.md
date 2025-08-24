@@ -32,7 +32,7 @@
 
   > 現在，微軟也要效仿Google在 Microsoft Edge 瀏覽器中內建 AI 模型，微軟內建的是 Microsoft Phi-3 mini 版模型，該模型具有尺寸較小但能力依然非常不錯的特點。
 
-# Gemini  2.5 Deep Think
+# Gemini 2.5 Deep Think
 
 - 2025-08-02
   - 谷歌深夜放出 IMO 金牌模型，多項測試力壓 Grok 4、OpenAI o3！網友評論兩極分化
