@@ -1,5 +1,7 @@
 # MemOS
 
+> MemOS is an operating system for Large Language Models (LLMs) that enhances them with long-term memory capabilities.
+
 - Git Repo
   - https://github.com/MemTensor/MemOS
 - Website

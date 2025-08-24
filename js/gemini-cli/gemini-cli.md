@@ -161,6 +161,9 @@ Options:
 
 ## 2025-08-21
 
+- 2025-06-29:
+  - Conquering Google Login for Gemini CLI on Headless Servers
+  - https://medium.com/@fourdollars/conquering-google-login-for-gemini-cli-on-headless-servers-3e9d2649790f
 - 2025-07-05:
   - Gemini CLI in GCP Cloud Shell with Google login 小記
   - https://sakananote2.blogspot.com/2025/07/gemini-cli-in-gcp-cloud-shell-with.html
