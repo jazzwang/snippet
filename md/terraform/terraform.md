@@ -29,3 +29,16 @@
 - 安裝步驟：
   - https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 - 在 Github Codespace 實測找不到 terraform 套件
+
+### Visualize Terraform
+
+- 2022-10-05:
+  - Best Tools to Visualize your Terraform
+    - https://dev.to/miketysonofthecloud/best-tools-to-visualize-your-terraform-252a
+  - https://hieven.github.io/terraform-visual/
+    - https://github.com/hieven/terraform-visual
+  - terraform-visual CLI
+    ```bash
+    npm install -g @terraform-visual/cli
+    ```
+  - https://github.com/hieven/terraform-visual?tab=readme-ov-file#using-cli
