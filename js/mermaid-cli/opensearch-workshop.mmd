@@ -1,0 +1,86 @@
+sequenceDiagram
+    participant User as Script Execution
+    participant LocalSystem as Local Machine
+    participant AWS as AWS Services
+    participant GitHub as GitHub Repositories
+    participant S3 as AWS S3
+    participant EKS as EKS Cluster
+    participant IAM as AWS IAM
+    participant K8sAPI as Kubernetes API
+
+    User ->> LocalSystem: Start opensearch-workshop.sh
+    Note over User,LocalSystem: Install essential tools and CLIs
+
+    LocalSystem ->> LocalSystem: Install git (yum)
+    LocalSystem ->> S3: Download AWS CLI v2 (curl)
+    S3 ->> LocalSystem: awscliv2.zip
+    LocalSystem ->> LocalSystem: Unzip and install AWS CLI v2
+    LocalSystem ->> S3: Download kubectl (curl)
+    S3 ->> LocalSystem: kubectl binary
+    LocalSystem ->> LocalSystem: Verify kubectl checksum and install
+    LocalSystem ->> GitHub: Download get_helm.sh script (curl)
+    GitHub ->> LocalSystem: get_helm.sh
+    LocalSystem ->> LocalSystem: Execute get_helm.sh to install Helm
+    LocalSystem ->> LocalSystem: Install jq (yum)
+    LocalSystem ->> GitHub: Download yq binary (wget)
+    GitHub ->> LocalSystem: yq_linux_amd64
+    LocalSystem ->> LocalSystem: Install yq
+    LocalSystem ->> GitHub: Download eksctl binary (curl | tar)
+    GitHub ->> LocalSystem: eksctl
+    LocalSystem ->> LocalSystem: Install eksctl
+
+    Note over User,AWS: Create and configure EKS Cluster
+
+    LocalSystem ->> AWS: Create EKS cluster 'ops-workshop' (eksctl create cluster)
+    AWS ->> LocalSystem: EKS Cluster 'ops-workshop' provisioned
+    LocalSystem ->> AWS: Update local kubeconfig (aws eks update-kubeconfig)
+    AWS ->> LocalSystem: Kubeconfig updated
+
+    Note over User,IAM: Setup AWS Load Balancer Controller IAM
+
+    LocalSystem ->> GitHub: Download IAM policy for ALB Controller (curl)
+    GitHub ->> LocalSystem: iam_policy.json
+    LocalSystem ->> IAM: Create IAM Policy (aws iam create-policy)
+    IAM ->> LocalSystem: Policy ARN (LB_POLICY_ARN)
+    LocalSystem ->> EKS: Associate OIDC Provider with EKS cluster (eksctl utils associate-iam-oidc-provider)
+    EKS ->> LocalSystem: OIDC Provider associated
+    LocalSystem ->> EKS: Create Service Account for ALB Controller (eksctl create iamserviceaccount)
+    EKS ->> LocalSystem: Service Account created with policy attached
+
+    Note over User,EKS: Setup EBS CSI Driver
+
+    LocalSystem ->> IAM: Get AWS Account ID (aws sts get-caller-identity)
+    IAM ->> LocalSystem: ACCOUNT_ID
+    LocalSystem ->> EKS: Create Service Account for EBS CSI Driver (eksctl create iamserviceaccount)
+    EKS ->> LocalSystem: Service Account created with EBS CSI policy
+    LocalSystem ->> EKS: Create EBS CSI Driver Addon (eksctl create addon)
+    EKS ->> LocalSystem: EBS CSI Driver Addon deployed
+
+    Note over User,K8sAPI: Configure Kubernetes Storage and CNI
+
+    LocalSystem ->> LocalSystem: Generate gp3-storage-class.yaml
+    LocalSystem ->> K8sAPI: Apply gp3 StorageClass as default (kubectl apply)
+    K8sAPI ->> LocalSystem: gp3 StorageClass created
+    LocalSystem ->> K8sAPI: Annotate gp2 StorageClass as non-default (kubectl annotate)
+    K8sAPI ->> LocalSystem: gp2 StorageClass updated
+    LocalSystem ->> K8sAPI: Configure aws-node DaemonSet for Pod Security Groups (kubectl set env)
+    K8sAPI ->> LocalSystem: aws-node DaemonSet updated
+    LocalSystem ->> K8sAPI: Patch aws-node DaemonSet for TCP Early Demux (kubectl patch)
+    K8sAPI ->> LocalSystem: aws-node DaemonSet patched
+
+    Note over User,EKS: Install AWS Load Balancer Controller (Helm)
+
+    LocalSystem ->> LocalSystem: Add EKS Helm repository (helm repo add)
+    LocalSystem ->> EKS: Describe cluster to get VPC ID (aws eks describe-cluster)
+    EKS ->> LocalSystem: VPC_ID
+    LocalSystem ->> K8sAPI: Install AWS Load Balancer Controller via Helm (helm install)
+    K8sAPI ->> LocalSystem: ALB Controller deployed
+
+    Note over User,K8sAPI: Install Cert-Manager
+
+    LocalSystem ->> GitHub: Download cert-manager manifest (curl)
+    GitHub ->> LocalSystem: cert-manager.yaml
+    LocalSystem ->> K8sAPI: Apply cert-manager manifest (kubectl apply)
+    K8sAPI ->> LocalSystem: Cert-Manager deployed
+
+    User ->> LocalSystem: Script finished
