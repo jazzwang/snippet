@@ -14,7 +14,7 @@
 
 ### 在 WSL 安裝 `minikube`
 
-- Google Gemini 2.5 Flash 建議的安裝步驟比較複雜。實際上看 minikube 的 Linux 安裝步驟簡單很多。
+- Google Gemini 2.5 Flash 建議的安裝步驟比較複雜。實際上[看 minikube 的 Linux 安裝步驟](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fdebian+package)簡單很多。
 
 > **# aider chat started at 2025-08-24 18:51:03**
 > C:\Users\jazzw\.local\bin\aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash-preview-05-20 --chat-history-file minikube.md -m /ask could you create a bash script to install minikube within Ubuntu WSL?  
@@ -108,3 +108,17 @@ echo "And kubectl with: kubectl version --client"
 *   **WSL2 Requirement**: Minikube with the Docker driver works best on WSL2. If you are on WSL1, you might encounter issues or need to switch to a different driver (like `none`, which requires Docker Desktop running on Windows).
 *   **Windows Docker Desktop**: While this script installs Docker *within* your WSL instance, if you prefer to use Docker Desktop running on Windows, you would typically configure your WSL instance to connect to that. However, for a self-contained WSL environment, installing Docker directly in WSL is often simpler.
 </td></tr></table>
+
+### 在 Github Codespace 安裝 `minikube`
+
+- [根據 minikube 的 Linux 安裝步驟](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fdebian+package)，直接下載 deb 安裝檔，就搞定了！
+```bash
+@jazzwang ➜ /workspaces/codespaces-blank (main) $ cd /tmp/
+@jazzwang ➜ /tmp $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+@jazzwang ➜ /tmp $ sudo dpkg -i minikube_latest_amd64.deb
+```
+- 這樣裝好就有 `minikube` 跟 `kubectl` 指令了
+```bash
+@jazzwang ➜ /tmp $ which kubectl
+/usr/local/bin/kubectl
+```
