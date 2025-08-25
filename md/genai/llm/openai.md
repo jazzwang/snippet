@@ -36,6 +36,7 @@
   - https://huggingface.co/openai/gpt-oss-20b
   - https://huggingface.co/unsloth/gpt-oss-20b-GGUF
   - https://huggingface.co/bartowski/openai_gpt-oss-20b-GGUF
+  - https://huggingface.co/models?apps=lmstudio&other=base_model:quantized:openai%2Fgpt-oss-20b&sort=trending
 
 > Welcome to the gpt-oss series, [OpenAI's open-weight models](https://openai.com/open-models/) designed for powerful reasoning, agentic tasks, and versatile developer use cases.
 >

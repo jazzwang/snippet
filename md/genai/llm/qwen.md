@@ -491,3 +491,12 @@ give a more precise explanation!
 
 >>> /bye
 ```
+
+## Qwen3 Coder
+
+- Git Repo
+  - https://github.com/QwenLM/Qwen3-Coder
+- HuggingFace
+  - https://huggingface.co/collections/Qwen/qwen3-coder-687fc861e53c939e52d52d10
+  - https://huggingface.co/models?apps=lmstudio&other=base_model:quantized:Qwen%2FQwen3-Coder-30B-A3B-Instruct&sort=trending
+  - https://huggingface.co/lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-GGUF
