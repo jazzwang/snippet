@@ -500,3 +500,6 @@ give a more precise explanation!
   - https://huggingface.co/collections/Qwen/qwen3-coder-687fc861e53c939e52d52d10
   - https://huggingface.co/models?apps=lmstudio&other=base_model:quantized:Qwen%2FQwen3-Coder-30B-A3B-Instruct&sort=trending
   - https://huggingface.co/lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-GGUF
+- 2025-07-22:
+  - Qwen3-Coder: Agentic Coding in the World
+  - https://qwenlm.github.io/blog/qwen3-coder/

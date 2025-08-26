@@ -41,3 +41,8 @@ Furthermore, if you want to set an environment variable pointing to a path insid
     "NAME_OF_SECRET_2": { }
   }
   ```
+## 2025-08-25
+
+- Visual Studio Code - `Dev Containers` extension
+  - Create a Dev Container
+  - https://code.visualstudio.com/docs/devcontainers/create-dev-container

@@ -101,3 +101,41 @@ Attendees:
   - Bob Johnson
 ------------------------------
 ```
+
+## 2025-08-26
+
+- 發現 icalendar 套件有自帶 CLI 工具：
+```bash
+~/git/snippet/py/icalendar$ which icalendar
+/c/Users/jazzw/scoop/apps/python/current/Scripts/icalendar
+```
+```bash
+~/Downloads/ics$ icalendar.exe
+usage: icalendar [-h] [--output OUTPUT] [-v] calendar_files [calendar_files ...]
+icalendar: error: the following arguments are required: calendar_files
+~/Downloads/ics$ icalendar.exe 20259.ics
+    Organizer:
+    Attendees:
+
+    Summary    : 2025年9月份天下會員讀書會
+    Starts     : Tue Sep  9 12:30:00 2025
+    End        : Tue Sep  9 13:30:00 2025
+    Duration   : 1:00:00
+    Location   :
+    Comment    :
+    Description:
+     領讀書籍： 《閱讀空氣懂人心》
+     領讀人： 奧美公關/奧美集團董事總經理 謝馨慧
+     時間： 9 月 9 日（週五）12:30~13:30
+```
+- 從錯誤訊息可以知道程式來自套件 `icalendar` 的 `cli.py`
+```
+FileNotFoundError: [Errno 2] No such file or directory: 'Azure'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\jazzw\scoop\apps\python\current\Scripts\icalendar.exe\__main__.py", line 7, in <module>
+  File "C:\Users\jazzw\scoop\apps\python\current\Lib\site-packages\icalendar\cli.py", line 96, in main
+    with open(calendar_file, encoding="utf-8-sig") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
