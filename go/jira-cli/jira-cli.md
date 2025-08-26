@@ -75,12 +75,36 @@
   - 設定：
     - 一開始下 `jira init` 時，會出現 `401`
     - 改用 `jira init --debug` 雖然出現比較多除錯用的訊息，但仍舊無法正常認證。
-    - 仔細看文件以後發現要設定兩個環境變數：
+    - 仔細看[文件 "On-premise Installation" 段落](https://github.com/ankitpokhrel/jira-cli?tab=readme-ov-file#on-premise-installation)以後，發現要設定兩個環境變數：
       - `JIRA_API_TOKEN`
       - `JIRA_AUTH_TYPE`
     - 設定好以後，就可以正常跑完 `jira init` 了！
-```
-~/git/snippet$ env | grep -i JIRA
-JIRA_API_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxx"
-JIRA_AUTH_TYPE="bearer"
-```
+      ```bash
+      ~/git/snippet$ env | grep -i JIRA
+      JIRA_API_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      JIRA_AUTH_TYPE="bearer"
+      ```
+  - 操作：
+    ```bash
+    916  [08/26 17:02:54] jira board list
+    919  [08/26 17:03:23] jira epic list
+    922  [08/26 17:04:41] jira project list
+    925  [08/26 17:05:18] jira sprint list
+    927  [08/26 17:05:50] jira serverinfo
+    928  [08/26 17:06:00] jira me
+    930  [08/26 17:06:13] jira man -h
+    931  [08/26 17:06:15] jira man -g
+    936  [08/26 17:07:07] jira board list
+    939  [08/26 17:07:36] jira board -p MDSMIG list
+    940  [08/26 17:07:53] jira sprint -h
+    943  [08/26 17:08:20] jira sprints -p MDSMIG list
+    953  [08/26 17:09:59] cat ~/.config/.jira/.config.yml
+    957  [08/26 17:13:59] jira issue -h
+    958  [08/26 17:15:48] jira issue view AAP-274
+    959  [08/26 17:11:24] jira issue list
+    960  [08/26 17:16:05] jira issue list -h
+    962  [08/26 17:18:34] jira issue list -q 'sprint=50458 ORDER BY key ASC'
+    986  [08/26 21:03:22] jira sprint list --next
+    988  [08/26 21:05:01] jira sprint list --next --plan
+    989  [08/26 21:05:41] jira sprint list --next --order-by KEY --plain
+    ```
