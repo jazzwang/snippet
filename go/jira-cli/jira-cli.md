@@ -16,7 +16,7 @@
 - 結果：
   - https://github.com/toabctl/jiracli - Python 實作的 Jira CLI
   - https://github.com/rhevm-qe-automation/pytest_jira - 讓 Pytest 跟 Jira 整合的 pytest plugin
-  - https://github.com/ankitpokhrel/jira-cli - 用 Go 實作的 Jira CLI (這個看起來似乎社群成熟度比較高，還拿到 Attlassian 的贊助)
+  - https://github.com/ankitpokhrel/jira-cli - 用 Go 實作的 Jira CLI (這個看起來似乎社群成熟度比較高，還拿到 Atlassian 的贊助)
     - 2021-09-06: [Introducing Jira CLI: The Missing Command-line Tool for Atlassian Jira](https://medium.com/@ankitpokhrel/introducing-jira-cli-the-missing-command-line-tool-for-atlassian-jira-fe44982cc1de)
   - https://github.com/andygrunwald/go-jira - 用 Go 實作的 Jira 函式庫 （看起來有點久沒更新了，但可以看一下上面的 `jira-cli` 是否相依 `go-jira`）
 
@@ -64,3 +64,23 @@
     Use 'jira <command> <subcommand> --help' for more information about a command.
     Read the doc or get help at https://github.com/ankitpokhrel/jira-cli
     ```
+
+## 2025-08-26
+
+- Windows 11 實測：
+  - 安裝：
+    - 從 Github 下載
+      - 
+    - 解壓縮，把 `jira.exe` 複製到 `~/bin`
+  - 設定：
+    - 一開始下 `jira init` 時，會出現 `401`
+    - 改用 `jira init --debug` 雖然出現比較多除錯用的訊息，但仍舊無法正常認證。
+    - 仔細看文件以後發現要設定兩個環境變數：
+      - `JIRA_API_TOKEN`
+      - `JIRA_AUTH_TYPE`
+    - 設定好以後，就可以正常跑完 `jira init` 了！
+```
+~/git/snippet$ env | grep -i JIRA
+JIRA_API_TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+JIRA_AUTH_TYPE="bearer"
+```

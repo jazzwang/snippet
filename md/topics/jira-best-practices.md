@@ -41,4 +41,9 @@
 
 - 以前 Program Manager 很厲害，提供了 Excel 範本讓大家可以先在 Excel 裡面共同編輯，然後一次把整個 PI 六個 Sprint 的工作一次估完，包括每個 Sprint 的 capacity，可工作日/假日/休假天數，然後還可以方便大家在填入 User Story 估算以後，計算是否超出 Sprint Capacity，也會預留 10%~20% 不等的 Buffer 時間，因應 PI 執行到一半時，有一開始沒想到的額外 blocker 跑出來。
 - 最近用 User Story 的 Bulk Upload，發現似乎不能根據已經存在的 KEY (Issue Key) 去更新想要修改的欄位。
-- 最近團隊的 Test Case 也是用 Bulk Upload 產生，只是用的是 
+- 最近團隊的 Test Case 也是用 Bulk Upload 產生，只是用的是 "Import".
+
+## Jira Zephyr
+
+- https://www.getzephyr.com
+- https://smartbear.com/test-management/zephyr/
