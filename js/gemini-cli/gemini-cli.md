@@ -167,3 +167,46 @@ Options:
 - 2025-07-05:
   - Gemini CLI in GCP Cloud Shell with Google login 小記
   - https://sakananote2.blogspot.com/2025/07/gemini-cli-in-gcp-cloud-shell-with.html
+
+## 2025-08-26
+
+- 看別人比較 `Claude Code` 跟 `Gemini CLI`
+- 觀點一：讓 `Claude Code` 跟 `Gemini CLI` 合作
+  - 有點類似交叉詰問，先把需求定義清楚以後，再讓他們實作，並互相 Code Review。
+  - 有人建議用 MCP 的方式來讓兩個模型合作，蠻有趣的作法。
+  - Jun 27, 2025-06-27:
+    - https://blog.metamirror.io/claude-code-v-gemini-cli-e144feafbcf2
+- 觀點二：`Claude Code` 的 Code Quality 跟 User Experience 比較好。
+  - 2025-07-02: 
+    - https://composio.dev/blog/gemini-cli-vs-claude-code-the-better-coding-agent
+    - (同文轉貼) https://dev.to/composiodev/i-burnt-10m-tokens-to-compare-claude-code-and-gemini-cli-here-is-what-i-found-out-2e9k
+- 觀點三：`Gemini CLI` 的 Context Windows 比較大，支援「多模態」，已經整合 MCP Tool，免費額度
+  - 2025-07-09:
+    - Claude Code vs Gemini CLI: Which One’s the Real Dev Co-Pilot?
+    - https://milvus.io/blog/claude-code-vs-gemini-cli-which-ones-the-real-dev-co-pilot.md
+  - **3\. Code Quality vs Speed**
+
+    | **Feature** | **Gemini CLI** | **Claude Code** | **Notes** |
+    | --- |  --- |  --- |  --- |
+    | **Coding speed** | 8.5/10 | 7.2/10 | Gemini generates code faster |
+    | **Coding quality** | 7.8/10 | 9.1/10 | Claude generates higher quality code |
+    | **Error handling** | 7.5/10 | 8.8/10 | Claude is better at error handling |
+    | **Context understanding** | 9.2/10 | 7.9/10 | Gemini has longer memory |
+    | **Multilingual support** | 8.9/10 | 8.5/10 | Both are excellent |
+
+  - **6\. Feature Comparison Overview**
+
+    | **Feature** | **Claude Code** | **Gemini CLI** |
+    | --- |  --- |  --- |
+    | Context Window Length | 200K tokens | 1M tokens |
+    | Multimodal Support | Limited | Powerful (images, PDFs, etc.) |
+    | Code Understanding | Excellent | Excellent |
+    | Tool Integration | Basic | Rich (MCP Servers) |
+    | Security | Enterprise-grade | Standard |
+    | Free Requests | Limited | 60/min, 1000/day |
+  - 2025-07-09:
+    - Gemini-CLI vs Claude-Code：工作流時代的開端
+    - https://hkmci.com/zh-hant/blog/gemini-cli-vs-claude-code-workflow-era/?nab=0
+    - 在深入比較前，我們先釐清一個關鍵差異：
+      - `Claude Code` 是一款專注於編程支援的<mark>代理式編碼工具（Agentic **Coding** Tool）</mark>，核心能力是在命令列介面（CLI，Command Line Interface）中協助使用者撰寫與優化程式碼，最直接的路徑就能將提示詞（prompt）傳送給模型。
+      - `Gemini CLI` 擁有 Gemini 2.5 Pro 的強大模型，也能在終端機（terminal）操作 AI 協助編碼、編程，但它的定位為<mark>代理式工作流工具（Agentic **Workflow** Tool）</mark>，程式撰寫只是其眾多能力中的一環，更重要的是，它能協助使用者自動化複雜的日常工作流程，成為全面的數位助理。
