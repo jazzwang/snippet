@@ -14,3 +14,4 @@
 
 - Claude Code: A Highly Agentic Coding Assistant
   - https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/
+  - read from: https://developer.tenten.co/the-developer-revolution-inside-andrew-ngs-game-changing-claude-code-course

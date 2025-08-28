@@ -30,3 +30,9 @@ time=2025-03-17T09:49:30.588+08:00 level=INFO source=gpu.go:319 msg="detected OS
 time=2025-03-17T09:49:31.224+08:00 level=INFO source=amd_windows.go:127 msg="unsupported Radeon iGPU detected skipping" id=0 total="12.2 GiB"
 time=2025-03-17T09:49:31.227+08:00 level=INFO source=types.go:130 msg="inference compute" id=GPU-e8624b08-30b4-9c97-b054-cf2ed44d5da2 library=cuda variant=v12 compute=8.9 driver=12.7 name="NVIDIA GeForce RTX 4060 Laptop GPU" total="8.0 GiB" available="6.9 GiB"
 ```
+
+## 2025-08-27
+
+- 2024-09-26
+  - Running LLMs Locally on AMD GPUs with Ollama
+  - https://www.amd.com/en/developer/resources/technical-articles/running-llms-locally-on-amd-gpus-with-ollama.html

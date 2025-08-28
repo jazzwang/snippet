@@ -695,15 +695,65 @@ Resolved 115 packages in 3.22s
 
 ## Gemma 3n
 
+- Gemma 3n model overview
+  - https://ai.google.dev/gemma/docs/gemma-3n
+
 ### 2025-07-26
 
 - 2025-06-26:
   - Introducing Gemma 3n: The developer guide
   - https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/
 
-## Gemma 3 - 270M
+### 2025-08-28
 
-- News
-- Git Repo
+- HuggingFace
+  - https://huggingface.co/google/gemma-3n-E4B-it
+  - https://huggingface.co/models?other=base_model:quantized:google%2Fgemma-3n-E4B-it&sort=trending
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+could you give me a brief introduction of Gemma 3n, especially highlighting its strength, architecture, context window length, benchmark, dataset, knowledge cutoff date?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Gemma 3n is a generative AI model from Google, specifically designed for efficient use on devices with limited resources, like phones and laptops. It stands out for its innovations that make it performant despite its constrained environment.
+
+***
+
+### Strengths 🦾
+
+* **Efficiency:** Gemma 3n uses a "mobile-first" architecture optimized for low-latency audio and visual understanding. This includes a flexible Matryoshka Transformer (MatFormer) architecture that allows for selective activation of parameters and a Per-Layer Embedding (PLE) parameter caching system. These techniques reduce compute and memory requirements.
+* **Multimodality:** The model is inherently multimodal, able to process text, images, audio, and video as input, and generate text as output. This makes it suitable for tasks like visual question answering, speech-to-text, and image analysis.
+* **Strong Performance:** Despite its smaller size and focus on efficiency, Gemma 3n models achieve impressive benchmark scores in reasoning, math, and coding, with the Gemma 3n E2B model being competitive with larger models like Gemma 2.
+
+***
+
+### Architecture and Context Window
+
+* **Architecture:** Gemma 3n is based on the **Matryoshka Transformer (MatFormer)** architecture. This is a novel design that allows a single set of weights to contain multiple smaller, nested subnetworks. This means the model can operate at different "effective" parameter sizes, such as 2B and 4B, which are lower than the total parameter count. This flexibility allows developers to choose the right trade-off for their specific hardware and task. 
+* **Context Window:** The Gemma 3n E4B model has a context window of **32K tokens**, while the larger Gemma 3 models (4B, 12B, and 27B) have a significantly larger 128K token context window. A longer context window allows the model to process and understand more information in a single prompt.
+
+***
+
+### Benchmark, Dataset, and Knowledge Cutoff
+
+* **Benchmarks:** Gemma 3n performs well across a variety of benchmarks. The instruction-tuned (IT) models, such as E2B IT and E4B IT, show strong results on multilingual tasks, reasoning, and coding. On the LMSYS Chatbot Arena, the Gemma 3 27B IT model achieved a notable Elo score, surpassing several larger models.
+* **Dataset:** Gemma 3n models were trained on a diverse dataset that includes a wide variety of sources, totaling approximately 11 trillion tokens. This includes content in over 140 languages. The training data also includes mathematical text and a wide range of images, enabling its multimodal capabilities.
+* **Knowledge Cutoff:** The training data for Gemma 3n has a knowledge cutoff date of **August 2024**. This means the model does not have knowledge of events or information that occurred after that date.
+</td></tr></table>
+
+Here is a table summarizing the key aspects of Gemma 3n.
+
+| Feature | Description |
+| :--- | :--- |
+| **Strength** 🦾 | **Optimized for efficiency:** Designed for on-device use (phones, laptops) with low latency. It uses a flexible architecture to reduce compute and memory requirements.<br> **Multimodal:** Handles text, images, audio, and video input, making it versatile for various tasks. <br> **Strong Performance:** Achieves competitive benchmark scores in reasoning, math, and coding, often outperforming larger models. |
+| **Architecture** | **Matryoshka Transformer (MatFormer):** A novel architecture that allows a single model to operate at different "effective" parameter sizes, such as 2B and 4B. This provides flexibility for developers to balance performance and resource consumption. The architecture uses techniques like Per-Layer Embedding (PLE) caching to further improve efficiency. |
+| **Multimodal** | The model is natively multimodal. It can process a combination of text, images, audio, and video as input to generate a text-based response. For example, it can analyze an image and answer a question about its content or transcribe spoken language into text. |
+| **Context Window** | The Gemma 3n E2B and E4B models have a context window of **32K tokens**. This allows the model to process a substantial amount of information in a single prompt. |
+| **Benchmark** | Gemma 3n models show strong performance across a variety of benchmarks, including: <br> • **Reasoning:** HellaSwag, BoolQ, and BIG-Bench Hard.<br>• **STEM & Code:** MMLU, GSM8K, and HumanEval.<br> • **Multilingual:** MGSM and Global-MMLU-Lite. The Gemma 3 27B model has also achieved a high Elo score on the LMSYS Chatbot Arena, indicating strong human preference. |
+| **Training Dataset** | The models were trained on a massive, diverse dataset of approximately **11 trillion tokens** from a wide variety of sources, including web text, code, mathematics, and a wide range of images and audio in over 140 languages. |
+| **Knowledge Cutoff** | The training data for Gemma 3n has a knowledge cutoff date of **June 2024**. Therefore, the model does not have information on events that have occurred since that time. |
+
+## Gemma-3-270m-it
+
 - GGUF
   - https://huggingface.co/models?other=base_model:quantized:google/gemma-3-270m-it

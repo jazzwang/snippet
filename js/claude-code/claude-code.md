@@ -30,4 +30,5 @@
 - 解法二： AnyClaude
   - https://github.com/coder/anyclaude
 - 關於 Claude Code 跟 Aider 的一些比較跟討論
-  - 
+  - https://news.ycombinator.com/item?id=43254351
+    - https://github.com/ai-christianson/RA.Aid (可以整合 Aider)

@@ -126,7 +126,7 @@ For non-technical folks: - Watch closely as standards evolve - When standards fi
   - https://github.com/microsoft/playwright-mcp
 - 看了一下影片，感覺還是有點模糊，畢竟我沒有訂閱 Claude 也沒有用 Claude Desktop
 - 不過 MCP Client 可以是 VS Code 的 `Cline`，也可以是 `aider` 搭配 `mcpm-aider`
-- 從 https://github.com/microsoft/playwright-mcp 的 README 看到 `code --add-mcp` 2k7
+- 從 https://github.com/microsoft/playwright-mcp 的 README 看到 `code --add-mcp` 的新參數
 ```bash
 jazzw@JazzBook:~/git/snippet/js/chrome-devtools$ code --help
 Visual Studio Code 1.99.0
@@ -312,3 +312,21 @@ jazzw@JazzBook:~$ npx @playwright/mcp
 - 2025-04-18: [微軟 Semantic Kernel 整合 MCP 與 A2A 協定，大幅擴展跨模組 AI 代理互通性](https://www.ithome.com.tw/news/168485)
 
 > Semantic Kernel現支援MCP與A2A協定，強化跨代理與跨雲整合能力，協助開發者建構彈性多代理人工智慧應用架構
+
+## 2025-08-27
+
+- 2025-05-01:
+  - Introducing Atlassian’s Remote Model Context Protocol (MCP) Server
+  - https://www.atlassian.com/blog/announcements/remote-mcp-serverF
+- Getting started with the Atlassian Remote MCP Server
+  - https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/
+
+## 2025-08-28
+
+- MCP server that allows interaction with Jira using natural language
+  - https://github.com/George5562/Jira-MCP-Server
+- MCP server for Atlassian tools (Confluence, Jira)
+  - https://github.com/sooperset/mcp-atlassian
+- 2025-07-30
+  - 以 Jira 作為 MCP Server 與 AI Agent 的整合：打造專案管理的智慧新引擎
+  - https://www.metaage.com.tw/news/technology/828

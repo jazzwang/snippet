@@ -606,3 +606,24 @@ I hope this helps!
 ## 2025-03-22
 
 - 讀到 https://huggingface.co/spaces/ggml-org/gguf-my-repo 可以拿來把 HuggingFace 的模型轉成 GGUF 格式。
+
+## 2025-08-27
+
+> **Ollama + AMD ROCm**
+
+- 2024-09-26
+  - Running LLMs Locally on AMD GPUs with Ollama
+  - https://www.amd.com/en/developer/resources/technical-articles/running-llms-locally-on-amd-gpus-with-ollama.html
+- Add ROCm support on windows #2598
+  - https://github.com/ollama/ollama/issues/2598
+- https://github.com/likelovewant/ollama-for-amd/releases
+- https://rocm.docs.amd.com/projects/install-on-windows/en/develop/reference/system-requirements.html
+- https://ollama.com/blog/amd-preview
+- Windows Ollama AMD GPU ROCm 以支持受限 GPU 显卡
+  - https://zhuanlan.zhihu.com/p/18121818736
+
+## 2025-08-28
+
+> **Ollama CLI**
+
+- https://github.com/ollama/ollama/blob/main/docs/turbo.md#ollamas-cli
