@@ -9,3 +9,6 @@
 - 2025-04-24:
   - [Learn][Windows 365][Windows 365 Enterprise] Add or delete custom device images
   - https://learn.microsoft.com/en-us/windows-365/enterprise/add-device-images
+- 2024-10-20
+  - [Learn][Windows 365][Windows 365 Enterprise] Cloud PC lifecycle
+  - https://learn.microsoft.com/en-us/windows-365/enterprise/lifecycle

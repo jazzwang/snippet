@@ -29,3 +29,5 @@
   - https://www.shawnmayzes.com/product-engineering/running-claude-code-with-local-llm/
 - 解法二： AnyClaude
   - https://github.com/coder/anyclaude
+- 關於 Claude Code 跟 Aider 的一些比較跟討論
+  - 
