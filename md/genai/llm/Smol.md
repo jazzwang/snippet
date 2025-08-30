@@ -33,3 +33,15 @@
 ### 2025-08-29
 
 - https://github.com/huggingface/smollm
+
+### 2025-08-30
+
+- 2025-07-08
+  - https://huggingface.co/blog/smollm3
+
+## SmolLM3-3B-Base
+
+- https://huggingface.co/HuggingFaceTB/SmolLM3-3B-Base
+
+## SmolLM3-3B
+- https://huggingface.co/HuggingFaceTB/SmolLM3-3B
