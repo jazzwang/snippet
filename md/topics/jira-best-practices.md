@@ -1,7 +1,8 @@
 # Jira Best Practices
 
-## 2025-04-26
 ## Days in column
+
+### 2025-04-26
 
 - 緣起：
   - 在「實體看板」，我們是靠在便利貼上點白板筆代表一天。
@@ -47,3 +48,33 @@
 
 - https://www.getzephyr.com
 - https://smartbear.com/test-management/zephyr/
+
+## JQL
+
+### 2025-08-30
+
+- Copilot Search Branding
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+jql linked issues type is bug
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+To filter issues in Jira using JQL (Jira Query Language) where the linked issues are of type "Bug," you can use the following query:
+
+```jql
+issueFunction in linkedIssuesOf("issuetype = Bug")
+```
+
+**Explanation**:
+
+- `issueFunction` in `linkedIssuesOf`: This function identifies issues linked to other issues that match the specified JQL query.
+- `"issuetype = Bug"`: This filters for linked issues specifically of the type "Bug."
+
+Notes:
+
+- The `issueFunction` feature is part of Jira's ScriptRunner plugin. If you don't have ScriptRunner installed, this query won't work. Unfortunately, Jira's native JQL does not support filtering directly by linked issue types without plugins.
+- If you need a workaround without plugins, you might need to manually tag or label issues for easier filtering.
+
+Let me know if you need further clarification! 😊
+</td></tr></table>
