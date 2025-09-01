@@ -297,3 +297,16 @@ jazzw@JazzBook:/tmp/tree$ cp usr/bin/tree.exe ~/scoop/shims/
 jazzw@JazzBook:/tmp/tree$ which tree
 /c/Users/jazzw/scoop/shims/tree
 ```
+
+## 2025-09-01
+
+- 緣起：需要 `cpio` 指令來解壓縮 `*.cpz`
+- https://packages.msys2.org/packages/cpio?variant=x86_64
+- https://mirror.msys2.org/msys/x86_64/cpio-2.15-1-x86_64.pkg.tar.zst
+```bash
+/tmp$ wget https://mirror.msys2.org/msys/x86_64/cpio-2.15-1-x86_64.pkg.tar.zst
+/tmp$ tar -xv --zstd -f cpio-2.15-1-x86_64.pkg.tar.zst
+/tmp$ cp usr/bin/cpio.exe ~/scoop/shims/
+/tmp$ which cpio
+/c/Users/jazzw/scoop/shims/cpio
+```
