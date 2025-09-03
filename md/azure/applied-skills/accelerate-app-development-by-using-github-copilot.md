@@ -25,7 +25,9 @@ https://learn.microsoft.com/api/achievements/share/en-us/jazzwang-tw/YEWDZYFR?sh
 - 1 hr 14 min | Module | 8 units
 - https://learn.microsoft.com/training/modules/develop-code-features-using-github-copilot-tools/
 
-##### 2025-09-02
+##### 2025-09-03
+
+- https://learn.microsoft.com/api/achievements/share/en-us/jazzwang-tw/JU4AVYUT?sharingId=D226F54F7FC153D9
 
 ## 4: [Develop unit tests using GitHub Copilot tools](https://learn.microsoft.com/training/modules/develop-unit-tests-using-github-copilot-tools/)
 
