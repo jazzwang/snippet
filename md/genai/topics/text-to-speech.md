@@ -119,3 +119,11 @@ Citations:
 - Read from https://www.linkedin.com/feed/update/urn:li:activity:7333847125232914433/
   - 語音Demo：https://resemble-ai.github.io/chatterbox_demopage/
   - Github 專案：https://github.com/resemble-ai/chatterbox
+
+## 2025-08-27
+
+- Read from https://www.linkedin.com//feed/update/urn:li:activity:7366102068996030465/
+  - Git Repo
+    - https://github.com/microsoft/VibeVoice
+  - Website
+    - https://microsoft.github.io/VibeVoice/
