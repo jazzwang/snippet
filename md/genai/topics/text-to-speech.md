@@ -122,7 +122,7 @@ Citations:
 
 ## 2025-08-27
 
-- Read from https://www.linkedin.com//feed/update/urn:li:activity:7366102068996030465/
+- Read from https://www.linkedin.com/feed/update/urn:li:activity:7366102068996030465/
   - Git Repo
     - https://github.com/microsoft/VibeVoice
   - Website
