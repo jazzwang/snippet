@@ -25,3 +25,10 @@
   ```
   - 從指令看起來重點還是 `/home/ssm-user/k8s/helm/cluster-values.yaml` 這些檔案，感覺應該放在 EC2 的範本裡。
   - 我想知道的設定檔還有 Moviegeek 的一些設定應該都在 EC2 的範本裡。
+
+## 2025-09-05
+
+- OpenSearch Dashboards quickstart guide
+  - https://docs.opensearch.org/latest/dashboards/quickstart/
+- OpenSearch Observability
+  - https://docs.opensearch.org/latest/observing-your-data/
