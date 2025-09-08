@@ -757,3 +757,13 @@ Here is a table summarizing the key aspects of Gemma 3n.
 
 - GGUF
   - https://huggingface.co/models?other=base_model:quantized:google/gemma-3-270m-it
+
+## EmbeddingGemma
+
+- 2025-09-04:
+  - Introducing EmbeddingGemma: The Best-in-Class Open Model for On-Device Embeddings
+  - https://developers.googleblog.com/en/introducing-embeddinggemma/
+  ![](https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/EmbeddingGemma_Chart01_RD3-V01.original.png)
+  - 看起來就是比 Qwen-Embedding-0.6B 體積小（可能需要的記憶體量也相對較小），表現僅次於 Qwen-Embedding-0.6B 排行第二位。
+  - Demo 影片很亮眼
+  <video src='https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/semantic-galaxy-v3_1-720p-small.mp4'/>
