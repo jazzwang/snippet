@@ -1,0 +1,58 @@
+sequenceDiagram
+    participant Browser
+    participant MSTeamsApp as "MS Teams App"
+    participant Extension as "msteams.inline.js"
+    participant TactiqLogger as "Tactiq Logger (w)"
+    participant TactiqCustomEvents as "Tactiq Custom Events"
+    participant DatadogLogger as "Datadog Logger (Sp)"
+    participant DatadogAPI as "Datadog API"
+
+    Browser->>Extension: Script loaded and executed
+    Extension->>Extension: G() called (initial setup)
+    Extension->>Browser: Prepends <meta id="tactiq-rtc">
+    Extension->>TactiqLogger: info("Tactiq is ready")
+    TactiqLogger->>TactiqCustomEvents: Dispatches "log" event
+
+    opt Not LightMeetings (WebRTC/WebSocket patching)
+        Extension->>Browser: Patches window.RTCPeerConnection.createDataChannel
+        Extension->>Browser: Patches window.WebSocket constructor
+        WebSocket->>Extension: "message" event (e.g., rosterUpdate)
+        Extension->>TactiqCustomEvents: Dispatches "deviceinfo"
+    end
+    loop Call Detection (R())
+        Extension->>MSTeamsApp: Polls for active call object
+        alt Active Call Found
+            Extension->>Extension: C(callInfo) invoked (Call Setup)
+            C(callInfo)->>TactiqLogger: Logs Teams app version
+            TactiqLogger->>TactiqCustomEvents: Dispatches "log" event
+            C(callInfo)->>MSTeamsApp: Attempts call.startClosedCaption()
+            C(callInfo)->>Extension: Patches call.stopClosedCaption() (adds confirmation)
+            C(callInfo)->>TactiqCustomEvents: Dispatches "meeting-id" (callId)
+            C(callInfo)->>MSTeamsApp: Attempts to get meeting title
+            C(callInfo)->>TactiqCustomEvents: Dispatches "title-updated" (if found)
+            C(callInfo)->>MSTeamsApp: Polls for call connection & caption start
+            alt Captions Started Successfully
+                C(callInfo)->>TactiqLogger: debug("Started closed captions")
+                TactiqLogger->>TactiqCustomEvents: Dispatches "log" event
+                alt V2 Teams App
+                    C(callInfo)->>MSTeamsApp: Patches dataChannel.subscriptions
+                    MSTeamsApp-->>Extension: Raw caption data via patched handler
+                else Modern Teams App
+                    C(callInfo)->>Browser: Adds "message" listener to iframe.contentWindow
+                    Browser-->>Extension: Raw caption data via "message" event
+                else Classic Teams App
+                    C(callInfo)->>Browser: Uses MutationObserver to find captions element
+                    Browser-->>Extension: Raw caption data via patched adapter handler
+                end
+                Extension->>Extension: E(rawData, call) (processes caption)
+                Extension->>Extension: p(processedCaption) (stores caption)
+                Extension->>Extension: d() (debounced dispatch)
+                Extension-->>TactiqCustomEvents: Dispatches "speech" (accumulated captions)
+                C(callInfo)->>TactiqCustomEvents: Dispatches "msteams-organiser"
+            else Captions Failed or Not Available
+                C(callInfo)->>TactiqLogger: error("Closed captions failed/not available")
+                TactiqLogger->>TactiqCustomEvents: Dispatches "log" event
+                C(callInfo)->>TactiqCustomEvents: Dispatches "msteams-captions-setup-failed"
+            end
+        end
+    end
