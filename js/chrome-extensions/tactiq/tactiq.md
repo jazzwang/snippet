@@ -1,3 +1,19 @@
+# Tactiq: AI note taker for Google Meet, Zoom and MS Teams
+
+- Chrome Extension
+  - https://chromewebstore.google.com/detail/tactiq-ai-note-taker-for/fggkaccpbmombhnjkjokndojfgagejfb
+
+## 2025-09-08
+
+- Version: `3.1.4000`
+
+```bash
+cd AppData/Local/Google/Chrome/User\ Data/Profile\ 3/Extensions/fggkaccpbmombhnjkjokndojfgagejfb/
+cp -r 3.1.4000_0/ ~/git/tactiq_3.1.4000
+```
+
+- Reverse Engineering using Aider
+
 > # aider chat started at 2025-09-08 09:24:02
 > C:\Users\jazzw\.local\bin\aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash-preview-05-20 --llm-history-file .aider.llm.history.md  
 > Aider v0.86.1  
