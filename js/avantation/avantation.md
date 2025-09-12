@@ -66,3 +66,21 @@ github_codespaces_usage.har
 ✔ all taskes completed
 ```
 - 只不過生成的 OpenAPI Swagger 文件，都是以 `application/json` 為 MIME，所以還要在研究看看其他解法。
+
+## 2025-09-11
+
+- 初步做了一些實驗，除了遇到 `application/json` 為 MIME 才能解析並生成 `openapi.yaml` 檔以外，
+  也遇到額外的錯誤：
+  ```
+  Failed to resolve $ref
+  ```
+- 測試環境：Windows 11
+- 安裝：
+  ```bash
+  [09/11 11:45:37] npm install -g avantation
+  [09/11 11:46:26] which avantation
+  ```
+- Jira 匯出 Excel 的功能，從 HAR 看起來，還蠻直覺的。但 `avantation` 沒辦法識別
+  ```bash
+  [09/11 11:46:52] avantation 2025-09-10_JQL_Export_as_Excel.har
+  ```
