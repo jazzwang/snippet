@@ -80,7 +80,11 @@ github_codespaces_usage.har
   [09/11 11:45:37] npm install -g avantation
   [09/11 11:46:26] which avantation
   ```
-- Jira 匯出 Excel 的功能，從 HAR 看起來，還蠻直覺的。但 `avantation` 沒辦法識別
+- Jira 匯出 Excel 的功能，從 HAR 看起來，還蠻直覺的。但 `avantation` 沒辦法識別 MIME `application/vnd.ms-excel`
   ```bash
   [09/11 11:46:52] avantation 2025-09-10_JQL_Export_as_Excel.har
+  ✔ POST  /rest/issueNav/1/issueNav/operations/views
+  »   Warning: Skipping invalid mimeType:application/vnd.ms-excel
+  »   @https://jira.example.com/sr/jira.issueviews:searchrequest-excel-current-fields/temp/SearchRequest.xls?jqlQuery=assignee+%3D+jazzwang in response.
+  ✔ all taskes completed
   ```
