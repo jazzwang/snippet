@@ -86,46 +86,66 @@ Would you like me to help you test this with a mock OpenSearch server or generat
 opensearch restful api swagger
 </td></tr><tr><td>A:</td><td>
 <!-- add Chatbot Response bellow-->
-OpenSearch provides a RESTful API that can be documented and explored using Swagger/OpenAPI specifications. Here's how you can work with OpenSearch's REST API and Swagger:
+OpenSearch provides a RESTful API that can be documented and explored using **Swagger/OpenAPI** specifications. Here's how you can work with OpenSearch's REST API and Swagger:
 
-1. OpenSearch REST API Overview
+* * * *
+
+### 1\. **OpenSearch REST API Overview**
+
 OpenSearch's REST API allows you to interact with the OpenSearch cluster for operations like:
 
-Indexing and searching documents
-Managing indices
-Monitoring the cluster
-Performing aggregations and more
+-   Indexing and searching documents
+-   Managing indices
+-   Monitoring the cluster
+-   Performing aggregations and more
 
 The API is compatible with Elasticsearch's REST API, making it easy to integrate with existing tools.
 
-2. Swagger/OpenAPI Specification for OpenSearch
-The OpenSearch project provides an OpenAPI 3.1.0 specification for its REST APIs. This specification can be used to generate Swagger documentation or client SDKs.
-Key Resources:
+* * * *
 
-GitHub Repository: The OpenSearch API specification is maintained in the OpenSearch API Specification GitHub repository.
-OpenAPI Specification: The repository contains a YAML file that defines the OpenSearch REST API in OpenAPI format.
+### 2\. **Swagger/OpenAPI Specification for OpenSearch**
 
+The OpenSearch project provides an **OpenAPI 3.1.0 specification** for its REST APIs. This specification can be used to generate Swagger documentation or client SDKs.
 
-3. Using Swagger with OpenSearch
+#### Key Resources:
+
+-   **GitHub Repository**: The OpenSearch API specification is maintained in the [OpenSearch API Specification GitHub repository](https://github.com/opensearch-project/opensearch-api-specification).
+-   **OpenAPI Specification**: The repository contains a YAML file that defines the OpenSearch REST API in OpenAPI format.
+
+* * * *
+
+### 3\. **Using Swagger with OpenSearch**
+
 To use Swagger with OpenSearch, follow these steps:
-Step 1: Download the OpenAPI Specification
 
-Visit the OpenSearch API Specification GitHub repository.
-Download the openapi.yaml file, which contains the OpenAPI 3.1.0 specification.
+#### Step 1: Download the OpenAPI Specification
 
-Step 2: Load the Specification into Swagger UI
+1.  Visit the [OpenSearch API Specification GitHub repository](https://github.com/opensearch-project/opensearch-api-specification).
+2.  Download the `openapi.yaml` file, which contains the OpenAPI 3.1.0 specification.
 
-Install Swagger UI locally or use the hosted version at Swagger Editor.
-Upload the openapi.yaml file to Swagger UI.
-Explore the API documentation interactively.
+#### Step 2: Load the Specification into Swagger UI
 
-Step 3: Generate Client SDKs (Optional)
-You can use tools like Swagger Codegen or OpenAPI Generator to generate client SDKs in various programming languages (e.g., Python, Java, JavaScript).
+1.  Install **Swagger UI** locally or use the hosted version at [Swagger Editor](https://editor.swagger.io/).
+2.  Upload the `openapi.yaml` file to Swagger UI.
+3.  Explore the API documentation interactively.
 
-4. Example: Accessing OpenSearch REST API
-Here’s an example of a REST API call to OpenSearch using curl:
-Request: Search for documents in an index
-Bashcurl -X GET "http://localhost:9200/my-index/_search" -H 'Content-Type: application/json' -d'
+#### Step 3: Generate Client SDKs (Optional)
+
+You can use tools like **Swagger Codegen** or **OpenAPI Generator** to generate client SDKs in various programming languages (e.g., Python, Java, JavaScript).
+
+* * * *
+
+### 4\. **Example: Accessing OpenSearch REST API**
+
+Here's an example of a REST API call to OpenSearch using `curl`:
+
+#### Request: Search for documents in an index
+
+```
+
+##### Bash
+
+`curl -X GET "http://localhost:9200/my-index/_search" -H 'Content-Type: application/json' -d'
 {
   "query": {
     "match": {
@@ -133,9 +153,16 @@ Bashcurl -X GET "http://localhost:9200/my-index/_search" -H 'Content-Type: appli
     }
   }
 }'
+`
+```
 
-Response:
-Json{
+#### Response:
+
+```
+
+##### Json
+
+`{
   "took": 10,
   "timed_out": false,
   "_shards": {
@@ -162,14 +189,18 @@ Json{
     ]
   }
 }
+`
+```
 
+* * * *
 
-5. Benefits of Using Swagger with OpenSearch
+### 5\. **Benefits of Using Swagger with OpenSearch**
 
-Interactive Documentation: Swagger UI provides a user-friendly interface to explore and test APIs.
-Client SDK Generation: Automate the creation of client libraries for your applications.
-Standardized API Documentation: OpenAPI ensures consistent and machine-readable API documentation.
+-   **Interactive Documentation**: Swagger UI provides a user-friendly interface to explore and test APIs.
+-   **Client SDK Generation**: Automate the creation of client libraries for your applications.
+-   **Standardized API Documentation**: OpenAPI ensures consistent and machine-readable API documentation.
 
+* * * *
 
 If you need help setting up Swagger or working with OpenSearch APIs, let me know!
 </td></tr></table>
