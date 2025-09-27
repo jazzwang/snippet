@@ -1,5 +1,8 @@
 # Microsoft Planner
 
+- 2025-08-24
+- By Microsoft 365 Copilot (GPT-4)
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 is there a programmatic way to create multiple planner tasks based on a list of task template?
@@ -320,3 +323,60 @@ Perfect! Let's build a **Power Automate flow** that triggers when an Excel file 
 Would you like a **sample Excel file** and a **visual diagram** of this flow? I can generate both for you.
 </td></tr>
 </table>
+
+- 2025-09-11
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+Is there a program or tool that I can use to backup or export Microsoft Planner?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, there are several ways to **backup or export Microsoft Planner data**, depending on your needs. Here are the most effective options:
+
+* * * *
+
+### 🔧 **1\. FluentPro Backup for Microsoft Planner**
+
+-   **Purpose**: Automated backup and restore solution.
+-   **Features**:
+    -   Continuous cloud-hosted backup.
+    -   Restores entire Planner plans including tasks, assignments, labels, and dates.
+    -   Designed for IT admins and organizations needing robust data protection.
+-   **Use Case**: Ideal for enterprise-level backup and disaster recovery.
+-   [Learn more here](https://fluentpro.com/blog/microsoft-planner-backup-and-restore/) [\[1\]](https://fluentpro.com/blog/microsoft-planner-backup-and-restore/)
+
+* * * *
+
+### 📊 **2\. Export Planner to Excel (Manual or Automated)**
+
+-   **Manual Export**:
+    -   Open your Planner board.
+    -   Click the three-dot menu (`...`) > **Export plan to Excel**.
+    -   Excel file includes task details like assignments, due dates, progress, and labels.
+-   **Automated Export**:
+    -   Use **Power Automate** to schedule regular exports to Excel or SharePoint.
+    -   Can include checklist items, labels, priorities, and more.
+-   **Use Case**: Great for reporting, analysis, or lightweight backups.
+-   [Step-by-step guide](https://geekchamp.com/how-to-export-a-plan-from-planner-to-excel-sheet/) [\[2\]](https://geekchamp.com/how-to-export-a-plan-from-planner-to-excel-sheet/) | [Power Automate solution](https://techcommunity.microsoft.com/discussions/planner/planner-plan-backup-resolved/3981868) [\[3\]](https://techcommunity.microsoft.com/discussions/planner/planner-plan-backup-resolved/3981868)
+
+* * * *
+
+### 🖥️ **3\. PowerShell Export for Admins**
+
+-   **Tool**: `Export-PlannerUserContent` cmdlet.
+-   **Requirements**: Global admin access and PowerShell.
+-   **Exports**:
+    -   JSON files with user data and associated plans.
+    -   Useful for compliance or auditing.
+-   [Microsoft Learn documentation](https://learn.microsoft.com/en-us/planner/export-user-data) [\[4\]](https://learn.microsoft.com/en-us/planner/export-user-data)
+
+* * * *
+
+Would you like help setting up one of these methods---like a Power Automate flow or a PowerShell script? Or are you looking for a solution that works best for regular backups across multiple plans?
+
+References
+\[1\] [Microsoft Planner Backup and Restore - FluentPro Software](https://fluentpro.com/blog/microsoft-planner-backup-and-restore/)
+\[2\] [How to Export a Plan from Planner to Excel Sheet - GeekChamp](https://geekchamp.com/how-to-export-a-plan-from-planner-to-excel-sheet/)
+\[3\] [Planner Plan Backup Resolved | Microsoft Community Hub](https://techcommunity.microsoft.com/discussions/planner/planner-plan-backup-resolved/3981868)
+\[4\] [Export user data from Microsoft Planner - Microsoft Planner](https://learn.microsoft.com/en-us/planner/export-user-data)
+</td></tr></table>
