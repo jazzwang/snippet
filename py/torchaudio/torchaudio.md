@@ -226,10 +226,10 @@ This example shows how easy it is to integrate Torchaudio into your PyTorch work
 
 #### Conclusion
 
-Torchaudio is a powerful library that simplifies the process of working with audio data in PyTorch. It provides a rich set of tools for audio I/O, signal processing, feature extraction, and model implementation, making it an essential tool for audio and speech processing tasks^[1](https://www.bing.com/ck/a?!&&p=b68baf0a8091747945311c48d29eb80fe77a4ed79db10928cf8d36620ae53da7JmltdHM9MTc1OTg4MTYwMA&ptn=3&ver=2&hsh=4&fclid=0a592b39-b9e4-62d4-30f0-3d75b83f6368&u=a1aHR0cHM6Ly9weXRvcmNoLm9yZy9hdWRpby9zdGFibGUvaW5kZXguaHRtbA&ntb=1)^^[2](https://www.bing.com/ck/a?!&&p=87c69441db0d4658f0b1d7b2ff5a6c5573015a8363fa974381be296724709f47JmltdHM9MTc1OTg4MTYwMA&ptn=3&ver=2&hsh=4&fclid=0a592b39-b9e4-62d4-30f0-3d75b83f6368&u=a1aHR0cHM6Ly9weXBpLm9yZy9wcm9qZWN0L3RvcmNoYXVkaW8v&ntb=1)^.
+Torchaudio is a powerful library that simplifies the process of working with audio data in PyTorch. It provides a rich set of tools for audio I/O, signal processing, feature extraction, and model implementation, making it an essential tool for audio and speech processing tasks [1][2].
 
 Learn more:
 
-[1]: https://docs.pytorch.org/audio/stable/index.html
-[2]: https://pypi.org/project/torchaudio/
-[3]: https://blog.csdn.net/xw555666/article/details/136059985
+- [1] https://docs.pytorch.org/audio/stable/index.html
+- [2] https://pypi.org/project/torchaudio/
+- [3] https://blog.csdn.net/xw555666/article/details/136059985
