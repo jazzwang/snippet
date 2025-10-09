@@ -470,3 +470,5 @@ If the build fails during `cffi` installation, you may need to install:
 
 Would you like help setting up a virtual environment or switching to `conda`?
 </td></tr></table>
+
+- 後來我是直接 `pip uninstall paramiko` 重裝 `pip install paramiko` 來解決這個問題。不過後來想想，該不會我在不同的環境底下執行程式碼？（e.g. Windows 11 下正常，但 WSL2 裡面就找不到對應的 Python package 了？ 暫時無法追查了，後來沒遇到這個狀況。也可能某個套件版本不相容之類的。）
