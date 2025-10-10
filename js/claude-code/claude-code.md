@@ -32,3 +32,23 @@
 - 關於 Claude Code 跟 Aider 的一些比較跟討論
   - https://news.ycombinator.com/item?id=43254351
     - https://github.com/ai-christianson/RA.Aid (可以整合 Aider)
+
+## 2025-10-09
+
+- 緣起：
+  - 因為看到 Github Spec Kit 支援 Claude Code, Gemini CLI 卻沒有支援 Aider
+  - 回到先前想研究 Claude Code 是否支援其他 Local LLM
+- 解法三：Term-Code
+  - https://github.com/Ishuin/term-code 
+  - 2025-03-08
+    - From Claude to Ollama: How I Hacked Together an AI Coding Assistant in 2 Days (With Zero TypeScript Knowledge)
+    - https://medium.com/@ishu.kumars/from-claude-to-ollama-how-i-hacked-together-an-ai-coding-assistant-in-2-days-with-zero-typescript-712191d6f66e
+  - 2025-03-09
+    - From Claude to Ollama: Building a Local AI Coding Assistant
+    - https://dev.to/ishu_kumar/from-claude-to-ollama-building-a-local-ai-coding-assistant-3c46
+- 解法四：
+  - https://github.com/musistudio/claude-code-router
+- 另類思路：告訴 Claude 用 Ollama + Local LLM 來生成 Web App
+  - 2025-06-30
+    - From Prompt to Production: Vibe Coding Local AI Apps with Claude + Ollama
+    - https://blog.greenflux.us/from-prompt-to-production-vibe-coding-local-ai-apps-with-claude-ollama/
