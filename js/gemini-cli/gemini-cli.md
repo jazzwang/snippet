@@ -210,3 +210,20 @@ Options:
     - 在深入比較前，我們先釐清一個關鍵差異：
       - `Claude Code` 是一款專注於編程支援的<mark>代理式編碼工具（Agentic **Coding** Tool）</mark>，核心能力是在命令列介面（CLI，Command Line Interface）中協助使用者撰寫與優化程式碼，最直接的路徑就能將提示詞（prompt）傳送給模型。
       - `Gemini CLI` 擁有 Gemini 2.5 Pro 的強大模型，也能在終端機（terminal）操作 AI 協助編碼、編程，但它的定位為<mark>代理式工作流工具（Agentic **Workflow** Tool）</mark>，程式撰寫只是其眾多能力中的一環，更重要的是，它能協助使用者自動化複雜的日常工作流程，成為全面的數位助理。
+
+## 2025-10-09
+
+- 緣起：
+  - 因為看到 Github Spec Kit 支援 Claude Code, Gemini CLI 卻沒有支援 Aider
+  - 回到先前想研究 Gemini CLI 是否支援其他 Local LLM
+- 相關討論：
+  - Open AI API compatible ? #1974
+    - https://github.com/google-gemini/gemini-cli/discussions/1974
+  - Use with any OpenAI compatible API model, including local models #2665
+    - https://github.com/google-gemini/gemini-cli/issues/2665
+  - Add support for local/offline language models (Ollola, LM Studio, etc.) #5938
+    - https://github.com/google-gemini/gemini-cli/issues/5938
+- 初步結論：
+  - <mark>Gemini CLI 針對 Gemini 模型做優化</mark>
+  - 看到一個 Workaround 是設定環境變數
+    - https://github.com/google-gemini/gemini-cli/issues/2665#issuecomment-3020545758
