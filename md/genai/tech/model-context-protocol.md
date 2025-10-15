@@ -2,7 +2,7 @@
 
 - https://modelcontextprotocol.io/introduction
 
-## 2025-03-15
+### 2025-03-15
 
 ### MCP 跟 aider 整合 -- `mcpm-aider`
 
@@ -110,12 +110,12 @@ For non-technical folks: - Watch closely as standards evolve - When standards fi
 
 > 對於非技術人員： - 密切關注標準的發展 - 標準最終確定後，將會出現新的商機 - 將 MCP 視為樂高積木，你可以將其堆疊起來以構建強大的 AI 應用程式
 
-## 2025-04-02
+### 2025-04-02
 
 - What is MCP? (Model Context Protocol) - A Primer
   - https://www.whatismcp.com/
 
-## 2025-04-04
+### 2025-04-04
 
 ### Playwright MCP
 
@@ -146,7 +146,7 @@ Options
                                              '
 ```
 
-## 2025-04-05
+### 2025-04-05
 
 - ( 2025-04-05 18:24:59 )
 - 剛好筆電也有用 `pnpm` 裝好 `npx`，那就來跑跑看怎麼用 VS Code 裝 `Playwright MCP server`
@@ -275,7 +275,7 @@ jazzw@JazzBook:~$ npx @playwright/mcp
   └── (empty)
   ```
 
-## 2025-04-06
+### 2025-04-06
 
 - 可以從 https://github.com/topics/mcp 跟 https://github.com/topics/model-context-protocol 觀察近期 Model Context Protocol (MCP) 社群的發展近況趨勢。
 
@@ -301,19 +301,19 @@ jazzw@JazzBook:~$ npx @playwright/mcp
     - https://mcpflow.io/doc
   - https://www.mcpstore.co/
 
-## 2025-04-21
+### 2025-04-21
 
 - Open Source MCP CLient Library
   - https://github.com/mcp-use/mcp-use
   - Python 的 MCP Client 實作
 
-## 2025-04-30
+### 2025-04-30
 
 - 2025-04-18: [微軟 Semantic Kernel 整合 MCP 與 A2A 協定，大幅擴展跨模組 AI 代理互通性](https://www.ithome.com.tw/news/168485)
 
 > Semantic Kernel現支援MCP與A2A協定，強化跨代理與跨雲整合能力，協助開發者建構彈性多代理人工智慧應用架構
 
-## 2025-08-27
+### 2025-08-27
 
 - 2025-05-01:
   - Introducing Atlassian’s Remote Model Context Protocol (MCP) Server
@@ -321,7 +321,7 @@ jazzw@JazzBook:~$ npx @playwright/mcp
 - Getting started with the Atlassian Remote MCP Server
   - https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/
 
-## 2025-08-28
+### 2025-08-28
 
 - MCP server that allows interaction with Jira using natural language
   - https://github.com/George5562/Jira-MCP-Server
@@ -330,3 +330,27 @@ jazzw@JazzBook:~$ npx @playwright/mcp
 - 2025-07-30
   - 以 Jira 作為 MCP Server 與 AI Agent 的整合：打造專案管理的智慧新引擎
   - https://www.metaage.com.tw/news/technology/828
+
+## MCP Inspector
+
+### 2025-10-15
+
+- 緣起：
+  - learn from https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp#debugging
+- 文件：
+  - https://modelcontextprotocol.io/docs/tools/inspector
+- 實作：
+  - https://www.npmjs.com/package/@modelcontextprotocol/inspector
+- 相關工具 - `MCPJam inspector`
+  - https://github.com/MCPJam/inspector
+    > MCPJam inspector is an open source testing platform for MCP servers. It’s a great place to start evaluating an MCP server by inspecting the protocol handshake and getting a deterministic list of tools, resources, prompts from the server.
+    - 微軟贊助的
+    - https://www.mcpjam.com/
+    > MCP Testing Platform - Playground to test and debug MCP servers
+    - 支援 OpenAI Apps SDK
+    > 🎉 Open AI Apps SDK support now in beta!
+    > Start up the MCPJam inspector in beta:
+    > ```
+    > npx @mcpjam/inspector@beta
+    > ```
+    > [![OpenAI Apps SDK Demo](https://github.com/MCPJam/inspector/raw/main/client/public/apps_sdk_pizza.png)](https://github.com/MCPJam/inspector/blob/main/client/public/apps_sdk_pizza.png)
