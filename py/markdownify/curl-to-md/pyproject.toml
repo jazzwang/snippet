@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "curl-to-md"
+version = "0.1.0"
+license = "Apache-2.0"
+authors = [
+  { name="Jazz Wang", email="jazz.wang@example.com" },
+]
+description = "Fetch URL and convert HTML into Markdown"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests",
+    "markdownify"
+]
+
+[project.scripts]
+curl2md = "curl2md:main"
