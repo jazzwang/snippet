@@ -1,5 +1,9 @@
 // 1. Select the target node (the DOM subtree you want to observe)
-const targetNode = document.querySelector("[data-tid='closed-caption-v2-window-wrapper']")
+const targetNode = document.querySelector("[data-tid='closed-caption-v2-window-wrapper']");
+
+if (!targetNode) {
+    console.error("Error: Target node for closed captions not found. MutationObserver cannot be initialized.");
+}
 // 2. Configure the observer:
 //    Set to true if you want to observe children of the targetNode as well.
 //    Also set to true to observe when new nodes are added or removed.
@@ -12,16 +16,22 @@ function handleNewElement(element) {
     element.setAttribute('data-time', timestamp);
 }
 function logTranscript() {
-    count = targetNode.querySelectorAll("div.newly-added").length - 1
-    transcript = targetNode.querySelectorAll("div.newly-added")
-    for (let i=0; i < count; i++) {
-        authorElement = transcript[i].querySelector('[data-tid="author"]');
-        Name = authorElement.innerText.trim();
-        textElement = transcript[i].querySelector('[data-tid="closed-caption-text"]');
-        Text = textElement.innerText.trim();
-        Time = transcript[i].getAttribute('data-time');
+    const newlyAddedNodes = targetNode.querySelectorAll("div.newly-added");
+    const count = newlyAddedNodes.length - 1;
+
+    for (let i = 0; i < count; i++) {
+        const transcriptItem = newlyAddedNodes[i];
+
+        const authorElement = transcriptItem.querySelector('[data-tid="author"]');
+        const Name = authorElement ? authorElement.innerText.trim() : "Unknown Author";
+
+        const textElement = transcriptItem.querySelector('[data-tid="closed-caption-text"]');
+        const Text = textElement ? textElement.innerText.trim() : "No Text Found";
+
+        const Time = transcriptItem.getAttribute('data-time');
+
         console.log({Time, Name, Text});
-        transcript[i].classList.remove("newly-added");
+        transcriptItem.classList.remove("newly-added");
     }
 }
 // 4. Create a callback function to execute when mutations are observed
@@ -42,5 +52,11 @@ callback = function(mutationsList, observer) {
 };
 // 5. Create an observer instance linked to the callback function
 const observer = new MutationObserver(callback);
-// 6. Start observing the target node for configured mutations
-observer.observe(targetNode, config);
+
+// 6. Start observing the target node for configured mutations, only if targetNode was found
+if (targetNode) {
+    observer.observe(targetNode, config);
+    console.warn("MutationObserver started for MS Teams live captions.");
+} else {
+    console.error("MutationObserver not started because the target node was not found.");
+}
