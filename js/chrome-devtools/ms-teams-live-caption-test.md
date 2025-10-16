@@ -99,3 +99,11 @@ observer.observe(targetNode, config);
 - <div class="fui-Flex ___1xriypo f22iagw f1vx9l62 fprs0cq f419p8h for4qjf fgmr9yd f12xb3oj f1yj8dow f1nkf6f4 f1h3a8gf f1g31g83 fyxfkj9" data-tid="closed-caption-renderer-wrapper" aria-label="Live Captions">
 + <div class="fui-Flex ___1xriypo f22iagw f1vx9l62 fprs0cq f419p8h for4qjf fgmr9yd f12xb3oj f1yj8dow f1nkf6f4 f1h3a8gf f1g31g83 fyxfkj9" data-tid="closed-caption-renderer-wrapper" aria-label="Live Captions" style="height: 100px;">
 ```
+
+## 2025-10-16
+
+- 近期使用上發現 MS Teams Live Caption 的行為又有一些變化，只能回捲短時間的歷史 Live Caption 即時字幕。
+- 其次，也許觸發這段程式碼的時間點的關係，有時候會遇到 `transcriptItem.querySelector('[data-tid="author"]')` 是 null 的狀況。造成一直跳出 Error 累積了一堆 `newly-added` 的 DOM element 卻沒辦法靠 `logTranscript()` 函數寫到 DevTool Console.
+- 有些改良的想法：
+  - 學原本 `ms-teams-live-caption-saver` 的作法，把結果存在 `localStorage` 以免手誤太快關掉 DevTool，忘了另存成 log 純文字檔，就浪費了刻意打開
+  - 參考 `Tactiq` 的實作，看能否把點選 `Live Caption` 的動作自動化，甚至可以參考如何查詢會議名稱，當作儲存 `localStorage` 的命名參考。
