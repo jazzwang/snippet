@@ -279,7 +279,7 @@ jazzw@JazzBook:~$ npx @playwright/mcp
 
 - 可以從 https://github.com/topics/mcp 跟 https://github.com/topics/model-context-protocol 觀察近期 Model Context Protocol (MCP) 社群的發展近況趨勢。
 
-### mcp.so
+### MCP Registry
 
 - ( 2025-04-06 在 `/py/mcpm/mcpm.md` 寫到)
 
@@ -300,6 +300,8 @@ jazzw@JazzBook:~$ npx @playwright/mcp
   - https://mcpflow.io
     - https://mcpflow.io/doc
   - https://www.mcpstore.co/
+  - ( 2025-10-17 08:20:36 )
+  - https://github.com/mcp - Github's official MCP Registry
 
 ### 2025-04-21
 
