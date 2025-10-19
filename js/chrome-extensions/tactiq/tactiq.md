@@ -14,14 +14,14 @@ cp -r 3.1.4000_0/ ~/git/tactiq_3.1.4000
 
 - Reverse Engineering using Aider
 
-> # aider chat started at 2025-09-08 09:24:02
-> C:\Users\jazzw\.local\bin\aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash-preview-05-20 --llm-history-file .aider.llm.history.md  
-> Aider v0.86.1  
-> Model: gemini/gemini-2.5-flash-preview-05-20 with whole edit format  
-> Git repo: .git with 48 files  
-> Repo-map: using 4096 tokens, auto refresh  
+> \# aider chat started at 2025-09-08 09:24:02
+> C:\Users\jazzw\.local\bin\aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash-preview-05-20 --llm-history-file .aider.llm.history.md
+> Aider v0.86.1
+> Model: gemini/gemini-2.5-flash-preview-05-20 with whole edit format
+> Git repo: .git with 48 files
+> Repo-map: using 4096 tokens, auto refresh
 >
-> #### /ask could you give me a high-level overview of this git repo?  
+> ##### /ask could you give me a high-level overview of this git repo?
 
 This git repository appears to contain the code for a **browser extension** that enhances or integrates with popular video conferencing platforms.
 
@@ -42,12 +42,10 @@ Here's a high-level overview:
 *   **Development/Debugging:** Contains messages related to `redux-logger` breaking changes and `redux-saga` error checking, indicating active development and debugging practices. There are also references to a "Preview backend running in this workspace," suggesting a local development setup.
 *   **UI Elements:** Includes SVG path data for icons, likely used within the extension's UI.
 
-> Tokens: 9.4k sent, 395 received. Cost: \$0.0038 message, \$0.0038 session.  
+> ##### /add manifest.json
+> Added manifest.json to the chat
 
->#### /add manifest.json  
-> Added manifest.json to the chat  
-
-> #### /ask what are defined in manifest.json?  
+> ##### /ask what are defined in manifest.json?
 
 
 The `manifest.json` file defines the core metadata and configuration for the browser extension. Here's a breakdown of what's defined:
@@ -74,9 +72,7 @@ The `manifest.json` file defines the core metadata and configuration for the bro
 *   **`version`**: Sets the current version of the extension to "3.1.4000".
 *   **`web_accessible_resources`**: Declares resources (`lang/*.json`, `*.svg`, `rtcinjector.js`, `*.inline.js`) that web pages are allowed to access directly.
 
-> Tokens: 5.7k sent, 648 received. Cost: \$0.0033 message, \$0.0071 session.  
-
-> #### /ask could you identify the corresponding javascript for each action defined in manifest.json?  
+> ##### /ask could you identify the corresponding javascript for each action defined in manifest.json?
 
 Okay, here's the mapping of the actions defined in `manifest.json` to their corresponding JavaScript files:
 
@@ -110,15 +106,13 @@ Okay, here's the mapping of the actions defined in `manifest.json` to their corr
 7.  **Externally Connectable (`externally_connectable`)**:
     *   This defines which external websites can communicate with the extension. The actual JavaScript code for handling these external messages would primarily reside in `background.js` and potentially `content.js` (if the communication is mediated through the content script).
 
-> Tokens: 6.3k sent, 625 received. Cost: \$0.0035 message, \$0.01 session.  
+> ##### /drop
+> Dropping all files from the chat session.
 
-> #### /drop  
-> Dropping all files from the chat session.  
+> ##### /add msteams.inline.js
+> Added msteams.inline.js to the chat
 
-> #### /add msteams.inline.js  
-> Added msteams.inline.js to the chat  
-
-> #### /ask could you draw a sequence diagram of msteams.inline.js using mermaid.js syntax?  
+> ##### /ask could you draw a sequence diagram of msteams.inline.js using mermaid.js syntax?
 
 ```mermaid
 sequenceDiagram
@@ -218,9 +212,7 @@ sequenceDiagram
     note over DatadogLogger, DatadogAPI: DatadogLogger (Sp) uses Datadog Browser SDK (Cn) if not in a Service Worker, or HttpDatadogLogger (ac) if in a Service Worker (ni() is true).
 ```
 
-> Tokens: 50k sent, 1.3k received. Cost: \$0.02 message, \$0.03 session.  
-
-> #### /ask could you explain the logic defined within msteams.inline.js using plain English which allow me to implement the same logic in different language?  
+> ##### /ask could you explain the logic defined within msteams.inline.js using plain English which allow me to implement the same logic in different language?
 
 Okay, let's break down the logic of `msteams.inline.js` into plain English, focusing on the steps and intentions so you can re-implement it in another language.
 
@@ -325,5 +317,3 @@ Here's the logic, step-by-step:
 5.  **Meeting End:** When the call ends, it cleans up, resets, and goes back to monitoring for new calls.
 6.  **External Control:** Other parts of the extension can send commands (like "send chat message" or "set language") via custom browser events, which this script then executes by interacting with the Teams application.
 7.  **Logging:** All significant actions and errors are logged using the custom `TactiqLogger`, which can forward them to Datadog for monitoring and debugging.
-
-> Tokens: 50k sent, 2.2k received. Cost: \$0.02 message, \$0.05 session.  
