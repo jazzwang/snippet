@@ -1,6 +1,6 @@
-# DeepSeek
+# DeepSeek V3
 
-- GitHub Repo：
+- Git Repo：
   - https://github.com/deepseek-ai/DeepSeek-V3
 - Model:
   - https://huggingface.co/deepseek-ai/DeepSeek-V3-Base
@@ -61,6 +61,8 @@
     在獲取先進半導體的機會減少的情況下，
     DeepSeek 蓬勃發展的能力表明，<mark>中國人工智慧產業具有更廣泛的彈性</mark>，
     這可能會重塑政策制定者衡量出口限制對全球人工智慧進步影響的方式。
+
+# DeepSeek R1
 
 ## 2025-01-22
 
@@ -1036,3 +1038,13 @@ Citations:
 
 - 2025-02-03: [AI 軟體 | DeepSeek 事件將加速 AI Agent 的發展進程](https://uanalyze.com.tw/articles/6564910124)
 - 2024-02-04: [【天下零時差02.04.25】DeepSeek的崛起，輝達推了一把](https://podcasts.apple.com/tw/podcast/id1486227803?i=1000688633427)
+
+# DeepSeek OCR
+
+- Git Repo：
+  - https://github.com/deepseek-ai/DeepSeek-OCR
+- Model:
+  - https://huggingface.co/deepseek-ai/DeepSeek-OCR
+- Paper:
+  - https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf
+  - https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf
