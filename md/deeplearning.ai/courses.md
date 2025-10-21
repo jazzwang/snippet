@@ -15,3 +15,9 @@
 - Claude Code: A Highly Agentic Coding Assistant
   - https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/
   - read from: https://developer.tenten.co/the-developer-revolution-inside-andrew-ngs-game-changing-claude-code-course
+
+## 2025-10-16
+
+- MCP: Build Rich-Context AI Apps with Anthropic
+  - https://www.deeplearning.ai/short-courses/mcp-build-rich-context-ai-apps-with-anthropic/
+  - read from: [](https://www.youtube.com/watch?v=kOhLoixrJXo)
