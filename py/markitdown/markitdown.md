@@ -6,7 +6,9 @@
 > MarkItDown now offers an MCP (Model Context Protocol) server for integration with LLM applications like Claude Desktop. See [markitdown-mcp](https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp) for more information.
 
 - Git Repo
-  - https://github.com/microsoft/mardocxkitdown
+  - https://github.com/microsoft/markitdown
+- PyPI
+  - https://pypi.org/project/markitdown
 
 ## 2025-10-13
 
