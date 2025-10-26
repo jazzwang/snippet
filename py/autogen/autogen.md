@@ -20,3 +20,13 @@ AutoGen Studio is a low-code interface built to help you rapidly prototype AI ag
 
 > See a video tutorial on AutoGen Studio v0.4 (02/25) - <https://youtu.be/oum6EI7wohM>
 
+### 2025-10-03
+
+Learned from HIT "LLM 醫療生成式 AI Agent 交流組"
+
+> 依序在Terminal輸入兩行指令
+> ```
+> pip install autogenstudio
+> autogenstudio ui --port 8081
+> ```
+> https://microsoft.github.io/autogen/0.2/docs/autogen-studio/getting-started/
