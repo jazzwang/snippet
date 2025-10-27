@@ -2,4 +2,4 @@
 aider --no-auto-commits --no-gitignore \
 --model gemini/gemini-2.5-flash \
 --chat-history-file $1.md $1 \
--m "/ask could you summarize this mailthread by different attendees and highlight action items?"
+-m "+/ask could you summarize this transcript based on different attendees? capture as much detail as possible. use bullet points. highlight action items if possible. use markdown checkbox for action items for further follow-up.thanks."
