@@ -254,3 +254,251 @@ flowchart LR
     C --> M(Fireworks)
     C --> N(Local Models, e.g. serve by Ollama)
 ```
+
+## 2025-10-27
+
+- 緣起：
+  - 想知道 Gemini CLI 是否類似 Aider 會把 Chat History 存起來？
+- 方法：
+  - 問 DeepWiki
+  - https://deepwiki.com/search/where-did-gemini-cli-store-his_fd93f653-8a88-40e4-bf00-de9203676ca4?mode=fast
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+where did gemini cli store history?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+The Gemini CLI stores history in two different locations depending on the type of history:
+
+## Shell Command History
+
+Shell commands executed via the `!` prefix or shell mode are stored in a project-specific directory: [1](#0-0) 
+
+**Location:** `~/.gemini/tmp/<project_hash>/shell_history` [1](#0-0) 
+
+The `<project_hash>` is a unique identifier generated from your project's root path, which prevents conflicts between different projects. [1](#0-0) 
+
+## Chat Conversation History
+
+Chat checkpoints saved via the `/chat save` command are stored in: [2](#0-1) 
+
+**Default locations:**
+- Linux/macOS: `~/.gemini/tmp/<project_hash>/`
+- Windows: `C:\Users\<YourUsername>\.gemini\tmp\<project_hash>\` [2](#0-1) 
+
+When you run `/chat list`, the CLI scans these specific directories to find available checkpoints. [2](#0-1) 
+
+## Notes
+
+These manually saved chat checkpoints are different from automatic checkpoints created before file modifications (which are covered in the Checkpointing documentation). [3](#0-2)  The shell command history is managed separately and persists across sessions for each project.<cite />
+
+Wiki pages you might want to explore:
+- [Tools and File Operations (google-gemini/gemini-cli)](/wiki/google-gemini/gemini-cli#3.3)
+
+### Citations
+
+**File:** docs/get-started/configuration.md (L581-584)
+```markdown
+- **Location:** `~/.gemini/tmp/<project_hash>/shell_history`
+  - `<project_hash>` is a unique identifier generated from your project's root
+    path.
+  - The history is stored in a file named `shell_history`.
+```
+
+**File:** docs/cli/commands.md (L29-34)
+```markdown
+      - **Details on Checkpoint Location:** The default locations for saved chat
+        checkpoints are:
+        - Linux/macOS: `~/.gemini/tmp/<project_hash>/`
+        - Windows: `C:\Users\<YourUsername>\.gemini\tmp\<project_hash>\`
+        - When you run `/chat list`, the CLI only scans these specific
+          directories to find available checkpoints.
+```
+
+**File:** docs/cli/commands.md (L35-38)
+```markdown
+        - **Note:** These checkpoints are for manually saving and resuming
+          conversation states. For automatic checkpoints created before file
+          modifications, see the
+          [Checkpointing documentation](../cli/checkpointing.md).
+```
+</td></tr></table>
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+can gemini cli output to stdout?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, Gemini CLI can output to stdout, particularly in **headless/non-interactive mode**. [1](#1-0) 
+
+## How It Works
+
+When you run Gemini CLI with the `--prompt` flag or pipe input via stdin, it operates in non-interactive mode and writes responses directly to stdout: [2](#1-1) 
+
+```bash
+gemini --prompt "What is machine learning?"
+# or
+echo "Explain this code" | gemini
+```
+
+The implementation in `runNonInteractive()` writes content events directly to `process.stdout`: [3](#1-2) 
+
+## Output Formats
+
+You have two output format options:
+
+### 1. Text Output (Default)
+Standard human-readable output written directly to stdout as the model generates it: [3](#1-2) 
+
+### 2. JSON Output
+Structured output with response, statistics, and metadata, buffered and written once at the end: [4](#1-3) 
+
+You can enable JSON output with:
+```bash
+gemini -p "Your prompt" --output-format json
+```
+
+The JSON format includes the response text, model usage stats, tool execution metrics, and error information if applicable. [5](#1-4) 
+
+## Configuration
+
+The output format can be configured via:
+- Command-line flag: `--output-format <format>` (values: `text` or `json`) [6](#1-5) 
+- Settings file: `output.format` setting [7](#1-6) 
+
+## Notes
+
+The stdout output is designed to be pipe-friendly and handles EPIPE errors gracefully when the receiving process closes early. [8](#1-7)  This makes it suitable for scripting, automation, and integration with other command-line tools.<cite />
+
+Wiki pages you might want to explore:
+- [Tools and File Operations (google-gemini/gemini-cli)](/wiki/google-gemini/gemini-cli#3.3)
+
+### Citations
+
+**File:** docs/cli/headless.md (L1-6)
+```markdown
+# Headless Mode
+
+Headless mode allows you to run Gemini CLI programmatically from command line
+scripts and automation tools without any interactive UI. This is ideal for
+scripting, automation, CI/CD pipelines, and building AI-powered tools.
+
+```
+
+**File:** docs/cli/headless.md (L45-57)
+```markdown
+Use the `--prompt` (or `-p`) flag to run in headless mode:
+
+```bash
+gemini --prompt "What is machine learning?"
+```
+
+### Stdin Input
+
+Pipe input to Gemini CLI from your terminal:
+
+```bash
+echo "Explain this code" | gemini
+```
+```
+
+**File:** docs/cli/headless.md (L90-134)
+```markdown
+The JSON output follows this high-level structure:
+
+```json
+{
+  "response": "string", // The main AI-generated content answering your prompt
+  "stats": {
+    // Usage metrics and performance data
+    "models": {
+      // Per-model API and token usage statistics
+      "[model-name]": {
+        "api": {
+          /* request counts, errors, latency */
+        },
+        "tokens": {
+          /* prompt, response, cached, total counts */
+        }
+      }
+    },
+    "tools": {
+      // Tool execution statistics
+      "totalCalls": "number",
+      "totalSuccess": "number",
+      "totalFail": "number",
+      "totalDurationMs": "number",
+      "totalDecisions": {
+        /* accept, reject, modify, auto_accept counts */
+      },
+      "byName": {
+        /* per-tool detailed stats */
+      }
+    },
+    "files": {
+      // File modification statistics
+      "totalLinesAdded": "number",
+      "totalLinesRemoved": "number"
+    }
+  },
+  "error": {
+    // Present only when an error occurred
+    "type": "string", // Error type (e.g., "ApiError", "AuthError")
+    "message": "string", // Human-readable error description
+    "code": "number" // Optional error code
+  }
+}
+```
+```
+
+**File:** packages/cli/src/nonInteractiveCli.ts (L52-58)
+```typescript
+      // Handle EPIPE errors when the output is piped to a command that closes early.
+      process.stdout.on('error', (err: NodeJS.ErrnoException) => {
+        if (err.code === 'EPIPE') {
+          // Exit gracefully if the pipe is closed.
+          process.exit(0);
+        }
+      });
+```
+
+**File:** packages/cli/src/nonInteractiveCli.ts (L126-131)
+```typescript
+          if (event.type === GeminiEventType.Content) {
+            if (config.getOutputFormat() === OutputFormat.JSON) {
+              responseText += event.value;
+            } else {
+              process.stdout.write(event.value);
+            }
+```
+
+**File:** packages/cli/src/nonInteractiveCli.ts (L183-189)
+```typescript
+          if (config.getOutputFormat() === OutputFormat.JSON) {
+            const formatter = new JsonFormatter();
+            const stats = uiTelemetryService.getMetrics();
+            process.stdout.write(formatter.format(responseText, stats));
+          } else {
+            process.stdout.write('\n'); // Ensure a final newline
+          }
+```
+
+**File:** docs/get-started/configuration.md (L128-131)
+```markdown
+- **`output.format`** (string):
+  - **Description:** The format of the CLI output.
+  - **Default:** `"text"`
+  - **Values:** `"text"`, `"json"`
+```
+
+**File:** docs/get-started/configuration.md (L715-722)
+```markdown
+- **`--output-format <format>`**:
+  - **Description:** Specifies the format of the CLI output for non-interactive
+    mode.
+  - **Values:**
+    - `text`: (Default) The standard human-readable output.
+    - `json`: A machine-readable JSON output.
+  - **Note:** For structured output and scripting, use the
+    `--output-format json` flag.
+```
+
+</td></tr></table>
