@@ -1,0 +1,2 @@
+#!/bin/bash
+aider --no-auto-commits --no-gitignore --model ollama/qwen25-coder:7b -m "/ask could you summarize this transcript based on different attendees? use bulletpoints and highlight action items if possible" --chat-history-file $1.md --llm-history-file $1.llm $1

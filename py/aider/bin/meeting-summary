@@ -1,0 +1,5 @@
+#!/bin/bash
+aider --no-auto-commits --no-gitignore \
+--model gemini/gemini-2.5-flash \
+--chat-history-file $1.md $1 \
+-m "could you summarize this mailthread by different attendees and highlight action items?"
