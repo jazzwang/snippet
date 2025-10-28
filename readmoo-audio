@@ -1,0 +1,5 @@
+#!/bin/bash
+audiobook=$(curl -s "https://api.readmoo.com/store/v3/books/$1?client_id=76a95762391761d9aa4ca7b4e39dcb8e" | jq .data.attributes.urls.audiobook | tr -d '"')
+echo "downloading from ${audiobook}"
+curl -q -o $1.zip ${audiobook}
+7z x -o$1 $1.zip && rm $1.zip

@@ -1,0 +1,3 @@
+#!/bin/bash
+epub_url=$(curl -q "https://api.readmoo.com/store/v3/books/$1?client_id=76a95762391761d9aa4ca7b4e39dcb8e" | jq .data.attributes.urls.epub | tr -d '"')
+curl -o $1.epub ${epub_url}

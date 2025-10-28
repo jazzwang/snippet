@@ -1,0 +1,29 @@
+#!/bin/bash
+if [ "$#" -lt 2 ]; then
+    echo "Error: This script requires at least two arguments."
+    echo "Usage: $0 <input_file_name> <output_file_name>"
+    exit 1
+fi
+
+filename=$1
+meeting_name=$2
+
+# Extract date and time
+if [[ $filename =~ ([0-9]{8}_[0-9]{6}) ]]; then
+    datetime="${BASH_REMATCH[1]}"
+    # Replace underscore with hyphen for date
+    formatted_datetime="${datetime:0:4}-${datetime:4:2}-${datetime:6:2}_${datetime:9:6}"
+elif [[ $filename =~ ([0-9]{8}_[0-9]{6}) ]]; then
+    datetime="${BASH_REMATCH[1]}"
+    # If no UTC, just use the extracted date_time
+    formatted_datetime="${datetime:0:4}-${datetime:4:2}-${datetime:6:2}_${datetime:9:6}"
+else
+    echo "Warning: Could not extract date and time from '$filename'. Skipping."
+    exit 1
+fi
+
+echo "rename ${filename} to ${formatted_datetime}_${meeting_name}.json"
+mv "${filename}" "${formatted_datetime}_${meeting_name}.json"
+touch "${formatted_datetime}_${meeting_name}.json"
+stream-transcript "${formatted_datetime}_${meeting_name}.json"
+meeting-summary "${formatted_datetime}_${meeting_name}.reduced.json"

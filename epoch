@@ -1,0 +1,8 @@
+#!/bin/bash
+timestamp=$1
+if [ ${#timestamp} -gt 10 ]; then
+  epoch="${timestamp:0:10}"
+else
+  epoch="$timestamp"
+fi
+date -d "@${epoch}" +"%Y-%m-%d_%H%M"

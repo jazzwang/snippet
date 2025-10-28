@@ -1,0 +1,3 @@
+#!/bin/bash -x
+LOGFILE=$1
+cat $LOGFILE | grep '"Name"' | sed 's#v2/:1 ##' > ${LOGFILE//.log}.json

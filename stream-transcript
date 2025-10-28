@@ -1,0 +1,5 @@
+#!/bin/bash
+SOURCE_FILE=$1
+#jq -c '.entries[] | {speakerDisplayName, text, startOffset}' ${SOURCE_FILE} | sed 's#speakerDisplayName#Name#' | tee ${SOURCE_FILE//.json}.reduced.json
+jq -c '.entries[] | {speakerDisplayName, text}' ${SOURCE_FILE} | sed 's#speakerDisplayName#Name#' > ${SOURCE_FILE//.json}.reduced.json
+echo "reduced $1 to ${SOURCE_FILE//.json}.reduced.json"

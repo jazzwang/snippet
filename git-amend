@@ -1,0 +1,6 @@
+#!/bin/bash
+git co $1 -b amend
+git commit --amend
+git co master || git co main
+git rebase amend
+git branch -d amend

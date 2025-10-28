@@ -1,0 +1,4 @@
+#!/bin/bash
+for i in $(ls *.epub); do echo "https://readmoo.com/book/${i//.epub};"; done | tee list
+readmoo -i list -o readmoo-category.csv
+cat readmoo-category.csv | grep -v book_url >> ../all-catolog.csv
