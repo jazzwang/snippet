@@ -317,3 +317,91 @@ Here's the logic, step-by-step:
 5.  **Meeting End:** When the call ends, it cleans up, resets, and goes back to monitoring for new calls.
 6.  **External Control:** Other parts of the extension can send commands (like "send chat message" or "set language") via custom browser events, which this script then executes by interacting with the Teams application.
 7.  **Logging:** All significant actions and errors are logged using the custom `TactiqLogger`, which can forward them to Datadog for monitoring and debugging.
+
+
+## 2025-11-01
+
+> ##### /ask could you draw a sequence diagram of msteams.inline.js using plantuml syntax?
+
+```plantuml
+@startuml
+autonumber
+
+actor "Browser Environment" as Browser
+participant "msteams.inline.js" as InlineScript
+participant "window.tactiqRtc" as GlobalRtc
+participant "MS Teams Web App" as MSTeamsApp
+participant "Tactiq Extension" as Extension
+participant "Datadog Logger" as Logger
+
+Browser -> InlineScript: Load and execute script
+InlineScript -> Logger: Configure() & Init() Datadog
+InlineScript -> GlobalRtc: Define gotRTC() function
+InlineScript -> GlobalRtc: Call gotRTC()
+
+activate GlobalRtc
+GlobalRtc -> InlineScript: Call internal G() function (initial setup)
+activate InlineScript
+
+InlineScript -> MSTeamsApp: Identify Teams UI version (Hr)
+InlineScript -> InlineScript: Set up 'tactiq-rtc' CustomEvent listener
+InlineScript -> InlineScript: Start monitoring for active calls (R() loop)
+
+loop R() function (Polls for active call)
+    InlineScript -> MSTeamsApp: Query callingService for active call state
+    alt Active Call Detected
+        InlineScript -> InlineScript: Trigger C() function (handle active call)
+
+        InlineScript -> MSTeamsApp: Get meeting ID, title, and participant details
+        InlineScript -> Extension: Dispatch "meeting-id", "title-updated", "deviceinfo" (tactiq-message)
+        InlineScript -> MSTeamsApp: Call startClosedCaption()
+        InlineScript -> InlineScript: Patch stopClosedCaption() for confirmation dialog
+
+        alt Teams V2 version detected
+            InlineScript -> MSTeamsApp: Patch dataChannel.subscriptions handler (remoteUserEventsReceived)
+        else Teams Modern version detected
+            InlineScript -> MSTeamsApp: Add 'message' listener to iframe.contentWindow
+        else Teams Classic version detected
+            InlineScript -> MSTeamsApp: Observe DOM for "calling-closed-captions" element
+            InlineScript -> MSTeamsApp: Patch $callingClosedCaptionsController.adapter.handler
+        end
+
+        loop Closed Captions Running
+            MSTeamsApp -> InlineScript: Closed caption data received (e.g., recognitionResults)
+            InlineScript -> InlineScript: Process caption data (E(), b(), p())
+            InlineScript -> Extension: Dispatch "speech" event with transcript (tactiq-message)
+        end
+
+        InlineScript -> MSTeamsApp: Monitor for call end
+        alt Call Ends
+            InlineScript -> Extension: Dispatch "meeting-id" (void)
+            InlineScript -> InlineScript: Clean up listeners and restore patches
+            InlineScript -> InlineScript: Restart R() function loop
+        end
+        deactivate InlineScript
+    end
+end
+
+Extension -> GlobalRtc: Send command (e.g., sendMSTeamsChatMessage) (tactiq-rtc CustomEvent)
+activate GlobalRtc
+GlobalRtc -> InlineScript: Handle 'tactiq-rtc' event
+activate InlineScript
+
+alt Event type = "debug"
+    InlineScript -> InlineScript: Toggle internal debug flag
+else Event type = "setMSTeamsLanguage"
+    InlineScript -> MSTeamsApp: Call setClosedCaptionsLanguage() on active call object
+else Event type = "sendMSTeamsChatMessage"
+    InlineScript -> MSTeamsApp: Simulate opening chat panel
+    InlineScript -> MSTeamsApp: Insert message into chat editor
+    InlineScript -> MSTeamsApp: Simulate keyboard event (e.g., Ctrl+Enter) to send message
+    InlineScript -> MSTeamsApp: Simulate closing chat panel
+    InlineScript -> Extension: Dispatch "log" (info/error) (tactiq-message)
+end
+deactivate InlineScript
+deactivate GlobalRtc
+
+InlineScript -> Logger: info(), debug(), warn(), error() calls throughout script
+@enduml
+```
+[![](https://img.plantuml.biz/plantuml/svg/fLTRRzis57uFaFzmO0oBZCKUiCS0Avh9HXgWHZixNPzfyLXcHv4QIJdDlz_X9OeaNnAtUOX5YkVsVUT2lRUE6TTKylA2DKwhfbgZkRoWLU6qWT5VHZzQD31NEs6qgb2v4J0BQV_oeYPnKOYQAGUZoZfabPqA9ON2wJSRpjw7rQemedO3WKUXk7wSEh8c_bkw8fo_athD9Aq6XnShUF3guIkkuRQkm-75AkpHSd3w8UY4-NU7oWgjmkbsDJWyOuvnNS97NPPemj7uwA5unc3ohXVA3HrX79ZYWD-nQ1o2JJ5sZtcngEi6SgqsecmCPcFubPG9Hm_9zhvKYyCDp713hw3KRlcGayocKHIT3-E4KCwaR4KIfsB7oCyEmktZVdX1NYY7HZ49Tnspa0doNT2kHTVKuuxgFjdx_htmTGFtdD99R9uIhL_kOOV61lqVp7XVjk_U2XqqDLp5v9aOLrn1tbYdg_cEz88Kb8tAK_YA7by1K6cAI1kXIjXGueTu40g2m4AsfDYbrdL0qJ_0ieV6P-sF3UJeCD3VAG3-Rj0yXSDaTuLc9meSgW6gK8TH5vCERkEhGCuC7HOEUNnxo5e_r0SZV292tlD-IoaiSU3wSPNT0Ew8WmhHUTZkPzVWX9Du7MgYMryS7HFI7jVPrYMbkh0rSyMMkabKF15yT0sZe7hIr9pG21iSFLn2RVG8ifG45LhBIXo_pViymMjSBhL5dhFQ8vAT4E_Z-JauIYbN3nG44WjVxQPY0MLErUAB_4Mr9pCc_Zz_j8dFznXzBOZe0w72SY9IePpQPXqR4Icq4Dara1cijCClrCb2VTWb4dexv9reKLfCFYqqfxh_2RzkEOUhnCTLMupWD8YDOHLE2HxQSb_323ZeGowPjQBu2IS-hIbSIkhPfqMWP9HgRL84lYP598pc54hqm-rSt7z92dlyM-hppb1FG3DbdFReDz7GYLFnRZQ4hXArmBCQM3PAaVA-KozE76ZPKK4AAsG5cCGpP3WjfzT-hKlVlhLQecsai-FJKGzotkY2MEtRoERP-1hM_b-TZL_HTx3OROrOR8c7qBiVXTk2Cqp5H3vHtmCOJp6sY2q-rgOl_I3RBSVG4EQAsny8eDEj8DjfmSz2DPV8b1zdpuLYGnCrICt580GR-8fRVOt4RHXilKdbiso0tVE2uv4PtfvCKBVH3wuRAtfFFQ-glECfropj9GgeExb5eg_bauPsTsQFpxwZV8YpgtS922bquahYcOvN1FTK8_pfHycwAKU7v_LWWj9DZkorjw8W2Hl9g4X3v-ehfkjH2lyZKsL3iH-niZ-Mi3-KMWL49q7VlI3ezJTgYqVi7yB_3JwiHDL83vwkqRSWA4YSqf3co-l2zugwhhyO16iUB1tbaVi2FCFwl_Yqripmr1PILkNEoD_cdeAndoS-o6TZP-Zs8-0jaHsiTfhb8tyBtkZVqHXjnWTQLAYNesNLUT59zUFV3jwMxwyXu_p38pFA_mRxb1NnhkgsHZVbLZUk_HfvJuw4Bxp_0G00)](https://editor.plantuml.com/uml/fLTRRzis57uFaFzmO0oBZCKUiCS0Avh9HXgWHZixNPzfyLXcHv4QIJdDlz_X9OeaNnAtUOX5YkVsVUT2lRUE6TTKylA2DKwhfbgZkRoWLU6qWT5VHZzQD31NEs6qgb2v4J0BQV_oeYPnKOYQAGUZoZfabPqA9ON2wJSRpjw7rQemedO3WKUXk7wSEh8c_bkw8fo_athD9Aq6XnShUF3guIkkuRQkm-75AkpHSd3w8UY4-NU7oWgjmkbsDJWyOuvnNS97NPPemj7uwA5unc3ohXVA3HrX79ZYWD-nQ1o2JJ5sZtcngEi6SgqsecmCPcFubPG9Hm_9zhvKYyCDp713hw3KRlcGayocKHIT3-E4KCwaR4KIfsB7oCyEmktZVdX1NYY7HZ49Tnspa0doNT2kHTVKuuxgFjdx_htmTGFtdD99R9uIhL_kOOV61lqVp7XVjk_U2XqqDLp5v9aOLrn1tbYdg_cEz88Kb8tAK_YA7by1K6cAI1kXIjXGueTu40g2m4AsfDYbrdL0qJ_0ieV6P-sF3UJeCD3VAG3-Rj0yXSDaTuLc9meSgW6gK8TH5vCERkEhGCuC7HOEUNnxo5e_r0SZV292tlD-IoaiSU3wSPNT0Ew8WmhHUTZkPzVWX9Du7MgYMryS7HFI7jVPrYMbkh0rSyMMkabKF15yT0sZe7hIr9pG21iSFLn2RVG8ifG45LhBIXo_pViymMjSBhL5dhFQ8vAT4E_Z-JauIYbN3nG44WjVxQPY0MLErUAB_4Mr9pCc_Zz_j8dFznXzBOZe0w72SY9IePpQPXqR4Icq4Dara1cijCClrCb2VTWb4dexv9reKLfCFYqqfxh_2RzkEOUhnCTLMupWD8YDOHLE2HxQSb_323ZeGowPjQBu2IS-hIbSIkhPfqMWP9HgRL84lYP598pc54hqm-rSt7z92dlyM-hppb1FG3DbdFReDz7GYLFnRZQ4hXArmBCQM3PAaVA-KozE76ZPKK4AAsG5cCGpP3WjfzT-hKlVlhLQecsai-FJKGzotkY2MEtRoERP-1hM_b-TZL_HTx3OROrOR8c7qBiVXTk2Cqp5H3vHtmCOJp6sY2q-rgOl_I3RBSVG4EQAsny8eDEj8DjfmSz2DPV8b1zdpuLYGnCrICt580GR-8fRVOt4RHXilKdbiso0tVE2uv4PtfvCKBVH3wuRAtfFFQ-glECfropj9GgeExb5eg_bauPsTsQFpxwZV8YpgtS922bquahYcOvN1FTK8_pfHycwAKU7v_LWWj9DZkorjw8W2Hl9g4X3v-ehfkjH2lyZKsL3iH-niZ-Mi3-KMWL49q7VlI3ezJTgYqVi7yB_3JwiHDL83vwkqRSWA4YSqf3co-l2zugwhhyO16iUB1tbaVi2FCFwl_Yqripmr1PILkNEoD_cdeAndoS-o6TZP-Zs8-0jaHsiTfhb8tyBtkZVqHXjnWTQLAYNesNLUT59zUFV3jwMxwyXu_p38pFA_mRxb1NnhkgsHZVbLZUk_HfvJuw4Bxp_0G00)
