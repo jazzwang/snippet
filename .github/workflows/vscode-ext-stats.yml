@@ -23,5 +23,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
 
-    - name: Run main.py
-      run: python main.py
+    - name: Run main.py and save output to file
+      run: python main.py > output.log
+
+    - name: Upload output log as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: vscode-ext-stats-output
+        path: output.log
