@@ -20,4 +20,4 @@ dependencies = [
 ]
 
 [project.scripts]
-token-count-openai = "token-count-openai:main"
+token-count-openai = "token_count_openai:main"
