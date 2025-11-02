@@ -1,0 +1,22 @@
+name: Run VSCode Ext Stats
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout vscode-ext-stats branch
+      uses: actions/checkout@v4
+      with:
+        ref: vscode-ext-stats
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' # Use the desired Python version
+
+    - name: Run main.py
+      run: python main.py
