@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "token-count-openai"
+version = "0.1.0"
+license = "Apache-2.0"
+authors = [
+  { name="Jazz Wang", email="jazz.wang@example.com" },
+]
+description = "count tokens of given file for openai"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "tiktoken"
+]
+
+[project.scripts]
+token-count-openai = "token-count-openai:main"
