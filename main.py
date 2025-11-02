@@ -48,15 +48,8 @@ def get_vscode_extensions(max_page=10000, page_size=100,
     if include_category_and_tags:
         flags |= 0x4 # Categories and tags
 
-    if include_category_and_tags:
-        flags |= 0x4
-
     if include_shared_accounts:
         flags |= 0x8  # Shared accounts information
-
-    # This flag is duplicated, it should be removed or corrected if it's meant to be different.
-    if include_shared_accounts:
-        flags |= 0x8
 
     if include_version_properties:
         flags |= 0x10 # Version-specific properties
