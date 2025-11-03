@@ -7,7 +7,7 @@
 
 ## 2025-03-08
 
-> [!INFO]
+> [!NOTE]
 > Q: are there python library to convert HTML into Markdown?
 > A: https://g.co/gemini/share/2b4354a08cb5
 

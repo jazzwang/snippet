@@ -89,7 +89,7 @@ ERROR: (gcloud.beta.run.deploy) spec.template.spec.node_selector: GPU configurat
 jazzwang_tw@cloudshell:~ (hadoop-labs)$ 
 ```
 
-> [!INFO]
+> [!NOTE]
 > 
 > 目前只有 `us-central1`, `asia-southeast1`, `europe-west4` 支援 GPU 的 Google Cloud Run
 

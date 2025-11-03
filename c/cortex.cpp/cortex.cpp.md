@@ -14,7 +14,7 @@
   - 從 [Jan](https://github.com/menloresearch/jan) 的 README 看到關於 Cortex.cpp 的連結。
 - 從 README 看起來，整體很像 Ollama。從底下這段 Jan README 關於 `Cortex.cpp` 的描述，確認是定位成 Ollama 的 alternative。
 
-> [!INFO]
+> [!NOTE]
 >
 > ### Cortex.cpp
 >

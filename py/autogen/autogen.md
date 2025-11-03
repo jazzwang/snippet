@@ -4,7 +4,7 @@
 
 **AutoGen** is a framework for creating multi-agent AI applications that can act autonomously or work alongside humans.
 
-> [!INFO] 
+> [!NOTE] 
 > if you are new to AutoGen, please checkout [Microsoft Agent Framework](https://github.com/microsoft/agent-framework).
 
 - PyPI

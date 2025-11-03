@@ -2633,7 +2633,7 @@ SageMaker Clarify is integrated with Amazon SageMaker Experiments to provide sco
 
 > Sagemaker Clarlify 與 Amazon Sagemaker 實驗集成在一起，以提供分數，詳細說明哪些功能對您的模型預測最大的貢獻了，該預測是針對錶格，自然語言處理（NLP）和計算機視覺模型的特定輸入。對於表格數據集，SageMaker Clarlify 還可以輸出匯總的特徵重要性圖表，該圖表提供了對模型整體預測過程的見解。這些細節可以幫助確定特定模型輸入是否對整體模型行為的影響更大。
 
-> [!INFO]
+> [!NOTE]
 > SageMaker Experiments is a capability of SageMaker that you can use to create, manage, analyze, and compare your machine learning experiments.
 > Sagemaker Experiments 是 Sagemaker 的功能，您可以使用它來創建，管理，分析和比較機器學習實驗。
 
