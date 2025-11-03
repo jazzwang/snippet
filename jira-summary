@@ -1,2 +1,2 @@
 #!/bin/bash
-aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash-preview-05-20 -m "/ask could you write 3 bullet points within total 50 words summary based on the following Jira Summary and associated Story Points?" --chat-history-file $1.md $1
+aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash -m "/ask could you write 3 bullet points within total 50 words summary based on the following Jira Summary and associated Story Points?" --chat-history-file $1.md $1
