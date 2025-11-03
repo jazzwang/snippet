@@ -1,0 +1,2 @@
+#!/bin/bash
+for i in $(ls *.log | grep -v "^2"); do caption-log $i; done
