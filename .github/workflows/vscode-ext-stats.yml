@@ -2,6 +2,9 @@ name: Run VSCode Ext Stats
 
 on:
   workflow_dispatch:
+  schedule:
+    # Runs daily at 1 AM GMT+8 (which is 5 PM UTC the previous day)
+    - cron: '0 17 * * *'
 
 jobs:
   build:
@@ -24,10 +27,28 @@ jobs:
         pip install requests
 
     - name: Run main.py and save output to file
-      run: python main.py > output.log
+      id: run_script
+      run: |
+        LOG_FILE_NAME=$(date +%Y-%m-%d).log
+        python main.py > "$LOG_FILE_NAME"
+        echo "LOG_FILE_NAME=$LOG_FILE_NAME" >> "$GITHUB_OUTPUT"
 
     - name: Upload output log as artifact
       uses: actions/upload-artifact@v4
       with:
         name: vscode-ext-stats-output
-        path: output.log
+        path: ${{ steps.run_script.outputs.LOG_FILE_NAME }}
+
+    - name: Configure Git
+      if: success() && steps.run_script.outputs.LOG_FILE_NAME
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Commit and Push Log
+      if: success() && steps.run_script.outputs.LOG_FILE_NAME
+      run: |
+        LOG_FILE_NAME=${{ steps.run_script.outputs.LOG_FILE_NAME }}
+        git add "$LOG_FILE_NAME"
+        git commit -m "Add workflow run log for $(date +%Y-%m-%d)" || echo "No changes to commit"
+        git push origin vscode-ext-stats
