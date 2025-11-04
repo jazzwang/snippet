@@ -2,7 +2,7 @@ name: Run VSCode Ext Stats
 
 on:
   workflow_dispatch:
-  schedule:
+  #schedule:
     # Runs daily at 1 AM GMT+8 (which is 5 PM UTC the previous day)
     #- cron: '0 17 * * *'
 

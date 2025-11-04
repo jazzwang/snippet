@@ -17,3 +17,8 @@
   - [Vibe coding is dead: Agentic swarm coding is the new enterprise moat](https://venturebeat.com/ai/vibe-coding-is-dead-agentic-swarm-coding-is-the-new-enterprise-moat)
 - 2025-10-11
   - [The Vibe Coding Slowdown: What’s Really Happening in 2025 (And Why It Matters)](https://uditgoenka.medium.com/vibe-coding-bubble-0c5196fd31a6)
+
+## 2025-11-04
+
+- A curated list of vibe coding references, collaborating with AI to write code.
+  - https://github.com/filipecalegario/awesome-vibe-coding
