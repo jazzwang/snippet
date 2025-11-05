@@ -13,3 +13,7 @@
 > [!WARNING] 
 > Preview Release - macOS and Linux Only
 > Cline CLI is currently in preview and only available for macOS and Linux users. Windows support is coming soon.
+
+## 2025-11-04
+
+- https://cline.bot/learn -- Learning materials of using Cline (VS Code extension or CLI)
