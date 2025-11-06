@@ -356,3 +356,22 @@ If you upload your Excel file here, I can:
 Would you like to upload your Excel file so I can help streamline the process?
 </td></tr>
 </table>
+
+## 2025-11-05
+
+- Goal: migrate MS Forms from one tenant to another tenants
+- Reference:
+  - 2019-08-17
+    - Moving Forms from one O365 tenant to another, tenant to tenant migration
+    - https://techcommunity.microsoft.com/discussions/microsoftforms/moving-forms-from-one-o365-tenant-to-another-tenant-to-tenant-migration/808623/replies/3677519
+    - Step 1
+      - ![](https://techcommunity.microsoft.com/t5/s/gxcuf89792/images/bS0zNjc3NTE5LTQxOTI1OGk1OEE4MTI3MjMxOUI3ODQ3?image-dimensions=401x362&revision=2)
+    - Step 2
+      - ![](https://techcommunity.microsoft.com/t5/s/gxcuf89792/images/bS0zNjc3NTE5LTQxOTI1OWk4Q0Y5OUU0M0RBQUM4MUI4?image-dimensions=436x503&revision=2)
+    - Step 3
+      - go to the other tenant (best in another browser) and paste the link and save to the other tenant's MS Forms.
+  - 2022-03-15
+    - Migrate MS Forms Between Microsoft 365 Tenants
+    - https://www.youtube.com/watch?v=E38BWMH5gLw
+- Related link
+  - https://learn.microsoft.com/en-us/microsoft-forms/admin-information#form-ownership-transfer
