@@ -48,3 +48,10 @@
 - 2025-10-06
   - 程序员福利！GitHub最火的Spec Kit项目深度解析：只需7条命令就能实现规格驱动开发，告别繁琐的PRD文档，让规范直接生成代码！支持Claude Code！
   - https://www.youtube.com/live/PtIGaAPzCR0
+
+## 2025-11-05
+
+- GitHub Spec Kit: A Guide to Spec-Driven AI Development
+  - https://intuitionlabs.ai/articles/spec-driven-development-spec-kit
+- Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl
+  - https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
