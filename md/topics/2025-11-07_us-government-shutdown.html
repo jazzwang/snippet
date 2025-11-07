@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美國聯邦政府停擺：原因與影響分析</title>
+    <!-- 載入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 載入 Inter 字體 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light Blue Gray */
+        }
+        .section-icon {
+            color: #ef4444; /* Red for emphasis */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4 sm:p-8">
+
+    <div class="w-full max-w-4xl bg-white shadow-2xl rounded-xl p-6 md:p-10 lg:p-12 mt-6">
+        
+        <!-- 標題區域 -->
+        <header class="text-center mb-10 border-b pb-4">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2 tracking-tight">
+                🚨 美國聯邦政府停擺：全解析 🚨
+            </h1>
+            <p class="text-xl text-red-600 font-semibold">
+                Government Shutdown: Causes and Consequences
+            </p>
+        </header>
+
+        <!-- 內容區域：分區使用 tabs 導航 -->
+        <div id="content-tabs">
+            
+            <!-- Tab 導航欄 -->
+            <div class="flex flex-wrap justify-center border-b border-gray-200 mb-8">
+                <button data-tab="cause" class="tab-button active-tab">
+                    停擺原因
+                </button>
+                <button data-tab="anti-deficiency" class="tab-button inactive-tab">
+                    緊急預算限制
+                </button>
+                <button data-tab="impact" class="tab-button inactive-tab">
+                    具體影響
+                </button>
+                <button data-tab="qna" class="tab-button inactive-tab">
+                    問答總結
+                </button>
+            </div>
+
+            <!-- Tab 內容區域 -->
+            <div id="tab-cause" class="tab-content active-content">
+                <h2 class="text-3xl font-bold mb-4 text-red-700 flex items-center">
+                    <span class="section-icon text-4xl mr-3">🛑</span> 停擺原因：撥款僵局
+                </h2>
+                <div class="space-y-6 text-gray-700 leading-relaxed">
+                    <p>
+                        美國聯邦政府的運作資金來源於國會每年通過的 <b>12 項年度撥款法案</b>。這些法案必須在新的財政年度開始前（即每年的 <b>10 月 1 日</b>）獲得通過並由總統簽署。
+                    </p>
+                    <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-lg">
+                        <p class="font-semibold text-red-800">核心機制：</p>
+                        <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                            <li><b>未通過</b>：如果在截止日期前，國會無法通過全部或臨時撥款法案（持續決議，CR）。</li>
+                            <li><b>資金耗盡</b>：政府部門無法獲得繼續運作所需的法律授權和資金。</li>
+                            <li><b>被迫關閉</b>：根據法律，缺乏撥款的非必要聯邦機構必須縮減或停止運作。</li>
+                        </ul>
+                    </div>
+                    <p>
+                        停擺通常是兩黨之間在預算、債務上限或關鍵政策議題（如邊境安全、健保改革）上<b>政治對立與僵局</b>的結果。
+                    </p>
+                </div>
+            </div>
+
+            <div id="tab-anti-deficiency" class="tab-content inactive-content">
+                <h2 class="text-3xl font-bold mb-4 text-blue-700 flex items-center">
+                    <span class="section-icon text-4xl mr-3">📜</span> 緊急預算限制：反超支法案
+                </h2>
+                <div class="space-y-6 text-gray-700 leading-relaxed">
+                    <p>
+                        許多人疑問：為什麼政府不能直接動用「應急資金」或「餘額」？這背後的關鍵是美國的《<b>反超支法案</b>》（The Antideficiency Act, ADA）。
+                    </p>
+                    <div class="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-lg">
+                        <p class="font-semibold text-blue-800">反超支法案 (ADA) 的核心規定：</p>
+                        <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                            <li><b>禁止開支</b>：聯邦官員被禁止在沒有法律授權（即國會撥款）的情況下花費或承諾花費政府資金。</li>
+                            <li><b>避免義務</b>：禁止政府在超過預算或撥款耗盡時繼續運作，以保護納稅人資金。</li>
+                            <li><b>強制關門</b>：當撥款到期，政府必須停止所有「非必要」的活動，因為繼續這些活動將構成違反 ADA 的行為。</li>
+                        </ul>
+                    </div>
+                    <p>
+                        因此，除非國會另行立法或活動被歸類為「<b>必要性</b>」（例如涉及國家安全或保護生命財產），否則即使部門仍有結餘，也<b>不能合法地動用</b>這些資金來維持日常運作。這就是為什麼政府停擺時，許多服務必須立即停止的原因。
+                    </p>
+                </div>
+            </div>
+
+            <div id="tab-impact" class="tab-content inactive-content">
+                <h2 class="text-3xl font-bold mb-4 text-green-700 flex items-center">
+                    <span class="section-icon text-4xl mr-3">📉</span> 具體服務影響：誰被關閉？誰無薪工作？
+                </h2>
+                
+                <h3 class="text-2xl font-semibold mt-6 mb-3 text-red-600">🚫 暫停或關閉的「非必要」服務</h3>
+                <ul class="space-y-3 p-4 bg-gray-50 rounded-lg">
+                    <li class="flex items-start"><span class="text-red-500 mr-2 text-xl font-bold">•</span> <b>社會援助</b>：食品救濟金 (SNAP/WIC) 撥款延遲或暫停，嚴重衝擊弱勢家庭。</li>
+                    <li class="flex items-start"><span class="text-red-500 mr-2 text-xl font-bold">•</span> <b>行政服務</b>：護照/簽證審批延遲，IRS 客服電話無人接聽，小型企業貸款審批停滯。</li>
+                    <li class="flex items-start"><span class="text-red-500 mr-2 text-xl font-bold">•</span> <b>旅遊文化</b>：國家公園遊客中心關閉、史密森尼博物館群關閉。</li>
+                    <li class="flex items-start"><span class="text-red-500 mr-2 text-xl font-bold">•</span> <b>科學研究</b>：NASA 等機構的非關鍵任務和研究項目被迫暫停，研究人員休無薪假。</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-600">⚠️ 無薪工作但維持運作的「必要」服務</h3>
+                <ul class="space-y-3 p-4 bg-yellow-50 rounded-lg">
+                    <li class="flex items-start"><span class="text-yellow-700 mr-2 text-xl font-bold">•</span> <b>航空交通</b>：<b>空中交通管制員</b>、TSA 機場安檢人員被迫無薪工作，導致航班延誤和安全隱患增加。</li>
+                    <li class="flex items-start"><span class="text-yellow-700 mr-2 text-xl font-bold">•</span> <b>公共安全</b>：現役軍人、邊境巡邏隊、聯邦執法人員繼續工作但無法領薪。</li>
+                    <li class="flex items-start"><span class="text-yellow-700 mr-2 text-xl font-bold">•</span> <b>醫療健保</b>：社會安全金和聯邦醫療保險 (Medicare) 支票照常發放，但新申請和客服處理會延遲。</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mt-6 mb-3 text-gray-600">📈 經濟層面影響</h3>
+                <ul class="space-y-3 p-4 bg-gray-100 rounded-lg">
+                    <li class="flex items-start"><span class="text-gray-500 mr-2 text-xl font-bold">•</span> <b>經濟數據中斷</b>：勞工統計局、人口普查局等機構停工，造成「資訊黑洞」，影響聯準會和企業決策。</li>
+                    <li class="flex items-start"><span class="text-gray-500 mr-2 text-xl font-bold">•</span> <b>GDP 損失</b>：停擺時間越長，對當季 GDP 成長的負面影響越大。</li>
+                    <li class="flex items-start"><span class="text-gray-500 mr-2 text-xl font-bold">•</span> <b>市場信心受損</b>：政治不確定性增加，可能導致股市波動加劇。</li>
+                </ul>
+            </div>
+
+            <div id="tab-qna" class="tab-content inactive-content">
+                <h2 class="text-3xl font-bold mb-4 text-purple-700 flex items-center">
+                    <span class="section-icon text-4xl mr-3">❓</span> 問答總結
+                </h2>
+                <div class="space-y-6 text-gray-700 leading-relaxed">
+                    <div class="p-4 bg-purple-50 rounded-lg shadow-md">
+                        <p class="font-bold text-purple-800 mb-1">Q: 政府停擺與債務違約有何不同？</p>
+                        <p>
+                            <b>A:</b> 兩者完全不同。<b>停擺</b>是國會未能通過<b>年度撥款法案</b>，導致機構關門；<b>債務違約</b>是政府突破<b>債務上限</b>，無法支付到期的國債利息和已承諾的法定義務（如社會福利金）。債務違約的後果遠比政府停擺嚴重得多。
+                        </p>
+                    </div>
+                    <div class="p-4 bg-purple-50 rounded-lg shadow-md">
+                        <p class="font-bold text-purple-800 mb-1">Q: 聯邦雇員最終會拿到薪水嗎？</p>
+                        <p>
+                            <b>A:</b> 過去的經驗顯示，大多數被迫休假或無薪工作的聯邦雇員在政府恢復運作後，都會收到補發的工資。然而，這對許多家庭的短期現金流仍是巨大衝擊。
+                        </p>
+                    </div>
+                    <div class="p-4 bg-purple-50 rounded-lg shadow-md">
+                        <p class="font-bold text-purple-800 mb-1">Q: 郵局、社會安全金發放會停嗎？</p>
+                        <p>
+                            <b>A:</b> <b>美國郵政 (USPS)</b> 透過自身收入運營，通常不受停擺影響。<b>社會安全金 (Social Security)</b>、聯邦醫療保險 (Medicare) 等屬於強制性支出，其支票會<b>繼續發放</b>，但相關的行政服務（如地址變更、申請新卡）會延遲。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript 邏輯：處理 Tab 切換 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabsContainer = document.getElementById('content-tabs');
+            const tabButtons = tabsContainer.querySelectorAll('.tab-button');
+            const tabContents = tabsContainer.querySelectorAll('.tab-content');
+
+            // 初始化按鈕樣式
+            tabButtons.forEach(button => {
+                button.classList.add('px-4', 'py-3', 'text-sm', 'sm:text-base', 'font-medium', 'rounded-t-lg', 'transition-colors', 'duration-200', 'focus:outline-none');
+            });
+
+            function updateTabStyles() {
+                tabButtons.forEach(button => {
+                    if (button.classList.contains('active-tab')) {
+                        button.classList.remove('inactive-tab', 'text-gray-500', 'hover:text-gray-700', 'bg-white');
+                        button.classList.add('text-red-700', 'bg-red-100', 'border-t-4', 'border-red-700', 'shadow-md');
+                    } else {
+                        button.classList.remove('active-tab', 'text-red-700', 'bg-red-100', 'border-t-4', 'border-red-700', 'shadow-md');
+                        button.classList.add('inactive-tab', 'text-gray-500', 'hover:text-gray-700', 'bg-white', 'hover:bg-gray-50');
+                    }
+                });
+            }
+
+            // Tab 按鈕點擊事件處理
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.getAttribute('data-tab');
+
+                    // 隱藏所有內容
+                    tabContents.forEach(content => {
+                        content.classList.remove('active-content');
+                        content.classList.add('inactive-content', 'hidden');
+                    });
+
+                    // 顯示目標內容
+                    const targetContent = document.getElementById(`tab-${targetTab}`);
+                    if (targetContent) {
+                        targetContent.classList.remove('inactive-content', 'hidden');
+                        targetContent.classList.add('active-content', 'animate-fadeIn');
+                    }
+
+                    // 更新按鈕狀態
+                    tabButtons.forEach(btn => btn.classList.remove('active-tab'));
+                    button.classList.add('active-tab');
+                    updateTabStyles();
+                });
+            });
+
+            // 啟動動畫 (Fade In)
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .animate-fadeIn {
+                    animation: fadeIn 0.5s ease-out;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .tab-button {
+                    /* Default button styling */
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    margin-left: 0.5rem;
+                    margin-right: 0.5rem;
+                    cursor: pointer;
+                }
+                .inactive-content {
+                    display: none;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // 初始設定樣式
+            updateTabStyles();
+        });
+    </script>
+</body>
+</html>
