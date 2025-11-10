@@ -28,3 +28,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
+
+    # Add DNS check step
+    - name: Check DNS for example.com
+      run: nslookup example.com
