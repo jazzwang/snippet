@@ -2,7 +2,7 @@
 
 ## 2025-03-07
 
-## Qwen2.5-Coder
+# Qwen2.5-Coder
 
 - 2024-11-12: ["Qwen2.5-Coder Series: Powerful, Diverse, Practical"](https://qwenlm.github.io/blog/qwen2.5-coder-family)
 
@@ -96,7 +96,7 @@ curl -fsSL https://ollama.com/install.sh | sh
     quantization        unknown
 ```
 
-## Qwen2.5-1M
+# Qwen2.5-1M
 
 - 2025-01-27: ["Qwen2.5-1M: Deploy Your Own Qwen with Context Length up to 1M Tokens"](https://qwenlm.github.io/blog/qwen2.5-1m/)
 - ( 2025-03-08 00:16:50 )
@@ -119,7 +119,7 @@ hf.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M    e7ac4b421833  
     quantization        unknown
 ```
 
-## Qwen2.5-Omni
+# Qwen2.5-Omni
 
 - 2025-03-26: Qwen2.5-Omni Technical Report
   - https://arxiv.org/abs/2503.20215
@@ -132,7 +132,7 @@ hf.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M    e7ac4b421833  
 - Git Repo
   - https://github.com/QwenLM/Qwen2.5-Omni
 
-## QwQ-32B
+# QwQ-32B
 
 - 2025-03-06: ["QwQ-32B: Embracing the Power of Reinforcement Learning"](https://qwenlm.github.io/blog/qwq-32b/)
 
@@ -143,7 +143,7 @@ hf.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M    e7ac4b421833  
 - https://qwen.readthedocs.io/en/latest/framework/function_call.html
 - https://github.com/QwenLM/Qwen/blob/main/examples/function_call_examples.py
 
-## Qwen3
+# Qwen3
 
 ## 2025-05-02
 
@@ -492,7 +492,7 @@ give a more precise explanation!
 >>> /bye
 ```
 
-## Qwen3 Coder
+# Qwen3 Coder
 
 - Git Repo
   - https://github.com/QwenLM/Qwen3-Coder
@@ -503,3 +503,17 @@ give a more precise explanation!
 - 2025-07-22:
   - Qwen3-Coder: Agentic Coding in the World
   - https://qwenlm.github.io/blog/qwen3-coder/
+
+## 2025-11-11
+
+- 最近有看到 YouTube 跟一些文章提到整合 Cline 跟 Qwen 3 Coder.
+  但根據先前的研究，最小的 30B Q2_K 都大約 16GB 左右，所以目前手邊的硬體跑不動。
+  後來在 HuggingFace 上逛了一下，發現了 cerebras_Qwen3-Coder-REAP-25B-A3B-GGUF
+- https://huggingface.co/bartowski/cerebras_Qwen3-Coder-REAP-25B-A3B-GGUF
+  - 這個把 30B 壓縮到 25B，而最小的 2-bit 是有機會可以塞進 8GB VRAM 顯卡
+    | Quant type | File Size|
+    |--|--| 
+    | IQ2_XXS | 6.23 GB |
+    | IQ2_XS | 7.11 GB |
+    | IQ2_S | 7.19 GB |
+    | Q2_K | 8.95 GB |
