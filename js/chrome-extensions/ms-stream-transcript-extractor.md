@@ -372,4 +372,67 @@ fetch called with: https://XXX-my.sharepoint.com/personal/xxxx_xxxx_com/_api/v2.
 ```bash
 jq '.entries[] | {speakerDisplayName, text, startOffset}' 2025-07-09_123059_Supercharging_Your_Daily_Workflow_with_Aider_and_Local_LLMs.json | tee 2025-07-09_Supercharging_Your_Daily_Workflow_with_Aider_and_Local_LLMs.json
 ```
-- 另外，由於 JSON 重複的文字較多，會增加 input token 數量，所以可以只留 Name 跟 Text 就好。經實測，時間戳記對於 LLM 做會議發言摘要的幫助不大。
+- 另外，由於 JSON 重複的文字較多，會增加 input token 數量，所以可以只留 Name 跟 Text 就好。經實測，時間戳記對於 LLM 做會議發言摘要的幫助不大。diff --git a/.
+
+## 2025-11-13
+
+- 突然靈機一動，想到在拿到 JSON 網址的同時，就直接強迫照會議錄影檔名，觸發存成 JSON 檔的作法。目前實測省下不少手動下載 transcript 
+的時間。
+- 紀錄一下目前對這個 extension 做的微調：
+
+```diff
+gitignore b/.gitignore
+index d062a73..6b46265 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -130,3 +130,4 @@ dist
+ .yarn/build-state.yml
+ .yarn/install-state.gz
+ .pnp.*
++.aider*
+diff --git a/fetchOverride.js b/fetchOverride.js
+index 963ffc2..b677463 100644
+--- a/fetchOverride.js
++++ b/fetchOverride.js
+@@ -8,6 +8,16 @@
+ 		const clone = response.clone();
+ 
+ 		if (resource.includes('streamContent')) {
++			if (resource.includes('?format=json')) {
++				console.log('[!NOTE!] fetch called with:', resource);
++				filename = document.querySelector("[data-unique-id='DocumentTitleContent']").innerText + '.json';
++				console.log('[!NOTE!] document title: ', filename);
++				var dl = document.createElement('a');
++				dl.href = resource;
++				dl.download = filename;
++				console.log(dl)
++				dl.click()
++			}
+ 			clone.json()
+ 				.then((data) => {
+ 					const hiddenDiv = document.createElement('div')
+@@ -24,4 +34,4 @@
+ 
+ 		return response;
+ 	};
+-})();
+\ No newline at end of file
++})();
+diff --git a/styles.css b/styles.css
+index c9b3c0f..035710e 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1,9 +1,9 @@
+ div.transcript-extractor-wrapper {
+ 	position: fixed; 
+-	top: 0; 
+-	right: 0; 
++	top: 55px; 
++	right: 280px; 
+ 	z-index: 9999;
+-	padding: 10px;
++	padding: 1px;
+ 	border-color: lightcoral;
+ 	border-width: 1px;
+ 	border-style: solid;
+```

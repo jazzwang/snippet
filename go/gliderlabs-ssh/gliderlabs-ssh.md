@@ -191,3 +191,7 @@ Connection to localhost closed.
 2025/11/13 13:21:19 New connection from 127.0.0.1:xxxxx
 ```
 </td></tr></table>
+
+- 本來有個疑問，用 Golang 寫的 SSH Server 可以支援 port forward 嗎？
+- 結果在範例程式中找到實作：
+  - https://github.com/gliderlabs/ssh/blob/master/_examples/ssh-remoteforward/portforward.go
