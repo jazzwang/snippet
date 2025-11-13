@@ -88,3 +88,47 @@ github_codespaces_usage.har
   »   @https://jira.example.com/sr/jira.issueviews:searchrequest-excel-current-fields/temp/SearchRequest.xls?jqlQuery=assignee+%3D+jazzwang in response.
   ✔ all taskes completed
   ```
+
+## 2025-11-12
+
+- 逆向怎麼用瀏覽器登入 Microsoft 365 的 Token 來呼叫 Graph API 
+- 緣起：
+  - 公司 Policy 不允許直接使用 Graph API。卻可以用網頁查詢，那可能有沒有被寫在文件裡的 API
+- 行動：
+  - 觀察 https://portal.azure.com/#view/Microsoft_AAD_UsersAndTenants/UserProfileMenuBlade/~/overview/userId/${UUID} 的網路流量，並儲存到 HAR
+    - 發現想取得的資訊有出現在 `graph.microsoft.com` 的 RESTful API response 中
+  - 透過指定 `-h` 來指定只產生 `graph.microsoft.com` 的 API Swagger，其次用 `-o` 指定生成的檔名
+```bash
+~$ avantation --help
+Build OpenAPI specification from HAR.
+
+USAGE
+  $ avantation HAR
+
+ARGUMENTS
+  HAR  http archive(har) path
+
+OPTIONS
+  -b, --base-path=base-path                Separate the common path as base path from HTTP requests. Example:['api/v1']
+  -h, --host=host                          Filter the http request from HAR and use it as server url in output.
+  -j, --json                               Write output result in JSON format.
+  -o, --out=out                            [default: ./openapi.yaml] Write output result at this DEST location.
+  -r, --path-param-regex=path-param-regex  [default: ^([0-9]|[-$@!~%^*()_+])+$] Convert Regex matching params into dynamic path
+  -s, --security-headers=security-headers  [default: {}] Map matching HTTP headers into security headers on request.
+  -t, --template=template                  To override the default template pass the your template file location.
+  --disable-tag                            Disable end points grouping based on route path in HAR
+  --http-snippet                           Generate HTTP sample code snippet for request and append it as 'x-code-sample' to OpenAPI path object.
+```
+```bash
+~$ avantation -h graph.microsoft.com -o ms-graph.yaml Downloads/2025-11-12_Azure_AD.har
+```
+- 驗證：
+  - 生成結果，使用 VS Code 搭配 [OpenAPI (Swagger) Editor](https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi) 預覽 Swagger UI
+  - 檢視時，出現多個警告，主要是
+    ```
+    Plain value cannot start with reserved character @
+    ```
+  - 把 `@odata.context: ` 取代為 `"@odata.context":`
+  - 把 `@odata.type: ` 取代為 `"@odata.type": `
+  - 修正了一個 `onPremisesSyncEnabled` 參數 type 同時有 `boolean` 跟 `string` 兩種的錯誤。
+    - 這塊查了一下原始 HAR，`onPremisesSyncEnabled` 多數設成 `null`，這不算 `boolean`

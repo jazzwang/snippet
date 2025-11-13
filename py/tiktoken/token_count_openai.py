@@ -32,7 +32,7 @@ def main():
     file_path = args.file_path
     
     token_count = token_count_openai(file_path)
-    print(f"Token count for GPT-4: {token_count}")
+    print(f"{file_path} : {token_count} tokens")
 
 if __name__ == "__main__":
     main()
