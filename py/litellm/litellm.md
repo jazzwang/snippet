@@ -126,3 +126,51 @@ Options:
 - 看到最接近的是這篇文件
   - https://docs.litellm.ai/docs/debugging/local_debugging
 - 奇怪，難道說我只需要 enable OLLAMA_DEBUG 讓 log 變多？
+
+## 2025-11-14
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+what's the difference between openrouter and litellm?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+The biggest difference between **OpenRouter** and **LiteLLM** lies in their **deployment model** and **control over infrastructure**.
+
+In short: **OpenRouter is a fully managed, unified API gateway (SaaS),** while **LiteLLM is a self-hosted, open-source proxy/router.**
+
+---
+
+## 🛠️ Key Differences: Managed vs. Self-Hosted
+
+| Feature | OpenRouter | LiteLLM |
+| :--- | :--- | :--- |
+| **Deployment Model** | **Fully Managed SaaS** (Software as a Service) | **Self-Hosted Proxy/Router** (Open-Source) |
+| **Infrastructure** | Handled entirely by OpenRouter. | Hosted and managed by **you** (on-prem, private cloud, or local). |
+| **API Keys/Billing** | Single **unified API key** and **single bill** for all models/providers. | You generally **manage separate API keys and billing** for each provider. |
+| **Data Control/Privacy** | Data passes through OpenRouter's service. | You have **full control** over data flow, which stays within your managed infrastructure. |
+| **Setup & Maintenance** | **Instant setup**; no maintenance required. | Requires **installation, configuration, and ongoing maintenance**. |
+| **Core Function** | Unified **access** and **smart routing** across hundreds of models/providers. | Unified **interface (abstraction)**, with powerful features like custom routing, budget enforcement, and robust logging. |
+| **Cost Model** | Pay-as-you-go credits for usage, plus a platform fee/markup. | Infrastructure costs + your direct provider rates. |
+
+---
+
+## 💡 When to Choose Which
+
+### Choose OpenRouter when:
+
+* **You need rapid integration and ease of use.** It offers a turnkey, "just work" solution.
+* **You want a single bill and a single API key** for a wide variety of models from different vendors.
+* **You are prototyping quickly** or your team has limited resources for infrastructure management (DevOps).
+* **You prioritize broad, quick access** to the latest models without integration friction.
+    > *Analogy: Think of OpenRouter as a **universal LLM marketplace** with built-in smart shipping and billing.*
+
+### Choose LiteLLM when:
+
+* **You require full control over your data and infrastructure** for security, compliance (e.g., GDPR, HIPAA), or enterprise governance.
+* **You need deep customization** of routing logic, observability, and logging, integrated with your existing internal systems.
+* **You need to enforce strict budgets and rate limits** per user, key, or project on your own terms.
+* **You prefer an open-source solution** and have the technical capacity (DevOps) to deploy and maintain a proxy server.
+    > *Analogy: Think of LiteLLM as a **universal remote control and dashboard** you install on your own network.*
+
+It's also worth noting that **LiteLLM can be configured to use OpenRouter** as one of its model providers, allowing a user to combine LiteLLM's powerful local proxy features (like logging and custom routing) with OpenRouter's simplified billing and model access.
+</td></tr></table>
