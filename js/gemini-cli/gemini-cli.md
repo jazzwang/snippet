@@ -502,3 +502,10 @@ The JSON output follows this high-level structure:
 ```
 
 </td></tr></table>
+
+## 2025-11-16
+
+- 2025-10-22
+  - Gemini CLI Tips & Tricks
+  - https://addyo.substack.com/p/gemini-cli-tips-and-tricks
+  > ~30 pro-tips for effectively using Gemini CLI for agentic coding
