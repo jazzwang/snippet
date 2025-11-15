@@ -214,5 +214,6 @@
         "ylabel",
         "zcemycl",
         "zenuml"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
