@@ -513,5 +513,8 @@ The JSON output follows this high-level structure:
   - Introducing the Jules extension for Gemini CLI
   - https://developers.googleblog.com/en/introducing-the-jules-extension-for-gemini-cli/
 - 2025-10-31
+  - Master multi-tasking with the Jules extension for Gemini CLI
+  - https://cloud.google.com/blog/topics/developers-practitioners/master-multi-tasking-with-the-jules-extension-for-gemini-cli
+- 2025-10-31
   - BigQuery Data Analytics with Gemini CLI — Part 1
   - https://medium.com/google-cloud/bigquery-data-analytics-with-gemini-cli-part-1-bb692697016a
