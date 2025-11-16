@@ -509,3 +509,6 @@ The JSON output follows this high-level structure:
   - Gemini CLI Tips & Tricks
   - https://addyo.substack.com/p/gemini-cli-tips-and-tricks
   > ~30 pro-tips for effectively using Gemini CLI for agentic coding
+- 2025-10-31
+  - BigQuery Data Analytics with Gemini CLI — Part 1
+  - https://medium.com/google-cloud/bigquery-data-analytics-with-gemini-cli-part-1-bb692697016a
