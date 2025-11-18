@@ -18,3 +18,22 @@
 
 - 2025-06-25:
   - [Gemini CLI: your open-source AI agents](https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/)
+
+## 2025-11-18
+
+- 最近在看 Spec-Kit 的時候，覺得 AI Coding CLI 越來越多元。小小整理一下一些技術之間的關係：
+
+| SDD (spec driven development) extension/plugin | Agentic AI Coding CLI |
+|------------------------------------------------|-----------------------|
+| Github Spec-Kit | Claude Code |
+| Fission-AI OpenSpec | Github Copilot CLI |
+|  | Google Gemini CLI |
+| AWS Kiro - https://github.com/kirodotdev/Kiro | OpenAI Codex CLI |
+| | Factory Droid |
+
+- Kiro for Codex
+  - https://github.com/atman-33/kiro-for-codex
+- Google Jules 定位又不太像 Spec-Kit
+  - https://jules.google/
+- 只能說生態系統越長越複雜
+- 也因為這樣，才會想要比較一下不同 AI Coding CLI 的下載量，畢竟 adoption rate 下載量高的技術，還是會逐漸淘汰一些早期發展但名氣不足的工具(e.g. Aider 比較早開發，Claude Code 比較晚出來，Gemini CLI 更晚，那這些大廠搶進以後，討論聲量跟發展速度應該也會有所變化）
