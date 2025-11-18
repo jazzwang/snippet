@@ -18,6 +18,12 @@
 
 - 2025-04-14: [Introducing GPT-4.1 in the API](https://openai.com/index/gpt-4-1/)
 
+## OpenAI GPT-5.1
+
+- 2025-11-13:
+  - GPT-5.1 Prompting Guide
+  - https://cookbook.openai.com/examples/gpt-5/gpt-5-1_prompting_guide
+
 ## OpenAI gpt-oss
 
 - 2025-08-05:
