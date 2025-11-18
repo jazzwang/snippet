@@ -337,3 +337,19 @@ The comprehensive mind map above provides a structured overview of all 20 major 
 [60](https://aws.amazon.com/what-is/retrieval-augmented-generation/)
 
 </td></tr></table>
+
+## 2025-11-18
+
+- 2025-10-14:
+  - The Convergence of Data, AI, and Agents: Are You Prepared?
+  - https://gradientflow.substack.com/p/the-convergence-of-data-ai-and-agents
+![](https://substackcdn.com/image/fetch/$s_!6WoV!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F620f4f70-ca52-4b72-9bbd-9172b6ff5024_2435x1225.jpeg)
+- 2025-11-07:
+  - What it means to get your data ready for AI
+  - https://ai.gopubby.com/what-it-means-to-get-your-data-ready-for-ai-518861a8f025
+  - 這幾張圖初步看起來蠻有感的。TODO: 還需要仔細拜讀作者的觀點。
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*9jZurC2oMPgobQBfPOSjgw.png)
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*S95xyYvWcL1JNOly6hI7mg.png)
+  - 資料工程過去著重在 ETL/ELT，但在 AI 領域，Context 變得更重要，最近我也在想 Databricks 怎麼做 vertex search (embedding 怎麼存,怎麼算)
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*1uXpjinYzN15cY56YbElHw.png)
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*v0MWOz4eCGhzBggoHIA2VA.png)
