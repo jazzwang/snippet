@@ -37,3 +37,12 @@
   - https://jules.google/
 - 只能說生態系統越長越複雜
 - 也因為這樣，才會想要比較一下不同 AI Coding CLI 的下載量，畢竟 adoption rate 下載量高的技術，還是會逐漸淘汰一些早期發展但名氣不足的工具(e.g. Aider 比較早開發，Claude Code 比較晚出來，Gemini CLI 更晚，那這些大廠搶進以後，討論聲量跟發展速度應該也會有所變化）
+
+- 待整理：
+  - https://github.com/github/spec-kit
+  - https://github.com/Fission-AI/OpenSpec
+  - https://github.com/opencode-ai/opencode
+  - https://github.com/github/copilot-cli
+  - https://github.com/openai/codex
+  - Factory Droids - https://factory.ai/product/cli
+    - https://docs.factory.ai/cli/getting-started/quickstart
