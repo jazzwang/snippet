@@ -44,5 +44,6 @@
   - https://github.com/opencode-ai/opencode
   - https://github.com/github/copilot-cli
   - https://github.com/openai/codex
+  - https://github.com/QwenLM/qwen-code
   - Factory Droids - https://factory.ai/product/cli
     - https://docs.factory.ai/cli/getting-started/quickstart

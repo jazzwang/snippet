@@ -21,3 +21,6 @@
   - https://moonshotai.github.io/Kimi-K2/thinking.html
 - HuggingFace
   - https://huggingface.co/moonshotai/Kimi-K2-Thinking
+- 2025-11-07:
+  - 5 Thoughts on Kimi K2 Thinking
+  - https://www.interconnects.ai/p/kimi-k2-thinking-what-it-means
