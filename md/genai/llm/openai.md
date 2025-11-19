@@ -1,5 +1,18 @@
 # OpenAI models
 
+## OpenAI API
+
+### 2025-11-19
+
+- How can I view the users or organizations associated with an API key?
+- https://help.openai.com/en/articles/9132009-how-can-i-view-the-users-or-organizations-associated-with-an-api-key
+
+```bash
+curl https://api.openai.com/v1/me -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+## OpenAI o3-pro
+
 ### 2025-04-18
 
 - 2025-04-16: [Introducing OpenAI o3 and o4-mini](https://openai.com/index/introducing-o3-and-o4-mini/)

@@ -344,6 +344,13 @@ The comprehensive mind map above provides a structured overview of all 20 major 
   - The Convergence of Data, AI, and Agents: Are You Prepared?
   - https://gradientflow.substack.com/p/the-convergence-of-data-ai-and-agents
 ![](https://substackcdn.com/image/fetch/$s_!6WoV!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F620f4f70-ca52-4b72-9bbd-9172b6ff5024_2435x1225.jpeg)
+- 2025-11-03:
+  - https://www.oreilly.com/live-events/data-superstream-data-engineering-in-the-age-of-ai/0642572221676/0642572221669/
+  - 底下這篇裡提到的 "Data Superstream: Data Engineering in the Age of AI" conference
+  - 覺得這個題目蠻有趣的：
+    - Keynote: Decentralized Data for a Centralized Brain – Valliappa Lakshmanan (30 minutes)
+    - 主題演講：去中心化資料服務於中心化大腦－瓦利亞帕·拉克什曼南（30分鐘）
+    > Jazz 註：確實目前 Data 去中心化，甚至可以跨組織跨國存取調用。但 LLM 這個腦袋是集中的。好像以前談 Data 跟 Compute 的集中或分離架構。
 - 2025-11-07:
   - What it means to get your data ready for AI
   - https://ai.gopubby.com/what-it-means-to-get-your-data-ready-for-ai-518861a8f025
