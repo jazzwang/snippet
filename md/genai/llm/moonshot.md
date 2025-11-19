@@ -1,5 +1,16 @@
 # Moonshot AI
 
+## Kimi Dev
+
+- HuggingFace
+  - https://huggingface.co/moonshotai/Kimi-Dev-72B
+- Git Repo
+  - https://github.com/MoonshotAI/Kimi-Dev
+- Tech Blog
+  - https://moonshotai.github.io/Kimi-Dev/
+- GGUF
+  - https://huggingface.co/unsloth/Kimi-Dev-72B-GGUF
+
 ## Kimi K2 Instruct
 
 - HuggingFace
