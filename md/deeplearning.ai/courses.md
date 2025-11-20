@@ -20,4 +20,10 @@
 
 - MCP: Build Rich-Context AI Apps with Anthropic
   - https://www.deeplearning.ai/short-courses/mcp-build-rich-context-ai-apps-with-anthropic/
-  - read from: [](https://www.youtube.com/watch?v=kOhLoixrJXo)
+  - read from: https://www.youtube.com/watch?v=kOhLoixrJXo
+
+## 2025-11-20
+
+- Semantic Caching for AI Agents
+  - https://www.deeplearning.ai/short-courses/semantic-caching-for-ai-agents/
+  - read from: https://www.linkedin.com/feed/update/urn:li:activity:7396990910988943360/
