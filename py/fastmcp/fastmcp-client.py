@@ -5,7 +5,7 @@ async def main():
     # Connect via in-memory transport to the server script
     # The client can directly interact with the FastMCP instance
     # if it's running as a script with mcp.run() (default STDIO transport)
-    async with Client("./fastmcp-server.py") as client:
+    async with Client("http://localhost:8000/mcp") as client:
         print("Connected to FastMCP server.")
 
         # List available tools to confirm server is working

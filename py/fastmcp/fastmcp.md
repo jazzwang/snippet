@@ -323,3 +323,71 @@ python fastmcp-client.py
 > Added 29 lines of output to the chat.  
 
 > ##### /quit  
+
+- 原本測試 `python fastmcp-client.py` 會報錯，但看 code 覺得 STDIO 的 local server 也不可能是連線 `fastmcp-server.py` ，越看越怪。
+- 參考了 https://gofastmcp.com/getting-started/quickstart
+- 把 `fastmcp-client.py` 改成連線 `http://localhost:8000/mcp`
+```diff
+diff --git a/py/fastmcp/fastmcp-client.py b/py/fastmcp/fastmcp-client.py
+index 6ceafa8..82c9e70 100644
+--- a/py/fastmcp/fastmcp-client.py
++++ b/py/fastmcp/fastmcp-client.py
+@@ -5,7 +5,7 @@ async def main():
+     # Connect via in-memory transport to the server script
+     # The client can directly interact with the FastMCP instance
+     # if it's running as a script with mcp.run() (default STDIO transport)
+-    async with Client("./fastmcp-server.py") as client:
++    async with Client("http://localhost:8000/mcp") as client:
+         print("Connected to FastMCP server.")
+
+         # List available tools to confirm server is working
+```
+- 把執行 MCP Server 的命令改成
+```bash
+fastmcp run fastmcp-server.py --transport http --port 8000
+```
+```bash
+~/git/snippet/py/fastmcp$ fastmcp run fastmcp-server.py --transport http --port 8000
+
+
+                                      ╭──────────────────────────────────────────────────────────────────────────────╮
+                                      │                                                                              │
+                                      │                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+                                      │                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+                                      │                                                                              │
+                                      │                                FastMCP 2.13.1                                │
+                                      │                                                                              │
+                                      │                                                                              │
+                                      │                  🖥  Server name: Local File Search Server                    │
+                                      │                                                                              │
+                                      │                  📦 Transport:   HTTP                                        │
+                                      │                  🔗 Server URL:  http://127.0.0.1:8000/mcp                   │
+                                      │                                                                              │
+                                      │                  📚 Docs:        https://gofastmcp.com                       │
+                                      │                  🚀 Hosting:     https://fastmcp.cloud                       │
+                                      │                                                                              │
+                                      ╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+[11/21/25 15:30:11] INFO     Starting MCP server 'Local File Search Server' with transport 'http' on http://127.0.0.1:8000/mcp                server.py:2055
+INFO:     Started server process [12972]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59637 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59640 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:59641 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59643 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54348 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54350 - "DELETE /mcp HTTP/1.1" 200 OK
+```
+
+- 這樣就測通了!!
+```bash
+~/git/snippet/py/fastmcp$ python fastmcp-client.py
+Connected to FastMCP server.
+Available tools: [Tool(name='search_local_files', title=None, description='Searches for files matching a given pattern in the specified directory and its subdirectories.\n\nArgs:\n    query (str): The filename pattern to search for (e.g., "*.txt", "report.pdf").\n    root_dir (str): The root directory to start the search from. Defaults to the current directory.\n\nReturns:\n    List[str]: A list of full paths to the files that match the query.', inputSchema={'properties': {'query': {'type': 'string'}, 'root_dir': {'default': '.', 'type': 'string'}}, 'required': ['query'], 'type': 'object'}, outputSchema={'properties': {'result': {'items': {'type': 'string'}, 'type': 'array'}}, 'required': ['result'], 'type': 'object', 'x-fastmcp-wrap-result': True}, icons=None, annotations=None, meta={'_fastmcp': {'tags': []}})]
+
+Calling tool 'search_local_files' with query='*.py' and root_dir='.'...
+Tool call result: [TextContent(type='text', text='[".\\\\fastmcp-client.py",".\\\\fastmcp-server.py"]', annotations=None, meta=None)]
+```
