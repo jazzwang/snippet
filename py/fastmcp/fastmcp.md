@@ -37,7 +37,6 @@ I do not see any files in the provided summaries that indicate the use of a `pyt
 
 Could you clarify if you meant `FastAPI`?
 
-> Tokens: 8.5k sent, 77 received. Cost: $0.0032 message, $0.0032 session.  
 > py\fastapi\pet.py  
 > Add file to the chat? (Y)es/(N)o/(D)on't ask again [Yes]: n  
 
@@ -187,7 +186,6 @@ Once you've applied these changes, follow these steps in your command line:
 
 Your local file search MCP server will then be running and ready to accept calls via standard input/output.
 
-> Tokens: 30k sent, 461 received. Cost: $0.01 message, $0.02 session.  
 > Applied edit to fastmcp-server.py  
 > uv pip install fastmcp  
 > Run shell command? (Y)es/(N)o/(S)kip all/(D)on't ask again [Yes]: y  
@@ -261,8 +259,6 @@ python fastmcp-client.py
 
 This command will execute the client, which will connect to your `fastmcp-server.py`, list its tools, and then attempt to call the `search_local_files` tool. The output will show if the connection was successful and the results of the tool call.
 
-> Tokens: 34k sent, 471 received. Cost: $0.01 message, $0.04 session.  
-
 > ##### /drop  
 > Dropping all files from the chat session.  
 
@@ -312,7 +308,6 @@ After applying this change, you can run the client script using the following co
 python fastmcp-client.py
 ```
 
-> Tokens: 40k sent, 356 received. Cost: $0.01 message, $0.05 session.  
 > fastmcp-client.py  
 > Create new file? (Y)es/(N)o [Yes]: y  
 > Applied edit to fastmcp-client.py  
