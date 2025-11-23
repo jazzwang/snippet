@@ -40,3 +40,39 @@
 
   > 昨夜，谷歌宣佈向 Google AI Ultra 訂閱使用者推出 Deep Think 功能，Gemini 2.5 Deep Think 模型在今年的國際數學奧林匹克競賽 (IMO) 上奪得金牌。
   > 從昨天起，谷歌每月 250 美元的 Ultra 訂閱使用者將可以在 Gemini 應用程式中訪問 Gemini 2.5 Deep Think。
+
+# Gemini 3
+
+- 文章集錦
+  - https://blog.google/products/gemini/gemini-3-collection/
+
+- 2025-11-18
+  - A new era of intelligence with Gemini 3
+  - https://blog.google/products/gemini/gemini-3/
+- 2025-11-18
+  - https://ai.google.dev/gemini-api/docs/changelog#11-18-2025
+  - 從 Release Note 看起來是 `gemini-3-pro-preview` <mark>**Preview**</mark> 版本。
+- 2025-11-19
+  - Bringing Gemini 3 to Enterprise
+  - https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-is-available-for-enterprise
+
+## Gemini 3 Pro
+
+- Gemini-3 Pro Model Card
+  - https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf
+- Gemini 3 Pro 的 Vertex AI 文件
+  - https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-pro
+
+## Gemini Agent
+
+- 2025-11-18
+  - Gemini 3 brings upgraded smarts and new capabilities to the Gemini app
+  - https://blog.google/products/gemini/gemini-3-gemini-app/
+    - **Gemini Agent: Multi-step tasks, handled**
+
+## Generative UI
+
+- 2025-11-18
+  - Generative UI: A rich, custom, visual interactive user experience for any prompt
+  - https://research.google/blog/generative-ui-a-rich-custom-visual-interactive-user-experience-for-any-prompt/
+- Learn from https://www.linkedin.com/feed/update/urn:li:activity:7397274951180800000/
