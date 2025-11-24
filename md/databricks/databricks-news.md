@@ -9,3 +9,8 @@
 ## 2025-09-25
 
 - https://www.databricks.com/blog/introducing-databricks-ai-governance-framework
+
+## 2025-11-24
+
+- 新的 Agent Bricks
+- https://www.databricks.com/product/artificial-intelligence/agent-bricks
