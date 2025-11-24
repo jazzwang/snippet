@@ -1,15 +1,18 @@
 # The Future of AI: Build Agents That Work
 
 - 活動:
-  - 
+  - 2025-11-12 12:00 PM - 1:30 PM (GMT+8)
 - 重播
   - https://www.databricks.com/resources/demos/videos/build-ai-agents-that-work
+- the following sections were created by Google NotebookLM
 
 ## 心智圖
 
 ![](img/build-ai-agents-that-work-1.png)
 
 ## 資訊圖
+
+![](img/build-ai-agents-that-work-2.jpg)
 
 ## OpenAI 與 Databricks CEO 對談精華：塑造企業 AI 的未來
 
