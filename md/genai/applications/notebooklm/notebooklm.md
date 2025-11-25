@@ -199,3 +199,10 @@ If you're looking to build a robust application, investigating the official ente
 </td></tr></table>
 
 - [Set up NotebookLM Enterprise  |  Google Agentspace  |  Google Cloud](https://cloud.google.com/agentspace/notebooklm-enterprise/docs/set-up-notebooklm#:~:text=Go%20to%20project%20selector,Enable%20the%20API)
+
+## 2025-11-25
+
+- Google 釋出 Gemini 3 Pro (Preview) 以後，NotebookLM 也跟著變強大許多。像是整合了 Nano Banana Pro，可以生成資訊圖表(Infographics)。
+- 小技巧：
+  - 設定選「正體中文」的話，生成的摘要，語音摘要，資訊圖表，心智圖等，都會是「正體中文」。
+  - 針對無法下載字幕檔的 YouTube 影片，直接把網址貼到 NotebookLM 以後，若是中文語音的內容，可以得到「正體中文」的字幕內容。缺點是每個字跟字中間都有一個空白，也沒有標點符號。
