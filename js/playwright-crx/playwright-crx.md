@@ -7,3 +7,8 @@
   - https://github.com/ruifigueira/playwright-crx
 - Chromw Web Store
   - https://chromewebstore.google.com/detail/playwright-crx/jambeljnbnfbkcpnoiaedcabbgmnnlcd
+
+## 2025-11-28
+
+- found another git repo which looks similiar to playwright-crx
+  - https://github.com/ueokande/playwright-webextext
