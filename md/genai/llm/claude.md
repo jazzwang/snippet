@@ -9,7 +9,7 @@
 - Colab
   - https://colab.research.google.com/drive/1SoAajN8CBYTl79VyTwxtxncfCWlHlyy9
 
-## 2025-04-08
+### 2025-04-08
 
 - ( 2025-04-08 12:25:52 )
 - 紀錄最近針對 Databricks 可以使用 Claude 新聞的相關研究。
@@ -27,3 +27,9 @@
 > We provide libraries in Python and TypeScript that make it easier to work with the Anthropic API.
 - 我應該只有先註冊了 Anthropic 並產生了 API Key 但並沒有綁定信用卡，所以沒辦法用。Pricing 頁面並沒有免費的額度。
   - https://www.anthropic.com/pricing#anthropic-api
+
+## Claude Opus 4.5
+
+- 2025-11-25
+  - Introducing Claude Opus 4.5
+  - https://www.anthropic.com/news/claude-opus-4-5

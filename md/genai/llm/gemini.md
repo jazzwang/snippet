@@ -55,6 +55,15 @@
 - 2025-11-19
   - Bringing Gemini 3 to Enterprise
   - https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-is-available-for-enterprise
+- 2025-11-25
+  - Google Gemini 3 應用場景整理：整理 Gmail、排行程，AI Studio 中免費用
+  - https://www.managertoday.com.tw/articles/view/71270
+  ![](https://image-cdn.learnin.tw/bnextmedia/image/album/2025-11/xftk-1764066993.png?w=1200&output=webp)
+  > [!TIP]
+  > 這倒提醒我可以用 SimilarWeb 來觀察一些服務的網路流量 e.g. ChatGPT, Perplexity 等
+  ![](https://bnextmedia.s3.hicloud.net.tw/image/album/2025-11/gf3u-1763498415.gif)
+  - 跟自己比：
+  ![](https://bnextmedia.s3.hicloud.net.tw/image/album/2025-11/m4r9-1763498413.gif)
 
 ## Gemini 3 Pro
 
