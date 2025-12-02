@@ -14,3 +14,17 @@
     - A simple wrapper to use mosh over TCP tunnel.
   - Mosh with port forwarding (like SSH)
     - https://unix.stackexchange.com/questions/437242/mosh-with-port-forwarding-like-ssh
+  
+## 2025-12-02
+
+- Mosh with port forwarding (like SSH)
+  - https://unix.stackexchange.com/questions/437242/mosh-with-port-forwarding-like-ssh
+- ssh port forwarding (ssh -L) with Mosh (Mobile Shell)?
+  - https://www.reddit.com/r/linuxquestions/comments/hrjeez/ssh_port_forwarding_ssh_l_with_mosh_mobile_shell/
+- mosh tunnel via proxy
+  - https://serverfault.com/questions/390916/mosh-tunnel-via-proxy
+- Reverse ssh tunnelling with mosh?
+  - https://bbs.archlinux.org/viewtopic.php?id=159671
+- Mosh and firewalls: How to tunnel all mosh/ssh traffic through a proxy
+  - https://www.engagespark.com/blog/mosh-through-firewalls/
+  ![](https://www.engagespark.com/wp-content/uploads/2018/07/mosh-connections-ssh-and-udp-proxy-1.png)
