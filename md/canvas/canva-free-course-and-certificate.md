@@ -10,3 +10,5 @@
     - [Canva Essentials](https://www.canva.com/design-school/courses/canva-essentials)
     - [AI in the Classroom](https://www.canva.com/design-school/courses/ai-in-the-classroom)
     - [Marketing with Canva](https://www.canva.com/design-school/courses/marketing-with-canva)
+    - [Canva for Work](https://www.canva.com/design-school/courses/canva-for-work)
+    - [Teacher essentials](https://www.canva.com/design-school/courses/teacher-essentials)
