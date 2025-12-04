@@ -405,3 +405,88 @@ InlineScript -> Logger: info(), debug(), warn(), error() calls throughout script
 @enduml
 ```
 [![](https://img.plantuml.biz/plantuml/svg/fLTRRzis57uFaFzmO0oBZCKUiCS0Avh9HXgWHZixNPzfyLXcHv4QIJdDlz_X9OeaNnAtUOX5YkVsVUT2lRUE6TTKylA2DKwhfbgZkRoWLU6qWT5VHZzQD31NEs6qgb2v4J0BQV_oeYPnKOYQAGUZoZfabPqA9ON2wJSRpjw7rQemedO3WKUXk7wSEh8c_bkw8fo_athD9Aq6XnShUF3guIkkuRQkm-75AkpHSd3w8UY4-NU7oWgjmkbsDJWyOuvnNS97NPPemj7uwA5unc3ohXVA3HrX79ZYWD-nQ1o2JJ5sZtcngEi6SgqsecmCPcFubPG9Hm_9zhvKYyCDp713hw3KRlcGayocKHIT3-E4KCwaR4KIfsB7oCyEmktZVdX1NYY7HZ49Tnspa0doNT2kHTVKuuxgFjdx_htmTGFtdD99R9uIhL_kOOV61lqVp7XVjk_U2XqqDLp5v9aOLrn1tbYdg_cEz88Kb8tAK_YA7by1K6cAI1kXIjXGueTu40g2m4AsfDYbrdL0qJ_0ieV6P-sF3UJeCD3VAG3-Rj0yXSDaTuLc9meSgW6gK8TH5vCERkEhGCuC7HOEUNnxo5e_r0SZV292tlD-IoaiSU3wSPNT0Ew8WmhHUTZkPzVWX9Du7MgYMryS7HFI7jVPrYMbkh0rSyMMkabKF15yT0sZe7hIr9pG21iSFLn2RVG8ifG45LhBIXo_pViymMjSBhL5dhFQ8vAT4E_Z-JauIYbN3nG44WjVxQPY0MLErUAB_4Mr9pCc_Zz_j8dFznXzBOZe0w72SY9IePpQPXqR4Icq4Dara1cijCClrCb2VTWb4dexv9reKLfCFYqqfxh_2RzkEOUhnCTLMupWD8YDOHLE2HxQSb_323ZeGowPjQBu2IS-hIbSIkhPfqMWP9HgRL84lYP598pc54hqm-rSt7z92dlyM-hppb1FG3DbdFReDz7GYLFnRZQ4hXArmBCQM3PAaVA-KozE76ZPKK4AAsG5cCGpP3WjfzT-hKlVlhLQecsai-FJKGzotkY2MEtRoERP-1hM_b-TZL_HTx3OROrOR8c7qBiVXTk2Cqp5H3vHtmCOJp6sY2q-rgOl_I3RBSVG4EQAsny8eDEj8DjfmSz2DPV8b1zdpuLYGnCrICt580GR-8fRVOt4RHXilKdbiso0tVE2uv4PtfvCKBVH3wuRAtfFFQ-glECfropj9GgeExb5eg_bauPsTsQFpxwZV8YpgtS922bquahYcOvN1FTK8_pfHycwAKU7v_LWWj9DZkorjw8W2Hl9g4X3v-ehfkjH2lyZKsL3iH-niZ-Mi3-KMWL49q7VlI3ezJTgYqVi7yB_3JwiHDL83vwkqRSWA4YSqf3co-l2zugwhhyO16iUB1tbaVi2FCFwl_Yqripmr1PILkNEoD_cdeAndoS-o6TZP-Zs8-0jaHsiTfhb8tyBtkZVqHXjnWTQLAYNesNLUT59zUFV3jwMxwyXu_p38pFA_mRxb1NnhkgsHZVbLZUk_HfvJuw4Bxp_0G00)](https://editor.plantuml.com/uml/fLTRRzis57uFaFzmO0oBZCKUiCS0Avh9HXgWHZixNPzfyLXcHv4QIJdDlz_X9OeaNnAtUOX5YkVsVUT2lRUE6TTKylA2DKwhfbgZkRoWLU6qWT5VHZzQD31NEs6qgb2v4J0BQV_oeYPnKOYQAGUZoZfabPqA9ON2wJSRpjw7rQemedO3WKUXk7wSEh8c_bkw8fo_athD9Aq6XnShUF3guIkkuRQkm-75AkpHSd3w8UY4-NU7oWgjmkbsDJWyOuvnNS97NPPemj7uwA5unc3ohXVA3HrX79ZYWD-nQ1o2JJ5sZtcngEi6SgqsecmCPcFubPG9Hm_9zhvKYyCDp713hw3KRlcGayocKHIT3-E4KCwaR4KIfsB7oCyEmktZVdX1NYY7HZ49Tnspa0doNT2kHTVKuuxgFjdx_htmTGFtdD99R9uIhL_kOOV61lqVp7XVjk_U2XqqDLp5v9aOLrn1tbYdg_cEz88Kb8tAK_YA7by1K6cAI1kXIjXGueTu40g2m4AsfDYbrdL0qJ_0ieV6P-sF3UJeCD3VAG3-Rj0yXSDaTuLc9meSgW6gK8TH5vCERkEhGCuC7HOEUNnxo5e_r0SZV292tlD-IoaiSU3wSPNT0Ew8WmhHUTZkPzVWX9Du7MgYMryS7HFI7jVPrYMbkh0rSyMMkabKF15yT0sZe7hIr9pG21iSFLn2RVG8ifG45LhBIXo_pViymMjSBhL5dhFQ8vAT4E_Z-JauIYbN3nG44WjVxQPY0MLErUAB_4Mr9pCc_Zz_j8dFznXzBOZe0w72SY9IePpQPXqR4Icq4Dara1cijCClrCb2VTWb4dexv9reKLfCFYqqfxh_2RzkEOUhnCTLMupWD8YDOHLE2HxQSb_323ZeGowPjQBu2IS-hIbSIkhPfqMWP9HgRL84lYP598pc54hqm-rSt7z92dlyM-hppb1FG3DbdFReDz7GYLFnRZQ4hXArmBCQM3PAaVA-KozE76ZPKK4AAsG5cCGpP3WjfzT-hKlVlhLQecsai-FJKGzotkY2MEtRoERP-1hM_b-TZL_HTx3OROrOR8c7qBiVXTk2Cqp5H3vHtmCOJp6sY2q-rgOl_I3RBSVG4EQAsny8eDEj8DjfmSz2DPV8b1zdpuLYGnCrICt580GR-8fRVOt4RHXilKdbiso0tVE2uv4PtfvCKBVH3wuRAtfFFQ-glECfropj9GgeExb5eg_bauPsTsQFpxwZV8YpgtS922bquahYcOvN1FTK8_pfHycwAKU7v_LWWj9DZkorjw8W2Hl9g4X3v-ehfkjH2lyZKsL3iH-niZ-Mi3-KMWL49q7VlI3ezJTgYqVi7yB_3JwiHDL83vwkqRSWA4YSqf3co-l2zugwhhyO16iUB1tbaVi2FCFwl_Yqripmr1PILkNEoD_cdeAndoS-o6TZP-Zs8-0jaHsiTfhb8tyBtkZVqHXjnWTQLAYNesNLUT59zUFV3jwMxwyXu_p38pFA_mRxb1NnhkgsHZVbLZUk_HfvJuw4Bxp_0G00)
+
+## 2025-12-04
+
+- 緣起：
+  - 最近 live-caption 摘要的用量變多了，看樣子最好能把一些步驟自動化，不然每個會議都要按好幾下，才能啟動 Teams 會議的 live-caption 輸出到 console 也是挺惱人的。其次，有時候來不及存檔或不小心關錯，或者連續兩個會議的 live-caption 紀錄混在一起，最好是能存到 local storage 一份，然後照會議去查，可能會好一點。
+- 繼續逆向工程：
+  - 從圖來看，步驟 8 Start monitoring for active calls (R() loop)
+    - `R()` 是用來偵測目前頁面是否為 active call。
+    - 畢竟 MS Teams 是一個複雜的 React.js App，網址都一樣，所以需要有方法偵測目前正在加入一個 MS Teams 會議。
+  - 來看一下 `R()` 的循序圖，主要是要拿到 `ngControllerController` 當作物件 `u`
+  - 然後根據 `u.callingService` 去判斷是否正在 active call 中
+```mermaid
+sequenceDiagram
+    participant R as R()
+    participant w as w.info
+    participant Oe as Oe(callback)
+    participant doc as document.documentElement
+    participant win as window
+    participant Hr as Hr()
+    participant Controller as MS Teams Controller
+    participant CallingService as u.callingService
+    participant C as C()
+
+    R->>w: info("Waiting for an active call...")
+    R->>Oe: Start polling for active call (callback, C)
+    activate Oe
+    loop until active call is found or condition met
+        Oe->>doc: get $ngControllerController
+        alt Controller found in document.documentElement
+            doc-->>Oe: u
+        else Controller not found in document.documentElement
+            Oe->>win: check window.msteamscalling.deref()
+            alt Controller found in window.msteamscalling
+                win-->>Oe: u
+            else Controller not found
+                Oe->>Hr: get TeamsAppVersion()
+                Hr-->>Oe: teamsAppVersion
+                alt teamsAppVersion is "LightMeetings"
+                    Oe-->>Oe: return {} (considered active)
+                else teamsAppVersion is not "LightMeetings"
+                    Oe-->>Oe: return void 0 (continue polling)
+                end
+            end
+        end
+        alt u (controller) is valid
+            Oe->>CallingService: u.callingService?.callRegistry?.calls?.length
+            alt u.callingService.getActiveCall exists and calls present
+                Oe->>CallingService: getActiveCall()
+                CallingService-->>Oe: v (call object)
+                alt v?.state is 3 (connected)
+                    Oe->>w: info("Active call detected", { via: "getActiveCall" })
+                    Oe-->>R: { call: v, callingService: u.callingService }
+                else v?.state is not 3
+                    Oe-->>Oe: return void 0 (continue polling)
+                end
+            else u.callingService.getActiveCall does not exist (fallback) and calls present
+                Oe->>CallingService: u.callingService.lastOrCurrentCallInfo
+                CallingService-->>Oe: v (info object)
+                alt v (info object) exists
+                    Oe->>CallingService: find call in callRegistry by v.callId
+                    CallingService-->>Oe: S (call object)
+                    alt S (call object) found
+                        Oe->>w: info("Active call detected", { via: "lastOrCurrentCallInfo" })
+                        Oe-->>R: { call: S, callingService: u.callingService }
+                    else S not found
+                        Oe-->>Oe: return void 0 (continue polling)
+                    end
+                else v (info object) does not exist
+                    Oe-->>Oe: return void 0 (continue polling)
+                end
+            else No calls present
+                Oe-->>Oe: return void 0 (continue polling)
+            end
+        else u (controller) is not valid
+            Oe-->>Oe: return void 0 (continue polling)
+        end
+    end
+    deactivate Oe
+    R->>C: Initiate call processing with detectedCallInfo
+```
+- 初步，感覺可以用 DOM 裡的一些物件來判斷是否在會議裡：
+  - 加入會議：`data-tid="calling-prejoin-screen"`
+  - 會議中：`div aria-label="Calling indicators"`
+  - 會議結束：`data-tid="calling-quality-feedback-screen"`
+- 接著來看步驟 10 `Trigger C() function (handle active call)` 
