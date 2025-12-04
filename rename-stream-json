@@ -27,3 +27,7 @@ mv "${filename}" "${formatted_datetime}_${meeting_name}.json"
 touch "${formatted_datetime}_${meeting_name}.json"
 stream-transcript "${formatted_datetime}_${meeting_name}.json"
 meeting-summary "${formatted_datetime}_${meeting_name}.reduced.json"
+
+if [ -d "${meeting_name}" ]; then
+  mv -i ${formatted_datetime}_${meeting_name}.* ${meeting_name}/
+fi

@@ -1,8 +1,0 @@
-#!/bin/bash -x
-INPUT=$1
-EPOCH=${INPUT##*-}
-PREFIX=$(epoch ${EPOCH%.*})
-touch ${INPUT}
-mv ${INPUT} ${PREFIX}_${INPUT}
-live-caption-log ${PREFIX}_${INPUT}
-meeting-summary ${PREFIX}_${INPUT//.log}.json

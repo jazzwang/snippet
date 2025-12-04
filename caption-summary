@@ -1,2 +1,15 @@
 #!/bin/bash
-for i in $(ls *.log | grep -v "^2"); do caption-log $i; done
+caption-log()
+{
+  INPUT=$1
+  EPOCH=${INPUT##*-}
+  PREFIX=$(epoch ${EPOCH%.*})
+  touch ${INPUT}
+  mv ${INPUT} ${PREFIX}_${INPUT}
+  live-caption-log ${PREFIX}_${INPUT}
+  meeting-summary ${PREFIX}_${INPUT//.log}.json
+}
+
+for i in $(ls *.log | grep -v "^2"); do
+  caption-log $i;
+done
