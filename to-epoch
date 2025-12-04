@@ -1,0 +1,6 @@
+#!/bin/bash
+# Ref: https://stackoverflow.com/a/10990961
+# eg.
+#     date --date='06/12/2012 07:21:22' +"%s"
+timestring=$1
+date -d "${timestring}" +"%s"
