@@ -1,0 +1,3 @@
+#!/bin/bash
+INPUT=$1
+aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash --chat-history-file ${INPUT%.json}.md $INPUT
