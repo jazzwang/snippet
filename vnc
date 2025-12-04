@@ -1,0 +1,2 @@
+#!/bin/sh
+gh cs $1 -R Booza1981/docker-playwright-vnc
