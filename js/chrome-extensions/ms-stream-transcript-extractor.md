@@ -5,6 +5,8 @@
 - Git Repo
   - https://github.com/vullnetyy/stream-transcript-extractor-extension
 
+## 2025-06-16
+
 #### could you based on `manifest.json` to draw a sequence diagram using mermaid.js syntax especially highlight the call graph between content.js and fetchOverride.js?  
 > content.js  
 > Add file to the chat? (Y)es/(N)o/(A)ll/(S)kip all/(D)on't ask again [Yes]: y  
@@ -215,7 +217,7 @@ By following these steps, you should be able to thoroughly test your modified ex
 
 > Tokens: 3.4k sent, 1.1k received. Cost: \$0.0012 message, \$0.0041 session.  
 
-> ### aider chat started at 2025-06-16 23:03:46
+> #### aider chat started at 2025-06-16 23:03:46
 >
 > You can skip this check with --no-gitignore  
 > Add .aider* to .gitignore (recommended)? (Y)es/(N)o [Yes]: n  
@@ -372,7 +374,7 @@ fetch called with: https://XXX-my.sharepoint.com/personal/xxxx_xxxx_com/_api/v2.
 ```bash
 jq '.entries[] | {speakerDisplayName, text, startOffset}' 2025-07-09_123059_Supercharging_Your_Daily_Workflow_with_Aider_and_Local_LLMs.json | tee 2025-07-09_Supercharging_Your_Daily_Workflow_with_Aider_and_Local_LLMs.json
 ```
-- 另外，由於 JSON 重複的文字較多，會增加 input token 數量，所以可以只留 Name 跟 Text 就好。經實測，時間戳記對於 LLM 做會議發言摘要的幫助不大。diff --git a/.
+- 另外，由於 JSON 重複的文字較多，會增加 input token 數量，所以可以只留 Name 跟 Text 就好。經實測，時間戳記對於 LLM 做會議發言摘要的幫助不大。
 
 ## 2025-11-13
 
@@ -436,3 +438,289 @@ index c9b3c0f..035710e 100644
  	border-width: 1px;
  	border-style: solid;
 ```
+## 2025-12-05
+
+- 突然發現程式碼失效了，沒辦法自動下載。
+- 逆向追了一下，原本除錯的 `console.log` 也都沒有印出 `fetch()` 的資訊。
+- 改把所有被 override 的 fetch() 拉出來:
+
+```diff
+~/git/snippet/js/chrome-extensions/ms-stream-transcript-extractor$ git diff fetchOverride.js
+diff --git a/fetchOverride.js b/fetchOverride.js
+index 963ffc2..f3e46df 100644
+--- a/fetchOverride.js
++++ b/fetchOverride.js
+@@ -6,8 +6,19 @@
+                const response = await originalFetch(resource, config);
+
+                const clone = response.clone();
++               console.log('[!NOTE!] fetch called with:', resource);
+
+                if (resource.includes('streamContent')) {
+                        clone.json()
+                                .then((data) => {
+                                        const hiddenDiv = document.createElement('div')
+@@ -24,4 +35,4 @@
+
+                return response;
+        };
+-})();
+\ No newline at end of file
++})();
+```
+- 確認原本的 `streamContent` 在 DevTool Console 中消失了。
+- 進一步深入搜尋 `?format=json` 有查到這一段：
+  - https://res-1.cdn.office.net/files/odsp-web-prod_2025-11-14.002/spstreamhomewebpack/412.js
+  - 代表 2025-11-14 Teams 有一版新的 UI，刻意地把這個 extension 會用到的條件換成不同的實作。
+
+> #### aider chat started at 2025-12-05 20:35:22
+> C:\Users\jazzw\.local\bin\aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash --chat-history-file 412.js.md 412.js  
+> Aider v0.86.1  
+> Model: gemini/gemini-2.5-flash with diff-fenced edit format  
+> Git repo: ..\..\.git with 1,574 files  
+> Warning: For large repos, consider using --subtree-only and .aiderignore  
+> See: https://aider.chat/docs/faq.html#can-i-use-aider-in-a-large-mono-repo  
+> Repo-map: using 4096 tokens, auto refresh  
+> Added js\chrome-extensions\412.js to the chat.  
+> Note: in-chat filenames are always relative to the git working dir, not the current working dir.  
+> Cur working dir: C:\Users\jazzw\git\snippet\js\chrome-extensions  
+> Git working dir: C:\Users\jazzw\git\snippet  
+
+> #### /ask could you draw a sequence diagram of 412.js using plantuml syntax?  
+
+Here is a sequence diagram for the `412.js` file using PlantUML syntax. This diagram focuses on the main `Shimmer` component's lifecycle and its interactions with its direct dependencies defined within this file.
+
+```plantuml
+@startuml
+participant React
+participant "Shimmer (Component y)" as ShimmerComponent
+participant "useTimeout (1497.a)" as UseTimeoutHook
+participant "ShimmerElementsGroup (1583.a)" as ShimmerElementsGroup
+
+React -> ShimmerComponent : Mounts and renders
+activate ShimmerComponent
+
+ShimmerComponent -> UseTimeoutHook : Calls useTimeout() hook
+activate UseTimeoutHook
+UseTimeoutHook --> ShimmerComponent : Returns { setTimeout, clearTimeout } functions
+
+ShimmerComponent -> ShimmerComponent : Initializes local state (e.g., isDataLoaded state 'A', x.lastTimeoutId ref)
+
+group Initial Render / Data Not Loaded (isDataLoaded prop 'y' is false or transitioning out)
+    ShimmerComponent -> ShimmerComponent : Renders shimmer visuals (e.g., shimmerWrapper, shimmerGradient)
+    alt if customElementsGroup prop is NOT provided
+        ShimmerComponent -> ShimmerElementsGroup : Renders ShimmerElementsGroup (h.a) with shimmerElements prop
+        activate ShimmerElementsGroup
+        ShimmerElementsGroup -> ShimmerElementsGroup : Renders various ShimmerLine, ShimmerCircle, ShimmerGap components based on shimmerElements
+        deactivate ShimmerElementsGroup
+    end
+    alt if ariaLabel prop is present AND isDataLoaded prop 'y' is false
+        ShimmerComponent -> ShimmerComponent : Renders screen reader text
+    end
+end
+
+group Data Loading Transition (isDataLoaded prop 'y' changes from false to true)
+    ShimmerComponent -> ShimmerComponent : useEffect hook detects isDataLoaded prop change
+    ShimmerComponent -> UseTimeoutHook : setTimeout(callback to update internal state 'A', transitionAnimationInterval)
+    UseTimeoutHook -> UseTimeoutHook : Stores timeout ID internally (in 'e' object)
+    ... (transitionAnimationInterval passes) ...
+    UseTimeoutHook --> ShimmerComponent : Executes callback
+    ShimmerComponent -> ShimmerComponent : Updates internal isDataLoaded state to true (L(!0))
+end
+
+group Data Loaded (internal isDataLoaded state 'A' is true)
+    ShimmerComponent -> ShimmerComponent : Renders dataWrapper div containing children prop ('r')
+    ShimmerComponent -> ShimmerComponent : Shimmer visuals become hidden (opacity transition)
+end
+
+ShimmerComponent -> React : Returns rendered DOM
+deactivate ShimmerComponent
+
+group Component Unmount
+    ShimmerComponent -> UseTimeoutHook : useEffect cleanup function calls clearTimeout(x.lastTimeoutId)
+    deactivate UseTimeoutHook
+    destroy ShimmerComponent
+    UseTimeoutHook -> UseTimeoutHook : Its own useEffect cleanup iterates its internal 'e' object and calls clearTimeout for all managed timers
+    destroy UseTimeoutHook
+end
+@enduml
+```
+
+> #### aider chat started at 2025-12-05 20:42:23
+> C:\Users\jazzw\.local\bin\aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash --chat-history-file 412.js.md 412.js  
+> Aider v0.86.1  
+> Model: gemini/gemini-2.5-flash with diff-fenced edit format  
+> Git repo: ..\..\.git with 1,574 files  
+> Warning: For large repos, consider using --subtree-only and .aiderignore  
+> See: https://aider.chat/docs/faq.html#can-i-use-aider-in-a-large-mono-repo  
+> Repo-map: using 4096 tokens, auto refresh  
+> Added js\chrome-extensions\412.js to the chat.  
+> Note: in-chat filenames are always relative to the git working dir, not the current working dir.  
+> Cur working dir: C:\Users\jazzw\git\snippet\js\chrome-extensions  
+> Git working dir: C:\Users\jazzw\git\snippet  
+
+> #### /ask what is defined in function 4591()?  
+
+In `js\chrome-extensions\412.js`, the module `4591` defines and exports the following:
+
+*   `w`: An asynchronous function responsible for fetching the content of a single transcript. It handles different content variants (highlights, hidden sections) and can use a CDN or fall back to an origin request.
+*   `E`: An asynchronous function that updates transcript content using a delta patch. It constructs the request with appropriate authentication headers and logs QoS metrics.
+*   `k`: A function that sends a batch update for transcript content using a patch request with `keepalive: true`. It also logs an application logic event.
+
+> #### /ask could you draw a sequence diagram of function w defined in module 4591 using plantuml syntax?  
+
+```plantuml
+@startuml
+participant "GetSingleTranscriptContent\n(function w)" as w
+participant "TelemetryApi (n)" as telemetry
+participant "HostSettingsStore (a)" as settings
+participant "Metadata (t)" as metadata
+participant "CdnClient (C)" as cdnClient
+participant "NetworkService (l.a)" as network
+participant "AuthProvider (t.authProvider)" as authProvider
+participant "AuthProviderV2 (t.authProviderV2)" as authProviderV2
+participant "ResourceEnricher (A)" as enricher
+participant "TranscriptProcessor (g)" as processor
+box "Helper Functions (4591)" #LightYellow
+  participant "getP(e, t) (P)" as getP
+  participant "getU(C, n, e, I, S, y) (U)" as getU
+end box
+box "Helper Functions (2240)" #LightBlue
+  participant "getOldToken(l)" as getOldToken
+  participant "getNewAuthHeaders(u)" as getNewAuthHeaders
+  participant "logQos(v)" as logQos
+  participant "logError(b)" as logError
+  participant "logResourceTiming(S)" as logResourceTiming
+  participant "getWebinarAccessKey(I)" as getWebinarAccessKey
+end box
+
+w -> telemetry: startQos("GetSingleTranscriptContent")
+
+w -> getP: (metadata, settings)
+activate getP
+  getP -> settings: getSetting("isTranscriptContentCdnEnabled")
+  alt CDN Enabled
+    getP -> settings: getSetting("isCdnXauthEnabled")
+    getP -> authProvider: getAccessToken("SharePointOnline", "OneTranscript")
+  end
+  getP --> w: cdnClient (C)
+deactivate getP
+
+alt CDN Client (C) is available
+  w -> getU: (C, telemetry, transcriptId, qosInfo, isHighlightsActive, areHiddenSectionsApplied)
+  activate getU
+    getU -> cdnClient: canUse()
+    alt CDN can be used
+      getU -> telemetry: startQos(cdnFetchEvent)
+      getU -> cdnClient: fetchAndDecrypt(qosLogger, params, headers)
+      activate cdnClient
+      cdnClient --> getU: cdnResponse (c)
+      deactivate cdnClient
+      alt cdnResponse.ok && cdnResponse.data
+        getU --> w: { data: c.data, status: c.status, correlationId: c.correlationId, retryCount: c.retryCount }
+      else CDN Fetch Failed
+        getU -> telemetry: warn(error)
+        getU --> w: void 0
+      end
+    else CDN cannot be used
+      getU --> w: void 0
+    end
+  deactivate getU
+
+  alt CDN fetch successful (w.data)
+    w -> enricher: (w.data.entries, settings, metadata, telemetry, transcriptId)
+    activate enricher
+    enricher --> w: enrichedEntries (L)
+    deactivate enricher
+    w -> telemetry: endQos()
+    w -> processor: (telemetry, enrichedEntries, w.data.events)
+    activate processor
+    processor --> w: processedTranscriptData
+    deactivate processor
+  else CDN fetch failed or not attempted (fall back to origin)
+    w -> settings: getSetting("isUseAuthProviderV2ForOneTranscriptEnabled2")
+    alt AuthProviderV2 enabled
+      w -> getNewAuthHeaders: (metadata, telemetry, "OneTranscript", "Vroom2.1", transcriptId, ..., settings)
+      activate getNewAuthHeaders
+        getNewAuthHeaders -> authProviderV2: getAuthRequirements("OneTranscript", "Vroom2.1")
+        getNewAuthHeaders -> authProviderV2: getAuthHeaders()
+      getNewAuthHeaders --> w: authHeaders (I)
+      deactivate getNewAuthHeaders
+    else AuthProviderV2 disabled (fall back to old AuthProvider)
+      w -> getOldToken: (metadata, telemetry, "OneTranscript", transcriptId, ..., settings)
+      activate getOldToken
+        getOldToken -> authProvider: getToken("sharePointOnline", "OneTranscript")
+        alt getToken failed, then fall back
+          getOldToken -> authProvider: getAccessTokenVroom2_1()
+        end
+      getOldToken --> w: authToken (M)
+      deactivate getOldToken
+    end
+    w -> getWebinarAccessKey: ("OneTranscript", metadata, telemetry, settings)
+    activate getWebinarAccessKey
+      getWebinarAccessKey -> authProviderV2: getAuthRequirements("OneTranscript", "WebinarAccessKey")
+      getWebinarAccessKey -> authProviderV2: getAuthToken()
+    getWebinarAccessKey --> w: webinarAccessKey (N)
+    deactivate getWebinarAccessKey
+
+    w -> network: getWithResponse(scenario, components, urlBase, urlPath, queryParams, headers, ..., schema)
+    activate network
+    network --> w: [originResponseData (G), originResponseMeta (K)]
+    deactivate network
+    w -> enricher: (G.entries, settings, metadata, telemetry, transcriptId)
+    activate enricher
+    enricher --> w: enrichedEntries (W)
+    deactivate enricher
+    w -> logQos: (qosInfo, K)
+    w -> telemetry: endQos()
+    w -> logResourceTiming: (telemetry, transcriptId, K.status, qosInfo.backendCorrelationId)
+    w -> processor: (telemetry, enrichedEntries, G.events)
+    activate processor
+    processor --> w: processedTranscriptData
+    deactivate processor
+  end
+else Error during execution
+  w -> logError: (error, qosInfo, telemetry, [statusCodes])
+end
+
+w --> *: processedTranscriptData (return)
+@enduml
+```
+- 結論：根據 DevTool Networking 的行為與新的程式碼，粗略的判斷是多加了一層，讓 React.js 去讀 webvtt 格式，而不是抓 JSON 格式的 transcript
+- 像是 `412.js` 裡就有一個 `case 0` 是讀 `temporaryDownloadUrl`，甚至有一段是對 `temporaryDownloadUrl` 的內容加上 highlight (從行為上是發生在搜尋字幕檔時，會把符合的內容標記出來)
+
+```js
+                switch (p.label) {
+                  case 0:
+                    return (
+                      (t = !!e.onePlayerSettingsStore.getSetting(
+                        "isOneTranscriptGenerateEnabled",
+                        "boolean"
+                      )),
+                      (n = !!e.onePlayerSettingsStore.getSetting(
+                        "isTranscriptForAudioEnabled",
+                        "boolean"
+                      )),
+                      (i = function (t) {
+                        if ((0, f.b)(t)) {
+                          for (var n = [], a = 0; a < t.length; a++) {
+                            var i = t[a];
+                            if (null == i ? void 0 : i.temporaryDownloadUrl) {
+                              var r = _.addApplyMediaEditsQspToTranscriptUrl(
+                                i.temporaryDownloadUrl,
+                                e
+                              );
+                              n.push({
+                                url: r,
+                                languageTag: i.languageTag,
+                                source: i.source,
+                                isVisible: i.isVisible,
+                              });
+                            }
+                          }
+                          e.player.initializeTextTracks(n);
+                        } else e.player.toggleCCButtons(!1);
+                      }),
+```
+- 感想：
+  - 很神奇的是 LLM 居然讀得懂 Webpack 編譯後的結果！雖然說原本程式碼就是想辦法讓電腦可以執行，人腦不好讀（降低易讀性，增加執行效率），但 LLM 意外地成為逆向工程的好幫手。
