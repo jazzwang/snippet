@@ -1,4 +1,4 @@
-# Spec-Driven Development
+# Spec-Driven Development (SDD)
 
 ```mermaid
 flowchart LR
