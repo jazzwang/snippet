@@ -231,3 +231,186 @@ Device      Start        End    Sectors   Size Type
 /dev/sde1      40     409639     409600   200M EFI System
 /dev/sde2  409640 1953262983 1952853344 931.2G Apple HFS/HFS+
 ```
+
+## 2025-12-07
+
+* Google AI Mode
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+mount: /mnt/usb/macos: unknown filesystem type 'hfsplus'. dmesg(1) may have more information after failed mount system call.
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+This error message indicates that your operating system (likely Linux) does not inherently support the Apple HFS Plus (HFS+) filesystem used by the macOS drive you are trying to mount [1]. The necessary kernel module or software tools are either missing or not loaded. 
+Here is how you can resolve this issue on a typical Linux distribution:
+
+1. Ensure the HFS Plus Kernel Module is Loaded 
+
+Your system might have the module available but not loaded automatically. You can attempt to load it using `modprobe`. 
+
+-   **Command:**
+
+    ```bash
+    sudo modprobe hfsplus
+    ```
+
+-   **Then, try mounting again:**
+
+    ```bash
+    sudo mount /mnt/usb/macos
+    ```
+
+2. Install HFS+ Support Tools 
+
+If loading the module fails or the system still can't mount the drive, you likely need to install user-space utilities that handle the filesystem specifics. The package names vary slightly depending on your Linux distribution. 
+
+For Debian/Ubuntu-based systems (apt):
+
+```bash
+sudo apt update
+sudo apt install hfsplus hfsutils
+```
+
+For Fedora/CentOS-based systems (dnf or yum):
+
+```bash
+sudo dnf install hfsplus hfsplus-tools
+# Or for older systems:# sudo yum install hfsplus hfsplus-tools
+```
+
+
+For Arch-based systems (pacman):
+
+
+```bash
+sudo pacman -S hfsplus hfsutils
+```
+
+After installation, the system should be able to recognize and mount the HFS+ filesystem automatically, or you can use the `mount` command again. 
+
+3. Check `dmesg` for More Information
+
+As the error message suggests, you can review the kernel ring buffer for specific details about *why* the mount failed if the above steps do not work: 
+
+
+```bash
+dmesg | tail
+```
+
+This output might reveal if the disk is corrupted or if there is another specific permission issue.
+</td></tr></table>
+
+- Gemini 2.5 Flash
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+can WSL install hfsplus module?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, you can **install the `hfsprogs` package** (which contains utilities like `fsck.hfsplus` and `mkfs.hfsplus`) inside your WSL distribution, but this **does not guarantee** the ability to mount or fully access an HFS+ formatted disk.
+
+-----
+
+## 🛑 WSL's Main Limitation for HFS+
+
+The ability to mount a filesystem like HFS+ (Apple's Hierarchical File System Plus) depends on **kernel support**, not just user-space utilities.
+
+  * **WSL 1:** Does not run a full Linux kernel and cannot access raw disk partitions, making HFS+ access impossible.
+  * **WSL 2:** Runs a **virtualized Linux kernel**, which is where HFS+ support must reside. By default, the WSL 2 kernel **does not include the necessary HFS+ filesystem module**.
+
+## ✅ How to Gain HFS+ Support in WSL 2
+
+For true HFS+ access in WSL 2, you have two primary options, both of which require using the `wsl --mount` command from PowerShell to attach the physical disk to the WSL 2 VM first.
+
+### 1\. Rebuild the WSL 2 Kernel (Advanced)
+
+The most complete way to gain support is to **compile your own custom WSL 2 kernel** with the HFS+ module enabled.
+
+  * This is an advanced process involving fetching the WSL kernel source, modifying the configuration (specifically enabling `CONFIG_HFSPLUS_FS`), compiling, and then telling WSL 2 to use your new kernel via the `.wslconfig` file.
+  * A user-built kernel with HFS+ enabled is often shared in online communities (like GitHub issues) as a shortcut.
+      * **Note:** The Linux HFS+ driver typically **does not support write access** to HFS+ volumes that have **Journaling** enabled (which is the default for macOS drives). Attempting to force write access can risk data loss.
+
+### 2\. Mount and Manually Remount the Drive
+
+If you are running a recent version of **WSL 2**, you can attempt to access the disk directly:
+
+1.  **Identify the disk** in Windows using a command like `Get-CimInstance -Query "SELECT * from Win32_DiskDrive"` in PowerShell.
+2.  **Attach the disk** to the WSL 2 VM using the Windows PowerShell command:
+    ```powershell
+    wsl --mount <DiskPath> --bare
+    ```
+    (e.g., `wsl --mount \\.\PHYSICALDRIVE1 --bare`)
+3.  **Manually mount** the partition inside your WSL distribution, specifying the `hfsplus` filesystem type. You will first need the HFS+ utilities:
+    ```bash
+    # Inside WSL
+    sudo apt-get install hfsprogs # for Ubuntu/Debian
+    sudo mkdir /mnt/hfsplus_drive
+    # Attempt to mount
+    sudo mount -t hfsplus -o force,rw /dev/sdXN /mnt/hfsplus_drive
+    ```
+    Replace `/dev/sdXN` with your actual device partition (e.g., `/dev/sdb1`), which you can find using the `lsblk` command inside WSL.
+
+**Conclusion:** While you can install the `hfsprogs` utilities, **the default WSL 2 kernel lacks HFS+ support**, which is the critical component for mounting the filesystem. You must either use a custom-compiled kernel or rely on the `wsl --mount` command in conjunction with the user-space utilities for a chance at limited access.
+
+Would you like me to find instructions for compiling a custom WSL 2 kernel with HFS+ support?
+</td></tr></table>
+
+- 這一段描述看起來神奇了，居然可以客製化 WSL2 Kernal？
+  > This is an advanced process involving fetching the WSL kernel source, modifying the configuration (specifically enabling `CONFIG_HFSPLUS_FS`), compiling, and then telling WSL 2 to use your new kernel via the `.wslconfig` file.
+- 確實我在查支援的檔案系統時，並沒有看到 `HFSPLUS`
+```bash
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.6.87.2-microsoft-standard-WSL2 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Dec  8 08:52:47 AM CST 2025
+
+  System load:  0.4                 Processes:             81
+  Usage of /:   1.3% of 1006.85GB   Users logged in:       0
+  Memory usage: 3%                  IPv4 address for eth0: 172.29.78.252
+  Swap usage:   0%
+
+
+This message is shown once a day. To disable it please create the
+/home/jazz/.hushlogin file.
+~$ cat /proc/filesystems
+nodev   sysfs
+nodev   tmpfs
+nodev   bdev
+nodev   proc
+nodev   cgroup
+nodev   cgroup2
+nodev   cpuset
+nodev   devtmpfs
+nodev   binfmt_misc
+nodev   debugfs
+nodev   tracefs
+nodev   securityfs
+nodev   sockfs
+nodev   bpf
+nodev   pipefs
+nodev   ramfs
+nodev   hugetlbfs
+nodev   devpts
+        ext3
+        ext4
+        ext2
+        squashfs
+        vfat
+        fuseblk
+nodev   fuse
+nodev   fusectl
+nodev   virtiofs
+nodev   overlay
+        udf
+        xfs
+nodev   9p
+nodev   efivarfs
+nodev   mqueue
+nodev   selinuxfs
+nodev   pstore
+nodev   autofs
+nodev   configfs
+~$
+```
