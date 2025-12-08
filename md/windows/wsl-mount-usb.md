@@ -414,3 +414,277 @@ nodev   autofs
 nodev   configfs
 ~$
 ```
+
+## 2025-12-08
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+could you give me a step=by-step command line instruction in order to enabling `CONFIG_HFSPLUS_FS` and compile WSL2 user-built kernel by editing the `.wslconfig` file?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Building a custom kernel for WSL 2 is an advanced process. The steps below provide the command-line instructions to clone the Microsoft WSL 2 kernel source, modify the configuration to enable HFS+ support (`CONFIG_HFSPLUS_FS`), compile the new kernel, and configure WSL 2 to use it.
+
+## 🛠️ Step-by-Step Kernel Compilation
+
+Execute all commands below **inside your WSL 2 Linux distribution** (e.g., Ubuntu).
+
+### 1\. Install Build Dependencies
+
+You need essential packages for compiling the Linux kernel.
+
+```bash
+# Update package list and install necessary tools
+sudo apt update
+sudo apt install build-essential flex bison libssl-dev libelf-dev libncurses5-dev bc python3
+```
+
+### 2\. Get the Kernel Source Code
+
+Clone the Microsoft WSL 2 Linux Kernel repository from GitHub. Use the branch corresponding to your current kernel version if possible (check `uname -r`), or use a recent stable branch like `linux-msft-wsl-6.1.y`.
+
+```bash
+# Clone the repository (adjust branch name if needed)
+git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth=1 -b linux-msft-wsl-6.1.y
+cd WSL2-Linux-Kernel
+```
+
+### 3\. Configure and Enable HFS+
+
+Copy the default WSL configuration and then enable the HFS+ filesystem support.
+
+```bash
+# Copy the default config file for x86/64
+cp Microsoft/config-wsl .config
+
+# Enable CONFIG_HFSPLUS_FS in the config file
+# This command finds the commented-out HFSPLUS entry and sets it to 'y' (built-in)
+sed -i 's/# CONFIG_HFSPLUS_FS is not set/CONFIG_HFSPLUS_FS=y/g' .config
+
+# (Optional but recommended) Change the local version string to easily identify your kernel
+sed -i 's/CONFIG_LOCALVERSION="-microsoft-standard-wsl2"/CONFIG_LOCALVERSION="-custom-hfsplus"/g' .config
+
+# Verify the change (Output should be: CONFIG_HFSPLUS_FS=y)
+grep CONFIG_HFSPLUS_FS .config
+```
+
+### 4\. Compile the Kernel
+
+This step will take significant time (30 minutes or more, depending on your CPU). `$(nproc)` uses all available CPU cores for speed.
+
+```bash
+# Compile the kernel
+make -j$(nproc)
+```
+
+The compiled kernel image, named `bzImage`, will be located in the `arch/x86/boot/` directory.
+
+### 5\. Install and Copy the Kernel
+
+Copy the compiled `bzImage` to a location on your Windows file system (`C:\Users\<YourUserName>\` is common) where WSL 2 can access it consistently.
+
+```bash
+# Replace <Windows-User-Name> with your actual Windows username
+# Create a folder for the kernel image
+KERNEL_PATH="/mnt/c/Users/<Windows-User-Name>/.wsl-kernels"
+mkdir -p $KERNEL_PATH
+
+# Copy the new kernel image to the Windows file system
+cp arch/x86/boot/bzImage $KERNEL_PATH/bzImage
+```
+
+-----
+
+## 💻 Configure WSL 2 to Use the New Kernel
+
+This step is performed on the **Windows side** to tell WSL 2 to load your custom-compiled kernel image instead of the default one.
+
+### 6\. Edit or Create the `.wslconfig` File
+
+1.  Open your Windows User Profile directory (e.g., `C:\Users\<YourUserName>`).
+2.  Create a file named **`.wslconfig`** (note the preceding dot).
+3.  Open the file in a text editor (like Notepad) and add the following content, replacing `<Your-Windows-User-Name>` with your actual Windows username:
+
+<!-- end list -->
+
+```ini
+[wsl2]
+kernel=C:\\Users\\<Your-Windows-User-Name>\\.wsl-kernels\\bzImage
+```
+
+### 7\. Shutdown and Restart WSL
+
+You must fully shut down the WSL 2 VM for the configuration change to take effect.
+
+1.  Open **PowerShell** or **Command Prompt** (on the Windows side).
+2.  Run the shutdown command:
+    ```powershell
+    wsl --shutdown
+    ```
+3.  Restart your WSL distribution by launching it as you normally would.
+
+### 8\. Verify HFS+ Support
+
+Once the WSL terminal opens, verify that your custom kernel is running and that HFS+ support is enabled.
+
+```bash
+# Check the kernel name (it should include '-custom-hfsplus' or similar)
+uname -r
+
+# Check for the hfsplus filesystem module
+cat /proc/filesystems | grep hfsplus
+```
+
+If the `grep` command returns `hfsplus`, the module is enabled, and you can now attempt to mount an HFS+ disk using the `wsl --mount` command.
+
+-----
+
+The video below explains the general process of building and booting a custom kernel in WSL 2, which covers the overall framework for this task.
+[Building from source and booting your own WSL2 kernel](https://www.youtube.com/watch?v=6lqMeg_n7l4)
+</td></tr></table>
+
+- 實測：
+```bash
+~$ uname -a
+Linux JazzBook 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+~$ sudo apt update
+[sudo] password for jazz:
+Fetched 246 MB in 2min 27s (1,669 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+123 packages can be upgraded. Run 'apt list --upgradable' to see them.
+~$ sudo apt install build-essential flex bison libssl-dev libelf-dev libncurses5-dev bc python3
+The following additional packages will be installed:
+  libfl-dev libfl2 libzstd-dev m4
+Suggested packages:
+  bison-doc flex-doc ncurses-doc libssl-doc m4-doc
+The following NEW packages will be installed:
+  bison flex libelf-dev libfl-dev libfl2 libncurses-dev libssl-dev libzstd-dev m4
+0 upgraded, 9 newly installed, 0 to remove and 123 not upgraded.
+Need to get 4,534 kB of archives.
+After this operation, 21.6 MB of additional disk space will be used.
+Do you want to continue? [Y/n]
+```
+- 更新完套件以後，下載 WSL2 原始碼
+- 原本建議 git clone repo
+```bash
+# Clone the repository (adjust branch name if needed)
+~$ git clone https://github.com/microsoft/WSL2-Linux-Kernel.git --depth=1 -b linux-msft-wsl-6.1.y
+~$ cd WSL2-Linux-Kernel
+```
+- 但也有提到要根據 `uname -r` 的版本，即便上面的指令已經抓了 `6.1.y` 的版本（確認確實存在這個 git remote branch），但測試當下已經是 `linux-msft-wsl-6.6.y`
+- 所以改從 Github Release 下載
+```bash
+~/WSL2-Linux-Kernel$ uname -r
+6.6.87.2-microsoft-standard-WSL2
+~$ wget -c https://github.com/microsoft/WSL2-Linux-Kernel/archive/refs/tags/linux-msft-wsl-6.6.114.1.tar.gz
+~$ tar zxvf linux-msft-wsl-6.6.114.1.tar.gz
+~$ cd WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1/
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ cp Microsoft/config-wsl .config
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ sed -i 's/# CONFIG_HFSPLUS_FS is not set/CONFIG_HFSPLUS_FS=y/g' .config
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ sed -i 's/CONFIG_LOCALVERSION="-microsoft-standard-wsl2"/CONFIG_LOCALVERSION="-custom-hfsplus"/g' .config
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ grep CONFIG_HFSPLUS_FS .config
+CONFIG_HFSPLUS_FS=y
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ make -j$(nproc)
+```
+- 發生錯誤，嘗試安裝 `cpio` 套件，看是否能解決。
+```
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ make -j$(nproc)
+  DESCEND objtool
+  DESCEND bpf/resolve_btfids
+  INSTALL libsubcmd_headers
+  INSTALL libsubcmd_headers
+  CALL    scripts/checksyscalls.sh
+  GZIP    kernel/config_data.gz
+  CHK     kernel/kheaders_data.tar.xz
+  CC      kernel/configs.o
+***
+*** 'cpio' could not be found.
+***
+make[3]: *** [kernel/Makefile:159: kernel/kheaders_data.tar.xz] Error 1
+make[3]: *** Waiting for unfinished jobs....
+make[2]: *** [scripts/Makefile.build:480: kernel] Error 2
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/home/jazz/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1/Makefile:1924: .] Error 2
+make: *** [Makefile:234: __sub-make] Error 2
+
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ sudo apt-get -y install cpio
+```
+- 關閉 `CONFIG_DEBUG_INFO_BTF`
+```bash
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ make -j$(nproc)
+  DESCEND objtool
+  DESCEND bpf/resolve_btfids
+  CALL    scripts/checksyscalls.sh
+  INSTALL libsubcmd_headers
+  INSTALL libsubcmd_headers
+  CHK     kernel/kheaders_data.tar.xz
+  UPD     include/generated/utsversion.h
+  CC      init/version-timestamp.o
+BTF: .tmp_vmlinux.btf: pahole (pahole) is not available
+Failed to generate BTF for vmlinux
+Try to disable CONFIG_DEBUG_INFO_BTF
+make[2]: *** [scripts/Makefile.vmlinux:37: vmlinux] Error 1
+make[1]: *** [/home/jazz/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1/Makefile:1172: vmlinux] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:234: __sub-make] Error 2
+
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ grep CONFIG_DEBUG_INFO_BTF .config
+CONFIG_DEBUG_INFO_BTF=y
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ sed -i 's/CONFIG_DEBUG_INFO_BTF=y/CONFIG_DEBUG_INFO_BTF=n/g' .config
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ grep CONFIG_DEBUG_INFO_BTF .config
+CONFIG_DEBUG_INFO_BTF=n
+```
+- YES!! 成功！
+```bash
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ make -j$(nproc)
+... 略 ...
+Kernel: arch/x86/boot/bzImage is ready  (#4)
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$
+```
+- 複製到家目錄下，然後關閉 WSL。
+```bash
+~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1$ cd /mnt/c/Users/jazzw/
+/mnt/c/Users/jazzw$ mkdir .wsl-kernels
+/mnt/c/Users/jazzw/.wsl-kernels$ cp ~/WSL2-Linux-Kernel-linux-msft-wsl-6.6.114.1/arch/x86/boot/bzImage .
+/mnt/c/Users/jazzw/.wsl-kernels$ ls -alh
+total 14M
+drwxrwxrwx 1 jazz jazz 4.0K Dec  8 15:55 .
+drwxrwxrwx 1 jazz jazz 4.0K Dec  8 15:53 ..
+-rwxrwxrwx 1 jazz jazz  14M Dec  8 15:55 bzImage
+
+/mnt/c/Users/jazzw/.wsl-kernels$ cd ..
+
+/mnt/c/Users/jazzw$ cat >> .wslconfig << EOF
+[wsl2]
+kernel=C:\\Users\\jazzw\\.wsl-kernels\\bzImage
+EOF
+
+/mnt/c/Users/jazzw$ cat .wslconfig
+[wsl2]
+nestedVirtualization=true
+[wsl2]
+kernel=C:\Users\jazzw\.wsl-kernels\bzImage
+```
+- 微調一下 `.wslconfig` 因為上次為了測試 KVM over WSL2，有加 `nestedVirtualization=true`
+```
+/mnt/c/Users/jazzw$ vi .wslconfig
+/mnt/c/Users/jazzw$ cat .wslconfig
+[wsl2]
+nestedVirtualization=true
+kernel=C:\\Users\\jazzw\\.wsl-kernels\\bzImage
+```
+- 在 Powershell 裡面關閉 WSL
+```powershell
+~/Downloads$ wsl --shutdown
+```
+- 從開一個 WSL，確認一下 Kernal 版本：
+```bash
+~$ uname -a
+Linux JazzBook 6.6.114.1-microsoft-standard-WSL2 #4 SMP PREEMPT_DYNAMIC Mon Dec  8 15:51:15 CST 2025 x86_64 x86_64 x86_64 GNU/Linux
+~$ cat /proc/filesystems | grep -i hfs
+        squashfs
+        hfsplus
+~$
+```
+- 確定 `/proc/filesystems` 裡面有 `hfsplus` 支援了，再來就剩下實測一下 WSL2 能否掛載 HFS+ 的檔案系統。
