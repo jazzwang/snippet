@@ -767,3 +767,50 @@ index 963ffc2..cd0119a 100644
 \ No newline at end of file
 +})();
 ```
+- ( 2025-12-08 23:42:32 )
+- 略為比對了一下 WebVTT 的 `temporaryDownloadUrl` 網址，跟先前看到的其實只有很小的差異。嘗試把先前的邏輯與 `?format=json` 套上去。Bingo!!恢復原本的 JSON 輸出，Yeah!!
+```diff
+~/git/snippet/js/chrome-extensions/ms-stream-transcript-extractor$ git diff fetchOverride.js
+diff --git a/fetchOverride.js b/fetchOverride.js
+index 963ffc2..ddc7a00 100644
+--- a/fetchOverride.js
++++ b/fetchOverride.js
+@@ -6,22 +6,22 @@
+                const response = await originalFetch(resource, config);
+
+                const clone = response.clone();
+-
+-               if (resource.includes('streamContent')) {
++               if (resource.includes('select=media%2Ftranscripts')) {
+                        clone.json()
+-                               .then((data) => {
+-                                       const hiddenDiv = document.createElement('div')
+-                                       hiddenDiv.style.display = 'none';
+-                                       hiddenDiv.id = 'transcript-extractor-for-microsoft-stream-hidden-div-with-transcript';
+-                                       hiddenDiv.innerHTML = data.entries
+-                                               .map(x => x.text)
+-                                               .reduce((sum, x) => sum + x, "\n");
+-
+-                                       window.document.body.appendChild(hiddenDiv);
++                               .then(data => {
++                                       if (data && data.media && data.media.transcripts && data.media.transcripts.length > 0) {
++                                               const temporaryDownloadUrl = data.media.transcripts[0].temporaryDownloadUrl;
++                                               console.log("[!NOTE!] Temporary WebVTT Download URL:", temporaryDownloadUrl + '?format=json');
++                                               var dl = document.createElement('a');
++                                               dl.href = temporaryDownloadUrl + '?format=json';
++                                               filename = document.querySelector("[data-unique-id='DocumentTitleContent']").innerText + '.json';
++                                               dl.download = filename;
++                                               console.log(dl);
++                                               dl.click();
++                                       }
+                                })
+-                               .catch((err) => console.error(err));
++                               .catch(err => console.error("Error processing transcripts JSON:", err));
+                }
+-
+                return response;
+        };
+-})();
+\ No newline at end of file
++})();
+```
