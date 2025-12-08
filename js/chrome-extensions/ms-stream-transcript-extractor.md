@@ -724,3 +724,46 @@ w --> *: processedTranscriptData (return)
 ```
 - 感想：
   - 很神奇的是 LLM 居然讀得懂 Webpack 編譯後的結果！雖然說原本程式碼就是想辦法讓電腦可以執行，人腦不好讀（降低易讀性，增加執行效率），但 LLM 意外地成為逆向工程的好幫手。
+
+## 2025-12-08
+
+- 跟 Aider + Gemini 2.5 聯手，把 `fetchOverride.js` 改成從 `temporaryDownloadUrl` 下載 WebVTT 檔。
+  - 因為
+```diff
+~/git/snippet/js/chrome-extensions/ms-stream-transcript-extractor$ git diff fetchOverride.js
+diff --git a/fetchOverride.js b/fetchOverride.js
+index 963ffc2..cd0119a 100644
+--- a/fetchOverride.js
++++ b/fetchOverride.js
+@@ -6,7 +6,22 @@
+                const response = await originalFetch(resource, config);
+
+                const clone = response.clone();
+-
++               if (resource.includes('select=media%2Ftranscripts')) {
++                       clone.json()
++                               .then(data => {
++                                       if (data && data.media && data.media.transcripts && data.media.transcripts.length > 0) {
++                                               const temporaryDownloadUrl = data.media.transcripts[0].temporaryDownloadUrl;
++                                               console.log("[!NOTE!] Temporary WebVTT Download URL:", temporaryDownloadUrl);
++                                               var dl = document.createElement('a');
++                                               dl.href = temporaryDownloadUrl;
++                                               console.log(dl);
++                                               dl.click();
++                                       } else {
++                                               console.warn("Could not find temporaryDownloadUrl in transcripts data.");
++                                       }
++                               })
++                               .catch(err => console.error("Error processing transcripts JSON:", err));
++               }
+                if (resource.includes('streamContent')) {
+                        clone.json()
+                                .then((data) => {
+@@ -24,4 +39,4 @@
+
+                return response;
+        };
+-})();
+\ No newline at end of file
++})();
+```
