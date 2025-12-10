@@ -118,3 +118,57 @@ jazzw@JazzBook:~/git/snippet$ which playwright
 ```bash
 ~/git/snippet/py/playwright$ playwright codegen -o playwright-user-agent.py --target=python --save-storage local-storage.json https://myapps.microsoft.com/
 ```
+- 照著參考文章，補上這一段：
+```diff
+ def run(playwright: Playwright) -> None:
+     browser = playwright.chromium.launch(headless=False)
++    ## force to use 'Chrome - Mac' user_agent string
++    user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
++
++    if os.path.exists('sso-storage.json'):
++      print("[INFO] sso-storage.json found. loading into browser context.")
++      context = browser.new_context(storage_state='sso-storage.json', user_agent=user_agent)
++    else:
++      context = browser.new_context(user_agent=user_agent)
+-    context = browser.new_context()
+     page = context.new_page()
+```
+- 實際上我也可以不用手動把程式碼加上去，只要執行 `playwright codegen` 時加上 `--user-agent <ua string>` 即可。
+
+```bash
+~/git/snippet/py/playwright$ playwright.exe codegen -h
+Usage: playwright codegen [options] [url]
+
+open page and generate code for user actions
+
+Options:
+  -o, --output <file name>             saves the generated script to a file
+  --target <language>                  language to generate, one of javascript, playwright-test, python, python-async, python-pytest, csharp,
+                                       csharp-mstest, csharp-nunit, java, java-junit (default: "python")
+  --test-id-attribute <attributeName>  use the specified attribute to generate data test ID selectors
+  -b, --browser <browserType>          browser to use, one of cr, chromium, ff, firefox, wk, webkit (default: "chromium")
+  --block-service-workers              block service workers
+  --channel <channel>                  Chromium distribution channel, "chrome", "chrome-beta", "msedge-dev", etc
+  --color-scheme <scheme>              emulate preferred color scheme, "light" or "dark"
+  --device <deviceName>                emulate device, for example  "iPhone 11"
+  --geolocation <coordinates>          specify geolocation coordinates, for example "37.819722,-122.478611"
+  --ignore-https-errors                ignore https errors
+  --load-storage <filename>            load context storage state from the file, previously saved with --save-storage
+  --lang <language>                    specify language / locale, for example "en-GB"
+  --proxy-server <proxy>               specify proxy server, for example "http://myproxy:3128" or "socks5://myproxy:8080"
+  --proxy-bypass <bypass>              comma-separated domains to bypass proxy, for example ".com,chromium.org,.domain.com"
+  --save-har <filename>                save HAR file with all network activity at the end
+  --save-har-glob <glob pattern>       filter entries in the HAR by matching url against this glob pattern
+  --save-storage <filename>            save context storage state at the end, for later use with --load-storage
+  --timezone <time zone>               time zone to emulate, for example "Europe/Rome"
+  --timeout <timeout>                  timeout for Playwright actions in milliseconds, no timeout by default
+  --user-agent <ua string>             specify user agent string
+  --viewport-size <size>               specify browser viewport size in pixels, for example "1280, 720"
+  -h, --help                           display help for command
+
+Examples:
+
+  $ codegen
+  $ codegen --target=python
+  $ codegen -b webkit https://example.com
+```
