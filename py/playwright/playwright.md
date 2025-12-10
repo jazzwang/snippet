@@ -111,3 +111,10 @@ jazzw@JazzBook:~/git/snippet$ which playwright
   - [Feature]: Docker container to run playwright in VNC for use headed mode #2648
     - https://github.com/microsoft/playwright-python/issues/2648
     - https://github.com/Grommash9/playwright_vnc
+
+## 2025-12-10
+
+- 實驗更換 User Agent
+```bash
+~/git/snippet/py/playwright$ playwright codegen -o playwright-user-agent.py --target=python --save-storage local-storage.json https://myapps.microsoft.com/
+```
