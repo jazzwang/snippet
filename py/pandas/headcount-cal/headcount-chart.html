@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Growth Trend</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .bar rect {
+            stroke: white;
+        }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+        .axis text {
+            font-size: 10px;
+        }
+        .legend rect {
+            stroke: #ccc;
+            stroke-width: 1px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Team Headcount by Month</h1>
+    <div id="chart"></div>
+
+    <script>
+        const data = [
+    {
+        "month_end": "2024-11-30",
+        "teams": {
+            "A": 4,
+            "M": 1,
+            "D": 0,
+            "U": 0
+        },
+        "overall_headcount": 5
+    },
+    {
+        "month_end": "2024-12-31",
+        "teams": {
+            "A": 4,
+            "M": 1,
+            "D": 0,
+            "U": 0
+        },
+        "overall_headcount": 5
+    },
+    {
+        "month_end": "2025-01-31",
+        "teams": {
+            "A": 4,
+            "M": 4,
+            "D": 2,
+            "U": 3
+        },
+        "overall_headcount": 13
+    },
+    {
+        "month_end": "2025-02-28",
+        "teams": {
+            "A": 6,
+            "M": 11,
+            "D": 7,
+            "U": 10
+        },
+        "overall_headcount": 34
+    },
+    {
+        "month_end": "2025-03-31",
+        "teams": {
+            "A": 6,
+            "M": 14,
+            "D": 7,
+            "U": 11
+        },
+        "overall_headcount": 38
+    },
+    {
+        "month_end": "2025-04-30",
+        "teams": {
+            "A": 5,
+            "M": 13,
+            "D": 7,
+            "U": 11
+        },
+        "overall_headcount": 36
+    },
+    {
+        "month_end": "2025-05-31",
+        "teams": {
+            "A": 5,
+            "M": 13,
+            "D": 7,
+            "U": 11
+        },
+        "overall_headcount": 36
+    },
+    {
+        "month_end": "2025-06-30",
+        "teams": {
+            "A": 10,
+            "M": 13,
+            "D": 7,
+            "U": 11
+        },
+        "overall_headcount": 41
+    },
+    {
+        "month_end": "2025-07-31",
+        "teams": {
+            "A": 11,
+            "M": 12,
+            "D": 7,
+            "U": 13
+        },
+        "overall_headcount": 43
+    },
+    {
+        "month_end": "2025-08-31",
+        "teams": {
+            "A": 12,
+            "M": 12,
+            "D": 7,
+            "U": 20
+        },
+        "overall_headcount": 51
+    },
+    {
+        "month_end": "2025-09-30",
+        "teams": {
+            "A": 14,
+            "M": 12,
+            "D": 7,
+            "U": 24
+        },
+        "overall_headcount": 57
+    },
+    {
+        "month_end": "2025-10-31",
+        "teams": {
+            "A": 13,
+            "M": 12,
+            "D": 7,
+            "U": 24
+        },
+        "overall_headcount": 56
+    },
+    {
+        "month_end": "2025-11-30",
+        "teams": {
+            "A": 14,
+            "M": 12,
+            "D": 7,
+            "U": 25
+        },
+        "overall_headcount": 58
+    },
+    {
+        "month_end": "2025-12-31",
+        "teams": {
+            "A": 14,
+            "M": 12,
+            "D": 7,
+            "U": 25
+        },
+        "overall_headcount": 58
+    }
+];
+
+        // Chart dimensions
+        const margin = {top: 20, right: 100, bottom: 60, left: 50},
+              width = 960 - margin.left - margin.right,
+              height = 500 - margin.top - margin.bottom;
+
+        // Append SVG to the chart div
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Parse dates
+        const parseDate = d3.timeParse("%Y-%m-%d");
+        data.forEach(d => {
+            d.month_end = parseDate(d.month_end);
+        });
+
+        // Extract team names (keys for the stack)
+        const teamNames = Object.keys(data[0].teams);
+
+        // Prepare data for stacking
+        const stackedData = d3.stack()
+            .keys(teamNames)
+            .value((d, key) => d.teams[key])
+            (data);
+
+        // X scale (time scale for months)
+        const xScale = d3.scaleBand()
+            .domain(data.map(d => d.month_end))
+            .range([0, width])
+            .padding(0.1);
+
+        // Y scale (linear scale for headcount)
+        const yScale = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.overall_headcount)])
+            .nice()
+            .range([height, 0]);
+
+        // Color scale (ordinal scale for teams)
+        const colorScale = d3.scaleOrdinal()
+            .domain(teamNames)
+            .range(d3.schemeCategory10); // Using D3's built-in color scheme
+
+        // Add X axis
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(xScale)
+                .tickFormat(d3.timeFormat("%b %Y")))
+            .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("transform", "rotate(-45)");
+
+        // Add Y axis
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(d3.axisLeft(yScale));
+
+        // Add Y axis label
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left)
+            .attr("x", 0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Headcount");
+
+        // Create the bars
+        svg.selectAll(".layer")
+            .data(stackedData)
+            .enter().append("g")
+            .attr("class", "layer")
+            .attr("fill", d => colorScale(d.key))
+            .selectAll("rect")
+            .data(d => d)
+            .enter().append("rect")
+            .attr("x", d => xScale(d.data.month_end))
+            .attr("y", d => yScale(d[1]))
+            .attr("height", d => yScale(d[0]) - yScale(d[1]))
+            .attr("width", xScale.bandwidth());
+
+        // Add text labels to each segment
+        svg.selectAll(".layer")
+            .selectAll("text")
+            .data(d => d)
+            .enter().append("text")
+            .attr("x", d => xScale(d.data.month_end) + xScale.bandwidth() / 2)
+            .attr("y", d => yScale(d[0]) - (yScale(d[0]) - yScale(d[1])) / 2)
+            .attr("dy", "0.35em") // Vertically center text
+            .text(d => {
+                const value = d[1] - d[0];
+                return value > 0 ? value : ""; // Only show label if value is greater than 0
+            })
+            .attr("font-size", "10px")
+            .attr("fill", "black")
+            .attr("text-anchor", "middle");
+
+        // Add overall headcount labels on top of each bar
+        svg.selectAll(".overall-headcount-label")
+            .data(data)
+            .enter().append("text")
+            .attr("class", "overall-headcount-label")
+            .attr("x", d => xScale(d.month_end) + xScale.bandwidth() / 2)
+            .attr("y", d => yScale(d.overall_headcount) - 5) // Position slightly above the bar
+            .attr("text-anchor", "middle")
+            .attr("font-size", "12px")
+            .attr("fill", "black")
+            .text(d => d.overall_headcount);
+
+        // Add legend
+        const legend = svg.selectAll(".legend")
+            .data(teamNames.slice().reverse()) // Reverse for legend order to match stack visually
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", (d, i) => `translate(${width + 20},${i * 20})`);
+
+        legend.append("rect")
+            .attr("x", 0)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", colorScale);
+
+        legend.append("text")
+            .attr("x", 24)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "start")
+            .text(d => d);
+
+    </script>
+</body>
+</html>
