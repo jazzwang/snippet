@@ -711,3 +711,434 @@ To github.com:jazzwang/aider-labs.git
 ? Add topics?(csv format) tutorial
 ✓ Edited repository jazzwang/aider-labs
 ```
+
+## 2025-12-10
+
+- 緣起：想要查詢 Github Enterprise 上，特定使用者曾經貢獻過哪些 Git Repo
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+are there github api or gh cli command to list of git repositories contributed by specific user?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, there are methods using the **GitHub API** to list repositories a specific user has contributed to, though it's not a single, direct endpoint for "all contributed repositories." There is also a powerful way to do this using the **`gh cli`** by combining commands.
+
+-----
+
+## 💻 Using the GitHub REST API (Advanced Method)
+
+The GitHub REST API doesn't have a direct endpoint like `/users/{username}/contributed_repos`. A common and effective workaround is to use the **Search API** to find all the user's **Pull Requests (`type:pr`)** and then extract the repository information from those results.
+
+### 1\. API Endpoint
+
+You will use the **Search Issues and Pull Requests** endpoint:
+
+  * **Endpoint:** `GET /search/issues`
+  * **Query Parameter (`q`):** You must construct a search query string. To find all Pull Requests authored by a specific user, the query is: `q=author:{username}+type:pr`
+      * **Example for user `octocat`:** `q=author:octocat+type:pr`
+  * **Pagination:** You'll need to paginate through the results to get a complete list, as the API limits results per page (max 100) and the total number of results returned (up to 1,000 for searches).
+
+### 2\. Request Example (with `curl`)
+
+This example uses `curl` and `jq` (a command-line JSON processor) to fetch the first page of results and list the unique repository names (`owner/repo`). You'd need a loop to handle multiple pages.
+
+```bash
+curl -sS -G \
+  "https://api.github.com/search/issues" \
+  -H "Accept: application/vnd.github.v3+json" \
+  -H "Authorization: token YOUR_GITHUB_TOKEN" \
+  --data-urlencode "q=author:octocat+type:pr" \
+  | jq -r '.items[] | .repository_url' \
+  | grep -oP 'repos/\K.*' \
+  | sort -u
+```
+
+## 🛠️ Using the GitHub CLI (`gh cli`)
+
+The **GitHub CLI (`gh`)** provides the most convenient way to do this from the command line by leveraging the same Search API logic with a simpler syntax.
+
+### 1\. `gh api` Command
+
+You can use the `gh api` command to hit the same Search API endpoint and pipe the output to `jq`:
+
+```bash
+gh api search/issues \
+  -X GET \
+  -f q='author:octocat type:pr' \
+  --paginate \
+  --jq '.items[] | .repository_url' \
+  | grep -oP 'repos/\K.*' \
+  | sort -u
+```
+
+  * **`gh api search/issues`**: Calls the `/search/issues` endpoint.
+  * **`-f q='...'`**: Sets the query parameter.
+  * **`--paginate`**: **Crucially**, this handles the API pagination automatically, fetching all pages up to the 1000-result limit.
+  * **`--jq '.items[] | .repository_url'`**: Extracts the URL of the repository for each Pull Request item.
+  * **`grep -oP 'repos/\K.*'`**: A common way to strip the initial part of the URL (`https://api.github.com/repos/`) to get just the `owner/repo` name.
+  * **`sort -u`**: Ensures you get a list of **unique** repository names.
+
+Replace `octocat` with the desired username.
+
+-----
+
+Would you like me to generate a complete shell script that automatically iterates through all pages of the Search API to get the full list of repositories contributed by a specific user?
+</td></tr></table>
+- 上述結果看起來比較像是特定使用者曾經發過的 Pull Request 列表
+- 實測：用 Github 個人帳號
+```bash
+~/git/snippet$ gh api search/issues \
+  -X GET \
+  -f q='author:octocat type:pr' \
+  --paginate \
+  --jq '.items[] | .repository_url' \
+  | grep -oP 'repos/\K.*' \
+  | sort -u
+octocat/Hello-World
+violet-org/boysenberry-repo
+```
+- 這個查詢代表 `octocat` 這個帳號曾經發過 PR 到 `octocat/Hello-World` 跟 `violet-org/boysenberry-repo`
+- 改成查我自己
+```bash
+~/git/snippet$ gh api search/issues -X GET -f q='author:jazzwang type:pr' --paginate --jq '.items[] | .repository_url' | grep -oP 'repos/\K.*' | sort -u
+awsdocs/amazon-cloudwatch-user-guide
+cloudera/cm_api
+Homebrew/homebrew-cask
+hueitan/made-in-taiwan
+jazzwang/hicloud-hadoop
+mitaketw/sms-java
+tenmax/azurekit
+```
+- 改問能否查詢曾經 commit 過的 git repo 列表
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+are there github api or gh cli command to list of git repositories committed by specific user?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, you can list the GitHub repositories a specific user has committed to using both the **GitHub API** (specifically the GraphQL API or Search REST API) and a powerful two-step method with the **GitHub CLI (`gh`)**.
+
+There is no single, simple command for this, as a user's commits can be scattered across thousands of repositories they don't own. The most efficient methods involve leveraging GitHub's search capabilities.
+
+-----
+
+## 🛠️ Using the GitHub CLI (`gh`)
+
+The GitHub CLI provides the most accessible command-line solution by using its built-in search functionality (`gh search commits`) and parsing the results.
+
+### `gh cli` Command
+
+You can use the `gh search commits` command to find all commits authored by a user, extract the repository names from those results, and then list the unique names.
+
+```bash
+gh search commits --author=USERNAME --json repository \
+  --limit 1000 \
+  | jq -r '.[] | .repository.nameWithOwner' \
+  | sort -u
+```
+
+  * **`gh search commits`**: Searches across GitHub's commit history.
+  * **`--author=USERNAME`**: Filters the search to include only commits authored by the specified GitHub `USERNAME`.
+  * **`--json repository`**: Tells the command to output the result in JSON format and only include the `repository` object for each commit.
+  * **`--limit 1000`**: Sets the maximum number of results to retrieve (the maximum for this search endpoint is generally 1,000 commits). For a more complete list, you'd need to paginate (see the API section).
+  * **`| jq -r '.[] | .repository.nameWithOwner'`**: Uses the `jq` tool to extract the full repository name (e.g., `owner/repo-name`) from the JSON output.
+  * **`| sort -u`**: Sorts the list alphabetically and filters out duplicate repository names, giving you a clean list of unique repositories.
+
+-----
+
+## 💻 Using the GitHub API (GraphQL is Recommended)
+
+The GraphQL API is superior to the REST API for this task because it allows you to retrieve the repository information directly while fetching the commit contributions, making it far more efficient than the REST API's search endpoint.
+
+### 1\. GraphQL Query
+
+You can use the `repositoriesContributedTo` field on the `User` object. This specifically lists repositories where the user has made contributions (including commits, pull requests, and issues).
+
+  * **Endpoint:** `POST https://api.github.com/graphql`
+  * **Query Example:**
+
+<!-- end list -->
+
+```graphql
+query CommitsBy($username: String!, $cursor: String) {
+  user(login: $username) {
+    repositoriesContributedTo(
+      first: 100
+      after: $cursor
+      contributionTypes: [COMMIT]
+      # Set to PUBLIC or ALL (requires auth with 'repo' scope)
+      privacy: PUBLIC 
+    ) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        nameWithOwner
+      }
+    }
+  }
+}
+```
+
+### 2\. Execution with `gh api` (The easiest way)
+
+You can execute this GraphQL query directly using the `gh api` command, which simplifies authentication and pagination (if you remove the pagination logic and rely on the maximum `first: 100` results).
+
+```bash
+gh api graphql -f query='
+  query($username: String!) {
+    user(login: $username) {
+      repositoriesContributedTo(
+        first: 100
+        contributionTypes: [COMMIT]
+        privacy: PUBLIC
+      ) {
+        nodes {
+          nameWithOwner
+        }
+      }
+    }
+  }
+' -f username='octocat' | jq -r '.data.user.repositoriesContributedTo.nodes[] | .nameWithOwner'
+```
+
+  * **Note:** The GraphQL API also requires **pagination** (using the `after: $cursor` variables) to get a truly complete list of hundreds or thousands of contributed repositories. The script above only retrieves the first 100 results.
+
+Would you like me to show you how to construct a more complex script that handles the necessary **pagination** using the GraphQL API or the REST API search command for a full, comprehensive list?
+</td></tr></table>
+
+- 實測：
+
+  ```bash
+  ~/git/snippet$ gh search commits --author=jazzwang --json repository \
+    --limit 1000 \
+    | jq -r '.[] | .repository.nameWithOwner' \
+    | sort -u
+  null
+  ```
+
+- 把 `nameWithOwner` 改成 `url` 就對了～應該是 JSON Schema 有變化造成 Gemini 誤判
+
+  ```bash
+  ~/git/snippet$ gh search commits --author=jazzwang --json repository   --limit 1000   | jq -r '.[] | .repository.url'   | sort -u
+  https://github.com/aiham/cloudera-director
+  https://github.com/alxdrl/homebrew-cask
+  https://github.com/armenelruth/homebrew-cask
+  https://github.com/astzweig/homebrew-cask
+  https://github.com/awsdocs/amazon-cloudwatch-user-guide
+  https://github.com/colinshr/homebrew-cask2
+  https://github.com/colinshr/homebrew-cask3
+  https://github.com/colinshr/homebrew-cask4
+  https://github.com/crawlzilla/crawlzilla.github.com
+  https://github.com/datacontw/DataCon.TW_2020
+  https://github.com/datacontw/datacon.tw_2020_test_scripts
+  https://github.com/edsolis/homebrew-cask-mirror
+  https://github.com/etusolution/EHC_2014
+  https://github.com/FluentdTW/fluentd-labs
+  https://github.com/HadoopTW/communities-dashboard
+  https://github.com/HadoopTW/CS100.1x
+  https://github.com/HadoopTW/spark_labs
+  https://github.com/Homebrew/homebrew-cask
+  https://github.com/jazzwang/advent-of-code
+  https://github.com/jazzwang/aider-labs
+  https://github.com/jazzwang/cloud-interop
+  https://github.com/jazzwang/confluence-insight
+  https://github.com/jazzwang/data-pipeline-labs
+  https://github.com/jazzwang/docker-pool
+  https://github.com/jazzwang/dotfiles
+  https://github.com/jazzwang/dotnet-codespace
+  https://github.com/jazzwang/f-motif
+  https://github.com/jazzwang/GenAI
+  https://github.com/jazzwang/github-action-lab
+  https://github.com/jazzwang/gitpod-labs
+  https://github.com/jazzwang/hadoop_labs
+  https://github.com/jazzwang/haduzilla
+  https://github.com/jazzwang/hicloud-hadoop
+  https://github.com/jazzwang/hive_labs
+  https://github.com/jazzwang/homebrew-lab
+  https://github.com/jazzwang/hpt-chat
+  https://github.com/jazzwang/init-spark-sql
+  https://github.com/jazzwang/init-spark-stream
+  https://github.com/jazzwang/jazzwang.github.io
+  https://github.com/jazzwang/katacoda-scenarios
+  https://github.com/jazzwang/ms-teams-chatbot
+  https://github.com/jazzwang/nyc-tlc
+  https://github.com/jazzwang/preseed
+  https://github.com/jazzwang/pytest-selenium-ci
+  https://github.com/jazzwang/react-labs
+  https://github.com/jazzwang/sbt-liquibase-sqlite
+  https://github.com/jazzwang/scala-spark.g8
+  https://github.com/jazzwang/scoop-bucket
+  https://github.com/jazzwang/serverless-wordpress
+  https://github.com/jazzwang/skills-copilot-codespaces-vscode
+  https://github.com/jazzwang/snippet
+  https://github.com/jazzwang/vagrant-gcp
+  https://github.com/jazzwang/vagrant-hadoop
+  https://github.com/jazzwang/vagrant-pool
+  https://github.com/jazzwang/webex-recorder
+  https://github.com/korczis/mahout-spark
+  https://github.com/liling0509/tea-test
+  https://github.com/MaksSlot/cask
+  https://github.com/phstudy/vagrant-hadoop-etu
+  https://github.com/pr14m1990/cask
+  https://github.com/TDEA-Study/DDIA-2020-1
+  https://github.com/TheCoolBlackCat/homebrew-cask-orbstack
+  https://github.com/vikrampratap21/AmazonCloudWatchAgent-Configuration-file
+  https://github.com/X-oss-byte/homebrewcask
+  https://github.com/xreg2/schema
+  ~/git/snippet$
+  ```
+
+- 那如果想要看是誰 merge 了 PR 呢？
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+are there github api or gh cli command to list of git repositories whose PR were  resolved by specific user?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, the most reliable way to find a list of repositories where a specific user **merged** a Pull Request is by using the **GitHub Search API** or the **GitHub CLI (`gh`)** which wraps that API.
+
+The key is to search for Pull Requests that are `merged` and filter by the `merger` user.
+
+-----
+
+## 🛠️ Using the GitHub CLI (`gh`)
+
+The `gh` CLI provides the most straightforward command-line method by combining the powerful Search API with JSON filtering (`jq`).
+
+### 1\. The `gh` Command
+
+You use the `gh api` command to access the GitHub Search API and construct a query that filters for merged PRs by the merger.
+
+```bash
+gh api search/issues \
+  -X GET \
+  -f q='is:pr is:merged merger:USERNAME' \
+  --paginate \
+  --jq '.items[] | .repository_url' \
+  | grep -oP 'repos/\K.*' \
+  | sort -u
+```
+
+| Component | Purpose |
+| :--- | :--- |
+| **`is:pr is:merged`** | Filters the results to only include Pull Requests that have been merged. |
+| **`merger:USERNAME`** | Filters those merged PRs to include only the ones where the specified `USERNAME` was the one who clicked the merge button. |
+| **`--paginate`** | Handles API pagination automatically to retrieve more than the default 30 results (up to the search API limit of 1000). |
+| **`--jq '... | .repository_url'`** | Uses `jq` to extract the full repository API URL from each result item. |
+| **`grep -oP 'repos/\K.*'`** | Strips the API prefix to give you the clean `owner/repo-name`. |
+| **`sort -u`** | Sorts the repository names and lists only **unique** names. |
+
+-----
+
+## 💻 Using the GitHub REST API (Advanced Search)
+
+You can achieve the same result directly using the **REST API's Search Issues and Pull Requests** endpoint. This requires manual handling of pagination in your script.
+
+### 1\. API Endpoint and Query
+
+  * **Endpoint:** `GET /search/issues`
+  * **Query Parameter (`q`):**
+      * `q=is:pr+is:merged+merger:USERNAME`
+
+### 2\. Request Example (`curl` with Pagination Concept)
+
+You would need a loop to increment the `&page=` parameter until `total_count` is reached or the array of `items` is empty.
+
+A single-page request example (assuming you use a tool like `jq` to process the JSON):
+
+```bash
+curl -sS -G \
+  "https://api.github.com/search/issues" \
+  -H "Accept: application/vnd.github.v3+json" \
+  -H "Authorization: token YOUR_GITHUB_TOKEN" \
+  --data-urlencode "q=is:pr is:merged merger:octocat" \
+  --data-urlencode "per_page=100" \
+  | jq -r '.items[] | .repository_url' \
+  | grep -oP 'repos/\K.*' \
+  | sort -u
+```
+
+-----
+
+The user in this scenario would be looking for the fastest, most effective way to track merge activity, which the `gh cli` provides in a single command. The included video shows how to use the `gh cli` for general PR management.
+
+You can learn more about managing pull requests from the command line by checking out [Create, View, and Merge GitHub PRs with the gh CLI](https://www.youtube.com/watch?v=EXlLKq4kuvQ).
+</td></tr></table>
+- 如果想查有參與過 PR Review 的呢？
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+are there github api or gh cli command to list of git repositories whose PR were  reviewed by specific user?
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+Yes, the most effective way to list repositories where a specific user has **reviewed** a Pull Request is by using the **GitHub Search API** or the **GitHub CLI (`gh`)**, which utilizes the same search capabilities.
+
+The key is to search for Pull Requests where the user is listed as a **reviewer** using the specific search qualifier.
+
+-----
+
+## 🛠️ Using the GitHub CLI (`gh`)
+
+The `gh` CLI offers the most convenient command-line method by executing the API search and handling the output and pagination for you.
+
+### 1\. The `gh` Command
+
+You use the `gh api` command to access the GitHub Search API and construct a query that filters for Pull Requests reviewed by the specific user (`reviewed-by`).
+
+```bash
+gh api search/issues \
+  -X GET \
+  -f q='is:pr reviewed-by:USERNAME' \
+  --paginate \
+  --jq '.items[] | .repository_url' \
+  | grep -oP 'repos/\K.*' \
+  | sort -u
+```
+
+| Component | Purpose |
+| :--- | :--- |
+| **`is:pr`** | Filters the results to only include Pull Requests (excluding issues). |
+| **`reviewed-by:USERNAME`** | Filters for PRs where the specified `USERNAME` has submitted a review (Approved, Commented, or Requested Changes). |
+| **`--paginate`** | **Crucially**, this handles API pagination automatically, fetching all pages up to the search API limit (typically 1,000 results). |
+| **`--jq '... | .repository_url'`** | Uses `jq` to extract the full API URL for the repository associated with each PR. |
+| **`grep -oP 'repos/\K.*'`** | Strips the API prefix to yield the clean repository name, e.g., `owner/repo-name`. |
+| **`sort -u`** | Sorts the list alphabetically and filters out duplicate repository names. |
+
+### 2\. Filtering by Review Status (Optional)
+
+You can refine this query if you only want to see repositories where the user **approved** the PR by changing the query:
+
+  * **For Approved Reviews:** `q='is:pr review:approved reviewed-by:USERNAME'`
+  * **For Reviews Requesting Changes:** `q='is:pr review:changes-requested reviewed-by:USERNAME'`
+
+-----
+
+## 💻 Using the GitHub API (GraphQL is Alternative)
+
+While the REST API's Search endpoint is the most direct way, the **GraphQL API** also provides a dedicated way to list repositories a user has contributed reviews to.
+
+You can use the `pullRequestReviewContributionsByRepository` field within a user's `contributionsCollection`. This is more powerful for getting a truly comprehensive list beyond the 1000-item limit of the Search API, but requires writing a slightly more complex, paginated GraphQL query.
+
+### GraphQL Field Snippet:
+
+```graphql
+{
+  user(login: "USERNAME") {
+    contributionsCollection {
+      pullRequestReviewContributionsByRepository {
+        repository {
+          nameWithOwner
+        }
+        # ... other details
+      }
+    }
+  }
+}
+```
+
+You would use the `gh api graphql` command to execute this, adding pagination logic to retrieve all results.
+</td></tr></table>
+
+- 後記：
+  - 後來把 Github CLI 的 Authentication 切換成 Github Enterprise 確實也可以得到團隊成員曾經 commit 過的 Git Repo
+  - 搭配 git-extras 的 `git summary --line` 就可以得到每個團隊成員貢獻的程式碼總行數
+  - 當然也可以得到總 commit 次數跟 Merge 了多少 PR，Review 了多少 PR
+  - 這有點像是 Github 開發者個人版上的雷達圖，可以生成一個「量化」的貢獻度視覺化圖表
