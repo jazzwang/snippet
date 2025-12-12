@@ -67,140 +67,140 @@ headcount_chart.html
             {
                 "month_end": "2024-11-30",
                 "teams": {
-                    "AAP": 4,
-                    "MDM": 1,
-                    "DET": 0,
-                    "UIP": 0
+                    "A": 4,
+                    "M": 1,
+                    "D": 0,
+                    "U": 0
                 },
                 "overall_headcount": 5
             },
             {
                 "month_end": "2024-12-31",
                 "teams": {
-                    "AAP": 4,
-                    "MDM": 1,
-                    "DET": 0,
-                    "UIP": 0
+                    "A": 4,
+                    "M": 1,
+                    "D": 0,
+                    "U": 0
                 },
                 "overall_headcount": 5
             },
             {
                 "month_end": "2025-01-31",
                 "teams": {
-                    "AAP": 4,
-                    "MDM": 4,
-                    "DET": 2,
-                    "UIP": 3
+                    "A": 4,
+                    "M": 4,
+                    "D": 2,
+                    "U": 3
                 },
                 "overall_headcount": 13
             },
             {
                 "month_end": "2025-02-28",
                 "teams": {
-                    "AAP": 6,
-                    "MDM": 11,
-                    "DET": 7,
-                    "UIP": 10
+                    "A": 6,
+                    "M": 11,
+                    "D": 7,
+                    "U": 10
                 },
                 "overall_headcount": 34
             },
             {
                 "month_end": "2025-03-31",
                 "teams": {
-                    "AAP": 6,
-                    "MDM": 14,
-                    "DET": 7,
-                    "UIP": 11
+                    "A": 6,
+                    "M": 14,
+                    "D": 7,
+                    "U": 11
                 },
                 "overall_headcount": 38
             },
             {
                 "month_end": "2025-04-30",
                 "teams": {
-                    "AAP": 5,
-                    "MDM": 13,
-                    "DET": 7,
-                    "UIP": 11
+                    "A": 5,
+                    "M": 13,
+                    "D": 7,
+                    "U": 11
                 },
                 "overall_headcount": 36
             },
             {
                 "month_end": "2025-05-31",
                 "teams": {
-                    "AAP": 5,
-                    "MDM": 13,
-                    "DET": 7,
-                    "UIP": 11
+                    "A": 5,
+                    "M": 13,
+                    "D": 7,
+                    "U": 11
                 },
                 "overall_headcount": 36
             },
             {
                 "month_end": "2025-06-30",
                 "teams": {
-                    "AAP": 10,
-                    "MDM": 13,
-                    "DET": 7,
-                    "UIP": 11
+                    "A": 10,
+                    "M": 13,
+                    "D": 7,
+                    "U": 11
                 },
                 "overall_headcount": 41
             },
             {
                 "month_end": "2025-07-31",
                 "teams": {
-                    "AAP": 11,
-                    "MDM": 12,
-                    "DET": 7,
-                    "UIP": 13
+                    "A": 11,
+                    "M": 12,
+                    "D": 7,
+                    "U": 13
                 },
                 "overall_headcount": 43
             },
             {
                 "month_end": "2025-08-31",
                 "teams": {
-                    "AAP": 12,
-                    "MDM": 12,
-                    "DET": 7,
-                    "UIP": 20
+                    "A": 12,
+                    "M": 12,
+                    "D": 7,
+                    "U": 20
                 },
                 "overall_headcount": 51
             },
             {
                 "month_end": "2025-09-30",
                 "teams": {
-                    "AAP": 14,
-                    "MDM": 12,
-                    "DET": 7,
-                    "UIP": 24
+                    "A": 14,
+                    "M": 12,
+                    "D": 7,
+                    "U": 24
                 },
                 "overall_headcount": 57
             },
             {
                 "month_end": "2025-10-31",
                 "teams": {
-                    "AAP": 13,
-                    "MDM": 12,
-                    "DET": 7,
-                    "UIP": 24
+                    "A": 13,
+                    "M": 12,
+                    "D": 7,
+                    "U": 24
                 },
                 "overall_headcount": 56
             },
             {
                 "month_end": "2025-11-30",
                 "teams": {
-                    "AAP": 14,
-                    "MDM": 12,
-                    "DET": 7,
-                    "UIP": 25
+                    "A": 14,
+                    "M": 12,
+                    "D": 7,
+                    "U": 25
                 },
                 "overall_headcount": 58
             },
             {
                 "month_end": "2025-12-31",
                 "teams": {
-                    "AAP": 14,
-                    "MDM": 12,
-                    "DET": 7,
-                    "UIP": 25
+                    "A": 14,
+                    "M": 12,
+                    "D": 7,
+                    "U": 25
                 },
                 "overall_headcount": 58
             }
