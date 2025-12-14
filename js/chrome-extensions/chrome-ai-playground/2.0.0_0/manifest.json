@@ -1,0 +1,31 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "icon.png",
+         "16": "icon.png",
+         "32": "icon.png",
+         "48": "icon.png"
+      },
+      "default_popup": "index.html",
+      "default_title": "Chrome AI Playground"
+   },
+   "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+   },
+   "description": "Harness Chrome's built-in AI for instant translation, language detection, and text summarization.",
+   "icons": {
+      "128": "icon.png",
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn5Q5Y8BCnE/FmgEReclFDA0nJYwsBMGAKC4yqCsiqgJDmJiD0ypIykFpuOdK5AYKhqmazFbJkBeEszJpdMSwtuo/TSt6CCCtfc2JRHZ2IGsZnUyHwoUEem0IR0gJE0yHL0GJdstffd4kD4exjwjNeYaqfoG4OlaLmWWsSJVUpsN+GfjVwT//wn+Rszj/QRj5my1uwaM/IwIaOPuX2ONzGooREcI2B6L5owG3hlrxHy0adwzYmDVUl5m5hZmrFQB45RI5X2Cewv/RAAiMUKCS7+LwjMEalryQf7dRddNzBhPmDsVquGF04iQb0h8wgvxJodVoskJAb5Nsi2p127gm+QIDAQAB",
+   "manifest_version": 3,
+   "name": "Chrome AI Playground",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.0.0",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "assets/*" ]
+   } ]
+}
