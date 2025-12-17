@@ -213,3 +213,9 @@ Press "o" to open in Browser.
   - https://github.com/datawranglerai/self-host-n8n-on-gcr
 - https://github.com/asomas/n8n-cloudrun
 - https://github.com/luke-lewandowski/n8n-cloudrun-example
+
+## 2025-12-17
+
+### Running n8n using docker-compose
+
+- https://docs.n8n.io/hosting/installation/server-setups/docker-compose/#3-dns-setup 
