@@ -219,3 +219,18 @@ Press "o" to open in Browser.
 ### Running n8n using docker-compose
 
 - https://docs.n8n.io/hosting/installation/server-setups/docker-compose/#3-dns-setup 
+- created [lab0](./lab0/n8n-lab0.md)
+
+## 2025-12-18
+
+- 先前曾經看過 YouTube 影片，使用 Power Automate 的功能發送 Teams Group Chat 新訊息到 n8n Webhook，但這需要仰賴 Power Automate 的額外付費功能，所以後來就沒有繼續實驗。
+  - https://n8n.io/integrations/webhook/and/microsoft-teams/
+- 昨天想說查查看有沒有新的 MS Teams 整合，查到 YouTube 影片介紹用 Microsoft credentials 來整合 Microsoft 365 OAuth，
+  進而可以與 Microsoft Outlook, OneDrive, SharePoint, Teams 進行整合
+  - https://n8n.io/integrations/microsoft-teams/
+  - https://docs.n8n.io/integrations/builtin/credentials/microsoft/
+  - https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.microsoftteams/
+- 待測試 \#TODO
+  - 看了一下說明，OAuth 這段需要公司 AD Admin 的權限許可，所以需要實際跑一次看看
+  - 如果公司的 AD Admin 全部不許可，也可以實際測試看看舊的 hotmail 或 live.com 帳號是否可以整合（個人版 Microsoft 365）
+  - 最差，協會申請的 Microsoft 365 帳號應該也可以實際測試看看。
