@@ -270,3 +270,32 @@ index e831973..6c8985a 100644
 +      - ./local-files:/files
 ```
 - 這樣應該可以把一些狀態留下來，供下一次重啟 docker-compose 時使用。
+- 實測步驟：
+```bash
+~$ cd git/snippet/js/n8n/lab0/
+~/git/snippet/js/n8n/lab0$ uname -a
+Linux JazzBook 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+~/git/snippet/js/n8n/lab0$ docker-compose up -d
+Creating network "lab0_default" with the default driver
+Creating lab0_traefik_1 ... done
+Creating lab0_n8n_1     ... done
+~/git/snippet/js/n8n/lab0$ open http://localhost:5678
+```
+- 果然有歷史資料存在 SQLite
+```bash
+~/git/snippet/js/n8n/lab0$ tree n8n_data/
+n8n_data/
+├── binaryData
+├── config
+├── crash.journal
+├── database.sqlite
+├── database.sqlite-shm
+├── database.sqlite-wal
+├── git
+├── n8nEventLog.log
+├── nodes
+│   └── package.json
+└── ssh
+
+5 directories, 7 files
+```
