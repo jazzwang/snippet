@@ -518,3 +518,20 @@ The JSON output follows this high-level structure:
 - 2025-10-31
   - BigQuery Data Analytics with Gemini CLI — Part 1
   - https://medium.com/google-cloud/bigquery-data-analytics-with-gemini-cli-part-1-bb692697016a
+
+## 2025-12-20
+
+- 想測試一下 Gemini CLI 怎麼整合 jira-mcp-server
+  - MCP Server
+    - https://www.npmjs.com/package/mcp-jira-server
+    ```bash
+    ~$ npx -y mcp-jira-server
+    ```
+- 參考文件
+  - MCP servers with the Gemini CLI
+    - https://geminicli.com/docs/tools/mcp-server/
+  - Install GitHub MCP Server in Google Gemini CLI
+    - https://github.com/github/github-mcp-server/blob/main/docs/installation-guides/install-gemini-cli.md
+- 參考影片
+  - Gemini CLI + ANY MCP Server — Step‑by‑Step Tutorial
+    - https://www.youtube.com/watch?v=FE1LChbgFEw
