@@ -450,3 +450,26 @@ Creating a **Microsoft 365 service account** for Power Automate is a smart move 
 
 Would you like a **checklist template** or a **PowerShell script** to automate part of this setup?
 </td></tr></table>
+
+## 2025-12-19
+
+- 平常會用 SharePoint Alerts 來觀察特定公用目錄的檔案變化（某種程度的團隊合作數位足跡）
+- 可是突然注意到有一行聲明，提到 SharePoint Alerts retirement，建議改用 Power Automate 來監控 SharePoint 檔案的異動情形。
+  - https://support.microsoft.com/en-us/office/sharepoint-alerts-retirement-813a90c7-3ff1-47a9-8a2f-152f48b2486f
+| Date | Action |
+| --- |  --- |
+| From January 2026 | The creation of new SharePoint Alerts will be gradually turned off for all tenants. |
+| From July 2026 | Microsoft will remove the ability to use SharePoint Alerts; existing SharePoint Alerts cannot be extended anymore and will not work anymore. |
+
+- 建議使用 Power Automate 與 SharePoint Online 來處理現代通知場景。
+  - https://learn.microsoft.com/en-us/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers
+- 為協助您過渡到 Power Automate，下列的 Power Automate 模板可以透過瀏覽 Power Automate 模板圖庫並搜尋模板名稱，或使用連結來使用。
+
+| Classic Alerts scenario | Templates for Lists | Templates for Libraries |
+| --- |  --- |  --- |
+| Changes to an item | [Send an email when a SharePoint list item or file is updated](https://make.powerautomate.com/galleries/public/templates/df8b1fb0c17e48a790df8515a1259170) ||
+| --- |  --- | --- |
+| Anything changes | Implement this by combining the "Changes to an item" and "Item created" scenario templates ||
+| Someone else changes an item | [Send an email for changes by others to a SharePoint list item or file](https://make.powerautomate.com/galleries/public/templates/2bb23015e0a7406aa5bfaa1f42449bbe) ||
+| Someone else changes an item created by me | [Send an email for changes to a SharePoint list item or file created by me](https://make.powerautomate.com/galleries/public/templates/c6aa4b51a5c64ff493d5f6ecb10b38d4) ||
+| Item created | [Send an email when a SharePoint list item is created](https://make.powerautomate.com/galleries/public/templates/bfb9bd0a17bb49a4abb338ec750589a0) | [Send an email when a new SharePoint file is created](https://make.powerautomate.com/galleries/public/templates/5a848231c25c4197b7cb9f905439617a) |
