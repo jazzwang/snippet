@@ -148,9 +148,16 @@ end legend
 | Abbreviation | Full Form | 中文 | Reference |
 |--------------|-----------|------|-----------|
 | FOMO | Fear of missing out | 錯失恐懼症 | https://en.wikipedia.org/wiki/Fear_of_missing_out |
+| FOFO | Fear of finding out | 發現恐懼症 | https://www.managertoday.com.tw/articles/view/71302 | 
 
 ## 2025-12-04
 
 | Abbreviation | Full Form | 中文 | Reference |
 |--------------|-----------|------|-----------|
 | SAN | Subject Alternative Name | 多網域名稱 | 1. https://www.digicert.com/tw/faq/public-trust-and-certificates/what-is-a-multi-domain-san-certificate <br> 2. https://www.entrust.com/blog/2019/03/what-is-a-san-and-how-is-it-used <br> 3. https://blog.cssuen.tw/%E7%94%A8-san-certificate-%E5%81%9A-multi-domain-certificate-c7403e05c697 <br> 4. https://support.dnsimple.com/articles/what-is-ssl-san/ <br> 5. https://www.ssl.com/article/the-essential-guide-to-multi-domain-ucc-san-certificates/ |
+
+## 2025-12-19
+
+| Abbreviation | Full Form | 中文 | Reference |
+|--------------|-----------|------|-----------|
+| MSA | Master service agreement | 主服務合約 | https://en.wikipedia.org/wiki/Master_service_agreement |
