@@ -720,6 +720,7 @@ To github.com:jazzwang/aider-labs.git
 are there github api or gh cli command to list of git repositories contributed by specific user?
 </td></tr><tr><td>A:</td><td>
 <!-- add Chatbot Response bellow-->
+
 Yes, there are methods using the **GitHub API** to list repositories a specific user has contributed to, though it's not a single, direct endpoint for "all contributed repositories." There is also a powerful way to do this using the **`gh cli`** by combining commands.
 
 -----
@@ -785,6 +786,7 @@ Would you like me to generate a complete shell script that automatically iterate
 </td></tr></table>
 - 上述結果看起來比較像是特定使用者曾經發過的 Pull Request 列表
 - 實測：用 Github 個人帳號
+
 ```bash
 ~/git/snippet$ gh api search/issues \
   -X GET \
@@ -796,8 +798,10 @@ Would you like me to generate a complete shell script that automatically iterate
 octocat/Hello-World
 violet-org/boysenberry-repo
 ```
+
 - 這個查詢代表 `octocat` 這個帳號曾經發過 PR 到 `octocat/Hello-World` 跟 `violet-org/boysenberry-repo`
 - 改成查我自己
+
 ```bash
 ~/git/snippet$ gh api search/issues -X GET -f q='author:jazzwang type:pr' --paginate --jq '.items[] | .repository_url' | grep -oP 'repos/\K.*' | sort -u
 awsdocs/amazon-cloudwatch-user-guide
@@ -808,7 +812,9 @@ jazzwang/hicloud-hadoop
 mitaketw/sms-java
 tenmax/azurekit
 ```
+
 - 改問能否查詢曾經 commit 過的 git repo 列表
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 are there github api or gh cli command to list of git repositories committed by specific user?
@@ -989,6 +995,7 @@ Would you like me to show you how to construct a more complex script that handle
   ```
 
 - 那如果想要看是誰 merge 了 PR 呢？
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 are there github api or gh cli command to list of git repositories whose PR were  resolved by specific user?
