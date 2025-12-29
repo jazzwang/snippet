@@ -1,0 +1,10 @@
+# `Foundation Model` (or `Base Model`)
+
+- https://zh.wikipedia.org/zh-tw/%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B
+> **基礎模型**（英語：foundation model或base model）指一類大型[機器學習](https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0 "機器學習")模型，它們經大規模數據訓練而成（通常以[自監督學習](https://zh.wikipedia.org/wiki/%E8%87%AA%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0 "自監督學習")或[半監督學習](https://zh.wikipedia.org/wiki/%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0 "半監督學習")方式進行），以適應各種下游任務。基礎模型幫助實現了人工智慧系統構建方式的重大革新，例如為[聊天機器人](https://zh.wikipedia.org/wiki/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA "聊天機器人")和其他面向用戶的人工智慧提供支持。[斯坦福](https://zh.wikipedia.org/wiki/%E6%96%AF%E5%9D%A6%E7%A6%8F%E5%A4%A7%E5%AD%A6 "史丹佛大學")人類中心人工智慧研究所（Stanford Institute for Human-Centered Artificial Intelligence）旗下的基礎模型研究中心（Center for Research on Foundation Models，簡稱CRFM）推廣了「基礎模型」這一術語的使用。
+- https://cloud.google.com/discover/what-are-foundation-models
+> ### What are foundation models?
+>
+> Foundation models, sometimes known as base models, are powerful [artificial intelligence (AI) models](https://cloud.google.com/discover/what-is-an-ai-model) that are trained on a massive amount of data and can be adapted to a wide range of tasks. The term "foundation model" was coined by the [Stanford Institute for Human-Centered Artificial Intelligence (HAI) in 2021](https://hai.stanford.edu/news/introducing-center-research-foundation-models-crfm).
+- https://aws.amazon.com/tw/what-is/foundation-models/
+> 基礎模型 (FM) 是基於大量資料集訓練的大型[深度學習](https://aws.amazon.com/what-is/deep-learning/)神經網路，這些神經網路改變了資料科學家處理[機器學習 (ML)](https://aws.amazon.com/what-is/machine-learning/) 的方式。資料科學家無需從頭開始開發[人工智慧 (AI)](https://aws.amazon.com/what-is/artificial-intelligence/)，而是使用基礎模型作為起點來開發機器學習模型，從而更快速、更經濟高效地為新應用程式提供支援。*基礎模型*一詞由研究人員創造，用於描述機器學習模型，這些模型在廣泛的廣義和未標記資料上進行訓練，能夠執行各種一般性任務，例如理解語言、產生文字和影像以及使用自然語言進行對話。
