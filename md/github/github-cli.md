@@ -784,6 +784,7 @@ Replace `octocat` with the desired username.
 
 Would you like me to generate a complete shell script that automatically iterates through all pages of the Search API to get the full list of repositories contributed by a specific user?
 </td></tr></table>
+
 - 上述結果看起來比較像是特定使用者曾經發過的 Pull Request 列表
 - 實測：用 Github 個人帳號
 
@@ -813,6 +814,8 @@ mitaketw/sms-java
 tenmax/azurekit
 ```
 
+----
+
 - 改問能否查詢曾經 commit 過的 git repo 列表
 
 <table><tr><td>Q:</td><td>
@@ -820,6 +823,7 @@ tenmax/azurekit
 are there github api or gh cli command to list of git repositories committed by specific user?
 </td></tr><tr><td>A:</td><td>
 <!-- add Chatbot Response bellow-->
+
 Yes, you can list the GitHub repositories a specific user has committed to using both the **GitHub API** (specifically the GraphQL API or Search REST API) and a powerful two-step method with the **GitHub CLI (`gh`)**.
 
 There is no single, simple command for this, as a user's commits can be scattered across thousands of repositories they don't own. The most efficient methods involve leveraging GitHub's search capabilities.
@@ -994,6 +998,8 @@ Would you like me to show you how to construct a more complex script that handle
   ~/git/snippet$
   ```
 
+----
+
 - 那如果想要看是誰 merge 了 PR 呢？
 
 <table><tr><td>Q:</td><td>
@@ -1001,6 +1007,7 @@ Would you like me to show you how to construct a more complex script that handle
 are there github api or gh cli command to list of git repositories whose PR were  resolved by specific user?
 </td></tr><tr><td>A:</td><td>
 <!-- add Chatbot Response bellow-->
+
 Yes, the most reliable way to find a list of repositories where a specific user **merged** a Pull Request is by using the **GitHub Search API** or the **GitHub CLI (`gh`)** which wraps that API.
 
 The key is to search for Pull Requests that are `merged` and filter by the `merger` user.
@@ -1030,7 +1037,7 @@ gh api search/issues \
 | **`is:pr is:merged`** | Filters the results to only include Pull Requests that have been merged. |
 | **`merger:USERNAME`** | Filters those merged PRs to include only the ones where the specified `USERNAME` was the one who clicked the merge button. |
 | **`--paginate`** | Handles API pagination automatically to retrieve more than the default 30 results (up to the search API limit of 1000). |
-| **`--jq '... | .repository_url'`** | Uses `jq` to extract the full repository API URL from each result item. |
+| **`--jq '... \| .repository_url'`** | Uses `jq` to extract the full repository API URL from each result item. |
 | **`grep -oP 'repos/\K.*'`** | Strips the API prefix to give you the clean `owner/repo-name`. |
 | **`sort -u`** | Sorts the repository names and lists only **unique** names. |
 
@@ -1070,12 +1077,17 @@ The user in this scenario would be looking for the fastest, most effective way t
 
 You can learn more about managing pull requests from the command line by checking out [Create, View, and Merge GitHub PRs with the gh CLI](https://www.youtube.com/watch?v=EXlLKq4kuvQ).
 </td></tr></table>
+
+----
+
 - 如果想查有參與過 PR Review 的呢？
+
 <table><tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 are there github api or gh cli command to list of git repositories whose PR were  reviewed by specific user?
 </td></tr><tr><td>A:</td><td>
 <!-- add Chatbot Response bellow-->
+
 Yes, the most effective way to list repositories where a specific user has **reviewed** a Pull Request is by using the **GitHub Search API** or the **GitHub CLI (`gh`)**, which utilizes the same search capabilities.
 
 The key is to search for Pull Requests where the user is listed as a **reviewer** using the specific search qualifier.
@@ -1105,7 +1117,7 @@ gh api search/issues \
 | **`is:pr`** | Filters the results to only include Pull Requests (excluding issues). |
 | **`reviewed-by:USERNAME`** | Filters for PRs where the specified `USERNAME` has submitted a review (Approved, Commented, or Requested Changes). |
 | **`--paginate`** | **Crucially**, this handles API pagination automatically, fetching all pages up to the search API limit (typically 1,000 results). |
-| **`--jq '... | .repository_url'`** | Uses `jq` to extract the full API URL for the repository associated with each PR. |
+| **`--jq '... \| .repository_url'`** | Uses `jq` to extract the full API URL for the repository associated with each PR. |
 | **`grep -oP 'repos/\K.*'`** | Strips the API prefix to yield the clean repository name, e.g., `owner/repo-name`. |
 | **`sort -u`** | Sorts the list alphabetically and filters out duplicate repository names. |
 
