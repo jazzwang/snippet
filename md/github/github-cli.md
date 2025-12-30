@@ -374,6 +374,7 @@ https://github.com/orgs/datacontw/projects/1
 is it possible to use github cli (gh) to create a codespace template?
 </td></tr><tr><td>A:</td><td>
 <!-- add Chatbot Response bellow-->
+
 While the GitHub CLI (`gh`) can be used to **create a codespace from an existing repository or template**, it doesn't have a direct command like `gh codespace create-template` to *create* a new codespace template from scratch in the same way you might create a new repository.
 
 Here's how codespace templates work and how you can manage them, leveraging the GitHub CLI where applicable:
