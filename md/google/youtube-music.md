@@ -27,5 +27,8 @@
   - 該 Thread 討論也提到 https://getrssfeed.com/ 可以把 Apple Podcast 頻道取出 RSS Feed
   - 後來逆向看 Apple Podcast 原始碼，搜尋 `"feedUrl":` 第一個結果就是了 `*^_^*`
   ```bash
-
+  ~/git/snippet$ cat ~/bin/apple-podcast-rss
+  #!/bin/bash
+  url=$1
+  curl -s "$url" | grep '"feedUrl":'  | sed 's#.*"feedUrl":##' | sed 's#,.*##'
   ```
