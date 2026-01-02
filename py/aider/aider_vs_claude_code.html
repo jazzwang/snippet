@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aider vs. Claude Code: The CLI Assistant Showdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7; /* Warm neutral background */
+            color: #1f2937;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Chart Container Strategy as requested */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .tool-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-row:nth-child(even) {
+            background-color: #fafaf9;
+        }
+        .active-tab {
+            border-bottom: 3px solid #f97316;
+            color: #ea580c;
+            font-weight: 700;
+        }
+        .inactive-tab {
+            border-bottom: 3px solid transparent;
+            color: #64748b;
+        }
+        .inactive-tab:hover {
+            color: #334155;
+        }
+    </style>
+
+    <!-- Chosen Palette: Warm Professional
+         Background: #fdfbf7 (Creamy White)
+         Aider Accent: #0d9488 (Teal/Emerald - representing open source/python)
+         Claude Accent: #c2410c (Burnt Orange - representing Anthropic style)
+         Text: #1f2937 (Dark Gray)
+    -->
+
+    <!-- Application Structure Plan:
+         1. Hero Section: Immediate visual identification of the two contenders.
+         2. Executive Summary: High-level text explaining strictly what each tool is.
+         3. The Matrix (Core Comparison): A filterable grid (Data/Table) allowing users to see granular differences.
+         4. Capability Radar (Chart.js): Visualizing abstract metrics (Speed, Autonomy, Flexibility).
+         5. Workflow Simulator (Interactive): A stepper UI showing the "Loop" differences (Chat-Edit vs Plan-Act).
+         6. Recommendation Engine: A simple interactive quiz to guide user choice.
+         7. Conclusion: Final synthesis.
+         
+         Rationale: Users evaluating these tools need to move from "What are they?" (Hero) to "What are the specs?" (Matrix) to "How do they feel?" (Workflow) to "Which should I install?" (Recommendation).
+    -->
+
+    <!-- Visualization & Content Choices:
+         - Feature Matrix: HTML Grid with JS Filtering. Goal: Organize dense info. Interaction: Filter buttons.
+         - Capability Radar: Chart.js Radar. Goal: Compare qualitative strengths. Interaction: Hover for values.
+         - Workflow Simulator: JS DOM manipulation. Goal: Change/Process. Interaction: Step buttons.
+         - Recommendation Engine: JS Logic. Goal: Inform/Decision Support. Interaction: Form clicks.
+         - NO SVG/Mermaid used. Unicode icons used for UI elements.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased selection:bg-orange-100 selection:text-orange-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🤖</span>
+                    <span class="font-bold text-xl tracking-tight text-gray-900">CLI Assistant <span class="text-orange-600">Showdown</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('overview')" class="text-gray-600 hover:text-orange-600 font-medium transition">Overview</button>
+                    <button onclick="scrollToSection('matrix')" class="text-gray-600 hover:text-orange-600 font-medium transition">Comparison Matrix</button>
+                    <button onclick="scrollToSection('visuals')" class="text-gray-600 hover:text-orange-600 font-medium transition">Capability Radar</button>
+                    <button onclick="scrollToSection('workflow')" class="text-gray-600 hover:text-orange-600 font-medium transition">Workflow</button>
+                    <button onclick="scrollToSection('verdict')" class="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition">Get Verdict</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+        <!-- Section 1: Hero & Overview -->
+        <section id="overview" class="animate-fade-in">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Aider vs. Claude Code</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">A deep dive into the two leading terminal-based AI coding assistants. One is a mature, model-agnostic pair programmer; the other is a new, highly autonomous agent from Anthropic.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Aider Card -->
+                <div class="tool-card bg-white p-8 rounded-2xl border-t-4 border-teal-500 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-3xl font-bold text-gray-800">Aider</h2>
+                        <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded">The Veteran</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        A robust, open-source command line tool that allows you to pair program with various LLMs. It excels at editing local files via git, holding a "chat" about your code, and applying diffs surgically.
+                    </p>
+                    <div class="space-y-2">
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="w-6 text-center mr-2">🐍</span> Python-based
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="w-6 text-center mr-2">🔓</span> Open Source
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="w-6 text-center mr-2">🐙</span> Any Model (OpenAI, Anthropic, DeepSeek)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claude Code Card -->
+                <div class="tool-card bg-white p-8 rounded-2xl border-t-4 border-orange-500 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-3xl font-bold text-gray-800">Claude Code</h2>
+                        <span class="bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-0.5 rounded">The Agent</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Anthropic's official research preview tool. It functions more like an autonomous agent that can navigate your file system, read context, plan complex tasks, and execute them with deep integration into Claude 3.7 Sonnet.
+                    </p>
+                    <div class="space-y-2">
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="w-6 text-center mr-2">💎</span> Proprietary (Anthropic)
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="w-6 text-center mr-2">🕵️</span> Agentic Workflow (Plan -> Act)
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span class="w-6 text-center mr-2">🔒</span> Claude Models Only
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Detailed Comparison Matrix -->
+        <section id="matrix" class="scroll-mt-24">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Feature Breakdown</h3>
+                <p class="text-gray-600">
+                    Use the filters below to explore differences in installation, capabilities, and developer experience. This matrix highlights the structural differences between a "Chat Tool" (Aider) and an "Agent" (Claude Code).
+                </p>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-2 mb-6" id="matrixFilters">
+                <button onclick="filterMatrix('all')" class="matrix-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-800 text-white transition hover:bg-gray-700 active" data-filter="all">All Features</button>
+                <button onclick="filterMatrix('core')" class="matrix-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-200 text-gray-700 transition hover:bg-gray-300" data-filter="core">Core Logic</button>
+                <button onclick="filterMatrix('tech')" class="matrix-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-200 text-gray-700 transition hover:bg-gray-300" data-filter="tech">Tech & Models</button>
+                <button onclick="filterMatrix('ux')" class="matrix-btn px-4 py-1.5 rounded-full text-sm font-medium bg-gray-200 text-gray-700 transition hover:bg-gray-300" data-filter="ux">UX & Safety</button>
+            </div>
+
+            <!-- Table Container -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="grid grid-cols-12 bg-gray-50 border-b border-gray-200 p-4 font-semibold text-gray-700 text-sm">
+                    <div class="col-span-4 md:col-span-3">Feature</div>
+                    <div class="col-span-4 md:col-span-4 text-teal-700">Aider</div>
+                    <div class="col-span-4 md:col-span-5 text-orange-700">Claude Code</div>
+                </div>
+                <div id="comparisonGrid">
+                    <!-- Javascript will populate this -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Visual Analytics -->
+        <section id="visuals" class="scroll-mt-24">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Capability Trade-offs</h3>
+                    <p class="text-gray-600 mb-6">
+                        This radar chart visualizes the distinct philosophies of the two tools. 
+                        <strong>Aider</strong> leans towards flexibility and user control (Model Independence, Cost Control). 
+                        <strong>Claude Code</strong> maximizes for Autonomy and Context Awareness, leveraging the specific strengths of the Claude 3.7 model, often at a higher token cost.
+                    </p>
+                    
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm space-y-4">
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-3">🚀</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Autonomy Score</h4>
+                                <p class="text-sm text-gray-500">Claude Code can "grep" and search files itself. Aider generally relies on you to `/add` files to context (though it has Architect mode).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-3">🧩</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Model Flexibility</h4>
+                                <p class="text-sm text-gray-500">Aider works with DeepSeek, OpenAI, Anthropic, and local models via Ollama. Claude Code is locked to Anthropic.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart Wrapper -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex justify-center items-center">
+                     <div class="chart-container">
+                        <canvas id="capabilityRadar"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Workflow Simulator -->
+        <section id="workflow" class="bg-gray-900 text-white rounded-2xl p-8 shadow-xl scroll-mt-24">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-white mb-2">Workflow Simulator</h3>
+                <p class="text-gray-400">Experience the difference in how each tool handles a request like: <em>"Fix the bug in the authentication logic."</em></p>
+                
+                <div class="flex justify-center gap-4 mt-6">
+                    <button onclick="setWorkflow('aider')" id="btn-aider-flow" class="px-6 py-2 rounded-full border border-teal-500 text-teal-400 hover:bg-teal-900 transition font-mono bg-teal-900/20 ring-2 ring-teal-500">Simulate Aider</button>
+                    <button onclick="setWorkflow('claude')" id="btn-claude-flow" class="px-6 py-2 rounded-full border border-gray-600 text-gray-400 hover:text-orange-400 hover:border-orange-500 hover:bg-orange-900/20 transition font-mono">Simulate Claude Code</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-8">
+                <!-- Terminal Window -->
+                <div class="bg-black rounded-lg border border-gray-700 p-4 font-mono text-sm h-80 overflow-y-auto relative shadow-inner" id="terminal-window">
+                    <div class="flex gap-2 mb-4 border-b border-gray-800 pb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-gray-500 text-xs ml-2" id="term-title">bash</span>
+                    </div>
+                    <div id="terminal-content" class="space-y-2">
+                        <span class="text-gray-500">Select a workflow above to start simulation...</span>
+                    </div>
+                </div>
+
+                <!-- Explanation Panel -->
+                <div class="flex flex-col justify-center space-y-4">
+                    <div id="flow-step-1" class="flow-step opacity-30 transition-all duration-500 p-4 rounded-lg border-l-4 border-transparent">
+                        <h4 class="font-bold text-lg">1. Initialization</h4>
+                        <p class="text-gray-400 text-sm" id="desc-step-1">Waiting for input...</p>
+                    </div>
+                    <div id="flow-step-2" class="flow-step opacity-30 transition-all duration-500 p-4 rounded-lg border-l-4 border-transparent">
+                        <h4 class="font-bold text-lg">2. Context Gathering</h4>
+                        <p class="text-gray-400 text-sm" id="desc-step-2">Waiting for input...</p>
+                    </div>
+                    <div id="flow-step-3" class="flow-step opacity-30 transition-all duration-500 p-4 rounded-lg border-l-4 border-transparent">
+                        <h4 class="font-bold text-lg">3. Execution</h4>
+                        <p class="text-gray-400 text-sm" id="desc-step-3">Waiting for input...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Recommendation Engine -->
+        <section id="verdict" class="scroll-mt-24">
+            <div class="bg-gradient-to-br from-orange-50 to-teal-50 rounded-2xl p-8 border border-gray-200">
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-bold text-gray-900">Which Tool Should You Use?</h3>
+                    <p class="text-gray-600 mt-2">Answer a few questions to get a personalized recommendation.</p>
+                </div>
+
+                <div class="max-w-xl mx-auto space-y-6" id="quiz-container">
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <p class="font-semibold text-gray-800 mb-4">1. Do you need to use models other than Claude (e.g., GPT-4o, DeepSeek, Local)?</p>
+                        <div class="flex gap-4">
+                            <button onclick="updateScore('aider', 2); nextQuestion(2)" class="flex-1 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">Yes, absolutely</button>
+                            <button onclick="updateScore('claude', 1); nextQuestion(2)" class="flex-1 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">No, Claude is fine</button>
+                        </div>
+                    </div>
+
+                    <div id="q2" class="bg-white p-6 rounded-xl shadow-sm hidden opacity-0 transition-opacity duration-500">
+                        <p class="font-semibold text-gray-800 mb-4">2. Do you prefer the tool to search your files autonomously, or do you prefer to tell it exactly which files to edit?</p>
+                        <div class="flex gap-4">
+                            <button onclick="updateScore('claude', 2); nextQuestion(3)" class="flex-1 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">Autonomous Search</button>
+                            <button onclick="updateScore('aider', 1); nextQuestion(3)" class="flex-1 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">I'll control the context</button>
+                        </div>
+                    </div>
+
+                    <div id="q3" class="bg-white p-6 rounded-xl shadow-sm hidden opacity-0 transition-opacity duration-500">
+                        <p class="font-semibold text-gray-800 mb-4">3. Are you working in a massive codebase where initial indexing might be slow?</p>
+                        <div class="flex gap-4">
+                            <button onclick="updateScore('claude', 2); showResult()" class="flex-1 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">Yes (Claude Code is faster at indexing)</button>
+                            <button onclick="updateScore('aider', 1); showResult()" class="flex-1 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">No / Average Size</button>
+                        </div>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div id="result-card" class="hidden text-center p-8 bg-white rounded-xl border-2 shadow-lg transform scale-95 transition-all">
+                        <h4 class="text-2xl font-bold mb-2">We Recommend: <span id="winner-name" class="text-transparent bg-clip-text bg-gradient-to-r from-gray-800 to-black">Tool Name</span></h4>
+                        <p id="winner-reason" class="text-gray-600 mb-4">Reasoning goes here.</p>
+                        <button onclick="location.reload()" class="text-sm text-gray-400 hover:text-gray-600 underline">Restart</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 mt-12 text-center">
+        <p class="text-sm">Generated for Comparison Analysis • 2025</p>
+    </footer>
+
+    <script>
+        // --- DATA STORE ---
+        const matrixData = [
+            { category: 'core', feature: 'Core Philosophy', aider: 'Chat-to-Edit (User leads, AI follows)', claude: 'Agentic (AI plans, searches, acts)' },
+            { category: 'tech', feature: 'Primary Model', aider: 'User Choice (OpenAI, Anthropic, DeepSeek, Local)', claude: 'Claude 3.7 Sonnet (Optimized)' },
+            { category: 'tech', feature: 'Context Management', aider: 'Manual `/add` or "Repo Map" heuristic', claude: 'Autonomous file search & relevance filtering' },
+            { category: 'core', feature: 'File Editing', aider: 'Applies diffs to files directly via Git', claude: 'Agent tools (edit, replace, bash execution)' },
+            { category: 'ux', feature: 'Terminal UI', aider: 'Standard text stream', claude: 'Rich TUI with status spinners & markdown' },
+            { category: 'ux', feature: 'Permission Control', aider: 'Auto-commit option available', claude: 'Granular approval for tool use (bash/edit)' },
+            { category: 'tech', feature: 'Cost', aider: 'Direct API usage (pay provider)', claude: 'Billed via Anthropic Console' },
+            { category: 'core', feature: 'Tooling', aider: 'Limited (Run tests, shell cmds)', claude: 'Rich (Grep, LS, view, edit, bash)' }
+        ];
+
+        // --- FEATURE MATRIX LOGIC ---
+        function renderMatrix(filter) {
+            const container = document.getElementById('comparisonGrid');
+            container.innerHTML = '';
+            
+            const filtered = filter === 'all' ? matrixData : matrixData.filter(d => d.category === filter);
+            
+            filtered.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = `grid grid-cols-12 p-4 border-b border-gray-100 text-sm feature-row animate-fade-in`;
+                row.style.animationDelay = `${index * 50}ms`;
+                
+                row.innerHTML = `
+                    <div class="col-span-4 md:col-span-3 font-semibold text-gray-800">${item.feature}</div>
+                    <div class="col-span-4 md:col-span-4 text-gray-600 pr-2">${item.aider}</div>
+                    <div class="col-span-4 md:col-span-5 text-gray-600 pl-2 border-l border-gray-100">${item.claude}</div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function filterMatrix(type) {
+            // Update Buttons
+            document.querySelectorAll('.matrix-btn').forEach(btn => {
+                if(btn.dataset.filter === type) {
+                    btn.classList.remove('bg-gray-200', 'text-gray-700');
+                    btn.classList.add('bg-gray-800', 'text-white');
+                } else {
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                    btn.classList.remove('bg-gray-800', 'text-white');
+                }
+            });
+            renderMatrix(type);
+        }
+
+        // --- CHART.JS IMPLEMENTATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMatrix('all');
+            
+            const ctx = document.getElementById('capabilityRadar').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Autonomy', 'Speed (Indexing)', 'Model Choice', 'Tool Usage', 'Cost Control', 'Safety Check'],
+                    datasets: [
+                        {
+                            label: 'Aider',
+                            data: [6, 7, 10, 5, 9, 7],
+                            fill: true,
+                            backgroundColor: 'rgba(45, 212, 191, 0.2)',
+                            borderColor: '#0d9488',
+                            pointBackgroundColor: '#0d9488',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#0d9488'
+                        },
+                        {
+                            label: 'Claude Code',
+                            data: [10, 9, 3, 10, 5, 9],
+                            fill: true,
+                            backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                            borderColor: '#f97316',
+                            pointBackgroundColor: '#f97316',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#f97316'
+                        }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: { borderWidth: 3 }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#e5e7eb' },
+                            grid: { color: '#e5e7eb' },
+                            pointLabels: {
+                                font: { size: 12, family: 'Inter' },
+                                color: '#374151'
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'top' }
+                    }
+                }
+            });
+        });
+
+        // --- WORKFLOW SIMULATOR LOGIC ---
+        const workflows = {
+            aider: {
+                color: 'text-teal-400',
+                steps: [
+                    { title: 'User Input', desc: 'User types: "Fix the auth bug in login.py".', term: '> aider login.py\n> "Fix the auth bug..."' },
+                    { title: 'Chat & Edit', desc: 'Aider reads login.py (because you added it). It streams a diff patch immediately based on your prompt.', term: 'Analyzing login.py...\nApplying edit to login.py...' },
+                    { title: 'Commit', desc: 'Aider automatically git commits the change with a descriptive message.', term: 'Commit: Fixed auth logic flaw in login.py' }
+                ]
+            },
+            claude: {
+                color: 'text-orange-400',
+                steps: [
+                    { title: 'User Input', desc: 'User types: "Fix the auth bug". Note: No file specified.', term: '$ claude\n> Fix the auth bug' },
+                    { title: 'Agentic Research', desc: 'Claude Code uses tools. It runs "grep" to find "auth", lists files, and reads 3 relevant files autonomously.', term: '⚙️ running grep "auth"\n⚙️ reading src/auth/login.ts\n⚙️ reading src/utils/token.ts' },
+                    { title: 'Plan & Execute', desc: 'It formulates a plan, asks for permission to edit, then runs test commands to verify.', term: 'Plan:\n1. Update token validation\n2. Run tests\n\nApprove edit? [Y/n] Y' }
+                ]
+            }
+        };
+
+        function setWorkflow(type) {
+            // Reset UI
+            document.getElementById('btn-aider-flow').classList.remove('ring-2', 'ring-teal-500', 'bg-teal-900/20');
+            document.getElementById('btn-claude-flow').classList.remove('ring-2', 'ring-orange-500', 'bg-orange-900/20');
+
+            if(type === 'aider') {
+                document.getElementById('btn-aider-flow').classList.add('ring-2', 'ring-teal-500', 'bg-teal-900/20');
+                document.getElementById('term-title').innerText = 'aider session';
+            } else {
+                document.getElementById('btn-claude-flow').classList.add('ring-2', 'ring-orange-500', 'bg-orange-900/20');
+                document.getElementById('term-title').innerText = 'claude code';
+            }
+
+            const flow = workflows[type];
+            const termContent = document.getElementById('terminal-content');
+            
+            // Animation Sequence
+            termContent.innerHTML = '';
+            
+            [1, 2, 3].forEach((num, index) => {
+                // Reset text
+                document.getElementById(`flow-step-${num}`).classList.remove('opacity-100', 'border-teal-500', 'border-orange-500', 'bg-white/5');
+                document.getElementById(`flow-step-${num}`).classList.add('opacity-30');
+                
+                setTimeout(() => {
+                    // Highlight Step
+                    const stepEl = document.getElementById(`flow-step-${num}`);
+                    stepEl.classList.remove('opacity-30');
+                    stepEl.classList.add('opacity-100', 'bg-white/10');
+                    stepEl.classList.add(type === 'aider' ? 'border-teal-500' : 'border-orange-500');
+                    
+                    // Update Text
+                    document.getElementById(`desc-step-${num}`).innerText = flow.steps[index].desc;
+                    stepEl.querySelector('h4').innerText = flow.steps[index].title;
+
+                    // Type in Terminal
+                    const line = document.createElement('div');
+                    line.className = `${flow.color} font-mono mb-2`;
+                    line.innerText = flow.steps[index].term;
+                    termContent.appendChild(line);
+                    
+                    // Scroll terminal
+                    const termWindow = document.getElementById('terminal-window');
+                    termWindow.scrollTop = termWindow.scrollHeight;
+
+                }, index * 1200);
+            });
+        }
+
+        // --- RECOMMENDATION LOGIC ---
+        let scores = { aider: 0, claude: 0 };
+
+        function updateScore(tool, points) {
+            scores[tool] += points;
+        }
+
+        function nextQuestion(qNum) {
+            const current = qNum - 1;
+            document.getElementById(`q${current}`)?.classList.add('hidden'); // Hide prev if exists (for q1 logical equivalent)
+            // Ideally we hide the parent div of the button clicked, but simple logic here:
+            
+            // Show next
+            const next = document.getElementById(`q${qNum}`);
+            next.classList.remove('hidden');
+            setTimeout(() => next.classList.remove('opacity-0'), 50);
+        }
+
+        function showResult() {
+            document.getElementById('q3').classList.add('hidden');
+            const resCard = document.getElementById('result-card');
+            const winnerName = document.getElementById('winner-name');
+            const winnerReason = document.getElementById('winner-reason');
+
+            resCard.classList.remove('hidden');
+            setTimeout(() => resCard.classList.remove('transform', 'scale-95'), 50);
+
+            if (scores.aider >= scores.claude) {
+                resCard.classList.add('border-teal-500');
+                winnerName.innerText = "Aider";
+                winnerName.classList.add('from-teal-600', 'to-teal-900');
+                winnerReason.innerText = "You prioritize flexibility, model choice, or have specific local workflows. Aider is the reliable, battle-tested standard for standard pair programming.";
+            } else {
+                resCard.classList.add('border-orange-500');
+                winnerName.innerText = "Claude Code";
+                winnerName.classList.add('from-orange-600', 'to-orange-900');
+                winnerReason.innerText = "You want an autonomous agent that can handle the 'grunt work' of searching and planning. You are comfortable staying within the Anthropic ecosystem for a smoother, smarter experience.";
+            }
+        }
+
+        // --- UTILS ---
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize with default workflow view (empty or static)
+        // No auto-run to allow user interaction
+    </script>
+</body>
+</html>
