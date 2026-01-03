@@ -9,7 +9,7 @@
   - https://www.facebook.com/groups/gaitech/posts/1426174611900083/
   - 印象這個作者是用 `n8n` 串了一堆流程來自動生成 podcast （好一個被動收入）
     - 概念：『社群網路內容<mark>**再利用**</mark>』
-  - 其次，這次再聽，因為被置入了「語音廣告」，所以知道作者改用 
+  - 其次，這次再聽，因為被置入了「語音廣告」，所以知道作者改用「VoAI 絕好聲創」
 - 參考：
   - https://podnews.net/article/youtube-music-rss 提到了手動新增 Podcast RSS 到 YouTube Music 的方法
   > 不難，就是需要 (1) Podcast RSS URL (2) 把網址轉成 base64 格式

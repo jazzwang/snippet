@@ -127,3 +127,25 @@ Citations:
     - https://github.com/microsoft/VibeVoice
   - Website
     - https://microsoft.github.io/VibeVoice/
+
+## 2026-01-02
+
+- VoAI 絕好聲創
+  - https://www.voai.ai/
+  - https://www.voai.ai/about
+  - VoAI 聲音克隆 - https://www.voai.ai/voiceclone
+  - 快速音色複製：複製個人音色配音 - https://www.voai.ai/voicestudio
+- 2024-09-26
+  - VoAI 絕好聲創打造「有台灣口音」的AI語音 像真人一樣有溫度！
+  - https://www.technice.com.tw/issues/143515/
+- 2025-06-17
+  - VoAI 絕好聲創推出快速聲音複製服務，線上錄音數秒即能打造個人 AI 角色
+  - https://www.cio.com.tw/92990/
+- 2025-07-18
+  - 2025【VoAI絕好聲創】線上AI配音完整評價，高擬真台灣口音
+  - https://jsspace1111.com/voai%E7%B5%95%E5%A5%BD%E8%81%B2%E5%89%B5/
+- 2025-12-11
+  - VoAI 推出台灣口音 AI 雙主播語音新聞服務 首度登上 LINE
+  - https://market.ltn.com.tw/article/18061
+- 教育部 校園數位內容與教學軟體 > 課堂教學軟體 > VoAI 聲音創造所 (臺灣口音 AI 配音與客製專用聲音模型服務)
+  - https://www.sdc.org.tw/product/voai-%E8%81%B2%E9%9F%B3%E5%89%B5%E9%80%A0%E6%89%80-%E8%87%BA%E7%81%A3%E5%8F%A3%E9%9F%B3-ai-%E9%85%8D%E9%9F%B3%E8%88%87%E5%AE%A2%E8%A3%BD%E5%B0%88%E7%94%A8%E8%81%B2%E9%9F%B3%E6%A8%A1%E5%9E%8B%E6%9C%8D/
