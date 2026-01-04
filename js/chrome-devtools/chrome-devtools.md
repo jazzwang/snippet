@@ -136,3 +136,49 @@ console.log(JSON.stringify(document.cookie.split(';').map(c => splitOnFirstEqual
     - (Chrome) https://chromewebstore.google.com/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg
     - (Firefox) https://addons.mozilla.org/en-US/firefox/addon/uaswitcher/
     - (Edge) https://microsoftedge.microsoft.com/addons/detail/npjnioaeoicmjokbdpfiecnbildopjad
+
+## 2026-01-04
+
+<table><tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+how can I put javascript in Chrome DevTool as snippet? how can it reduce the time when I need to run the same code
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+
+Using Snippets in Chrome DevTools is a powerful way to manage "mini-scripts" that you use frequently. Instead of re-typing or copy-pasting code into the Console every time you visit a site, Snippets save the code directly in the browser's internal storage.
+
+### How to Create and Run a Snippet
+
+1. **Open DevTools:** Press `F12` or `Cmd + Option + I` (Mac) / `Ctrl + Shift + I` (Windows).
+2. **Navigate to Sources:** Click the **Sources** tab at the top.
+3. **Find the Snippets Tab:** On the left-hand sidebar, you might see a double arrow `>>` if the panel is narrow. Click it and select **Snippets**.
+4. **Create New:** Click **+ New snippet**.
+5. **Name & Code:** Give it a name (e.g., `ClearCookies.js`) and type your JavaScript in the center editor pane.
+6. **Run:** Press `Ctrl + Enter` (Windows) or `Cmd + Enter` (Mac), or click the **Play** icon at the bottom right of the editor.
+
+---
+
+### How Snippets Save You Time
+
+Snippets act like a personal library of macros. Here is why they are more efficient than the standard Console:
+
+* **Persistence:** Unlike the Console, which clears when you refresh or close the tab, Snippets stay in DevTools forever (across different sessions and websites).
+* **Multi-line Editing:** Writing complex logic in the Console is frustrating because pressing `Enter` usually executes the code. Snippets provide a full-featured text editor.
+* **Context Independence:** You can run the same snippet on *any* website. For example, a snippet that extracts all image URLs can be used on a blog today and an e-commerce site tomorrow with one click.
+* **Quick Search:** You can run snippets without even opening the Sources tab. Once created, press `Cmd + P` (Mac) or `Ctrl + P` (Windows), type `!` followed by your snippet name, and hit Enter.
+
+---
+
+### Common Use Cases
+
+| Use Case | Example Code |
+| --- | --- |
+| **Data Scraping** | Collecting all links or emails from a page into a list. |
+| **UI Testing** | Auto-filling long forms with "Test" data to check validation. |
+| **Performance** | Measuring the time it takes for specific elements to load. |
+| **Style Tweaks** | Instantly changing a site's background color or hiding annoying pop-ups. |
+
+> **Pro Tip:** If you find yourself writing a snippet that is more than 50 lines long, consider if it should be a **Chrome Extension**. Snippets are best for quick, manual execution, while extensions are better for automated background tasks.
+
+Would you like me to write a specific JavaScript snippet for a task you perform often, such as clearing local storage or extracting table data?
+</td></tr></table>
