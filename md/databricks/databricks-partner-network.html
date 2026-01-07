@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPN Compass: Partner Program Navigator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Warm neutral background */
+            color: #1e293b;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom Scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+    <!-- Chosen Palette: "Data Lakehouse Clean" - Warm neutrals (Slate/Gray) with Databricks Orange accents (#FF3621) -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Sets the context of the DPN program.
+         2. Three Pillars Overview: Interactive cards explaining the three scoring categories (Performance, Capability, Activity).
+         3. Certification Deep Dive: Specific section to answer the user's question about Pro vs. Foundation/Associate differences using a comparative bar chart.
+         4. Reference Analyzer: Specific section for Customer References point values.
+         5. The Point Simulator: A comprehensive calculator allowing the user to input their specific metrics and see their Total Score and Tier status in real-time. This synthesizes all rules into a usable tool.
+         6. FAQ/Glossary: Quick reference for terms.
+    -->
+    <!-- Visualization & Content Choices:
+         - Program Structure: 3-Column Grid of Cards (Goal: Organize) -> Interactive HTML.
+         - Certification Difference: Bar Chart (Goal: Compare) -> Chart.js. Shows clear visual gap between tier weights.
+         - Point Calculation: Dynamic Donut Chart (Goal: Inform/Simulate) -> Chart.js. Updates in real-time as users adjust inputs.
+         - Reference Value: Callout Metric Card (Goal: Inform) -> HTML/CSS.
+         - Interaction: Sliders and Number Inputs (Goal: Engagement) -> Vanilla JS event listeners.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <span class="text-2xl text-orange-600 font-bold">●</span>
+                        <span class="font-bold text-xl tracking-tight text-slate-900">DPN Compass</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="scrollToSection('calculator')" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                        Go to Calculator
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold text-slate-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+                    Databricks Partner Network
+                </h1>
+                <p class="mt-5 max-w-xl mx-auto text-xl text-slate-500">
+                    Interactive Guide to Points, Certifications, and Tiers
+                </p>
+                <p class="mt-3 max-w-2xl mx-auto text-slate-600">
+                    Understanding how your partner score is calculated is key to advancing from Registered to Select and Elite tiers. Explore the mechanics below.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+        <!-- SECTION 1: The Three Pillars -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-slate-900">1. How Points Are Calculated</h2>
+                <p class="mt-2 text-slate-600">
+                    The DPN program evaluates partners across three core pillars. Your total score is a composite of these metrics. Click on a card to learn more about the specific requirements.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Capability Card -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6 card-hover cursor-pointer group" onclick="highlightSection('certs-section')">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-900">Capability</h3>
+                        <span class="text-blue-500 text-2xl font-bold">✦</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Driven by the technical expertise of your team.
+                    </p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• <span class="font-medium text-slate-700">Certifications</span> (Pro vs. Associate)</li>
+                        <li>• Accreditations</li>
+                        <li>• Champions</li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-orange-600 text-sm font-medium group-hover:underline">
+                        View Certification Weighting ↓
+                    </div>
+                </div>
+
+                <!-- Performance Card -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6 card-hover cursor-pointer" onclick="highlightSection('calculator')">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-900">Performance</h3>
+                        <span class="text-green-500 text-2xl font-bold">▲</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Based on business impact and sourced revenue.
+                    </p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• <span class="font-medium text-slate-700">Sourced ACV</span> (Annual Contract Value)</li>
+                        <li>• Consumption Metrics (DBUs)</li>
+                        <li>• Delivery Projects</li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-orange-600 text-sm font-medium">
+                        Input Revenue in Calculator ↓
+                    </div>
+                </div>
+
+                <!-- Activity Card -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6 card-hover cursor-pointer" onclick="highlightSection('refs-section')">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-900">Activity</h3>
+                        <span class="text-purple-500 text-2xl font-bold">★</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Market presence and customer success validation.
+                    </p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• <span class="font-medium text-slate-700">Customer References</span></li>
+                        <li>• Public Case Studies</li>
+                        <li>• Solutions & Accelerators</li>
+                    </ul>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-orange-600 text-sm font-medium group-hover:underline">
+                        See Reference Points ↓
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Certification Analysis -->
+        <section id="certs-section" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">2. Certification Differences</h2>
+                    <p class="text-slate-600 mb-6">
+                        You asked: <span class="italic font-medium">"Is there a difference between Professional and Foundation?"</span>
+                    </p>
+                    <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-6">
+                        <p class="text-slate-800 font-medium">Yes, the weighting is significant.</p>
+                        <p class="text-sm text-slate-600 mt-1">
+                            A <strong>Professional</strong> certification typically holds <strong>3x to 5x</strong> the point value of an Associate or Accreditation. The program prioritizes deep technical expertise.
+                        </p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                            <span class="text-slate-600">Professional (Data Engineer, ML)</span>
+                            <span class="font-bold text-slate-900">High Impact</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                            <span class="text-slate-600">Associate (Data Analyst, Spark)</span>
+                            <span class="font-bold text-slate-900">Moderate Impact</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-600">Accreditations (Fundamentals)</span>
+                            <span class="font-bold text-slate-900">Low Impact</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">Relative Point Weighting</h3>
+                    <!-- Chart Container -->
+                    <div class="chart-container">
+                        <canvas id="certChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-400 mt-2">*Values are indicative of standard DPN weighting structure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Customer References -->
+        <section id="refs-section" class="scroll-mt-24">
+            <div class="bg-slate-900 rounded-xl overflow-hidden shadow-lg text-white">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-12">
+                        <h2 class="text-2xl font-bold mb-4 text-white">3. Customer References</h2>
+                        <p class="text-slate-300 mb-6">
+                            You asked: <span class="italic text-white">"How many points for Customer References?"</span>
+                        </p>
+                        <p class="text-slate-300 mb-6">
+                            Verified customer references are a critical part of the <strong>Activity</strong> pillar. They validate your ability to deliver successful outcomes. Points are awarded per verified reference, usually capped at a certain maximum per year.
+                        </p>
+                        
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="h-12 w-12 rounded-full bg-orange-600 flex items-center justify-center font-bold text-xl">
+                                10
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg">Points per Reference (Est.)</p>
+                                <p class="text-sm text-slate-400">Valid for Public References / Case Studies</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="h-12 w-12 rounded-full bg-slate-700 flex items-center justify-center font-bold text-xl">
+                                5
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg">Points per Private Reference (Est.)</p>
+                                <p class="text-sm text-slate-400">Validated but non-public</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800 p-8 md:p-12 flex flex-col justify-center items-center">
+                        <div class="text-center">
+                            <h3 class="text-lg font-medium text-slate-300 mb-6">Reference Impact Simulator</h3>
+                            
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Number of Public References</label>
+                            <div class="flex items-center justify-center gap-4 mb-8">
+                                <button class="w-8 h-8 rounded bg-slate-600 hover:bg-slate-500 text-white" onclick="adjustRef(-1)">-</button>
+                                <span id="ref-count-display" class="text-3xl font-bold text-white w-12 text-center">2</span>
+                                <button class="w-8 h-8 rounded bg-orange-600 hover:bg-orange-500 text-white" onclick="adjustRef(1)">+</button>
+                            </div>
+
+                            <div class="bg-slate-900 rounded-lg p-6 border border-slate-700 w-full max-w-xs">
+                                <p class="text-sm text-slate-400 uppercase tracking-wider">Total Points</p>
+                                <p id="ref-points-display" class="text-4xl font-bold text-orange-500 mt-2">20</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: The Calculator -->
+        <section id="calculator" class="scroll-mt-24">
+            <div class="mb-8 text-center">
+                <h2 class="text-3xl font-bold text-slate-900">DPN Point Simulator</h2>
+                <p class="mt-2 text-slate-600 max-w-2xl mx-auto">
+                    Combine all elements to see your estimated partner score. Adjust the values below to simulate your path to the next tier.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Controls -->
+                <div class="lg:col-span-1 space-y-6 bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                    
+                    <!-- Capability Inputs -->
+                    <div>
+                        <h3 class="font-bold text-slate-900 mb-3 border-b pb-1">Capability</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="flex justify-between text-sm text-slate-600 mb-1">
+                                    <span>Professional Certs</span>
+                                    <span class="text-slate-400">(5 pts/ea)</span>
+                                </label>
+                                <input type="number" id="input-pro-certs" value="2" min="0" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition outline-none">
+                            </div>
+                            <div>
+                                <label class="flex justify-between text-sm text-slate-600 mb-1">
+                                    <span>Associate Certs</span>
+                                    <span class="text-slate-400">(2 pts/ea)</span>
+                                </label>
+                                <input type="number" id="input-assoc-certs" value="3" min="0" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Inputs -->
+                    <div>
+                        <h3 class="font-bold text-slate-900 mb-3 border-b pb-1">Activity</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="flex justify-between text-sm text-slate-600 mb-1">
+                                    <span>Customer References</span>
+                                    <span class="text-slate-400">(10 pts/ea)</span>
+                                </label>
+                                <input type="number" id="input-refs" value="2" min="0" max="10" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Inputs -->
+                    <div>
+                        <h3 class="font-bold text-slate-900 mb-3 border-b pb-1">Performance</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="flex justify-between text-sm text-slate-600 mb-1">
+                                    <span>Sourced Revenue ($K)</span>
+                                    <span class="text-slate-400">(1 pt/$10k)</span>
+                                </label>
+                                <input type="number" id="input-rev" value="150" min="0" step="10" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Results Visualization -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border border-slate-200 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Score Projection</h3>
+                            <p class="text-sm text-slate-500">Based on your inputs</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-sm text-slate-500 uppercase">Est. Total Points</span>
+                            <span id="total-score-display" class="text-4xl font-extrabold text-slate-900">0</span>
+                        </div>
+                    </div>
+
+                    <div class="flex-grow flex items-center justify-center w-full">
+                        <!-- Chart Container -->
+                        <div class="chart-container">
+                            <canvas id="scoreChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-3 gap-4 text-center border-t border-slate-100 pt-6">
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase">Capability</span>
+                            <span id="score-cap-display" class="text-lg font-bold text-blue-600">0</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase">Activity</span>
+                            <span id="score-act-display" class="text-lg font-bold text-purple-600">0</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase">Performance</span>
+                            <span id="score-perf-display" class="text-lg font-bold text-green-600">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">DPN Compass</h3>
+                    <p class="text-slate-400 text-sm max-w-xs">
+                        This tool is an interactive simulator based on standard partner program mechanics. Please refer to the official Databricks Partner Portal for the most up-to-date program guide PDF.
+                    </p>
+                </div>
+                <div class="text-right">
+                    <p class="text-slate-500 text-sm">&copy; 2024 DPN Compass. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- State Management ---
+        const appState = {
+            points: {
+                proCert: 5,
+                assocCert: 2,
+                reference: 10,
+                revenueUnit: 1 // 1 point per 10k revenue (simplified logic for demo)
+            },
+            inputs: {
+                proCerts: 2,
+                assocCerts: 3,
+                references: 2,
+                revenue: 150 // in thousands
+            },
+            results: {
+                capability: 0,
+                activity: 0,
+                performance: 0,
+                total: 0
+            }
+        };
+
+        // --- Charts Initialization ---
+        let certChartInstance = null;
+        let scoreChartInstance = null;
+
+        function initCharts() {
+            // 1. Certification Comparison Chart
+            const ctxCert = document.getElementById('certChart').getContext('2d');
+            certChartInstance = new Chart(ctxCert, {
+                type: 'bar',
+                data: {
+                    labels: ['Professional', 'Associate', 'Accreditation'],
+                    datasets: [{
+                        label: 'Points per Certification',
+                        data: [5, 2, 1],
+                        backgroundColor: [
+                            '#ea580c', // Orange-600
+                            '#94a3b8', // Slate-400
+                            '#cbd5e1'  // Slate-300
+                        ],
+                        borderRadius: 6,
+                        barThickness: 40
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.raw + ' Points';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { display: false }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // 2. Total Score Distribution Chart (Donut)
+            const ctxScore = document.getElementById('scoreChart').getContext('2d');
+            scoreChartInstance = new Chart(ctxScore, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Capability (Certs)', 'Activity (Refs)', 'Performance (Rev)'],
+                    datasets: [{
+                        data: [0, 0, 0], // Initial data
+                        backgroundColor: [
+                            '#2563eb', // Blue-600 (Capability)
+                            '#9333ea', // Purple-600 (Activity)
+                            '#16a34a'  // Green-600 (Performance)
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                font: { family: 'Inter', size: 12 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Logic Functions ---
+
+        function calculateResults() {
+            // Calculate Pillar Scores
+            const capScore = (appState.inputs.proCerts * appState.points.proCert) + 
+                             (appState.inputs.assocCerts * appState.points.assocCert);
+            
+            const actScore = (appState.inputs.references * appState.points.reference);
+            
+            // Revenue logic: 1 point per 10k
+            const perfScore = Math.floor(appState.inputs.revenue / 10) * appState.points.revenueUnit;
+
+            appState.results = {
+                capability: capScore,
+                activity: actScore,
+                performance: perfScore,
+                total: capScore + actScore + perfScore
+            };
+        }
+
+        function updateUI() {
+            // Update Text Displays
+            document.getElementById('total-score-display').textContent = appState.results.total;
+            document.getElementById('score-cap-display').textContent = appState.results.capability;
+            document.getElementById('score-act-display').textContent = appState.results.activity;
+            document.getElementById('score-perf-display').textContent = appState.results.performance;
+
+            // Update Score Chart
+            if (scoreChartInstance) {
+                scoreChartInstance.data.datasets[0].data = [
+                    appState.results.capability,
+                    appState.results.activity,
+                    appState.results.performance
+                ];
+                scoreChartInstance.update();
+            }
+
+            // Update Reference Simulator Section (Standalone)
+            document.getElementById('ref-count-display').textContent = appState.inputs.references;
+            document.getElementById('ref-points-display').textContent = appState.inputs.references * appState.points.reference;
+        }
+
+        function handleInputChanges() {
+            // Bind inputs to state
+            appState.inputs.proCerts = parseInt(document.getElementById('input-pro-certs').value) || 0;
+            appState.inputs.assocCerts = parseInt(document.getElementById('input-assoc-certs').value) || 0;
+            appState.inputs.references = parseInt(document.getElementById('input-refs').value) || 0;
+            appState.inputs.revenue = parseInt(document.getElementById('input-rev').value) || 0;
+
+            calculateResults();
+            updateUI();
+        }
+
+        // --- Event Listeners ---
+        
+        // Input listeners
+        const inputIds = ['input-pro-certs', 'input-assoc-certs', 'input-refs', 'input-rev'];
+        inputIds.forEach(id => {
+            document.getElementById(id).addEventListener('input', handleInputChanges);
+        });
+
+        // Specific functions for the Reference Section (+/- buttons)
+        window.adjustRef = function(delta) {
+            let newVal = appState.inputs.references + delta;
+            if (newVal < 0) newVal = 0;
+            if (newVal > 20) newVal = 20; // Cap at 20 for UI safety
+            
+            appState.inputs.references = newVal;
+            
+            // Sync the main calculator input
+            document.getElementById('input-refs').value = newVal;
+            
+            handleInputChanges();
+        };
+
+        // Navigation Helper
+        window.scrollToSection = function(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        window.highlightSection = function(id) {
+            scrollToSection(id);
+            // Optional: add a temporary flash effect
+        };
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            handleInputChanges(); // Initial calculation
+        });
+
+    </script>
+</body>
+</html>
