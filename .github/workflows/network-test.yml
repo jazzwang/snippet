@@ -1,0 +1,19 @@
+name: Network Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      hostname:
+        description: 'Hostname to lookup'
+        required: true
+        type: string
+
+jobs:
+  run-nslookup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run nslookup
+        run: nslookup ${{ github.event.inputs.hostname }}
