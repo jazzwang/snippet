@@ -473,3 +473,14 @@ Would you like a **checklist template** or a **PowerShell script** to automate p
 | Someone else changes an item | [Send an email for changes by others to a SharePoint list item or file](https://make.powerautomate.com/galleries/public/templates/2bb23015e0a7406aa5bfaa1f42449bbe) ||
 | Someone else changes an item created by me | [Send an email for changes to a SharePoint list item or file created by me](https://make.powerautomate.com/galleries/public/templates/c6aa4b51a5c64ff493d5f6ecb10b38d4) ||
 | Item created | [Send an email when a SharePoint list item is created](https://make.powerautomate.com/galleries/public/templates/bfb9bd0a17bb49a4abb338ec750589a0) | [Send an email when a new SharePoint file is created](https://make.powerautomate.com/galleries/public/templates/5a848231c25c4197b7cb9f905439617a) |
+
+## 2026-01-06
+
+- 緣起：
+  - Technical Program Manager 用 PowerBI 做了一個 Dashboard 可以分析"每天"從 Jira 更新的資料。 #值得仿效的數據分析高手
+  - 好奇能否透過 Power Automate 從 Jira Enterprise Server 把特定 JQL 的資料存成 Excel 或 SharePoint List
+- 目標：
+  - 透過 Power Automate 從 Jira Enterprise Server 把特定 JQL 的資料存成 Excel 或 SharePoint List
+- 2025-05-29
+  - How to Export Jira to Excel Using Power Automate
+  - https://dellenny.com/how-to-export-jira-to-excel-using-power-automate/
