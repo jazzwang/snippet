@@ -161,3 +161,10 @@ end legend
 | Abbreviation | Full Form | 中文 | Reference |
 |--------------|-----------|------|-----------|
 | MSA | Master service agreement | 主服務合約 | https://en.wikipedia.org/wiki/Master_service_agreement |
+
+## 2026-01-13
+
+| Abbreviation | Full Form | 中文 | Reference |
+|--------------|-----------|------|-----------|
+| RTB | Realtime Bidding | 即時競價 (AdTech) | |
+| RTB | Run The Business | 經營事業 | |
