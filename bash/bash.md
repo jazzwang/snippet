@@ -381,3 +381,49 @@ echo "Randomly selected: ${myKey[$index]}"
 Would you like to see how to make this pick a new key only once per day or once per hour?
 
 </td></tr></table>
+
+## 2026-01-16
+
+- 在 `~/bin/gemini-keys` 填入不同帳號的金鑰
+```
+#!/bin/bash
+
+GEMINI_API_KEY[0]=""
+GEMINI_API_KEY[1]=""
+GEMINI_API_KEY[2]=""
+GEMINI_API_KEY[3]=""
+GEMINI_API_KEY[4]=""
+GEMINI_API_KEY[5]=""
+
+GEMINI_KEY_ID[0]="account1"
+GEMINI_KEY_ID[1]="account2"
+GEMINI_KEY_ID[2]="account3"
+GEMINI_KEY_ID[3]="account4"
+GEMINI_KEY_ID[4]="account5"
+GEMINI_KEY_ID[5]="account6"
+
+# Seed the random generator with the current epoch
+RANDOM=$(date +%s)
+
+# Pick a truly random index based on that seed
+index=$(( RANDOM % ${#GEMINI_API_KEY[@]} ))
+
+echo "Randomly selected: ${GEMINI_KEY_ID[$index]}"
+
+export GEMINI_API_KEY="${GEMINI_API_KEY[$index]}"
+```
+- 在 `~/bin/meeting-summary` 加入
+```diff
+diff --git a/meeting-summary b/meeting-summary
+index cf0add3..d2f5546 100644
+--- a/meeting-summary
++++ b/meeting-summary
+@@ -1,3 +1,5 @@
+#!/bin/bash
++source ~/bin/gemini-keys
++echo "GEMINI_API_KEY=${GEMINI_API_KEY}" > .env
+INPUT=$1
+aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash -m "/ask could you summarize this transcript using markdown syntax? in 3 sections: (A) Overall Summary, Takeaways and Chapters (B) Detailed summary based on different attendees (C) Action items. capture as much detail as possible. use bullet points. use markdown checkbox syntax for action items. Thanks." --chat-history-file ${INPUT%.json}.md $INPUT
+```
+- 這樣每次呼叫就會隨機選一個金鑰來用。
+- 原本寫在更上層的腳本裡，但發現雖然環境變數存在，可是 aider 就是不直接吃環境變數，所以只能強制『覆寫』目前執行路徑的 `.env`
