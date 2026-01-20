@@ -166,5 +166,11 @@ end legend
 
 | Abbreviation | Full Form | 中文 | Reference |
 |--------------|-----------|------|-----------|
-| RTB | Realtime Bidding | 即時競價 (AdTech) | |
+| RTB | Realtime Bidding | 即時競價 (AdTech) | https://advertising.amazon.com/library/guides/real-time-bidding |
 | RTB | Run The Business | 經營事業 | |
+
+## 2026-01-19
+
+| Abbreviation | Full Form | 中文 | Reference |
+|--------------|-----------|------|-----------|
+| DVI | Digital Vehicle Inspection | 數位車輛檢測 | https://autoflow.com/blog/what-is-a-digital-vehicle-inspection-dvi-and-how-does-it-benefit-your-auto-repair-shop/ |

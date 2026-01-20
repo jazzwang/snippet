@@ -21,7 +21,7 @@
 - 追查：
   - Explore.exe 在 2025-12-11 有被更動過，看起來是 Security Patch/Update 造成的
 
-## 2025-01-19
+## 2026-01-19
 
 <table>
 <tr><td>Q:</td><td>
@@ -211,3 +211,37 @@ net start wsearch
 
 - 參考：
   - https://zhuanlan.zhihu.com/p/507590692
+
+## 2026-01-20
+
+```bash
+PS C:\ProgramData\Microsoft\Search\Data\Applications\Windows> bash
+/c/ProgramData/Microsoft/Search/Data/Applications/Windows$ ls -al
+total 1232488
+drwxr-xr-x 1 jazzw 197609          0 Jan 19 08:31 .
+drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 ..
+drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 GatherLogs
+drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 Projects
+-rw-r--r-- 1 jazzw 197609 1206644736 Jan 19 15:35 Windows.db
+-rw-r--r-- 1 jazzw 197609    2228224 Jan 19 12:08 Windows.db-shm
+-rw-r--r-- 1 jazzw 197609    4165352 Jan 19 15:35 Windows.db-wal
+-rw-r--r-- 1 jazzw 197609   42307584 Jan 19 15:35 Windows-gather.db
+-rw-r--r-- 1 jazzw 197609      32768 Jan 19 08:31 Windows-gather.db-shm
+-rw-r--r-- 1 jazzw 197609    4132392 Jan 19 15:35 Windows-gather.db-wal
+-rw-r--r-- 1 jazzw 197609    2428928 Aug 29 11:51 Windows-usn.db
+-rw-r--r-- 1 jazzw 197609      32768 Jan 19 08:31 Windows-usn.db-shm
+-rw-r--r-- 1 jazzw 197609          0 Jan 19 08:31 Windows-usn.db-wal
+/c/ProgramData/Microsoft/Search/Data/Applications/Windows$ du -sh *
+1.6M    GatherLogs
+904K    Projects
+1.2G    Windows.db
+2.2M    Windows.db-shm
+4.0M    Windows.db-wal
+41M     Windows-gather.db
+32K     Windows-gather.db-shm
+4.0M    Windows-gather.db-wal
+2.4M    Windows-usn.db
+32K     Windows-usn.db-shm
+0       Windows-usn.db-wal
+```
+
