@@ -167,7 +167,7 @@ end legend
 | Abbreviation | Full Form | 中文 | Reference |
 |--------------|-----------|------|-----------|
 | RTB | Realtime Bidding | 即時競價 (AdTech) | https://advertising.amazon.com/library/guides/real-time-bidding |
-| RTB | Run The Business | 經營事業 | |
+| RTB | Run The Business | 經營事業 | https://dev.to/dev3l/we-call-it-run-the-business-42bc |
 
 ## 2026-01-19
 

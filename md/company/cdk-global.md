@@ -1,5 +1,8 @@
 # Company Profile Survey: CDK Global
 
+- https://en.wikipedia.org/wiki/CDK_Global
+- https://en.wikipedia.org/wiki/ADP_(company)
+
 - 2015-02-18: Test Driving CDK Global, by Scuttlebutt Investor
   - https://www.scuttlebuttinvestor.com/blog/2015/2/16/test-driving-cdk-global
   - 提到更早之前 [CDK]() 是從 [ADP](https://www.google.com/finance?q=NASDAQ%3AADP&ei=hj3iVJHHLIH_igL744D4DA) 分家出來(?)
@@ -261,6 +264,8 @@ CDK Global faces competition from several key players in the automotive dealersh
 - **Dealertrack**: Captures about 21.93% of the market.
 - **Reynolds and Reynolds**: Accounts for around 14.07% of the market share.
 - Other notable competitors include Dealersocket, Dealer Inspire, and AutoRevo, among others [1].
+- [**Tekion**](https://tekion.com/)
+  - https://www.forbes.com/sites/greggardner/2021/04/15/tekion-sees-the-cloud-as-key-to-streamlining-auto-retailing/
 
 ## 2. Where to Find Revenue Report of CDK Global
 

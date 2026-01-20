@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDK Global 演進歷史</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* 垂直中央線 */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #3b82f6;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 左側內容 */
+        .left {
+            left: 0;
+        }
+
+        /* 右側內容 */
+        .right {
+            left: 50%;
+        }
+
+        /* 圓點 */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: #fff;
+            border: 4px solid #3b82f6;
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .year {
+            font-weight: bold;
+            color: #3b82f6;
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+
+        .event-title {
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item::after {
+                left: 21px;
+            }
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blue-600 text-white py-12 px-4 text-center shadow-lg">
+        <h1 class="text-4xl font-bold mb-2">CDK Global 企業發展史</h1>
+        <p class="text-lg opacity-90">從 ADP 部門到全球汽車零售技術領導者的演進</p>
+    </div>
+
+    <div class="timeline-container" id="timeline">
+        <!-- 內容將由 JS 動態生成 -->
+    </div>
+
+    <footer class="bg-gray-800 text-gray-400 py-8 text-center">
+        <p>資料來源：Wikipedia & CDK Global 官方公告</p>
+        <p class="text-sm mt-2">© 2026 互動時間軸展示</p>
+    </footer>
+
+    <script>
+        const timelineData = [
+            {
+                year: "1972",
+                title: "公司起源",
+                desc: "成立於 1972 年（或指 ADP 經銷商服務部門的起源）。最初致力於為汽車經銷商提供電腦化會計與庫存系統。",
+                side: "left"
+            },
+            {
+                year: "1973",
+                title: "ADP 經銷商服務部成立",
+                desc: "ADP 收購 NICS 與 CSI，正式成立「經銷商服務部門 (Dealer Services division)」，為汽車經銷商提供管理系統 (DMS)。",
+                side: "right"
+            },
+            {
+                year: "2005 - 2006",
+                title: "關鍵收購與命名靈感",
+                desc: "ADP 收購了 Kerridge Computer Company (英國) 與 Cobalt (數位行銷)。後來公司名稱 CDK 便是由 Cobalt (C)、Dealer Services (D) 與 Kerridge (K) 的首字母組成。",
+                side: "left"
+            },
+            {
+                year: "2014",
+                title: "正式獨立分拆",
+                desc: "2014 年 10 月 1 日，ADP 將經銷商服務部門分拆為獨立的上市公司，並正式更名為 CDK Global, Inc.，在納斯達克上市（代碼：CDK）。",
+                side: "right"
+            },
+            {
+                year: "2015 - 2018",
+                title: "業務擴張與轉型",
+                desc: "發布大規模轉型計劃，專注於提高營運效率、擴大北美市場份額，並透過多次小型軟體公司收購強化數位零售能力。",
+                side: "left"
+            },
+            {
+                year: "2021",
+                title: "國際業務出售",
+                desc: "CDK Global 以 14.5 億美元將其國際業務（EMEA 及亞洲）出售給 Francisco Partners，該部分隨後更名為 Keyloop。",
+                side: "right"
+            },
+            {
+                year: "2022",
+                title: "私有化收購",
+                desc: "Brookfield Business Partners 以約 83 億美元的價格完成對 CDK Global 的收購，公司從納斯達克退市，轉為私有化經營。",
+                side: "left"
+            },
+            {
+                year: "2024",
+                title: "重大勒索軟體攻擊",
+                desc: "6 月，CDK Global 遭受大規模勒索軟體攻擊，導致全美超過 15,000 家汽車經銷商的 DMS 系統癱瘓數週，對汽車零售業造成深遠影響。",
+                side: "right"
+            },
+            {
+                year: "2025",
+                title: "產品創新與重生",
+                desc: "推出「CDK SimplePay」雲端支付解決方案，並與大型經銷商集團（如 WE Auto Group）簽署全面數位化轉型合約。",
+                side: "left"
+            }
+        ];
+
+        function createTimeline() {
+            const container = document.getElementById('timeline');
+            
+            timelineData.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `timeline-item ${item.side}`;
+                
+                itemDiv.innerHTML = `
+                    <div class="content">
+                        <div class="year">${item.year}</div>
+                        <div class="event-title text-xl">${item.title}</div>
+                        <p class="description">${item.desc}</p>
+                    </div>
+                `;
+                
+                container.appendChild(itemDiv);
+            });
+        }
+
+        function handleScroll() {
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        window.onload = () => {
+            createTimeline();
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // 初始檢查
+        };
+    </script>
+</body>
+</html>
