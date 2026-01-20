@@ -1,0 +1,3 @@
+#!/bin/bash
+INPUT=$1
+npx markmap-cli ${INPUT} -o ${INPUT%.*}.html
