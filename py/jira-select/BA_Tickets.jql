@@ -1,0 +1,8 @@
+from: issues
+select:
+- key
+- summary
+- description
+- comment
+where:
+- labels in (BATickets, BAReview) AND project = HADOOP

@@ -254,3 +254,24 @@ options:
   --disable-progressbars, -b
 ```
 - 整體來說，`jira-select` 用起來比用 golang 寫的 `jira-cli` (https://github.com/ankitpokhrel/jira-cli) 更有彈性。可以繼續花時間研究怎麼用。
+
+## 2026-01-21
+
+- 範例：使用 `jira-select run-query` 輸出 JSON 結果存到檔案
+- here is the query_file:
+```bash
+~$ cat BA_Tickets.jql
+from: issues
+select:
+- key
+- summary
+- description
+- comment
+where:
+- labels in (BATickets, BAReview) AND project = HADOOP
+```
+- here is the example command:
+```bash
+~$ jira-select run-query -f json -o BA_Tickets.json BA_Tickets.jql
+```
+
