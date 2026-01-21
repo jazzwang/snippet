@@ -4,13 +4,36 @@
 
 - 緣起：因為想要分析 Jira User Story 並根據語意進行分群，所以用 `jira-select run-query` 下載了 JSON 格式的結果當作 Latent Scope 拿來分群用的 Dataset
 - 痛點：一開始沒特別注意，使用 Jira Web UI 匯出成 CSV 或 Excel 檔案，但不管怎麼整理，就是會遇到 charmap 的錯誤訊息
+  - 例如：`UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f917' in position 27: character maps to <undefined>`
+```py
+embedding 346 sentences in 3 batches
+0%|          | 0/3 [00:00<?, ?it/s]
+33%|███▎      | 1/3 [00:10<00:20, 10.40s/it]
+67%|██████▋   | 2/3 [00:22<00:11, 11.21s/it]
+100%|██████████| 3/3 [00:33<00:00, 11.42s/it]
+4it [00:39,  9.25s/it]
+4it [00:39,  9.94s/it]
+Traceback (most recent call last):
+File "<frozen runpy>", line 198, in _run_module_as_main
+File "<frozen runpy>", line 88, in _run_code
+File "C:\Users\jazzw\.local\bin\ls-embed.exe\__main__.py", line 10, in <module>
+File "C:\Users\jazzw\AppData\Roaming\uv\tools\latentscope\Lib\site-packages\latentscope\scripts\embed.py", line 63, in main
+embed(args.dataset_id, args.text_column, args.model_id, args.prefix, args.rerun, args.dimensions, args.batch_size, args.max_seq_length)
+File "C:\Users\jazzw\AppData\Roaming\uv\tools\latentscope\Lib\site-packages\latentscope\scripts\embed.py", line 153, in embed
+history_file.write(f"{datetime.now().isoformat()},{model_id}\n")
+File "C:\Users\jazzw\scoop\apps\python\current\Lib\encodings\cp1252.py", line 19, in encode
+return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f917' in position 27: character maps to <undefined>
 ```
-```
-- 改用 `jira-select run-query` 以後，發現確實有很多 emoji 或特殊 unicode 字元
+
+- 改用 `jira-select run-query` 以後，發現確實有很多 `\u` 開頭的特殊字元
 - 在高鐵上網路不順，索性就靠 local 的 Ollama Qwen 2.5 Coder 7B 模型來了解這些特殊字元到底是什麼
+  - 經調查，才知道是 emoji 或特殊 unicode 字元。
+  - 回過頭比對 Jira 匯出的 Excel 裡面，確實包含這些特殊字元
 - 關鍵洞察 Key Takeaway：
   - 2024 以後，開始有些人把 ChatGPT 或 M365 Copilot 生成的內容貼到 User Story 的 Description ，
-    當然裡面就會藏了一些 emoji 或 unicode (像是"箭頭"或"加總"等符號）
+    當然裡面就會藏了一些 emoji 或 unicode ( 像是"箭頭"或"加總"等符號 )
   - 這讓清洗跟分析一些 LinkedIn 貼文或 Jira / Confluence 等內容變得更困難了
 
 ```bash
@@ -210,3 +233,185 @@ confirmation. Here's how it looks when rendered:
 
 ✔️
 
+-----
+
+以下是一些跟 Gemini 討論怎麼解決 Charmap 錯誤的紀錄：
+<table>
+<tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+how can I troubleshoot unicode decode error using `vi` ? 
+here is the python error: 
+```python
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa0 in position 193: invalid start byte
+```
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+
+Dealing with a `UnicodeDecodeError` in Python usually means your file contains a character that doesn't belong in the encoding Python is expecting (UTF-8). The byte `0xa0` is a classic culprit—it's often a **non-breaking space** from a copy-paste job.
+
+Here is how you can use `vi` (or `vim`) to find and fix that specific byte.
+
+---
+
+### 1. Highlight Non-ASCII Characters
+
+The easiest way to find the "invisible" culprit is to tell `vi` to highlight any character that isn't part of the standard ASCII set.
+
+1. Open your file: `vi your_script.py`
+2. Enter command mode by typing `:`
+3. Run the following command:
+```vim
+/ [^\x00-\x7f]
+
+```
+
+
+*This tells `vi` to search for any character **not** in the range of hex 00 to 7F.*
+
+---
+
+### 2. Locate the Exact Position
+
+Since your error message gave you a specific location (position 193), you can jump to that approximate area.
+
+* **Go to the line:** If you know the line number, type `:193` followed by `Enter`.
+* **Show byte position:** You can check exactly where you are in the file by pressing `ga`.
+* Look at the bottom of the screen. `vi` will show the decimal, hex, and octal value of the character under the cursor.
+* Look for a character that displays something like `<a0>`.
+
+
+
+---
+
+### 3. Use "List" Mode to See Hidden Characters
+
+You can force `vi` to show characters that are usually invisible (like trailing spaces or non-breaking spaces).
+
+1. Type `:set list`
+2. Non-breaking spaces often show up as `~` or a highlighted space depending on your colorscheme.
+3. To turn it off later, type `:set nolist`.
+
+---
+
+### 4. Search and Destroy (The Fix)
+
+If you want to find that specific `0xa0` byte and replace it with a standard space, you can use a search and replace command:
+
+```vim
+:%s/\%u00a0/ /g
+
+```
+
+* `%s`: Search the whole file.
+* `\%u00a0`: This is the Vim syntax for the Unicode character `U+00A0` (the byte `0xa0`).
+* `/ /g`: Replace it with a regular space globally.
+
+---
+
+### Summary of Useful `vi` Commands
+
+| Command | Action |
+| --- | --- |
+| `ga` | Display the ASCII/Hex value of the character under the cursor. |
+| `:set list` | Show hidden/special characters visually. |
+| `/[^\x00-\x7f]` | Search for the next non-ASCII character. |
+| `:%s/[^\x00-\x7f]//g` | **Extreme measure:** Delete every non-ASCII character in the file. |
+
+---
+
+**Would you like me to show you how to configure your `.vimrc` so that these "bad" characters are always highlighted in red whenever you open a file?**
+
+</td></tr>
+<tr><td>Q:</td><td>
+<!-- add your Prompt bellow-->
+help me to resolve this error:
+```
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f917' in position 27: character maps to <undefined>
+```
+</td></tr><tr><td>A:</td><td>
+<!-- add Chatbot Response bellow-->
+
+This error is the opposite of your previous one. While a `DecodeError` happens when **reading** a file, a `UnicodeEncodeError` happens when Python tries to **write or print** a character that the destination (your terminal, a file, or a Windows pipe) doesn't understand.
+
+The character `\U0001f917` is the **"Hugging Face" emoji (🤗)**. The `'charmap'` codec error usually occurs on Windows because the default system encoding (often `cp1252`) cannot handle emojis.
+
+---
+
+### Solution 1: Force UTF-8 Encoding in Code
+
+If you are writing to a file, you must explicitly tell Python to use `utf-8` instead of letting it guess the system default.
+
+**Change this:**
+
+```python
+with open('output.txt', 'w') as f:
+    f.write(my_string)
+```
+
+**To this:**
+
+```python
+with open('output.txt', 'w', encoding='utf-8') as f:
+    f.write(my_string)
+```
+
+---
+
+### Solution 2: Fix the Terminal Environment
+
+If the error happens when you `print()`, your terminal environment isn't identifying itself as UTF-8 compatible. You can override this by setting an environment variable in your shell **before** running your script.
+
+**On Windows (PowerShell):**
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'
+python your_script.py
+```
+
+**On Windows (Command Prompt):**
+
+```cmd
+set PYTHONIOENCODING=utf8
+python your_script.py
+```
+
+---
+
+### Solution 3: The "Ignore" or "Replace" Strategy
+
+If you don't actually care about the emoji and just want the script to stop crashing, you can tell Python how to handle characters it can't encode.
+
+```python
+# Re-encode the string, dropping characters that aren't supported
+clean_string = my_string.encode('ascii', 'ignore').decode('ascii')
+print(clean_string)
+
+# Or replace them with a placeholder like '?'
+print(my_string.encode('cp1252', errors='replace').decode('cp1252'))
+```
+
+---
+
+### How to find this in `vi`
+
+If that emoji is hard-coded in your Python script and you want to find it using `vi`:
+
+1. Open the file: `vi your_script.py`
+2. Search for non-standard characters:
+
+  ```vim
+  /[^\x00-\x7f]
+  ```
+
+3. Once found, you can delete it or replace it with a text-based version like `":hugging_face:"`.
+
+---
+
+### Why this happens (The Logic)
+
+Python 3 uses Unicode for all strings internally. However, when those strings leave the Python environment (to a disk or a screen), they must be converted into **bytes**. If the "map" (codec) chosen for that conversion doesn't have a slot for a specific emoji, it panics and throws this error.
+
+**Would you like me to show you how to update your Python environment globally so you don't have to set these variables every time?**
+
+</td></tr>
+</table>
