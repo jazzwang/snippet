@@ -174,3 +174,10 @@ end legend
 | Abbreviation | Full Form | 中文 | Reference |
 |--------------|-----------|------|-----------|
 | DVI | Digital Vehicle Inspection | 數位車輛檢測 | https://autoflow.com/blog/what-is-a-digital-vehicle-inspection-dvi-and-how-does-it-benefit-your-auto-repair-shop/ |
+
+## 2026-01-23
+
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| CTC | Cost to Company | 公司總成本 | https://en.wikipedia.org/wiki/Cost_to_company | #HR #Finance #Operation |

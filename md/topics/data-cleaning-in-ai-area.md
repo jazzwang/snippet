@@ -241,9 +241,11 @@ confirmation. Here's how it looks when rendered:
 <!-- add your Prompt bellow-->
 how can I troubleshoot unicode decode error using `vi` ? 
 here is the python error: 
+
 ```python
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa0 in position 193: invalid start byte
 ```
+
 </td></tr><tr><td>A:</td><td>
 <!-- add Chatbot Response bellow-->
 
@@ -260,9 +262,9 @@ The easiest way to find the "invisible" culprit is to tell `vi` to highlight any
 1. Open your file: `vi your_script.py`
 2. Enter command mode by typing `:`
 3. Run the following command:
+
 ```vim
 / [^\x00-\x7f]
-
 ```
 
 
