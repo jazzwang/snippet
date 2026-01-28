@@ -1,0 +1,5 @@
+from: boards
+select:
+- id
+- name
+- type

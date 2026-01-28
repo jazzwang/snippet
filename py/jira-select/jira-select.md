@@ -275,3 +275,93 @@ where:
 ~$ jira-select run-query -f json -o BA_Tickets.json BA_Tickets.jql
 ```
 
+## 2026-01-28
+
+- 範例：利用 `jira-select run-query` 輸出 CSV 結果，將所有 Jira Board 查詢結果存到檔案
+- query_file:
+```bash
+~/Downloads/CY26_PI1_QBR_7_KPI$ cat list-boards.jql
+from: boards
+select:
+- id
+- name
+- type
+```
+- 查詢方法
+```
+~$ jira-select run-query -f csv -o jira-boards.csv list-boards.jql
+```
+
+### schema (boards)
+
+- 一般 boards 跟 sprints 的 schema 不會變，而 issues 的 schema 可以取得完整 custom_fields 列表
+```bash
+~$ jira-select schema boards
+           boards
+┏━━━━━━┳━━━━━━┳━━━━━━━━━━━━━┓
+┃ id   ┃ type ┃ description ┃
+┡━━━━━━╇━━━━━━╇━━━━━━━━━━━━━┩
+│ id   │ int  │             │
+│ name │ str  │             │
+│ type │ str  │             │
+└──────┴──────┴─────────────┘
+```
+
+### schema (sprints)
+
+```bash
+~$ jira-select schema sprints
+                 sprints
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ id            ┃ type    ┃ description ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ id            │ int     │             │
+│ state         │ str     │             │
+│ name          │ str     │             │
+│ startDate     │ datestr │             │
+│ endDate       │ datestr │             │
+│ completeDate  │ datestr │             │
+│ originBoardId │ int     │             │
+└───────────────┴─────────┴─────────────┘
+```
+
+### 取得指定 board 底下的 sprints
+
+- 嘗試限制查詢條件，但還是沒成功
+```bash
+>>> from: sprints
+    select:
+    - id
+    - state
+    - name
+    where:
+    - board_name is "HADOOP"
+
+
+Query Error: Sprint query 'where' expressions should be a dictionary having any of the following keys: 'board_type', 'board_name', or 'state'.
+>>> from: sprints
+    select:
+    - id
+    - state
+    - name
+    where:
+    - state: 'active'
+
+Parse Error: Your query could not be parsed: 2 validation errors for QueryDefinition
+where.list.0
+  Input should be a valid string
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+where.dict
+  Input should be a valid dictionary [type=dict_type, input_value=[{'state': 'active'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+>>> from: sprints
+    select:
+    - id
+    - state
+    - name
+    where:
+    - state = 'active'
+
+
+Query Error: Sprint query 'where' expressions should be a dictionary having any of the following keys: 'board_type', 'board_name', or 'state'.
+```
