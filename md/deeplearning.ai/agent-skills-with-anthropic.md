@@ -121,3 +121,9 @@ This approach is counter-intuitive to the "more data is always better" mindset o
 
 The advent of agent skills marks a significant step forward in making AI agents not just powerful, but also practical and extensible. By embracing open standards, dynamic specialization, and intelligent context management, we're moving beyond simple prompts to building truly intelligent, adaptive systems. As these capabilities become more widespread, how will they reshape the way we design and interact with AI in our daily lives and work?
 
+## 2026-01-29
+
+- 課程相關原始碼
+  - https://github.com/https-deeplearning-ai/sc-agent-skills-files/
+- Agent Skill 是公開標準
+  - https://agentskills.io/home#adoption
