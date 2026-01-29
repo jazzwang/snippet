@@ -27,3 +27,12 @@
 - Semantic Caching for AI Agents
   - https://www.deeplearning.ai/short-courses/semantic-caching-for-ai-agents/
   - read from: https://www.linkedin.com/feed/update/urn:li:activity:7396990910988943360/
+
+## 2026-01-29
+
+- Agent Skills with Anthropic
+  - https://www.deeplearning.ai/short-courses/agent-skills-with-anthropic/
+  - read from: https://www.linkedin.com/feed/update/urn:li:share:7422643552658317313/
+- Gemini CLI: Code & Create with an Open-Source Agent
+  - https://www.deeplearning.ai/short-courses/gemini-cli-code-and-create-with-an-open-source-agent/
+  - read from: https://fc.bnext.com.tw/articles/view/4410
