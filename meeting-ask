@@ -1,3 +1,5 @@
 #!/bin/bash
+source ~/bin/gemini-keys
+echo "GEMINI_API_KEY=${GEMINI_API_KEY}" > .env
 INPUT=$1
 aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash --watch-files --chat-history-file ${INPUT%.json}.md $INPUT

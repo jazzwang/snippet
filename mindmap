@@ -1,5 +1,5 @@
 #!/bin/bash
 INPUT=$1
-aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash --chat-language zh_TW \
+aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash \
 --chat-history-file ${INPUT%.*}.markmap.md $INPUT \
 -m "/ask could you draw a mind map using markmap.js syntax?" 
