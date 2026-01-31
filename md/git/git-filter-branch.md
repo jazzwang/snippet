@@ -34,3 +34,6 @@ WARNING: git-filter-branch has a glut of gotchas generating mangled history
          filter-branch manual page for more details; to squelch this warning,
          set FILTER_BRANCH_SQUELCH_WARNING=1.
 ```
+- 2026-01-31 備註：
+  - 後來為了合併別人 repo 某個檔案時，確實用到 `git filter-repo` 這個指令
+  - 詳見 [git-filter-repo.md](git-filter-repo.md)
