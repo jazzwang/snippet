@@ -177,7 +177,17 @@ end legend
 
 ## 2026-01-23
 
-
 | Abbreviation | Full Form | 中文 | Reference | Domain |
 |--------------|-----------|------|-----------|--------|
 | CTC | Cost to Company | 公司總成本 | https://en.wikipedia.org/wiki/Cost_to_company | #HR #Finance #Operation |
+
+## 2026-02-01
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| AO | Account Officer | 創投專案經理人 | https://www.findcpa.com.tw/blog/410 | #VC |
+
+- https://statementdog.com/blog/archives/11811
+- https://www.findcpa.com.tw/blog/410
+- https://findit.org.tw/Files/ResArticleAttachedFile/8921b7ab-02cc-4117-bb10-0ab89ccb9ded.pdf
+
