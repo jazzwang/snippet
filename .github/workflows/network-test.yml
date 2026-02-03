@@ -17,3 +17,4 @@ jobs:
           uname -a
           curl https://ipinfo.io/
           nslookup ${{ github.event.inputs.hostname }}
+          traceroute ${{ github.event.inputs.hostname }}
