@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Reveal.js 引言模板</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* 1. 通用字體設定 */
+        :root {
+            --accent-color: #42affa; /* 主題色：水藍色 */
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        /* 2. 方案一：現代優雅 (Modern Elegant) */
+        .reveal .quote-modern {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 10px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 40px 50px;
+            width: 85%;
+            font-style: italic;
+            font-family: 'Noto Serif TC', serif;
+            line-height: 1.6;
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        .reveal .quote-author {
+            display: block;
+            text-align: right;
+            margin-top: 25px;
+            font-size: 0.8em;
+            color: #aaa;
+            font-style: normal;
+        }
+
+        /* 3. 方案二：大氣語錄感 (The Giant Quote) */
+        .reveal .big-quote {
+            position: relative;
+            border: none;
+            background: none;
+            box-shadow: none;
+            font-size: 1.4em;
+            padding: 60px;
+            text-align: center;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .reveal .big-quote::before {
+            content: "\201C"; /* 左雙引號 */
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            font-size: 5em;
+            color: var(--accent-color);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .reveal .big-quote::after {
+            content: "\201D"; /* 右雙引號 */
+            position: absolute;
+            bottom: -60px;
+            right: -20px;
+            font-size: 5em;
+            color: var(--accent-color);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h1>Reveal.js</h1>
+                <p>引言樣式展示</p>
+            </section>
+
+            <section>
+                <h3>風格一：現代優雅</h3>
+                <blockquote class="quote-modern">
+                    “設計不僅僅是外觀和感覺，設計是關於它是如何運作的。”
+                    <span class="quote-author">— 史蒂夫·賈伯斯 (Steve Jobs)</span>
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>風格二：大氣語錄</h3>
+                <blockquote class="big-quote">
+                    生命中最美好的事物不是物品，而是那些令人屏息的時刻。
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>結合動畫效果</h3>
+                <blockquote class="quote-modern">
+                    “我沒有失敗。我只是發現了一萬種行不通的方法。”
+                    <span class="quote-author fragment">— 湯瑪斯·愛迪生 (Thomas Edison)</span>
+                </blockquote>
+                <p class="fragment" style="margin-top: 20px; color: var(--accent-color);">↑ 點擊下一頁才顯示作者</p>
+            </section>
+
+            <section data-background-image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop">
+                <div style="background: rgba(0,0,0,0.6); padding: 40px; border-radius: 15px;">
+                    <h2 style="color: white;">“Code is Poetry.”</h2>
+                    <p>— WordPress 核心理念</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.js"></script>
+    <script>
+        // 初始化 Reveal.js
+        Reveal.initialize({
+            hash: true,
+            center: true, // 垂直居中
+            transition: 'slide' // 切換動畫
+        });
+    </script>
+</body>
+</html>
