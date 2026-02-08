@@ -107,14 +107,12 @@ We will pull the latest stable build. Most modern agents use a simple curl-to-ba
 1. **Run the Installer:**
 ```bash
 curl -fsSL https://opencode.ai/install | bash
-
 ```
 
 
 2. **Refresh your shell:**
 ```bash
 source ~/.bashrc
-
 ```
 
 
@@ -129,9 +127,8 @@ OpenCode is a body; it needs a model (LLM) to act as the brain. For Day 1, we’
 1. **Initialize Configuration:**
 ```bash
 opencode config
-
 ```
-
+> [!WARNING] 這個指令不再正確，2026-02-08 測試時，並不存在。
 
 2. **Choose your Provider:** * **Option A (Cloud):** Select `OpenAI` or `Anthropic`. It will ask for your API Key.
 * **Option B (Local):** Select `Ollama` if you want to run things 100% locally on your PC (requires Ollama to be installed on Windows).
@@ -147,20 +144,19 @@ opencode config
 Let’s make sure the agent can actually "see" and "write" in your WSL environment.
 
 1. **Create a test directory:**
+
 ```bash
 mkdir ~/opencode-lab && cd ~/opencode-lab
-
 ```
-
 
 2. **Start the Agent:**
+
 ```bash
 opencode .
-
 ```
 
-
 3. **The Prompt:** Inside the OpenCode interface, type:
+
 > "Create a simple Python script named `sys_info.py` that prints the current OS version and the number of CPU cores. Then, execute it to prove it works."
 
 
