@@ -4,7 +4,7 @@
 
 - 測試環境  #1：Github Codespace (隨時可以清掉的環境)
 
-``bash
+```bash
 @jazzwang ➜ /workspaces/snippet (master) $ curl -fsSL https://opencode.ai/install | bash
 
 Installing opencode version: 1.1.53
@@ -13,7 +13,7 @@ Installing opencode version: 1.1.53
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 100%
 Successfully added opencode to $PATH in /home/codespace/.bashrc
 
-                                 ▄     
+                                 ▄
 █▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█
 █░░█ █░░█ █▀▀▀ █░░█ █░░░ █░░█ █░░█ █▀▀▀
 ▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀  ▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀
@@ -140,3 +140,165 @@ Options:
 
   Web interface:      http://127.0.0.1:4096/
 ```
+
+## 2026-02-09
+
+- 測試環境  #2： `Git for Windows` on Windows 11
+```bash
+~/git/snippet/js/opencode$ cd
+~$ neofetch
+jazzw@JazzBook
+OS: Windows 11 Home x86_64
+CPU: AMD Ryzen 7 7735HS with Radeon
+GPU: AMD Radeon(TM) Graphics
+GPU: NVIDIA GeForce RTX 4060 Laptop GPU
+Memory: 16802MiB / 31994MiB
+
+~$ curl -fsSL https://opencode.ai/install | bash
+```
+- 驗證：
+```bash
+~$ uname -a
+MINGW64_NT-10.0-26200 JazzBook 3.6.5-22c95533.x86_64 2025-10-10 12:02 UTC x86_64 Msys
+~$ source ~/.bashrc
+~$ which opencode
+/c/Users/jazzw/.opencode/bin/opencode
+```
+- 設定 API 金鑰
+```bash
+~$ opencode auth login
+
+┌  Add credential
+│
+◆  Select provider
+
+│  Search:
+│  ○ OpenCode Zen
+│  ○ Anthropic
+│  ○ GitHub Copilot
+│  ○ OpenAI
+│  ● Google
+│  ○ OpenRouter
+│  ○ Vercel AI Gateway
+│  ...
+│  ↑/↓ to select • Enter: confirm • Type: to search
+```
+- 選 Google，然後填入通常設定 `GEMINI_API_KEY` 環境變數的金鑰
+```bash
+~$ opencode auth login
+
+┌  Add credential
+│
+◇  Select provider
+│  Google
+│
+◆  Enter your API key
+│  _
+└
+```
+- 這樣用 `opencode auth list` 列出所有認證金鑰時，就會顯示不同的 provider
+```bash
+~$ opencode auth list
+
+┌  Credentials ~\.local\share\opencode\auth.json
+│
+●  Google api
+│
+└  1 credentials
+```
+- 試跑範例 Prompt 並另存 session
+- 首先設定使用 Gemini 2.5 Flash Preview 模型 `gemini-2.5-flash-preview-09-2025`
+- 貼入：
+```
+Create a simple Python script named `sys_info.py` that prints the current OS version and the number of CPU cores. Then, execute it to prove it works.
+```
+- 結果會生成 `sys_info.py`
+```python
+import platform
+import os
+
+def print_sys_info():
+    print(f"OS Version: {platform.platform()}")
+    print(f"CPU Cores: {os.cpu_count()}")
+
+if __name__ == "__main__":
+    print_sys_info()
+```
+- 使用以下命令來儲存 session 過程到 markdown file
+```
+/export
+```
+- 推論過程(session)：
+<div style="background-color:lightyellow; padding-space:20px;">
+
+# Python script for OS and CPU info
+
+**Session ID:** ses_3bd0a5281ffeeCdp1D8UC68oQ8
+**Created:** 2/9/2026, 11:12:02 PM
+**Updated:** 2/9/2026, 11:12:22 PM
+
+---
+
+## User
+
+Create a simple Python script named sys_info.py that prints the current OS version and the number of CPU cores. Then, execute it to prove it works.
+
+---
+
+## Assistant (Build ┬╖ gemini-2.5-flash-preview-09-2025 ┬╖ 16.2s)
+
+_Thinking:_
+
+**Developing the Script**
+
+I'm currently focused on coding the Python script, `sys_info.py`. I plan to use the `platform` module for operating system information and the `os` module to determine the number of CPU cores. The script's core functionality is under active construction.
+
+
+**Outlining the Execution**
+
+I've sketched out the initial steps for my Python script, `sys_info.py`. First, I'll write and save the script. Then, I plan to execute it using `bash` and the Python interpreter. The script's content will use the `platform` module for OS version and the `os` module for CPU cores.
+
+**Tool: write**
+
+**Input:**
+```json
+{
+  "content": "import platform\nimport os\n\ndef print_sys_info():\n    print(f\"OS Version: {platform.platform()}\")\n    print(f\"CPU Cores: {os.cpu_count()}\")\n\nif __name__ == \"__main__\":\n    print_sys_info()\n",
+  "filePath": "C:\\Users\\jazzw\\sys_info.py"
+}
+```
+
+**Output:**
+```
+Wrote file successfully.
+```
+
+---
+
+## Assistant (Build ┬╖ gemini-2.5-flash-preview-09-2025 ┬╖ 1.9s)
+
+**Tool: bash**
+
+**Input:**
+```json
+{
+  "description": "Execute the Python script to print system info.",
+  "command": "python sys_info.py"
+}
+```
+
+**Output:**
+```
+OS Version: Windows-11-10.0.26200-SP0
+CPU Cores: 16
+```
+
+---
+
+## Assistant (Build ┬╖ gemini-2.5-flash-preview-09-2025 ┬╖ 1.5s)
+
+The script `sys_info.py` was created and executed successfully, printing the current OS version and the number of CPU cores.
+
+---
+
+</div>

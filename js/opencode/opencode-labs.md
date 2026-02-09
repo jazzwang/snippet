@@ -1,8 +1,6 @@
-<table>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table width="100%"><tr style="background-color:lightyellow;"><td>Q:</td><td>
 could you plan 15 days learning how to use opencode based on popular hands-on labs?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 OpenCode has exploded in popularity as the go-to **open-source AI coding agent** (currently sitting at over 95,000 GitHub stars). Think of it as a fully transparent, model-agnostic version of Claude Code or GitHub Copilot that you can run in your terminal, IDE, or as a standalone desktop app.
@@ -59,11 +57,9 @@ Here is a 15-day hands-on curriculum designed to take you from "What is this ter
 > **Watch the Context:** AI agents can "hallucinate" more when the context window is cluttered. Use `/init` regularly after major changes to keep the `AGENTS.md` file (and the agent's memory) fresh.
 
 **Would you like me to provide a specific "Starter Project" idea to use for the Day 15 Vibe Coding lab?**
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Let's plan step by step. Could you give me step-by-step instruction for Day 1? Target environment: Ubuntu WSL over Windows 11 
-</td></tr><tr><td>A:</td><td>
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
+Let's plan step by step. Could you give me step-by-step instruction for Day 1? Target environment: Ubuntu WSL over Windows 11
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Setting up on **WSL (Windows Subsystem for Linux)** is a pro move. You get the power of a Linux kernel with the comfort of Windows UI. Since we are targeting a high-performance open-source agent setup, we’ll ensure your Ubuntu environment is primed for containerization and Python-based CLI tools.
@@ -77,15 +73,17 @@ Here is your **Day 1: The Foundation & The "Hello World"**.
 Before installing the agent, we need to ensure Ubuntu is up to date and has the necessary build tools.
 
 1. **Open your Ubuntu Terminal** and run:
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y build-essential curl git python3-pip
-
 ```
 
 
 2. **Verify your WSL Version:** Ensure you are on **WSL 2**. In your Windows PowerShell (not Ubuntu), run `wsl -l -v`. If it says version 1, run:
-`wsl --set-version Ubuntu 2`
+```bash
+wsl --set-version Ubuntu 2
+```
 
 ---
 
@@ -128,7 +126,7 @@ OpenCode is a body; it needs a model (LLM) to act as the brain. For Day 1, we’
 ```bash
 opencode config
 ```
-> [!WARNING] 這個指令不再正確，2026-02-08 測試時，並不存在。
+> [!WARNING] 這個指令不正確，2026-02-08 測試時，並不存在。
 
 2. **Choose your Provider:** * **Option A (Cloud):** Select `OpenAI` or `Anthropic`. It will ask for your API Key.
 * **Option B (Local):** Select `Ollama` if you want to run things 100% locally on your PC (requires Ollama to be installed on Windows).
@@ -169,11 +167,9 @@ opencode .
 > **Permission Denied?** If you get a "Permission Denied" error when the agent tries to run a command, it’s usually because Docker needs `sudo`. You can fix this by adding your user to the docker group: `sudo usermod -aG docker $USER` (then restart WSL).
 
 **How did the "sys_info.py" test go? If it worked, would you like to move on to Day 2 and learn how to navigate the interface like a power user?**
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 great! let's follow the same practice and create step-by-step instruction for Day 2.
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Since you’ve got the engine running, Day 2 is all about mastering the **User Interface (UI)** and the **Workflow Philosophy**.
@@ -221,22 +217,22 @@ Just like on Discord or Slack, OpenCode uses the `@` symbol to focus the AI's "e
 Let’s practice navigating a small codebase without writing a single line of code yet.
 
 1. **Step A (Setup):** In your terminal, quickly grab a tiny sample project:
+
 ```bash
 git clone https://github.com/huggingface/chat-ui-template.git test-repo
 cd test-repo
 opencode .
-
 ```
 
 
 2. **Step B (Plan Mode):** Switch to **Plan Mode**. Ask the agent:
+
 > "I'm new here. Using `@test-repo`, can you explain the project structure and tell me where the main entry point for the API is?"
 
 
 3. **Step C (Deep Dive):** Once it answers, use the `@` mention for the specific file it suggested:
+
 > "Looking at `@src/lib/server/api.ts` (or whatever file it found), what environment variables do I need to set up to make this work?"
-
-
 
 ---
 
@@ -260,11 +256,9 @@ To move fast in the OpenCode TUI, memorize these three:
 * [ ] You understood why the agent recommended a specific file without it editing your code.
 
 **How did the "Discovery" exercise go? Did the agent accurately find the entry point of that repo? If you're ready, Day 3 is where we start "Vibe Coding" our first multi-file feature!**
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
  create an exercise lab for Day 2
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 For **Day 2**, we are moving from "Can I run this?" to "How do I control this?" This lab, titled **"Operation: Code Scout,"** focuses on using OpenCode as a high-level architect before you ever let it touch your source code.
 
@@ -368,11 +362,9 @@ Before finishing, ask the agent to **plan** a change without **executing** it.
 ---
 
 **How did OpenCode handle the "Phone Number" plan? Did it feel like it "understood" the full stack, or did it miss a spot?** When you're ready, we can move to **Day 3: The Project Brain**, where we learn how to configure `AGENTS.md` to make the AI follow your specific rules!
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
  Let's move on to Day 3. Could you give me step-by-step instruction for Day 3? Create an exercise lab for Day 3, too. Thanks
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Welcome to **Day 3**. Today, we transition from being a "user" of the agent to being its "manager."
@@ -448,8 +440,8 @@ Open the newly created `AGENTS.md` (or the config file it pointed you to) and ad
 > * Use `logging` instead of `print()` statements.
 > * Every file must start with a `# Created for Day 3 Lab` comment.
 > * Use Google-style docstrings for every function.
-> 
-> 
+>
+>
 
 ### Phase 3: The Compliance Test
 
@@ -494,11 +486,9 @@ The "Brain" isn't just for rules; it's for status.
 If the agent starts getting confused or "forgetting" your `AGENTS.md` rules, use the command `/refresh` or `/reset`. This clears the short-term chat memory and re-reads the project files from scratch.
 
 **How did the "Strict Architect" handle your rules? Did it try to sneak a `print()` statement in there, or was it perfectly compliant?** When you're ready, **Day 4** is where we master **The Researcher**, focusing on how to use the agent to explore massive, unfamiliar codebases without getting lost!
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Let's move on to Day 4. Could you give me step-by-step instruction for Day 4? Create an exercise lab for Day 4, too. Thanks
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Welcome to **Day 4: The Researcher**.
@@ -610,11 +600,9 @@ Large codebases often have "magic" (decorators, globals). Let's hunt them down.
 When researching large repos, the agent might try to read *too many* files and hit a "Context Limit." If you see a warning about "Context Window," tell the agent: *"Summarize the current file first, then tell me which ONE file I should open next to continue the trace."* This keeps the "memory" clean.
 
 **How did the Flask trace go? Did the Mermaid flowchart help you visualize the "magic" of the framework?** If you're feeling like a code detective now, **Day 5** is where we finally put the "Researcher" cap away and start **Single-File Surgery**—learning how to make precise, surgical code edits in Build Mode! Would you like to proceed?
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Let's move on to Day 5. Could you give me step-by-step instruction and create an exercise lab for Day 5?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Welcome to **Day 5: Single-File Surgery**.
@@ -685,7 +673,7 @@ def check_password_strength(password):
     if len(password) > 8:
         return True
     else:
-        return True 
+        return True
 
 print(validate_email("test@example")) # Should be False
 print(check_password_strength(""))    # Should be False
@@ -748,11 +736,9 @@ opencode validator.py
 Sometimes AI agents get lazy and try to delete a 100-line file and replace it with 100 new lines just to change one variable. If you see a massive diff for a small change, **Cancel** it and say: *"Do not rewrite the whole file. Only modify the specific line where the error occurs."*
 
 **How did the "Bug Hunter" lab go? Did the agent make a clean cut, or did it try to rewrite your whole script?** When you're ready, **Day 6** is the "level up" where we perform **Multi-File Refactoring**—making changes that span across different files at once!
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 6?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Yesterday was surgery; today is a full organ transplant. Welcome to **Day 6: Multi-File Refactoring**.
@@ -880,11 +866,9 @@ python3 app.py
 Before applying a multi-file refactor, I always ask: *"Before you edit, list the exact imports you plan to add to each file."* This forces the agent to think about the file paths (like `from .database import save_to_db`) which is where most AI-generated code fails.
 
 **How did the "Great Decoupling" go? Did the agent remember to add the `import` statements, or did you have to nudge it?** When you're ready, **Day 7** is all about **The Auditor**, where we use the agent to find security holes and performance bottlenecks in the code we just wrote!
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 7?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Welcome to **Day 7: The Auditor**.
@@ -997,11 +981,9 @@ print("App is running...")
 If the agent suggests a fix you don't understand, ask: *"Why is this fix safer than my original code?"* This turns the audit into a private tutoring session. Understanding the *why* is what makes you a better developer, not just a better AI user.
 
 **How did your audit go? Did OpenCode find all three vulnerabilities, or did it miss the performance bottleneck?** When you're ready, we'll wrap up the week with **Day 8: Session Isolation**, where we learn how to run multiple "sub-agents" to handle different parts of a project at the same time! Would you like to proceed?
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 8?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Welcome to **Day 8: Session Isolation**.
@@ -1109,11 +1091,9 @@ If an agent starts asking about files in the other folder, remind it: *"You are 
 **How did it feel to manage two "employees" at once? Did the UI and API connect on the first try, or was there a mismatch in the "Contract"?**
 
 When you're ready, **Day 9** is where we get truly custom. We'll learn how to write **Custom Commands** so you can automate your own specific workflows with a single slash! Ready to move on?
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 9?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 Welcome to **Day 9: Custom Commands**.
 
@@ -1165,7 +1145,7 @@ nano ~/.config/opencode/commands/ui-checker.sh
 #!/bin/bash
 echo "--- RUNNING UI AUDIT ---"
 # This simulates finding a problem in a file
-grep -rn "inline-style" . 
+grep -rn "inline-style" .
 echo "--- AUDIT COMPLETE ---"
 
 ```
@@ -1239,11 +1219,9 @@ echo '<div style="color: red;">Hello World</div>' > index.html
 If you don't want to create a permanent command, you can use the **Shell Skill**. You can tell OpenCode: *"I'm going to give you a new skill. Whenever I say 'Cleanup', run `rm -rf __pycache__` and then `git status`."* This is a "temporary command" valid for just that session.
 
 **How did your `/audit-ui` command work? Did it feel like you just gave your agent a specialized tool?** When you're ready, **Day 10** is all about **The Skill System**, where we explore how to let the agent use external tools like web browsers or database clients! Would you like to proceed?
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 10?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
 Welcome to **Day 10: The Skill System**.
@@ -1339,11 +1317,9 @@ When the agent uses the Web Skill, it often brings back a *lot* of text. If the 
 **How did the agent handle the FastHTML challenge? Did it find the right documentation, or did it try to guess the syntax?**
 
 When you're ready, **Day 11** is where we go "Meta." We’ll learn how to build **Custom Skills**—actually writing Python scripts that the agent can call as if they were built-in features! Would you like me to prepare the Day 11 instructions?
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 11?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 Welcome to **Day 11: Building Custom Skills**.
 
@@ -1462,37 +1438,470 @@ This is the "instruction manual" for the AI.
 If you have a tool on your **Windows 11** side (like a specific `.exe`) that you want the agent to use, you can call it from WSL by using the `.exe` extension (e.g., `/mnt/c/Windows/System32/tasklist.exe`). This allows you to build "Cross-OS" skills!
 
 **Did the agent correctly identify your CPU usage? It’s a bit of a rush the first time you see the AI "decide" to use a tool you just built.** When you're ready, **Day 12** is a major pivot: **Privacy & Local Models**. We’ll take the agent completely offline using Ollama! Ready to cut the cord?
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 12?
-</td></tr><tr><td>A:</td><td>
+</td></tr></table>
+<!-- add Chatbot Response bellow-->
+Welcome to **Day 12: Privacy & Local Models**.
+
+Until now, your agent’s "brain" has likely lived in the cloud (OpenAI, Anthropic, etc.). While powerful, this means your code is being sent to third-party servers. Today, we "cut the cord." We will set up **Ollama** to run Large Language Models (LLMs) directly on your Windows 11 hardware, and we’ll point OpenCode to this local instance.
+
+This is the "Privacy First" setup—perfect for working on sensitive corporate data or when you’re on a plane with no Wi-Fi.
+
+---
+
+## Day 12: Taking the Agent Offline
+
+### 1. The Local LLM Architecture
+
+In a local setup, the "Agent" (OpenCode) still runs in your WSL terminal, but instead of calling an API over the internet, it calls a local server (Ollama) running on your own machine.
+
+### 2. Choosing Your Model
+
+Since you are in a coding environment, you need a model optimized for logic.
+
+* **Llama 3 (8B):** Great all-rounder.
+* **Codestral (Mistral):** Specifically tuned for 80+ programming languages.
+* **DeepSeek-Coder-V2:** Currently one of the highest-rated open-source coding models.
+
+---
+
+## Day 12 Lab: "The Air-Gapped Assistant"
+
+In this lab, you will install a local model, configure OpenCode to use it, and test its ability to handle a "top secret" coding task without internet access.
+
+### Phase 1: Install Ollama in WSL
+
+While you can install Ollama on Windows, installing it natively in WSL often provides better performance for Linux-based agents.
+
+1. **Open Ubuntu WSL.**
+2. **Run the Ollama install script:**
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+
+```
+
+
+3. **Start the Ollama server:**
+```bash
+ollama serve
+
+```
+
+
+*(Note: Keep this terminal open, or run it in the background).*
+4. **In a new WSL tab, pull a coding model:**
+```bash
+ollama run codestral
+
+```
+
+
+*(This may take a few minutes to download—it's about 5-8GB).*
+
+### Phase 2: Point OpenCode to the Local Brain
+
+1. **Open your OpenCode config:**
+```bash
+nano ~/.config/opencode/config.yaml
+
+```
+
+
+2. **Update the provider settings:**
+Change your active provider to `ollama`:
+```yaml
+provider: ollama
+base_url: "http://localhost:11434"
+model: codestral
+
+```
+
+
+3. **Save and exit.**
+
+---
+
+### Phase 3: The "Offline" Coding Test
+
+To prove we are private, let’s simulate an air-gapped environment.
+
+1. **Create a "Sensitive" project:**
+```bash
+mkdir ~/day12-private && cd ~/day12-private
+echo "SECRET_KEY=12345-ABCDE-PROPRIETARY" > .env
+
+```
+
+
+2. **Turn off your Wi-Fi** (optional but satisfying for this lab).
+3. **Launch OpenCode:** `opencode .`
+4. **The Prompt:**
+> "Analyze `@.env`. Create a Python script that masks this SECRET_KEY and logs only the first and last three characters. Do this 100% locally."
+
+
+
+### Phase 4: Performance Benchmarking
+
+1. **Observe the speed:** Local models depend on your GPU (VRAM). If it feels slow, check if WSL is using your NVIDIA/AMD GPU.
+2. **The Quality Check:** Ask a complex logic question:
+> "Explain the Big O complexity of a recursive Fibonacci function and suggest an optimized iterative version."
+
+
+3. Compare the answer to what you remember from the "Cloud" models.
+
+---
+
+## Day 12 Summary Checklist
+
+| Task | Completed |
+| --- | --- |
+| Installed Ollama natively in WSL | ☐ |
+| Downloaded a specialized coding model (e.g., Codestral) | ☐ |
+| Configured OpenCode to use `localhost:11434` | ☐ |
+| Successfully completed a coding task while offline | ☐ |
+
+---
+
+### Pro-Tip: The "VRAM" Wall
+
+If your local model is extremely slow or "hallucinates" gibberish, your GPU might be out of memory (VRAM). In WSL, you can check your GPU usage by running `nvidia-smi`. If you're maxed out, try a smaller model like `phi3:mini` (Microsoft's lightweight model) which runs fast even on laptops without dedicated GPUs.
+
+**How did the local model feel compared to the cloud? Was it a "snappy" experience, or did your PC fans start sounding like a jet engine?**
+
+When you're ready, **Day 13** is where we move back to the "World" by integrating OpenCode into **CI/CD and GitHub Actions**. We’ll learn how to make the agent part of your team's automated workflow! Ready?
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
+Could you give me step-by-step instruction and create an exercise lab for Day 13?
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
 
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-</td></tr><tr><td>A:</td><td>
+Welcome to **Day 13: CI/CD & GitHub Actions**.
+
+We are now in the **Mastery Phase**. Up until now, OpenCode has been a personal assistant living in your local terminal. Today, we turn it into a **Team Member**. We will integrate the agent into a GitHub repository so that it can automatically review code, fix failing tests, and suggest improvements every time you (or a teammate) push code.
+
+---
+
+## Day 13: The Automated Collaborator
+
+### 1. Headless Mode (The Bot Mindset)
+
+In your local WSL, you’ve been using the TUI (interactive interface). For CI/CD, we use **Headless Mode**. This allows OpenCode to:
+
+* Run as a command-line script.
+* Read a Pull Request (PR) description.
+* Output its "diffs" directly into a GitHub comment.
+
+### 2. GitHub Secrets & Security
+
+Since the agent needs to call an LLM (OpenAI, Anthropic, or even your local Ollama if it's exposed), you must never hardcode your API keys in the `.yml` file. We will use **GitHub Secrets** to keep things secure.
+
+---
+
+## Day 13 Lab: "The Automated PR Doctor"
+
+In this lab, you will set up a GitHub Action that triggers OpenCode to "diagnose" a failing test in a Pull Request.
+
+### Phase 1: Setup a GitHub Repo from WSL
+
+1. **Open Ubuntu WSL.**
+2. **Create a new repo and push to GitHub:**
+```bash
+mkdir ~/day13-ci && cd ~/day13-ci
+git init
+# (Assuming you have the GitHub CLI 'gh' installed)
+gh repo create day13-ci --public --source=. --remote=origin
+
+```
+
+
+3. **Add your API Key to GitHub Secrets:**
+* Go to your repo on GitHub.com.
+* Navigate to **Settings > Secrets and variables > Actions**.
+* Add a **New repository secret**:
+* Name: `OPENCODE_API_KEY`
+* Value: (Your OpenAI or Anthropic key)
+
+
+
+
+
+### Phase 2: Create the Workflow
+
+1. **In your WSL terminal, create the workflow directory:**
+```bash
+mkdir -p .github/workflows
+nano .github/workflows/opencode-ci.yml
+
+```
+
+
+2. **Paste this configuration:**
+```yaml
+name: OpenCode Reviewer
+on: [pull_request]
+
+jobs:
+  ai_review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run OpenCode Headless
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        run: |
+          curl -fsSL https://opencode.ai/install | bash
+          opencode --headless --review "Check this PR for bugs and suggest fixes"
+
+```
+
+
+
+---
+
+### Phase 3: The "Bait" (Triggering the Bot)
+
+1. **Create a "broken" feature branch:**
+```bash
+git checkout -b feature/broken-logic
+
+```
+
+
+2. **Create `math_utils.py` with a bug:**
+```python
+def divide_numbers(a, b):
+    # Bug: This will crash on zero, and the agent should catch it.
+    return a / b
+
+```
+
+
+3. **Commit and push:**
+```bash
+git add .
+git commit -m "Add division feature"
+git push origin feature/broken-logic
+
+```
+
+
+
+### Phase 4: The PR Review
+
+1. Open GitHub.com and create a **Pull Request** for your new branch.
+2. Navigate to the **Actions** tab. You will see "OpenCode Reviewer" start running.
+3. Wait 1–2 minutes. Check the "Conversation" tab of your PR. If set up correctly, OpenCode should leave a comment suggesting a `try/except` block or a zero-check for your function.
+
+---
+
+## Day 13 Summary Checklist
+
+| Task | Completed |
+| --- | --- |
+| Configured GitHub Secrets for API safety | ☐ |
+| Wrote a YAML workflow for GitHub Actions | ☐ |
+| Triggered a "Headless" run of OpenCode via a PR | ☐ |
+| Observed the AI agent interacting as a "Reviewer" bot | ☐ |
+
+---
+
+### Pro-Tip: The "Self-Healing" CI
+
+Advanced users set the Action to **Auto-Commit**. If OpenCode finds a trivial bug (like a linting error), you can configure the YAML to let it push the fix directly to your branch. *Caution: Only do this if you have high trust in your test suite!*
+
+**How did it feel to see the agent comment on your code without you even being in the terminal? It's like having a 24/7 intern who never sleeps.** When you're ready, **Day 14** is the **Real-World Lab**. We’ll find an actual "Good First Issue" on a public repo and use OpenCode to draft a professional contribution! Ready to go public?
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
+Could you give me step-by-step instruction and create an exercise lab for Day 14?
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-</td></tr><tr><td>A:</td><td>
+
+Welcome to **Day 14: The Real-World Contributor**.
+
+Today is the "Capstone" of your technical training. You’ve mastered the agent locally, configured its brain, audited code, and even automated it in CI/CD. Now, we apply all of that to the world of **Open Source Software (OSS)**.
+
+In a professional setting, you aren't just writing code for yourself; you're writing for a community. Today, you’ll learn how to use OpenCode to navigate a massive, unfamiliar repo, identify a "Good First Issue," and prepare a professional-grade Pull Request (PR) that maintainers will actually want to merge.
+
+---
+
+## Day 14: Navigating the Open Source Ecosystem
+
+### 1. The OSS Workflow with an Agent
+
+When contributing to a project you don't own, the workflow is slightly different:
+
+1. **Fork & Clone:** You create your own copy of the repo.
+2. **Context Injection:** You give the agent the **Issue Description** so it understands the "Why."
+3. **The Fix:** Using Build Mode to solve the problem.
+4. **The PR Draft:** Using the agent to write a clear, concise summary of the changes.
+
+### 2. Identifying "Good First Issues"
+
+GitHub has a specific label for beginners. You can find these by searching: `is:open is:issue label:"good first issue"`.
+
+---
+
+## Day 14 Lab: "Operation Open Source"
+
+Since we are in a lab environment, we will simulate a real-world contribution to a popular (but manageable) repo. We’ll use the **`requests`** library (the gold standard for Python HTTP) or a similar sandbox.
+
+### Phase 1: The Setup (The Fork)
+
+1. **Open Ubuntu WSL.**
+2. **Clone a "Sandbox" version of a repo** (for this lab, let's use a common tutorial repo to avoid "spamming" real maintainers):
+```bash
+git clone https://github.com/firstcontributions/first-contributions.git day14-oss
+cd day14-oss
+
+```
+
+
+3. **Launch OpenCode:** `opencode .`
+
+### Phase 2: Feeding the Issue Context
+
+Instead of just saying "Fix this," we are going to copy a "Bug Report" into the agent's memory.
+
+1. **Switch to Plan Mode.**
+2. **The "Issue Injection" Prompt:**
+> "I want to contribute to this repo. Here is an issue description: 'The current README is missing a section on how to run tests in a WSL environment. Users are getting confused about Docker integration.' Based on the files in `@.`, where should this information go, and what are the specific steps a WSL user needs to take?"
+
+
+
+### Phase 3: The Surgical Fix (Build Mode)
+
+1. **Switch to Build Mode.**
+2. **The Fix Prompt:**
+> "Update the `README.md` to include a 'WSL Setup' section. Use the instructions we verified on Day 1 of this course. Ensure the formatting matches the existing style of the document."
+
+
+3. **Audit the Diff:** Make sure the agent didn't delete the original contributors' names or other vital info.
+
+---
+
+### Phase 4: The Professional PR Description
+
+The secret to getting code merged isn't just the code—it's the **explanation**.
+
+1. **The PR Prompt:**
+> "I have completed the fix. Now, write a professional GitHub Pull Request description. Include:
+
+
+> * A summary of the change.
+> * Why this change is necessary (reference the 'WSL confusion' issue).
+> * A checklist of what was tested."
+>
+>
+
+
+2. **The Review:** Read what the agent wrote. Does it sound like a helpful human or a generic bot? (Hint: Use your **Day 3** rules to make it sound more like "you").
+
+---
+
+## Day 14 Summary Checklist
+
+| Task | Completed |
+| --- | --- |
+| Navigated a repo you didn't create | ☐ |
+| Injected an external "Issue Description" into the agent's context | ☐ |
+| Performed a non-code contribution (Documentation/Markdown) | ☐ |
+| Generated a high-quality PR description using the agent | ☐ |
+
+---
+
+### Pro-Tip: The "Linter" Check
+
+Before you ever submit a PR in the real world, run your custom `/audit` command from **Day 7** or **Day 9**. Maintainers hate "nitpick" errors (like trailing spaces). Let the agent clean those up so the human maintainer only has to focus on your logic.
+
+**How did the PR description turn out? Did the agent manage to capture the "vibe" of the repo?** Tomorrow is **Day 15: The Grand Finale**. We are going to do a **"Vibe Coding" session** where you build an entire application from scratch using only high-level conversation. Would you like to move to the final day?
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
+Could you give me step-by-step instruction and create an exercise lab for Day 15?
+</td></tr></table>
 <!-- add Chatbot Response bellow-->
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
-</td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
-</td></tr>
-</table>
+
+Welcome to **Day 15: The Grand Finale — Vibe Coding**.
+
+You’ve spent 14 days learning the mechanics: the terminal, the config files, the security audits, and the custom skills. Today, we put the "Developer" in the passenger seat and the "Architect" in the driver’s chair.
+
+**Vibe Coding** is a paradigm where you describe the *intent*, *feel*, and *logic* of an application in high-level language, and let OpenCode manage the boilerplate, the imports, and the syntax. Your job is to provide the "vibe" and course-correct.
+
+---
+
+## Day 15: Scaling Your Intent
+
+### 1. The Multi-File "Vibe"
+
+Vibe coding isn't about one-line snippets; it's about building a **system**. To do this effectively, you use **Plan Mode** to map out the architecture first, then **Build Mode** to execute.
+
+### 2. The Feedback Loop
+
+In this stage, you don't look at the code to find a missing semicolon. You look at the **functionality**.
+
+* If the UI is ugly: *"Make it look more like a retro terminal."*
+* If the logic is slow: *"Optimize the data fetching to be asynchronous."*
+
+---
+
+## Day 15 Lab: "The Smart Workspace Companion"
+
+In this final lab, you will build a **CLI-based Productivity Dashboard** that tracks your tasks, shows the local time in multiple zones, and plays a notification sound when a timer ends.
+
+### Phase 1: The Master Prompt (Plan Mode)
+
+1. **Open Ubuntu WSL.**
+2. **Create a clean directory:** `mkdir ~/day15-final && cd ~/day15-final`
+3. **Launch OpenCode:** `opencode .`
+4. **The "Vibe" Prompt:**
+> "I want to build a productivity tool called 'VibeDash'. It should have a Pomodoro timer, a persistent to-do list saved to a JSON file, and a 'World Clock' section for London, Tokyo, and New York. Use a TUI library like `Rich` or `Textual` to make it look professional in the terminal. **Plan the architecture first.**"
+
+
+
+### Phase 2: Initializing the Project
+
+1. **Run the Init Command:** Inside the OpenCode TUI, type:
+> `/init`
+> *(This command in the 2026 version of OpenCode generates an `AGENTS.md` file that acts as the 'Memory' for your project's rules and structure.)*
+
+
+
+### Phase 3: The Build (Iterative Refinement)
+
+1. **Switch to Build Mode.**
+2. **Step 1:** *"Implement the basic layout and the World Clock."*
+3. **Step 2:** *"Add the JSON-backed To-Do list logic. Allow me to add and delete tasks via the terminal."*
+4. **Step 3:** *"Add the Pomodoro timer. When it hits zero, use a system beep or a terminal notification to alert me."*
+
+### Phase 4: The "Final Polish"
+
+1. **The Visual Vibe:** *"The layout feels cramped. Move the World Clock to a sidebar and use neon-cyan colors for the timer."*
+2. **The Audit:** Use your Day 7 skills:
+> `/review`
+> *"Check for any potential file-lock issues when saving the JSON task list."*
+
+
+
+---
+
+## Day 15 Summary Checklist
+
+| Task | Completed |
+| --- | --- |
+| Built a multi-feature application from a single vision | ☐ |
+| Used `/init` to create a project-specific instruction set | ☐ |
+| Refined UI/UX using only natural language descriptions | ☐ |
+| Successfully managed state (JSON) and time (Timer/Clock) | ☐ |
+
+---
+
+### Congratulations! You’ve Graduated.
+
+You’ve gone from "How do I install this?" to "I am orchestrating an AI agent to build complex systems." You are no longer just a coder; you are an **AI-Augmented Engineer**.
+
+**What was the most surprising thing your agent built today? Did it choose a UI style you didn't expect?**
+
+Your training is complete, but the tech changes every week. I recommend keeping your `~/.config/opencode/` folder backed up—it now contains your unique "flavor" of AI assistance.
+
+Would you like me to generate a **Graduation Summary** of all the skills you've mastered over the last 15 days?
+
+[Advanced Vibe Coding workflow with OpenCode](https://www.youtube.com/watch?v=7XQdp3hItX4)
+
+This video demonstrates a real-world "Vibe Coding" session using OpenCode to build an entire web project from scratch, mirroring the workflow you just completed in this lab.
