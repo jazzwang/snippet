@@ -186,7 +186,7 @@ MINGW64_NT-10.0-26200 JazzBook 3.6.5-22c95533.x86_64 2025-10-10 12:02 UTC x86_64
 - 選 Google，然後填入通常設定 `GEMINI_API_KEY` 環境變數的金鑰
 ```bash
 ~$ opencode auth login
-
+```
 ┌  Add credential
 │
 ◇  Select provider
@@ -302,3 +302,34 @@ The script `sys_info.py` was created and executed successfully, printing the cur
 ---
 
 </div>
+## 2026-02-10
+
+- 看 https://opencode.ai/docs 的 Intro，其實也可以用 scoop 安裝
+- 根據 https://opencode.ai/docs#configure 
+> Run the `/connect` command in the TUI, select opencode, and head to [opencode.ai/auth](https://opencode.ai/auth).
+- 選擇 Github 或 Google 登入，就會創建一個 OpenCode Zen 的 API key
+- 使用 `opencode auth login` 選第一個 `OpenCode Zen` 然後貼上 opencode.ai 網頁上的 API Key
+```
+~/git/snippet$ opencode auth login
+
+│  OpenCode Zen
+│
+●  Create an api key at https://opencode.ai/auth
+│
+◇  Enter your API key
+│  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+│
+└  Done
+```
+- 這樣就會有兩個以上 LLM provider 的模型可以用
+```bash
+~/git/snippet$ opencode auth list
+┌  Credentials ~\.local\share\opencode\auth.json
+│
+●  Google api
+│
+●  OpenCode Zen api
+│
+└  2 credentials
+```
+- 模型包括 Kimi 2.5 （先前有追蹤過，應該也是中國大陸的模型）
