@@ -628,3 +628,148 @@ Configured MCP servers:
  ~                                                 no sandbox (see /docs)                                                 Auto (Gemini 3) /model | 183.7 MB
 ```
 
+## 2026-02-11
+
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
+where will Gemini CLI look for GEMINI_API_KEY? environment variable? .env file?
+</td></tr></table>
+
+The **Gemini CLI** is designed to be highly flexible with where it looks for your `GEMINI_API_KEY`. It follows a specific "look-up" hierarchy, checking both standard environment variables and various `.env` file locations.
+
+### 1. Direct Environment Variables
+
+The CLI first checks your active shell session for the `GEMINI_API_KEY` variable. This is the most common way to provide the key.
+
+* **Linux/macOS:** `export GEMINI_API_KEY="your_key_here"`
+* **Windows (PowerShell):** `$env:GEMINI_API_KEY="your_key_here"`
+* **Windows (Command Prompt):** `set GEMINI_API_KEY=your_key_here`
+
+### 2. `.env` File Search Logic
+
+If the variable isn't found in your shell session, the CLI automatically scans for `.env` files. It uses a **bottom-up search** strategy:
+
+1. **Current Directory:** It looks for a `.env` file in your current working directory.
+2. **Parent Directories:** If not found, it searches upwards through parent directories until it hits the project root (indicated by a `.git` folder) or your home directory.
+3. **Global/User Path:** Finally, it checks for a `.env` file in your home directory at:
+* `~/.gemini/.env` (Recommended for global CLI use)
+* `~/.env`
+
+
+
+---
+
+### Configuration Hierarchy (Precedence)
+
+If you have keys in multiple places, the CLI follows this order of importance (highest to lowest):
+
+| Priority | Source | Best For... |
+| --- | --- | --- |
+| **1 (Highest)** | **Command-Line Arguments** | One-off overrides (e.g., `--model`). |
+| **2** | **Environment Variables** | Active CI/CD pipelines or temporary sessions. |
+| **3** | **Project Settings** (`.gemini/settings.json`) | Project-specific configurations. |
+| **4** | **Project `.env` file** | Local development secrets. |
+| **5 (Lowest)** | **User Settings** (`~/.gemini/settings.json`) | Global defaults and themes. |
+
+---
+
+### Pro-Tips for Setup
+
+* **Recommendation:** For a seamless experience across all your projects, create a file at `~/.gemini/.env` and add `GEMINI_API_KEY="your_actual_key"`.
+* **Security:** If you use a `.env` file in a project folder, **always** add `.env` to your `.gitignore` to prevent accidentally pushing your secrets to GitHub.
+* **Verification:** You can check if the CLI is seeing your key by running:
+```bash
+gemini --stats
+
+```
+
+
+(This usually confirms your connection status and current model access).
+
+Would you like me to show you how to automate the loading of these keys for a specific terminal like Zsh or Bash?
+
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
+is there a way to check which API key is gemini-cli currently using if I have multiple different GEMINI_API_KEY defined in .env of different folders?
+</td></tr></table>
+
+When you have nested `.env` files or multiple keys spread across your system, it can definitely feel like a game of "which key is it anyway?"
+
+Because the CLI searches from the **current directory upward**, it will always pick the one "closest" to where your terminal is currently located.
+
+Here are the best ways to verify which key is active:
+
+### 1. The Direct Command (Recommended)
+
+The most reliable way to see exactly what the CLI is "seeing" without actually running a model prompt is to use the diagnostic flag:
+
+```bash
+gemini --info
+
+```
+
+*Note: Depending on your specific version of the CLI, if `--info` isn't available, try `gemini --version` or `gemini config list`.*
+
+### 2. The "Echo" Check
+
+Since the CLI usually prioritizes your shell's environment variables over `.env` files, you should first check if a key is "hardcoded" into your session:
+
+* **macOS/Linux:** `echo $GEMINI_API_KEY`
+* **Windows:** `echo %GEMINI_API_KEY%`
+
+**If this returns a value**, the CLI is likely using this key regardless of what is in your `.env` files.
+
+---
+
+### 3. Debugging the Path Hierarchy
+
+If you want to visualize which `.env` file is being snatched up, you can use the `findup` logic manually to see which one is closest:
+
+| Current Directory | Does `.env` exist? | Action |
+| --- | --- | --- |
+| `~/projects/app/src/` | No | Move up... |
+| `~/projects/app/` | **Yes** | **CLI uses this key.** |
+| `~/` | Yes | Ignored (higher level). |
+
+### 4. Temporary Overrides
+
+If you are worried about the wrong key being used, you can force the CLI to use a specific key for just one command without changing your files:
+
+```bash
+GEMINI_API_KEY="your_specific_key" gemini "How's the weather?"
+
+```
+
+---
+
+### Quick Tip: Identifying the Key
+
+Since API keys are sensitive, the CLI won't usually print the whole string. However, you can usually tell which is which by looking at the **last 4 characters**.
+
+> **Friendly Reminder:** If you're switching between "Production" and "Development" keys frequently, it's often safer to name your keys specifically in your `.env` (like `PROD_KEY`) and then manually export the one you need: `export GEMINI_API_KEY=$PROD_KEY`.
+
+Would you like me to help you write a small shell script that prints the last 4 characters of the active key so you can identify it instantly?
+
+<table><tr style="background-color:lightyellow;"><td>實測</td><td>
+
+1. `gemini --info` 不存在
+
+```bash
+~$ gemini --info
+Unknown argument: info
+```
+
+2. `gemini --version` 只能顯示版本
+
+```bash
+~$ gemini --version
+0.28.0
+```
+
+3. `gemini config list` 會進入 `interactive mode` 然後呼叫 `CLI Help Agent`
+
+```bash
+
+```
+
+4. 在 `gemini config list` 執行 `CLI Help Agent` 過程中，確認 `$GEMINI_API_KEY` 環境變數優先
+
+</td></tr></table>
