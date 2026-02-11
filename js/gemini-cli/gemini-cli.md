@@ -767,7 +767,57 @@ Unknown argument: info
 3. `gemini config list` 會進入 `interactive mode` 然後呼叫 `CLI Help Agent`
 
 ```bash
+~/git/snippet$ gemini config list
 
+ ███            █████████  ██████████ ██████   ██████ █████ ██████   █████ █████
+░░░███         ███░░░░░███░░███░░░░░█░░██████ ██████ ░░███ ░░██████ ░░███ ░░███
+  ░░░███      ███     ░░░  ░███  █ ░  ░███░█████░███  ░███  ░███░███ ░███  ░███
+    ░░░███   ░███          ░██████    ░███░░███ ░███  ░███  ░███░░███░███  ░███
+     ███░    ░███    █████ ░███░░█    ░███ ░░░  ░███  ░███  ░███ ░░██████  ░███
+   ███░      ░░███  ░░███  ░███ ░   █ ░███      ░███  ░███  ░███  ░░█████  ░███
+ ███░         ░░█████████  ██████████ █████     █████ █████ █████  ░░█████ █████
+░░░            ░░░░░░░░░  ░░░░░░░░░░ ░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░ ░░░░░
+
+
+Authenticated with gemini-api-key /auth
+
+Tips for getting started:
+1. Ask questions, edit files, or run commands.
+2. Be specific for the best results.
+3. Create GEMINI.md files to customize your interactions with Gemini.
+4. /help for more information.
+
+ℹ Positional arguments now default to interactive mode. To run in non-interactive mode, use the --prompt (-p) flag.
+
+ℹ Waiting for MCP servers to initialize... Slash commands are still available and prompts will be queued.
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+ > config list
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ✓  CLI Help Agent Delegating to agent 'cli_help'                                                                                                         │
+│                                                                                                                                                          │
+│ Subagent cli_help Finished                                                                                                                               │
+│                                                                                                                                                          │
+│ Termination Reason:                                                                                                                                      │
+│  GOAL                                                                                                                                                    │
+│                                                                                                                                                          │
+│ Result:                                                                                                                                                  │
+│ {                                                                                                                                                        │
+│   "answer": "The Gemini CLI configuration can be viewed and modified using the /settings command, which opens an interactive settings editor.            │
+│ Additionally, settings are stored in settings.json files at the following locations:\n\n- User settings: ~/.gemini/settings.json\n- Workspace settings:  │
+│ your-project/.gemini/settings.json\n\nWorkspace settings override user settings. The documentation provides a detailed reference of all available        │
+│ settings.",                                                                                                                                              │
+│   "sources": [                                                                                                                                           │
+│     "cli/settings.md"                                                                                                                                    │
+│   ]                                                                                                                                                      │
+│ }                                                                                                                                                        │
+│                                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ✓  ReadFolder .                                                                                                                                          │
+│                                                                                                                                                          │
+│ Listed 21 item(s). (5 ignored)                                                                                                                           │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 4. 在 `gemini config list` 執行 `CLI Help Agent` 過程中，確認 `$GEMINI_API_KEY` 環境變數優先
