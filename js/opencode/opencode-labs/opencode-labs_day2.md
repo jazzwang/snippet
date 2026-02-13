@@ -222,7 +222,7 @@ Before finishing, ask the agent to **plan** a change without **executing** it.
 
 ---
 
-## Day 2 Summary Checklist
+### Day 2 Summary Checklist
 
 | Task | Completed |
 | --- | --- |
@@ -245,3 +245,146 @@ Before finishing, ask the agent to **plan** a change without **executing** it.
 
 </div>
 
+- 在 Github Codespace 上測試：
+
+```bash
+@jazzwang ➜ .../snippet/js/opencode/opencode-labs (master) $ cd /tmp
+@jazzwang ➜ /tmp $ git clone https://github.com/tiangolo/full-stack-fastapi-template.git day2-lab
+@jazzwang ➜ /tmp $ cd day2-lab/backend/
+@jazzwang ➜ /tmp/day2-lab/backend (master) $ opencode .
+```
+
+### Phase 2: The Architect's Walkthrough (Plan Mode)
+
+- 按 `TAB` 切換到 `Plan Mode`
+
+- Prompt
+
+```
+Summarize the directory structure of this backend. What is the main entry point where the app starts, and which database is being used?
+```
+
+- 錯誤訊息：
+
+```
+Error: certificate is not yet valid
+```
+
+- 用 `/export` 匯出紀錄也看不到是什麼錯誤。切換了 `kimi-k2.5-free` 跟 `minimax-m2.5-free` 都是類似的錯誤。改用本地端 Windows 11 的環境試試看
+
+```bash
+/tmp$ git clone https://github.com/tiangolo/full-stack-fastapi-template.git day2-lab
+/tmp$ cd day2-lab/backend
+/tmp/day2-lab/backend$ opencode .
+```
+
+- 這台有設定 Gemini 2.5 ，就正常有結果了。
+- 結果：
+
+This backend application has the following directory structure:
+
+*   `alembic.ini`: Alembic configuration.
+*   `app/`: Contains the main application logic, including:
+    *   `alembic/`: Alembic migration scripts.
+    *   `api/`: API endpoints.
+    *   `core/`: Core configurations (e.g., `config.py`).
+    *   `crud.py`: Database CRUD operations.
+    *   `email-templates/`: Email templates.
+    *   `main.py`: The main entry point.
+    *   `models.py`: SQLAlchemy database models.
+*   `Dockerfile`: Dockerization setup.
+*   `pyproject.toml`: Project dependencies and metadata.
+*   `README.md`: Project documentation.
+*   `scripts/`: Utility scripts.
+*   `tests/`: Application tests.
+
+The main entry point of the application is `app/main.py`, which sets up a FastAPI application.
+
+The database being used is **PostgreSQL**, as indicated by the `PostgresDsn` type in `app/core/config.py` and the `SQLALCHEMY_DATABASE_URI` configuration, along with the presence of Alembic for database migrations.
+
+### Phase 3: Surgical Context with @
+
+- Prompt
+
+```
+Look at @app\api\routes\users.py . Explain the relationship between the User model and any other models in this project. Does it have a one-to-many relationship with anything?
+```
+
+- 結果：
+
+#### Assistant (`Plan` · `gemini-2.5-flash` · 6.1s)
+
+**Analyzing User Model Relationships**
+
+I've examined the `app/models.py` file. I'm focusing on the `User` model and its connections to other models. Specifically, I'm analyzing the relationships between the `User` and other entities based on the code provided in lines 49-56, with a focus on how the relationships are structured.
+
+
+**Examining User-Item Relationships**
+
+I've confirmed the one-to-many relationship between `User` and `Item` based on the `app/models.py` file, as highlighted in lines 49-56, and lines 87-96. The `User` model, through its `items` relationship, links to multiple `Item` instances. The `Item` model, in turn, establishes a foreign key (`owner_id`) back to a single `User`. I'm now exploring the implications of `cascade_delete=True` on the `items` relationship.
+
+
+
+**Clarifying Item-User Ownership**
+
+I've just confirmed the one-to-many relationship between `User` and `Item` after examining `app/models.py`. A user can have many items, as shown by the `items` relationship in the `User` model, which links to multiple `Item` instances. This is supported by the `owner_id` foreign key in the `Item` model, which references a single `User`. I'm now certain about this relationship.
+
+The `User` model has a one-to-many relationship with the `Item` model. Each user can own multiple items, and each item belongs to a single user.
+
+Other models like `UserCreate`, `UserPublic`, `UpdatePassword`, `Message`, `Token`, `TokenPayload`, and `NewPassword` are Pydantic models for data handling and do not represent direct database relationships with the `User` model.
+
+- 備註：原本 Gemini 規劃的 Lab2 實驗要比較兩個檔案，不過路徑不正確，就先忽略了。
+```
+Compare @app/schemas/user.py and @app/models/user.py. Why do we have two different files for the same 'User' entity?
+```
+
+### Phase 4: The Detective (Terminal Integration)
+
+- 懷疑這部份有幻覺，因為找不到 `@terminal` 可以用
+
+### Phase 5: The "Dry Run" Challenge
+
+- Prompt: 略修正原始的 Prompt，移除 "In Plan Mode, "
+
+```
+I want to add a 'phone_number' field to the User model. give me a step-by-step list of every file I would need to modify to make this work, from the database model to the API schema.
+```
+
+- 結果：
+
+#### Assistant (`Plan` · `gemini-2.5-flash` · 6.7s)
+
+**Analyzing CRUD Implementation**
+
+I've located `app/crud.py` and am focusing on how user creation and updates are implemented, specifically how the `phone_number` field is handled in these functions. I need to understand this to ensure the correct modifications are made.
+
+
+**Confirming Modifications Needed**
+
+I've determined the exact modifications needed across several files. It looks like `app/models.py` needs updating to include `phone_number` in `UserBase`, `UserRegister`, `UserUpdateMe`, and `UserPublic` models. Then, I need to modify `app/crud.py` to handle persisting and updating this field during user creation and updates. Finally, I'll need to generate and apply a database migration. I'll double check `app/api/routes/users.py` to ensure no changes are needed there as the models are imported.
+
+
+**Outlining Next Steps**
+
+Now, I've outlined the precise modifications across `app/models.py` and `app/crud.py`, providing specific details for the `phone_number` field. This list includes adding the field to various models and functions. I've also outlined the migration steps using Alembic and a verification step for `app/api/routes/users.py`, ensuring all components work in harmony.
+
+Here's a step-by-step list of every file you would need to modify to add a 'phone_number' field to the User model, from the database model to the API schema:
+
+1.  **`app/models.py`**:
+    *   Add `phone_number: str | None = Field(default=None, max_length=20)` to the `UserBase` class. This will ensure the field is available in the base schema and inherited by other related models.
+    *   Add `phone_number: str | None = Field(default=None, max_length=20)` to the `UserRegister` class.
+    *   Add `phone_number: str | None = Field(default=None, max_length=20)` to the `UserUpdateMe` class.
+    *   Verify that `UserPublic` correctly inherits or explicitly includes the `phone_number` field from `UserBase` to be exposed in API responses.
+
+2.  **`app/crud.py`**:
+    *   Update the `create_user` function to ensure it accepts and persists the `phone_number` field when a new user is created.
+    *   Update the `update_user` function to ensure it accepts and updates the `phone_number` field when a user's information is modified.
+
+3.  **Database Migration (via Alembic)**:
+    *   Run `alembic revision --autogenerate -m "Add phone_number to User model"` in your terminal. This will generate a new migration script in the `app/alembic/versions/` directory.
+    *   **Review the generated migration script**: Open the newly created Python file in `app/alembic/versions/` and verify that it correctly includes operations to add a `phone_number` column (e.g., `op.add_column('user', sa.Column('phone_number', sa.String(length=20), nullable=True))`) to the `user` table.
+    *   Apply the migration to your database by running `alembic upgrade head` in your terminal.
+
+4.  **`app/api/routes/users.py` (Verification/Implicit Changes)**:
+    *   No direct code modifications are typically needed in this file for adding a field, as the API endpoints (`create_user`, `update_user_me`, etc.) use the Pydantic models (like `UserCreate`, `UserUpdateMe`, `UserPublic`) defined in `app/models.py`.
+    *   However, after making the changes in `app/models.py` and `app/crud.py`, you should test these API endpoints to ensure they correctly accept `phone_number` in request bodies and return it in response bodies.
