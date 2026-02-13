@@ -83,7 +83,7 @@ To move fast in the OpenCode TUI, memorize these three:
 
 <div style="background-color:lightgreen;">
 
-## 實測
+## 實測 #1
 
 </div>
 
@@ -134,3 +134,114 @@ The priority order is:
 3. `HF_TOKEN`
 
 </div>
+
+-----
+
+<div style="background-color:lightyellow;">
+For **Day 2**, we are moving from "Can I run this?" to "How do I control this?" This lab, titled **"Operation: Code Scout,"** focuses on using OpenCode as a high-level architect before you ever let it touch your source code.
+
+---
+
+## Day 2 Lab: Operation "Code Scout"
+
+In this lab, you will explore a "mystery" codebase, map its dependencies, and simulate a debugging session using context mentions.
+
+### Phase 1: The Setup
+
+We need a project with enough files to be interesting but small enough to keep your head from spinning.
+
+1. **Open Ubuntu WSL.**
+2. **Clone this small FastAPI project** (a common web framework):
+
+```bash
+git clone https://github.com/tiangolo/full-stack-fastapi-template.git day2-lab
+cd day2-lab/backend
+```
+
+3. **Launch OpenCode:**
+
+```bash
+opencode .
+```
+---
+
+### Phase 2: The Architect's Walkthrough (Plan Mode)
+
+Your goal is to understand the project without writing a single line of code.
+
+1. **Switch to Plan Mode:** Press `Tab` until the UI indicates you are in **Plan** or **Architect** mode.
+2. **The Scout Prompt:** Type the following:
+
+> "Summarize the directory structure of this backend. What is the main entry point where the app starts, and which database is being used?"
+
+
+3. **Verify the Context:** Note how OpenCode reads the `pyproject.toml` or `requirements.txt` to answer the database question.
+
+---
+
+### Phase 3: Surgical Context with `@`
+
+Now, let’s test how well OpenCode can "see" specific files you point at.
+
+1. **The Target:** Find a file related to "users" or "models" (likely in `app/models/`).
+2. **The Context Prompt:** Use the `@` symbol to reference it:
+
+> "Look at `@app/models/user.py`. Explain the relationship between the `User` model and any other models in this project. Does it have a one-to-many relationship with anything?"
+
+3. **The Multi-File Prompt:** Ask it to compare two files:
+
+> "Compare `@app/schemas/user.py` and `@app/models/user.py`. Why do we have two different files for the same 'User' entity?"
+
+---
+
+### Phase 4: The Detective (Terminal Integration)
+
+The agent can see what's happening in your terminal. Let's simulate a "failed" environment check.
+
+1. **Try to run the app (it will likely fail due to missing dependencies):**
+
+```bash
+python3 -m app.main
+```
+
+2. **Use `@terminal`:** In the OpenCode chat, type:
+
+> "I just tried to run the app and got an error. Look at `@terminal` and tell me which library I am missing and how to install it in this WSL environment."
+
+---
+
+### Phase 5: The "Dry Run" Challenge
+
+Before finishing, ask the agent to **plan** a change without **executing** it.
+
+1. **The Challenge Prompt:**
+
+> "I want to add a 'phone_number' field to the User model. In **Plan Mode**, give me a step-by-step list of every file I would need to modify to make this work, from the database model to the API schema."
+
+2. **The Review:** Read the plan. Does it make sense? Did it miss the migration file? This is where you develop your "AI Oversight" skills.
+
+---
+
+## Day 2 Summary Checklist
+
+| Task | Completed |
+| --- | --- |
+| Successfully toggled into **Plan Mode** | ☐ |
+| Used **`@file`** to analyze a specific script | ☐ |
+| Used **`@terminal`** to diagnose a shell error | ☐ |
+| Received a multi-step plan without any files being edited | ☐ |
+
+---
+
+**How did OpenCode handle the "Phone Number" plan? Did it feel like it "understood" the full stack, or did it miss a spot?** When you're ready, we can move to **Day 3: The Project Brain**, where we learn how to configure `AGENTS.md` to make the AI follow your specific rules!
+
+</div>
+
+-----
+
+<div style="background-color:lightgreen;">
+
+## 實測 #2
+
+</div>
+

@@ -1,7 +1,7 @@
 <table width="100%"><tr style="background-color:lightyellow;"><td>Q:</td><td>
 could you plan 15 days learning how to use opencode based on popular hands-on labs?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 OpenCode has exploded in popularity as the go-to **open-source AI coding agent** (currently sitting at over 95,000 GitHub stars). Think of it as a fully transparent, model-agnostic version of Claude Code or GitHub Copilot that you can run in your terminal, IDE, or as a standalone desktop app.
 
@@ -60,7 +60,7 @@ Here is a 15-day hands-on curriculum designed to take you from "What is this ter
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Let's plan step by step. Could you give me step-by-step instruction for Day 1? Target environment: Ubuntu WSL over Windows 11
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Setting up on **WSL (Windows Subsystem for Linux)** is a pro move. You get the power of a Linux kernel with the comfort of Windows UI. Since we are targeting a high-performance open-source agent setup, we’ll ensure your Ubuntu environment is primed for containerization and Python-based CLI tools.
 
@@ -170,7 +170,7 @@ opencode .
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 great! let's follow the same practice and create step-by-step instruction for Day 2.
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Since you’ve got the engine running, Day 2 is all about mastering the **User Interface (UI)** and the **Workflow Philosophy**.
 
@@ -259,7 +259,7 @@ To move fast in the OpenCode TUI, memorize these three:
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
  create an exercise lab for Day 2
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 For **Day 2**, we are moving from "Can I run this?" to "How do I control this?" This lab, titled **"Operation: Code Scout,"** focuses on using OpenCode as a high-level architect before you ever let it touch your source code.
 
 ---
@@ -274,21 +274,17 @@ We need a project with enough files to be interesting but small enough to keep y
 
 1. **Open Ubuntu WSL.**
 2. **Clone this small FastAPI project** (a common web framework):
+
 ```bash
 git clone https://github.com/tiangolo/full-stack-fastapi-template.git day2-lab
 cd day2-lab/backend
-
 ```
-
 
 3. **Launch OpenCode:**
+
 ```bash
 opencode .
-
 ```
-
-
-
 ---
 
 ### Phase 2: The Architect's Walkthrough (Plan Mode)
@@ -297,6 +293,7 @@ Your goal is to understand the project without writing a single line of code.
 
 1. **Switch to Plan Mode:** Press `Tab` until the UI indicates you are in **Plan** or **Architect** mode.
 2. **The Scout Prompt:** Type the following:
+
 > "Summarize the directory structure of this backend. What is the main entry point where the app starts, and which database is being used?"
 
 
@@ -310,13 +307,12 @@ Now, let’s test how well OpenCode can "see" specific files you point at.
 
 1. **The Target:** Find a file related to "users" or "models" (likely in `app/models/`).
 2. **The Context Prompt:** Use the `@` symbol to reference it:
+
 > "Look at `@app/models/user.py`. Explain the relationship between the `User` model and any other models in this project. Does it have a one-to-many relationship with anything?"
 
-
 3. **The Multi-File Prompt:** Ask it to compare two files:
+
 > "Compare `@app/schemas/user.py` and `@app/models/user.py`. Why do we have two different files for the same 'User' entity?"
-
-
 
 ---
 
@@ -325,16 +321,14 @@ Now, let’s test how well OpenCode can "see" specific files you point at.
 The agent can see what's happening in your terminal. Let's simulate a "failed" environment check.
 
 1. **Try to run the app (it will likely fail due to missing dependencies):**
+
 ```bash
 python3 -m app.main
-
 ```
 
-
 2. **Use `@terminal`:** In the OpenCode chat, type:
+
 > "I just tried to run the app and got an error. Look at `@terminal` and tell me which library I am missing and how to install it in this WSL environment."
-
-
 
 ---
 
@@ -343,8 +337,8 @@ python3 -m app.main
 Before finishing, ask the agent to **plan** a change without **executing** it.
 
 1. **The Challenge Prompt:**
-> "I want to add a 'phone_number' field to the User model. In **Plan Mode**, give me a step-by-step list of every file I would need to modify to make this work, from the database model to the API schema."
 
+> "I want to add a 'phone_number' field to the User model. In **Plan Mode**, give me a step-by-step list of every file I would need to modify to make this work, from the database model to the API schema."
 
 2. **The Review:** Read the plan. Does it make sense? Did it miss the migration file? This is where you develop your "AI Oversight" skills.
 
@@ -362,10 +356,11 @@ Before finishing, ask the agent to **plan** a change without **executing** it.
 ---
 
 **How did OpenCode handle the "Phone Number" plan? Did it feel like it "understood" the full stack, or did it miss a spot?** When you're ready, we can move to **Day 3: The Project Brain**, where we learn how to configure `AGENTS.md` to make the AI follow your specific rules!
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
  Let's move on to Day 3. Could you give me step-by-step instruction for Day 3? Create an exercise lab for Day 3, too. Thanks
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 3**. Today, we transition from being a "user" of the agent to being its "manager."
 
@@ -489,7 +484,7 @@ If the agent starts getting confused or "forgetting" your `AGENTS.md` rules, use
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Let's move on to Day 4. Could you give me step-by-step instruction for Day 4? Create an exercise lab for Day 4, too. Thanks
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 4: The Researcher**.
 
@@ -603,7 +598,7 @@ When researching large repos, the agent might try to read *too many* files and h
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Let's move on to Day 5. Could you give me step-by-step instruction and create an exercise lab for Day 5?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 5: Single-File Surgery**.
 
@@ -739,7 +734,7 @@ Sometimes AI agents get lazy and try to delete a 100-line file and replace it wi
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 6?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Yesterday was surgery; today is a full organ transplant. Welcome to **Day 6: Multi-File Refactoring**.
 
@@ -869,7 +864,7 @@ Before applying a multi-file refactor, I always ask: *"Before you edit, list the
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 7?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 7: The Auditor**.
 
@@ -984,7 +979,7 @@ If the agent suggests a fix you don't understand, ask: *"Why is this fix safer t
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 8?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 8: Session Isolation**.
 
@@ -1094,7 +1089,7 @@ When you're ready, **Day 9** is where we get truly custom. We'll learn how to wr
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 9?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 Welcome to **Day 9: Custom Commands**.
 
 Yesterday, you mastered the "Project Manager" role by coordinating two agents. Today, we are going to give your agent a **Superpower**.
@@ -1222,7 +1217,7 @@ If you don't want to create a permanent command, you can use the **Shell Skill**
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 10?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 10: The Skill System**.
 
@@ -1320,7 +1315,7 @@ When you're ready, **Day 11** is where we go "Meta." We’ll learn how to build 
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 11?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 Welcome to **Day 11: Building Custom Skills**.
 
 Today, we go "Meta." Yesterday, you used built-in skills like the web browser. Today, you will actually **program the agent's brain** to use a tool that doesn't exist yet.
@@ -1441,7 +1436,7 @@ If you have a tool on your **Windows 11** side (like a specific `.exe`) that you
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 12?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 Welcome to **Day 12: Privacy & Local Models**.
 
 Until now, your agent’s "brain" has likely lived in the cloud (OpenAI, Anthropic, etc.). While powerful, this means your code is being sent to third-party servers. Today, we "cut the cord." We will set up **Ollama** to run Large Language Models (LLMs) directly on your Windows 11 hardware, and we’ll point OpenCode to this local instance.
@@ -1573,7 +1568,7 @@ When you're ready, **Day 13** is where we move back to the "World" by integratin
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 13?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 13: CI/CD & GitHub Actions**.
 
@@ -1713,7 +1708,7 @@ Advanced users set the Action to **Auto-Commit**. If OpenCode finds a trivial bu
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 14?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 14: The Real-World Contributor**.
 
@@ -1816,7 +1811,7 @@ Before you ever submit a PR in the real world, run your custom `/audit` command 
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 15?
 </td></tr></table>
-<!-- add Chatbot Response bellow-->
+
 
 Welcome to **Day 15: The Grand Finale — Vibe Coding**.
 
