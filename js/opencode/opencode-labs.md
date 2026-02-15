@@ -381,11 +381,10 @@ In OpenCode, the "Brain" is usually a file created in your root directory (often
 Open your Ubuntu WSL terminal and navigate to your `day2-lab` folder (or any project folder).
 
 1. **Run the Init command:**
-```bash
-opencode /init
 
-```
-
+    ```bash
+    opencode /init
+    ```
 
 2. **The Interaction:** The agent will scan your files and ask you what the project is about. It will then generate a file.
 3. **Inspect the file:** Look for a new file called `AGENTS.md` or a similar configuration file in your directory. Open it with VS Code or `nano`.
@@ -413,16 +412,12 @@ In this lab, you will force OpenCode to adhere to a specific, strict set of rule
 1. **Create a new directory:**
 ```bash
 mkdir ~/day3-lab && cd ~/day3-lab
-
 ```
-
 
 2. **Initialize OpenCode:**
 ```bash
 opencode /init
-
 ```
-
 
 *When it asks what the project is, tell it:* "This is a Python-based microservice for weather data."
 
@@ -444,15 +439,13 @@ Now, let's see if the agent "remembers" its training.
 
 1. **Launch OpenCode** in Build Mode: `opencode .`
 2. **The Prompt:**
-> "Create a file called `fetcher.py` with a function that takes a city name as a string and returns a mock temperature of 25.0."
 
+    > "Create a file called `fetcher.py` with a function that takes a city name as a string and returns a mock temperature of 25.0."
 
 3. **The Audit:** Look at the code it generated.
 * Did it use Type Hints? (`city: str -> float`)
 * Did it add the `# Created for Day 3 Lab` comment?
 * Did it avoid using `print()`?
-
-
 
 ---
 
@@ -481,10 +474,10 @@ The "Brain" isn't just for rules; it's for status.
 If the agent starts getting confused or "forgetting" your `AGENTS.md` rules, use the command `/refresh` or `/reset`. This clears the short-term chat memory and re-reads the project files from scratch.
 
 **How did the "Strict Architect" handle your rules? Did it try to sneak a `print()` statement in there, or was it perfectly compliant?** When you're ready, **Day 4** is where we master **The Researcher**, focusing on how to use the agent to explore massive, unfamiliar codebases without getting lost!
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Let's move on to Day 4. Could you give me step-by-step instruction for Day 4? Create an exercise lab for Day 4, too. Thanks
 </td></tr></table>
-
 
 Welcome to **Day 4: The Researcher**.
 
