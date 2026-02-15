@@ -521,31 +521,25 @@ We'll use the **Flask** repository (a famous Python web framework) because it ha
 ```bash
 git clone https://github.com/pallets/flask.git day4-archaeology
 cd day4-archaeology
-
 ```
-
 
 3. **Launch OpenCode in Plan Mode:**
 ```bash
 opencode .
 # Ensure you are in PLAN/ARCHITECT mode (Tab to switch)
-
 ```
-
-
 
 ### Phase 2: The Logic Trace
 
 Your goal is to find out exactly what happens when a user visits a URL.
 
 1. **The Entry Point Prompt:**
-> "I want to understand how a Request is handled. Start at the very beginning—where does Flask first receive a WSGI request, and which file handles the initial parsing?"
 
+    > I want to understand how a Request is handled. Start at the very beginning—where does Flask first receive a WSGI request, and which file handles the initial parsing?
 
 2. **The "Follow the Breadcrumbs" Prompt:** Once it gives you a file (likely `src/flask/app.py`), point to it:
-> "In `@src/flask/app.py`, look at the `wsgi_app` method. Trace the execution from there to where the actual 'View Function' (the user's code) is called. List every file and function in that chain."
 
-
+    > In `@src/flask/app.py`, look at the `wsgi_app` method. Trace the execution from there to where the actual 'View Function' (the user's code) is called. List every file and function in that chain.
 
 ---
 
@@ -554,8 +548,8 @@ Your goal is to find out exactly what happens when a user visits a URL.
 Let's ask the agent to create a "map" for us.
 
 1. **The Mapping Prompt:**
-> "Based on your analysis, create a Mermaid.js flowchart that shows the lifecycle of a Request in Flask, from `RequestContext` creation to the final `Response` being sent back."
 
+    > Based on your analysis, create a Mermaid.js flowchart that shows the lifecycle of a Request in Flask, from `RequestContext` creation to the final `Response` being sent back.
 
 2. **The Review:** Copy the Mermaid code it provides into the [Mermaid Live Editor](https://mermaid.live/) to see your visual map of the code.
 
@@ -566,9 +560,8 @@ Let's ask the agent to create a "map" for us.
 Large codebases often have "magic" (decorators, globals). Let's hunt them down.
 
 1. **The Investigation Prompt:**
-> "Flask uses a 'Global' called `request`. Since Python doesn't truly have global request objects in a multi-threaded environment, explain the 'magic' behind `LocalProxy` and `ContextVar` used here. Show me the specific code in this repo that makes this work."
 
-
+    > Flask uses a 'Global' called `request`. Since Python doesn't truly have global request objects in a multi-threaded environment, explain the 'magic' behind `LocalProxy` and `ContextVar` used here. Show me the specific code in this repo that makes this work.
 
 ---
 
@@ -588,6 +581,7 @@ Large codebases often have "magic" (decorators, globals). Let's hunt them down.
 When researching large repos, the agent might try to read *too many* files and hit a "Context Limit." If you see a warning about "Context Window," tell the agent: *"Summarize the current file first, then tell me which ONE file I should open next to continue the trace."* This keeps the "memory" clean.
 
 **How did the Flask trace go? Did the Mermaid flowchart help you visualize the "magic" of the framework?** If you're feeling like a code detective now, **Day 5** is where we finally put the "Researcher" cap away and start **Single-File Surgery**—learning how to make precise, surgical code edits in Build Mode! Would you like to proceed?
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Let's move on to Day 5. Could you give me step-by-step instruction and create an exercise lab for Day 5?
 </td></tr></table>
