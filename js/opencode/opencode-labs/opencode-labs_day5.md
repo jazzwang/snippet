@@ -49,7 +49,7 @@ mkdir ~/day5-lab && cd ~/day5-lab
 touch validator.py
 ```
 
-3. **Paste this "broken" code into `validator.py**` (it has a regex bug and a logic flaw):
+3. **Paste this "broken" code into `validator.py`** (it has a regex bug and a logic flaw):
 
 ```python
 import re
@@ -135,8 +135,254 @@ Sometimes AI agents get lazy and try to delete a 100-line file and replace it wi
 
 ### Phase 1: Create the "Patient"
 
+```bash
+~$ cd /tmp/
+/tmp$ mkdir day5-lab && cd day5-lab
+/tmp/day5-lab$ touch validator.py
+/tmp/day5-lab$ code validator.py
+```
+
 ### Phase 2: Surgical Fixes
+
+- 備註：原本文件使用 `opencode validator.py` 是不正確的
+
+```bash
+/tmp/day5-lab$ opencode .
+```
+
+- 輸入提示詞：
+
+  > Look at the `validate_email` function in `@validator.py`. The regex is failing because it doesn't require a dot in the domain. Fix ONLY the regex string.
+
+- 備註：其實不需要按 `Apply`
+
+> 3. **Review the Diff:** Ensure it didn't rewrite the whole file—just the one line. Click **Apply**.
 
 ### Phase 3: Logical Surgery
 
+- 輸入提示詞：
+
+    > The `check_password_strength` function always returns True. Fix the logic so it returns True only if the password is longer than 8 characters and contains at least one number.
+
+
+
 ### Phase 4: The Terminal Feedback Loop
+
+- 輸入提示詞：
+
+    > Run this script in the terminal and tell me if the output matches what we expect (False, False).
+
+### 結果
+
+- session `/copy` 結果：
+
+**Session ID:** ses_3994084c6ffegoauCSpdyDaYpQ
+**Created:** 2/16/2026, 9:59:10 PM
+**Updated:** 2/16/2026, 10:03:42 PM
+
+---
+
+#### User
+
+Look at the `validate_email` function in `@validator.py`. The regex is failing because it doesn't require a dot in the domain. Fix ONLY the regex string.
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 5.2s)
+
+_Thinking:_
+
+The user wants me to look at a file called `@validator.py` (which seems like an unusual filename with the @ symbol), find the `validate_email` function, and fix the regex to require a dot in the domain. Let me first read this file.
+
+**Tool: glob**
+
+**Input:**
+```json
+{
+  "pattern": "**/*validator*.py"
+}
+```
+
+**Output:**
+```
+C:\Users\jazzw\AppData\Local\Temp\day5-lab\validator.py
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 5.6s)
+
+_Thinking:_
+
+Let me read the validator.py file to find the validate_email function.
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day5-lab\\validator.py"
+}
+```
+
+**Output:**
+```
+<path>C:\Users\jazzw\AppData\Local\Temp\day5-lab\validator.py</path>
+<type>file</type>
+<content>1: import re
+2: 
+3: def validate_email(email):
+4:     # Bug: This regex is way too simple and misses the domain dot
+5:     regex = r'^[a-z0-9]+@[a-z0-9]+$'
+6:     if re.match(regex, email):
+7:         return True
+8:     return False
+9: 
+10: def check_password_strength(password):
+11:     # Bug: This returns True even if the password is empty
+12:     if len(password) > 8:
+13:         return True
+14:     else:
+15:         return True
+16: 
+17: print(validate_email("test@example")) # Should be False
+18: print(check_password_strength(""))    # Should be False
+
+(End of file - total 18 lines)
+</content>
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 3.2s)
+
+_Thinking:_
+
+I can see the issue. The regex `r'^[a-z0-9]+@[a-z0-9]+$'` doesn't include a dot in the domain part. I need to add a dot to the domain portion of the regex. The domain part should be something like `[a-z0-9]+\.[a-z0-9]+` to require at least one dot.
+
+Let me fix just the regex string.
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day5-lab\\validator.py",
+  "newString": "    regex = r'^[a-z0-9]+@[a-z0-9]+\\.[a-z0-9]+$'",
+  "oldString": "    regex = r'^[a-z0-9]+@[a-z0-9]+$'"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 2.1s)
+
+_Thinking:_
+
+I've added the dot requirement to the domain part of the regex. The pattern `[a-z0-9]+\.[a-z0-9]+` now requires at least one dot in the domain.
+
+Fixed. The regex now requires a dot in the domain: `r'^[a-z0-9]+@[a-z0-9]+\.[a-z0-9]+$'`
+
+---
+
+#### User
+
+The `check_password_strength` function always returns True. Fix the logic so it returns True only if the password is longer than 8 characters and contains at least one number.
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 4.0s)
+
+_Thinking:_
+
+The user wants me to fix the check_password_strength function. Looking at the current code:
+
+```python
+def check_password_strength(password):
+    # Bug: This returns True even if the password is empty
+    if len(password) > 8:
+        return True
+    else:
+        return True
+```
+
+It always returns True. I need to:
+1. Return False if password is 8 characters or less
+2. Return False if password doesn't contain at least one number
+3. Return True only if both conditions are met
+
+Let me edit this function.
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day5-lab\\validator.py",
+  "newString": "def check_password_strength(password):\n    if len(password) > 8 and any(c.isdigit() for c in password):\n        return True\n    return False",
+  "oldString": "def check_password_strength(password):\n    # Bug: This returns True even if the password is empty\n    if len(password) > 8:\n        return True\n    else:\n        return True"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 2.0s)
+
+_Thinking:_
+
+Done. The function now returns True only if the password is longer than 8 characters AND contains at least one digit.
+
+Fixed. The function now returns True only when the password is longer than 8 characters **and** contains at least one digit.
+
+---
+
+#### User
+
+Run this script in the terminal and tell me if the output matches what we expect (False, False).
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 2.6s)
+
+_Thinking:_
+
+The user wants me to run the validator.py script to check if the output is False, False.
+
+**Tool: bash**
+
+**Input:**
+```json
+{
+  "command": "python validator.py",
+  "description": "Run validator.py script"
+}
+```
+
+**Output:**
+```
+False
+False
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 1.6s)
+
+_Thinking:_
+
+The output is False, False which matches what the user expected. Let me confirm this to them.
+
+Yes, the output is `False, False` - matching the expected result.
+
+---
+
