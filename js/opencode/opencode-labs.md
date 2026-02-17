@@ -727,13 +727,13 @@ In professional software development, a single feature change rarely stays insid
 
 ## Day 6: Coordinating Cross-File Changes
 
-### 1. The Multi-File Context Strategy
+### 1\. The Multi-File Context Strategy
 
 To refactor across files, the agent needs to see the **interconnections**. If you only point it at `file_a.py`, it won't know that `file_b.py` depends on it.
 
 * **Pro Tip:** Use the `@` symbol for *all* involved files in your initial prompt so the agent builds a complete dependency graph in its "mind."
 
-### 2. The "Atomic" Transaction
+### 2\. The "Atomic" Transaction
 
 When OpenCode refactors, it usually presents a sequence of diffs.
 
@@ -751,14 +751,14 @@ In this lab, you will take a "monolithic" script (one big messy file) and force 
 
 1. **Open Ubuntu WSL.**
 2. **Create a folder and a messy file:**
+
 ```bash
 mkdir ~/day6-lab && cd ~/day6-lab
 nano app.py
-
 ```
 
-
 3. **Paste this code into `app.py`:**
+
 ```python
 # A messy monolith that does everything
 import json
@@ -779,24 +779,19 @@ def process_user_data(name, age):
 # Main execution
 user = process_user_data("Alice", 30)
 print(f"Processed: {user}")
-
 ```
-
-
 
 ### Phase 2: The Multi-File Refactor
 
 1. **Launch OpenCode in Build Mode:**
 ```bash
 opencode .
-
 ```
 
 
 2. **The Refactor Prompt:**
-> "I want to clean this up. Move the `save_to_db` function into a new file called `database.py`. Move the `process_user_data` logic into `services.py`. Update `app.py` to import these functions and keep the main execution logic there. Ensure all files are correctly linked."
 
-
+    > "I want to clean this up. Move the `save_to_db` function into a new file called `database.py`. Move the `process_user_data` logic into `services.py`. Update `app.py` to import these functions and keep the main execution logic there. Ensure all files are correctly linked."
 
 ### Phase 3: Reviewing the Chain
 
@@ -804,7 +799,6 @@ opencode .
 * **Creation** of `database.py`.
 * **Creation** of `services.py`.
 * **Deletion/Modification** of `app.py`.
-
 
 2. **Apply All:** Click "Apply" for each file.
 
@@ -815,16 +809,13 @@ opencode .
 Now, verify the agent didn't break the imports (a common AI mistake in WSL).
 
 1. **Run the entry point:**
+
 ```bash
 python3 app.py
-
 ```
-
 
 2. **The Error Hunt:** If you get an `ImportError`, don't fix it manually!
 * **Prompt the agent:** > "I got an `ImportError`. Look at `@terminal` and fix the import paths in `@app.py` or `@services.py`."
-
-
 
 ---
 
@@ -844,10 +835,10 @@ python3 app.py
 Before applying a multi-file refactor, I always ask: *"Before you edit, list the exact imports you plan to add to each file."* This forces the agent to think about the file paths (like `from .database import save_to_db`) which is where most AI-generated code fails.
 
 **How did the "Great Decoupling" go? Did the agent remember to add the `import` statements, or did you have to nudge it?** When you're ready, **Day 7** is all about **The Auditor**, where we use the agent to find security holes and performance bottlenecks in the code we just wrote!
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 7?
 </td></tr></table>
-
 
 Welcome to **Day 7: The Auditor**.
 
