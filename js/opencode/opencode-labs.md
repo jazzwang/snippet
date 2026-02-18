@@ -850,7 +850,7 @@ OpenCode shines when you ask it to find things you might have missed—like secu
 
 ## Day 7: Security, Performance, and the `/review` Command
 
-### 1. The Audit Mindset
+### 1\. The Audit Mindset
 
 When you audit code, you aren't looking for bugs that break the app (functional bugs); you are looking for **structural weaknesses**.
 
@@ -858,7 +858,7 @@ When you audit code, you aren't looking for bugs that break the app (functional 
 * **Performance:** Is there a "Big O" nightmare (like a loop inside a loop) that will crash if the data grows?
 * **Maintainability:** Is the code so clever that a human won't understand it in six months?
 
-### 2. Using the `/review` Command
+### 2\. Using the `/review` Command
 
 Most advanced agents have a dedicated review mode. In OpenCode, you can trigger this by using the `/review` command or by asking the agent specifically to "critique" a file.
 
@@ -872,14 +872,14 @@ In this lab, you will create an intentionally "bad" application and use OpenCode
 
 1. **Open Ubuntu WSL.**
 2. **Create a new directory and file:**
+
 ```bash
 mkdir ~/day7-lab && cd ~/day7-lab
 nano vulnerable_app.py
-
 ```
 
-
 3. **Paste this dangerously written code into `vulnerable_app.py`:**
+
 ```python
 import sqlite3
 
@@ -905,17 +905,14 @@ def calculate_data(numbers):
     return list(set(result))
 
 print("App is running...")
-
 ```
-
-
 
 ### Phase 2: The Security Audit (Plan Mode)
 
 1. **Launch OpenCode in Plan Mode:** `opencode .`
 2. **The Auditor Prompt:**
-> "Perform a security and performance audit of `@vulnerable_app.py`. Identify at least three major issues and explain the risks associated with each."
 
+    > "Perform a security and performance audit of `@vulnerable_app.py`. Identify at least three major issues and explain the risks associated with each."
 
 3. **The Analysis:** Does the agent catch the SQL injection? Does it notice the hardcoded API key?
 
@@ -923,9 +920,8 @@ print("App is running...")
 
 1. **Switch to Build Mode** (`Tab`).
 2. **The Patch Prompt:**
-> "Fix the SQL injection vulnerability using parameterized queries. Then, move the `API_KEY` to an environment variable lookup using the `os` module. Finally, optimize the `calculate_data` function to run in O(n) time instead of O(n^2)."
 
-
+    > "Fix the SQL injection vulnerability using parameterized queries. Then, move the `API_KEY` to an environment variable lookup using the `os` module. Finally, optimize the `calculate_data` function to run in O(n) time instead of O(n^2)."
 
 ### Phase 4: Verification
 
@@ -950,6 +946,7 @@ print("App is running...")
 If the agent suggests a fix you don't understand, ask: *"Why is this fix safer than my original code?"* This turns the audit into a private tutoring session. Understanding the *why* is what makes you a better developer, not just a better AI user.
 
 **How did your audit go? Did OpenCode find all three vulnerabilities, or did it miss the performance bottleneck?** When you're ready, we'll wrap up the week with **Day 8: Session Isolation**, where we learn how to run multiple "sub-agents" to handle different parts of a project at the same time! Would you like to proceed?
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 8?
 </td></tr></table>

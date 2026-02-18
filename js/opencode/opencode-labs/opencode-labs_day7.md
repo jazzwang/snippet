@@ -1,0 +1,495 @@
+Welcome to **Day 7: The Auditor**.
+
+By now, you’ve built code, moved code, and refactored code. But is the code *actually* good? Today, we stop playing the "Developer" and start playing the "Senior Security Engineer."
+
+OpenCode shines when you ask it to find things you might have missed—like security holes, "code smells," or logic that will slow down your app as it scales.
+
+---
+
+## Day 7: Security, Performance, and the `/review` Command
+
+### 1\. The Audit Mindset
+
+When you audit code, you aren't looking for bugs that break the app (functional bugs); you are looking for **structural weaknesses**.
+
+* **Security:** Are there hardcoded secrets? Is there a risk of SQL injection?
+* **Performance:** Is there a "Big O" nightmare (like a loop inside a loop) that will crash if the data grows?
+* **Maintainability:** Is the code so clever that a human won't understand it in six months?
+
+### 2\. Using the `/review` Command
+
+Most advanced agents have a dedicated review mode. In OpenCode, you can trigger this by using the `/review` command or by asking the agent specifically to "critique" a file.
+
+---
+
+## Day 7 Lab: "The Security Breach"
+
+In this lab, you will create an intentionally "bad" application and use OpenCode to identify and patch the vulnerabilities.
+
+### Phase 1: Setup the "Vulnerable Patient"
+
+1. **Open Ubuntu WSL.**
+2. **Create a new directory and file:**
+
+```bash
+mkdir ~/day7-lab && cd ~/day7-lab
+nano vulnerable_app.py
+```
+
+3. **Paste this dangerously written code into `vulnerable_app.py`:**
+
+```python
+import sqlite3
+
+# VULNERABILITY 1: Hardcoded Secret
+API_KEY = "sk-12345-secret-key-do-not-share"
+
+def get_user_data(username):
+    db = sqlite3.connect("users.db")
+    cursor = db.cursor()
+
+    # VULNERABILITY 2: SQL Injection (Direct string formatting)
+    query = f"SELECT * FROM users WHERE username = '{username}'"
+    cursor.execute(query)
+    return cursor.fetchone()
+
+def calculate_data(numbers):
+    # VULNERABILITY 3: Performance Bottleneck (O(n^2) for no reason)
+    result = []
+    for i in numbers:
+        for j in numbers:
+            if i == j:
+                result.append(i)
+    return list(set(result))
+
+print("App is running...")
+```
+
+### Phase 2: The Security Audit (Plan Mode)
+
+1. **Launch OpenCode in Plan Mode:** `opencode .`
+2. **The Auditor Prompt:**
+
+    > "Perform a security and performance audit of `@vulnerable_app.py`. Identify at least three major issues and explain the risks associated with each."
+
+3. **The Analysis:** Does the agent catch the SQL injection? Does it notice the hardcoded API key?
+
+### Phase 3: The Surgical Patch (Build Mode)
+
+1. **Switch to Build Mode** (`Tab`).
+2. **The Patch Prompt:**
+
+    > "Fix the SQL injection vulnerability using parameterized queries. Then, move the `API_KEY` to an environment variable lookup using the `os` module. Finally, optimize the `calculate_data` function to run in O(n) time instead of O(n^2)."
+
+### Phase 4: Verification
+
+1. **Review the Diff:** Look closely at how it handles the SQL query. It should change `'{username}'` to `?` and pass the variable as a tuple.
+2. **Apply the changes.**
+
+---
+
+## Day 7 Summary Checklist
+
+| Task | Completed |
+| --- | --- |
+| Identified a SQL injection vulnerability | ☐ |
+| Replaced a hardcoded secret with an environment variable | ☐ |
+| Optimized a nested loop into a more efficient algorithm | ☐ |
+| Used **Plan Mode** to generate a written report of "code smells" | ☐ |
+
+---
+
+### Pro-Tip: The "Rubber Ducking" Technique
+
+If the agent suggests a fix you don't understand, ask: *"Why is this fix safer than my original code?"* This turns the audit into a private tutoring session. Understanding the *why* is what makes you a better developer, not just a better AI user.
+
+**How did your audit go? Did OpenCode find all three vulnerabilities, or did it miss the performance bottleneck?** When you're ready, we'll wrap up the week with **Day 8: Session Isolation**, where we learn how to run multiple "sub-agents" to handle different parts of a project at the same time! Would you like to proceed?
+
+<div style="background-color:lightgreen;">
+
+## 實測
+
+</div>
+
+### Phase 1: Setup the "Vulnerable Patient"
+
+```bash
+~/git/snippet/js/opencode/opencode-labs$ cd /tmp/
+/tmp$ mkdir day7-lab && cd day7-lab
+/tmp/day7-lab$ code vulnerable_app.py
+/tmp/day7-lab$ opencode .
+```
+- 貼上範例
+
+### Phase 2: The Security Audit (Plan Mode)
+
+- 切到 "Plan Mode"
+- 輸入提示詞：
+> Perform a security and performance audit of `@vulnerable_app.py`. Identify at least three major issues and explain the risks associated with each.
+
+### Phase 3: The Surgical Patch (Build Mode)
+
+- 切到 "Build Mode"
+- 輸入提示詞：
+> Fix the SQL injection vulnerability using parameterized queries. Then, move the `API_KEY` to an environment variable lookup using the `os` module. Finally, optimize the `calculate_data` function to run in O(n) time instead of O(n^2).
+
+### Phase 4: Verification
+
+### 結果
+
+- session `/copy` 的結果：
+
+**Session ID:** ses_38edd59f1ffeLvIf0kGoZVTqF5
+**Created:** 2/18/2026, 10:23:42 PM
+**Updated:** 2/18/2026, 10:27:05 PM
+
+---
+
+#### User
+
+Perform a security and performance audit of `@vulnerable_app.py`. Identify at least three major issues and explain the risks associated with each.
+
+---
+
+#### Assistant (Plan · minimax-m2.5-free · 3.7s)
+
+_Thinking:_
+
+The user wants me to perform a security and performance audit of `@vulnerable_app.py`. This appears to be a file that exists in the working directory. However, I'm in "Plan Mode" which means I can only read and analyze - I cannot make any edits or modifications.
+
+Let me first read the file to understand what it contains, then identify security and performance issues.
+
+**Tool: glob**
+
+**Input:**
+```json
+{
+  "pattern": "**/*vulnerable_app.py"
+}
+```
+
+**Output:**
+```
+C:\Users\jazzw\AppData\Local\Temp\day7-lab\vulnerable_app.py
+```
+
+---
+
+#### Assistant (Plan · minimax-m2.5-free · 2.6s)
+
+_Thinking:_
+
+Found the file. Let me read its contents to analyze the security and performance issues.
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day7-lab\\vulnerable_app.py"
+}
+```
+
+**Output:**
+```
+<path>C:\Users\jazzw\AppData\Local\Temp\day7-lab\vulnerable_app.py</path>
+<type>file</type>
+<content>1: import sqlite3
+2: 
+3: # VULNERABILITY 1: Hardcoded Secret
+4: API_KEY = "sk-12345-secret-key-do-not-share"
+5: 
+6: def get_user_data(username):
+7:     db = sqlite3.connect("users.db")
+8:     cursor = db.cursor()
+9: 
+10:     # VULNERABILITY 2: SQL Injection (Direct string formatting)
+11:     query = f"SELECT * FROM users WHERE username = '{username}'"
+12:     cursor.execute(query)
+13:     return cursor.fetchone()
+14: 
+15: def calculate_data(numbers):
+16:     # VULNERABILITY 3: Performance Bottleneck (O(n^2) for no reason)
+17:     result = []
+18:     for i in numbers:
+19:         for j in numbers:
+20:             if i == j:
+21:                 result.append(i)
+22:     return list(set(result))
+23: 
+24: print("App is running...")
+
+(End of file - total 24 lines)
+</content>
+```
+
+---
+
+#### Assistant (Plan · minimax-m2.5-free · 9.7s)
+
+_Thinking:_
+
+I've now read the file. Let me analyze the security and performance issues:
+
+1. **Hardcoded Secret (Line 4)**: API_KEY is hardcoded in plain text. This is a critical security vulnerability - secrets should never be hardcoded and should be loaded from environment variables or a secure vault.
+
+2. **SQL Injection (Line 11)**: The username parameter is directly interpolated into the SQL query using f-string formatting. This allows an attacker to inject malicious SQL code. This is a critical security vulnerability.
+
+3. **Performance Bottleneck (Lines 17-22)**: The `calculate_data` function has O(n²) complexity for what appears to be finding unique values. This can be replaced with a simple O(n) set operation. Additionally, there's a bug - it returns `list(set(result))` at the end but the nested loop with `if i == j` would add duplicates, so the set() call is there to fix that, but it's inefficient.
+
+Let me provide a comprehensive audit report to the user.
+
+## Security & Performance Audit Report for `vulnerable_app.py`
+
+### Issue 1: Hardcoded Secret (Critical - Line 4)
+```python
+API_KEY = "sk-12345-secret-key-do-not-share"
+```
+**Risk**: Anyone with code access can read this API key. If committed to version control, it's exposed publicly. Attackers can use this key to authenticate as your application.
+
+---
+
+### Issue 2: SQL Injection (Critical - Line 11)
+```python
+query = f"SELECT * FROM users WHERE username = '{username}'"
+```
+**Risk**: An attacker can input `' OR '1'='1` as username to bypass authentication, extract all user data, or potentially execute arbitrary SQL commands (depending on DB permissions).
+
+---
+
+### Issue 3: Performance Bottleneck - O(n²) Algorithm (Medium - Lines 17-22)
+```python
+for i in numbers:
+    for j in numbers:
+        if i == j:
+            result.append(i)
+```
+**Risk**: This is O(n²) complexity for a simple deduplication task. For 10,000 items, this performs 100,000,000 iterations. Should be `list(set(numbers))` which is O(n).
+
+---
+
+### Issue 4: Missing DB Connection Cleanup (Medium - Lines 7-13)
+The database connection is opened but never closed, causing resource leaks.
+
+---
+
+Would you like me to create a plan showing how to fix these issues?
+
+---
+
+#### User
+
+Fix the SQL injection vulnerability using parameterized queries. Then, move the `API_KEY` to an environment variable lookup using the `os` module.Finally, optimize the `calculate_data` function to run in O(n) time instead of O(n^2).
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 3.7s)
+
+_Thinking:_
+
+The user wants me to fix the three issues:
+1. Fix SQL injection with parameterized queries
+2. Move API_KEY to environment variable using os module
+3. Optimize calculate_data from O(n²) to O(n)
+
+Let me make these edits to the file.
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day7-lab\\vulnerable_app.py",
+  "newString": "import os\nimport sqlite3\n\nAPI_KEY = os.environ.get(\"API_KEY\", \"\")",
+  "oldString": "import sqlite3\n\nAPI_KEY = \"sk-12345-secret-key-do-not-share\""
+}
+```
+
+**Error:**
+```
+Error: You must read file C:\Users\jazzw\AppData\Local\Temp\day7-lab\vulnerable_app.py before overwriting it. Use the Read tool first
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 3.4s)
+
+_Thinking:_
+
+I need to re-read the file first since it's a new conversation turn.
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day7-lab\\vulnerable_app.py"
+}
+```
+
+**Output:**
+```
+<path>C:\Users\jazzw\AppData\Local\Temp\day7-lab\vulnerable_app.py</path>
+<type>file</type>
+<content>1: import sqlite3
+2: 
+3: # VULNERABILITY 1: Hardcoded Secret
+4: API_KEY = "sk-12345-secret-key-do-not-share"
+5: 
+6: def get_user_data(username):
+7:     db = sqlite3.connect("users.db")
+8:     cursor = db.cursor()
+9: 
+10:     # VULNERABILITY 2: SQL Injection (Direct string formatting)
+11:     query = f"SELECT * FROM users WHERE username = '{username}'"
+12:     cursor.execute(query)
+13:     return cursor.fetchone()
+14: 
+15: def calculate_data(numbers):
+16:     # VULNERABILITY 3: Performance Bottleneck (O(n^2) for no reason)
+17:     result = []
+18:     for i in numbers:
+19:         for j in numbers:
+20:             if i == j:
+21:                 result.append(i)
+22:     return list(set(result))
+23: 
+24: print("App is running...")
+
+(End of file - total 24 lines)
+</content>
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 3.4s)
+
+_Thinking:_
+
+Now I can make the edits. I'll do all three fixes.
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day7-lab\\vulnerable_app.py",
+  "newString": "import os\nimport sqlite3\n\nAPI_KEY = os.environ.get(\"API_KEY\", \"\")",
+  "oldString": "import sqlite3\n\n# VULNERABILITY 1: Hardcoded Secret\nAPI_KEY = \"sk-12345-secret-key-do-not-share\""
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 15.4s)
+
+_Thinking:_
+
+Now fix the SQL injection with parameterized query.
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day7-lab\\vulnerable_app.py",
+  "newString": "def get_user_data(username):\n    db = sqlite3.connect(\"users.db\")\n    cursor = db.cursor()\n\n    query = \"SELECT * FROM users WHERE username = ?\"\n    cursor.execute(query, (username,))\n    return cursor.fetchone()",
+  "oldString": "def get_user_data(username):\n    db = sqlite3.connect(\"users.db\")\n    cursor = db.cursor()\n\n    # VULNERABILITY 2: SQL Injection (Direct string formatting)\n    query = f\"SELECT * FROM users WHERE username = '{username}'\"\n    cursor.execute(query)\n    return cursor.fetchone()"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 3.2s)
+
+_Thinking:_
+
+Now optimize the calculate_data function.
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day7-lab\\vulnerable_app.py",
+  "newString": "def calculate_data(numbers):\n    return list(set(numbers))",
+  "oldString": "def calculate_data(numbers):\n    # VULNERABILITY 3: Performance Bottleneck (O(n^2) for no reason)\n    result = []\n    for i in numbers:\n        for j in numbers:\n            if i == j:\n                result.append(i)\n    return list(set(result))"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 1.8s)
+
+_Thinking:_
+
+All three fixes are done. Let me show the user the final result.
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day7-lab\\vulnerable_app.py"
+}
+```
+
+**Output:**
+```
+<path>C:\Users\jazzw\AppData\Local\Temp\day7-lab\vulnerable_app.py</path>
+<type>file</type>
+<content>1: import os
+2: import sqlite3
+3: 
+4: API_KEY = os.environ.get("API_KEY", "")
+5: 
+6: def get_user_data(username):
+7:     db = sqlite3.connect("users.db")
+8:     cursor = db.cursor()
+9: 
+10:     query = "SELECT * FROM users WHERE username = ?"
+11:     cursor.execute(query, (username,))
+12:     return cursor.fetchone()
+13: 
+14: def calculate_data(numbers):
+15:     return list(set(numbers))
+16: 
+17: print("App is running...")
+
+(End of file - total 17 lines)
+</content>
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 2.4s)
+
+_Thinking:_
+
+All fixes are complete. Let me summarize what was done.
+
+Done. All three fixes applied:
+
+1. **SQL Injection** - Now uses parameterized query with `?` placeholder (line 10-11)
+2. **API_KEY** - Now reads from `os.environ.get("API_KEY", "")` (line 4)
+3. **Performance** - Replaced O(n²) nested loop with O(n) `list(set(numbers))` (line 15)
+
+To use the app, set the `API_KEY` environment variable before running.
+
+---
+
