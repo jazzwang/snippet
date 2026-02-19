@@ -508,3 +508,163 @@ _Thinking:_
 The start command should open the file in the default browser. Let me verify if this worked or if there's another way to do it.
 
 Opened `index.html` in your default browser.
+
+## 補充：
+
+- 自己執行 backend
+```bash
+/tmp/day8-lab/backend$ uvicorn main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\jazzw\\AppData\\Local\\Temp\\day8-lab\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [21824] using WatchFiles
+INFO:     Started server process [23072]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:55386 - "OPTIONS /tasks HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:55386 - "OPTIONS /tasks HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:55386 - "OPTIONS /tasks HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:55386 - "OPTIONS /tasks HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:55386 - "OPTIONS /tasks HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:51894 - "OPTIONS /tasks HTTP/1.1" 405 Method Not Allowed
+```
+- 直接開 index.html，還是有錯誤。
+- 開 DevTool 發現錯誤訊息是 CORS 限制，所以不能直接開 index.html，而是要開一個 Python HTTP Server。
+```bash
+/tmp/day8-lab/frontend$ python3 -m http.server 8080
+Serving HTTP on :: port 8080 (http://[::]:8080/) ...
+```
+- 開啟 http://localhost:8080/
+- 還是看到 CORS 錯誤訊息
+```bash
+INFO:     127.0.0.1:58656 - "GET /tasks HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:58656 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61857 - "OPTIONS /tasks HTTP/1.1" 405 Method Not Allowed
+```
+- 打開 Backend 分頁並請 opencode 幫忙解決 CORS 問題
+
+**Session ID:** ses_3894e00b0ffeGO2SWPsV12g6Pv
+**Created:** 2/20/2026, 12:18:22 AM
+**Updated:** 2/20/2026, 12:20:35 AM
+
+---
+
+#### User
+
+could you help me to resolve the CORS error?
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 4.9s)
+
+_Thinking:_
+
+The user is asking for help resolving a CORS error. This is a common web development issue. To help them, I need to first understand their codebase - what framework they're using, their server setup, etc.
+
+Let me explore the codebase to understand the project structure and find where CORS might need to be configured.
+
+I'll explore your codebase to understand the project structure and find the CORS configuration.
+
+**Tool: glob**
+
+**Input:**
+```json
+{
+  "pattern": "**/*"
+}
+```
+
+**Output:**
+```
+C:\Users\jazzw\AppData\Local\Temp\day8-lab\backend\__pycache__\main.cpython-312.pyc
+C:\Users\jazzw\AppData\Local\Temp\day8-lab\backend\requirements.txt
+C:\Users\jazzw\AppData\Local\Temp\day8-lab\backend\main.py
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 4.5s)
+
+_Thinking:_
+
+This looks like a Python backend. Let me read the main.py file to see how the server is set up and what CORS configuration might be needed.
+
+**Tool: read**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day8-lab\\backend\\main.py"
+}
+```
+
+**Output:**
+```
+<path>C:\Users\jazzw\AppData\Local\Temp\day8-lab\backend\main.py</path>
+<type>file</type>
+<content>1: from fastapi import FastAPI
+2: from pydantic import BaseModel
+3: 
+4: app = FastAPI()
+5: 
+6: 
+7: class TaskCreate(BaseModel):
+8:     title: str
+9:     priority: int
+10: 
+11: 
+12: class TaskResponse(BaseModel):
+13:     status: str
+14:     id: int
+15: 
+16: 
+17: task_id_counter = 0
+18: 
+19: 
+20: @app.post("/tasks", response_model=TaskResponse)
+21: def create_task(task: TaskCreate):
+22:     global task_id_counter
+23:     task_id_counter += 1
+24:     return TaskResponse(status="success", id=task_id_counter)
+25: 
+
+(End of file - total 25 lines)
+</content>
+```
+
+---
+
+#### Assistant (Build · minimax-m2.5-free · 21.0s)
+
+_Thinking:_
+
+This is a FastAPI application. The CORS error is happening because there's no CORS middleware configured. FastAPI has a built-in CORS middleware from starlette that needs to be added.
+
+I need to add the CORS middleware to allow cross-origin requests. Let me add it.
+
+This is a FastAPI app without CORS middleware configured. I'll add the CORS middleware to allow cross-origin requests.
+
+**Tool: edit**
+
+**Input:**
+```json
+{
+  "filePath": "C:\\Users\\jazzw\\AppData\\Local\\Temp\\day8-lab\\backend\\main.py",
+  "newString": "from fastapi import FastAPI\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)",
+  "oldString": "from fastapi import FastAPI\nfrom pydantic import BaseModel\n\napp = FastAPI()"
+}
+```
+
+**Output:**
+```
+Edit applied successfully.
+```
+
+- 確認加上 CORS 設定到 `backend/main.py` 以後，就可以正確執行：
+```
+INFO:     Started server process [16324]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:55933 - "OPTIONS /tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55933 - "POST /tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55974 - "POST /tasks HTTP/1.1" 200 OK
+```
