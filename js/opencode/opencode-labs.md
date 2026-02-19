@@ -951,7 +951,6 @@ If the agent suggests a fix you don't understand, ask: *"Why is this fix safer t
 Could you give me step-by-step instruction and create an exercise lab for Day 8?
 </td></tr></table>
 
-
 Welcome to **Day 8: Session Isolation**.
 
 Yesterday, you played the Auditor. Today, we learn the ultimate power move for scaling your productivity: **Parallel Workflows**.
@@ -962,7 +961,7 @@ In complex projects, you often have a "context pollution" problem. If you ask an
 
 ## Day 8: Managing Sub-Agents and Parallel Tasks
 
-### 1. The Theory of Isolation
+### 1\. The Theory of Isolation
 
 Session isolation allows you to run multiple instances of OpenCode on the same project but with different "missions."
 
@@ -970,7 +969,7 @@ Session isolation allows you to run multiple instances of OpenCode on the same p
 * **Agent B (The Frontend):** Focused only on React/CSS.
 * **The Bridge:** They both read a shared "Contract" file (like an API spec) to ensure they stay in sync without sharing every messy detail of their internal logic.
 
-### 2. How to "Double Up" in WSL
+### 2\. How to "Double Up" in WSL
 
 Since you are using Ubuntu WSL, you can easily open multiple terminal tabs (Ctrl+Shift+T in Windows Terminal).
 
@@ -987,14 +986,12 @@ In this lab, you will act as the "Project Manager" coordinating two separate age
 
 1. **Open Ubuntu WSL.**
 2. **Create the structure:**
+
 ```bash
 mkdir ~/day8-lab && cd ~/day8-lab
 mkdir backend frontend shared
 touch shared/api_spec.md
-
 ```
-
-
 
 ### Phase 2: Defining the Contract
 
@@ -1012,9 +1009,8 @@ Open `shared/api_spec.md` and paste this "Source of Truth":
 1. **Open a New Terminal Tab** and navigate to `~/day8-lab/backend`.
 2. **Launch OpenCode:** `opencode .`
 3. **The Prompt:**
-> "Using the contract in `@../shared/api_spec.md`, build a FastAPI server with a POST endpoint that matches the spec. Don't worry about the UI."
 
-
+    > "Using the contract in `@../shared/api_spec.md`, build a FastAPI server with a POST endpoint that matches the spec. Don't worry about the UI."
 
 ---
 
@@ -1023,9 +1019,8 @@ Open `shared/api_spec.md` and paste this "Source of Truth":
 1. **Switch back to your first Terminal Tab** (or open a 3rd) and go to `~/day8-lab/frontend`.
 2. **Launch OpenCode:** `opencode .`
 3. **The Prompt:**
-> "Using the contract in `@../shared/api_spec.md`, create a simple HTML/JavaScript file called `index.html`. It should have a form to submit a task title and priority. Assume the backend is running at `localhost:8000`."
 
-
+    > "Using the contract in `@../shared/api_spec.md`, create a simple HTML/JavaScript file called `index.html`. It should have a form to submit a task title and priority. Assume the backend is running at `localhost:8000`."
 
 ---
 
@@ -1057,6 +1052,7 @@ If an agent starts asking about files in the other folder, remind it: *"You are 
 **How did it feel to manage two "employees" at once? Did the UI and API connect on the first try, or was there a mismatch in the "Contract"?**
 
 When you're ready, **Day 9** is where we get truly custom. We'll learn how to write **Custom Commands** so you can automate your own specific workflows with a single slash! Ready to move on?
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 9?
 </td></tr></table>
