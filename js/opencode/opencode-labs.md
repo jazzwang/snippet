@@ -1050,7 +1050,7 @@ Think of it this way: A Custom Command is a specific hammer you built. The Skill
 
 ## Day 10: Mastering Tool-Use and Permissions
 
-### 1. The Anatomy of a Skill
+### 1\. The Anatomy of a Skill
 
 OpenCode agents typically have three core "Native Skills":
 
@@ -1058,7 +1058,7 @@ OpenCode agents typically have three core "Native Skills":
 * **The File Skill:** The ability to read, write, and search the directory tree.
 * **The Web Skill:** The ability to browse the internet to read documentation or search for solutions (often via a headless browser like Playwright).
 
-### 2. Managing "Agent Trust"
+### 2\. Managing "Agent Trust"
 
 In Ubuntu WSL, security is key. You can set your skills to three levels of permission:
 
@@ -1076,10 +1076,7 @@ In this lab, you will force the agent to use the **Web Skill** to learn about a 
 2. **Create a clean folder:**
 ```bash
 mkdir ~/day10-lab && cd ~/day10-lab
-
 ```
-
-
 
 ### Phase 2: Enabling the Web Skill
 
@@ -1095,7 +1092,8 @@ Before starting, ensure OpenCode has its "eyes" open.
 We are going to ask the agent to use a very specific, modern library—let's use **`FastHTML`** (a relatively new Python web framework).
 
 1. **The Research Prompt:**
-> "I want to build a simple Hello World app using the `FastHTML` library. I suspect your training data might be outdated for this. Use your **Web Search skill** to find the latest 'Getting Started' snippet from their official documentation."
+
+    > "I want to build a simple Hello World app using the `FastHTML` library. I suspect your training data might be outdated for this. Use your **Web Search skill** to find the latest 'Getting Started' snippet from their official documentation."
 
 
 2. **Watch the Skill in Action:** You should see the agent trigger a search, visit a URL, and summarize the findings.
@@ -1103,8 +1101,8 @@ We are going to ask the agent to use a very specific, modern library—let's use
 ### Phase 4: Verification via Terminal Skill
 
 1. **The Execution Prompt:**
-> "Based on what you found, create `main.py`. Then, try to install the necessary library using `pip` and run the script. If it fails, search for the error message and fix it."
 
+    > "Based on what you found, create `main.py`. Then, try to install the necessary library using `pip` and run the script. If it fails, search for the error message and fix it."
 
 2. **The Safety Check:** When the agent tries to run `pip install`, you will see a prompt in your WSL terminal: **"Agent wants to run: pip install fasthtml. Allow? [y/N]"**.
 3. **Approve it** and watch the agent complete the cycle.
@@ -1125,6 +1123,7 @@ When the agent uses the Web Skill, it often brings back a *lot* of text. If the 
 **How did the agent handle the FastHTML challenge? Did it find the right documentation, or did it try to guess the syntax?**
 
 When you're ready, **Day 11** is where we go "Meta." We’ll learn how to build **Custom Skills**—actually writing Python scripts that the agent can call as if they were built-in features! Would you like me to prepare the Day 11 instructions?
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 11?
 </td></tr></table>
