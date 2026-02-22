@@ -138,4 +138,98 @@ custom_commands:
 /tmp/day9-lab$ opencode .
 ```
 - 輸入指令 `/audit-ui`
-- 觀察結果
+- 觀察結果 - 沒效
+
+<div style="background-color:lightpink">
+
+### 修正
+
+</div>
+
+- 根據官方文件 https://opencode.ai/docs/commands/
+- 自訂指令是以 Markdown 檔案存在（而非 Gemini 生成的 Lab 是用 YAML）
+- 其次，Shell Script 感覺也不正確，因為 `grep -rn "inline-style"` 應該找不到 `<div style="color: red;">` 這一段的 inline style
+- 修正：
+```diff
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+ echo "--- RUNNING UI AUDIT ---"
+ # This simulates finding a problem in a file
+-grep -rn "inline-style" .
++grep -rn "style=" .
+ echo "--- AUDIT COMPLETE ---"
+```
+- 這次使用 opencode project 
+```
+~/git/snippet$ cd /tmp/
+/tmp$ cd day9-lab/
+/tmp/day9-lab$ mkdir -p .opencode/commands/
+/tmp/day9-lab$ cat > .opencode/commands/audit-ui.md << EOFdescription: Checks for forbidden inline styles in HTML/CSSWhen this command runs, look for any 'inline-style' mentions in the output. Immediately propose a refactor to move those styles to a separate CSS file.
+!`~/.config/opencode/commands/ui-checker.sh`
+EOF
+
+```
+- 驗證結果：
+
+**Created:** 2/22/2026, 11:13:17 PM
+**Updated:** 2/22/2026, 11:13:27 PM
+
+#### User
+
+```
+When this command runs, look for any 'inline-style' mentions in the output. Immediately propose a refactor to move those styles to a separate CSS file.
+!--- RUNNING UI AUDIT ---
+./index.html:1:<div style="color: red;">Hello World</div>
+--- AUDIT COMPLETE ---
+```
+
+#### Assistant (Build · minimax-m2.5-free · 5.5s)
+
+_Thinking:_
+
+The user is asking me to look for 'inline-style' mentions in the output they provided. They've shown a command output where there's an inline style in an HTML file: `<div style="color: red;">Hello World</div>`
+
+They're asking me to propose a refactor to move this to a separate CSS file.
+
+This is a straightforward request - I should:
+1. Identify the inline style: `style="color: red;"` on the div
+2. Propose moving it to a CSS file
+
+Let me check if there's an existing CSS file in the directory, or if I need to create one.
+
+**Tool: glob**
+
+**Input:**
+```json
+{
+  "pattern": "*.css"
+}
+```
+
+**Output:**
+```
+No files found
+```
+
+#### Assistant (Build · minimax-m2.5-free · 4.1s)
+
+_Thinking:_
+
+There's no existing CSS file. I'll propose a refactor to create a CSS file and move the inline styles there.
+
+Found inline style at `./index.html:1`. No existing CSS file detected.
+
+**Proposed refactor:**
+
+1. **Create `styles.css`:**
+```css
+.hello-text {
+  color: red;
+}
+```
+
+2. **Update `index.html`:**
+- Add `<link rel="stylesheet" href="styles.css">` to `<head>`
+- Replace `<div style="color: red;">` with `<div class="hello-text">`
+
+Would you like me to implement this?
