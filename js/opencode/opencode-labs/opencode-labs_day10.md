@@ -400,7 +400,8 @@ The user wants to build a Hello World app using FastHTML and wants the latest "G
 ```
 
 **Output:**
-```
+
+<div>
     FastHTML – fasthtml                   
 
 [![](./logo.svg)](./index.html)
@@ -609,7 +610,7 @@ For other hypermedia application platforms, not based on HTMX, take a look at:
 -   [Livewire](https://laravel-livewire.com/): Laravel’s take on building dynamic interfaces with minimal JavaScript
 
 -   [Report an issue](https://github.com/AnswerDotAI/fasthtml/issues/new)
-```
+</div>
 
 #### Assistant (Build · minimax-m2.5-free · 17.7s)
 
