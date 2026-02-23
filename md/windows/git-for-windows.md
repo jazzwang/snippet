@@ -539,3 +539,50 @@ See https://rsync.samba.org/ for updates, bug reports, and answers
 rsync error: syntax or usage error (code 1) at main.c(1767) [client=3.4.1]
 ```
 - 應該可以動了～再試試看 `rsync --avzr --progress` 指令是否可以正常運作
+
+## 
+
+- 狀況：因為 `cpio` 不能解壓縮到 git-for-windows 的根目錄（在 Cloud PC 裡面沒有 admin 權限，不能下 sudo 指令建目錄）
+- Gemini 3 建議改用 `pax`
+- 套件路徑
+  - https://packages.msys2.org/packages/pax?variant=x86_64
+  - https://mirror.msys2.org/msys/x86_64/pax-20201030-2-x86_64.pkg.tar.zst
+- 實測：
+```bash
+/tmp$ wget https://mirror.msys2.org/msys/x86_64/pax-20201030-2-x86_64.pkg.tar.zst
+/tmp$ tar -xv --zstd -f pax-20201030-2-x86_64.pkg.tar.zst
+.BUILDINFO
+.MTREE
+.PKGINFO
+usr/
+usr/bin/
+usr/bin/pax.exe
+usr/bin/paxcpio.exe
+usr/bin/paxtar.exe
+usr/share/
+usr/share/licenses/
+usr/share/licenses/pax/
+usr/share/licenses/pax/LICENSE
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/pax.1.gz
+usr/share/man/man1/paxcpio.1.gz
+usr/share/man/man1/paxtar.1.gz
+/tmp$ cp usr/bin/pax* ~/scoop/shims/
+/tmp$ cd ~/scoop/shims/
+~/scoop/shims$ ldd pax.exe
+        ntdll.dll => /c/WINDOWS/SYSTEM32/ntdll.dll (0x7ff853de0000)
+        KERNEL32.DLL => /c/WINDOWS/System32/KERNEL32.DLL (0x7ff852810000)
+        KERNELBASE.dll => /c/WINDOWS/System32/KERNELBASE.dll (0x7ff8516d0000)
+        msys-2.0.dll => /usr/bin/msys-2.0.dll (0x210040000)
+~/scoop/shims$ ldd paxcpio.exe
+        ntdll.dll => /c/WINDOWS/SYSTEM32/ntdll.dll (0x7ff853de0000)
+        KERNEL32.DLL => /c/WINDOWS/System32/KERNEL32.DLL (0x7ff852810000)
+        KERNELBASE.dll => /c/WINDOWS/System32/KERNELBASE.dll (0x7ff8516d0000)
+        msys-2.0.dll => /usr/bin/msys-2.0.dll (0x210040000)
+~/scoop/shims$ ldd paxtar.exe
+        ntdll.dll => /c/WINDOWS/SYSTEM32/ntdll.dll (0x7ff853de0000)
+        KERNEL32.DLL => /c/WINDOWS/System32/KERNEL32.DLL (0x7ff852810000)
+        KERNELBASE.dll => /c/WINDOWS/System32/KERNELBASE.dll (0x7ff8516d0000)
+        msys-2.0.dll => /usr/bin/msys-2.0.dll (0x210040000)
+```
