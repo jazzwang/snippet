@@ -80,7 +80,7 @@ When the agent uses the Web Skill, it often brings back a *lot* of text. If the 
 
 When you're ready, **Day 11** is where we go "Meta." We’ll learn how to build **Custom Skills**—actually writing Python scripts that the agent can call as if they were built-in features! Would you like me to prepare the Day 11 instructions?
 
-<div style="background-color=lightgreen">
+<div style="background-color:lightgreen;">
 
 ## 實測
 

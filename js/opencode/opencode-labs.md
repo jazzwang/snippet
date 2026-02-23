@@ -1136,14 +1136,14 @@ In OpenCode (and many similar agent frameworks), a **Custom Skill** is a script 
 
 ## Day 11: The Architecture of a Custom Skill
 
-### 1. The Skill Payload
+### 1\. The Skill Payload
 
 A skill consists of two parts:
 
 * **The Logic:** A script (usually Python or Bash) that performs an action (e.g., querying a Jira ticket, checking GPU temperature, or interacting with a proprietary API).
 * **The JSON Schema:** A description the LLM reads. It defines the **parameters** the agent needs to provide to use the tool.
 
-### 2. Why "Skills" over "Commands"?
+### 2\. Why "Skills" over "Commands"?
 
 * **Commands (/):** You have to trigger them manually.
 * **Skills:** The agent **decides** to use them autonomously when it realizes it doesn't have the information it needs.
@@ -1181,7 +1181,6 @@ if __name__ == "__main__":
 
 ```
 
-
 *(Note: You might need to `pip install psutil` in your WSL environment).*
 
 ### Phase 2: Create the Manifest (`skill.json`)
@@ -1218,7 +1217,6 @@ This is the "instruction manual" for the AI.
 3. **The Challenge Prompt:**
 > "I want to run a heavy data processing script that requires at least 20% free CPU capacity. Use your `check_system_resources` tool to see if it's safe to run. If it is, create a dummy 1GB file. If not, tell me why."
 
-
 4. **Watch the Magic:** You should see a log entry: **"Agent called tool: check_system_resources"**. The agent will read the JSON output from your Python script and make a logical decision based on the `is_safe` boolean.
 
 ## Day 11 Summary Checklist
@@ -1235,6 +1233,7 @@ This is the "instruction manual" for the AI.
 If you have a tool on your **Windows 11** side (like a specific `.exe`) that you want the agent to use, you can call it from WSL by using the `.exe` extension (e.g., `/mnt/c/Windows/System32/tasklist.exe`). This allows you to build "Cross-OS" skills!
 
 **Did the agent correctly identify your CPU usage? It’s a bit of a rush the first time you see the AI "decide" to use a tool you just built.** When you're ready, **Day 12** is a major pivot: **Privacy & Local Models**. We’ll take the agent completely offline using Ollama! Ready to cut the cord?
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 12?
 </td></tr></table>
