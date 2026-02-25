@@ -34,4 +34,33 @@
 - Ollama 整合 opencode
   - https://github.com/p-lemonish/ollama-x-opencode
   - https://www.reddit.com/r/opencodeCLI/comments/1ngd18t/anyone_using_opencode_with_ollama/
-  
+
+## 2026-02-25
+
+- 感興趣的 opencode plugin
+  - opencode-browser
+    - https://www.opencode.cafe/plugin/opencode-browser
+    - https://github.com/different-ai/opencode-browser
+  - opencode-lmstudio
+    - https://www.opencode.cafe/plugin/lmstudio
+    - https://github.com/agustif/opencode-lmstudio
+  - oh-my-opencode
+    - https://www.opencode.cafe/plugin/oh-my-opencode
+    - https://github.com/code-yeongyu/oh-my-opencode
+    - README 介紹中提到 
+    > Anthropic blocked OpenCode because of us. Yes this is true. They want you locked in. Claude Code's a nice prison, but it's still a prison.
+  - opencode-md-table-formatter
+    - https://www.opencode.cafe/plugin/opencode-md-table-formatter
+    - https://github.com/franlol/opencode-md-table-formatter
+  - opencode-websearch-cited
+    - https://www.opencode.cafe/plugin/opencode-websearch-cited
+    - https://github.com/ghoulr/opencode-websearch-cited
+  - agentic
+    > An agentic workflow tool that provides context engineering support for opencode
+    - https://github.com/Cluster444/agentic
+  - OpenAgentsControl
+    > AI agent framework for plan-first development workflows with approval-based execution. Multi-language support (TypeScript, Python, Go, Rust) with automatic testing, code review, and validation built for OpenCode
+    - https://github.com/darrenhinde/OpenAgentsControl
+    - 感覺有點像高見龍推薦的 superpower
+- 更多 opencode 生態系
+  - https://github.com/awesome-opencode/awesome-opencode
