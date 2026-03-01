@@ -245,3 +245,25 @@ drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 Projects
 0       Windows-usn.db-wal
 ```
 
+## 2026-02-28
+
+- 狀況：WIN 11 電腦在從睡眠模式登入後不久會不斷重新啟動
+- 參考：
+  - 2025-06-13
+    - https://www.reddit.com/r/techsupport/comments/1i1i6z4/comment/mxm9nqn/?tl=zh-hant
+  - 2023-03-27
+    - Windows 11 睡眠後喚醒會重開機
+    - https://ithelp.ithome.com.tw/articles/10311716
+  - 2025-10-13
+    - [Windows 11/10] 三種關閉電腦的方式 - 關機、睡眠與休眠
+    - https://www.asus.com/tw/support/faq/1044624/#Win11_A3
+- 解法：
+  - https://www.reddit.com/r/techsupport/comments/1i1i6z4/comment/mxm9nqn/?tl=zh-hant
+    - 控制台 > 檢視方式：小圖示 > 電源選項 > 選擇電源按鈕的功能 > 在底部，關閉「開啟快速啟動」和「睡眠」。啟用「休眠」
+  - https://www.asus.com/tw/support/faq/1044624/#Win11_A3
+    - 在Windows搜尋欄輸入[選擇電源計劃]①，然後點選[開啟]②。 
+    - 點選[選擇按下電源按鈕時的行為]③。 
+    - 點擊[變更目前無法使用的設定]④。 
+    - 將關機設定中的休眠選項打勾⑤，然後點選[儲存變更]⑥。 
+
+
