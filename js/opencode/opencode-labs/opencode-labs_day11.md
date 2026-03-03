@@ -186,6 +186,7 @@ Let me use the WebFetch tool to check the opencode documentation to understand h
 ```
 
 **Output:**
+
 <div>
   OpenCode | The open source AI coding agent
 

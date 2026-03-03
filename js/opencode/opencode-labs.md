@@ -1268,47 +1268,43 @@ While you can install Ollama on Windows, installing it natively in WSL often pro
 
 1. **Open Ubuntu WSL.**
 2. **Run the Ollama install script:**
+
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
-
 ```
-
 
 3. **Start the Ollama server:**
+
 ```bash
 ollama serve
-
 ```
 
+> [!NOTE] Keep this terminal open, or run it in the background.
 
-*(Note: Keep this terminal open, or run it in the background).*
 4. **In a new WSL tab, pull a coding model:**
+
 ```bash
 ollama run codestral
-
 ```
 
-
-*(This may take a few minutes to download—it's about 5-8GB).*
+> [!NOTE] This may take a few minutes to download—it's about 5-8GB.
 
 ### Phase 2: Point OpenCode to the Local Brain
 
 1. **Open your OpenCode config:**
+
 ```bash
 nano ~/.config/opencode/config.yaml
-
 ```
-
 
 2. **Update the provider settings:**
 Change your active provider to `ollama`:
+
 ```yaml
 provider: ollama
 base_url: "http://localhost:11434"
 model: codestral
-
 ```
-
 
 3. **Save and exit.**
 
@@ -1317,26 +1313,24 @@ model: codestral
 To prove we are private, let’s simulate an air-gapped environment.
 
 1. **Create a "Sensitive" project:**
-```bash
-mkdir ~/day12-private && cd ~/day12-private
-echo "SECRET_KEY=12345-ABCDE-PROPRIETARY" > .env
 
-```
-
+    ```bash
+    mkdir ~/day12-private && cd ~/day12-private
+    echo "SECRET_KEY=12345-ABCDE-PROPRIETARY" > .env
+    ```
 
 2. **Turn off your Wi-Fi** (optional but satisfying for this lab).
 3. **Launch OpenCode:** `opencode .`
 4. **The Prompt:**
-> "Analyze `@.env`. Create a Python script that masks this SECRET_KEY and logs only the first and last three characters. Do this 100% locally."
-
-
+   > "Analyze `@.env`. Create a Python script that masks this SECRET_KEY and logs only the first and last three characters. Do this 100% locally."
 
 ### Phase 4: Performance Benchmarking
 
-1. **Observe the speed:** Local models depend on your GPU (VRAM). If it feels slow, check if WSL is using your NVIDIA/AMD GPU.
+1. **Observe the speed:** Local models depend on your GPU (VRAM). 
+   If it feels slow, check if WSL is using your NVIDIA/AMD GPU.
 2. **The Quality Check:** Ask a complex logic question:
-> "Explain the Big O complexity of a recursive Fibonacci function and suggest an optimized iterative version."
 
+   > "Explain the Big O complexity of a recursive Fibonacci function and suggest an optimized iterative version."
 
 3. Compare the answer to what you remember from the "Cloud" models.
 
@@ -1356,6 +1350,7 @@ If your local model is extremely slow or "hallucinates" gibberish, your GPU migh
 **How did the local model feel compared to the cloud? Was it a "snappy" experience, or did your PC fans start sounding like a jet engine?**
 
 When you're ready, **Day 13** is where we move back to the "World" by integrating OpenCode into **CI/CD and GitHub Actions**. We’ll learn how to make the agent part of your team's automated workflow! Ready?
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 13?
 </td></tr></table>
