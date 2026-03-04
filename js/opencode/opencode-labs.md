@@ -1355,7 +1355,6 @@ When you're ready, **Day 13** is where we move back to the "World" by integratin
 Could you give me step-by-step instruction and create an exercise lab for Day 13?
 </td></tr></table>
 
-
 Welcome to **Day 13: CI/CD & GitHub Actions**.
 
 We are now in the **Mastery Phase**. Up until now, OpenCode has been a personal assistant living in your local terminal. Today, we turn it into a **Team Member**. We will integrate the agent into a GitHub repository so that it can automatically review code, fix failing tests, and suggest improvements every time you (or a teammate) push code.
@@ -1382,37 +1381,33 @@ In this lab, you will set up a GitHub Action that triggers OpenCode to "diagnose
 
 1. **Open Ubuntu WSL.**
 2. **Create a new repo and push to GitHub:**
+
 ```bash
 mkdir ~/day13-ci && cd ~/day13-ci
 git init
 # (Assuming you have the GitHub CLI 'gh' installed)
 gh repo create day13-ci --public --source=. --remote=origin
-
 ```
 
-
 3. **Add your API Key to GitHub Secrets:**
-* Go to your repo on GitHub.com.
-* Navigate to **Settings > Secrets and variables > Actions**.
-* Add a **New repository secret**:
-* Name: `OPENCODE_API_KEY`
-* Value: (Your OpenAI or Anthropic key)
-
-
-
-
+   - Go to your repo on GitHub.com.
+   - Navigate to **Settings > Secrets and variables > Actions**.
+   - Add a **New repository secret**:
+   - Name: `OPENCODE_API_KEY`
+   - Value: (Your OpenAI or Anthropic key)
 
 ### Phase 2: Create the Workflow
 
 1. **In your WSL terminal, create the workflow directory:**
+
 ```bash
 mkdir -p .github/workflows
 nano .github/workflows/opencode-ci.yml
-
 ```
 
-
 2. **Paste this configuration:**
+
+
 ```yaml
 name: OpenCode Reviewer
 on: [pull_request]
@@ -1428,38 +1423,31 @@ jobs:
         run: |
           curl -fsSL https://opencode.ai/install | bash
           opencode --headless --review "Check this PR for bugs and suggest fixes"
-
 ```
-
-
 
 ### Phase 3: The "Bait" (Triggering the Bot)
 
 1. **Create a "broken" feature branch:**
+
 ```bash
 git checkout -b feature/broken-logic
-
 ```
 
-
 2. **Create `math_utils.py` with a bug:**
+
 ```python
 def divide_numbers(a, b):
     # Bug: This will crash on zero, and the agent should catch it.
     return a / b
-
 ```
 
-
 3. **Commit and push:**
+
 ```bash
 git add .
 git commit -m "Add division feature"
 git push origin feature/broken-logic
-
 ```
-
-
 
 ### Phase 4: The PR Review
 
@@ -1480,7 +1468,10 @@ git push origin feature/broken-logic
 
 Advanced users set the Action to **Auto-Commit**. If OpenCode finds a trivial bug (like a linting error), you can configure the YAML to let it push the fix directly to your branch. *Caution: Only do this if you have high trust in your test suite!*
 
-**How did it feel to see the agent comment on your code without you even being in the terminal? It's like having a 24/7 intern who never sleeps.** When you're ready, **Day 14** is the **Real-World Lab**. We’ll find an actual "Good First Issue" on a public repo and use OpenCode to draft a professional contribution! Ready to go public?
+**How did it feel to see the agent comment on your code without you even being in the terminal? It's like having a 24/7 intern who never sleeps.**
+
+When you're ready, **Day 14** is the **Real-World Lab**. We’ll find an actual "Good First Issue" on a public repo and use OpenCode to draft a professional contribution! Ready to go public?
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 14?
 </td></tr></table>
