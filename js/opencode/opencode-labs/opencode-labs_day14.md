@@ -115,6 +115,17 @@ Resolving deltas: 100% (40842/40842), done.
 
 ### Phase 4: The Professional PR Description
 
+- 輸入提示詞
+
+  > .
+  >
+  > I have completed the fix. Now, write a professional GitHub Pull Request description. Include:
+  > - A summary of the change.
+  > - Why this change is necessary (reference the 'WSL confusion' issue).
+  > - A checklist of what was tested.
+  >
+  > .
+
 ## 結論
 
 ### README update needed for WSL testing setup
