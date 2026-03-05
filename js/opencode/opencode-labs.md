@@ -56,7 +56,7 @@ Setting up on **WSL (Windows Subsystem for Linux)** is a pro move. You get the p
 
 Here is your **Day 1: The Foundation & The "Hello World"**.
 
-## 1. Prepare your Ubuntu Environment
+#### 1\. Prepare your Ubuntu Environment
 
 Before installing the agent, we need to ensure Ubuntu is up to date and has the necessary build tools.
 
@@ -73,7 +73,7 @@ sudo apt install -y build-essential curl git python3-pip
 wsl --set-version Ubuntu 2
 ```
 
-## 2. The Engine: Install Docker (Crucial)
+#### 2\. The Engine: Install Docker (Crucial)
 
 Most open-source agents (like OpenHands or OpenCode) use Docker to "sandbox" the code they write so they don't accidentally delete your Windows files.
 
@@ -82,7 +82,7 @@ Most open-source agents (like OpenHands or OpenCode) use Docker to "sandbox" the
 3. Toggle the switch for **Ubuntu** to "On."
 4. Back in your Ubuntu terminal, type `docker ps`. If you don't see an error, you’re in business.
 
-## 3. The Installation: OpenCode CLI
+#### 3\. The Installation: OpenCode CLI
 
 We will pull the latest stable build. Most modern agents use a simple curl-to-bash script.
 
@@ -100,7 +100,7 @@ source ~/.bashrc
 
 3. **Test the command:** Type `opencode --version`.
 
-## 4. Connecting the "Brain"
+#### 4\. Connecting the "Brain"
 
 OpenCode is a body; it needs a model (LLM) to act as the brain. For Day 1, we’ll use an API key (easiest setup) or a local provider.
 
@@ -117,7 +117,7 @@ opencode config
 3. **Set the Workspace:** When asked for a workspace directory, point it to a new folder:
 `~/opencode-lab`
 
-## 5. The "Hello World" Lab
+#### 5\. The "Hello World" Lab
 
 Let’s make sure the agent can actually "see" and "write" in your WSL environment.
 
@@ -156,7 +156,7 @@ In the world of AI agents, there is a massive difference between asking an AI to
 
 ## Day 2: Navigating the TUI & The "Plan-First" Workflow
 
-### 1. Launching into "Project Mode"
+### 1\. Launching into "Project Mode"
 
 Always launch OpenCode from the root of a project. This gives the agent the correct "context" of your file structure.
 
@@ -164,7 +164,7 @@ Always launch OpenCode from the root of a project. This gives the agent the corr
 2. Navigate to your lab folder: `cd ~/opencode-lab`
 3. Launch the interface: `opencode`
 
-### 2. The Power of "Plan Mode" vs. "Build Mode"
+### 2\. The Power of "Plan Mode" vs. "Build Mode"
 
 In the TUI, you will see a toggle (usually at the top or switched via `Tab`).
 
@@ -173,7 +173,7 @@ In the TUI, you will see a toggle (usually at the top or switched via `Tab`).
 
 **The Golden Rule:** Never start in Build Mode. Always ask for a plan first to save your API tokens and prevent unwanted code changes.
 
-### 3. Mastering the "@" Mentions
+### 3\. Mastering the "@" Mentions
 
 Just like on Discord or Slack, OpenCode uses the `@` symbol to focus the AI's "eyes" on specific things. Try these in the chat box:
 
@@ -182,7 +182,7 @@ Just like on Discord or Slack, OpenCode uses the `@` symbol to focus the AI's "e
 * **`@terminal`**: Sends the recent output of your terminal to the AI (great for debugging errors).
 * **`@web`**: (If enabled) tells the agent to search the internet for documentation.
 
-### 4. Hands-on Lab: The "Discovery" Exercise
+### 4\. Hands-on Lab: The "Discovery" Exercise
 
 Let’s practice navigating a small codebase without writing a single line of code yet.
 
@@ -194,7 +194,6 @@ cd test-repo
 opencode .
 ```
 
-
 2. **Step B (Plan Mode):** Switch to **Plan Mode**. Ask the agent:
 
 > "I'm new here. Using `@test-repo`, can you explain the project structure and tell me where the main entry point for the API is?"
@@ -204,7 +203,7 @@ opencode .
 
 > "Looking at `@src/lib/server/api.ts` (or whatever file it found), what environment variables do I need to set up to make this work?"
 
-### 5. Essential Keyboard Shortcuts
+### 5\. Essential Keyboard Shortcuts
 
 To move fast in the OpenCode TUI, memorize these three:
 
@@ -326,7 +325,7 @@ In OpenCode, the "Brain" is usually a file created in your root directory (often
 2. **What the project does** (High-level architecture).
 3. **The Rules of Engagement** (Coding standards, testing requirements).
 
-### 1. Initializing the Brain
+### 1\. Initializing the Brain
 
 Open your Ubuntu WSL terminal and navigate to your `day2-lab` folder (or any project folder).
 
@@ -339,7 +338,7 @@ Open your Ubuntu WSL terminal and navigate to your `day2-lab` folder (or any pro
 2. **The Interaction:** The agent will scan your files and ask you what the project is about. It will then generate a file.
 3. **Inspect the file:** Look for a new file called `AGENTS.md` or a similar configuration file in your directory. Open it with VS Code or `nano`.
 
-### 2. The Anatomy of Project Context
+### 2\. The Anatomy of Project Context
 
 Inside that file, you'll see sections like:
 
@@ -347,7 +346,7 @@ Inside that file, you'll see sections like:
 * **Active Tasks:** What the agent is currently working on.
 * **Guidelines:** The "Do's and Don'ts."
 
-### 3. Updating the "System Prompt"
+### 3\. Updating the "System Prompt"
 
 You can manually edit this file to change how the AI behaves. If you add a line saying: *"Always use Arrow Functions in TypeScript,"* the agent will follow that rule for every subsequent prompt without you having to remind it.
 
@@ -429,11 +428,11 @@ Today is about using OpenCode as a **High-Resolution Intelligence Tool** to map 
 
 ## Day 4: Deep Tracing & Architecture Mapping
 
-### 1. The Researcher's Mindset
+### 1\. The Researcher's Mindset
 
 In **Plan Mode**, OpenCode doesn't just "read" files; it can perform a "Deep Trace." This means following a single variable or function call across dozens of files to see how data actually moves.
 
-### 2. Advanced Search Commands
+### 2\. Advanced Search Commands
 
 Most agents have built-in "search" capabilities that are smarter than a simple `Ctrl+F`.
 
@@ -1246,11 +1245,11 @@ This is the "Privacy First" setup—perfect for working on sensitive corporate d
 
 ## Day 12: Taking the Agent Offline
 
-### 1. The Local LLM Architecture
+### 1\. The Local LLM Architecture
 
 In a local setup, the "Agent" (OpenCode) still runs in your WSL terminal, but instead of calling an API over the internet, it calls a local server (Ollama) running on your own machine.
 
-### 2. Choosing Your Model
+### 2\. Choosing Your Model
 
 Since you are in a coding environment, you need a model optimized for logic.
 
@@ -1361,7 +1360,7 @@ We are now in the **Mastery Phase**. Up until now, OpenCode has been a personal 
 
 ## Day 13: The Automated Collaborator
 
-### 1. Headless Mode (The Bot Mindset)
+### 1\. Headless Mode (The Bot Mindset)
 
 In your local WSL, you’ve been using the TUI (interactive interface). For CI/CD, we use **Headless Mode**. This allows OpenCode to:
 
@@ -1369,7 +1368,7 @@ In your local WSL, you’ve been using the TUI (interactive interface). For CI/C
 * Read a Pull Request (PR) description.
 * Output its "diffs" directly into a GitHub comment.
 
-### 2. GitHub Secrets & Security
+### 2\. GitHub Secrets & Security
 
 Since the agent needs to call an LLM (OpenAI, Anthropic, or even your local Ollama if it's exposed), you must never hardcode your API keys in the `.yml` file. We will use **GitHub Secrets** to keep things secure.
 
@@ -1476,16 +1475,15 @@ When you're ready, **Day 14** is the **Real-World Lab**. We’ll find an actual 
 Could you give me step-by-step instruction and create an exercise lab for Day 14?
 </td></tr></table>
 
-
 Welcome to **Day 14: The Real-World Contributor**.
 
-Today is the "Capstone" of your technical training. You’ve mastered the agent locally, configured its brain, audited code, and even automated it in CI/CD. Now, we apply all of that to the world of **Open Source Software (OSS)**.
+Today is the "Capstone" of your technical training. You've mastered the agent locally, configured its brain, audited code, and even automated it in CI/CD. Now, we apply all of that to the world of **Open Source Software (OSS)**.
 
-In a professional setting, you aren't just writing code for yourself; you're writing for a community. Today, you’ll learn how to use OpenCode to navigate a massive, unfamiliar repo, identify a "Good First Issue," and prepare a professional-grade Pull Request (PR) that maintainers will actually want to merge.
+In a professional setting, you aren't just writing code for yourself; you're writing for a community. Today, you'll learn how to use OpenCode to navigate a massive, unfamiliar repo, identify a "Good First Issue," and prepare a professional-grade Pull Request (PR) that maintainers will actually want to merge.
 
 ## Day 14: Navigating the Open Source Ecosystem
 
-### 1. The OSS Workflow with an Agent
+### 1\. The OSS Workflow with an Agent
 
 When contributing to a project you don't own, the workflow is slightly different:
 
@@ -1494,25 +1492,23 @@ When contributing to a project you don't own, the workflow is slightly different
 3. **The Fix:** Using Build Mode to solve the problem.
 4. **The PR Draft:** Using the agent to write a clear, concise summary of the changes.
 
-### 2. Identifying "Good First Issues"
+### 2\. Identifying "Good First Issues"
 
 GitHub has a specific label for beginners. You can find these by searching: `is:open is:issue label:"good first issue"`.
 
 ## Day 14 Lab: "Operation Open Source"
 
-Since we are in a lab environment, we will simulate a real-world contribution to a popular (but manageable) repo. We’ll use the **`requests`** library (the gold standard for Python HTTP) or a similar sandbox.
+Since we are in a lab environment, we will simulate a real-world contribution to a popular (but manageable) repo. We'll use the **`requests`** library (the gold standard for Python HTTP) or a similar sandbox.
 
 ### Phase 1: The Setup (The Fork)
 
 1. **Open Ubuntu WSL.**
 2. **Clone a "Sandbox" version of a repo** (for this lab, let's use a common tutorial repo to avoid "spamming" real maintainers):
-```bash
-git clone https://github.com/firstcontributions/first-contributions.git day14-oss
-cd day14-oss
 
-```
-
-
+   ```bash
+   git clone https://github.com/firstcontributions/first-contributions.git day14-oss
+   cd day14-oss
+   ```
 3. **Launch OpenCode:** `opencode .`
 
 ### Phase 2: Feeding the Issue Context
@@ -1521,17 +1517,13 @@ Instead of just saying "Fix this," we are going to copy a "Bug Report" into the 
 
 1. **Switch to Plan Mode.**
 2. **The "Issue Injection" Prompt:**
-> "I want to contribute to this repo. Here is an issue description: 'The current README is missing a section on how to run tests in a WSL environment. Users are getting confused about Docker integration.' Based on the files in `@.`, where should this information go, and what are the specific steps a WSL user needs to take?"
-
-
+   > "I want to contribute to this repo. Here is an issue description: 'The current README is missing a section on how to run tests in a WSL environment. Users are getting confused about Docker integration.' Based on the files in `@.`, where should this information go, and what are the specific steps a WSL user needs to take?"
 
 ### Phase 3: The Surgical Fix (Build Mode)
 
 1. **Switch to Build Mode.**
 2. **The Fix Prompt:**
-> "Update the `README.md` to include a 'WSL Setup' section. Use the instructions we verified on Day 1 of this course. Ensure the formatting matches the existing style of the document."
-
-
+   > "Update the `README.md` to include a 'WSL Setup' section. Use the instructions we verified on Day 1 of this course. Ensure the formatting matches the existing style of the document."
 3. **Audit the Diff:** Make sure the agent didn't delete the original contributors' names or other vital info.
 
 ### Phase 4: The Professional PR Description
@@ -1539,15 +1531,10 @@ Instead of just saying "Fix this," we are going to copy a "Bug Report" into the 
 The secret to getting code merged isn't just the code—it's the **explanation**.
 
 1. **The PR Prompt:**
-> "I have completed the fix. Now, write a professional GitHub Pull Request description. Include:
-
-
-> * A summary of the change.
-> * Why this change is necessary (reference the 'WSL confusion' issue).
-> * A checklist of what was tested."
->
->
-
+   > "I have completed the fix. Now, write a professional GitHub Pull Request description. Include:
+   > * A summary of the change.
+   > * Why this change is necessary (reference the 'WSL confusion' issue).
+   > * A checklist of what was tested."
 
 2. **The Review:** Read what the agent wrote. Does it sound like a helpful human or a generic bot? (Hint: Use your **Day 3** rules to make it sound more like "you").
 
@@ -1565,6 +1552,7 @@ The secret to getting code merged isn't just the code—it's the **explanation**
 Before you ever submit a PR in the real world, run your custom `/audit` command from **Day 7** or **Day 9**. Maintainers hate "nitpick" errors (like trailing spaces). Let the agent clean those up so the human maintainer only has to focus on your logic.
 
 **How did the PR description turn out? Did the agent manage to capture the "vibe" of the repo?** Tomorrow is **Day 15: The Grand Finale**. We are going to do a **"Vibe Coding" session** where you build an entire application from scratch using only high-level conversation. Would you like to move to the final day?
+
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 Could you give me step-by-step instruction and create an exercise lab for Day 15?
 </td></tr></table>
@@ -1578,11 +1566,11 @@ You’ve spent 14 days learning the mechanics: the terminal, the config files, t
 
 ## Day 15: Scaling Your Intent
 
-### 1. The Multi-File "Vibe"
+### 1\. The Multi-File "Vibe"
 
 Vibe coding isn't about one-line snippets; it's about building a **system**. To do this effectively, you use **Plan Mode** to map out the architecture first, then **Build Mode** to execute.
 
-### 2. The Feedback Loop
+### 2\. The Feedback Loop
 
 In this stage, you don't look at the code to find a missing semicolon. You look at the **functionality**.
 
