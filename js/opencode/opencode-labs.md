@@ -51,12 +51,13 @@ Here is a 15-day hands-on curriculum designed to take you from "What is this ter
 Let's plan step by step. Could you give me step-by-step instruction for Day 1? Target environment: Ubuntu WSL over Windows 11
 </td></tr></table>
 
+## Day 1: The Foundation & The "Hello World"
 
 Setting up on **WSL (Windows Subsystem for Linux)** is a pro move. You get the power of a Linux kernel with the comfort of Windows UI. Since we are targeting a high-performance open-source agent setup, we’ll ensure your Ubuntu environment is primed for containerization and Python-based CLI tools.
 
 Here is your **Day 1: The Foundation & The "Hello World"**.
 
-#### 1\. Prepare your Ubuntu Environment
+### 1\. Prepare your Ubuntu Environment
 
 Before installing the agent, we need to ensure Ubuntu is up to date and has the necessary build tools.
 
@@ -67,13 +68,12 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y build-essential curl git python3-pip
 ```
 
-
 2. **Verify your WSL Version:** Ensure you are on **WSL 2**. In your Windows PowerShell (not Ubuntu), run `wsl -l -v`. If it says version 1, run:
 ```bash
 wsl --set-version Ubuntu 2
 ```
 
-#### 2\. The Engine: Install Docker (Crucial)
+### 2\. The Engine: Install Docker (Crucial)
 
 Most open-source agents (like OpenHands or OpenCode) use Docker to "sandbox" the code they write so they don't accidentally delete your Windows files.
 
@@ -82,7 +82,7 @@ Most open-source agents (like OpenHands or OpenCode) use Docker to "sandbox" the
 3. Toggle the switch for **Ubuntu** to "On."
 4. Back in your Ubuntu terminal, type `docker ps`. If you don't see an error, you’re in business.
 
-#### 3\. The Installation: OpenCode CLI
+### 3\. The Installation: OpenCode CLI
 
 We will pull the latest stable build. Most modern agents use a simple curl-to-bash script.
 
@@ -91,16 +91,14 @@ We will pull the latest stable build. Most modern agents use a simple curl-to-ba
 curl -fsSL https://opencode.ai/install | bash
 ```
 
-
 2. **Refresh your shell:**
 ```bash
 source ~/.bashrc
 ```
 
-
 3. **Test the command:** Type `opencode --version`.
 
-#### 4\. Connecting the "Brain"
+### 4\. Connecting the "Brain"
 
 OpenCode is a body; it needs a model (LLM) to act as the brain. For Day 1, we’ll use an API key (easiest setup) or a local provider.
 
@@ -113,11 +111,10 @@ opencode config
 2. **Choose your Provider:** * **Option A (Cloud):** Select `OpenAI` or `Anthropic`. It will ask for your API Key.
 * **Option B (Local):** Select `Ollama` if you want to run things 100% locally on your PC (requires Ollama to be installed on Windows).
 
-
 3. **Set the Workspace:** When asked for a workspace directory, point it to a new folder:
 `~/opencode-lab`
 
-#### 5\. The "Hello World" Lab
+### 5\. The "Hello World" Lab
 
 Let’s make sure the agent can actually "see" and "write" in your WSL environment.
 
@@ -137,7 +134,6 @@ opencode .
 
 > "Create a simple Python script named `sys_info.py` that prints the current OS version and the number of CPU cores. Then, execute it to prove it works."
 
-
 4. **The Success Criteria:** You should see the agent create the file and then run it in the integrated terminal, outputting "Linux" (Ubuntu).
 
 ### Troubleshooting Tip
@@ -148,7 +144,6 @@ opencode .
 <table><tr style="background-color:lightyellow;"><td>Q:</td><td>
 great! let's follow the same practice and create step-by-step instruction for Day 2.
 </td></tr></table>
-
 
 Since you’ve got the engine running, Day 2 is all about mastering the **User Interface (UI)** and the **Workflow Philosophy**.
 
@@ -1557,7 +1552,6 @@ Before you ever submit a PR in the real world, run your custom `/audit` command 
 Could you give me step-by-step instruction and create an exercise lab for Day 15?
 </td></tr></table>
 
-
 Welcome to **Day 15: The Grand Finale — Vibe Coding**.
 
 You’ve spent 14 days learning the mechanics: the terminal, the config files, the security audits, and the custom skills. Today, we put the "Developer" in the passenger seat and the "Architect" in the driver’s chair.
@@ -1587,17 +1581,16 @@ In this final lab, you will build a **CLI-based Productivity Dashboard** that tr
 2. **Create a clean directory:** `mkdir ~/day15-final && cd ~/day15-final`
 3. **Launch OpenCode:** `opencode .`
 4. **The "Vibe" Prompt:**
-> "I want to build a productivity tool called 'VibeDash'. It should have a Pomodoro timer, a persistent to-do list saved to a JSON file, and a 'World Clock' section for London, Tokyo, and New York. Use a TUI library like `Rich` or `Textual` to make it look professional in the terminal. **Plan the architecture first.**"
 
-
+  > "I want to build a productivity tool called 'VibeDash'. It should have a Pomodoro timer, a persistent to-do list saved to a JSON file, and a 'World Clock' section for London, Tokyo, and New York. Use a TUI library like `Rich` or `Textual` to make it look professional in the terminal. **Plan the architecture first.**"
 
 ### Phase 2: Initializing the Project
 
 1. **Run the Init Command:** Inside the OpenCode TUI, type:
-> `/init`
-> *(This command in the 2026 version of OpenCode generates an `AGENTS.md` file that acts as the 'Memory' for your project's rules and structure.)*
 
+  > `/init`
 
+  > [!NOTE] This command in the 2026 version of OpenCode generates an `AGENTS.md` file that acts as the 'Memory' for your project's rules and structure.
 
 ### Phase 3: The Build (Iterative Refinement)
 
