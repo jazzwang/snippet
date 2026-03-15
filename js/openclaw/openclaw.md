@@ -63,3 +63,19 @@ OpenClaw 的終極價值在於其與 GitHub 的深度整合，這構建了一個
 OpenClaw 的出現，揭示了 AI 從「指令驅動」轉向「目標驅動」的範式轉移。一個值得注意的技術細節是：開發者在驅動 OpenClaw 時，特意選用了 GPT-5.2 模型作為大腦。這背後隱藏著犀利的技術洞察——不僅是為了處理更複雜的邏輯，更是為了避開 Claude 官方對於過度自動化可能導致的封號風險（Banning Policies）。
 
 當 AI 已經能夠自主學習、避坑並管理代碼倉庫時，人類的價值將被重新定義。我們不再是敲擊鍵盤的體力勞動者，而是制定規格、定義目標的架構師。在 AI 進入「自動駕駛」的今天，你準備好從駕駛座移到指揮位了嗎？
+
+## 2026-03-15
+
+- 2026-02-17
+  - OpenClaw Architecture - Part 1: Control Plane, Sessions, and the Event Loop
+  - https://theagentstack.substack.com/p/openclaw-architecture-part-1-control
+- 2026-02-23
+  - OpenClaw Architecture - Part 2: Concurrency, Isolation, and the Invariants That Keep Agents Sane
+  - https://theagentstack.substack.com/p/openclaw-architecture-part-2-concurrency
+- 2026-03-03
+  - OpenClaw Architecture - Part 3: Memory and State Ownership
+  - https://openclawunboxed.com/p/openclaw-architecture-part-3-memory
+  - https://theagentstack.substack.com/p/openclaw-architecture-part-3-memory
+- 2026-03-09
+  - OpenClaw Architecture - Part 4: Security Boundaries, Tool Risk, and Authorization
+  - https://theagentstack.substack.com/p/openclaw-architecture-part-4-security
