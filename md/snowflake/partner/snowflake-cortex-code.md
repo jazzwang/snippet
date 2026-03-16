@@ -1,0 +1,2 @@
+- Cortex Code: An Agentic Revolution for Partners to Rapidly Deliver Optimized, Al-Powered Industry Solutions
+  - https://player.vimeo.com/video/1165470864?badge=0&autopause=0&player_id=0&app_id=58479
