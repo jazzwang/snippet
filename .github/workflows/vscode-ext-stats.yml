@@ -39,16 +39,18 @@ jobs:
         name: vscode-ext-stats-output
         path: ${{ steps.run_script.outputs.LOG_FILE_NAME }}
 
-    - name: Configure Git
-      if: success() && steps.run_script.outputs.LOG_FILE_NAME
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
+### 2026-03-23: manual trigger failed. disable to commit log to git repo branch
 
-    - name: Commit and Push Log
-      if: success() && steps.run_script.outputs.LOG_FILE_NAME
-      run: |
-        LOG_FILE_NAME=${{ steps.run_script.outputs.LOG_FILE_NAME }}
-        git add "$LOG_FILE_NAME"
-        git commit -m "Add workflow run log for $(date +%Y-%m-%d)" || echo "No changes to commit"
-        git push origin vscode-ext-stats
+#    - name: Configure Git
+#      if: success() && steps.run_script.outputs.LOG_FILE_NAME
+#      run: |
+#        git config user.name "github-actions[bot]"
+#        git config user.email "github-actions[bot]@users.noreply.github.com"
+#
+#    - name: Commit and Push Log
+#      if: success() && steps.run_script.outputs.LOG_FILE_NAME
+#      run: |
+#        LOG_FILE_NAME=${{ steps.run_script.outputs.LOG_FILE_NAME }}
+#        git add "$LOG_FILE_NAME"
+#        git commit -m "Add workflow run log for $(date +%Y-%m-%d)" || echo "No changes to commit"
+#        git push origin vscode-ext-stats
