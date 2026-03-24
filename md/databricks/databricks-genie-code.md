@@ -6,7 +6,115 @@
   - Introducing Genie Code: Your Autonomous AI Partner for Data Work
   - https://www.databricks.com/blog/introducing-genie-code
 
-## 2026-03-24
+### 實戰
+
+> could you guide me how to load huggingface model to Databricks as a service endpoint? take https://huggingface.co/fixie-ai/ultravox-v0_5-llama-3_2-1b as an example
+
+Here's a step-by-step guide for deploying the fixie-ai/ultravox-v0\_5-llama-3\_2-1b model to a Databricks Model Serving endpoint. There are **3 main stages**:
+
+**Stage 1 --- Log & Register the Model in Unity Catalog**
+
+Since Ultravox is a multimodal (audio+text) model that isn't a standard HuggingFace pipeline task, the recommended approach is to wrap it as a **custom MLflow PyFunc model**:
+
+```python
+import mlflow
+import mlflow.pyfunc
+
+mlflow.set_registry_uri("databricks-uc")
+
+class UltravoxModel(mlflow.pyfunc.PythonModel):
+    def load_context(self, context):
+        from transformers import AutoModel, AutoProcessor
+        import torch
+        self.model = AutoModel.from_pretrained(
+            context.artifacts["model_path"],
+            trust_remote_code=True
+        )
+        self.processor = AutoProcessor.from_pretrained(
+            context.artifacts["model_path"],
+            trust_remote_code=True
+        )
+
+    def predict(self, context, model_input):
+        # Your inference logic here
+        ...
+
+CATALOG = "your_catalog"
+SCHEMA = "your_schema"
+MODEL_NAME = "ultravox_v05_llama32_1b"
+
+with mlflow.start_run():
+    mlflow.pyfunc.log_model(
+        artifact_path="model",
+        python_model=UltravoxModel(),
+        artifacts={"model_path": "/local/path/to/downloaded/model"},
+        pip_requirements=["transformers", "torch", "accelerate"],
+        registered_model_name=f"{CATALOG}.{SCHEMA}.{MODEL_NAME}",
+    )
+```
+
+Alternatively, if the model works with a supported transformers pipeline task, you can use the simpler `mlflow.transformers.log_model` with `save_pretrained=False` to avoid duplicating weights (reference-only mode).
+
+**Stage 2 --- Create the Serving Endpoint**
+
+Use the MLflow Deployments SDK or the Serving UI:
+
+```python
+import mlflow.deployments
+
+client = mlflow.deployments.get_deploy_client("databricks")
+endpoint = client.create_endpoint(
+    name="ultravox-endpoint",
+    config={
+        "served_entities": [{
+            "entity_name": f"{CATALOG}.{SCHEMA}.{MODEL_NAME}",
+            "entity_version": "1",
+            "workload_size": "Small",       # Small / Medium / Large
+            "scale_to_zero_enabled": True,
+        }]
+    },
+)
+```
+
+Or navigate to **Serving** in the sidebar → **Create serving endpoint** → select the registered model.
+
+**Stage 3 --- Query the Endpoint**
+
+```python
+import mlflow.deployments
+client = mlflow.deployments.get_deploy_client("databricks")
+response = client.predict(endpoint="ultravox-endpoint", inputs={"your_input_key": "value"})
+```
+
+**Key tips for this specific model:**
+
+-   **GPU compute** --- This LLM requires GPU-backed serving (choose an appropriate workload size).
+-   **Custom PyFunc is recommended** --- Ultravox uses custom architectures (trust\_remote\_code=True) and multimodal inputs, which don't map cleanly to standard transformers pipeline tasks. Wrapping it in mlflow.pyfunc.PythonModel gives you full control over preprocessing and inference logic.
+-   **Storage efficiency** --- If you don't modify weights, consider downloading the model once to a Unity Catalog Volume or DBFS path, and reference it via artifacts.
+-   **Validate before deploying** --- Use mlflow.models.predict() locally to confirm the model loads and infers correctly before creating the endpoint.
+
+Would you like me to create a notebook with a working end-to-end implementation for this model?
+
+> Create an Ultravox deployment notebook
+
+Now let me navigate to the notebook and populate it with the full deployment code.
+
+I've created `Deploy Ultravox Model to Serving Endpoint` and navigated you there. The notebook agent will now populate it with the full end-to-end implementation covering:
+
+1.  **Configuration** --- model name, catalog/schema, endpoint name
+2.  **Dependency installation** --- transformers, torch, accelerate, mlflow
+3.  **Model download** --- from HuggingFace with `trust_remote_code=True`
+4.  **Custom PyFunc wrapper** --- handles Ultravox's multimodal architecture
+5.  **Unity Catalog registration** --- log and register via MLflow
+6.  **Serving endpoint creation** --- GPU-backed, with scale-to-zero
+7.  **Endpoint readiness polling** and **sample query**
+
+You'll need to fill in your Unity Catalog `CATALOG` and `SCHEMA` values before running.
+
+- Here are the Python Notebook created by Databricks Genie Code
+  - [Deploy_Ultravox_Model_to_Serving_Endpoint.ipynb](./Deploy_Ultravox_Model_to_Serving_Endpoint.ipynb)
+
+## 2026-03-23
 
 Genie Code is an AI assistant for Databricks that helps generate, optimize and debug code, while VS Code can be integrated with Databricks for local development, debugging, and workflow management.
 
@@ -16,21 +124,19 @@ Genie Code is an AI assistant for Databricks that helps generate, opt
 
 - Generate, explain, and fix code.
 - Optimize queries and workflows.
-- Operate autonomously in **Agent mode** for complex multi-step tasks like building pipelines or monitoring production systems. [1]
-- Access metadata, data lineage, and governance policies via **Unity Catalog**, providing context-aware recommendations. [1]
-  Users interact with Genie Code through a **pane in Databricks**, where they can type questions or commands, accept or reject code suggestions, and configure custom instructions. [1]
-
-[1]: [Databricks presents Genie Code: An AI agent to take over work for data teams](https://www.heise.de/en/news/Databricks-presents-Genie-Code-An-AI-agent-to-take-over-work-for-data-teams-11210264.html)
+- Operate autonomously in **Agent mode** for complex multi-step tasks like building pipelines or monitoring production systems.
+- Access metadata, data lineage, and governance policies via **Unity Catalog**, providing context-aware recommendations.
+  Users interact with Genie Code through a **pane in Databricks**, where they can type questions or commands, accept or reject code suggestions, and configure custom instructions.
 
 ### Using VS Code with Databricks
 
 The **Databricks extension for VS Code** allows developers to work locally while connecting to Databricks clusters. Key features include:
 
--   Running local Python files and notebooks on Databricks clusters.
--   Debugging notebooks cell by cell using **Databricks Connect**.
--   Synchronizing local code with Databricks workspace.
--   Defining, deploying, and running **Databricks Asset Bundles** for CI/CD workflows.
--   Managing Delta Live Tables pipelines and MLOps stacks.
+- Running local Python files and notebooks on Databricks clusters.
+- Debugging notebooks cell by cell using **Databricks Connect**.
+- Synchronizing local code with Databricks workspace.
+- Defining, deploying, and running **Databricks Asset Bundles** for CI/CD workflows.
+- Managing Delta Live Tables pipelines and MLOps stacks.
 
 ### Setup Steps
 
@@ -136,3 +242,132 @@ Databricks' new functions align with an industry-wide trend. Almost all major pr
 - [9] https://www.linkedin.com/company/104691972
 - [10] https://social.heise.de/@heiseonlineenglish
 - [11] https://www.heise.de/news/Databricks-legt-Genie-Code-vor-Ein-KI-Agent-soll-Datenteams-die-Arbeit-abnehmen-11209152.html
+
+## 2026-03-24
+
+
+**Q:** <p style="background-color:lightyellow;">
+could you give me a step-by-step instruction to setup Databricks Genie Code and integrate into Visual Studio Code?
+</p>
+
+**A:** (Databricks Genie Code on AWS)
+
+Important clarification: **Genie Code** and the **Databricks extension for VS Code** are two separate tools --- <mark>Genie Code is a built-in AI assistant within the Databricks workspace UI (notebooks, SQL editor, dashboards, etc.) and is **not available directly inside VS Code**.</mark> Here's how to set up each:
+
+**Setting up Genie Code (Databricks workspace)**
+
+1.  Ensure **Partner-powered AI features** are enabled at both the account and workspace level (requires an account admin).
+2.  Open any Databricks notebook, SQL editor, or dashboard in your workspace.
+3.  Click the **Genie Code icon** in the upper-right corner of the workspace to open the chat pane --- it's ready to use.
+4.  Optionally, a workspace admin can add custom instructions by creating a file named `.assistant_workspace_instructions.md` in the `Workspace/` directory.
+
+**Setting up the Databricks Extension for VS Code**
+
+1.  **Prerequisites**: VS Code ≥ 1.86.0, a Python interpreter configured, and at least one Databricks workspace with a cluster.
+2.  Open **Extensions** (View → Extensions), search for **"Databricks"**, and install the Databricks-verified extension.
+3.  Restart VS Code, then click the **Databricks icon** on the sidebar.
+4.  Configure a project by connecting to your Databricks workspace (you'll authenticate and select a cluster).
+5.  Optionally install **Databricks Connect** for interactive debugging and autocompletion via the extension's Configuration view.
+
+For full details, see the [install guide](https://docs.databricks.com/aws/en/dev-tools/vscode-ext/install/) and the [Genie Code docs](https://docs.databricks.com/aws/en/genie-code/use-genie-code/).
+
+**Q:** 
+
+<p style="background-color:lightyellow;">
+Are there Databricks CLI? Can I use CLI to interact with Genie Code?
+</p>
+
+**A:** (Databricks Genie Code on AWS)
+
+Yes, there is a **Databricks CLI**, but it **cannot interact with Genie Code** directly. Here's the breakdown:
+
+**Databricks CLI** --- available and well-supported for many Databricks operations. Install it via:
+
+- **macOS/Linux**: 
+  ```bash
+  brew tap databricks/tap && brew install databricks
+  ```
+- **Windows**: 
+  ```cmd
+  winget install Databricks.DatabricksCLI
+  ```
+- **Any OS**: 
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+  ```
+
+Verify with `databricks -v` (should be ≥ 0.205.0), then authenticate with databricks configure.
+
+**CLI genie commands exist**, but they are for **Genie spaces** (the AI/BI no-code data room experience), not for Genie Code. The CLI genie subcommands include start-conversation, create-message, get-message, etc. --- all scoped to Genie spaces.
+
+**Genie Code** (the AI coding assistant) is only accessible through the **Databricks workspace UI** --- in notebooks, SQL editor, dashboards, file editor, and jobs. There is no CLI or API to interact with Genie Code programmatically at this time.
+
+In summary: the Databricks CLI is a powerful tool for managing workspace resources, clusters, jobs, pipelines, and more --- but for Genie Code assistance, you'll need to use the Databricks web interface. See the [CLI install guide](https://docs.databricks.com/aws/en/dev-tools/cli/install/) and [CLI commands reference](https://docs.databricks.com/aws/en/dev-tools/cli/commands/) for full details.
+
+[Install the Databricks CLI](https://docs.databricks.com/aws/en/dev-tools/cli/install/)
+
+### Claude Code + Databricks Models
+
+**Q:** 
+
+<p style="background-color:lightyellow;">
+could you give me step-by-step instructions to setup Claude Code with Claude model fromDatabricks Service Endpoints?
+</p>
+
+**A:** (Databricks Genie Code on AWS)
+
+Here's a step-by-step guide to set up **Claude Code** (Anthropic's CLI coding agent) with **Claude models served from Databricks Foundation Model APIs**.
+
+**Prerequisites**
+
+1.  A Databricks workspace with Foundation Model APIs enabled
+2.  A Databricks **Personal Access Token** (PAT) --- generate one from `Settings` → `Developer` → `Access Tokens`
+3.  Node.js installed on your local machine
+4.  Your Databricks workspace hostname (e.g., `<workspace>.cloud.databricks.com`)
+
+**Step 1 --- Install Claude Code**
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+**Step 2 --- Configure environment variables**
+
+Databricks exposes a native **Anthropic Messages API** endpoint at: `https://<workspace\_host>.databricks.com/serving-endpoints/anthropic`
+
+Set the following environment variables:
+
+```bash
+export ANTHROPIC_BASE_URL=https://<workspace_host>.databricks.com/serving-endpoints/anthropic
+export ANTHROPIC_API_KEY=<your-databricks-pat>
+```
+
+**Step 3 --- Launch Claude Code with a Databricks-hosted model**
+
+```bash
+claude --model databricks-claude-sonnet-4-5
+```
+
+Available Databricks-hosted Claude models include:
+
+| Endpoint Name | Description |
+|----|-----|
+| databricks-claude-opus-4-6 | Most capable, hybrid reasoning |
+| databricks-claude-sonnet-4-6 | Advanced hybrid reasoning, balanced |
+| databricks-claude-sonnet-4-5 | Strong general purpose |
+| databricks-claude-haiku-4-5 | Fast and lightweight |
+| databricks-claude-opus-4-5 | Previous gen flagship |
+
+**Important caveat:** Databricks authenticates via `Authorization: Bearer <token>` header, while the Anthropic SDK by default sends credentials via the `x-api-key` header. If authentication fails, you may need to configure Claude Code to pass custom headers. In the Anthropic Python SDK, this is done via `default_headers={"Authorization": f"Bearer {DATABRICKS_TOKEN}"}` with `api_key="unused"`. Check Claude Code's documentation for equivalent header customization options (e.g., a .claude config file or additional environment variables).
+
+**Step 4 (Optional) --- Connect Databricks MCP server for workspace access**
+
+You can also give Claude Code access to your Databricks workspace tools via MCP:
+
+```bash
+claude mcp add-json databricks-mcp-server \
+  '{"type":"http","url":"https://<workspace_host>/api/2.0/mcp/functions/{catalog_name}/{schema_name}","oauth":{"clientId":"<client-id>","callbackPort":8080}}' \
+  --client-secret <client-secret>
+```
+
+This enables Claude Code to call Unity Catalog functions directly. See the [Databricks MCP docs](https://docs.databricks.com/aws/en/generative-ai/mcp/connect-external-services/) and the [Anthropic Messages API on Databricks](https://docs.databricks.com/aws/en/machine-learning/model-serving/query-anthropic-messages/) for full details.
