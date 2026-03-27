@@ -1,3 +1,5 @@
+- Codelabs 1: Build and deploy an ADK agent on Cloud Run | Google Codelabs
+  - https://codelabs.developers.google.com/codelabs/production-ready-ai-with-gc/5-deploying-agents/deploy-an-adk-agent-to-cloud-run#0
 - ( 2026-03-16 08:59:29 )
 ```bash
 Welcome to Cloud Shell! Type "help" to get started, or type "gemini" to try prompting with Gemini CLI.

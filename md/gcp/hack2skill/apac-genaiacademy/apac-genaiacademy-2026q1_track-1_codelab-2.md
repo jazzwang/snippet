@@ -1,3 +1,5 @@
+- Codelabs 2: Building AI Agents with ADK: The Foundation | Google Codelabs
+  - https://codelabs.developers.google.com/devsite/codelabs/build-agents-with-adk-foundation?hl=en#0
 ```bash
 Welcome to Cloud Shell! Type "help" to get started, or type "gemini" to try prompting with Gemini CLI.
 Your Cloud Platform project in this session is set to jazz-adk-labs.
