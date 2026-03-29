@@ -627,3 +627,148 @@ I hope this helps!
 > **Ollama CLI**
 
 - https://github.com/ollama/ollama/blob/main/docs/turbo.md#ollamas-cli
+
+## 2026-03-29
+
+- 用 Github Codespace 取得 Ollama Qwen3.5:9b 的 model file
+```bash
+Last login: Wed Mar 18 15:33:49 2026 from ::1
+@jazzwang ➜ /workspaces/snippet (master) $ ollama
+-bash: ollama: command not found
+@jazzwang ➜ /workspaces/snippet (master) $ curl -fsSL https://ollama.com/install.sh | sh
+>>> Installing ollama to /usr/local
+>>> Downloading ollama-linux-amd64.tar.zst
+######################################################################## 100.0%
+>>> Creating ollama user...
+>>> Adding ollama user to video group...
+>>> Adding current user to ollama group...
+>>> Creating ollama systemd service...
+WARNING: systemd is not running
+WARNING: Unable to detect NVIDIA/AMD GPU. Install lspci or lshw to automatically detect and install GPU dependencies.
+>>> The Ollama API is now available at 127.0.0.1:11434.
+>>> Install complete. Run "ollama" from the command line.
+@jazzwang ➜ /workspaces/snippet (master) $ ollama start &
+[1] 2408
+@jazzwang ➜ /workspaces/snippet (master) $ Couldn't find '/home/codespace/.ollama/id_ed25519'. Generating new private key.
+Your new public key is:
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILQ4A3oncMkud1uzaMHDwjTwQrCEHpbmV4dk2mWjOV4b
+
+time=2026-03-29T05:19:47.906Z level=INFO source=routes.go:1740 msg="server config" env="map[CUDA_VISIBLE_DEVICES: GGML_VK_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_CONTEXT_LENGTH:0 OLLAMA_DEBUG:INFO OLLAMA_DEBUG_LOG_REQUESTS:false OLLAMA_EDITOR: OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/home/codespace/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NEW_ENGINE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NO_CLOUD:false OLLAMA_NUM_PARALLEL:1 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false OLLAMA_VULKAN:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2026-03-29T05:19:47.906Z level=INFO source=routes.go:1742 msg="Ollama cloud disabled: false"
+time=2026-03-29T05:19:47.907Z level=INFO source=images.go:477 msg="total blobs: 0"
+time=2026-03-29T05:19:47.907Z level=INFO source=images.go:484 msg="total unused blobs removed: 0"
+time=2026-03-29T05:19:47.909Z level=INFO source=routes.go:1798 msg="Listening on 127.0.0.1:11434 (version 0.18.3)"
+time=2026-03-29T05:19:47.913Z level=INFO source=runner.go:67 msg="discovering available GPUs..."
+time=2026-03-29T05:19:47.917Z level=INFO source=server.go:432 msg="starting runner" cmd="/usr/local/bin/ollama runner --ollama-engine --port 37525"
+time=2026-03-29T05:19:48.360Z level=INFO source=server.go:432 msg="starting runner" cmd="/usr/local/bin/ollama runner --ollama-engine --port 41121"
+time=2026-03-29T05:19:48.483Z level=INFO source=runner.go:106 msg="experimental Vulkan support disabled.  To enable, set OLLAMA_VULKAN=1"
+time=2026-03-29T05:19:48.483Z level=INFO source=types.go:60 msg="inference compute" id=cpu library=cpu compute="" name=cpu description=cpu libdirs=ollama driver="" pci_id="" type="" total="7.8 GiB" available="3.9 GiB"
+time=2026-03-29T05:19:48.483Z level=INFO source=routes.go:1848 msg="vram-based default context" total_vram="0 B" default_num_ctx=4096
+
+@jazzwang ➜ /workspaces/snippet (master) $
+@jazzwang ➜ /workspaces/snippet (master) $
+@jazzwang ➜ /workspaces/snippet (master) $
+@jazzwang ➜ /workspaces/snippet (master) $ ollama pull qwen3.5:9b
+[GIN] 2026/03/29 - 05:20:27 | 200 |     335.395µs |       127.0.0.1 | HEAD     "/"
+pulling manifest ⠼ time=2026-03-29T05:20:28.547Z level=INFO source=download.go:179 msg="downloading dec52a44569a in 16 412 MB part(s)"
+pulling manifest
+pulling dec52a44569a:  53% ▕██████████████████████████████████████████████████                                            ▏ 3.5 GB/6.6 GB                  [pulling manifest
+pulling dec52a44569a:  53% ▕██████████████████████████████████████████████████                                            ▏ 3.5 GB/6.6 GB
+Error: write /home/codespace/.ollama/models/blobs/sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial: no space left on device
+@jazzwang ➜ /workspaces/snippet (master) $ ollama show qwen3.5:9b | tee -a go/ollama/qwen35-9b
+[GIN] 2026/03/29 - 05:24:23 | 200 |      30.848µs |       127.0.0.1 | HEAD     "/"
+[GIN] 2026/03/29 - 05:24:23 | 404 |     191.247µs |       127.0.0.1 | POST     "/api/show"
+Error: model 'qwen3.5:9b' not found
+@jazzwang ➜ /workspaces/snippet (master) $ ollama list
+[GIN] 2026/03/29 - 05:24:49 | 200 |      52.317µs |       127.0.0.1 | HEAD     "/"
+[GIN] 2026/03/29 - 05:24:49 | 200 |     193.581µs |       127.0.0.1 | GET      "/api/tags"
+NAME    ID    SIZE    MODIFIED
+@jazzwang ➜ /workspaces/snippet (master) $ cd /home/codespace/
+@jazzwang ➜ ~ $ cd .ollama/
+@jazzwang ➜ ~/.ollama $ ls
+id_ed25519  id_ed25519.pub  models
+@jazzwang ➜ ~/.ollama $ cd models/
+@jazzwang ➜ ~/.ollama/models $ ls
+blobs  manifests
+@jazzwang ➜ ~/.ollama/models $ tree
+.
+├── blobs
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-0
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-1
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-10
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-11
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-12
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-13
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-14
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-15
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-2
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-3
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-4
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-5
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-6
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-7
+│   ├── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-8
+│   └── sha256-dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c-partial-9
+└── manifests
+
+2 directories, 17 files
+@jazzwang ➜ ~/.ollama/models $ cd blobs/
+@jazzwang ➜ ~/.ollama/models/blobs $ rm -rf *
+@jazzwang ➜ ~/.ollama/models/blobs $ ls
+@jazzwang ➜ ~/.ollama/models/blobs $ cd ..
+@jazzwang ➜ ~/.ollama/models $ mv blobs /tmp
+@jazzwang ➜ ~/.ollama/models $ df -h /tmp
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdc1        44G  2.3G   40G   6% /tmp
+@jazzwang ➜ ~/.ollama/models $ ln -s /tmp/blobs
+@jazzwang ➜ ~/.ollama/models $ ls
+blobs  manifests
+@jazzwang ➜ ~/.ollama/models $ cd blobs
+@jazzwang ➜ ~/.ollama/models/blobs $ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          32G   29G  1.7G  95% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/root        29G   16G   14G  55% /vscode
+/dev/sdc1        44G  2.3G   40G   6% /tmp
+/dev/loop4       32G   29G  1.7G  95% /workspaces
+@jazzwang ➜ ~/.ollama/models/blobs $ df -h .
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdc1        44G  2.3G   40G   6% /tmp
+@jazzwang ➜ ~/.ollama/models/blobs $ cd ..
+@jazzwang ➜ ~/.ollama/models $ df -h .
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          32G   29G  1.7G  95% /
+@jazzwang ➜ ~/.ollama/models $ ollama pull qwen3.5:9b
+[GIN] 2026/03/29 - 05:26:38 | 200 |      60.062µs |       127.0.0.1 | HEAD     "/"
+pulling manifest ⠴ time=2026-03-29T05:26:39.753Z level=INFO source=download.go:179 msg="downloading dec52a44569a in 16 412 MB part(s)"
+pulling manifest
+pulling dec52a44569a: 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████▏ 6.6 GB                         tpulling manifest
+pulling dec52a44569a: 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████▏ 6.6 GB
+pulling manifest
+pulling dec52a44569a: 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████▏ 6.6 GB
+pulling manifest
+pulling manifest
+pulling dec52a44569a: 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████▏ 6.6 GB
+pulling 7339fa418c9a: 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████▏  11 KB
+pulling 9371364b27a5: 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████▏   65 B
+pulling be595b49fe22: 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████▏  475 B
+verifying sha256 digest
+writing manifest
+success
+@jazzwang ➜ ~/.ollama/models $ cd /workspaces/
+.codespaces/ .oryx/       snippet/     .Trash-1000/
+@jazzwang ➜ ~/.ollama/models $ cd /workspaces/snippet/
+@jazzwang ➜ /workspaces/snippet (master) $ cd go/ollama/
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ ollama list
+[GIN] 2026/03/29 - 05:32:59 | 200 |      35.807µs |       127.0.0.1 | HEAD     "/"
+[GIN] 2026/03/29 - 05:32:59 | 200 |    2.670528ms |       127.0.0.1 | GET      "/api/tags"
+NAME          ID              SIZE      MODIFIED
+qwen3.5:9b    6488c96fa5fa    6.6 GB    5 minutes ago
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ ollama show --modelfile qwen3.5:9b | tee -a qwen35-9b
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ git add qwen35-9b
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ git commit -a -m "docs: [go][ollama] add modelfile of Qwen 3.5 9B for local import."
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ git push
+```
