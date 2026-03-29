@@ -215,3 +215,14 @@ To access latest log: tail -F /tmp/agents_log/agent.latest.log
 Running agent hpt_chat_agent, type exit to exit.
 [user]: 
 ```
+
+## 備忘
+
+- 後來先用 Code Lab 的結果送 Project
+- 範例：用 Python FastMCP 自訂 MCP Server，然後佈署到 Cloud Run 的步驟
+  - https://docs.cloud.google.com/run/docs/tutorials/deploy-remote-mcp-server
+- 範例：
+  - 9. (Optional) Deploying MCP Toolbox for Databases and Agent to Cloud Run
+  - Hosting MCP Toolbox server on Cloud Run
+  - https://codelabs.developers.google.com/travel-agent-mcp-toolbox-adk#8
+  - 這個範例把 ADK 的 Agent 跟 MCP Toolbox 分成兩個 Cloud Run
