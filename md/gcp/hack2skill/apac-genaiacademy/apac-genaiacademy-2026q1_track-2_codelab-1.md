@@ -1,0 +1,2 @@
+- Codelabs 1: Build a Location Intelligence ADK Agent with MCP servers for BigQuery and Google Maps | Google Codelabs
+  - https://codelabs.developers.google.com/adk-mcp-bigquery-maps?hl=zh-tw#1
