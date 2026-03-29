@@ -772,3 +772,9 @@ qwen3.5:9b    6488c96fa5fa    6.6 GB    5 minutes ago
 @jazzwang ➜ /workspaces/snippet/go/ollama (master) $ git commit -a -m "docs: [go][ollama] add modelfile of Qwen 3.5 9B for local import."
 @jazzwang ➜ /workspaces/snippet/go/ollama (master) $ git push
 ```
+- 使用 HuggingFace 上的 GGUF 並匯入本機的 ollama
+```bash
+~/.ollama$ wget https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/main/Qwen3.5-9B-Q4_K_M.gguf
+~/.ollama$ cp ~/git/snippet/go/ollama/qwen35-9b .
+~/.ollama$ ollama create qwen35:9b -f qwen35-9b
+```
