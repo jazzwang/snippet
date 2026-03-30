@@ -191,3 +191,9 @@ end legend
 - https://www.findcpa.com.tw/blog/410
 - https://findit.org.tw/Files/ResArticleAttachedFile/8921b7ab-02cc-4117-bb10-0ab89ccb9ded.pdf
 
+## 2026-03-28
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| UPS | Unique Selling Proposition <br> Unique Selling Point | 獨特賣點 | https://en.wikipedia.org/wiki/Unique_selling_proposition | |
+
