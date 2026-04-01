@@ -80,3 +80,30 @@ Let me know if you need further clarification or additional examples!
 
 - 參考：
   - https://confluence.atlassian.com/jirasoftwareserver103/advanced-searching-1489806138.html
+
+## 2026-03-31
+
+- 如何查詢某一個 Sub-initiative 底下的 Feature
+> type = Epic AND issue in linkedIssues("BUDGETCY26-123456")
+
+- 參考：https://www.testmanagement.com/blog/2023/09/using-jira-jql-to-search-for-related-issues/
+
+> issue in linkedIssues("SCR-26")
+
+這篇文章也有提到可以查 Child
+
+> parent = SCR-10
+
+> parent in (SCR-26, SCR-10)
+
+- 其他參考：
+  - Jira JQL: advanced search queries made easy
+    - https://www.valiantys.com/en/resources/jql
+  - How can I search for all tickets that have issue links to another project?
+    - https://community.atlassian.com/forums/Jira-questions/How-can-I-search-for-all-tickets-that-have-issue-links-to/qaq-p/1231423
+    - Will all issues which are linked or links project JQL
+        > issue in linkedByIssueProject("JQL")
+    - Find issues which link at least one issue from project JQL. 
+        > issue in links("project = JQL")
+    - Find issues which "blocks" at least one issue from project JQL. 
+        > issue in links("blocks", "project = JQL")

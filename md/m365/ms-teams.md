@@ -32,3 +32,11 @@
     > [!NOTE]
     > - This option is not available for groups that have more than 10,000 members or that were already used to create another team.
     > - Groups associated with Viva Engage communities can't be converted to a team.
+
+## 2026-04-01
+
+- 緣起：
+  - 在 PI Planning Team 大群視訊會議上看到一個新的「倒數＋進度條」，好奇一查，UI 選單多了 Timer。這確實對於控制會議進度有很大的幫助。學起來～
+- 參考：
+  - https://support.microsoft.com/en-us/topic/add-a-timer-to-teams-meetings-9fa0f500-25be-4b08-9eb9-625846e916d2
+  - ![](https://support.microsoft.com/images/en-us/881bdb59-ae4d-4d79-b994-08ef5cd92fca?format=avif&w=800)
