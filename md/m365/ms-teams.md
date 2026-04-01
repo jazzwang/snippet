@@ -37,6 +37,8 @@
 
 - 緣起：
   - 在 PI Planning Team 大群視訊會議上看到一個新的「倒數＋進度條」，好奇一查，UI 選單多了 Timer。這確實對於控制會議進度有很大的幫助。學起來～
+- 聯想：
+  - 以前跑 Toastmasters 時，Timer 本身就是一個角色，專司計時，維持進度。看樣子線上會議也可以有這個操作～
 - 參考：
   - https://support.microsoft.com/en-us/topic/add-a-timer-to-teams-meetings-9fa0f500-25be-4b08-9eb9-625846e916d2
   - ![](https://support.microsoft.com/images/en-us/881bdb59-ae4d-4d79-b994-08ef5cd92fca?format=avif&w=800)
