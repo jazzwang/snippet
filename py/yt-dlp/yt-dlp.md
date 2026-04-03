@@ -235,3 +235,55 @@ sb0 mhtml 240x180      1    │                  mhtml │ images               
 94  mp4   640x480     30    │ ~  7.26MiB 1050k m3u8  │ avc1.4D401E      mp4a.40.2
 135 mp4   640x480     30    │    3.23MiB  467k https │ avc1.4d401e 467k video only          480p, mp4_dash
 ```
+
+## 2026-04-02
+
+- 緣起：需要從兩個多小時的影片，擷取少於十分鐘的影片片段，想知道能否靠 yt-dlp 來達成
+- 作法：
+> does yt-dlp support downloading video from given start timestamp and end timestamp? if yes, could you give me an example?
+
+Yes, **yt-dlp** supports downloading specific sections of a video using the `--download-sections` flag. This method is highly efficient because it typically only downloads the data required for that specific time range rather than the entire file.
+
+### The Recommended Syntax
+To specify a time range, use the following format:
+`--download-sections "*START-END"`
+
+* **The Asterisk (`*`):** This is required to tell yt-dlp you are providing a timestamp rather than a chapter name.
+* **Time Format:** You can use seconds (e.g., `90`) or `HH:MM:SS` (e.g., `01:30:05`).
+
+---
+
+### Practical Examples
+
+#### 1. Basic Start and End Timestamp
+To download from **1 minute 30 seconds** to **2 minutes 15 seconds**:
+```bash
+yt-dlp --download-sections "*00:01:30-00:02:15" "VIDEO_URL"
+```
+
+#### 2. Using Seconds Only
+To download from **90 seconds** to **135 seconds**:
+```bash
+yt-dlp --download-sections "*90-135" "VIDEO_URL"
+```
+
+#### 3. Open-Ended Ranges
+* **From start to 5 minutes:** `--download-sections "*-05:00"`
+* **From 10 minutes to the end:** `--download-sections "*10:00-inf"`
+
+#### 4. Enhancing Accuracy (Highly Recommended)
+Video files are often cut at "keyframes." If you want the cut to be exactly at your timestamp (even if it's not a keyframe), add the `--force-keyframes-at-cuts` flag. This will re-encode the small portion around the cut for frame-perfect accuracy.
+
+```bash
+yt-dlp --download-sections "*01:00-02:00" --force-keyframes-at-cuts "VIDEO_URL"
+```
+
+---
+
+### Important Requirements
+* **FFmpeg:** You **must** have FFmpeg installed and accessible in your system's PATH for this feature to work, as yt-dlp uses it to handle the partial downloading and clipping.
+* **Single vs. Multiple:** You can use the `--download-sections` flag multiple times in one command to download several different clips from the same video.
+
+- 因為跑很久，改從 Github Codespace 下載，看是否會快一點，結果遇到 YouTube Cookie 的問題
+  - https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp
+- 在 Github Codespace 實測，縱使 Cookie 確實用 Chrome Extension 存成 Netspace 格式，也可以正常執行。但很奇怪的是 command line 居然只拿得到 mhtml 格式，沒有 video 跟 audio 的 output ... 待查
