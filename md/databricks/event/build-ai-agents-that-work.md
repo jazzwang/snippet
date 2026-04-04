@@ -8,11 +8,11 @@
 
 ## 心智圖
 
-![](img/build-ai-agents-that-work-1.png)
+![](./img/build-ai-agents-that-work-1.png)
 
 ## 資訊圖
 
-![](img/build-ai-agents-that-work-2.jpg)
+![](./img/build-ai-agents-that-work-2.jpg)
 
 ## OpenAI 與 Databricks CEO 對談精華：塑造企業 AI 的未來
 
