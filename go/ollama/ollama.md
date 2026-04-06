@@ -785,4 +785,25 @@ qwen3.5:9b    6488c96fa5fa    6.6 GB    5 minutes ago
 - https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF
   - https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/blob/main/gemma-4-E4B-it-Q5_K_M.gguf?local-app=ollama
   - https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-Q5_K_M.gguf
-
+- Ollama 官方 Gemma 4 E4B 需要 9.6 GB. HuggingFace 上 Unsloth 則只需要 5.48 GB
+- 在 Github Codespace 裡面拉下來看一下 modelfile
+```bash
+@jazzwang ➜ ~ $ ollama pull hf.co/unsloth/gemma-4-E4B-it-GGUF:Q5_K_M
+Error: could not connect to ollama server, run 'ollama serve' to start it
+@jazzwang ➜ ~ $ ollama serve &
+@jazzwang ➜ ~ $ ollama pull hf.co/unsloth/gemma-4-E4B-it-GGUF:Q5_K_M
+@jazzwang ➜ ~ $ ollama list
+hf.co/unsloth/gemma-4-E4B-it-GGUF:Q5_K_M    314ec793da97    6.5 GB    About a minute ago
+@jazzwang ➜ ~ $ cd /workspaces/snippet/go/ollama/
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ touch gemma-4-e4b-it_q5_k_m
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ ollama show --modelfile hf.co/unsloth/gemma-4-E4B-it-GGUF:Q5_K_M | tee -a gemma-4-e4b-it_q5_k_m
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ git add gemma-4-e4b-it_q5_k_m
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ git commit -a -m "docs: [go][ollama] add modelfile of Gemma 4 E4B for local import."
+@jazzwang ➜ /workspaces/snippet/go/ollama (master) $ git push
+```
+- 使用 HuggingFace 上的 GGUF 並匯入本機的 ollama
+```bash
+~/.ollama$ wget https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-Q5_K_M.gguf
+~/.ollama$ cp ~/git/snippet/go/ollama/gemma-4-e4b-it_q5_k_m .
+~/.ollama$ ollama create gemma4:e4b -f gemma-4-e4b-it_q5_k_m
+```
