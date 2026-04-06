@@ -64,3 +64,57 @@
     - 感覺有點像高見龍推薦的 superpower
 - 更多 opencode 生態系
   - https://github.com/awesome-opencode/awesome-opencode
+
+## 2026-04-06
+
+- 緣起：想要改用 `scoop install opencode`
+- 搜尋如何反安裝，查到可以用 `opencode uninstall`
+```bash
+~/git/snippet/js/opencode$ opencode uninstall
+Performing one time database migration, may take a few minutes...
+Database migration complete.
+
+                                   ▄
+  █▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█
+  █  █ █  █ █▀▀▀ █  █ █    █  █ █  █ █▀▀▀
+  ▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀
+
+┌  Uninstall OpenCode
+│
+●  Installation method: scoop
+│
+│  The following will be removed:
+│
+●    ✓ Data: ~\.local\share\opencode (189.3 KB)
+│
+●    ✓ Cache: ~\.cache\opencode (1.7 MB)
+│
+●    ✓ Config: ~\.config\opencode (0 B)
+│
+●    ✓ State: ~\.local\state\opencode (0 B)
+│
+●    ✓ Package: scoop uninstall opencode
+│
+◆  Are you sure you want to uninstall?
+│  ○ Yes / ● No
+└
+```
+- 大致看起來，需要備份的主要是 `~\.local\share\opencode` 跟 `~\.config\opencode`
+
+### opencode uninstall
+
+To uninstall OpenCode, use the CLI command opencode uninstall. Alternatively, remove it via npm using `npm uninstall -g opencode-ai`. For a complete removal, manually delete the configuration folder, typically located at `~/.config/opencode` on Linux/macOS or within `%USERPROFILE%\.config\opencode\` on Windows.
+
+**Uninstallation Methods**
+
+- **CLI Method:** Run `opencode uninstall` in your terminal to remove the application and associated files.
+- **NPM Method:** Run `npm uninstall -g opencode-ai`.
+- **Manual Removal (Windows):** Open command prompt as admin, run `where opencode` to find the path, and delete the `opencode` folder.
+- **Manual Removal (macOS/Linux):** Run `rm -rf ~/.config/opencode` and `rm -rf ~/.opencode`.
+
+**Cleaning Up**
+
+To ensure a complete removal, you may also need to:
+
+- Remove plugins by editing `~/.config/opencode/opencode.jsonc`.
+- Remove local skills using `npx skills remove [skill-name]`.
