@@ -2,8 +2,11 @@
 # To build a new Modelfile based on this, replace FROM with:
 # FROM hf.co/unsloth/gemma-4-E4B-it-GGUF:Q5_K_M
 
-FROM /home/codespace/.ollama/models/blobs/sha256-44e9292ff1b243a0923e8c46ed58111e46a6c300be74797b6dd54ae0e66b5bba
-FROM /home/codespace/.ollama/models/blobs/sha256-4b3bf6e16b19d7f85fe4dd4ab2f8c8037ec14e656f8017fcfb42b30c3db26f67
+# ```
+# wget -c https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-Q5_K_M.gguf
+# ```
+
+FROM gemma-4-E4B-it-Q5_K_M.gguf
 TEMPLATE "{{ if .System }}<bos><|turn>system
 {{ .System }}<turn|>
 {{ end }}{{ if .Prompt }}<|turn>user
