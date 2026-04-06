@@ -778,3 +778,11 @@ qwen3.5:9b    6488c96fa5fa    6.6 GB    5 minutes ago
 ~/.ollama$ cp ~/git/snippet/go/ollama/qwen35-9b .
 ~/.ollama$ ollama create qwen35:9b -f qwen35-9b
 ```
+
+## 2026-04-06
+
+- https://ollama.com/library/gemma4:e4b
+- https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF
+  - https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/blob/main/gemma-4-E4B-it-Q5_K_M.gguf?local-app=ollama
+  - https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-Q5_K_M.gguf
+
