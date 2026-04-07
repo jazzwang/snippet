@@ -70,6 +70,36 @@
 - 緣起：想要改用 `scoop install opencode`
 - 搜尋如何反安裝，查到可以用 `opencode uninstall`
 ```bash
+@jazzwang ➜ /workspaces/snippet (master) $ opencode uninstall
+
+                                   ▄
+  █▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█
+  █  █ █  █ █▀▀▀ █  █ █    █  █ █  █ █▀▀▀
+  ▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀
+
+┌  Uninstall OpenCode
+│
+●  Installation method: curl
+│
+│  The following will be removed:
+│
+●    ✓ Data: ~/.local/share/opencode (28.2 MB)
+│
+●    ✓ Cache: ~/.cache/opencode (4.2 MB)
+│
+●    ✓ Config: ~/.config/opencode (4.2 MB)
+│
+●    ✓ State: ~/.local/state/opencode (2.6 KB)
+│
+●    ✓ Binary: ~/.opencode/bin/opencode
+│
+●    ✓ Shell PATH in ~/.bashrc
+│
+◆  Are you sure you want to uninstall?
+│  ○ Yes / ● No
+```
+- 若是使用 `scoop install opencode` 的話，會顯示以下結果
+```bash
 ~/git/snippet/js/opencode$ opencode uninstall
 Performing one time database migration, may take a few minutes...
 Database migration complete.
@@ -118,3 +148,114 @@ To ensure a complete removal, you may also need to:
 
 - Remove plugins by editing `~/.config/opencode/opencode.jsonc`.
 - Remove local skills using `npx skills remove [skill-name]`.
+
+### 新增 `superpower` plugin
+
+- 參考：
+  - https://github.com/obra/superpowers/blob/main/.opencode/INSTALL.md
+- 修改 `~/.config/opencode/opencode.json`
+```diff
+--- opencode.json.old   2026-03-24 21:09:38.000000000 +0800
++++ opencode.json       2026-04-06 23:13:18.815155600 +0800
+@@ -1,18 +1,26 @@
+ {
+   "$schema": "https://opencode.ai/config.json",
++  "plugin": [
++    "superpowers@git+https://github.com/obra/superpowers.git"
++  ],
+   "provider": {
+     "ollama": {
+       "models": {
++        "gemma4:e4b": {
++          "_launch": true,
++          "name": "gemma4:e4b"
++        },
+         "qwen25-coder:7b": {
+           "_launch": true,
+           "name": "qwen25-coder:7b"
+         },
+-        "qwen3:8b": {
++        "qwen35:9b": {
+           "_launch": true,
+-          "name": "qwen3:8b"
++          "name": "qwen35:9b"
+         }
+       },
+-      "name": "Ollama (local)",
++      "name": "Ollama",
+       "npm": "@ai-sdk/openai-compatible",
+       "options": {
+         "baseURL": "http://127.0.0.1:11434/v1"
+```
+
+### 新增 `devpost-curriculum` plugin
+
+```diff
+--- opencode.json.1     2026-04-06 23:24:45.128471300 +0800
++++ opencode.json       2026-04-06 23:21:06.666461300 +0800
+@@ -1,7 +1,8 @@
+ {
+   "$schema": "https://opencode.ai/config.json",
+   "plugin": [
+-    "superpowers@git+https://github.com/obra/superpowers.git"
++    "superpowers@git+https://github.com/obra/superpowers.git",
++    "devpost-curriculum@git+https://github.com/challengepost/devpost-curriculum.git"
+   ],
+   "provider": {
+     "ollama": {
+```
+- 看起來沒有生效，因為讀了其他 opencode plugin 都有定義 `package.json`，所以 `@git+https://` 前面放的應該是 `package name`
+- 改用以下步驟測試：
+```bash
+/tmp$ mkdir devpost
+/tmp$ cd devpost/
+/tmp/devpost$ mkdir .opencode
+/tmp/devpost$ cd .opencode/
+/tmp/devpost/.opencode$ rsync -avzrP ~/git/devpost-curriculum/plugins/hackathon-in-a-plugin/skills .
+/tmp/devpost/.opencode$ tree
+.
+└── skills
+    ├── build
+    │   └── SKILL.md
+    ├── checklist
+    │   └── SKILL.md
+    ├── hackathon-guide
+    │   ├── references
+    │   │   ├── eval-rubric.md
+    │   │   ├── prd-guide.md
+    │   │   └── spec-patterns.md
+    │   ├── SKILL.md
+    │   └── templates
+    │       ├── checklist-template.md
+    │       ├── learner-profile-template.md
+    │       ├── prd-template.md
+    │       ├── reflection-template.md
+    │       ├── scope-template.md
+    │       └── spec-template.md
+    ├── iterate
+    │   └── SKILL.md
+    ├── onboard
+    │   └── SKILL.md
+    ├── prd
+    │   └── SKILL.md
+    ├── reflect
+    │   └── SKILL.md
+    ├── scope
+    │   └── SKILL.md
+    └── spec
+        └── SKILL.md
+
+13 directories, 18 files
+/tmp/devpost/.opencode$ cd ..
+/tmp/devpost$ opencode
+                                   ▄
+  █▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█
+  █  █ █  █ █▀▀▀ █  █ █    █  █ █  █ █▀▀▀
+  ▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀
+
+  Session   Onboard: Learner wellness and scope kickoff
+  Continue  opencode -s ses_29c5a0976ffeTqUWXXltTiDqQp
+
+/tmp/devpost$ ls
+docs  process-notes.md
+```

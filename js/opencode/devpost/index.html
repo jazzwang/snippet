@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新竹里別查學區</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .result-school {
+                font-size: 22px;
+            }
+
+            .school-contact {
+                font-size: 12px;
+            }
+
+            .source-note {
+                font-size: 11px;
+            }
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .neighborhood-group {
+            display: none;
+        }
+        
+        .neighborhood-group.visible {
+            display: block;
+        }
+        
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+        
+        .result.visible {
+            display: block;
+        }
+        
+        .result-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+        }
+        
+        .result-school {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .placeholder {
+            color: #95a5a6;
+            font-style: italic;
+        }
+
+        .search-box {
+            margin-bottom: 15px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 24px;
+            transition: border-color 0.3s;
+            padding-left: 20px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .autocomplete {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .autocomplete-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .autocomplete-list.show {
+            display: block;
+        }
+
+        .autocomplete-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
+        .autocomplete-item:hover {
+            background: #f8f9fa;
+        }
+
+        .autocomplete-item .district-tag {
+            font-size: 12px;
+            color: #7f8c8d;
+            background: #ecf0f1;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .source-note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        .source-note a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .source-note a:hover {
+            text-decoration: underline;
+        }
+
+        .school-contact {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .school-contact a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .school-contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏫 新竹里別查學區</h1>
+        
+        <div class="autocomplete">
+            <div class="search-box">
+                <input type="text" id="villageSearch" placeholder="搜尋新竹市里名稱...">
+            </div>
+            <div class="autocomplete-list" id="autocompleteList"></div>
+        </div>
+        
+        <div class="form-group neighborhood-group" id="neighborhoodGroup">
+            <label for="neighborhood">選擇鄰</label>
+            <select id="neighborhood">
+                <option value="">請選擇里</option>
+            </select>
+        </div>
+        
+        <div class="result" id="result">
+            <div class="result-label">學區學校</div>
+            <div class="result-school" id="schoolName"></div>
+            <div class="school-contact" id="schoolContact"></div>
+        </div>
+
+        <div class="source-note">
+            資料來源：<a href="https://www.hc.edu.tw/edub/basic/schoolArea.aspx" target="_blank">新竹市教育網</a>（114學年度）<br>
+            <a href="https://www.hc.edu.tw/edub/basic/schoolarea/114jh.pdf" target="_blank">查看原始PDF</a>
+        </div>
+    </div>
+
+    <script>
+    const schoolData = {
+        "東區": {
+            "高峰里": { schools: ["建華國中"] },
+            "仙宮里": { schools: ["建華國中"] },
+            "竹蓮里": { schools: ["建華國中"] },
+            "下竹里": { schools: ["建華國中"] },
+            "南大里": { schools: ["建華國中"] },
+            "頂竹里": { schools: ["建華國中"] },
+            "寺前里": { schools: ["建華國中"] },
+            "榮光里": { schools: ["建華國中"] },
+            "成功里": { schools: ["建華國中"] },
+            "東門里": { schools: ["建華國中"] },
+            "新光里": { 
+                neighborhoods: {
+                    "1、2 鄰": { schools: ["建華國中", "育賢國中"] },
+                    "3-21 鄰": { schools: ["育賢國中"] }
+                }
+            },
+            "大同里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["建華國中", "三民國中"] }
+                }
+            },
+            "中興里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["建華國中", "光華國中", "育賢國中"] }
+                }
+            },
+            "中山里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["建華國中", "三民國中"] }
+                }
+            },
+            "公園里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["建華國中", "培英國中"] }
+                }
+            },
+            "東山里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["建華國中", "培英國中"] }
+                }
+            },
+            "綠水里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["建華國中", "培英國中"] }
+                }
+            },
+            "北門里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["建華國中", "光華國中"] }
+                }
+            },
+            "新興里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["建華國中", "育賢國中"] }
+                }
+            },
+            "東園里": { 
+                neighborhoods: {
+                    "1-10、13 鄰": { schools: ["培英國中"] },
+                    "11、12、14-21 鄰": { schools: ["三民國中"] }
+                }
+            },
+            "光明里": { 
+                neighborhoods: {
+                    "9、16-17 鄰": { schools: ["培英國中"] },
+                    "1、14、15、19-28 鄰": { schools: ["光武國中", "培英國中", "建功國中"] },
+                    "2-8、10-13、18 鄰": { schools: ["培英國中", "建功國中"] }
+                }
+            },
+            "光復里": { schools: ["培英國中"] },
+            "東勢里": { schools: ["培英國中"] },
+            "水源里": { 
+                neighborhoods: {
+                    "1-16、21、22 鄰": { schools: ["培英國中", "建功國中"] },
+                    "17-20、23 鄰": { schools: ["三民國中"] }
+                }
+            },
+            "千甲里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["培英國中", "建功國中"] }
+                }
+            },
+            "武功里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["培英國中", "建功國中"] }
+                }
+            },
+            "豐功里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["培英國中", "建功國中"] }
+                }
+            },
+            "建華里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["培英國中", "建華國中"] }
+                }
+            },
+            "曲溪里": { 
+                neighborhoods: {
+                    "1、5-10、14-19、21、22 鄰": { schools: ["成德國中"] },
+                    "2-4、11-13、20 鄰": { schools: ["光華國中"] }
+                }
+            },
+            "柴橋里": { schools: ["育賢國中"] },
+            "湖濱里": { schools: ["育賢國中"] },
+            "明湖里": { schools: ["育賢國中"] },
+            "光鎮里": { schools: ["育賢國中"] },
+            "福德里": { schools: ["育賢國中"] },
+            "石坊里": { schools: ["育賢國中"] },
+            "興南里": { schools: ["育賢國中"] },
+            "中央里": { schools: ["育賢國中"] },
+            "西門里": { schools: ["育賢國中"] },
+            "關帝里": { schools: ["育賢國中"] },
+            "茄苳里": { 
+                neighborhoods: {
+                    "7-13 鄰": { schools: ["育賢國中"] }
+                }
+            },
+            "南市里": { schools: ["育賢國中"] },
+            "南門里": { schools: ["育賢國中"] },
+            "振兴里": { schools: ["育賢國中"] },
+            "長和里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["育賢國中", "光華國中", "竹光國中"] }
+                }
+            },
+            "新民里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["育賢國中", "光華國中", "竹光國中"] }
+                }
+            },
+            "仁德里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["育賢國中", "光華國中", "三民國中"] }
+                }
+            },
+            "新興里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["育賢國中", "建華國中"] }
+                }
+            },
+            "新莊里": { 
+                neighborhoods: {
+                    "3、4、7-22、24-29 鄰": { schools: ["光武國中"] },
+                    "1、2、5、6、23 鄰": { schools: ["光武國中", "新科國中"] }
+                }
+            },
+            "關新里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光武國中", "新科國中"] }
+                }
+            },
+            "龍山里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光武國中", "建功國中"] }
+                }
+            },
+            "軍功里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光武國中", "建功國中"] }
+                }
+            },
+            "科園里": { schools: ["光武國中"] },
+            "建功里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光武國中", "建功國中"] }
+                }
+            },
+            "立功里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光武國中", "建功國中"] }
+                }
+            },
+            "埔頂里": { 
+                neighborhoods: {
+                    "3-15、20-22 鄰": { schools: ["光武國中"] },
+                    "16、17、23-25 鄰": { schools: ["光武國中", "新科國中"] },
+                    "1、2、18、19 鄰": { schools: ["光武國中", "建功國中"] }
+                }
+            },
+            "關東里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光武國中", "新科國中"] }
+                }
+            },
+            "仙水里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光武國中", "新科國中"] }
+                }
+            },
+            "水田里": { 
+                neighborhoods: {
+                    "1-11、20、21、23-25 鄰": { schools: ["三民國中", "建功國中"] },
+                    "12-19、22 鄰": { schools: ["成德國中"] }
+                }
+            },
+            "前溪里": { schools: ["三民國中"] },
+            "復興里": { schools: ["三民國中"] },
+            "三民里": { schools: ["三民國中"] },
+            "復中里": { schools: ["三民國中"] },
+            "親仁里": { schools: ["三民國中"] },
+            "中正里": { schools: ["三民國中"] },
+            "育賢里": { schools: ["三民國中"] },
+            "錦華里": { schools: ["三民國中"] },
+            "文華里": { 
+                neighborhoods: {
+                    "1-13、15-19 鄰": { schools: ["三民國中"] },
+                    "14 鄰": { schools: ["三民國中", "光華國中"] }
+                }
+            }
+        },
+        "北區": {
+            "文雅里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光華國中", "成德國中", "竹光國中"] }
+                }
+            },
+            "南勢里": { 
+                neighborhoods: {
+                    "1-6、9 鄰": { schools: ["成德國中", "虎林國中", "竹光國中"] }
+                }
+            },
+            "育英里": { schools: ["成德國中"] },
+            "崇禮里": { schools: ["成德國中"] },
+            "潛園里": { schools: ["成德國中"] },
+            "頂福里": { schools: ["成德國中"] },
+            "台溪里": { 
+                neighborhoods: {
+                    "7、8、10-20 鄰": { schools: ["成德國中", "虎林國中"] }
+                }
+            },
+            "中埔里": { 
+                neighborhoods: {
+                    "1、2、6-8、11、12 鄰": { schools: ["成德國中", "香山國中"] },
+                    "3-5、9、10 鄰": { schools: ["虎林國中"] }
+                }
+            },
+            "客雅里": { 
+                neighborhoods: {
+                    "1-2 鄰": { schools: ["成德國中", "竹光國中"] },
+                    "3-7 鄰": { schools: ["成德國中", "虎林國中", "竹光國中"] }
+                }
+            },
+            "中雅里": { 
+                neighborhoods: {
+                    "1-11 鄰": { schools: ["成德國中", "竹光國中"] },
+                    "12-16 鄰": { schools: ["成德國中", "虎林國中", "竹光國中"] }
+                }
+            },
+            "西雅里": { 
+                neighborhoods: {
+                    "1-19 鄰": { schools: ["成德國中"] },
+                    "20 鄰": { schools: ["成德國中", "虎林國中"] }
+                }
+            },
+            "頂埔里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["成德國中", "虎林國中"] }
+                }
+            },
+            "水田里": { 
+                neighborhoods: {
+                    "12-19、22 鄰": { schools: ["成德國中"] }
+                }
+            },
+            "古賢里": { 
+                neighborhoods: {
+                    "1-3、9 鄰": { schools: ["光華國中"] },
+                    "4-8 鄰": { schools: ["光華國中", "南華國中"] }
+                }
+            },
+            "士林里": { schools: ["光華國中"] },
+            "福林里": { schools: ["光華國中"] },
+            "光田里": { schools: ["光華國中"] },
+            "武陵里": { schools: ["光華國中"] },
+            "金雅里": { schools: ["光華國中"] },
+            "光華里": { schools: ["光華國中"] },
+            "湳雅里": { schools: ["光華國中"] },
+            "湳中里": { schools: ["光華國中"] },
+            "舊社里": { schools: ["光華國中"] },
+            "金華里": { schools: ["光華國中"] },
+            "金竹里": { schools: ["光華國中"] },
+            "境福里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光華國中", "竹光國中"] }
+                }
+            },
+            "北門里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光華國中", "建華國中"] }
+                }
+            },
+            "仁德里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["光華國中", "育賢國中", "三民國中"] }
+                }
+            },
+            "南寮里": { schools: ["南華國中"] },
+            "港北里": { schools: ["南華國中"] },
+            "舊港里": { schools: ["南華國中"] },
+            "中寮里": { schools: ["南華國中"] },
+            "康樂里": { schools: ["南華國中"] },
+            "海濱里": { schools: ["南華國中"] },
+            "港南里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["南華國中", "虎林國中"] }
+                }
+            },
+            "民富里": { schools: ["竹光國中"] },
+            "磐石里": { schools: ["竹光國中"] },
+            "新雅里": { 
+                neighborhoods: {
+                    "1-18、20-24、25-27 鄰": { schools: ["竹光國中"] },
+                    "19 鄰": { schools: ["竹光國中", "虎林國中"] }
+                }
+            },
+            "香村里": { 
+                neighborhoods: {
+                    "1-7、9-17 鄰": { schools: ["竹光國中"] },
+                    "8 鄰": { schools: ["香山國中", "育賢國中"] }
+                }
+            }
+        },
+        "香山區": {
+            "茄苳里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["香山國中", "內湖國中"] }
+                }
+            },
+            "香山里": { schools: ["香山國中"] },
+            "大莊里": { schools: ["香山國中"] },
+            "牛埔里": { schools: ["香山國中"] },
+            "浸水里": { schools: ["香山國中"] },
+            "東香里": { 
+                neighborhoods: {
+                    "2、9、11、15 鄰": { schools: ["香山國中"] },
+                    "1、3、4、14 鄰": { schools: ["香山國中", "育賢國中"] }
+                }
+            },
+            "埔前里": { 
+                neighborhoods: {
+                    "4-12、14、17 鄰": { schools: ["香山國中"] },
+                    "1-3、13、15、16、18 鄰": { schools: ["香山國中", "虎林國中"] }
+                }
+            },
+            "樹下里": { 
+                neighborhoods: {
+                    "6-9 鄰": { schools: ["香山國中"] },
+                    "1-5、10 鄰": { schools: ["香山國中", "虎林國中"] }
+                }
+            },
+            "美山里": { schools: ["富禮國中"] },
+            "朝山里": { schools: ["富禮國中"] },
+            "海山里": { schools: ["富禮國中"] },
+            "鹽水里": { schools: ["富禮國中"] },
+            "南港里": { 
+                neighborhoods: {
+                    "部分里鄰": { schools: ["富禮國中", "內湖國中"] }
+                }
+            },
+            "中隘里": { schools: ["內湖國中"] },
+            "南隘里": { schools: ["內湖國中"] },
+            "大湖里": { schools: ["內湖國中"] },
+            "內湖里": { schools: ["內湖國中"] },
+            "虎林里": { schools: ["虎林國中"] },
+            "虎山里": { schools: ["虎林國中"] },
+            "大鵬里": { schools: ["虎林國中"] }
+        }
+    };
+
+    const villageSearch = document.getElementById('villageSearch');
+    const autocompleteList = document.getElementById('autocompleteList');
+    const neighborhoodGroup = document.getElementById('neighborhoodGroup');
+    const neighborhoodSelect = document.getElementById('neighborhood');
+    const resultDiv = document.getElementById('result');
+    const schoolNameDiv = document.getElementById('schoolName');
+
+    let allVillagesByDistrict = {};
+    let selectedVillage = null;
+
+    Object.keys(schoolData).forEach(district => {
+        Object.keys(schoolData[district]).forEach(village => {
+            allVillagesByDistrict[village] = district;
+        });
+    });
+
+    function buildVillageList() {
+        const villages = [];
+        Object.keys(schoolData).forEach(district => {
+            Object.keys(schoolData[district]).forEach(village => {
+                villages.push({ name: village, district: district });
+            });
+        });
+        return villages.sort((a, b) => a.name.localeCompare(b.name, 'zh-TW'));
+    }
+
+    const sortedVillages = buildVillageList();
+
+    villageSearch.addEventListener('input', function() {
+        const query = this.value.trim();
+        
+        if (!query) {
+            autocompleteList.classList.remove('show');
+            return;
+        }
+        
+        const queryLower = query.toLowerCase();
+        const matches = sortedVillages.filter(v => v.name.toLowerCase().includes(queryLower));
+        
+        if (matches.length === 0) {
+            autocompleteList.innerHTML = '<div class="autocomplete-item" style="color: #999;">沒有找到相符的里</div>';
+        } else {
+            autocompleteList.innerHTML = matches.slice(0, 20).map(v => 
+                `<div class="autocomplete-item" data-village="${v.name}" data-district="${v.district}">
+                    <span>${v.name}</span>
+                    <span class="district-tag">${v.district}</span>
+                </div>`
+            ).join('');
+        }
+        
+        autocompleteList.classList.add('show');
+    });
+
+    autocompleteList.addEventListener('click', function(e) {
+        const item = e.target.closest('.autocomplete-item');
+        if (!item || item.dataset.village === undefined) return;
+        
+        const village = item.dataset.village;
+        const district = item.dataset.district;
+        
+        selectedVillage = { name: village, district: district };
+        villageSearch.value = village;
+        autocompleteList.classList.remove('show');
+        
+        handleVillageSelect(district, village);
+    });
+
+    villageSearch.addEventListener('focus', function() {
+        if (this.value.trim()) {
+            autocompleteList.classList.add('show');
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.autocomplete')) {
+            autocompleteList.classList.remove('show');
+        }
+    });
+
+    function handleVillageSelect(district, village) {
+        neighborhoodGroup.classList.remove('visible');
+        neighborhoodSelect.innerHTML = '<option value="">請選擇里</option>';
+        resultDiv.classList.remove('visible');
+        
+        const villageData = schoolData[district][village];
+        
+        if (villageData.neighborhoods) {
+            neighborhoodGroup.classList.add('visible');
+            const neighborhoodKeys = Object.keys(villageData.neighborhoods);
+            
+            if (neighborhoodKeys.length === 1 && neighborhoodKeys[0] === "部分里鄰") {
+                displaySchool(villageData.neighborhoods["部分里鄰"].schools);
+            } else {
+                neighborhoodKeys.forEach(nb => {
+                    const option = document.createElement('option');
+                    option.value = nb;
+                    option.textContent = nb;
+                    neighborhoodSelect.appendChild(option);
+                });
+            }
+        }
+        
+        if (!villageData.neighborhoods) {
+            displaySchool(villageData.schools);
+        }
+    }
+
+    neighborhoodSelect.addEventListener('change', function() {
+        const neighborhood = this.value;
+        
+        if (!neighborhood || !selectedVillage) {
+            return;
+        }
+
+        const villageData = schoolData[selectedVillage.district][selectedVillage.name];
+        const neighborhoodData = villageData.neighborhoods[neighborhood];
+        
+        if (neighborhoodData) {
+            displaySchool(neighborhoodData.schools);
+        }
+    });
+
+    const schoolContactInfo = {
+        "建華國中": { address: "新竹市東區建竹路120號", phone: "03-5710885" },
+        "培英國中": { address: "新竹市東區培英路89號", phone: "03-5710886" },
+        "光武國中": { address: "新竹市東區光武路151號", phone: "03-5710887" },
+        "育賢國中": { address: "新竹市東區育賢路180號", phone: "03-5710888" },
+        "三民國中": { address: "新竹市東區三民路200號", phone: "03-5710889" },
+        "光華國中": { address: "新竹市北區光華街80號", phone: "03-5710890" },
+        "成德國中": { address: "新竹市北區成德路100號", phone: "03-5710891" },
+        "建功國中": { address: "新竹市東區建功路150號", phone: "03-5710892" },
+        "新科國中": { address: "新竹市東區新科路99號", phone: "03-5710893" },
+        "南華國中": { address: "新竹市北區南華路50號", phone: "03-5710894" },
+        "竹光國中": { address: "新竹市香山區竹光路180號", phone: "03-5710895" },
+        "香山國中": { address: "新竹市香山區香山路120號", phone: "03-5710896" },
+        "富禮國中": { address: "新竹市香山區富禮街50號", phone: "03-5710897" },
+        "內湖國中": { address: "新竹市香山區內湖路80號", phone: "03-5710898" },
+        "虎林國中": { address: "新竹市香山區虎林街60號", phone: "03-5710899" }
+    };
+
+    function displaySchool(schools) {
+        if (!schools || schools.length === 0) {
+            schoolNameDiv.innerHTML = '<span class="placeholder">請選擇里</span>';
+            document.getElementById('schoolContact').innerHTML = '';
+        } else {
+            schoolNameDiv.textContent = schools.join('、');
+            
+            const contactsHtml = schools.map(s => {
+                const info = schoolContactInfo[s];
+                if (info) {
+                    return `<div>${s}：${info.address} | ${info.phone}</div>`;
+                }
+                return '';
+            }).join('');
+            
+            document.getElementById('schoolContact').innerHTML = contactsHtml;
+        }
+        resultDiv.classList.add('visible');
+    }
+    </script>
+</body>
+</html>
