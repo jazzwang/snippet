@@ -1,0 +1,2 @@
+- https://www.snowflake.com/en/developers/guides/
+- https://docs.snowflake.com/en/
