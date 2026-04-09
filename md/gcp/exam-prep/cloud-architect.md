@@ -35,3 +35,9 @@
 - 2024-05-18: [必過祕技，三天通過 Google Cloud Professional Cloud Architect](https://medium.com/chouhsiang/必過秘訣-三天通過-google-cloud-professional-cloud-architect-524405687711)
 - ExamTopics 考古題
   - https://github.com/chouhsiang/examtopics-actual-questions/blob/main/google-cloud/professional-cloud-architect.csv
+
+## 2026-04-09
+
+- Google Get Certified Program
+  - 4/8 Day 1 - https://www.youtube.com/live/8k81-l7FUVc
+  - 4/9 Day 2 - https://www.youtube.com/live/1KmfZeoqCmc
