@@ -327,4 +327,33 @@ drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 Projects
     - 點擊[變更目前無法使用的設定]④。 
     - 將關機設定中的休眠選項打勾⑤，然後點選[儲存變更]⑥。 
 
+## 2026-04-12
 
+- 狀況：不知道為什麼突然 Windows Key 沒有作用
+- 參考：
+  - [Notebook] 介紹-華碩鍵盤熱鍵功能
+    - https://www.asus.com/tw/support/faq/1038312/
+  - Use Game Mode while gaming on your Windows device
+    - https://support.xbox.com/en-US/help/games-apps/game-setup-and-play/use-game-mode-gaming-on-pc
+- 原本以為是 `Game Mode` 造成的，但是查了，發現本來就是關著。
+- 後來重開了幾次，原本都還是沒有作用，結果按了 `Fn + Windows Key` 也就是所謂的 WinLock 鍵
+
+> To fix a non-working Windows key, first try toggling the "[Win Lock](https://www.google.com/search?q=Win+Lock&ved=2ahUKEwiy46yunuaTAxXIe_UHHc0zJcsQgK4QegYIAQgAEA8)" feature by pressing **Fn + Windows Key** or **Fn + F11/F12**. Other quick fixes include restarting Windows Explorer in Task Manager (Ctrl+Shift+Esc), disabling Game Mode in Settings, or turning off Sticky/Filter keys in Accessibility settings.
+> 
+> Here are the most effective solutions:
+>
+> -   **Unlock the Key (Most Common):** Many keyboards have a "WinLock" function. Press **Fn + Windows key**, **Fn + F6**, or a specific key with a lock/Windows icon to unlock it.
+> -   **Restart Windows Explorer:** Press `Ctrl + Shift + Esc` to open Task Manager. Under the **Processes** tab, find "Windows Explorer," right-click it, and select **Restart**.
+> -   **Disable Gaming Mode:** If you have a gaming keyboard, disable "Game Mode," which often disables the Windows key to prevent accidental presses.
+> -   **Toggle Sticky/Filter Keys:** Go to **Settings > Accessibility > Keyboard**. Turn off "Sticky Keys" and "Filter Keys".
+> -   **Run PowerShell Command:** Right-click the Start button, select **Windows PowerShell (Admin)** or **Terminal (Admin)**, and run the following command to re-register Windows apps:
+    ```
+    Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+    ```
+> -   **Update Keyboard Drivers:** Open **Device Manager**, expand **Keyboards**, right-click your keyboard, and select **Update driver**.
+>
+> **If these do not work:**
+> 
+> -   Try a different keyboard to rule out hardware damage.
+> -   Run `sfc /scannow` in Command Prompt to fix corrupted system files.
+> -   Temporarily disable any keyboard remapping software.
