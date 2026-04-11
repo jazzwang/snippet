@@ -38,3 +38,11 @@ The user in your snippet is noting that while MLflow supports prompt optimizatio
   - https://sulbhajain.medium.com/llm-prompt-optimization-genetic-pareto-gepa-paper-reviw-29ee52d9b5db
 - Prompt Optimizing with GEPA and Databricks for 90x cheaper inference
   - https://medium.com/@AI-on-Databricks/prompt-optimizing-with-gepa-and-databricks-for-90x-cheaper-inference-0068a2909d86
+- Building State-of-the-Art Enterprise Agents 90x Cheaper with Automated Prompt Optimization
+  - https://www.databricks.com/blog/building-state-art-enterprise-agents-90x-cheaper-automated-prompt-optimization
+- GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning
+  - https://arxiv.org/html/2507.19457v1
+- Optimizing GEPA for production: A test-driven approach to prompt engineering
+  - https://decagon.ai/blog/optimizing-gepa-for-production
+- Prompt Optimizing with GEPA and Databricks for 90x cheaper inference
+  - https://medium.com/@AI-on-Databricks/prompt-optimizing-with-gepa-and-databricks-for-90x-cheaper-inference-0068a2909d86Prompt
