@@ -47,3 +47,10 @@
   - https://github.com/QwenLM/qwen-code
   - Factory Droids - https://factory.ai/product/cli
     - https://docs.factory.ai/cli/getting-started/quickstart
+
+## 2026-04-11
+
+- 用 npm 下載次數來分析各大 AI Coding Agent CLI 的「市占率」
+- https://npmtrends.com/@anthropic-ai/claude-code-vs-@github/copilot-vs-@google/gemini-cli-vs-@kilocode/cli-vs-@openai/codex-vs-opencode-ai
+- 2026-04-11 的排行榜：
+  - Claude Code > OpenAI Codex > Github Copilot CLI (後來居上 2025-09 發布，快速竄升至第三名) > Google Gemini CLI > OpenCode
