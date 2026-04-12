@@ -107,3 +107,56 @@ Let me know if you need further clarification or additional examples!
         > issue in links("project = JQL")
     - Find issues which "blocks" at least one issue from project JQL. 
         > issue in links("blocks", "project = JQL")
+
+## 2026-04-12
+
+- 緣起：想查 "Feature Link" (= "Epic Link") 底下的所有 Story
+- 查詢：Gemini
+- 結果：
+  ```jql
+  "Epic Link" in (ABC-XXX, ABC-YYY, ABC-ZZZ)
+  ```
+- 參考：
+
+Finding Stories within a specific Epic in Jira is a common task, but the JQL (Jira Query Language) syntax depends slightly on whether you are using **Jira Cloud** or **Jira Data Center/Server**.
+
+### 1\. The Standard Method (Jira Cloud)
+
+In Jira Cloud, Epics and Stories are linked via the **Parent** field. This is the most reliable way to pull your list.
+
+**The Query:**
+
+`parent = [Epic-Key]`
+
+-   **Example:** `parent = PROJ-123`
+-   **Refined search (to ensure you only get Stories):** `parent = PROJ-123 AND issuetype = Story`
+
+### 2\. The Traditional Method (Jira Data Center / Server)
+
+Older versions of Jira (and some specific configurations) use a custom field called **Epic Link**.
+
+**The Query:**
+
+`"Epic Link" = [Epic-Key]`
+
+-   **Example:** `"Epic Link" = PROJ-123`
+-   **Note:** You must use quotation marks around "Epic Link" because of the space in the field name.
+
+### 3\. Dynamic Searching (Advanced)
+
+If you don't have the specific key handy or want to search for Stories belonging to multiple Epics based on criteria (like a name), you can use functions or broader filters.
+
+| **Goal** | **JQL Syntax** |
+| --- |  --- |
+| **Search by Epic Name** | `parent in membersOf("Epic Name")` *(Cloud)* |
+| **Stories in "Done" Epics** | `parent in (leaflets(status = Done))` |
+| **Multiple Epics** | `parent in (PROJ-123, PROJ-456, PROJ-789)` |
+
+### Pro-Tips for Clean Results
+
+-   **Order by Status:** Add `ORDER BY status ASC` to the end of your query to see what is still "In Progress" versus "Done."
+-   **Exclude Sub-tasks:** If your Stories have sub-tasks and you *only* want the Stories, add `AND issuetype != Sub-task`.
+
+> **Check your field name:** If `parent` doesn't work, start typing `Epic` into the JQL search bar; Jira's auto-complete will usually suggest the correct field name (like `Epic Link` or `cf`) used in your specific instance.
+
+Which version of Jira are you currently using, and are you trying to export this list or just view it in a dashboard?

@@ -337,7 +337,7 @@ drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 Projects
     - https://support.xbox.com/en-US/help/games-apps/game-setup-and-play/use-game-mode-gaming-on-pc
 - 原本以為是 `Game Mode` 造成的，但是查了，發現本來就是關著。
 - 後來重開了幾次，原本都還是沒有作用，結果按了 `Fn + Windows Key` 也就是所謂的 WinLock 鍵
-
+- https://share.google/aimode/G8rxgWMxXbaF7LSZw
 > To fix a non-working Windows key, first try toggling the "[Win Lock](https://www.google.com/search?q=Win+Lock&ved=2ahUKEwiy46yunuaTAxXIe_UHHc0zJcsQgK4QegYIAQgAEA8)" feature by pressing **Fn + Windows Key** or **Fn + F11/F12**. Other quick fixes include restarting Windows Explorer in Task Manager (Ctrl+Shift+Esc), disabling Game Mode in Settings, or turning off Sticky/Filter keys in Accessibility settings.
 > 
 > Here are the most effective solutions:
@@ -347,9 +347,9 @@ drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 Projects
 > -   **Disable Gaming Mode:** If you have a gaming keyboard, disable "Game Mode," which often disables the Windows key to prevent accidental presses.
 > -   **Toggle Sticky/Filter Keys:** Go to **Settings > Accessibility > Keyboard**. Turn off "Sticky Keys" and "Filter Keys".
 > -   **Run PowerShell Command:** Right-click the Start button, select **Windows PowerShell (Admin)** or **Terminal (Admin)**, and run the following command to re-register Windows apps:
-    ```
-    Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-    ```
+```powershell
+Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+```
 > -   **Update Keyboard Drivers:** Open **Device Manager**, expand **Keyboards**, right-click your keyboard, and select **Update driver**.
 >
 > **If these do not work:**
