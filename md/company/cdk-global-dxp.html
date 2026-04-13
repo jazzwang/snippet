@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDK Global: An Automotive Retail Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-line::after {
+            content: '→';
+            font-size: 2rem;
+            color: #0B63B0;
+            margin: 0 1rem;
+        }
+        .flow-line:last-child::after {
+            content: '';
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+            border-left: 4px solid #3B82F6;
+        }
+        .timeline-item:last-child {
+            border-left: 4px solid transparent;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -11px;
+            top: 0;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: #0B63B0;
+            border: 3px solid #F0F4F8;
+        }
+        .nav-link.active {
+            color: #0B63B0;
+            border-bottom: 3px solid #0B63B0;
+        }
+        .history-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .history-timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #3B82F6;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        .history-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .history-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .history-item.left {
+            left: 0;
+            text-align: right;
+        }
+        .history-item.right {
+            left: 50%;
+            text-align: left;
+        }
+        .history-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: #fff;
+            border: 4px solid #3B82F6;
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .history-item.right::after {
+            left: -10px;
+            right: auto;
+        }
+        .history-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .history-year {
+            font-weight: bold;
+            color: #3B82F6;
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+        .history-title {
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .history-desc {
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        @media screen and (max-width: 768px) {
+            .history-timeline::after {
+                left: 31px;
+            }
+            .history-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                text-align: left;
+            }
+            .history-item::after {
+                left: 21px;
+                right: auto;
+            }
+            .history-item.right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+    <header class="bg-white/90 backdrop-blur-sm shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center py-4">
+                 <div class="text-center md:text-left mb-4 md:mb-0">
+                    <h1 class="text-3xl font-bold text-[#0B63B0]">CDK Global Ecosystem</h1>
+                 </div>
+                 <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="#intro" class="nav-link font-semibold text-slate-600 hover:text-[#0B63B0] pb-2 transition-all">Intro</a></li>
+                        <li><a href="#history" class="nav-link font-semibold text-slate-600 hover:text-[#0B63B0] pb-2 transition-all">History</a></li>
+                        <li><a href="#audience" class="nav-link font-semibold text-slate-600 hover:text-[#0B63B0] pb-2 transition-all">Audience</a></li>
+                        <li><a href="#products" class="nav-link font-semibold text-slate-600 hover:text-[#0B63B0] pb-2 transition-all">Products</a></li>
+                        <li><a href="#journey" class="nav-link font-semibold text-slate-600 hover:text-[#0B63B0] pb-2 transition-all">Journey</a></li>
+                        <li><a href="#fortellis" class="nav-link font-semibold text-slate-600 hover:text-[#0B63B0] pb-2 transition-all">Developers</a></li>
+                    </ul>
+                 </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section id="intro" class="text-center pt-8 mb-16">
+            <h2 class="text-4xl font-extrabold text-[#1E293B] mb-4">Unlocking Automotive Retail</h2>
+            <p class="max-w-3xl mx-auto text-slate-600 text-lg">
+                CDK Global is a leading provider of integrated technology solutions for the automotive retail industry. They create the software and systems that power dealerships, connecting every part of the business from the showroom floor to the service bay, and linking them to manufacturers, partners, and customers.
+            </p>
+            <div class="mt-8 bg-white rounded-lg shadow-lg p-8 inline-block">
+                 <p class="text-6xl font-extrabold text-[#0B63B0]">15,000+</p>
+                 <p class="text-xl text-slate-700 font-medium mt-2">Retail Locations Served in North America</p>
+            </div>
+        </section>
+
+        <section id="history" class="pt-20 mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1E293B] mb-4">Company Evolution</h2>
+            <p class="max-w-3xl mx-auto text-slate-600 text-lg text-center mb-12">
+                From ADP's dealer services division to a global automotive retail technology leader, CDK Global has transformed over five decades of innovation and adaptation.
+            </p>
+            <div class="history-timeline" id="historyTimeline">
+            </div>
+        </section>
+        
+        <section id="audience" class="pt-20 mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1E293B] mb-4">The Connected Audiences</h2>
+            <p class="max-w-3xl mx-auto text-slate-600 text-lg text-center mb-12">
+                CDK's platform serves as the central hub for the entire automotive commerce lifecycle, connecting four key groups. While dealerships are the primary customer, the ecosystem's value extends to every stakeholder.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+                <div class="text-center p-6 bg-white rounded-lg shadow-md border-t-4 border-[#60A5FA]">
+                    <span class="text-4xl">🚗</span>
+                    <h3 class="text-xl font-semibold text-[#0B63B0]">Vehicle Buyers</h3>
+                    <p class="text-slate-600">The end consumer</p>
+                </div>
+                <div class="hidden md:block text-3xl font-bold text-[#3B82F6]">&harr;</div>
+                <div class="text-center p-8 bg-white rounded-lg shadow-xl border-t-4 border-[#0B63B0] scale-110">
+                    <span class="text-4xl">🏢</span>
+                    <h3 class="text-2xl font-bold text-[#0B63B0]">Dealerships</h3>
+                    <p class="text-slate-600 font-semibold">The Primary Customer</p>
+                </div>
+                <div class="hidden md:block text-3xl font-bold text-[#3B82F6]">&harr;</div>
+                <div class="flex flex-col md:flex-col space-y-8">
+                    <div class="text-center p-6 bg-white rounded-lg shadow-md border-t-4 border-[#60A5FA]">
+                        <span class="text-4xl">🏭</span>
+                        <h3 class="text-xl font-semibold text-[#0B63B0]">OEMs</h3>
+                        <p class="text-slate-600">Vehicle Manufacturers</p>
+                    </div>
+                     <div class="text-center p-6 bg-white rounded-lg shadow-md border-t-4 border-[#60A5FA]">
+                        <span class="text-4xl">💻</span>
+                        <h3 class="text-xl font-semibold text-[#0B63B0]">ISVs</h3>
+                        <p class="text-slate-600">Software Vendors</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="pt-20 mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1E293B] mb-4">Powering Every Dealership Role</h2>
+            <p class="max-w-3xl mx-auto text-slate-600 text-lg text-center mb-12">CDK's product suites are designed to support virtually every role within a dealership. The Dealer Management System (DMS) serves as the core, with specialized solutions branching out to cover all aspects of the business.</p>
+             
+             <div class="bg-white rounded-lg shadow-md p-6 mb-12">
+                <h3 class="text-xl font-semibold text-center text-[#0B63B0] mb-4">Breadth of User Impact by Product Suite</h3>
+                <div class="chart-container">
+                    <canvas id="userRolesChart"></canvas>
+                </div>
+                <p class="text-center text-slate-500 mt-4 text-sm">This chart compares the number of distinct dealership roles directly served by each major CDK product suite, illustrating the comprehensive nature of the DMS and Fixed Operations platforms.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#0B63B0]">Dealer Management System</h3>
+                    <p class="text-slate-600 mt-2">The operational backbone, managing inventory, deals, accounting, and parts.</p>
+                    <p class="text-sm font-semibold mt-4 text-slate-700">Users: GM, Sales, F&I, Service, Parts, Accountants</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#0B63B0]">CRM</h3>
+                    <p class="text-slate-600 mt-2">Manages customer leads, communication, and sales pipelines to drive engagement.</p>
+                    <p class="text-sm font-semibold mt-4 text-slate-700">Users: Sales Team, BDC Agents, Sales Managers</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#0B63B0]">Digital Retailing</h3>
+                    <p class="text-slate-600 mt-2">Online tools allowing customers to start the car buying process from anywhere.</p>
+                    <p class="text-sm font-semibold mt-4 text-slate-700">Users: Vehicle Buyers, Dealership Internet Sales Team</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#0B63B0]">Fixed Operations</h3>
+                    <p class="text-slate-600 mt-2">Solutions for the service department, including scheduling, repair orders, and parts management.</p>
+                    <p class="text-sm font-semibold mt-4 text-slate-700">Users: Service Advisors, Technicians, Parts Dept, Service Manager</p>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#0B63B0]">IT & HR Solutions</h3>
+                    <p class="text-slate-600 mt-2">Manages network security, cloud hosting, payroll, and human resources tasks.</p>
+                    <p class="text-sm font-semibold mt-4 text-slate-700">Users: IT Managers, HR Staff, Payroll Clerks, GMs</p>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#0B63B0]">OEM Solutions</h3>
+                    <p class="text-slate-600 mt-2">Specialized tools for manufacturers to manage dealer networks and data exchange.</p>
+                    <p class="text-sm font-semibold mt-4 text-slate-700">Users: OEM Corporate Staff, Dealer Network Managers</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="pt-20 mb-16">
+             <h2 class="text-3xl font-bold text-center text-[#1E293B] mb-4">Connecting the Vehicle Owner Journey</h2>
+            <p class="max-w-3xl mx-auto text-slate-600 text-lg text-center mb-12">From initial research to long-term ownership, CDK products facilitate a seamless experience for the vehicle buyer by empowering the dealership at every key touchpoint.</p>
+            <div class="bg-white rounded-lg shadow-md p-8">
+                 <div class="max-w-2xl mx-auto">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-xl font-bold text-[#0B63B0]">1. Shopping & Research</h3>
+                        <p class="text-slate-600">The journey begins online. A potential buyer researches vehicles, compares options, and looks for local inventory.</p>
+                        <p class="mt-2 font-semibold text-[#3B82F6]">CDK Connection: Digital Retailing</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-xl font-bold text-[#0B63B0]">2. Lead & Engagement</h3>
+                        <p class="text-slate-600">The buyer submits a lead or inquiry. The dealership's sales team receives the information and begins communication.</p>
+                        <p class="mt-2 font-semibold text-[#3B82F6]">CDK Connection: CRM</p>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-xl font-bold text-[#0B63B0]">3. The Deal</h3>
+                        <p class="text-slate-600">At the dealership, the sales and F&I teams structure the purchase, including financing, trade-ins, and paperwork.</p>
+                        <p class="mt-2 font-semibold text-[#3B82F6]">CDK Connection: Dealer Management System</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-xl font-bold text-[#0B63B0]">4. Ownership & Service</h3>
+                        <p class="text-slate-600">The customer owns the vehicle and needs routine maintenance or repairs, scheduling service with the dealership.</p>
+                        <p class="mt-2 font-semibold text-[#3B82F6]">CDK Connection: Fixed Operations</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+        
+        <section id="fortellis" class="pt-20 mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1E293B] mb-4">The Developer Ecosystem: Fortellis</h2>
+             <p class="max-w-3xl mx-auto text-slate-600 text-lg text-center mb-12">CDK extends its platform to third-party developers through Fortellis, an automotive commerce exchange that allows ISVs to build innovative applications and integrations for dealerships.</p>
+             <div class="bg-white rounded-lg shadow-md p-8">
+                <div class="flex flex-col md:flex-row items-center justify-center text-center">
+                    <div class="p-4">
+                        <span class="text-5xl">💡</span>
+                        <h3 class="text-xl font-semibold mt-2">ISV / Developer</h3>
+                        <p>Builds a new application</p>
+                    </div>
+                    <div class="flow-line"></div>
+                    <div class="p-4">
+                        <span class="text-5xl">🔌</span>
+                        <h3 class="text-xl font-semibold mt-2">Fortellis Platform</h3>
+                        <p>Connects via secure API</p>
+                    </div>
+                    <div class="flow-line"></div>
+                    <div class="p-4">
+                        <span class="text-5xl">🏢</span>
+                        <h3 class="text-xl font-semibold mt-2">CDK Dealership</h3>
+                        <p>Accesses new capabilities</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-white mt-16 py-6 border-t">
+        <div class="container mx-auto px-6 text-center text-slate-500">
+            <p>&copy; 2025 CDK Global Infographic. All data is for illustrative purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapLabel = (label, maxLength = 16) => {
+                if (typeof label !== 'string' || label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                if (currentLine) {
+                    lines.push(currentLine.trim());
+                }
+                return lines;
+            };
+            
+            const userRolesCtx = document.getElementById('userRolesChart').getContext('2d');
+            const userRolesData = {
+                labels: [
+                    'Dealer Management System',
+                    'Fixed Operations',
+                    'IT & HR Solutions',
+                    'CRM',
+                    'Digital Retailing',
+                ].map(label => wrapLabel(label)),
+                datasets: [{
+                    label: 'Number of User Roles',
+                    data: [6, 4, 4, 3, 2],
+                    backgroundColor: ['#0B63B0', '#3B82F6', '#60A5FA', '#93C5FD', '#BFDBFE'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2,
+                    borderRadius: 4
+                }]
+            };
+
+            new Chart(userRolesCtx, {
+                type: 'bar',
+                data: userRolesData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                display: true,
+                                color: '#E2E8F0'
+                            },
+                             ticks: {
+                                color: '#475569',
+                                font: {
+                                    weight: '500'
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#1E293B',
+                                font: {
+                                    size: 14,
+                                    weight: '600'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const activateNavLink = (id) => {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${id}`){
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activateNavLink(entry.target.id);
+                    }
+                });
+            }, { rootMargin: '-30% 0px -70% 0px' });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            const historyData = [
+                {
+                    year: "1972",
+                    title: "Company Origin",
+                    desc: "Founded in 1972 (or referring to the origin of ADP's Dealer Services division). Initially focused on providing computerized accounting and inventory systems for automobile dealerships.",
+                    side: "left"
+                },
+                {
+                    year: "1973",
+                    title: "ADP Dealer Services Division Established",
+                    desc: "ADP acquired NICS and CSI, officially establishing the 'Dealer Services division' to provide management systems (DMS) for automobile dealerships.",
+                    side: "right"
+                },
+                {
+                    year: "2005 - 2006",
+                    title: "Key Acquisitions and Naming Inspiration",
+                    desc: "ADP acquired Kerridge Computer Company (UK) and Cobalt (digital marketing). The company name CDK was later formed from the first letters of Cobalt (C), Dealer Services (D), and Kerridge (K).",
+                    side: "left"
+                },
+                {
+                    year: "2014",
+                    title: "Officially Spun Off as Independent",
+                    desc: "On October 1, 2014, ADP spun off the Dealer Services division as an independent publicly traded company and officially renamed it CDK Global, Inc., listed on NASDAQ (ticker: CDK).",
+                    side: "right"
+                },
+                {
+                    year: "2015 - 2018",
+                    title: "Business Expansion and Transformation",
+                    desc: "Launched a major transformation plan focused on improving operational efficiency, expanding North American market share, and strengthening digital retail capabilities through multiple small software company acquisitions.",
+                    side: "left"
+                },
+                {
+                    year: "2021",
+                    title: "International Business Sale",
+                    desc: "CDK Global sold its international business (EMEA and Asia) to Francisco Partners for $1.45 billion, which was subsequently rebranded as Keyloop.",
+                    side: "right"
+                },
+                {
+                    year: "2022",
+                    title: "Private Equity Acquisition",
+                    desc: "Brookfield Business Partners completed the acquisition of CDK Global for approximately $8.3 billion, taking the company private and delisting from NASDAQ.",
+                    side: "left"
+                },
+                {
+                    year: "2024",
+                    title: "Major Ransomware Attack",
+                    desc: "In June, CDK Global experienced a massive ransomware attack that paralyzed DMS systems for over 15,000 automotive dealerships across the United States for several weeks, significantly impacting the automotive retail industry.",
+                    side: "right"
+                },
+                {
+                    year: "2025",
+                    title: "Product Innovation and Rebirth",
+                    desc: "Launched 'CDK SimplePay' cloud-based payment solution and signed comprehensive digital transformation contracts with large dealership groups such as WE Auto Group.",
+                    side: "left"
+                }
+            ];
+
+            const historyContainer = document.getElementById('historyTimeline');
+            
+            historyData.forEach((item) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `history-item ${item.side}`;
+                
+                itemDiv.innerHTML = `
+                    <div class="history-content">
+                        <div class="history-year">${item.year}</div>
+                        <div class="history-title text-xl">${item.title}</div>
+                        <p class="history-desc">${item.desc}</p>
+                    </div>
+                `;
+                
+                historyContainer.appendChild(itemDiv);
+            });
+
+            const historyItems = document.querySelectorAll('.history-item');
+            
+            const handleHistoryScroll = () => {
+                historyItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.85) {
+                        item.classList.add('visible');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', handleHistoryScroll);
+            handleHistoryScroll();
+        });
+    </script>
+</body>
+</html>
