@@ -335,6 +335,10 @@ drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 Projects
     - https://www.asus.com/tw/support/faq/1038312/
   - Use Game Mode while gaming on your Windows device
     - https://support.xbox.com/en-US/help/games-apps/game-setup-and-play/use-game-mode-gaming-on-pc
+  - 我的windows 和windows 快捷鍵用不了
+    - https://learn.microsoft.com/zh-tw/answers/questions/2282498/windows-windows
+  - 如何修復 Windows 鍵在 Windows 10/11 上不起作用的問題
+    - https://tw.easeus.com/computer-instruction/windows-key-not-working.html
 - 原本以為是 `Game Mode` 造成的，但是查了，發現本來就是關著。
 - 後來重開了幾次，原本都還是沒有作用，結果按了 `Fn + Windows Key` 也就是所謂的 WinLock 鍵
 - https://share.google/aimode/G8rxgWMxXbaF7LSZw
