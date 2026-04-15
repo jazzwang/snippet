@@ -338,3 +338,7 @@ OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE=delta
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   (")__(")
   ? for shortcuts                                                                                                                                   Soup
 ```
+
+- some reference regarding those environment variables:
+  - COREPACK_ENABLE_AUTO_PIN should default to 0 #485
+    - https://github.com/nodejs/corepack/issues/485
