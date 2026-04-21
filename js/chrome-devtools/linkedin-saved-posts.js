@@ -11,11 +11,11 @@ for ( let i = 1; i < 200; i++ ) {
     console.log(`Iteration: ${i}, Remaining: ${199 - i}`);
 }
 
-count = $$("div.mh4 a").length
+count = $$('div[data-chameleon-result-urn]').length
 
 var script = ""
 for (let i=0; i < count; i++) {
-    script += $$("div.mh4 a")[i].href.split('?')[0] + "\n"
+    script += "https://www.linkedin.com/feed/update/" + $$('div[data-chameleon-result-urn]')[i].getAttribute('data-chameleon-result-urn') + "\n"
 }
 
 var a = document.createElement('a');
