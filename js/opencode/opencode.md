@@ -259,3 +259,9 @@ To ensure a complete removal, you may also need to:
 /tmp/devpost$ ls
 docs  process-notes.md
 ```
+
+## 2026-04-21
+
+- https://opencodeguide.com/
+  - Master your local coding agent.
+  > OpenCode is the offline-first, plugin-driven alternative to cloud coding assistants. Learn how to run it with Ollama, connect via Model Context Protocol (MCP), and integrate with Neovim.
