@@ -50,6 +50,7 @@ npx create-video@latest
 
 - 參考：
   - https://x.com/itsolelehmann/status/2014740993208188959
+  - https://medium.com/@creativeaininja/making-videos-with-code-the-complete-guide-to-remotion-and-claude-code-82892e21d022
 - 實驗：
 
 ```bash
@@ -206,28 +207,34 @@ Built in 6290ms
   - [hello-world.md](hello-world.md)
 - 探索：
   - 除了 `Blank`, `Hello World` 之外，還有 `Prompt to Video` 的範本可以用。
-```bash
-~/git/snippet/js/remotion$ npx create-video@latest -h
-Welcome to Remotion!
-? Choose a template: » - Use arrow-keys. Return to submit.
-  ↑ Next.js (Vercel Sandbox) Render videos on-demand using Vercel Sandbox
-    Next.js (No Tailwind) SaaS template for video generation apps
-    Next.js (Pages dir) SaaS template for video generation apps
-    Recorder A video production tool built entirely in JavaScript
-    Prompt to Motion Graphics SaaS Starter Kit SaaS template for AI-powered animation generation
-    Hello World (JavaScript) The default starter template in plain JS
-    Render Server An Express.js server for rendering videos with Remotion
-    Electron Render Remotion videos from a desktop app
-    React Router SaaS template for video generation apps
-    React Three Fiber Remotion + React Three Fiber Starter Template
-    Still images Dynamic PNG/JPEG template with built-in server
-    Audiogram Text and waveform visualization for podcasts
-    Music Visualization Text and waveform visualization for podcasts
->   Prompt to Video Create a story with images and voiceover from a prompt
-    Skia React Native Skia starter
-    Overlay Overlays for video editing software
-    Code Hike Beautiful code animations
-    Stargazer Celebrate your repo stars with a video
-    TikTok Generate animated word-by-word captions
-    Editor Starter (Paid) A boilerplate for starting a video editor
+  ```bash
+  ~/git/snippet/js/remotion$ npx create-video@latest -h
+  Welcome to Remotion!
+  ? Choose a template: » - Use arrow-keys. Return to submit.
+    ↑ Next.js (Vercel Sandbox) Render videos on-demand using Vercel Sandbox
+      Next.js (No Tailwind) SaaS template for video generation apps
+      Next.js (Pages dir) SaaS template for video generation apps
+      Recorder A video production tool built entirely in JavaScript
+      Prompt to Motion Graphics SaaS Starter Kit SaaS template for AI-powered animation generation
+      Hello World (JavaScript) The default starter template in plain JS
+      Render Server An Express.js server for rendering videos with Remotion
+      Electron Render Remotion videos from a desktop app
+      React Router SaaS template for video generation apps
+      React Three Fiber Remotion + React Three Fiber Starter Template
+      Still images Dynamic PNG/JPEG template with built-in server
+      Audiogram Text and waveform visualization for podcasts
+      Music Visualization Text and waveform visualization for podcasts
+  >   Prompt to Video Create a story with images and voiceover from a prompt
+      Skia React Native Skia starter
+      Overlay Overlays for video editing software
+      Code Hike Beautiful code animations
+      Stargazer Celebrate your repo stars with a video
+      TikTok Generate animated word-by-word captions
+      Editor Starter (Paid) A boilerplate for starting a video editor
   ```
+
+## 2026-04-22
+
+- \#TODO: 待測試 Initializes a Remotion AI workspace with OpenCode
+  - https://github.com/the-langston-co/remotion-workspace-setup
+
