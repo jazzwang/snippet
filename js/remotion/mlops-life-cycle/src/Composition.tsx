@@ -8,7 +8,7 @@ const TitleScreen: React.FC = () => {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  
+
   const scale = spring({
     fps,
     frame,
@@ -32,7 +32,7 @@ const StageScene: React.FC<{ title: string; subtitle: string; color: string }> =
   const titleY = interpolate(frame, [0, 15], [50, 0], { extrapolateRight: "clamp" });
 
   const subtitleOpacity = interpolate(frame, [15, 30], [0, 1], { extrapolateRight: "clamp" });
-  
+
   const bgWidth = spring({
     frame,
     fps,
@@ -52,18 +52,18 @@ const StageScene: React.FC<{ title: string; subtitle: string; color: string }> =
         backgroundColor: color,
         opacity: 0.1,
       }} />
-      <h2 style={{ 
-        fontSize: 70, 
-        margin: 0, 
-        opacity: titleOpacity, 
+      <h2 style={{
+        fontSize: 20,
+        margin: 0,
+        opacity: titleOpacity,
         transform: `translateY(${titleY}px)`,
-        color: color 
+        color: color
       }}>
         {title}
       </h2>
-      <p style={{ 
-        fontSize: 40, 
-        marginTop: 20, 
+      <p style={{
+        fontSize: 16,
+        marginTop: 20,
         lineHeight: 1.5,
         opacity: subtitleOpacity,
         maxWidth: 1000
@@ -77,40 +77,40 @@ const StageScene: React.FC<{ title: string; subtitle: string; color: string }> =
 export const MyComposition = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#0b0f19" }}>
-      <Sequence from={0} durationInFrames={60}>
+      <Sequence from={0} durationInFrames={50}>
         <TitleScreen />
       </Sequence>
-      <Sequence from={60} durationInFrames={90}>
-        <StageScene 
-          title="1. Data Engineering" 
+      <Sequence from={50} durationInFrames={50}>
+        <StageScene
+          title="1. Data Engineering"
           subtitle="Extract, Transform, Load (ETL). Validating quality and engineering features for the ML model."
           color="#3b82f6"
         />
       </Sequence>
-      <Sequence from={150} durationInFrames={90}>
-        <StageScene 
-          title="2. Model Engineering" 
+      <Sequence from={100} durationInFrames={50}>
+        <StageScene
+          title="2. Model Engineering"
           subtitle="Training algorithms, tuning hyperparameters, and tracking experiments with tools like MLflow."
           color="#8b5cf6"
         />
       </Sequence>
-      <Sequence from={240} durationInFrames={90}>
-        <StageScene 
-          title="3. CI/CD" 
+      <Sequence from={150} durationInFrames={50}>
+        <StageScene
+          title="3. CI/CD"
           subtitle="Automated testing, version control in a Model Registry, and containerizing via Docker."
           color="#10b981"
         />
       </Sequence>
-      <Sequence from={330} durationInFrames={90}>
-        <StageScene 
-          title="4. Model Deployment" 
+      <Sequence from={200} durationInFrames={50}>
+        <StageScene
+          title="4. Model Deployment"
           subtitle="Taking models out of the lab into production for Batch, Real-time API, or Edge inference."
           color="#f59e0b"
         />
       </Sequence>
-      <Sequence from={420} durationInFrames={90}>
-        <StageScene 
-          title="5. Continuous Monitoring" 
+      <Sequence from={250} durationInFrames={50}>
+        <StageScene
+          title="5. Continuous Monitoring"
           subtitle="Watching for Data & Concept drift to automatically trigger Continuous Training (CT)."
           color="#ef4444"
         />

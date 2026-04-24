@@ -6,12 +6,12 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
-        id="MyComp"
+        id="MLOps"
         component={MyComposition}
-        durationInFrames={510}
-        fps={30}
-        width={1280}
-        height={720}
+        durationInFrames={300}
+        fps={10}
+        width={640}
+        height={256}
       />
     </>
   );
