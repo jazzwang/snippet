@@ -1,0 +1,1993 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  } ],
+  "wpWinPositions": [ {
+  
+  } ],
+  "events": [ {
+    "tStartMs": 10880,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "Wow, fantastic to see everyone. We're really, \nreally thrilled to have you all out here tonight.  "
+    } ]
+  }, {
+    "tStartMs": 14960,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "Uh, it's a big night for us leading up to a \nbig few days at Google Next. Infrastructure  "
+    } ]
+  }, {
+    "tStartMs": 19920,
+    "dDurationMs": 3360,
+    "segs": [ {
+      "utf8": "is foundational to everything that we do. We're \ngoing to be talking a lot about AI. We're going  "
+    } ]
+  }, {
+    "tStartMs": 23280,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "to be talking a lot about agents. In the end, \nit is the infrastructure that powers it all.  "
+    } ]
+  }, {
+    "tStartMs": 27680,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "And as a reminder, you all are getting to \nsee this before literally anyone else. So,  "
+    } ]
+  }, {
+    "tStartMs": 32480,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "please do keep it under wraps until \ntomorrow. Okay. So, I'd like to actually  "
+    } ]
+  }, {
+    "tStartMs": 36960,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "start with Google's mission. Uh it's actually \nalways I've been a Google uh 16 years now,  "
+    } ]
+  }, {
+    "tStartMs": 42080,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "just about in a month. And this the mission \nhas sincerely always been inspiring to me,  "
+    } ]
+  }, {
+    "tStartMs": 46720,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "right? Organize the world's information and \nmake it universally accessible and useful. And  "
+    } ]
+  }, {
+    "tStartMs": 52080,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "I think it's a timeless mission. and actually \nrealizing this mission required building an  "
+    } ]
+  }, {
+    "tStartMs": 58480,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "infrastructure that hadn't been invented before. \nRight? So looking back 25 years ago, if you and  "
+    } ]
+  }, {
+    "tStartMs": 63840,
+    "dDurationMs": 3360,
+    "segs": [ {
+      "utf8": "we won't go through the whole history lesson, \nbut the way that people built infrastructure  "
+    } ]
+  }, {
+    "tStartMs": 67200,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "25 years ago didn't support this mission, didn't \nsupport web search. And credit to the founders,  "
+    } ]
+  }, {
+    "tStartMs": 73440,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "the first employees of the company, Larry, Sergey \nand others, they realized that it took significant  "
+    } ]
+  }, {
+    "tStartMs": 79360,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "investments in infrastructure and the fundamentals \nof infrastructure to solve this problem to solve  "
+    } ]
+  }, {
+    "tStartMs": 84560,
+    "dDurationMs": 10640,
+    "segs": [ {
+      "utf8": "web search. Today, 25 plus years later, solving \nthis mission requires solving intelligence."
+    } ]
+  }, {
+    "tStartMs": 95200,
+    "dDurationMs": 3840,
+    "segs": [ {
+      "utf8": "So, the challenge is bigger than ever. \nThe opportunity is bigger than ever.  "
+    } ]
+  }, {
+    "tStartMs": 99040,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "And just like 25 years ago, the infrastructure \nrequired to solve for intelligence doesn't yet  "
+    } ]
+  }, {
+    "tStartMs": 105440,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "exist. We're in the process of defining \nit. I think we've made some really,  "
+    } ]
+  }, {
+    "tStartMs": 109520,
+    "dDurationMs": 3760,
+    "segs": [ {
+      "utf8": "really serious advances. Today, you're \ngoing to be learning about, I think,  "
+    } ]
+  }, {
+    "tStartMs": 113280,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "one really big step we're going to be taking \ntoward that definition of the infrastructure,  "
+    } ]
+  }, {
+    "tStartMs": 118560,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "the future of infrastructure that's going \nto be powering solving intelligence."
+    } ]
+  }, {
+    "tStartMs": 126160,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "This agentic era is placing unprecedented \ndemand on infrastructure. This is not an  "
+    } ]
+  }, {
+    "tStartMs": 131520,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "AI generated image. This is Clarksville, \nTennessee. This is our data center there.  "
+    } ]
+  }, {
+    "tStartMs": 137280,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "This is what it takes to underpin \nour services today. Search, ads,  "
+    } ]
+  }, {
+    "tStartMs": 144080,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "YouTube, a dozen services that have more than \na half billion daily active users run on this  "
+    } ]
+  }, {
+    "tStartMs": 150480,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "infrastructure. And actually AI is embedded \ninto every single one today. Empowering all  "
+    } ]
+  }, {
+    "tStartMs": 155840,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "that is of course our in-house infrastructure. \nWe're going to be talking about that more today."
+    } ]
+  }, {
+    "tStartMs": 163200,
+    "dDurationMs": 2960,
+    "segs": [ {
+      "utf8": "This AI stack we've developed over the last  "
+    } ]
+  }, {
+    "tStartMs": 166160,
+    "dDurationMs": 10480,
+    "segs": [ {
+      "utf8": "few years customuilt to solve the \nbiggest problems in generative AI."
+    } ]
+  }, {
+    "tStartMs": 176640,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "At Google, we actually have a unique opportunity \nto really solve the problem end to end vertically  "
+    } ]
+  }, {
+    "tStartMs": 183440,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "integrated. We don't just insert at one layer \nof the stack. We get to go after the entire  "
+    } ]
+  }, {
+    "tStartMs": 188560,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "problem. Starts with energy. One of the biggest \nconstraints. We take this very seriously. The  "
+    } ]
+  }, {
+    "tStartMs": 196000,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "responsibility, the challenges very very \nseriously. Right? scaling out to solve the  "
+    } ]
+  }, {
+    "tStartMs": 200800,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "needs of the planet actually for 25 years or more \nbut even more so today massive challenge massive  "
+    } ]
+  }, {
+    "tStartMs": 207600,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "opportunity empowering it right and we're doing \nfundamental work in scaling this out and scaling  "
+    } ]
+  }, {
+    "tStartMs": 213360,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "it out in a responsible way from there data \ncenters the lands the enclosures the buildings you  "
+    } ]
+  }, {
+    "tStartMs": 219440,
+    "dDurationMs": 8000,
+    "segs": [ {
+      "utf8": "saw the cooling the mechanicals right that house \nall of our infrastructure inside these buildings  "
+    } ]
+  }, {
+    "tStartMs": 227440,
+    "dDurationMs": 9520,
+    "segs": [ {
+      "utf8": "the racks the hardware, the servers, the storage, \nthe networking, the TPUs, the GPUs that run next  "
+    } ]
+  }, {
+    "tStartMs": 236960,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "layer up are software, right? And this is \nwhat actually makes it all come together,  "
+    } ]
+  }, {
+    "tStartMs": 242720,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "right? And without the software, the hardware \nactually isn't going to do very much for you. From  "
+    } ]
+  }, {
+    "tStartMs": 248880,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "there, and what's really changed over the last \nseveral years are foundational models. Gemini 3,  "
+    } ]
+  }, {
+    "tStartMs": 254880,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "state-of-the-art, all running on our in-house \ndesigned and built infrastructure, right? And then  "
+    } ]
+  }, {
+    "tStartMs": 261120,
+    "dDurationMs": 8240,
+    "segs": [ {
+      "utf8": "these models in turn power all of our services, \nsearch, ads, YouTube, photos, Gmail, and more.  "
+    } ]
+  }, {
+    "tStartMs": 269360,
+    "dDurationMs": 9920,
+    "segs": [ {
+      "utf8": "But they also power cloud, right? Thousands of \nenterprises rely on Gemini for their day-to-day."
+    } ]
+  }, {
+    "tStartMs": 281840,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "So zooming in, we call these bottom four layers \nthe infrastructure stack. And if you actually  "
+    } ]
+  }, {
+    "tStartMs": 288480,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "look across the six if you were to take any one \nand try to design it in isolation, what you would  "
+    } ]
+  }, {
+    "tStartMs": 294960,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "do is you'd probably have to find out uh wind up \nwith a least common denominator. What we can do  "
+    } ]
+  }, {
+    "tStartMs": 301200,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "is we can make sure that nothing is lost in the \nseams. As you move from one layer of the stack,  "
+    } ]
+  }, {
+    "tStartMs": 305760,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "we ensure that everything is integrated end \nto end for the highest levels of efficiency,  "
+    } ]
+  }, {
+    "tStartMs": 310640,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "the highest levels of reliability, \nand the highest layers of security."
+    } ]
+  }, {
+    "tStartMs": 317680,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "So now let's focus on the hardware. That's what \nwe're going to focus on a little bit today.  "
+    } ]
+  }, {
+    "tStartMs": 322000,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "We've been at the hardware that powers this AI \ninfrastructure for more than a decade. We kicked  "
+    } ]
+  }, {
+    "tStartMs": 328400,
+    "dDurationMs": 8000,
+    "segs": [ {
+      "utf8": "off our own custom silicon for supporting AI, \nour tensor processing units or TPUs in 2013. We  "
+    } ]
+  }, {
+    "tStartMs": 336400,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "realized that meeting the needs of the moments, \nmeeting the needs of the future in terms of the  "
+    } ]
+  }, {
+    "tStartMs": 342800,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "services that would come would require a hardware \narchitecture that didn't exist. And that's why we  "
+    } ]
+  }, {
+    "tStartMs": 349920,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "built invented the tensor processing unit. And \nthen generation after generation, TPUv1 in 2015,  "
+    } ]
+  }, {
+    "tStartMs": 356640,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "TPUv2 in 2018, we innovated. We added new \nfunctionality that actually pre-ages what  "
+    } ]
+  }, {
+    "tStartMs": 364080,
+    "dDurationMs": 4720,
+    "segs": [ {
+      "utf8": "accelerated ML computing looks like today across \nindustry. Things like liquid cooling, things like  "
+    } ]
+  }, {
+    "tStartMs": 368800,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "custom numeric, things like a custom network that \nconnects hundreds, thousands of chips together in  "
+    } ]
+  }, {
+    "tStartMs": 374240,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "one supercomput. The rate of innovation increased. \nWe went from let's say three years between V1 and  "
+    } ]
+  }, {
+    "tStartMs": 380880,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "V2 to a couple of years to then an annual cadence. \nLast year we introduced Ironwood here at Next,  "
+    } ]
+  }, {
+    "tStartMs": 387760,
+    "dDurationMs": 13920,
+    "segs": [ {
+      "utf8": "the most powerful TPU supercomputer we had to \ndate. Okay, so then that begs the question,"
+    } ]
+  }, {
+    "tStartMs": 401680,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "how do we follow up in 26? Right, Ironwood \nreally actually has changed the world. It's  "
+    } ]
+  }, {
+    "tStartMs": 407680,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "running now. It's at massive scale. It's \nbeing built out across the planet. We're  "
+    } ]
+  }, {
+    "tStartMs": 411760,
+    "dDurationMs": 3760,
+    "segs": [ {
+      "utf8": "running on it at Google. Deep Mind is \nrunning on it. All of our services,  "
+    } ]
+  }, {
+    "tStartMs": 415520,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "but many many many across the world in \nGoogle Cloud are running on Ironwood."
+    } ]
+  }, {
+    "tStartMs": 422960,
+    "dDurationMs": 10080,
+    "segs": [ {
+      "utf8": "So for 2026, I'm very very proud to \nintroduce our eighth generation of TPUs."
+    } ]
+  }, {
+    "tStartMs": 436160,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "Now, we're very literal here at Google. \nAnd what you'll notice here is there's a  "
+    } ]
+  }, {
+    "tStartMs": 440960,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "single S. I think there's a single S. TPUs. \nWe're not introducing our eighth generation  "
+    } ]
+  }, {
+    "tStartMs": 448080,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "TPU. We're introducing our eighth generation TPUs."
+    } ]
+  }, {
+    "tStartMs": 455040,
+    "dDurationMs": 8480,
+    "segs": [ {
+      "utf8": "For the first time, two customuilt TPUs, 8T and \n8i, and really designed from the ground up to  "
+    } ]
+  }, {
+    "tStartMs": 463520,
+    "dDurationMs": 9120,
+    "segs": [ {
+      "utf8": "meet the needs of the moment. TPU8 T for training. \nIt's the powerhouse. It's the largest scale. TPU8  "
+    } ]
+  }, {
+    "tStartMs": 472640,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "really built for inference. It's there for the \nagentic era. It's there for the lowest latency,  "
+    } ]
+  }, {
+    "tStartMs": 477600,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "for really delivering the content as quickly \nas possible to users across the planet."
+    } ]
+  }, {
+    "tStartMs": 485200,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "So, let's look at some of the details here. \nTPU8, roughly the same number of chips per pod,  "
+    } ]
+  }, {
+    "tStartMs": 492320,
+    "dDurationMs": 7760,
+    "segs": [ {
+      "utf8": "but 9,600 of them really interconnected \nwith a custom ICI interconnect."
+    } ]
+  }, {
+    "tStartMs": 500080,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "Three times nearly three times the floating \npoint power per TPU pod relative to just the  "
+    } ]
+  }, {
+    "tStartMs": 505200,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "last generation. Twice the network bandwidth. \nfour in the scale out four times the network  "
+    } ]
+  }, {
+    "tStartMs": 512320,
+    "dDurationMs": 8880,
+    "segs": [ {
+      "utf8": "bandwidth for scale up we look across the TP8i \nthe reasoning engine we've quadrupled or more the  "
+    } ]
+  }, {
+    "tStartMs": 521200,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "size of the pod now 1,152 chips all coordinating \ntogether on the largest scale models running the  "
+    } ]
+  }, {
+    "tStartMs": 527840,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "most powerful agents swarming together in near \nreal time 10 times the floating point exoflops  "
+    } ]
+  }, {
+    "tStartMs": 534800,
+    "dDurationMs": 16000,
+    "segs": [ {
+      "utf8": "for pod right and the HPM capacity seven times \nlarger with the same scale up. Now what tox"
+    } ]
+  }, {
+    "tStartMs": 550800,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "8x 10x all in one year. The rate of progress, \nthe rate of advancement is just stunning.  "
+    } ]
+  }, {
+    "tStartMs": 556640,
+    "dDurationMs": 4720,
+    "segs": [ {
+      "utf8": "What we the way we like to think about it is \nthat each of these years now open up a whole  "
+    } ]
+  }, {
+    "tStartMs": 561360,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "new set of use cases with the capabilities \nof these chips. Now all of our engineers,  "
+    } ]
+  }, {
+    "tStartMs": 566240,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "all of many of your engineers across the \nworld get to think different things that  "
+    } ]
+  }, {
+    "tStartMs": 571440,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "might have previously seemed impossible. \nNow we can go after. We open up a whole  "
+    } ]
+  }, {
+    "tStartMs": 576480,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "new world of capabilities and use cases and \nservices. Whether it's search, ads, YouTube,  "
+    } ]
+  }, {
+    "tStartMs": 583040,
+    "dDurationMs": 8080,
+    "segs": [ {
+      "utf8": "or your favorite service. What can they do with \nthis much more computing power just a year later?"
+    } ]
+  }, {
+    "tStartMs": 593840,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "So at8 the other thing I'll note here \nis that these chips were both custom  "
+    } ]
+  }, {
+    "tStartMs": 600240,
+    "dDurationMs": 3680,
+    "segs": [ {
+      "utf8": "designed from the ground up for training and \ninference separately. These are not simple  "
+    } ]
+  }, {
+    "tStartMs": 603920,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "derivatives of one another. The specs \nthe capabilities the connectivity all  "
+    } ]
+  }, {
+    "tStartMs": 608880,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "different because they're specialized for \nthe individual needs. So if you need the  "
+    } ]
+  }, {
+    "tStartMs": 613040,
+    "dDurationMs": 9840,
+    "segs": [ {
+      "utf8": "powerhouse training, you have AT. If you need \nthe lightning fast inference, you have ADI."
+    } ]
+  }, {
+    "tStartMs": 622880,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "These TPUs are going to continue to power \nGemini. But beyond, right, the models,  "
+    } ]
+  }, {
+    "tStartMs": 628640,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "yes, but increasingly what we see is that \nthrough services like Gemini Enterprise,  "
+    } ]
+  }, {
+    "tStartMs": 633680,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "we're literally changing how enterprises \nwork. healthcare scientific breakthroughs.  "
+    } ]
+  }, {
+    "tStartMs": 639920,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "The rate at which these are accelerating \nis just truly astounding. In other words,  "
+    } ]
+  }, {
+    "tStartMs": 645200,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "we're getting to a place now where 10 years \nof research might take place in a single  "
+    } ]
+  }, {
+    "tStartMs": 650800,
+    "dDurationMs": 9520,
+    "segs": [ {
+      "utf8": "year. And how far we're able to advance is really \ndetermined by our computation power underneath."
+    } ]
+  }, {
+    "tStartMs": 660320,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "Okay. So, it's a real pleasure to have shared \nwith you our eighth generation TPUs. Uh these  "
+    } ]
+  }, {
+    "tStartMs": 665600,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "have been in the making for two years actually \nat this point. They're going to be generally  "
+    } ]
+  }, {
+    "tStartMs": 670080,
+    "dDurationMs": 3920,
+    "segs": [ {
+      "utf8": "available later this year. I also want to \nreally take this opportunity to actually  "
+    } ]
+  }, {
+    "tStartMs": 674000,
+    "dDurationMs": 7520,
+    "segs": [ {
+      "utf8": "thank the literally thousands of people, engineers \nand more across Google who for these couple years  "
+    } ]
+  }, {
+    "tStartMs": 681520,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "have really worked super hard to deliver both \nof these two chips. And I'll note also actually  "
+    } ]
+  }, {
+    "tStartMs": 686800,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "what's particularly gratifying to me is that \nwe realized two years ago that we one chip a  "
+    } ]
+  }, {
+    "tStartMs": 692000,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "year wouldn't be enough. This is our first shot \nat actually going with two super high-powered  "
+    } ]
+  }, {
+    "tStartMs": 697840,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "specialized chips and the team has really \ndelivered. So with that, um, I'm going to ask  "
+    } ]
+  }, {
+    "tStartMs": 703200,
+    "dDurationMs": 8400,
+    "segs": [ {
+      "utf8": "Ben and David to come back on stage and we'll have \na conversation around this. Thank you very much."
+    } ]
+  }, {
+    "tStartMs": 711600,
+    "dDurationMs": 8320,
+    "segs": [ {
+      "utf8": "Hey, welcome back. Good to see you. Thanks a \nlot. So, two chips. Two chips. Two chips. One  "
+    } ]
+  }, {
+    "tStartMs": 719920,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "year. Twice twice the fund. You've been busy. It \nhas been a busy year or a fun year. Uh, we know  "
+    } ]
+  }, {
+    "tStartMs": 726720,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "you like history. So, can we can we walk back to \nearly TPU days? We also like history. Yeah. Um,  "
+    } ]
+  }, {
+    "tStartMs": 734080,
+    "dDurationMs": 8320,
+    "segs": [ {
+      "utf8": "I want to go to 2013 because you started doing \ncustom silicon back then uh the better part of  "
+    } ]
+  }, {
+    "tStartMs": 742400,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "a decade before the great AI arms race that we \nare in right now. Yeah. What is four years before  "
+    } ]
+  }, {
+    "tStartMs": 748080,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "the transformer paper? Yes. What is the origin \nstory of why Google decided to do this? Yeah. So,  "
+    } ]
+  }, {
+    "tStartMs": 754080,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "and actually the amazing thing is in 2013, if \nyou were to transport yourself back to 2013,  "
+    } ]
+  }, {
+    "tStartMs": 758640,
+    "dDurationMs": 8320,
+    "segs": [ {
+      "utf8": "conventional wisdom, all the wise, smart engineers \nwould say custom silicon, bad idea. CPUs,  "
+    } ]
+  }, {
+    "tStartMs": 766960,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "they're getting faster all the time. Just wait for \nthem to get faster. But what we realized is that  "
+    } ]
+  }, {
+    "tStartMs": 771280,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "that the one of the grand challenges that we were \ngoing after at Google was translation, language  "
+    } ]
+  }, {
+    "tStartMs": 776800,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "translation. And this remains a grand challenge. \nWe've gotten a lot better at it actually thanks  "
+    } ]
+  }, {
+    "tStartMs": 780880,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "to TPUs and uh of course all the models on top of \nit. But what we realized is that if you wanted to  "
+    } ]
+  }, {
+    "tStartMs": 786080,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "do things like uh translate from one language \nto another. One thing that you had to do was  "
+    } ]
+  }, {
+    "tStartMs": 790160,
+    "dDurationMs": 4240,
+    "segs": [ {
+      "utf8": "voice recognition, right? You didn't want to just \nnecessarily do the text, you wanted to actually  "
+    } ]
+  }, {
+    "tStartMs": 794400,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "understand what someone was saying, build the \nStar Trek universal translator. Voice recognition  "
+    } ]
+  }, {
+    "tStartMs": 800160,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "is incredibly computationally expensive and it's \nalso really repetitive. There's a lot of matrix  "
+    } ]
+  }, {
+    "tStartMs": 805440,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "multiplication. What we realized is if we try \nto do those matrix multiplies on a CPU general  "
+    } ]
+  }, {
+    "tStartMs": 810880,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "purpose compute, we would actually have to go \nbuild two or three additional complete Googles if  "
+    } ]
+  }, {
+    "tStartMs": 817040,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "we wanted every Google user to interact via voice \nfor 30 seconds a day. Now, we were a big company  "
+    } ]
+  }, {
+    "tStartMs": 822960,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "even in 2013. We had a lot of infrastructure, but \ntripling our infrastructure for this one use case,  "
+    } ]
+  }, {
+    "tStartMs": 827920,
+    "dDurationMs": 5120,
+    "segs": [ {
+      "utf8": "it wasn't affordable. I think Jeff Dean's quote on \nthis was uh we realized we needed another Google  "
+    } ]
+  }, {
+    "tStartMs": 833040,
+    "dDurationMs": 3680,
+    "segs": [ {
+      "utf8": "or maybe it was more we needed two more Google, a \ncouple more Googles. it was going to take a couple  "
+    } ]
+  }, {
+    "tStartMs": 836720,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "more googles and yet what we realized is that \nwe could do it a 100 times more efficiently with  "
+    } ]
+  }, {
+    "tStartMs": 842560,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "custom silicon and there the math stands up like \nyou could wait a long time for the CPUs to get 100  "
+    } ]
+  }, {
+    "tStartMs": 849360,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "times more efficient. Normally you'd say just wait \na few years the CPUs will get there 100x you'd be  "
+    } ]
+  }, {
+    "tStartMs": 854800,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "waiting a long long time especially since we were \nseeing actually that the trend in CPU certainly  "
+    } ]
+  }, {
+    "tStartMs": 860160,
+    "dDurationMs": 4720,
+    "segs": [ {
+      "utf8": "core performance improvements was slowing down \nback then and so it made sense. It was even in  "
+    } ]
+  }, {
+    "tStartMs": 864880,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "2013 I want to say it was a controversial decision \nand in 2013 TPU v1 is very reasonable to call it  "
+    } ]
+  }, {
+    "tStartMs": 872320,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "an ASIC TPU v8 not an ASIC where along that \njourney would you sort of characterize the  "
+    } ]
+  }, {
+    "tStartMs": 879360,
+    "dDurationMs": 8320,
+    "segs": [ {
+      "utf8": "the change you know and yeah it's yes TPUv1 was \nan ASIC and I think that um Google um was not a  "
+    } ]
+  }, {
+    "tStartMs": 887680,
+    "dDurationMs": 3840,
+    "segs": [ {
+      "utf8": "hardware company I don't know if we're a hardware \ncompany now or not uh but we were definitely not  "
+    } ]
+  }, {
+    "tStartMs": 891520,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "a hardware company in 20 201 uh And so it's been \na progression and it's been a a progression in  "
+    } ]
+  }, {
+    "tStartMs": 897440,
+    "dDurationMs": 4720,
+    "segs": [ {
+      "utf8": "expanding our own capabilities where year after \nyear after year we saw okay maybe we need to add  "
+    } ]
+  }, {
+    "tStartMs": 902160,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "this feature maybe we need to consider liquid \ncooling maybe we need to consider um uh custom  "
+    } ]
+  }, {
+    "tStartMs": 907920,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "network interconnect etc. So it really hasn't been \na, you know, here's a transition point from ASIC  "
+    } ]
+  }, {
+    "tStartMs": 913120,
+    "dDurationMs": 4000,
+    "segs": [ {
+      "utf8": "to not ASIC. We've taken on more and more and \nnow that's the point where we're producing two  "
+    } ]
+  }, {
+    "tStartMs": 917120,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "chips a year, more and more capabilities because \nthat's what was demanded. That's what was needed  "
+    } ]
+  }, {
+    "tStartMs": 921680,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "in order to make these products successful. H how \ndid you guys, you know, embark on this journey?  "
+    } ]
+  }, {
+    "tStartMs": 928480,
+    "dDurationMs": 7200,
+    "segs": [ {
+      "utf8": "You obviously was, you know, realizing you needed \nanother Google, but most other tech companies buy  "
+    } ]
+  }, {
+    "tStartMs": 935680,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "this stuff. uh they don't decide oh actually you \nknow we're going to make our own chips we're going  "
+    } ]
+  }, {
+    "tStartMs": 941600,
+    "dDurationMs": 3200,
+    "segs": [ {
+      "utf8": "to make our own data centers we're going to make \nour own racks we're going to make generate our  "
+    } ]
+  }, {
+    "tStartMs": 944800,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "own power you know and this is uh something deeply \nembedded in the Google culture and it's something  "
+    } ]
+  }, {
+    "tStartMs": 950320,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "that uh deeply resonated with me as well when I \njoined and I I think again I I I do want to give  "
+    } ]
+  }, {
+    "tStartMs": 955280,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "Larry and Sergey credit uh there's this healthy \nregard for the impossible and I think that if  "
+    } ]
+  }, {
+    "tStartMs": 961600,
+    "dDurationMs": 4720,
+    "segs": [ {
+      "utf8": "if you think about it I mean the story I like is \nGoogle Maps who would have thought that it would  "
+    } ]
+  }, {
+    "tStartMs": 966320,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "make sense to fly your own airplanes and drive \nyour own cars mapping the planet like to first  "
+    } ]
+  }, {
+    "tStartMs": 973120,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "order you'd think that that doesn't make sense \nand yet it it made sense and so the willing to  "
+    } ]
+  }, {
+    "tStartMs": 977680,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "to actually say the impossible actually might \nmake sense I think that we actually have a um  "
+    } ]
+  }, {
+    "tStartMs": 984080,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "rich tradition of being willing to bet on things \nthat very well might fail now we celebrate TPUs  "
+    } ]
+  }, {
+    "tStartMs": 990640,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "I think we should but there have been a number of \nother things that we've done we won't name those  "
+    } ]
+  }, {
+    "tStartMs": 995040,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "that didn't succeed We know we made about 10 hours \nof you know the history of and that's okay. And so  "
+    } ]
+  }, {
+    "tStartMs": 1002080,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "the the I think the great thing about the culture \nis that there are people who have that um insight  "
+    } ]
+  }, {
+    "tStartMs": 1007920,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "that passion that willingness to go after it. \nWe enable them to do it and it's not that they  "
+    } ]
+  }, {
+    "tStartMs": 1014000,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "get punished or the career gets hurt if they don't \nsucceed. You learn something. And by the way, most  "
+    } ]
+  }, {
+    "tStartMs": 1020320,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "of the time we actually make our existing products \nor some other product better through the failure,  "
+    } ]
+  }, {
+    "tStartMs": 1025920,
+    "dDurationMs": 3680,
+    "segs": [ {
+      "utf8": "right? Because we we learn something through the \nprocess of failing. So I think it really is the  "
+    } ]
+  }, {
+    "tStartMs": 1029600,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "culture of being willing to take a big bet. Uh \nand you know, initial investment was small. I I  "
+    } ]
+  }, {
+    "tStartMs": 1036240,
+    "dDurationMs": 8400,
+    "segs": [ {
+      "utf8": "I probably 30 40 people. This is TPUv1. Uh right. \nAnd maybe again don't quote me on this, but tens  "
+    } ]
+  }, {
+    "tStartMs": 1044640,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "of millions of dollars, low tens of millions of \ndollars. I think it was big and controversial  "
+    } ]
+  }, {
+    "tStartMs": 1049040,
+    "dDurationMs": 3600,
+    "segs": [ {
+      "utf8": "at the time. It was big and controversial at the \ntime, but you know what? The cost of failure was  "
+    } ]
+  }, {
+    "tStartMs": 1052640,
+    "dDurationMs": 9680,
+    "segs": [ {
+      "utf8": "also low and the cost of success apparently pretty \nsignificant. Yeah. Um from the acquired lens,  "
+    } ]
+  }, {
+    "tStartMs": 1062320,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "I think one of the things that is the most \ninteresting about Google in AI is the fact that  "
+    } ]
+  }, {
+    "tStartMs": 1066960,
+    "dDurationMs": 9840,
+    "segs": [ {
+      "utf8": "it is uh a frontier model, a scaled infrastructure \ncloud and a you know leading edge AI chip company  "
+    } ]
+  }, {
+    "tStartMs": 1076800,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "all under one roof. And intuitively it makes \nsense that those things should have advantages  "
+    } ]
+  }, {
+    "tStartMs": 1082000,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "to have them in in one company. I mean no one \nelse has quite that stew that Google has. What  "
+    } ]
+  }, {
+    "tStartMs": 1086800,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "are some uh very concrete examples of how those \nteams kind of work together to take advantage of  "
+    } ]
+  }, {
+    "tStartMs": 1092960,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "that integration? I I think number one I mean \nthese TPUs would not have been possible in the  "
+    } ]
+  }, {
+    "tStartMs": 1098560,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "early days without um deep collaboration with the \nservices for example language translation voice  "
+    } ]
+  }, {
+    "tStartMs": 1104720,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "recognition I mean the first TPU was essentially \nbuilt as a application literally an application  "
+    } ]
+  }, {
+    "tStartMs": 1110320,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "specific single application specific integrated \ncircuit right and so if you're going to build a  "
+    } ]
+  }, {
+    "tStartMs": 1115520,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "piece of hardware for one application there better \nbe deep deep collaboration uh between them uh in  "
+    } ]
+  }, {
+    "tStartMs": 1121360,
+    "dDurationMs": 7040,
+    "segs": [ {
+      "utf8": "the middle uh generations and Still today um these \nCPUs were used for recommener systems for our ads  "
+    } ]
+  }, {
+    "tStartMs": 1128400,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "serving infrastructure. Deep deep collaboration. \nWhat do you need? Where are the bottlenecks? How  "
+    } ]
+  }, {
+    "tStartMs": 1133760,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "could we make the hardware a better fit for your \nservice use case? What software stack do we build  "
+    } ]
+  }, {
+    "tStartMs": 1138800,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "to support you? And of course, most recently, I \nthink it's fair to say that these TPUs wouldn't  "
+    } ]
+  }, {
+    "tStartMs": 1144000,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "exist without the deep collaboration with \nDeep Mind. In other words, being able to  "
+    } ]
+  }, {
+    "tStartMs": 1148800,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "predict the future two and three years out really \nrequires that uh incredible shoulder-to-shoulder  "
+    } ]
+  }, {
+    "tStartMs": 1154800,
+    "dDurationMs": 4000,
+    "segs": [ {
+      "utf8": "partnership with the DeepMind team with the \nresearch team that is going to be putting  "
+    } ]
+  }, {
+    "tStartMs": 1158800,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "these into uh use. What what's an example with \nTPUv8 where you made a proposal to DeepMind and  "
+    } ]
+  }, {
+    "tStartMs": 1165440,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "they said uh actually can can you make it do this \ninstead? Yeah. So, uh one of the things that we're  "
+    } ]
+  }, {
+    "tStartMs": 1171680,
+    "dDurationMs": 3680,
+    "segs": [ {
+      "utf8": "probably most proud of and we didn't talk about \nit much here but it's going to come out. So, I'm  "
+    } ]
+  }, {
+    "tStartMs": 1175360,
+    "dDurationMs": 7760,
+    "segs": [ {
+      "utf8": "going to again give you all a super early preview \nis TPU8 really drives down uh latency. And one of  "
+    } ]
+  }, {
+    "tStartMs": 1183120,
+    "dDurationMs": 3760,
+    "segs": [ {
+      "utf8": "the things that we've had to realize is that the \nway that we were connecting the chips together,  "
+    } ]
+  }, {
+    "tStartMs": 1186880,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "the network topology, it's a little bit low level, \nbut I'll I'll keep it hopefully understandable.  "
+    } ]
+  }, {
+    "tStartMs": 1191200,
+    "dDurationMs": 3840,
+    "segs": [ {
+      "utf8": "The way that our default way of connecting them \ntogether didn't support latency. It supported  "
+    } ]
+  }, {
+    "tStartMs": 1195040,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "throughput. It supported bandwidth. It was really \ngood at getting large amounts of data through.  "
+    } ]
+  }, {
+    "tStartMs": 1199600,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "But what you really care about in Age of Agents \nis the latency, the minimum time it takes to get  "
+    } ]
+  }, {
+    "tStartMs": 1204400,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "the data through. And so we actually collaborated \ntogether to build a specific network topology that  "
+    } ]
+  }, {
+    "tStartMs": 1209680,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "connects these chips together. A really novel one \nactually. It's called Boardfly that dramatically  "
+    } ]
+  }, {
+    "tStartMs": 1215200,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "reduces the diameter of the network. So the \ndistance between any two chips goes way down.  "
+    } ]
+  }, {
+    "tStartMs": 1221680,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "And this is really the uh sincerely the only kind \nof insight. If you were just building the chips,  "
+    } ]
+  }, {
+    "tStartMs": 1226320,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "we just say, well, just let's make the last \ngeneration faster. Okay. So that's that's a good  "
+    } ]
+  }, {
+    "tStartMs": 1230400,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "thing to do. Last generation faster. But when \nyou actually change the architecture based on  "
+    } ]
+  }, {
+    "tStartMs": 1235200,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "insight of what the service needs, that's that's \nthe game changer because two years ago I I am just  "
+    } ]
+  }, {
+    "tStartMs": 1241600,
+    "dDurationMs": 3520,
+    "segs": [ {
+      "utf8": "spitballing here. I imagine you probably started \ndesign of this somewhere in the neighborhood of  "
+    } ]
+  }, {
+    "tStartMs": 1245120,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "two years ago. Yes. No one was talking about AI \nagents. So it's not like you could design specific  "
+    } ]
+  }, {
+    "tStartMs": 1250080,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "hardware. Yeah. It's hard to remember now, but \nonly two years ago nobody was talking about only  "
+    } ]
+  }, {
+    "tStartMs": 1254160,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "and and so this is the awesome thing. uh two years \nago we were internally talking about AI agents and  "
+    } ]
+  }, {
+    "tStartMs": 1260080,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "we were talking about the reinforcement learning \nin real time in response to requests it wasn't  "
+    } ]
+  }, {
+    "tStartMs": 1264880,
+    "dDurationMs": 7120,
+    "segs": [ {
+      "utf8": "the dominant workload right and you could also say \nwell um there were competing requirements etc but  "
+    } ]
+  }, {
+    "tStartMs": 1272000,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "what we could see is that where this was going \nto wind up really good chance that agents and  "
+    } ]
+  }, {
+    "tStartMs": 1278560,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "low latency in particular were going to be there \nwe have to take some bets but because we I mean  "
+    } ]
+  }, {
+    "tStartMs": 1285040,
+    "dDurationMs": 6400,
+    "segs": [ {
+      "utf8": "we thousands of people, thousands of researchers \nworking to predict the future. If many of them,  "
+    } ]
+  }, {
+    "tStartMs": 1291440,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "and these are the leading minds, sincerely, I \nknow I'm a little biased, but the deep mind team,  "
+    } ]
+  }, {
+    "tStartMs": 1295840,
+    "dDurationMs": 3440,
+    "segs": [ {
+      "utf8": "leading minds on the planet, among the leading \nminds, there are others, of course, other groups.  "
+    } ]
+  }, {
+    "tStartMs": 1299280,
+    "dDurationMs": 4240,
+    "segs": [ {
+      "utf8": "If a number of them are telling you this is \nwhere things are going in a couple years time,  "
+    } ]
+  }, {
+    "tStartMs": 1303520,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "you're you're taking notes. Yeah. I mean, when \nyou spoke a little bit about it already, but let's  "
+    } ]
+  }, {
+    "tStartMs": 1309040,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "let's talk some more about the the two chips. You \nknow, the one hand, it's twice the work. That's a  "
+    } ]
+  }, {
+    "tStartMs": 1314080,
+    "dDurationMs": 7920,
+    "segs": [ {
+      "utf8": "huge strategic decision. Yeah. Probably that when \nyou made it uh the compute market and demand was  "
+    } ]
+  }, {
+    "tStartMs": 1322000,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "still very much training first. Yeah. How did you \nguys think about making that investment? We we had  "
+    } ]
+  }, {
+    "tStartMs": 1329600,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "actually um I am a fan of history and I think that \nuh his one of the biggest reasons to study history  "
+    } ]
+  }, {
+    "tStartMs": 1336160,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "is that it gives you a leg up in being able to \npredict the future and so we actually had that by  "
+    } ]
+  }, {
+    "tStartMs": 1341040,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "that point a significant amount of Google history \nbehind us. And if you think about web search the  "
+    } ]
+  }, {
+    "tStartMs": 1346000,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "number one problem in let's say 2000 was building \nthe web index. Yeah. training a model. We didn't  "
+    } ]
+  }, {
+    "tStartMs": 1353360,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "call it that, but building a web index, the large \nupfront one-time work. And you Exactly. You all  "
+    } ]
+  }, {
+    "tStartMs": 1359200,
+    "dDurationMs": 3440,
+    "segs": [ {
+      "utf8": "might remember, maybe you all remember, maybe \nsome of you don't. There was a time when you  "
+    } ]
+  }, {
+    "tStartMs": 1362640,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "said the new web search index is now available. \nYeah. I mean, uh, it happened every few months.  "
+    } ]
+  }, {
+    "tStartMs": 1368400,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "Google used to update every couple months in \nthe footer that would list the number of indexed  "
+    } ]
+  }, {
+    "tStartMs": 1374080,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "pages. Exactly. The new index with the number \nof parameters, I think you meant But but yes,  "
+    } ]
+  }, {
+    "tStartMs": 1379760,
+    "dDurationMs": 4640,
+    "segs": [ {
+      "utf8": "you're right. It was a number of web pages. So the \nnew web index is available. We worked hard for two  "
+    } ]
+  }, {
+    "tStartMs": 1384400,
+    "dDurationMs": 4800,
+    "segs": [ {
+      "utf8": "months. We threw tens of thousands of servers, \nwhich is a lot back then. Tens of thousands of  "
+    } ]
+  }, {
+    "tStartMs": 1389200,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "servers crawling the internet building this index. \nNow where's the value of the index? The value  "
+    } ]
+  }, {
+    "tStartMs": 1395120,
+    "dDurationMs": 7600,
+    "segs": [ {
+      "utf8": "of the index is serving it. By let's say 2005, \nfor sure 2010, but let's say 2005, what was the  "
+    } ]
+  }, {
+    "tStartMs": 1402720,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "dominant thing we did on our infrastructure? We \nserved the index. And we could see that things are  "
+    } ]
+  }, {
+    "tStartMs": 1407920,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "on and everything that was happening 25 years ago \nis happening but it's happening on much compressed  "
+    } ]
+  }, {
+    "tStartMs": 1412320,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "time scales. So we knew yes training that's the \ndominant workload but the value is going to come  "
+    } ]
+  }, {
+    "tStartMs": 1417680,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "from serving the model. Of course, all the hard \nwork is going to go into building the model in in  "
+    } ]
+  }, {
+    "tStartMs": 1421840,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "a lot of ways, but serving it is where the value \nis created for Gemini Enterprise and search and  "
+    } ]
+  }, {
+    "tStartMs": 1426400,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "ads and YouTube and so much else, right? And so we \ncould make a bet that given and we were starting  "
+    } ]
+  }, {
+    "tStartMs": 1432080,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "to see the exponential takeoff for serving and \nif you carry it forward two, three years, okay,  "
+    } ]
+  }, {
+    "tStartMs": 1437680,
+    "dDurationMs": 8880,
+    "segs": [ {
+      "utf8": "now 2024, this is the year where we're going to go \nafter two chips. So, it's funny. Um, I'm curious  "
+    } ]
+  }, {
+    "tStartMs": 1446560,
+    "dDurationMs": 7920,
+    "segs": [ {
+      "utf8": "how you think about the use cases for TPUs and \nwho it's for because we're all sitting here at  "
+    } ]
+  }, {
+    "tStartMs": 1454480,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "Google Cloud Next. This seems like it could just \nas easily be at IO. I mean, this is this is an  "
+    } ]
+  }, {
+    "tStartMs": 1460800,
+    "dDurationMs": 7680,
+    "segs": [ {
+      "utf8": "underpinning of Google across every group. How \nhow do you think about where TPU is across the  "
+    } ]
+  }, {
+    "tStartMs": 1468480,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "Google portfolio? We so uh my team we're fortunate \nin that we actually uh sit in cloud and we sit in  "
+    } ]
+  }, {
+    "tStartMs": 1475200,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "Google as a whole. So we have a dual role and we \ntake this um role and sort of responsibility uh as  "
+    } ]
+  }, {
+    "tStartMs": 1480560,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "a privilege honestly. So we power Google, we power \nall of our consumer services, we power uh cloud  "
+    } ]
+  }, {
+    "tStartMs": 1486640,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "and of course all our our enterprise services. So \nuse cases again I I think that it's fair to say  "
+    } ]
+  }, {
+    "tStartMs": 1492400,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "that Google search has changed more fundamentally \nin the last two years than the previous 25.  "
+    } ]
+  }, {
+    "tStartMs": 1499040,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "Right? If you look at AI mode, AI overviews and \npractically every search I run these days has  "
+    } ]
+  }, {
+    "tStartMs": 1504640,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "AI mode which you know I I think about or sorry AI \noverviews. Yeah. Yeah. And I think about just like  "
+    } ]
+  }, {
+    "tStartMs": 1510480,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "wow what is the cost that is going into into that \nand we're very proud of the efficiency work that  "
+    } ]
+  }, {
+    "tStartMs": 1516160,
+    "dDurationMs": 7520,
+    "segs": [ {
+      "utf8": "we've done to actually make it possible to be able \nto power that into every essentially every Google  "
+    } ]
+  }, {
+    "tStartMs": 1523680,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "search right and and that even non-monetizable \nones not exactly for us and this is the great  "
+    } ]
+  }, {
+    "tStartMs": 1529600,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "thing about how we're set up is that search's \ngoal as a business unit and I love this about  "
+    } ]
+  }, {
+    "tStartMs": 1534480,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "the company is not to make money is to produce the \nhighest quality most engaging results. There's a  "
+    } ]
+  }, {
+    "tStartMs": 1540960,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "separate organization, a fantastic one with the \nsmartest people as well, that generates the ads,  "
+    } ]
+  }, {
+    "tStartMs": 1546320,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "but search's job is whether it's monetizable or \nnot, not not material, produce the best results  "
+    } ]
+  }, {
+    "tStartMs": 1552400,
+    "dDurationMs": 5200,
+    "segs": [ {
+      "utf8": "and they're doing so with TPUs. Now, on the flip \nside, I uh you'll hear this example tomorrow. We  "
+    } ]
+  }, {
+    "tStartMs": 1557600,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "covered it actually at the session today, so \nI I think I can u mention it here. Citadel,  "
+    } ]
+  }, {
+    "tStartMs": 1563600,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "leading securities trading company in the world, \nthey use TPUs. Are they doing it for frontier  "
+    } ]
+  }, {
+    "tStartMs": 1568640,
+    "dDurationMs": 6560,
+    "segs": [ {
+      "utf8": "model training or model serving? No. But actually \nusing TPUs, they've made their trading systems  "
+    } ]
+  }, {
+    "tStartMs": 1575200,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "two to four times more efficient. They've reduced \ncost 30%. Because so it turns out that while it's  "
+    } ]
+  }, {
+    "tStartMs": 1582640,
+    "dDurationMs": 5440,
+    "segs": [ {
+      "utf8": "a specialized architecture, these TPUs over eight \ngenerations have become more and more general  "
+    } ]
+  }, {
+    "tStartMs": 1588080,
+    "dDurationMs": 7840,
+    "segs": [ {
+      "utf8": "purpose taking on a number of mathematically \nintense use cases. Wow. as you solve some of  "
+    } ]
+  }, {
+    "tStartMs": 1595920,
+    "dDurationMs": 6240,
+    "segs": [ {
+      "utf8": "the bottlenecks in the two variants of this chip \nand you're starting to feel like wow this is like  "
+    } ]
+  }, {
+    "tStartMs": 1602160,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "this is an unbelievably high performance piece of \nsilicon where are the remaining bottlenecks where  "
+    } ]
+  }, {
+    "tStartMs": 1607840,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "will the issues start to show up elsewhere in the \nchain so one of the big ones for us is reliability  "
+    } ]
+  }, {
+    "tStartMs": 1613680,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "so when we talk about our systems I think at this \npoint it's fair to say it's not just 9,600 chips  "
+    } ]
+  }, {
+    "tStartMs": 1619680,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "that are working on a problem in many cases it's \ntens of thousands and dare I say more that are all  "
+    } ]
+  }, {
+    "tStartMs": 1625200,
+    "dDurationMs": 8320,
+    "segs": [ {
+      "utf8": "coordinating together at literally nancond scale. \nWhat this means is that if any one chip fails,  "
+    } ]
+  }, {
+    "tStartMs": 1633520,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "the computation stops. I mean literally there's \nlike a nervous system where everyone does a bit  "
+    } ]
+  }, {
+    "tStartMs": 1638560,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "of computation and then they exchange information \nwith everyone else. I mean I'm I'm simplifying you  "
+    } ]
+  }, {
+    "tStartMs": 1643840,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "all know this is in training in training but also \nin inference. M the scale is smaller in infants  "
+    } ]
+  }, {
+    "tStartMs": 1649200,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "to be fair but we still run on perhaps hundreds \nof chips. What this means is that if any one of  "
+    } ]
+  }, {
+    "tStartMs": 1654560,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "them stop that nervous system stops distributing \nthe information the whole computation comes to  "
+    } ]
+  }, {
+    "tStartMs": 1660080,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "a halt. Now still I I assume this was a solved \nproblem. No that's actually primary problem for  "
+    } ]
+  }, {
+    "tStartMs": 1665680,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "us and for essentially the entire industry. So we \nare what we're proud of is these fail and these  "
+    } ]
+  }, {
+    "tStartMs": 1672320,
+    "dDurationMs": 6640,
+    "segs": [ {
+      "utf8": "chips they're wonders of nature and you all are uh \nvery knowledgeable here but the they're using the  "
+    } ]
+  }, {
+    "tStartMs": 1678960,
+    "dDurationMs": 6320,
+    "segs": [ {
+      "utf8": "most advanced physics lithography materials and \nthese are the biggest chips essentially to first  "
+    } ]
+  }, {
+    "tStartMs": 1685280,
+    "dDurationMs": 4160,
+    "segs": [ {
+      "utf8": "order and you can see one one chip is different \nsize than the other but these are essentially  "
+    } ]
+  }, {
+    "tStartMs": 1689440,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "the biggest chips that you can buy. What what \nthis means is they fail. Yeah. Okay. And and  "
+    } ]
+  }, {
+    "tStartMs": 1695600,
+    "dDurationMs": 5680,
+    "segs": [ {
+      "utf8": "ours fails other people's fails they fail. there's \njust inherent failure. So, and they fail more than  "
+    } ]
+  }, {
+    "tStartMs": 1701280,
+    "dDurationMs": 4240,
+    "segs": [ {
+      "utf8": "other chips. And that what that means is if you \nsay, \"Okay, let's make they're reliable.\" But if  "
+    } ]
+  }, {
+    "tStartMs": 1705520,
+    "dDurationMs": 4240,
+    "segs": [ {
+      "utf8": "there are 100,000 of these who are going after a \npiece of computation, what's the chance that one  "
+    } ]
+  }, {
+    "tStartMs": 1709760,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "of them fails? Well, you do the math and it turns \nout pretty good. Se several times a day, I won't  "
+    } ]
+  }, {
+    "tStartMs": 1715600,
+    "dDurationMs": 5360,
+    "segs": [ {
+      "utf8": "say whether but within that order, several times \na day, at least one chip is going to fail. Now,  "
+    } ]
+  }, {
+    "tStartMs": 1720960,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "how quickly do you detect that failure? What's \nthe needle in the hail stack? How quickly do you  "
+    } ]
+  }, {
+    "tStartMs": 1726560,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "reconfigure the system to start running again? \nIf you if you imagine that it takes let's say  "
+    } ]
+  }, {
+    "tStartMs": 1731840,
+    "dDurationMs": 5760,
+    "segs": [ {
+      "utf8": "you have a failure every hour. If it takes \nyou an hour to find the problem and fix it,  "
+    } ]
+  }, {
+    "tStartMs": 1737600,
+    "dDurationMs": 5920,
+    "segs": [ {
+      "utf8": "you have zero throughput, right? By the time that \nyou start up again, you're failing something else.  "
+    } ]
+  }, {
+    "tStartMs": 1743520,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "And if a human being has to get involved in that \nfailure detection and diagnosis, there's a rule  "
+    } ]
+  }, {
+    "tStartMs": 1749520,
+    "dDurationMs": 6080,
+    "segs": [ {
+      "utf8": "human gets in the loop minimum 30 minutes that \nI mean smartest most knowledgeable person that's  "
+    } ]
+  }, {
+    "tStartMs": 1755600,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "that's just what it's going to take minimum and \nit could easily go to ours. So actually our work  "
+    } ]
+  }, {
+    "tStartMs": 1760480,
+    "dDurationMs": 8400,
+    "segs": [ {
+      "utf8": "in driving this reliability to massive levels we \nare able to deliver on 10,000 chips more than 97%  "
+    } ]
+  }, {
+    "tStartMs": 1768880,
+    "dDurationMs": 4240,
+    "segs": [ {
+      "utf8": "goodput. What that means is actually how much \nforward progress we're making. Not just okay,  "
+    } ]
+  }, {
+    "tStartMs": 1773120,
+    "dDurationMs": 3760,
+    "segs": [ {
+      "utf8": "what's the theoretical flops if everything \nwere going perfect? You said goodput. Good  "
+    } ]
+  }, {
+    "tStartMs": 1776880,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "putut. Never heard that before. Yeah. So it's not \njust throughput because you can be doing a bunch  "
+    } ]
+  }, {
+    "tStartMs": 1781440,
+    "dDurationMs": 3680,
+    "segs": [ {
+      "utf8": "of computation and not making any progress. \nYou could be spinning your wheels. Good putut  "
+    } ]
+  }, {
+    "tStartMs": 1785120,
+    "dDurationMs": 8640,
+    "segs": [ {
+      "utf8": "you're making progress. 97% means 97 100% is no \nfailure. Everything's working perfect. 97% means  "
+    } ]
+  }, {
+    "tStartMs": 1793760,
+    "dDurationMs": 4000,
+    "segs": [ {
+      "utf8": "that you're finding those issues when they happen \nand they happen and you're recovering from them  "
+    } ]
+  }, {
+    "tStartMs": 1797760,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "super quickly. Right? And so reliability key key \nissue and I'll just throw one more in. The worst  "
+    } ]
+  }, {
+    "tStartMs": 1804720,
+    "dDurationMs": 7440,
+    "segs": [ {
+      "utf8": "ones are not fail stop but when you have what \nwe call silent data corruption when you have  "
+    } ]
+  }, {
+    "tStartMs": 1812160,
+    "dDurationMs": 6800,
+    "segs": [ {
+      "utf8": "one chip that silently gets the computation wrong \nevery once in a while. Those are the worst. Those  "
+    } ]
+  }, {
+    "tStartMs": 1818960,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "are the because like you know it's like the \nthe genius who can get it right almost all the  "
+    } ]
+  }, {
+    "tStartMs": 1823280,
+    "dDurationMs": 4880,
+    "segs": [ {
+      "utf8": "time. Well if you make one error an hour actually \nthat's a big problem because these chips are all  "
+    } ]
+  }, {
+    "tStartMs": 1828160,
+    "dDurationMs": 7280,
+    "segs": [ {
+      "utf8": "talking to one another. one chips error goes to \neverybody. So it the the problem of making these  "
+    } ]
+  }, {
+    "tStartMs": 1835440,
+    "dDurationMs": 6960,
+    "segs": [ {
+      "utf8": "things run in production at scale massively \nchallenging. It becomes much less a uh narrow  "
+    } ]
+  }, {
+    "tStartMs": 1842400,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "chip development problem and this like very broad \nsystems engineering. Exactly. Exactly. And to end  "
+    } ]
+  }, {
+    "tStartMs": 1848560,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "and there's literally hundreds of issues that \nhave to be discovered and fixed. each of them  "
+    } ]
+  }, {
+    "tStartMs": 1854560,
+    "dDurationMs": 4400,
+    "segs": [ {
+      "utf8": "pretty challenging until you get to that point \nwhere you can deliver this massive reliability  "
+    } ]
+  }, {
+    "tStartMs": 1858960,
+    "dDurationMs": 7360,
+    "segs": [ {
+      "utf8": "at scale. Well, maybe as as we wrap up here, \num you know, we're here at Cloud Next, have  "
+    } ]
+  }, {
+    "tStartMs": 1866320,
+    "dDurationMs": 6880,
+    "segs": [ {
+      "utf8": "this incredible announcement, two chips today. Um \ntomorrow. Tomorrow 5 a.m. 5 a.m. tomorrow. Sorry.  "
+    } ]
+  }, {
+    "tStartMs": 1873200,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "Sorry. Tomorrow. Incredible announcement tomorrow. \nUm what can you tell us about the future looking  "
+    } ]
+  }, {
+    "tStartMs": 1879360,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "a few years out? I'm sure your road maps for \nmany generations are already coming together.  "
+    } ]
+  }, {
+    "tStartMs": 1884960,
+    "dDurationMs": 4960,
+    "segs": [ {
+      "utf8": "Yeah. So the future I think is one of uh really \nre-examining the conventional wisdom. So like  "
+    } ]
+  }, {
+    "tStartMs": 1889920,
+    "dDurationMs": 4320,
+    "segs": [ {
+      "utf8": "I I think one of the things I'll say though is \nwith agentic computing, let me there'll be two  "
+    } ]
+  }, {
+    "tStartMs": 1894240,
+    "dDurationMs": 5040,
+    "segs": [ {
+      "utf8": "parts to this. CPUs are going to make a comeback. \nThat's that's a prediction I'll make here today.  "
+    } ]
+  }, {
+    "tStartMs": 1899280,
+    "dDurationMs": 4480,
+    "segs": [ {
+      "utf8": "In other words, there's a lot of general purpose \ncompute that is involved in running these agents.  "
+    } ]
+  }, {
+    "tStartMs": 1903760,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "They're orchestrating all this inference that \nis taking place. They're creating sandboxes,  "
+    } ]
+  }, {
+    "tStartMs": 1908320,
+    "dDurationMs": 6160,
+    "segs": [ {
+      "utf8": "virtual machines to uh build code, run it, check \nthe results, and then find the next set of uh  "
+    } ]
+  }, {
+    "tStartMs": 1914480,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "outputs. So general purpose compute is going to \nmake a comeback. But so that's one side. The other  "
+    } ]
+  }, {
+    "tStartMs": 1920960,
+    "dDurationMs": 6480,
+    "segs": [ {
+      "utf8": "side is the age of specialization is going to \ncontinue. So I wouldn't be surprised if two chips  "
+    } ]
+  }, {
+    "tStartMs": 1927440,
+    "dDurationMs": 6720,
+    "segs": [ {
+      "utf8": "here, we're going to find additional workloads \nthat might need their own chip. Whether it's us,  "
+    } ]
+  }, {
+    "tStartMs": 1934160,
+    "dDurationMs": 5600,
+    "segs": [ {
+      "utf8": "I'm going to make a prediction for industry, not \nfor Google. But at at a time when general purpose  "
+    } ]
+  }, {
+    "tStartMs": 1939760,
+    "dDurationMs": 7680,
+    "segs": [ {
+      "utf8": "CPUs are really only improving in performance 5% a \nyear, normalize the cost. You have to specialize,  "
+    } ]
+  }, {
+    "tStartMs": 1947440,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "right? If you're really going to go after \nthese brand new workloads, so two chips might  "
+    } ]
+  }, {
+    "tStartMs": 1951520,
+    "dDurationMs": 2960,
+    "segs": [ {
+      "utf8": "become more. Maybe they're not TPUs, maybe \nthey're going after a different workload,  "
+    } ]
+  }, {
+    "tStartMs": 1954480,
+    "dDurationMs": 5840,
+    "segs": [ {
+      "utf8": "but the age of specialization will be upon us \nin the future. Well, I mean, that is a great  "
+    } ]
+  }, {
+    "tStartMs": 1960320,
+    "dDurationMs": 8640,
+    "segs": [ {
+      "utf8": "place to leave this. Thank you so much. Yep. \nThank you. It's a lot of fun. Appreciate it."
+    } ]
+  } ]
+}
