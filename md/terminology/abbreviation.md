@@ -197,3 +197,8 @@ end legend
 |--------------|-----------|------|-----------|--------|
 | UPS | Unique Selling Proposition <br> Unique Selling Point | 獨特賣點 | https://en.wikipedia.org/wiki/Unique_selling_proposition | |
 
+## 2026-04-27
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| LGTM | Looks Good To Me | 我看沒問題 | https://www.propelcode.ai/blog/lgtm-meaning-code-review | #CodeReview |
