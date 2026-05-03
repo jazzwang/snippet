@@ -1,2 +1,2 @@
 #!/bin/sh
-gh cs $1 -R jazzwang/aider-labs
+gh cs $@ -R jazzwang/aider-labs

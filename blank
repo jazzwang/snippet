@@ -1,2 +1,2 @@
 #!/bin/sh
-gh cs $1 -R github/codespaces-blank
+gh cs $@ -R github/codespaces-blank

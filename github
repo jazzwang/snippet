@@ -1,2 +1,3 @@
 #!/bin/sh
 start https://github.com/jazzwang
+start https://github.com/settings/billing/usage?period=5&group=2&customer=6261886&query=product:codespaces
