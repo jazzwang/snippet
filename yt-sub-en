@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ "$#" -lt 2 ]; then
+    echo "Error: This script requires at least two arguments."
+    echo "Usage: $0 <URL> <output_file_name>"
+    exit 1
+fi
+source ~/bin/gemini-keys
+echo "GEMINI_API_KEY=${GEMINI_API_KEY}" > .env
+URL=$1
+OUTPUT=$2
+yt-dlp --write-subs --sub-langs "en" --sub-format json3 --skip-download -o ${OUTPUT} ${URL}
