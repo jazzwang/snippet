@@ -35,3 +35,12 @@
 - 想法：
   - 用 Podman 確實很符合 Red Hat 首席工程師的風格 :P
   - 太久沒追 container 技術的發展，需要花點時間再追一下 `bootc` 的技術定位。感覺有點像 `init`
+
+## 2026-05-08
+
+- 2026-04-28
+  - Building a hardened, image-based foundation for AI agents
+  - https://www.redhat.com/en/blog/building-hardened-image-based-foundation-ai-agents
+- 2026-05-04
+  - 紅帽釋出 Tank OS，打造代理式作業系統原型強化 OpenClaw 企業部署安全
+  - https://www.ithome.com.tw/news/175509
