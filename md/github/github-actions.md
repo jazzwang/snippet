@@ -240,3 +240,19 @@ on:
   - https://github.com/marketplace/actions/send-e-mail-smtp
 - 結論：
   - 雖然有可以透過 SMTP 或者 SendGrid 服務寄信的 Github Actions，但感覺近期會比較傾向改用 Webhook 的方式來整合 MS Teams
+
+## 2026-05-11
+
+- Sharing actions and workflows from your private repository
+  - https://docs.github.com/en/actions/how-tos/reuse-automations/share-across-private-repositories
+- Enabling GitHub Actions with MinIO storage
+  - https://docs.github.com/en/admin/managing-github-actions-for-your-enterprise/enabling-github-actions-for-github-enterprise-server/enabling-github-actions-with-minio-storage
+- Enabling GitHub Actions with Google Cloud Storage
+  - https://docs.github.com/en/admin/managing-github-actions-for-your-enterprise/enabling-github-actions-for-github-enterprise-server/enabling-github-actions-with-google-cloud-storage
+- High availability for GitHub Actions
+  - https://docs.github.com/en/admin/managing-github-actions-for-your-enterprise/advanced-configuration-and-troubleshooting/high-availability-for-github-actions
+- Use GitHub Actions workflow to deploy your static website in Azure Storage
+  - https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-static-site-github-actions
+- 2025-08-28
+  - 如何解決 GitHub Actions 的 Artifact storage 不夠用的問題
+  - https://blog.miniasp.com/post/2025/08/28/How-to-solve-the-issue-of-running-out-of-Artifact-storage-in-GitHub-Actions

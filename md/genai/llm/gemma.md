@@ -547,7 +547,7 @@ Retrying in 0.5 seconds...
 
 ### 2025-03-18
 
-### Cloud Run
+#### Cloud Run
 
 - 2025-03-12: [How to deploy serverless AI with Gemma 3 on Cloud Run](https://cloud.google.com/blog/products/ai-machine-learning/serverless-ai-with-gemma-3-on-cloud-run)
 - Run LLM inference on Cloud Run GPUs with Ollama 
@@ -563,7 +563,7 @@ Retrying in 0.5 seconds...
 - 2024-08-22: How to run LLM inference on Cloud Run GPUs with vLLM and the OpenAI Python SDK
   - https://codelabs.developers.google.com/codelabs/how-to-run-inference-cloud-run-gpu-vllm#0
 
-### News
+#### News
 
 - 2025-03-12: Gemma 3 Tech Report
   - https://storage.googleapis.com/deepmind-media/gemma/Gemma3Report.pdf
@@ -574,27 +574,27 @@ Retrying in 0.5 seconds...
 
 - 根據 https://huggingface.co/google/gemma-3-12b-it#usage ，若要用 `transformer` 跑，得要裝特殊的版本
 
-> ### Usage
+> #### Usage
 > Below, there are some code snippets on how to get quickly started with running the model. First, install the Transformers library with the version made for Gemma 3:
 > ```
 > $ pip install git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3
 > ```
 > Then, copy the snippet from the section that is relevant for your use case.
 
-### Gemma 3 QAT
+## Gemma 3 QAT
 
 - 2025-04-18: Gemma 3 QAT Models: Bringing state-of-the-Art AI to consumer GPUs
   - https://developers.googleblog.com/en/gemma-3-quantized-aware-trained-state-of-the-art-ai-to-consumer-gpus/
 - https://huggingface.co/collections/google/gemma-3-qat-67ee61ccacbf2be4195c265b
 
-#### 2025-05-05
+### 2025-05-05
 
 - 想測一下這個針對 Coding 的 Gemma 3 fine-tune，可惜是 12B 的，縱使轉成 GGUF 本機應該還是跑不動。
   - https://huggingface.co/burtenshaw/GemmaCoder3-12B
 - 另外，這個 4B 的 Speech 語音模型也挺有趣的
   - https://huggingface.co/junnei/gemma-3-4b-it-speech
 
-#### 2025-05-09
+### 2025-05-09
 
 - ( 2025-05-09 00:18:59 )
 ```bash
@@ -688,23 +688,28 @@ Resolved 115 packages in 3.22s
       hint: This usually indicates a problem with the package or the build environment.
 ```
 
-#### 2025-06-10
+### 2025-06-10
 
 - 2025-3-13: Gemma 3: What You Need To Know
   - https://gradientflow.com/gemma-3-what-you-need-to-know/
 
-### Gemma 3n
+## Gemma 3 270m-it
+
+- GGUF
+  - https://huggingface.co/models?other=base_model:quantized:google/gemma-3-270m-it
+
+## Gemma 3n
 
 - Gemma 3n model overview
   - https://ai.google.dev/gemma/docs/gemma-3n
 
-#### 2025-07-26
+### 2025-07-26
 
 - 2025-06-26:
   - Introducing Gemma 3n: The developer guide
   - https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/
 
-#### 2025-08-28
+### 2025-08-28
 
 - HuggingFace
   - https://huggingface.co/google/gemma-3n-E4B-it
@@ -719,7 +724,7 @@ Gemma 3n is a generative AI model from Google, specifically designed for efficie
 
 ***
 
-### Strengths 🦾
+#### Strengths 🦾
 
 * **Efficiency:** Gemma 3n uses a "mobile-first" architecture optimized for low-latency audio and visual understanding. This includes a flexible Matryoshka Transformer (MatFormer) architecture that allows for selective activation of parameters and a Per-Layer Embedding (PLE) parameter caching system. These techniques reduce compute and memory requirements.
 * **Multimodality:** The model is inherently multimodal, able to process text, images, audio, and video as input, and generate text as output. This makes it suitable for tasks like visual question answering, speech-to-text, and image analysis.
@@ -727,7 +732,7 @@ Gemma 3n is a generative AI model from Google, specifically designed for efficie
 
 ***
 
-### Architecture and Context Window
+#### Architecture and Context Window
 
 * **Architecture:** Gemma 3n is based on the **Matryoshka Transformer (MatFormer)** architecture. This is a novel design that allows a single set of weights to contain multiple smaller, nested subnetworks. This means the model can operate at different "effective" parameter sizes, such as 2B and 4B, which are lower than the total parameter count. This flexibility allows developers to choose the right trade-off for their specific hardware and task. 
 * **Context Window:** The Gemma 3n E4B model has a context window of **32K tokens**, while the larger Gemma 3 models (4B, 12B, and 27B) have a significantly larger 128K token context window. A longer context window allows the model to process and understand more information in a single prompt.
@@ -753,18 +758,14 @@ Here is a table summarizing the key aspects of Gemma 3n.
 | **Training Dataset** | The models were trained on a massive, diverse dataset of approximately **11 trillion tokens** from a wide variety of sources, including web text, code, mathematics, and a wide range of images and audio in over 140 languages. |
 | **Knowledge Cutoff** | The training data for Gemma 3n has a knowledge cutoff date of **June 2024**. Therefore, the model does not have information on events that have occurred since that time. |
 
-### Gemma-3-270m-it
-
-- GGUF
-  - https://huggingface.co/models?other=base_model:quantized:google/gemma-3-270m-it
-
 ## Gemma 4
 
-### Gemma 4 MTP
+## Gemma 4 MTP
 
-- 2026-05-05
-  - Accelerating Gemma 4: faster inference with multi-token prediction drafters
-  - https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/
+### 2026-05-05
+
+- Accelerating Gemma 4: faster inference with multi-token prediction drafters 
+- https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/
 
 ## EmbeddingGemma
 
