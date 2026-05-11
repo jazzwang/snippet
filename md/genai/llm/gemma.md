@@ -581,20 +581,20 @@ Retrying in 0.5 seconds...
 > ```
 > Then, copy the snippet from the section that is relevant for your use case.
 
-## Gemma 3 QAT
+### Gemma 3 QAT
 
 - 2025-04-18: Gemma 3 QAT Models: Bringing state-of-the-Art AI to consumer GPUs
   - https://developers.googleblog.com/en/gemma-3-quantized-aware-trained-state-of-the-art-ai-to-consumer-gpus/
 - https://huggingface.co/collections/google/gemma-3-qat-67ee61ccacbf2be4195c265b
 
-### 2025-05-05
+#### 2025-05-05
 
 - 想測一下這個針對 Coding 的 Gemma 3 fine-tune，可惜是 12B 的，縱使轉成 GGUF 本機應該還是跑不動。
   - https://huggingface.co/burtenshaw/GemmaCoder3-12B
 - 另外，這個 4B 的 Speech 語音模型也挺有趣的
   - https://huggingface.co/junnei/gemma-3-4b-it-speech
 
-### 2025-05-09
+#### 2025-05-09
 
 - ( 2025-05-09 00:18:59 )
 ```bash
@@ -688,23 +688,23 @@ Resolved 115 packages in 3.22s
       hint: This usually indicates a problem with the package or the build environment.
 ```
 
-### 2025-06-10
+#### 2025-06-10
 
 - 2025-3-13: Gemma 3: What You Need To Know
   - https://gradientflow.com/gemma-3-what-you-need-to-know/
 
-## Gemma 3n
+### Gemma 3n
 
 - Gemma 3n model overview
   - https://ai.google.dev/gemma/docs/gemma-3n
 
-### 2025-07-26
+#### 2025-07-26
 
 - 2025-06-26:
   - Introducing Gemma 3n: The developer guide
   - https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/
 
-### 2025-08-28
+#### 2025-08-28
 
 - HuggingFace
   - https://huggingface.co/google/gemma-3n-E4B-it
@@ -734,7 +734,7 @@ Gemma 3n is a generative AI model from Google, specifically designed for efficie
 
 ***
 
-### Benchmark, Dataset, and Knowledge Cutoff
+#### Benchmark, Dataset, and Knowledge Cutoff
 
 * **Benchmarks:** Gemma 3n performs well across a variety of benchmarks. The instruction-tuned (IT) models, such as E2B IT and E4B IT, show strong results on multilingual tasks, reasoning, and coding. On the LMSYS Chatbot Arena, the Gemma 3 27B IT model achieved a notable Elo score, surpassing several larger models.
 * **Dataset:** Gemma 3n models were trained on a diverse dataset that includes a wide variety of sources, totaling approximately 11 trillion tokens. This includes content in over 140 languages. The training data also includes mathematical text and a wide range of images, enabling its multimodal capabilities.
@@ -753,10 +753,18 @@ Here is a table summarizing the key aspects of Gemma 3n.
 | **Training Dataset** | The models were trained on a massive, diverse dataset of approximately **11 trillion tokens** from a wide variety of sources, including web text, code, mathematics, and a wide range of images and audio in over 140 languages. |
 | **Knowledge Cutoff** | The training data for Gemma 3n has a knowledge cutoff date of **June 2024**. Therefore, the model does not have information on events that have occurred since that time. |
 
-## Gemma-3-270m-it
+### Gemma-3-270m-it
 
 - GGUF
   - https://huggingface.co/models?other=base_model:quantized:google/gemma-3-270m-it
+
+## Gemma 4
+
+### Gemma 4 MTP
+
+- 2026-05-05
+  - Accelerating Gemma 4: faster inference with multi-token prediction drafters
+  - https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/
 
 ## EmbeddingGemma
 
@@ -767,3 +775,5 @@ Here is a table summarizing the key aspects of Gemma 3n.
   - 看起來就是比 Qwen-Embedding-0.6B 體積小（可能需要的記憶體量也相對較小），表現僅次於 Qwen-Embedding-0.6B 排行第二位。
   - Demo 影片很亮眼
   <video src='https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/semantic-galaxy-v3_1-720p-small.mp4'/>
+
+
