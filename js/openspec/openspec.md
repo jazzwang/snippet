@@ -12,3 +12,9 @@
 - 緣起：
   - 在 YouTube 看到類比 Github Spec-kit 的 OpenSpec
   - https://www.youtube.com/watch?v=ANjiJQQIBo0
+
+## 2026-05-12
+
+- 2026-01-15
+  - OpenSpec 讓 SDD 變簡單的三個指令
+  - https://kaochenlong.com/openspec
