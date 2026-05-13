@@ -7,6 +7,8 @@
   - https://partnerportal.anthropic.com/s/partner-registration
 - 課程：
   - https://anthropic.skilljar.com/page/claude-partner-network-learning-path
+  - Claude Certified Architect
+    - https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request
 - 新聞：
   - 2026-03-12
     - Anthropic invests $100 million into the Claude Partner Network
