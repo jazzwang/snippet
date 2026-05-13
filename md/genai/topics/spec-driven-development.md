@@ -14,6 +14,9 @@ flowchart LR
 - 2025-09-16
   - GitHub Spec Kit Experiment: 'A Lot of Questions'
   - https://visualstudiomagazine.com/articles/2025/09/16/github-spec-kit-experiment-a-lot-of-questions.aspx
+- 2025-10-15
+  - Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl
+  - https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
 - 2026-01-12
   - SDD 規格驅動開發
   - https://kaochenlong.com/sdd-spec-driven-development
