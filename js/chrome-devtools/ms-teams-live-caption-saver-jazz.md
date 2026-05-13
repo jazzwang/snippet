@@ -107,3 +107,25 @@ observer.observe(targetNode, config);
 - 有些改良的想法：
   - 學原本 `ms-teams-live-caption-saver` 的作法，把結果存在 `localStorage` 以免手誤太快關掉 DevTool，忘了另存成 log 純文字檔，就浪費了刻意打開
   - 參考 `Tactiq` 的實作，看能否把點選 `Live Caption` 的動作自動化，甚至可以參考如何查詢會議名稱，當作儲存 `localStorage` 的命名參考。
+
+## 2026-05-13
+
+- 紀錄一下改進的方向
+  - 簡化 UI, 
+    - 移除：最上方有搜尋框的 Title Bar
+    ```html
+    <div data-tid="app-layout-area--title-bar">
+    ```
+    - 當有打開 Live Caption 時，會看到 Caption Renderer Wrapper，會想要把字幕區縮小，讓畫面分享等變大。
+    ```html
+    <div data-tid="closed-caption-renderer-wrapper">
+    ```
+    - 為了避免誤觸其他功能，我也會想要把左邊的 bar 移除。
+    ```html
+    ```
+  - 看能否註冊 onClose 或 onReload 的事件，提醒要先存檔
+  - 如果能自動化關閉 notification 會有幫助專注在會議上
+  - 想要自動取得會議名稱或會議連結，拿來做
+  - 將 JSON 存到 Local Storage ，以免誤關視窗沒存到即時字幕
+    - 如果想要做成更流暢的工作流（Workflow），是可以考慮存到其他位置集中管理。
+  - 研究怎麼偵測上線人數（我是最後一個嗎？）
