@@ -202,3 +202,9 @@ end legend
 | Abbreviation | Full Form | 中文 | Reference | Domain |
 |--------------|-----------|------|-----------|--------|
 | LGTM | Looks Good To Me | 我看沒問題 | https://www.propelcode.ai/blog/lgtm-meaning-code-review | #CodeReview |
+
+## 2026-05-13
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| SPDD | Structured-Prompt-Driven Development | 結構化提示詞驅動開發 (?) | https://martinfowler.com/articles/structured-prompt-driven/ | |
