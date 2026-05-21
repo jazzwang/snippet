@@ -207,4 +207,12 @@ end legend
 
 | Abbreviation | Full Form | 中文 | Reference | Domain |
 |--------------|-----------|------|-----------|--------|
-| SPDD | Structured-Prompt-Driven Development | 結構化提示詞驅動開發 (?) | https://martinfowler.com/articles/structured-prompt-driven/ | |
+| SPDD | Structured-Prompt-Driven Development | 結構化提示詞驅動開發 (?) | https://martinfowler.com/articles/structured-prompt-driven/ | #Software #Development |
+
+## 2026-05-14
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| HITL | Human-in-the-Loop | 人機互動 | [1] https://en.wikipedia.org/wiki/Human-in-the-loop <br> [2] https://www.ibm.com/think/topics/human-in-the-loop <br> [3] https://cloud.google.com/discover/human-in-the-loop |  #AI #ML |
+
+> In the AI/ML domain, HITL Evaluation stands for Human-in-the-Loop Evaluation. It is a paradigm where human judgment is integrated into the development and validation cycle of an AI model, rather than relying solely on automated metrics like accuracy, F1 score, or perplexity.
