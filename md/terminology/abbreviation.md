@@ -216,3 +216,40 @@ end legend
 | HITL | Human-in-the-Loop | 人機互動 | [1] https://en.wikipedia.org/wiki/Human-in-the-loop <br> [2] https://www.ibm.com/think/topics/human-in-the-loop <br> [3] https://cloud.google.com/discover/human-in-the-loop |  #AI #ML |
 
 > In the AI/ML domain, HITL Evaluation stands for Human-in-the-Loop Evaluation. It is a paradigm where human judgment is integrated into the development and validation cycle of an AI model, rather than relying solely on automated metrics like accuracy, F1 score, or perplexity.
+
+## 2026-05-19
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| DLT | Distributed Ledger Technology | 分散式帳本技術 | https://en.wikipedia.org/wiki/Distributed_ledger |  #Web3 #BlockChain |
+
+<table><tr><td>
+Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍稱為「分散式帳本技術」，在香港或中國大陸則常譯為「分布式分類帳技術」或「分布式账本技术」。 [1, 2, 3, 4] 
+
+### 💡 核心概念
+
+這是一種去中心化的數位記錄系統。它允許網路中的多個參與者（節點）在沒有中央管理器（如銀行或政府）的情況下，共同維護、共享與同步一份一模一樣的資料庫。 [1, 2, 4] 
+
+### 🧱 與區塊鏈（Blockchain）的關係
+
+許多人常將兩者混用，但其範圍不同：
+
+* DLT 是母類別：它是所有此類分散式記帳技術的統稱。
+* 區塊鏈是子類別：區塊鏈只是 DLT 的其中一種實現方式。它是將資料打包成「區塊」並串聯成「鏈」來運作的 DLT。 [5, 6] 
+
+### 🌟 DLT 的四大核心特性
+
+   1. 去中心化（Distributed）：所有成員都擁有完整帳本副本，不依賴單一中央伺服器。
+   2. 不可篡改（Immutable）：資料一旦經加密驗證寫入，就無法被刪除或更改。
+   3. 共識機制（Consensus）：各節點透過演算法（如投票）自動達成資訊正確性的共識。
+   4. 透明與安全（Secure）：資訊透明可追溯，並透過密碼學技術確保數據安全。 [2, 5, 7, 8] 
+
+[1] [https://zh.wikipedia.org](https://zh.wikipedia.org/zh-tw/%E5%88%86%E6%95%A3%E5%BC%8F%E8%B3%AC%E6%9C%AC)
+[2] [https://andyhuang76.medium.com](https://andyhuang76.medium.com/%E5%88%86%E6%95%A3%E5%BC%8F%E5%B8%B3%E6%9C%AC%E6%8A%80%E8%A1%93dlt%E8%B7%9F%E5%8D%80%E5%A1%8A%E9%8F%88blockchain%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E5%90%8C-d6c2dee7ff6d)
+[3] [https://www.hkma.gov.hk](https://www.hkma.gov.hk/chi/key-functions/international-financial-centre/fintech/research-and-applications/distributed-ledger-technology-dlt/)
+[4] [https://www.amazonaws.cn](https://www.amazonaws.cn/knowledge/what-is-distributed-ledger-technology/)
+[5] [https://www.find.org.tw](https://www.find.org.tw/indus_trend/browse/697083be761f618ac9514c553ff523a3)
+[6] [https://www.gate.com](https://www.gate.com/zh-tw/learn/articles/what-is-distributed-ledger-technology-dlt/1)
+[7] [https://aws.amazon.com](https://aws.amazon.com/tw/web3/decentralization-in-blockchain/)
+[8] [https://www.kaspersky.com.tw](https://www.kaspersky.com.tw/resource-center/definitions/what-is-blockchain-security)
+</td></tr></table>
