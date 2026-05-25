@@ -9,7 +9,7 @@
 
 ## Overview
 
-> Where UUIDs cost ~23 tokens and get hallucinated by LLMs, id-agent produces memorable word-based IDs at ~14 tokens with equivalent collision resistance. The first ID library built for the context window, not the database.
+> Where <mark>UUIDs cost ~23 tokens</mark> and get hallucinated by LLMs, id-agent produces memorable word-based IDs at <mark>~14 tokens with equivalent collision resistance</mark>. The first ID library built for the context window, not the database.
 
 > - Human-readable -- word-based IDs that humans and LLMs can actually remember
 > - Token-efficient -- every word in the wordlist is exactly 1 BPE token on o200k_base
