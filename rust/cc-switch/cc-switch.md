@@ -8,6 +8,8 @@
 ## 2026-05-23
 
 - 緣起
+  - 100%免費！Claude Code 跑本地模型，無需 API！免翻牆使用超強AI Agent｜Ollama｜CC Switch｜零度解說
+  - https://www.youtube.com/watch?v=6iONJKrFs1k
   - Claude Code + Ollama 太強了！免費本地 AI 開發助手來了！無需 Claude API！｜零度解說
   - https://www.freedidi.com/24192.html
   > 使用 Ollama 本地模型，直接接管 Claude Code。
