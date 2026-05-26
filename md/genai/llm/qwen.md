@@ -517,3 +517,35 @@ give a more precise explanation!
     | IQ2_XS | 7.11 GB |
     | IQ2_S | 7.19 GB |
     | Q2_K | 8.95 GB |
+
+## Qwen 3.5
+
+- https://huggingface.co/collections/Qwen/qwen35
+
+## Qwen 3.6
+
+- https://huggingface.co/collections/Qwen/qwen36
+
+## Qwen 3.6 35B A3B
+
+最近很熱門的一個模型，特別是想要拿來跑在 6GB 或 8GB 顯卡的地端
+
+### 2026-05-24
+
+- 2026-05-22
+  - 8G 視訊記憶體逆天了！RTX3070 成功跑 Qwen3.6-35B 多模態AI大模型！部署教程
+  - https://www.freedidi.com/24267.html
+- 2026-05-24
+  - Qwen3.6-35B-A3B 越獄版來了！目前最強“無審查”開源模型？6G 視訊記憶體都能跑，本地 AI 徹底自由了
+  - https://www.freedidi.com/24284.html
+
+## Qwen 3.7
+
+### 2026-05-25
+
+- 2026-05-20
+  - Qwen3.7: The Agent Frontier
+  - https://qwen.ai/blog?id=qwen3.7
+- 2026-05-22
+  - Qwen3.7-Max: Features, Benchmarks, and the Agent Frontier
+  - https://www.datacamp.com/blog/qwen3-7-max
