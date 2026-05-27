@@ -30,3 +30,7 @@ sudo mount -t drvfs h: /mnt/h -o uid=$(id -u $USER),gid=$(id -g $USER),metadata
   - 建議 `extFAT` 格式，但也說明有其缺點。
 - 2023-11-30: [exFAT: Advantages and Disadvantages of Extensible FAT](https://www.profolus.com/topics/exfat-advantages-disadvantages-extensible-fat/)
 
+## 2026-05-27
+
+- 從 git-bash 跳進 wsl 時，收到一個效能的警告，大意是建議使用 WSL 自己的檔案系統，而不是掛載 Host OS 的 Windows File System 
+- https://learn.microsoft.com/en-us/windows/wsl/filesystems#file-storage-and-performance-across-file-systems
