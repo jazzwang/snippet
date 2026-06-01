@@ -1,6 +1,6 @@
 # 2026-01-04
 
-> help me to write javascript that I can paste in Chrome DevTool console and convert current DOM into Markdown syntax  
+> help me to write javascript that I can paste in Chrome DevTool console and convert current DOM into Markdown syntax
 
 To help you convert the current DOM into Markdown syntax, I will add a JavaScript function to `dom2md.js`. This script can be directly pasted into the Chrome DevTools console. It will traverse the DOM, converting common HTML elements like headings, paragraphs, links, images, lists, and tables into their Markdown equivalents.
 
@@ -267,7 +267,7 @@ dom2md.js
 >>>>>>> REPLACE
 ```
 
-> instead of showing the result in console.log, could you make it download as markdown file with filename using "${title}.md"  
+> instead of showing the result in console.log, could you make it download as markdown file with filename using "${title}.md"
 
 To change the script to download the markdown file instead of logging to the console, I will replace the `console.log` call with logic to create a Blob, an anchor element, and trigger a download using the document's title as the filename.
 
@@ -424,6 +424,99 @@ javascript:(function(){function domToMarkdown(e=document.body){let t="";function
 1. Navigate to any website.
 2. Click your newly created bookmark.
 3. Open any text editor and press **Paste (Ctrl+V)**. Your webpage is now basic Markdown!
+
+</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
+請將 Step3 的 bookmarklet 改良成可以將相對網址轉成絕對網址
+</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+
+- Google Gemini App
+- Gemini 3.5 Flash (Thinking: Standard)
+
+</td></tr><tr><td>A:</td><td>
+
+這是一個非常棒的改良想法！在處理網頁 DOM 時，許多連結（`<a>` 標籤）使用的是相對路徑（例如 `/about` 或 `../contact`）。如果直接複製到 Markdown 中，在其他地方點擊時會因為缺少主網域而失效。
+
+在 JavaScript 中，最優雅且準確的解決方法是使用內建的 `new URL(relative, base)` 構造函數。它可以自動幫我們將相對路徑與當前網頁的網址（`window.location.href`）結合，轉化為絕對網址。
+
+以下是改良後的程式碼與書籤轉換：
+
+### 改良後的易讀版原始碼（方便你閱讀與微調）
+
+```javascript
+function domToMarkdown(element = document.body) {
+    let markdown = "";
+    // 獲取當前網頁的基礎網址（用來解析相對路徑）
+    const baseUrl = window.location.href;
+
+    function traverse(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            markdown += node.textContent.replace(/\s+/g, ' ');
+            return;
+        }
+
+        if (node.nodeType !== Node.ELEMENT_NODE) return;
+        if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'SVG'].includes(node.tagName)) return;
+
+        switch (node.tagName) {
+            case 'H1': markdown += '\n\n# '; break;
+            case 'H2': markdown += '\n\n## '; break;
+            case 'H3': markdown += '\n\n### '; break;
+            case 'P': markdown += '\n\n'; break;
+            case 'BR': markdown += '\n'; break;
+            case 'LI': markdown += '\n* '; break;
+            case 'STRONG': case 'B': markdown += '**'; break;
+            case 'EM': case 'I': markdown += '*'; break;
+            case 'A': markdown += `[`; break;
+        }
+
+        for (let child of node.childNodes) {
+            traverse(child);
+        }
+
+        switch (node.tagName) {
+            case 'STRONG': case 'B': markdown += '**'; break;
+            case 'EM': case 'I': markdown += '*'; break;
+            case 'A':
+                // 【改良核心】獲取原始 href 屬性
+                let href = node.getAttribute('href') || '';
+                if (href && !href.startsWith('javascript:') && !href.startsWith('#')) {
+                    try {
+                        // 使用 new URL 自動將相對網址轉為絕對網址
+                        href = new URL(href, baseUrl).href;
+                    } catch (e) {
+                        // 防止極少數不合法 URL 格式導致程式中斷
+                        console.error('URL 解析失敗:', href);
+                    }
+                }
+                markdown += `](${href})`;
+                break;
+            case 'P': case 'H1': case 'H2': case 'H3': markdown += '\n'; break;
+        }
+    }
+
+    traverse(element);
+    return markdown.replace(/\n{3,}/g, '\n\n').trim();
+}
+
+```
+
+---
+
+### 複製這段：壓縮後的 Bookmarklet (書籤網址)
+
+請複製下方這整段程式碼，並貼到你瀏覽器書籤的 **「網址」 (或 URL)** 欄位中：
+
+```javascript
+javascript:(function(){function domToMarkdown(e=document.body){let t="",r=window.location.href;function n(e){if(e.nodeType===Node.TEXT_NODE)return void(t+=e.textContent.replace(/\s+/g," "));if(e.nodeType!==Node.ELEMENT_NODE)return;if(["SCRIPT","STYLE","NOSCRIPT","SVG"].includes(e.tagName))return;switch(e.tagName){case"H1":t+="\n\n# ";break;case"H2":t+="\n\n## ";break;case"H3":t+="\n\n### ";break;case"P":t+="\n\n";break;case"BR":t+="\n";break;case"LI":t+="\n* ";break;case"STRONG":case"B":t+="**";break;case"EM":case"I":t+="*";break;case"A":t+="["}for(let c of e.childNodes)n(c);switch(e.tagName){case"STRONG":case"B":t+="**";break;case"EM":case"I":t+="*";break;case"A":let c=e.getAttribute("href")||"";if(c&&!c.startsWith("javascript:")&&!c.startsWith("#"))try{c=new URL(c,r).href}catch(e){}t+=`](${c})`;break;case"P":case"H1":case"H2":case"H3":t+="\n"}}return n(e),t.replace(/\n{3,}/g,"\n\n").trim()}const md=domToMarkdown();navigator.clipboard.writeText(md).then(()=>{alert("Markdown 已複製（相對網址已轉絕對網址）！")}).catch(e=>{console.error(e),alert("複製失敗，請打開主控台查看原因。")});})();
+```
+
+### 這次改良處理了哪些細節？
+
+1. **相對路徑自動補全**：無論是 `/features` 還是 `../pricing`，都會自動結合當前網域，變成 `https://example.com/features`。
+2. **排除錨點（Anchor）**：如果網址是 `#section-1` 這種頁面內錨點，會保持原樣，不會被加上網址。
+3. **排除 JavaScript 偽協議**：如果按鈕是 `javascript:void(0)`，也會保持原樣，避免轉換出錯誤的網址。
+4. **錯誤安全防護 (Try-Catch)**：如果網頁上有寫錯的惡意格式網址，程式會自動跳過該節點，不會導致整個複製功能卡死。
 
 </td></tr>
 </table>
