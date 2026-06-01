@@ -50,3 +50,11 @@ Unlike traditional "closed" AI labs (like OpenAI or Anthropic), Nous Research op
 
 - #待實測 #TODO
 - 從 README 看起來，定位有點類似 OpenClaw，甚至提供從 OpenClaw 把一些設定複製到 Hermes Agent 的子命令
+
+## 2026-06-01
+
+- 緣起：
+  - https://www.linkedin.com/feed/update/urn:li:activity:7466683052543447040
+  > Hermes WebUI gives you full CLI parity in the browser. Everything you can do from the terminal, you can now do from a clean three-panel layout: sessions on the left, chat in the center, your workspace files on the right.
+- Git Repo:
+  - https://github.com/nesquena/hermes-webui
