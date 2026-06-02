@@ -15,3 +15,13 @@
   - https://recca0120.github.io/2026/04/08/mempalace-ai-memory-system/
   - MemPalace 記憶宮殿架構：逐字儲存、AAAK 壓縮方言、與 LongMemEval 96.6% 的工程哲學
   - https://xn--uy0a.tw/AI/mempalace-verbatim-storage-aaak-compression-memory-architecture/
+
+## 2026-06-01
+
+- 參考 [GBrain](../../js/gbrain/gbrain.md) 跟 Mempalace 的比較
+
+## 2026-06-02
+
+- 參考 [GBrain](../../js/gbrain/gbrain.md) - 其他不同的 Agent Memory 實作
+- https://mempalaceofficial.com/reference/benchmarks.html
+  - 各家評測的結果與 Mempalace 原始碼中如何重跑 Benchmark 的指令
