@@ -404,3 +404,26 @@ Resolved 97 packages in 51ms
       hint: This usually indicates a problem with the package or the build environment.
 ```
 - https://github.com/Aider-AI/aider/issues/3699
+
+## 2026-06-02
+
+- 狀況：升級 `uv` 時發現 Windows Scoop 從 `0.1.16` 開始，把 `uv` 的 persist 目錄移到 `scoop\persist\uv` 了，所以原本安裝的 `uv tool` 也會跟著找不到。
+```bash
+Installing 'uv' (0.11.18) [64bit] from 'main' bucket
+Loading uv-x86_64-pc-windows-msvc.zip from cache
+Extracting uv-x86_64-pc-windows-msvc.zip ... done.
+Running installer script...Adding ~\scoop\persist\uv\python\shims to your path.
+Adding ~\scoop\persist\uv\tools\shims to your path.
+done.
+Linking ~\scoop\apps\uv\current => ~\scoop\apps\uv\0.11.18
+Creating shim for 'uv'.
+Creating shim for 'uvx'.
+Creating shim for 'uvw'.
+Making C:\Users\jazzw\scoop\shims\uvw.exe a GUI binary.
+'uv' (0.11.18) was installed successfully!
+Notes
+-----
+Scoop persists data since version 0.11.16. You may need to move data by yourself.
+Before: '$env:APPDATA\uv', '$env:LOCALAPPDATA\uv'
+After : 'C:\Users\jazzw\scoop\persist\uv'
+```
