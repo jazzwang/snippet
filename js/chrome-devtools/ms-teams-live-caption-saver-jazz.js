@@ -60,3 +60,14 @@ if (targetNode) {
 } else {
     console.error("MutationObserver not started because the target node was not found.");
 }
+
+// 目前發現移除的話，其他下拉選單也跟著失效。待查～
+// remove title bar (only search box and user profile)
+// document.querySelector('div[data-tid="app-layout-area--title-bar"]').style.display = 'none';
+
+// make live caption small
+document.querySelector('div[data-tid="closed-caption-renderer-wrapper"]').style.height = "50px";
+
+// 目前發現移除的話，其他下拉選單也跟著失效。待查～
+// disable left menu
+// document.querySelector('div[data-tid="app-layout-area--nav"]').style.display = 'none';

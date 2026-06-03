@@ -96,8 +96,8 @@ observer.observe(targetNode, config);
 
 - 微調 UI - 把 live caption 變小，方便
 ```diff
-- <div class="fui-Flex ___1xriypo f22iagw f1vx9l62 fprs0cq f419p8h for4qjf fgmr9yd f12xb3oj f1yj8dow f1nkf6f4 f1h3a8gf f1g31g83 fyxfkj9" data-tid="closed-caption-renderer-wrapper" aria-label="Live Captions">
-+ <div class="fui-Flex ___1xriypo f22iagw f1vx9l62 fprs0cq f419p8h for4qjf fgmr9yd f12xb3oj f1yj8dow f1nkf6f4 f1h3a8gf f1g31g83 fyxfkj9" data-tid="closed-caption-renderer-wrapper" aria-label="Live Captions" style="height: 100px;">
+- <div data-tid="closed-caption-renderer-wrapper" aria-label="Live Captions">
++ <div data-tid="closed-caption-renderer-wrapper" aria-label="Live Captions" style="height: 100px;">
 ```
 
 ## 2025-10-16
@@ -111,7 +111,7 @@ observer.observe(targetNode, config);
 ## 2026-05-13
 
 - 紀錄一下改進的方向
-  - 簡化 UI, 
+  - 簡化 UI,
     - 移除：最上方有搜尋框的 Title Bar
     ```html
     <div data-tid="app-layout-area--title-bar">
@@ -122,6 +122,7 @@ observer.observe(targetNode, config);
     ```
     - 為了避免誤觸其他功能，我也會想要把左邊的 bar 移除。
     ```html
+    <div data-tid="app-layout-area--nav">
     ```
   - 看能否註冊 onClose 或 onReload 的事件，提醒要先存檔
   - 如果能自動化關閉 notification 會有幫助專注在會議上
@@ -129,3 +130,102 @@ observer.observe(targetNode, config);
   - 將 JSON 存到 Local Storage ，以免誤關視窗沒存到即時字幕
     - 如果想要做成更流暢的工作流（Workflow），是可以考慮存到其他位置集中管理。
   - 研究怎麼偵測上線人數（我是最後一個嗎？）
+
+## 2026-05-28
+
+<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
+how can I use JavaScript and Chrome DevTool to change heigh of div with data-tid="closed-caption-renderer-wrapper" to 50px?
+</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+
+- May 28 at 9:41 PM
+- Google Gemini Apps
+- Gemini 3.5 Flash | Thinking Level: Standard
+
+</td></tr><tr><td>A:</td><td>
+You can do this easily using the browser Console inside Chrome DevTools. Here is the quickest way to find that specific `div` and change its height to 50px.
+
+### Step-by-Step Guide
+
+1. **Open DevTools:** Right-click anywhere on the webpage and select **Inspect**, or press `F12` (`Cmd + Option + I` on Mac).
+2. **Open the Console:** Click on the **Console** tab at the top of the DevTools panel.
+3. **Run the Code:** Copy and paste the following JavaScript line into the console and press **Enter**:
+
+```javascript
+document.querySelector('div[data-tid="closed-caption-renderer-wrapper"]').style.height = "50px";
+```
+
+### How It Works
+
+* `document.querySelector(...)`: This looks through the webpage's HTML to find the first element that matches the CSS selector you gave it.
+* `div[data-tid="closed-caption-renderer-wrapper"]`: This is a specific CSS attribute selector. It tells the browser, *"Find a `div` that has an attribute named `data-tid` exactly equal to `closed-caption-renderer-wrapper`."*
+* `.style.height = "50px"`: This directly modifies the element's inline CSS, forcing its height to become 50 pixels.
+
+💡 **Quick Tip:** If the element's height doesn't seem to change, it might be overridden by other strict CSS rules (like a fixed `max-height`). If that happens, you can force it by adding `!important` using this alternative line:
+```javascript
+document.querySelector('div[data-tid="closed-caption-renderer-wrapper"]').style.setProperty('height', '50px', 'important');
+```
+
+</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
+can I remove div with data-tid="app-layout-area--title-bar"?
+</td></tr><tr><td>A:</td><td>
+Yes, absolutely. You can completely remove that element from the webpage using a very similar approach in the Chrome DevTools Console.
+
+Here is the JavaScript line to delete it:
+
+```javascript
+document.querySelector('div[data-tid="app-layout-area--title-bar"]').remove();
+```
+
+### How to do it:
+
+1. Open your Chrome DevTools (**F12** or right-click -> **Inspect**).
+2. Click on the **Console** tab.
+3. Paste the code above and press **Enter**.
+
+### What this does:
+
+* `document.querySelector(...)` locates that specific title bar `div`.
+* `.remove()` completely deletes the element from the current page's DOM (the HTML structure).
+
+> ⚠️ **Note:** This change is temporary. It only affects your local view of the page. If you refresh or navigate away, the title bar will come right back!
+</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
+how can I make it invisible instead of remove it?
+</td></tr><tr><td>A:</td><td>
+If you want to hide the title bar without completely deleting it from the HTML structure, you have two great options. Making it invisible is often better because it keeps the page layout intact or allows you to bring it back easily later.
+
+You can use either of these lines in your Chrome DevTools Console:
+
+### Option 1: Hide it completely (Collapses the space)
+
+This is usually what people want. It hides the element and sucks up the empty space it was occupying, as if it isn't there.
+
+```javascript
+document.querySelector('div[data-tid="app-layout-area--title-bar"]').style.display = 'none';
+```
+
+* **To undo this later without refreshing:** Change `'none'` to `''` (an empty string) or `'block'`.
+
+### Option 2: Make it transparent (Keeps the space)
+
+This makes the element completely invisible, but it still physically occupies space on the screen. The layout of the rest of the page won't shift.
+
+```javascript
+document.querySelector('div[data-tid="app-layout-area--title-bar"]').style.visibility = 'hidden';
+```
+
+* **To undo this later without refreshing:** Change `'hidden'` to `'visible'`.
+
+### 💡 Pro Tip: How to "Toggle" it with a click
+
+If you want an easy way to hide and unhide it while you are working on the page, you can paste this code into your console. It will hide it if it's visible, and show it if it's hidden:
+
+```javascript
+const titleBar = document.querySelector('div[data-tid="app-layout-area--title-bar"]');
+if (titleBar) {
+    titleBar.style.display = titleBar.style.display === 'none' ? '' : 'none';
+}
+```
+</td></tr>
+</table>
