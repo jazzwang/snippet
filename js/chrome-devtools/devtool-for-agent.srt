@@ -1,0 +1,487 @@
+[MUSIC PLAYING]
+MATTHIAS ROHMER: I'm Matthias.
+I hope you're having a wonderful time
+at I/O. I'm colleagues with Una and Bramus,
+who were on stage just right before me.
+And together with you all, I want
+to do a deep dive on one of the announcements we
+made on the developer keynote stage yesterday--
+Chrome DevTools for agents.
+In the next 20 minutes, I'll cover what it is,
+what it's useful for, and how you can get started yourself.
+So first, for those who are new to this,
+or new to the web track at Google I/O, welcome.
+This here on the screen is DevTools.
+It's what opens when you right-click in Chrome
+and then select Inspect.
+DevTools is what you'll trial and error around
+in to find the right combination of CSS properties
+to make your things look as planned as in Una's and Bramus'
+talk.
+In September last year, the same DevTools you know and love got
+a new UI surface, additional to what you'll get when you
+right-click and Inspect--
+Chrome DevTools for agents.
+Let's dive in.
+We're going to start with a general overview of what
+Chrome DevTools for agents is, where it lives,
+how it relates to your other tools,
+and how your agent can use it.
+Then we are going to look at the foundational technologies that
+enable the capabilities of DevTools for agents.
+Having a basic understanding of this
+will be the foundation to understand
+the actual capabilities and use cases,
+before we look into the various configuration options,
+and finally, how you can get started.
+But first, we're going to do some time travel.
+I want to take you on a virtual trip
+back in time to the beginning of your career, whenever this was.
+Maybe it's been a couple of months, three years, or decades
+ago.
+That doesn't really matter.
+Just try to think how it was as an absolute web developer
+beginner.
+For me, this was in 2014.
+This was me back then.
+That's my first corporate profile picture
+on the day I joined as an apprentice web developer
+to learn web development.
+I was part of a team of around 20 other engineers who
+were taking turns in teaching me web development
+over the course of two years.
+The one thing all my colleagues had in common--
+they used DevTools to show and demonstrate things to me.
+For example, I learned that the static HTML from my code editor
+turns into a dynamic, living thing called DOM by clicking
+through the Elements panel.
+Later in my career, I learned about web performance
+by running lighthouse audits over and over again and just
+blindly following the advice it gave me
+until the scores turned green without really understanding
+the background.
+So for me, DevTools enabled a closed feedback loop
+during my learning journey.
+Through DevTools, I could inspect the live page
+I was working on, fiddle with it,
+try and break things, and debug issues.
+And this has been true for me just as millions
+of other developers out there, including you,
+before and after us.
+But there are a few developers who learned web development
+without ever touching DevTools.
+They are over three years into their career now
+and they are doing a fairly decent job, I would say.
+But they never touch DevTools.
+I'm talking about coding agents, obviously.
+We think they are missing out and could
+do more if we give them the right tools.
+We believe that giving your coding agent access to DevTools
+through DevTools for agents enables the same closed feedback
+loop for them you benefited from your whole career.
+Let's look at a debugging example,
+the way you would manually handle it even with AI
+in the game.
+This is a sign-up form using a company's internal auth
+provider called Showtime.
+It's not publicly documented, so no AI model knows about it.
+When I try to register and it fails,
+I only get cryptic error messages, like app error 1003.
+Your out-of-the-box coding agent runs into a bunch of dead ends
+debugging an issue like this.
+First of all, it would rely on you
+to manually surface the issue.
+But then also, if you actually surface the issue already
+and you prompt, "Please fix APP_ERR_1003 in @SignUpForm.tsx
+when trying to sign up" with your coding agent,
+it can't do much, really.
+It will search for APP_ERR_1003 across the code
+base and then just spiral.
+If it got lucky, after some digging,
+my coding agent might find this lousy to-do comment
+I left for it.
+To-do-- specific error code.
+Excellent, right?
+Little does my coding agent know that this solution is actually
+not too far.
+Any wild guesses where it is?
+Is it, A, in the training data of the model,
+or is it, B, in the source code, or is
+it, C, in the runtime data?
+After you listen to my heartwarming story of how
+I learned web development, you will
+know it's C. The solution is in the runtime data.
+Let me show you where.
+When I'm submitting the signup form,
+a request is being sent to an API.
+And all network requests sent from a page
+are surfaced in DevTools.
+It's the same here.
+So when we look in the Network panel in DevTools,
+inspect the failing request, and look at the response,
+we see there is actually an additional message
+that we can use to give the user more information.
+And not only can we use those network requests,
+but our coding agent as well.
+Giving your coding agent access to this information
+through DevTools enables this closed feedback loop
+I mentioned before.
+But let's see if that's true by giving it a test run.
+Before we can do that, though, we
+need to tweak our prompt just so slightly.
+Instead of asking our agent to look at specific files,
+we ask it to look at the runtime.
+As DevTools for agents has access to source maps,
+it will be able to guide your coding agent to the right file
+anyway.
+So we are going with, "Go to localhost, signup,
+debug and fix the error when signing up with test and 1234."
+Using this prompt with my coding agent, Antigravity in this case,
+and DevTools for agents enabled, will start a full end-to-end
+fixing flow.
+The agent will open the page in a real Chrome instance,
+try to log in, capture any Console logs or network
+requests, and combine all the pointers to actually fix
+the code.
+That's the power of DevTools for agents.
+So after you've seen this first example of what
+Chrome DevTools for agents can do,
+let's briefly look into the foundation of it
+all, as this will help you get a better understanding of the use
+cases we'll explore in just a minute.
+While DevTools for agents is new,
+it's actually built on a pretty solid and longstanding
+foundation using tools the same team has
+been maintaining for years, Chrome
+for testing and Puppeteer.
+But let's break it down.
+At its core, DevTools for agents is an NPM package
+that you can install on any machine that
+has a recent Node.js version.
+This is what your coding agent is using,
+may it be Antigravity, Gemini CLI, or whatever you prefer.
+Your agent might either use it through the MCP server
+or the CLI, which, both ship as part of the same NPM package.
+The CLI enables your coding agent
+to script against DevTools for agents,
+which can be more token-efficient compared
+to using it through the MCP server.
+The third and last key thing that brings it all together
+is a set of skills which teach your coding
+agent how and when to use Chrome DevTools for agents.
+For now, Chrome DevTools for agents ships
+with a total of six skills, which can be roughly put
+in two categories.
+The troubleshooting and the Chrome DevTools and Chrome
+DevTools CLI skills help your coding agent
+to understand key capabilities, concepts, and general usage.
+The accessibility debugging, the memory leak debugging,
+and optimized LCP skills include expert knowledge
+in that specific area, which makes your coding agent
+act as the same expert.
+As part of modern web guidance you
+might have heard about in the keynote yesterday
+or in Phil's talk, this skill set
+will expand over the coming months
+to help your agent debug the web's newest features.
+To learn more about modern web guidance, find Phil's session,
+"Unlock modern web capabilities in your AI coding workflows"
+from yesterday on YouTube to learn more.
+Now, from skills back to the overall architecture.
+DevTools for agents is an NPM package with skills
+and MCP server and a CLI.
+The thing we haven't looked into yet-- how does any of this
+talk to Chrome?
+Through Puppeteer, the same library
+from the Chrome tooling team that you
+might have used in the past to run tests,
+automate an annoying workflow, or scrape something.
+While this layer is mostly invisible
+when you're using DevTools for agents,
+it's helpful to know this, because ultimately, it's
+Puppeteer giving DevTools for agents its capabilities.
+And before we get into those, knowing Puppeteer
+is the layer in between might also
+help you better assess security and when
+to use Chrome DevTools for agents.
+For example, under one of our recent YouTube tutorials,
+someone recently asked, does DevTools for agents
+have access to my passwords saved in Chrome's password
+manager?
+The clear answer is no.
+DevTools for agents does not have access
+to passwords saved in Chrome's password manager.
+It is not using Chrome like you are as a human user.
+It's only using a vetted and tested set of tools
+through Puppeteer.
+And Puppeteer doesn't expose that as a capability.
+But also, DevTools for agents uses
+a separate, anonymous browser profile by default.
+And while this largely reduces a few of the most common security
+risks around giving agents access to a browser,
+the advice to always carefully decide what you give agents
+access to never gets old.
+No matter how boring it sounds, it's
+critical to protect your personal data.
+Awesome.
+So now that we've fully explored how it works under the hood,
+let's dive into some examples of what it can actually do.
+As you just learned, DevTools for agents
+inherits its capabilities from Puppeteer.
+But when you prompt in your coding agent,
+your agent doesn't directly use Puppeteer.
+Instead, we wrapped key Puppeteer capabilities
+in a set of distinct tools properly described, and by this,
+easier to consume by your coding agent.
+Those tools can be divided into six overall categories.
+In this section, I want to walk you through three different use
+case examples, exploring how tools from multiple categories
+play together to fulfill a certain user prompt.
+The first example is the one you've already seen.
+With a prompt like, "Go to localhost,
+debug and fix the error when signing up with test and 1234,"
+we had the coding agent navigate to the page, fill in the form,
+and then fix the underlying error and validate its own fix,
+all in a real Chrome instance running on my machine.
+This example combines input automation, network,
+and navigation automation.
+Our partner CyberAgent has brought this use case
+to the next level when they set up an agent with access
+to DevTools for agents and let it audit
+over 230 stories in Storybook across 32 components in just one
+hour of runtime.
+To learn more about this, find the case study
+on developer.chrome.com.
+For the next example, we are going
+to combine emulation tools which allow DevTools for agents
+to change the viewport size, for example,
+and debugging tools like taking a screenshot.
+Combining them enables your coding agent
+to do one-off bug validation.
+So before you manually go through a bug's verification
+process, let your agent work for you first.
+For example, if you have a report
+about not all navigation items being visible on all devices,
+you can prompt "go to developer.chrome.com.
+Check the same navigation items are visible on desktop, tablet,
+and mobile viewports."
+After you sent, your coding agent--
+again, Antigravity-- will open a Chrome window
+and use the emulation tools to resize
+the viewport to desktop, tablet, and mobile one after another.
+As a sign of this, in this screencast,
+you see the page occasionally overlap the window bounds.
+Then in this example, Antigravity
+took screenshots, interacted with the burger menu on mobile,
+and cross-checked everything before it will ultimately return
+the response in the screencast.
+The response will be something along the lines
+of, "The same four main navigation
+items are present across all three viewports.
+While the items themselves remain consistent,
+their placement and presentation adapt based on the device."
+There, you see the final response.
+So with this prompt, I could automate a testing journey
+across three viewports and nested menus,
+including the interactions with them,
+sparing me all manual work and the back
+and forth to remind myself what actually
+happened on each viewport.
+OK, let's look at one last use case.
+And to be honest, it's really my favorite one
+because Chrome DevTools for agents
+enables you to scale your expertise.
+For example, let's imagine you don't know much about web
+performance and only have a 57-point Lighthouse score.
+Or imagine you don't know much about accessibility or SEO.
+Now, you could go in and ask your coding agent to improve any
+of the areas mentioned with a generic prompt like,
+"Improve the performance of this project."
+With a generic prompt like this, and without DevTools for agents,
+what will likely happen is that your coding agent just slowly
+starts burning through your token budget,
+reading all of your project files
+and only fixing random things it might find along the way.
+Ultimately, that wouldn't help your website performance.
+But with DevTools for agents, it's flipped.
+With its specialized tools to run performance traces,
+analyze included insights, and run accessibility,
+best practices, SEO, and the new agentic browser agent's
+audit in Lighthouse, it can actually test for known problems
+instead of trying to guess them from your source code.
+This allows you and your coding agent
+to improve your websites in areas you are not
+inherently familiar with.
+For example, you can work on real performance issues
+by letting DevTools for agents actually measure your current
+performance and then work against an actual target and use
+performance insight in the trace to start where it matters,
+all through a prompt like, "Go to localhost,
+run a performance trace, and act on all findings."
+Or you can use the same pattern to improve accessibility--
+instead of your coding agent and underlying model,
+just sprinkling in a couple of labels.
+Or you use the same pattern to ask your coding agent
+to work on SEO.
+While all of these examples you've just seen
+work with the MCP server and the CLI equally, some of them
+are perfect for the CLI because the CLI can also
+run outside of an agent loop.
+This allows you to persist your agent's actions
+to shell scripts.
+Here's how it works.
+After you're done with your debugging flow with Chrome
+DevTools for agents, just prompt "Persist your previous actions
+in DevTools to a well-named script file using the DevTools
+CLI."
+When you try a prompt like this, make sure
+that your coding agent has access to the DevTools CLI
+and the related skill, which teaches it how to use the CLI.
+For the previous example, where we validated the navigation
+on developer.chrome.com, this, for example,
+could yield a script like this.
+It's opening the page, emulating the viewports,
+and taking the screenshots.
+The only bit that is missing here
+is the actual comparison of the results
+Antigravity has done for me in the screencast earlier.
+With this approach, using the scripts,
+that would be on you, the human, again.
+OK, let's wrap up all use cases that we explored.
+We saw a prompt to automatically fix complex UI flows, one
+to scale your expertise, running performance traces or Lighthouse
+audits, one to validate bug reports,
+and one to persist your prompted actions to scripts
+you can rerun outside of your coding agent,
+use variations of those prompts in your own projects
+to achieve the same results you just saw on-screen.
+To explore more use cases like this and more examples
+from other tool categories, learn more in our documentation
+on developer.chrome.com.
+Now, there is one last topic I want to look
+into with you-- configuration.
+While DevTools for agents works for most, and most use cases out
+of the box, there are some configuration options
+you can use to tailor it to your own needs.
+To configure it, when using Chrome DevTools for agents
+as an MCP server, find the file that
+has your MCP server's config.
+For Gemini CLI, this is usually a .gemini/settings.json.
+For Cloud, this might be in your project root at .mcp.json.
+For other agents, it is in similar locations
+you already know.
+In this file, just add a new entry
+to the args array with the option you want to configure.
+If you're using DevTools for agents through the CLI,
+make sure to explicitly include your desired
+option in the prompt.
+For example, through the channel configuration option,
+you can specify whether Chrome DevTools for agents
+should connect to any other Chrome channel than Stable.
+Or you can use the configuration options
+to enable experimental options we are still working on,
+like the experimental support for screencasts
+through experimental Screencast.
+And for the MCP server users specifically, there
+are configuration options to turn off certain tool categories
+to save tokens.
+But there is one configuration option
+I want to particularly highlight,
+which is useful for both users of the CLI and the MCP server.
+It's autoConnect.
+Think about autoConnect as sharing your screen
+with your coding agent, because autoConnect allows your coding
+agent to connect to an already running Chrome instance
+and pick right up where you left off.
+Let's look into why this is interesting.
+For this, we're going back to our initial example.
+We asked our coding agent to go to a specific page
+and sign in with a certain set of credentials.
+We did this so our coding agent could get to the same page state
+that we already reproduced in our running Chrome.
+But if I'm already at the same state
+with the error right in front of my eyes,
+why should I waste mental energy just
+to write a prompt that gets my coding
+agent into the same state, or even worse,
+manually copy and paste error messages
+from the browser Console into my coding agent?
+This is what autoConnect is for, and it works fairly simple.
+All you need to do is to go to Chrome, Inspect, select Remote
+Debugging in the sidebar, and then toggle the Allow Remote--
+allow-- excuse me.
+Allow Remote Debugging for This Browser Instance checkbox.
+Then make sure to use autoConnect in your MCP JSON
+config or explicitly prompt for it when using the CLI.
+Now, the next time you use your coding agent,
+it will connect to the Chrome you've just been using
+and will also let you know if it has trouble connecting
+to it because you forgot to turn on remote debugging,
+for example.
+However, this is the right time to repeat the earlier advice.
+Carefully decide what you give agents access to, because with
+autoConnect, depending on what Chrome instance
+you're connecting to, DevTools for agents might use
+your personal Chrome profile rather than the anonymous
+default one, which puts your personal data at risk,
+because technically, connected to my personal Chrome profile,
+a prompt like "Go to google.com/shopping and order
+999 colorful balloons" has a high chance of actually
+succeeding and incurring unintended costs
+and consequences, like a lot of balloons ordered to my doorstep.
+Because in this example, I might already
+be logged into the shop site the agent ultimately decides to use,
+and the only thing it needs to do
+is click Next and Continue at checkout all the time.
+So carefully consider what you prompt
+for when using autoConnect with a personal profile.
+And with this, you really have everything to get started.
+You know how DevTools for agents works with the MCP
+server and the CLI.
+We explored a couple of example prompts,
+from bug validation to persisting DevTools actions
+into a reusable CLI script.
+And you learned how to configure DevTools for agents
+to your needs.
+On top of all this, we are happy to announce
+that since yesterday, DevTools for agents
+is available in its first stable release, version 1.0.
+However, my team might have shipped minor fix releases
+in the meantime.
+So let's say round about version 1.
+I think we're at 1.01 or something.
+But anyway, stable and good to use.
+Now, it's time for you to get started.
+In the next few slides, I'm going to share resources
+for you to install DevTools for agents,
+learning material to set it up, and how to contribute back
+to it if you want to.
+First up, find install instructions
+for over 20 coding agents, more use cases, including
+the autoConnect feature you heard
+about, and in-depth documentation through this link
+on developer.chrome.com.
+If you haven't seen enough of me today,
+you can also learn more about setting up
+DevTools for agents with a video tutorial on YouTube.
+Find it at google/dtasetup.
+This video is also the beginning of a series of YouTube videos
+explaining use cases for DevTools
+for agents that will expand over time.
+If you have particular use cases in mind
+or want to learn more about, please find me on social
+and reach out with your idea.
+And don't forget, DevTools for agents
+is a thriving open-source project.
+If you see something that doesn't
+work, want to peek into feature discussions,
+or straight-up contribute, find the project on GitHub.
+Now, that's it.
+Thanks so much for listening and spending your time
+here at the Chrome tent.
+This was a comprehensive overview
+of Chrome DevTools for agents, and we can't
+wait for you to get started.
+Enjoy the rest of I/O and your lunch, and see you all soon.
+[APPLAUSE]
+[MUSIC PLAYING]
