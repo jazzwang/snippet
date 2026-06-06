@@ -777,4 +777,11 @@ Here is a table summarizing the key aspects of Gemma 3n.
   - Demo 影片很亮眼
   <video src='https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/semantic-galaxy-v3_1-720p-small.mp4'/>
 
+## Gemma 4 12B
 
+### 2026-06-05
+
+- Google 免費開源 AI 新突破！Gemma 4 12B 無編碼器架構，16GB 記憶體筆電就能跑（2026 最新）
+- https://pcrookie.com/gemma4-12b/
+- Gemma 4 - How to Run Locally
+- https://unsloth.ai/docs/models/gemma-4
