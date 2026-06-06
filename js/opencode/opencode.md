@@ -265,3 +265,38 @@ docs  process-notes.md
 - https://opencodeguide.com/
   - Master your local coding agent.
   > OpenCode is the offline-first, plugin-driven alternative to cloud coding assistants. Learn how to run it with Ollama, connect via Model Context Protocol (MCP), and integrate with Neovim.
+
+## 2026-06-06
+
+- OpenCode基本功 EP01：免費 AI Agent 啟手式_免費仔必看！三師爸手把手教你用開源OpenCode打造專屬AI Agent！
+- https://www.youtube.com/watch?v=lB7Pl8Dl_Rw
+```
+還在為了每個月20美金的AI訂閱費傷腦筋，又覺得傳統生成式AI不夠聰明、無法應付連續任務嗎 ？
+這支影片將顛覆你對工具使用的既定想像，由三師爸現場實測，手把手帶你跨入免費AI Agent的全新世界 ！  
+Harness Engineering架構解密：用電腦硬體妙喻AI Agent，帶你秒懂作業系統、CPU與記憶體的協同原理，不再只盲目追求單一模型能力 。  
+OpenCode免費用法實操：現場示範如何下載與設定開源Harness桌面版，並透過OpenRouter完美、安全地串接雲端免費頂級模型 。  
+多模態任務自動化工作流：實測串接NotebookLM與聯網搜尋，讓免費AI分身幫你搞定日常瑣碎的行政與勞務工作 。  
+想知道如何用最低成本發揮AI的最大威力、建立流暢的自動化工作流嗎 ？
+立刻觀看影片，並記得訂閱頻道、開啟小鈴鐺，在評論區留下你的測試心得，讓我們一起解鎖最強生產力！
+```
+- 快轉看了一下，這個主要是介紹 OpenCode Desktop 版本。至於串接 NotebookLM 是透過 MCP
+- 懶人包路徑: https://github.com/mathruffian-dot/claude-code-lazy-packs
+
+```bash
+◇  Security Risk Assessments ─────────────────────────────────────────────────╮
+│                                                                             │
+│                          Gen               Socket            Snyk           │
+│  claude-code-lazy-packs  Safe              3 alerts          Critical Risk  │
+│                                                                             │
+│  Details: https://skills.sh/mathruffian-dot/claude-code-lazy-packs          │
+│                                                                             │
+├─────────────────────────────────────────────────────────────────────────────╯
+│
+◇  Proceed with installation?
+│  No
+└  Installation cancelled
+```
+* 這些 Skill 有一個嚴重 Snyk 的資安風險，先緩緩～
+- 另外注意到有用到一個 Exa Web Search
+  - https://exa.ai/
+- 在懶人包裡面找不到對應的關鍵字，或許是其他相依的工具安裝的。
