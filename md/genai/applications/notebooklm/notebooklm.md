@@ -202,7 +202,13 @@ If you're looking to build a robust application, investigating the official ente
 
 ## 2025-11-25
 
-- Google 釋出 Gemini 3 Pro (Preview) 以後，NotebookLM 也跟著變強大許多。像是整合了 Nano Banana Pro，可以生成資訊圖表(Infographics)。
+- Google 釋出 Gemini 3 Pro (Preview) 以後，NotebookLM 也跟著變強大許多。像是整合了 Nano Banana Pro，可以生成資訊圖表(Infographic)。
 - 小技巧：
   - 設定選「正體中文」的話，生成的摘要，語音摘要，資訊圖表，心智圖等，都會是「正體中文」。
   - 針對無法下載字幕檔的 YouTube 影片，直接把網址貼到 NotebookLM 以後，若是中文語音的內容，可以得到「正體中文」的字幕內容。缺點是每個字跟字中間都有一個空白，也沒有標點符號。
+
+## 2026-06-07
+
+- 2026.05.29
+- NotebookLM 簡報怎麼去 AI 味？3 步驟學會 YAML 指令，附 3 款商務模板「複製就能用」
+  - https://www.bnext.com.tw/article/91085/ai-presentation-yaml-style-guide
