@@ -8,12 +8,6 @@
 ## 2025-06-16
 
 #### could you based on `manifest.json` to draw a sequence diagram using mermaid.js syntax especially highlight the call graph between content.js and fetchOverride.js?  
-> content.js  
-> Add file to the chat? (Y)es/(N)o/(A)ll/(S)kip all/(D)on't ask again [Yes]: y  
-> fetchOverride.js  
-> Add file to the chat? (Y)es/(N)o/(A)ll/(S)kip all/(D)on't ask again [Yes]: y  
-> manifest.json  
-> Add file to the chat? (Y)es/(N)o/(A)ll/(S)kip all/(D)on't ask again [Yes]: y  
 
 Certainly! Below is a Mermaid.js syntax sequence diagram that highlights the call graph between `content.js` and `fetchOverride.js` as described in your `manifest.json`.
 
@@ -52,15 +46,7 @@ sequenceDiagram
 
 This diagram should help visualize how the different parts of your extension interact with each other.
 
-> Tokens: 1.5k sent, 387 received.  
-
 > ### aider chat started at 2025-06-16 22:42:00
-> C:\Users\jazzw\.local\bin\aider --model ollama/qwen25-coder-7b:q4_k_m --no-auto-commits  
-> Aider v0.76.1.dev0+gc838f9bf.d20250509  
-> Model: ollama/qwen25-coder-7b:q4_k_m with whole edit format  
-> Git repo: ..\..\..\.git\modules\js\chrome-extensions\ms-stream-transcript-extractor with 14 files  
-> Repo-map: using 4096.0 tokens, auto refresh  
->
 > #### /model gemini/gemini-2.5-flash-preview-05-20  
 > Aider v0.76.1.dev0+gc838f9bf.d20250509  
 > Main model: `gemini/gemini-2.5-flash-preview-05-20` with whole edit format  
@@ -214,8 +200,6 @@ If something doesn't work as expected:
 *   **Elements Tab:** As mentioned, use the "Elements" tab to inspect the DOM and confirm the presence and content of the hidden `div` (`transcript-extractor-for-microsoft-stream-hidden-div-with-transcri`). This is crucial for verifying the communication bridge between `fetchOverride.js` and `content.js`.
 
 By following these steps, you should be able to thoroughly test your modified extension.
-
-> Tokens: 3.4k sent, 1.1k received. Cost: \$0.0012 message, \$0.0041 session.  
 
 > #### aider chat started at 2025-06-16 23:03:46
 >
@@ -813,4 +797,101 @@ index 963ffc2..ddc7a00 100644
 -})();
 \ No newline at end of file
 +})();
+```
+
+## 2026-06-08
+
+- 看樣子 2026-05-29 微軟的 Stream Viewer 又更新了一個版本 :(
+- 從網址猜測 https://res-1.public.onecdn.static.microsoft/files/odsp-web-prod_2026-05-29.004/spstreamhomewebpack/34.js
+- 其實上週就覺得字幕檔下載有點卡關，果然又到了逆向工程的時刻
+- https://res-1.public.onecdn.static.microsoft/files/odsp-web-prod_2026-05-29.004/spstreamhomewebpack/415.js 有看到類似以前 `addApplyMediaEditsQspToTranscriptUrl` 的字眼
+- 以下是將可能的第 13 行部份函數轉成 PlantUML 循序圖
+```plantuml
+@startuml
+participant "Caller" as Caller
+participant "H.tryRegisterSetting" as tryRegisterSetting
+participant "a.onePlayerSettingsStore" as HostSettingsStore
+participant "q.metadata.userPermissions" as UserPermissions
+participant "q.metadata.transcripts" as TranscriptsMetadata
+participant "q.metadata.mediaType" as MediaTypeMetadata
+participant "a.player" as PlayerAPI
+participant "a.localization" as LocalizationAPI
+participant "a.ui" as UIAPI
+participant "m.b (utility)" as MUtility
+participant "q (H instance reference)" as HInstanceRef
+participant "A (OneTranscriptSettingsLoader)" as SettingsLoaderComponent
+
+Caller -> tryRegisterSetting: call(a)
+activate tryRegisterSetting
+
+tryRegisterSetting -> HostSettingsStore: getSetting("isOneTranscriptGenerateEnabled", "boolean")
+activate HostSettingsStore
+HostSettingsStore --> tryRegisterSetting: b (boolean)
+deactivate HostSettingsStore
+
+tryRegisterSetting -> HostSettingsStore: getSetting("isTranscriptForAudioEnabled", "boolean")
+activate HostSettingsStore
+HostSettingsStore --> tryRegisterSetting: c (boolean)
+deactivate HostSettingsStore
+
+note over tryRegisterSetting: Defines 'e' function (for initializing text tracks or toggling CC buttons):\n`e = (transcriptList) => {`\n`  if (MUtility.b(transcriptList)) {`\n`    // Process transcripts with q.addApplyMediaEditsQspToTranscriptUrl`\n`    PlayerAPI.initializeTextTracks(processedList)`\n`  } else {`\n`    PlayerAPI.toggleCCButtons(false)`\n`  }`
+
+tryRegisterSetting -> UserPermissions: value
+activate UserPermissions
+UserPermissions --> tryRegisterSetting: g (is editable boolean)
+deactivate UserPermissions
+
+alt g is true
+    tryRegisterSetting -> TranscriptsMetadata: subscribe(callback_updateNavVisibility)
+    activate TranscriptsMetadata
+    note right of TranscriptsMetadata: `callback_updateNavVisibility` will call\n`q.updateNavigationVisibility(a, q.isTranscriptNavigationVisible(), "TranscriptsChange")`\nwhen `TranscriptsMetadata` changes.
+end
+
+tryRegisterSetting -> HInstanceRef: shouldRegisterSetting(g, b, c, MediaTypeMetadata.value)
+activate HInstanceRef
+HInstanceRef --> tryRegisterSetting: shouldProceed (boolean)
+deactivate HInstanceRef
+
+alt shouldProceed is false
+    tryRegisterSetting --> Caller: return (exit function)
+else shouldProceed is true
+    tryRegisterSetting -> tryRegisterSetting: q.settingsRegistered = true
+
+    note over tryRegisterSetting: Defines async 'o' function (aliased as 'h'):\n`h = async (modalProps) => await UIAPI.showModal(modalProps)`
+
+    alt g is true
+        tryRegisterSetting -> tryRegisterSetting: i = true (flag for initial subscription call)
+        tryRegisterSetting -> TranscriptsMetadata: subscribe(callback_initializeTracks)
+        activate TranscriptsMetadata
+        note right of TranscriptsMetadata: `callback_initializeTracks` will call\n`e(transcriptList)` if `transcriptList` is available and `!i`.\nThen sets `i = false` after first potential execution.
+        TranscriptsMetadata -> TranscriptsMetadata: Trigger subscription (for initial value)
+        TranscriptsMetadata --> tryRegisterSetting: initialTranscriptList
+        tryRegisterSetting -> tryRegisterSetting: Check `initialTranscriptList && !i` (initially false due to `i=true`)
+    end
+
+    tryRegisterSetting -> TranscriptsMetadata: value (current transcripts for tooltip text)
+    activate TranscriptsMetadata
+    TranscriptsMetadata --> tryRegisterSetting: j (transcript array)
+    deactivate TranscriptsMetadata
+
+    tryRegisterSetting -> LocalizationAPI: getString("MediaSettingsTranscriptAndCaptionsTooltip")\n(or "..."NonTMR" based on 'j' content)
+    activate LocalizationAPI
+    LocalizationAPI --> tryRegisterSetting: k (infoTooltip.tooltipContent)
+    deactivate LocalizationAPI
+
+    tryRegisterSetting -> UIAPI: await a.ui
+    activate UIAPI
+    UIAPI --> tryRegisterSetting: uiInstance
+    deactivate UIAPI
+
+    tryRegisterSetting -> UIAPI: registerSetting()
+    activate UIAPI
+    note right of UIAPI: `getSettingsElement` provides the React component `A`.\nThis component can later invoke `h` (the `showModal` handler).
+    UIAPI --> tryRegisterSetting: Setting registered
+    deactivate UIAPI
+
+    tryRegisterSetting --> Caller: return (success)
+end
+deactivate tryRegisterSetting
+@enduml
 ```

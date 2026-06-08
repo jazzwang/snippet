@@ -4,6 +4,7 @@
   - Supercharge your AI coding workflow with Chrome DevTools for agents
   - https://www.youtube.com/watch?v=1AD81ZselPk
 - Reference:
+  - https://developer.chrome.com/blog/devtools-for-agents-v1?hl=en
   - https://developer.chrome.com/blog/new-in-devtools-149/#devtools-for-agents
   - https://developer.chrome.com/docs/devtools/ai-assistance/chat#auto-workspace
   - https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/tool-reference.md#third-party
