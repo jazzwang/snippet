@@ -361,3 +361,10 @@ Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Re
 > -   Try a different keyboard to rule out hardware damage.
 > -   Run `sfc /scannow` in Command Prompt to fix corrupted system files.
 > -   Temporarily disable any keyboard remapping software.
+
+## 2026-0
+
+- 狀況：
+  - DNS 反查失敗，懷疑是 IPv6 DNS 優先造成的狀況
+- 參考：
+  - https://github.com/gnmspo/cht-ipv6-config
