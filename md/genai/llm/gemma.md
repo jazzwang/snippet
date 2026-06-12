@@ -785,3 +785,22 @@ Here is a table summarizing the key aspects of Gemma 3n.
 - https://pcrookie.com/gemma4-12b/
 - Gemma 4 - How to Run Locally
 - https://unsloth.ai/docs/models/gemma-4
+
+## DiffusionGemma
+
+- 2026-06-10
+  - DiffusionGemma: 4x faster text generation
+  - https://blog.google/innovation-and-ai/technology/developers-tools/diffusion-gemma-faster-text-generation/
+  - DiffusionGemma: The Developer Guide
+  - https://developers.googleblog.com/diffusiongemma-the-developer-guide/
+
+### 2026-06-12
+
+- Google Cloud Shell 實測安裝
+  - https://shell.cloud.google.com/?show=terminal
+```bash
+sudo apt-get update && sudo apt-get install docker-model-plugin
+docker model version
+docker model run hf.co/unsloth/diffusiongemma-26B-A4B-it-GGUF:Q4_K_M
+```
+- 結果：空間不足
