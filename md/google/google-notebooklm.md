@@ -38,34 +38,6 @@ The system employs proprietary document chunking and vector embedding techniques
 
 Ongoing development at Google Labs focuses on expanding file format support and improving cross-document analysis capabilities, building upon the **"Multi-Document Question Answering"** research domain [^3] [^5].
 
-Citations:
-
-[1] https://www.geeksforgeeks.org/google-notebooklm/
-[2] https://www.zdnet.com/article/google-launches-its-ai-notebook-notebooklm-heres-what-you-need-to-know/
-[3] https://blog.commlabindia.com/elearning-design/google-notebook-lm-beginner-guide
-[4] https://www.searchenginejournal.com/google-launches-notebooklm-an-ai-note-taking-assistant/491534/
-[5] https://www.marketingaiinstitute.com/blog/google-notebooklm
-[6] https://blog.google/technology/ai/notebooklm-google-ai/
-[7] https://www.kdnuggets.com/using-google-notebooklm-for-data-science-a-comprehensive-guide
-[8] https://9to5google.com/2024/06/06/notebooklm-web-slides-citations/
-[9] https://www.techrepublic.com/article/google-notebooklm-expands-sources-citations/
-[10] https://en.wikipedia.org/wiki/NotebookLM
-[11] https://www.youtube.com/watch?v=S32G0w8YFlg
-[12] https://zapier.com/blog/google-ai-notebook-notebooklm/
-[13] https://www.youtube.com/watch?v=iWPjBwXy_Io
-[14] https://www.udemy.com/course/google-notebooklm/
-[15] https://blog.google/technology/ai/notebooklm-new-features-availability/
-[16] https://www.zdnet.com/article/googles-notebooklm-can-discuss-your-notes-with-you-now-how-to-access-it-and-why-you-should/
-[17] https://blog.google/technology/ai/notebooklm-google-ai/
-[18] https://blog.google/technology/ai/notebooklm-goes-global-support-for-websites-slides-fact-check/
-[19] https://www.geeksforgeeks.org/google-notebooklm/
-[20] https://stevenberlinjohnson.com/how-to-use-notebooklm-as-a-research-tool-6ad5c3a227cc?gi=f5af10538547
-[21] https://time.com/7094935/google-notebooklm/
-[22] https://support.google.com/notebooklm/answer/14276468?hl=en
-[23] https://www.youtube.com/watch?v=n_uSamfNsGI
-[24] https://www.zdnet.com/article/how-to-use-notebooklm/
-[25] https://blog.google/technology/ai/notebooklm-beginner-tips/
-
 [^1]: https://www.geeksforgeeks.org/google-notebooklm/
 [^2]: https://www.zdnet.com/article/google-launches-its-ai-notebook-notebooklm-heres-what-you-need-to-know/
 [^3]: https://blog.commlabindia.com/elearning-design/google-notebook-lm-beginner-guide
@@ -206,6 +178,14 @@ If you're looking to build a robust application, investigating the official ente
 - 小技巧：
   - 設定選「正體中文」的話，生成的摘要，語音摘要，資訊圖表，心智圖等，都會是「正體中文」。
   - 針對無法下載字幕檔的 YouTube 影片，直接把網址貼到 NotebookLM 以後，若是中文語音的內容，可以得到「正體中文」的字幕內容。缺點是每個字跟字中間都有一個空白，也沒有標點符號。
+
+## 2026-06-06
+
+### Agent Skills
+
+- https://claude-world.com/zh-tw/articles/notebooklm-skill-open-source-research-to-content-pipeline/
+  - https://github.com/claude-world/notebooklm-skill
+- https://www.skills.sh/mathruffian-dot/antigravity-lazy-pack/antigravity-notebooklm
 
 ## 2026-06-07
 
