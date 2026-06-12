@@ -207,39 +207,10 @@ The transcript positions the described research service as providing all necessa
 *   **Speculative Investment Risk:** The "high conviction speculation" (Step 3) is explicitly stated to carry higher risk and is "not for your rent money or any money you might need in the near future." All investments carry risk, and this one "even more so." It's cautioned to "never invest money you can't afford to lose."
 *   **Signal Accuracy and Market Certainty:** While the "Red Line Signal" is objective and mathematics-based, the transcript notes: "just because the data is objective doesn't mean things will play out as we expect. There are no certainties in the market and past performance is no guarantee for future results."
 
-> Tokens: 13k sent, 2.5k received. Cost: $0.01 message, $0.01 session.  
-
-# aider chat started at 2026-06-05 00:05:39
-
+> \# aider chat started at 2026-06-05 00:05:39
 > C:\Users\jazzw\.local\bin\aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash -m /ask could you generate report based on this transcript in markdown syntax? in 2 sections: (A) 50 single select Quiz questions (B) FAQ (C) Abbreviation (D) Terminology. Thanks. --chat-history-file ai-bubble.md ai-bubble.json  
 > Aider v0.86.2  
-> Model: gemini/gemini-2.5-flash with diff-fenced edit format  
-> Git repo: ..\..\..\.git with 1,813 files  
-> Warning: For large repos, consider using --subtree-only and .aiderignore  
-> See: https://aider.chat/docs/faq.html#can-i-use-aider-in-a-large-mono-repo  
-> Repo-map: using 4096 tokens, auto refresh  
-> Added md\genai\topics\ai-bubble.json to the chat.  
-> Note: in-chat filenames are always relative to the git working dir, not the current working dir.  
-> Cur working dir: C:\Users\jazzw\git\snippet\md\genai\topics  
-> Git working dir: C:\Users\jazzw\git\snippet  
-
-#### /ask could you generate report based on this transcript in markdown syntax? in 2 sections: (A) 50 single select Quiz questions (B) FAQ (C) Abbreviation (D) Terminology. Thanks.  
-
-#### could you generate report based on this transcript in markdown syntax? in 2 sections: (A) 50 single select Quiz questions (B) FAQ (C) Abbreviation (D) Terminology. Thanks.  
-> Repo-map can't include C:\Users\jazzw\git\snippet\c#\c-sharp-basics  
-> Has it been deleted from the file system but not from git?  
-> Repo-map can't include C:\Users\jazzw\git\snippet\go\go-workshop-practical  
-> Has it been deleted from the file system but not from git?  
-> Repo-map can't include C:\Users\jazzw\git\snippet\js\chrome-extensions\ms-stream-transcript-extractor  
-> Has it been deleted from the file system but not from git?  
-> Repo-map can't include C:\Users\jazzw\git\snippet\js\chrome-extensions\ms-teams-live-caption-saver  
-> Has it been deleted from the file system but not from git?  
-> Repo-map can't include C:\Users\jazzw\git\snippet\py\playwright\docker-playwright-vnc  
-> Has it been deleted from the file system but not from git?  
-
-Here is the report generated based on the provided transcript, in Markdown syntax as requested.
-
----
+> Model: gemini/gemini-2.5-flash with diff-fenced edit format
 
 ## Report Based on Transcript: "AI Bubble"
 
@@ -671,37 +642,10 @@ Here is the report generated based on the provided transcript, in Markdown synta
 *   **Quantitative Signal:** A trading or investment indicator derived from mathematical models and statistical analysis of historical and real-time market data, used to generate actionable insights.
 *   **High Conviction Speculation:** An investment strategy involving a calculated, often higher-risk, bet on a specific asset, sector, or trend where the investor has a very strong belief in its potential for significant returns, despite the elevated risk.
 
----
-
-> Tokens: 13k sent, 5.0k received. Cost: $0.02 message, $0.02 session.  
-
-# aider chat started at 2026-06-05 00:06:45
-
+> \# aider chat started at 2026-06-05 00:06:45
 > C:\Users\jazzw\.local\bin\aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash -m /ask Act as a thoughtful writer and synthesizer of ideas, tasked with creating an engaging and readable blog post for a popular online publishing platform known for its clean aesthetic and insightful content. Your goal is to distill the top most surprising, counter-intuitive, or impactful takeaways from the provided source materials into a compelling listicle. The writing style should be clean, accessible, and highly scannable, employing a conversational yet intelligent tone. Craft a compelling, click-worthy headline. Begin the article with a short introduction that hooks the reader by establishing a relatable problem or curiosity, then present each of the takeaway points as a distinct section with a clear, bolded subheading. Within each section, use short paragraphs to explain the concept clearly, and don't just summarize; offer a brief analysis or a reflection on why this point is so interesting or important, and if a powerful quote exists in the sources, feature it in a blockquote for emphasis. Conclude the post with a brief, forward-looking summary that leaves the reader with a final thought-provoking question or a powerful takeaway to ponder. --chat-history-file ai-bubble.md ai-bubble.json  
 > Aider v0.86.2  
 > Model: gemini/gemini-2.5-flash with diff-fenced edit format  
-> Git repo: ..\..\..\.git with 1,813 files  
-> Warning: For large repos, consider using --subtree-only and .aiderignore  
-> See: https://aider.chat/docs/faq.html#can-i-use-aider-in-a-large-mono-repo  
-> Repo-map: using 4096 tokens, auto refresh  
-> Added md\genai\topics\ai-bubble.json to the chat.  
-> Note: in-chat filenames are always relative to the git working dir, not the current working dir.  
-> Cur working dir: C:\Users\jazzw\git\snippet\md\genai\topics  
-> Git working dir: C:\Users\jazzw\git\snippet  
-
-#### /ask Act as a thoughtful writer and synthesizer of ideas, tasked with creating an engaging and readable blog post for a popular online publishing platform known for its clean aesthetic and insightful content. Your goal is to distill the top most surprising, counter-intuitive, or impactful takeaways from the provided source materials into a compelling listicle. The writing style should be clean, accessible, and highly scannable, employing a conversational yet intelligent tone. Craft a compelling, click-worthy headline. Begin the article with a short introduction that hooks the reader by establishing a relatable problem or curiosity, then present each of the takeaway points as a distinct section with a clear, bolded subheading. Within each section, use short paragraphs to explain the concept clearly, and don't just summarize; offer a brief analysis or a reflection on why this point is so interesting or important, and if a powerful quote exists in the sources, feature it in a blockquote for emphasis. Conclude the post with a brief, forward-looking summary that leaves the reader with a final thought-provoking question or a powerful takeaway to ponder.  
-
-#### Act as a thoughtful writer and synthesizer of ideas, tasked with creating an engaging and readable blog post for a popular online publishing platform known for its clean aesthetic and insightful content. Your goal is to distill the top most surprising, counter-intuitive, or impactful takeaways from the provided source materials into a compelling listicle. The writing style should be clean, accessible, and highly scannable, employing a conversational yet intelligent tone. Craft a compelling, click-worthy headline. Begin the article with a short introduction that hooks the reader by establishing a relatable problem or curiosity, then present each of the takeaway points as a distinct section with a clear, bolded subheading. Within each section, use short paragraphs to explain the concept clearly, and don't just summarize; offer a brief analysis or a reflection on why this point is so interesting or important, and if a powerful quote exists in the sources, feature it in a blockquote for emphasis. Conclude the post with a brief, forward-looking summary that leaves the reader with a final thought-provoking question or a powerful takeaway to ponder.  
-> Repo-map can't include C:\Users\jazzw\git\snippet\c#\c-sharp-basics  
-> Has it been deleted from the file system but not from git?  
-> Repo-map can't include C:\Users\jazzw\git\snippet\go\go-workshop-practical  
-> Has it been deleted from the file system but not from git?  
-> Repo-map can't include C:\Users\jazzw\git\snippet\js\chrome-extensions\ms-stream-transcript-extractor  
-> Has it been deleted from the file system but not from git?  
-> Repo-map can't include C:\Users\jazzw\git\snippet\js\chrome-extensions\ms-teams-live-caption-saver  
-> Has it been deleted from the file system but not from git?  
-> Repo-map can't include C:\Users\jazzw\git\snippet\py\playwright\docker-playwright-vnc  
-> Has it been deleted from the file system but not from git?  
 
 ## 5 Counter-Intuitive Insights Into the AI Bubble
 
@@ -750,5 +694,3 @@ Despite recent volatility and widespread investor apprehension, the current mark
 ---
 
 The AI market is a paradox: a powerful engine of innovation, yet fraught with echoes of past bubbles. But as we've seen, this time might be different in crucial ways, offering both unprecedented opportunities and unique risks. Understanding these counter-intuitive dynamics isn't just about predicting the future; it's about positioning yourself wisely. Will you ride the meltup with confidence, or be caught flat-footed when the music stops?
-
-> Tokens: 14k sent, 1.1k received. Cost: $0.0074 message, $0.0074 session.  
