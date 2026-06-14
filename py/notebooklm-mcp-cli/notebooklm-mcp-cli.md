@@ -412,3 +412,77 @@ Restart OpenCode to activate the MCP server.
 > 大規模升級帶來聊天中的代理功能、更先進的推理以及一套新的輸出格式。解決複雜的多步驟研究問題從未如此輕鬆。
 >
 > 現正向 Google AI Ultra 會員推出。
+
+### 工作流
+
+```bash
+~/git/snippet$ nlm create notebook Kaggle
+
+~/git/snippet$ nlm alias set Kaggle fa86c331-d40d-41dd-afea-ec182984a9ab
+✓ Alias set: Kaggle -> fa86c331-d40d-41dd-afea-ec182984a9ab (notebook)
+
+~/git/snippet$ nlm source add Kaggle -y https://www.youtube.com/watch?v=eG5RpppF-Xo
+✓ Added source: Sneak peek: Vibe coding AI agents course with Kaggle
+Source ID: c5232074-9880-4604-8eee-c53b5d92627e
+
+~/git/snippet$ nlm pipeline run --help
+
+ Usage: nlm pipeline run [OPTIONS] PIPELINE_NAME
+
+ Execute a pipeline on a notebook.
+
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    pipeline_name      TEXT  Pipeline name [required]                                                                                                   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *  --notebook   -n      TEXT  Target notebook UUID [required]                                                                                            │
+│    --input-url  -u      TEXT  URL variable ($INPUT_URL)                                                                                                  │
+│    --help                     Show this message and exit.                                                                                                │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+~/git/snippet$ nlm pipeline run research-and-report -n Kaggle
+
+Pipeline: research-and-report
+0/2 steps succeeded (0ms)
+
+  ✗ Step 1: source_add — URL scheme '' is not allowed. Only http:// and https:// URLs are supported.
+~/git/snippet$ nlm pipeline run research-and-report -n Kaggle -u https://www.youtube.com/watch?v=eG5RpppF-Xo
+
+Pipeline: research-and-report
+0/2 steps succeeded (786ms)
+
+  ✗ Step 1: source_add — Failed to add url source: API error (code 5): NOT_FOUND
+~/git/snippet$ nlm pipeline run research-and-report -n Kaggle -u https://www.kaggle.com/competitions/5-day-ai-agents-intensive-vibecoding-course-with-google
+
+Pipeline: research-and-report
+0/2 steps succeeded (857ms)
+
+  ✗ Step 1: source_add — Failed to add url source: API error (code 5): NOT_FOUND
+
+~/git/snippet$ nlm report create Kaggle -f 'Blog Post' -s c5232074-9880-4604-8eee-c53b5d92627e --language zh_TW
+Create 'Blog Post' report? [y/N]: y
+⠼ Creating report...
+✓ Report generation started
+  Artifact ID: 729bb202-940b-4e9f-ab70-ed362d58883a
+
+Run 'nlm studio status fa86c331-d40d-41dd-afea-ec182984a9ab' to check progress.
+
+~/git/snippet$ nlm studio status fa86c331-d40d-41dd-afea-ec182984a9ab
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ ID                                   ┃ Title  ┃ Type   ┃ Status        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ 729bb202-940b-4e9f-ab70-ed362d58883a │ Kaggle │ report │ ● in_progress │
+└──────────────────────────────────────┴────────┴────────┴───────────────┘
+
+~/git/snippet$ nlm studio status fa86c331-d40d-41dd-afea-ec182984a9ab
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ ID                                   ┃ Title                                    ┃ Type   ┃ Status      ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━┩
+│ 729bb202-940b-4e9f-ab70-ed362d58883a │ 從 Vibe Coding 到生產級代理人：Google    │ report │ ✓ completed │
+│                                      │ Cloud x Kaggle「五天 AI                  │        │             │
+│                                      │ 代理人挑戰賽」內容搶先看                 │        │             │
+└──────────────────────────────────────┴──────────────────────────────────────────┴────────┴─────────────┘
+
+~/git/snippet$ nlm download report -o 5-day-kaggle-ai-agent-vibe-coding-day-0.md --id 729bb202-940b-4e9f-ab70-ed362d58883a Kaggle
+✓ Downloaded report to: 5-day-kaggle-ai-agent-vibe-coding-day-0.md
+```
