@@ -206,3 +206,4 @@ If you're looking to build a robust application, investigating the official ente
     - 用 https://github.com/jacob-bd/notebooklm-mcp-cli
     - 算是延伸自同一個作者的兩個 repo
       - https://github.com/jacob-bd/notebooklm-cli
+      - https://github.com/jacob-bd/notebooklm-mcp
