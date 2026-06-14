@@ -192,3 +192,17 @@ If you're looking to build a robust application, investigating the official ente
 - 2026.05.29
 - NotebookLM 簡報怎麼去 AI 味？3 步驟學會 YAML 指令，附 3 款商務模板「複製就能用」
   - https://www.bnext.com.tw/article/91085/ai-presentation-yaml-style-guide
+
+## 2026-06-14
+
+- 以下是研究 https://github.com/jacob-bd/notebooklm-mcp-cli 前，找到的其他參考資料
+- 2026-01-16
+  - NotebookLM-py：解鎖 Google 筆記本的完整 CLI 工具
+  - https://tenten.co/learning/notebooklm-py-skill/
+    - 用 https://github.com/teng-lin/notebooklm-py
+- 2026-01-30
+  - 概覽：什麼是 NotebookLM MCP Server？
+  - https://ainsights.blog/notebooklm-mcp-server
+    - 用 https://github.com/jacob-bd/notebooklm-mcp-cli
+    - 算是延伸自同一個作者的兩個 repo
+      - https://github.com/jacob-bd/notebooklm-cli
