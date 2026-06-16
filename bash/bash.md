@@ -427,3 +427,43 @@ aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash -m "/ask 
 ```
 - 這樣每次呼叫就會隨機選一個金鑰來用。
 - 原本寫在更上層的腳本裡，但發現雖然環境變數存在，可是 aider 就是不直接吃環境變數，所以只能強制『覆寫』目前執行路徑的 `.env`
+
+## 2026-06-16
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+write a bash script to read /tmp/counter as variable COUNTER and write back /tmp/counter after adding 1
+</td></tr><tr><td>A:</td><td>
+
+```bash
+#!/bin/bash# Read value from file or default to 0 if file does not exist
+COUNTER=$(cat /tmp/counter 2>/dev/null || echo 0)
+
+# Increment the variable by 1
+COUNTER=$((COUNTER + 1))
+
+# Write the new value back to the file
+echo "$COUNTER" > /tmp/counter
+```
+
+**Key Elements**
+
+-   `cat /tmp/counter 2>/dev/null`: Reads the file smoothly without printing errors if it does not exist yet.
+-   `|| echo 0`: Sets the initial value to 0 if the file is missing or empty.
+-   `$((COUNTER + 1))`: Performs standard shell arithmetic safely.
+-   `>`: Overwrites the target file with the updated number.
+
+To make this script more useful, let me know if you need to:
+
+-   Handle concurrent tasks using a file lock to prevent race conditions.
+-   Format the output with leading zeros (e.g., `0001`, `0002`).
+-   Add error handling for strict permission restrictions on the `/tmp` directory. \[1, 2\]
+
+How would you like to optimize the execution of this script?
+
+\[1\] [https://oneuptime.com](https://oneuptime.com/blog/post/2026-02-13-bash-best-practices/view)
+\[2\] [https://blog.gdeltproject.org](https://blog.gdeltproject.org/generative-ai-autonomous-agent-experiments-automated-log-diagnosis-vm-healing-fix-no-space-left-error/)
+
+</td></tr>
+</table>
