@@ -1,4 +1,73 @@
+
 # Google Gemma
+
+## CodeGemma
+
+### 2024-08-05
+
+- Last updated 2024-08-05 UTC.
+- https://ai.google.dev/gemma/docs/codegemma
+
+### 2026-6-18
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+為什麼 Google 沒有研發針對 Coding Agent 使用的 LLM (e.g. Qwen Coder 系列)
+
+https://share.google/aimode/B737Imu3XGn9FRh1N
+</td></tr><tr><td>A:</td><td>
+
+這是一個非常切中 AI 產業發展核心的問題。事實上，Google 並非沒有研發，而是其「技術路線、產品策略、商業利益」與阿里雲（Qwen Coder 團隊）截然不同。 [1]
+
+在 AI 領域中，Google 的執行長（CEO）皮查伊（Sundar Pichai）曾公開承認，Google 在新一代「Coding Agent」的產品競速上確實有些落後，目前市場由 Anthropic 的 Claude Code 等工具領跑。 [2, 3]
+
+以下為您深度解析為什麼 Google 沒有走「推出一個像 Qwen Coder 的開源專用程式碼模型」這條路的原因：
+
+#### 一、 技術路線不同：Google 押寶的是「Flow Engineering（流程工程）」
+
+阿里雲推出 Qwen Coder 的核心邏輯，是希望把程式碼能力「揉進模型權重裡」，讓模型本身在單次輸出（Single-turn）就擁有極高的程式碼準確度。
+而 Google 旗下的頂尖 AI 團隊 DeepMind 認為，要解決複雜的程式代理（Coding Agent）任務，不應該只依賴單一模型的智商，而是要靠「系統與流程」。
+
+* AlphaCode 與 AlphaCodium 路線： Google 很早就研發出專攻競賽寫程式的 [AlphaCode 系列](https://deepmind.google/blog/competitive-programming-with-alphacode/)。他們證明了透過建立一套「生成程式碼 → 自動跑測試 → 抓出錯誤 → 自我修正」的迭代工作流（Flow），即便是用通用的基礎模型，也能發揮出超越專用模型的 Agent 能力。 [4, 5, 6]
+* 通用模型的長文本優勢： Google 將所有資源傾注在 Gemini 系列 的原生多模態與百萬級長文本（Long Context）能力上。對 Coding Agent 而言，能一次讀懂整個專案資料夾（Repository）的程式碼架構，比單純會寫小段程式碼更重要。
+
+#### 二、 商業策略不同：Google 賣的是「雲端平台與生態」
+
+Qwen Coder 走的是開源（Open-source）路線，目的是為了吸引廣大開發者將模型下載到在地端（Local）或佈署在阿里雲上，用來搶佔開源市佔率。但 Google 作為全球科技巨頭，其商業防禦塔完全不同： [1, 7]
+
+* 全面整合進 Google Workspace 與雲端： Google 傾向將程式輔助能力直接內置到自家的企業級產品中，例如 Google Cloud 內建的 [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/qwen?hl=zh-tw)。他們需要的是一個「什麼都會（能看架構圖、能寫文件、能寫程式）」的超強通用模型，而不是一個只能寫 Code 的偏科模型。 [8]
+* 有趣的是「打不贏就加入」： 隨著開源模型的強大，Google 在自家的企業平台上，甚至直接將 Qwen 模型作為受管理 API 整合進來供客戶選擇，這說明 Google 的定位是「平台提供者」，而非單一垂直領域的競爭者。 [8]
+
+#### 三、 組織專注力面臨「搖錢樹的兩難」
+
+根據科技媒體與內部人員的透露，Google 過去兩年的注意力分配出現了戰略傾斜：
+
+* 保護核心搜尋業務： Google 遭遇了 OpenAI 和 Perplexity 在搜尋領域的巨大威脅。為了防止核心業務被摧毀，Google 將大量的頂尖人才與算力，優先投入在「將 AI 融入 Google 搜尋、維持廣告營收」這件事上。 [9]
+* 忽略了開發者工具的生態： 當 Google 忙著保衛搜尋防線時，Anthropic 等對手悄悄建立了由 AI 驅動的軟體工程師生態（如 Claude Code），這導致 Google 在 2026 年初驚覺落後，並緊急成立了內部「AI Coding 突擊隊」，由共同創辦人謝爾蓋·布林（Sergey Brin）親自帶隊全力追趕。 [2, 9]
+
+#### 四、 Google 其實有類似的微縮開源版：CodeGemma
+
+如果您指的是「開源、可在本機運作的 Coding 模型」，Google 其實在開源社群推出過 [CodeGemma 系列](https://ai.google.dev/gemma/docs/codegemma?hl=zh-tw)。
+它包含了 2B 和 7B 的輕量化版本，專門用來做本地端的程式碼補全（Code Infilling）與聊天。只是在整體的 Agent 強化學習（Agent RL）與工具調用（Function Calling）的大規模宣傳上，Google 並沒有像阿里雲推廣 Qwen Coder 那樣將其作為獨立的 Agent 大牌來打。 [1, 10, 11]
+
+總結來說： Google 沒做出一款名震天下的 "Gemini Coder"，是因為他們戰略上優先防禦搜尋主戰場，技術上更相信利用「Gemini 的超級長文本 + Flow 系統」來直接打造 Coding Agent，而非單獨訓練一個偏科的程式模型。 [5, 6, 9]
+您目前是否有在開發自己的 Coding Agent 系統？如果是的話，您目前主要遭遇的瓶頸是模型的上下文長度（Context Window）不足，還是模型無法準確執行工具（Tool Calling）呢？我可以為您對比不同模型在 Agent 上的實戰表現。
+
+[1] [https://www.ithome.com.tw](https://www.ithome.com.tw/news/170226)
+[2] [https://techorange.com](https://techorange.com/2026/04/21/google-creates-strike-team-improve-coding-models/)
+[3] [https://hao.cnyes.com](https://hao.cnyes.com/post/249142)
+[4] [https://deepmind.google](https://deepmind.google/blog/competitive-programming-with-alphacode/)
+[5] [https://ai-scholar.tech](https://ai-scholar.tech/zh/articles/large-language-models%2Falpha-codium)
+[6] [https://www.anquanke.com](https://www.anquanke.com/post/id/292927)
+[7] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/2002186996169340115)
+[8] [https://docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/qwen?hl=zh-tw)
+[9] [https://ainext.tw](https://ainext.tw/posts/20260602-google-losing-ai-super-app-race/)
+[10] [https://ai.google.dev](https://ai.google.dev/gemma/docs/codegemma?hl=zh-tw)
+[11] [https://www.ithome.com.tw](https://www.ithome.com.tw/news/162234)
+
+</td></tr>
+</table>
 
 ## Gemma 2
 
@@ -550,15 +619,15 @@ Retrying in 0.5 seconds...
 #### Cloud Run
 
 - 2025-03-12: [How to deploy serverless AI with Gemma 3 on Cloud Run](https://cloud.google.com/blog/products/ai-machine-learning/serverless-ai-with-gemma-3-on-cloud-run)
-- Run LLM inference on Cloud Run GPUs with Ollama 
+- Run LLM inference on Cloud Run GPUs with Ollama
   - https://cloud.google.com/run/docs/tutorials/gpu-gemma-with-ollama
-- Run LLM inference on Cloud Run GPUs with vLLM 
+- Run LLM inference on Cloud Run GPUs with vLLM
   - https://cloud.google.com/run/docs/tutorials/gpu-gemma2-with-vllm
-- Run LLM inference on Cloud Run GPUs with Hugging Face TGI 
+- Run LLM inference on Cloud Run GPUs with Hugging Face TGI
   - https://cloud.google.com/run/docs/tutorials/gpu-llama3-with-tgi
-- Best practices: AI inference on Cloud Run with GPUs 
+- Best practices: AI inference on Cloud Run with GPUs
   - https://cloud.google.com/run/docs/configuring/services/gpu-best-practices
-- GPU support for services 
+- GPU support for services
   - https://cloud.google.com/run/docs/configuring/services/gpu
 - 2024-08-22: How to run LLM inference on Cloud Run GPUs with vLLM and the OpenAI Python SDK
   - https://codelabs.developers.google.com/codelabs/how-to-run-inference-cloud-run-gpu-vllm#0
@@ -734,7 +803,7 @@ Gemma 3n is a generative AI model from Google, specifically designed for efficie
 
 #### Architecture and Context Window
 
-* **Architecture:** Gemma 3n is based on the **Matryoshka Transformer (MatFormer)** architecture. This is a novel design that allows a single set of weights to contain multiple smaller, nested subnetworks. This means the model can operate at different "effective" parameter sizes, such as 2B and 4B, which are lower than the total parameter count. This flexibility allows developers to choose the right trade-off for their specific hardware and task. 
+* **Architecture:** Gemma 3n is based on the **Matryoshka Transformer (MatFormer)** architecture. This is a novel design that allows a single set of weights to contain multiple smaller, nested subnetworks. This means the model can operate at different "effective" parameter sizes, such as 2B and 4B, which are lower than the total parameter count. This flexibility allows developers to choose the right trade-off for their specific hardware and task.
 * **Context Window:** The Gemma 3n E4B model has a context window of **32K tokens**, while the larger Gemma 3 models (4B, 12B, and 27B) have a significantly larger 128K token context window. A longer context window allows the model to process and understand more information in a single prompt.
 
 ***
@@ -764,7 +833,7 @@ Here is a table summarizing the key aspects of Gemma 3n.
 
 ### 2026-05-05
 
-- Accelerating Gemma 4: faster inference with multi-token prediction drafters 
+- Accelerating Gemma 4: faster inference with multi-token prediction drafters
 - https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/
 
 ## EmbeddingGemma
