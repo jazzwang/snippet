@@ -18,3 +18,4 @@
 - Google Antigravity Blog
   - Antigravity CLI
   - [Google Antigravity Blog: introducing-google-antigravity-cli](https://antigravity.google/blog/introducing-google-antigravity-cli)
+  - https://x.com/antigravity/status/2058990383011397902

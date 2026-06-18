@@ -36,3 +36,8 @@
 - Gemini CLI: Code & Create with an Open-Source Agent
   - https://www.deeplearning.ai/short-courses/gemini-cli-code-and-create-with-an-open-source-agent/
   - read from: https://fc.bnext.com.tw/articles/view/4410
+
+## 2026-06-19
+
+- Build Interactive Agents with Generative UI
+  - https://www.deeplearning.ai/courses/build-interactive-agents-with-generative-ui
