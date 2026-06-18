@@ -6,7 +6,7 @@
 		const response = await originalFetch(resource, config);
 
 		const clone = response.clone();
-		if (resource.includes('select=media%2Ftranscripts')) {
+		if (resource.includes('audioTracks')) {
 			clone.json()
 				.then(data => {
 					if (data && data.media && data.media.transcripts && data.media.transcripts.length > 0) {
