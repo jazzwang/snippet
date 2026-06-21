@@ -61,3 +61,8 @@ servers:
 
 </td></tr>
 </table>
+
+> [!NOTE]
+> 從 [Your 1st AsyncAPI on Kafka mock](https://microcks.io/documentation/tutorials/first-asyncapi-mock/) 的說明文件內容，可以找到 PetStore 的範例 YAML [petstore-1.0.0-asyncapi.yaml](https://microcks.io/documentation/tutorials/petstore-1.0.0-asyncapi.yaml)
+
+- 直接用線上的 [AsyncAPI Studio](https://studio.asyncapi.com/) 來看這個PetStore 的範例 YAML [petstore-1.0.0-asyncapi.yaml](https://microcks.io/documentation/tutorials/petstore-1.0.0-asyncapi.yaml)
