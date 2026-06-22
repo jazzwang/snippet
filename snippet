@@ -1,2 +1,15 @@
 #!/bin/sh
-gh cs $@ -R jazzwang/snippet
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 [init | ssh | code | help]"
+  echo "$0 init - create new Github CodeSpace"
+  echo "$0 ssh  - connect Github CodeSpace via SSH"
+  echo "$0 code - connect Github CodeSpace via VS Code"
+  exit 1
+fi
+
+if [ "$1" == "init" ]; then
+  gh cs create -R jazzwang/snippet
+  gh cs edit -d blank -R jazzwang/snippet
+else
+  gh cs $@ -R jazzwang/snippet
+fi
