@@ -9,7 +9,7 @@ fi
 
 if [ "$1" == "init" ]; then
   gh cs create -R jazzwang/snippet
-  gh cs edit -d blank -R jazzwang/snippet
+  gh cs edit -d snippet -R jazzwang/snippet
 else
   gh cs $@ -R jazzwang/snippet
 fi

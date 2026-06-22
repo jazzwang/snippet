@@ -1,2 +1,15 @@
 #!/bin/sh
-gh cs $@ -R zaidmukaddam/miniperplx
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 [init | ssh | code | help]"
+  echo "$0 init - create new Github CodeSpace"
+  echo "$0 ssh  - connect Github CodeSpace via SSH"
+  echo "$0 code - connect Github CodeSpace via VS Code"
+  exit 1
+fi
+
+if [ "$1" == "init" ]; then
+  gh cs create -R zaidmukaddam/miniperplx
+  gh cs edit -d miniperplx -R zaidmukaddam/miniperplx
+else
+  gh cs $@ -R zaidmukaddam/miniperplx
+fi
