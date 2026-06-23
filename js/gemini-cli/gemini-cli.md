@@ -184,7 +184,7 @@ Options:
   - 2025-07-09:
     - Claude Code vs Gemini CLI: Which One’s the Real Dev Co-Pilot?
     - https://milvus.io/blog/claude-code-vs-gemini-cli-which-ones-the-real-dev-co-pilot.md
-  - **3\. Code Quality vs Speed**
+  - **3. Code Quality vs Speed**
 
     | **Feature** | **Gemini CLI** | **Claude Code** | **Notes** |
     | --- |  --- |  --- |  --- |
@@ -194,7 +194,7 @@ Options:
     | **Context understanding** | 9.2/10 | 7.9/10 | Gemini has longer memory |
     | **Multilingual support** | 8.9/10 | 8.5/10 | Both are excellent |
 
-  - **6\. Feature Comparison Overview**
+  - **6. Feature Comparison Overview**
 
     | **Feature** | **Claude Code** | **Gemini CLI** |
     | --- |  --- |  --- |
@@ -823,3 +823,71 @@ Tips for getting started:
 4. 在 `gemini config list` 執行 `CLI Help Agent` 過程中，確認 `$GEMINI_API_KEY` 環境變數優先
 
 </td></tr></table>
+
+## 2026-06-23
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+Gemini CLI 與 Antigravity CLI 的差異
+</td></tr><tr><td>A:</td><td>
+
+## Gemini CLI vs Antigravity CLI
+
+Antigravity CLI 是 Google 推出用來全面取代舊版 Gemini CLI 的新世代工具。 兩者最核心的本質差異在於，舊版 Gemini CLI 定位為「對話式的終端機 AI 助手」（偏向 Vibe Coding）；而新版 Antigravity CLI 則是「Agent（代理人）導向的開發平台」，專門為了多工編排、背景自動化與大型重構而設計。 [1, 2, 3, 4, 5]
+
+Google 在 Google I/O 2026 正式推出 Antigravity 2.0，並宣布舊版的 Gemini CLI 於 2026 年 6 月 18 日 停止對一般消費者開放，全面強制用戶遷移至 Antigravity CLI（指令改為 `agy`）。 [2, 3, 6]
+
+這兩個命令列工具有以下幾項核心差異：
+
+核心底層與架構
+-------
+
+-   開發語言與速度： 舊版 Gemini CLI 執行速度較一般；新版 Antigravity CLI 改用 Go 語言重新打造，在終端機的執行速度與回應效能上顯著提升。 [1, 3]
+-   共用核心 Runtime (Harness)： Antigravity CLI 與 Antigravity 桌面版共用同一個 Agent 執行緒底層。當桌面版的 Agent 能力升級（如自動排程、自主衍生子代理人），CLI 端的 AI 代理人能力也會同步自動升級。 [1]
+
+任務編排與多 Agent 能力
+---------------
+
+-   多工處理： 舊版 Gemini CLI 在執行大型代碼重構或複雜研究時，終端機會被鎖死，開發者需要手動開多個 `tmux` 視窗來切換。
+-   異步平行排程： Antigravity CLI 內建多 Agent 編排功能。當你交付任務後，它會自動在背景將任務拆分給多個子代理（Dynamic Subagents）平行執行（例如同時修改多個專案 Repo），而主終端機不會被鎖死。 [1]
+
+專案設定與工作區邏輯
+----------
+
+專案初始化與結構設定進行了全面重構，具體對照如下： [6]
+
+| 功能維度 [6, 7] | 舊版 Gemini CLI (Legacy) | 新版 Antigravity CLI (`agy`) |
+| --- |  --- |  --- |
+| 執行指令 | `gemini` | `agy` |
+| 環境初始化 | 手動輸入 `/init` 觸發 | 使用 `agy init` 初始化（自動載入專案規則） |
+| 工作區規則檔案 | 僅讀取單一 `GEMINI.md` | 使用 `.agents/rules/` 目錄（支援多檔案規則） |
+| 自訂技能 (Skills) | 全域存在 `~/.gemini/gemini-cli/skills/` | 支援專案本地 `.agents/skills/` 與全域設定 |
+| 工具協定 (MCP) | 僅支援全域 MCP 設定檔 | 支援專案本地獨立的 `.agents/mcp_config.json` |
+
+模型與權杖 (Token) 特性
+----------------
+
+-   搭配模型： Antigravity CLI 預設導入最新代的 Gemini 3.5 Flash 模型，反應速度極快，不過部分開發者評論其思維較急躁，需搭配精細的 Prompt 指引。 [2, 8]
+-   權杖上限差異： 根據開發者反饋，舊版 Gemini CLI 的 Token 輸出限制較為寬鬆（適合長篇大論的思路探討）；而 Antigravity CLI 為了追求「快狠準」的 Agent 執行效率，單次輸出的 Token 上限感官上較窄。 [9, 10]
+
+如果你目前仍在使用舊的工作流程，請儘速將專案環境與 Skill 腳本遷移至 `agy` 體系，以避免既有的指令失效。 [3, 11]
+如果想了解更多細節，想請問你目前有打算將特定的舊專案腳本遷移過去，還是想了解如何配置新版 `.agents` 目錄底下的 Skills 或是 MCP 工具呢？
+[1] [https://medium.com](https://medium.com/@simon3458/google-io-2026-antigravity-cli-cb19b42706a6)
+[2] [https://www.youtube.com](https://www.youtube.com/watch?v=vTsadVEDKPE)
+[3] [https://pcrookie.com](https://pcrookie.com/google-antigravity-2-intro/)
+[4] [https://www.youtube.com](https://www.youtube.com/watch?v=24e_L19fxvA)
+[5] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/2040316906180241378)
+[6] [https://lukehou.com](https://lukehou.com/tutorials/gemini-cli-to-antigravity-migration-checklist)
+[7] [https://www.evanlin.com](https://www.evanlin.com/antigravity-cli/)
+[8] [https://www.threads.com](https://www.threads.com/@mengqiutu/post/DSUi0I5CTHp/antigravity-%E5%92%8C-gemini-cli-%E7%9A%84%E9%A1%8D%E5%BA%A6%E6%98%AF%E5%88%86%E9%96%8B%E8%A8%88%E7%AE%97%E7%9A%84antigravity%E5%85%8D%E8%B2%BB7%E5%A4%A9%E5%88%B7%E6%96%B0%E4%BB%98%E8%B2%BB%E7%B4%84-5-%E5%B0%8F%E6%99%82%E5%88%B7%E6%96%B0%E5%8F%AF%E7%94%A8%E6%A8%A1%E5%9E%8B%E5%8C%85%E5%90%AB-claude-code-)
+[9] [https://www.reddit.com](https://www.reddit.com/r/googlecloud/comments/1qvs1dd/choosing_antigravity_or_gemini_cli/?tl=zh-hant)
+[10] [https://www.reddit.com](https://www.reddit.com/r/GeminiCLI/comments/1tuqr05/switched_to_antigravitycli_goodbye_geminicli/?tl=zh-hant)
+[11] [https://www.facebook.com](https://www.facebook.com/mukispace/posts/%E6%88%91%E5%AF%A6%E5%9C%A8%E6%90%9E%E4%B8%8D%E6%87%82-gemini-cli-%E5%92%8C-antigravity-cli-%E5%B7%AE%E5%9C%A8%E5%93%AA-/1430942695715476/)
+
+</td></tr>
+</table>
+
+> [!NOTE]
+> 由於 Google 在 2026 年 5 月 19 日宣布全面淘汰個人版的 `gemini-cli`，並強制要求所有人在 **2026 年 6 月 18 日** 前全數遷移至 `agy` (Antigravity CLI)。                [[1](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)]
+> -   這意味著原先 Gemini CLI 的**數十萬名個人開發者與企業用戶**，已在這一個月內被迫全數轉換為 Antigravity CLI 的下載量。
