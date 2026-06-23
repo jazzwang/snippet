@@ -229,3 +229,21 @@ if (titleBar) {
 ```
 </td></tr>
 </table>
+
+## 2026-06-24
+
+- 在 DOM 中，有代表目前與會人數的區塊
+```html
+<span dir="auto" class="..." aria-hidden="true" data-tid="roster-button-tile" style="width: 2ch;">11</span>
+```
+- 在 DOM 中，結束會議的按鈕是
+```html
+<button type="button" 
+        data-track-action-gesture="click" 
+        data-track="true" 
+        aria-keyshortcuts="Ctrl+Shift+H" 
+        aria-label="Leave" 
+        id="hangup-button"
+        >
+```
+- 可能有機會拿來當自動關閉/結束會議的條件
