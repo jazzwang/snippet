@@ -89,3 +89,9 @@ If you genuinely think a convention is harmful, surface it. Don't fork silently.
 "Tests pass" is wrong if any were skipped.
 Default to surfacing uncertainty, not hiding it.
 ```
+
+## 2026-06-28
+
+- 這個先前就看過很多次，因為有訂閱 Addy Osmani 的電子報跟 LinkedIn
+- Production-grade engineering skills for AI coding agents.
+- https://github.com/addyosmani/agent-skills
