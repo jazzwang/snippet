@@ -549,3 +549,15 @@ give a more precise explanation!
 - 2026-05-22
   - Qwen3.7-Max: Features, Benchmarks, and the Agent Frontier
   - https://www.datacamp.com/blog/qwen3-7-max
+
+# Qwen AgentWorld
+
+- 世界模型？
+- 2026-06-23
+  - Qwen-AgentWorld: Language World Models for General Agents
+  - https://qwen.ai/blog?id=qwen-agentworld
+- 2026-04-
+  - Qwen-AgentWorld: Language World Models for General Agents
+  - https://arxiv.org/abs/2606.24597
+  - https://huggingface.co/papers/2606.24597 (比較多 Graph 連結 Linked Data)
+- https://huggingface.co/collections/Qwen/qwen-agentworld
