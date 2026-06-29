@@ -48,3 +48,9 @@
     ```
   - 原本想說不是乾淨的 clone，但測試兩次以後，發現只要是獨立的 branch （root 跟 main/master 不同）就不行，一定要指定 `--force`。
   - 其次，照 [reddit 討論的作法](https://www.reddit.com/r/git/comments/1bq5mv6/how_to_move_file_with_commit_history_to_another/)，用 merge 的話，git history 會比較醜（有分支）。所以我後來改用 `git cherry-pick` 把 commit history 拉進來（算是一點小潔癖：保留別人的 commit，又不至於把 history 弄得很難追）。
+
+## 2026-06-30
+
+- 2026-06-29
+  - Sakana 的筆記: git-filter-repo 切分子專案小記
+  - https://sakananote2.blogspot.com/2026/06/git-filter-repo.html
