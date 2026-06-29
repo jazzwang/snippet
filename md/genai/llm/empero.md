@@ -2,7 +2,7 @@
 
 - https://huggingface.co/empero-ai
 
-## Qwythos-9B
+## Qwythos 9B
 
 - 緣起：看到 YouTube 影片
 - 基於 Qwen 3.5
@@ -16,3 +16,13 @@
   - https://huggingface.co/collections/empero-ai/qwen35-claude-mythos-5
 - GGUF
   - https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF
+
+## Qwable 9B
+
+- HuggingFace
+  - https://huggingface.co/empero-ai/Qwable-9B-Claude-Fable-5
+- Collection
+  - Qwen3.5-Claude-Fable-5
+  - https://huggingface.co/collections/empero-ai/qwen35-claude-fable-5
+- GGUF
+  - https://huggingface.co/empero-ai/Qwable-9B-Claude-Fable-5-GGUF
