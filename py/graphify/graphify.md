@@ -80,3 +80,32 @@ If you would like to explore setting this up for your project, let me know:
 
 </td></tr>
 </table>
+
+## 2026-06-24
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+alternatives of https://github.com/safishamsi/graphify
+</td></tr><tr><td>A:</td><td>
+
+Alternatives to safishamsi/graphify for AI-driven code context include <mark>code-review-graph</mark> for structural AST mapping and <mark>GitNexus</mark> for live agent indexing and MCP tools. <mark>TrueCourse</mark> provides architectural dependency analysis, while graphify-dotnet offers a tailored solution for the .NET ecosystem. For detailed comparisons of these tools, visit [Reddit](https://www.reddit.com/r/ClaudeCode/comments/1sme1zw/graphify_vs_codereviewgraph_which_is_better_for/). [1, 2, 3] 
+
+[1] [https://www.reddit.com](https://www.reddit.com/r/ClaudeCode/comments/1sme1zw/graphify_vs_codereviewgraph_which_is_better_for/)
+[2] [https://ai-chain.tw](https://ai-chain.tw/en/blog/gitnexus-graphify-ai-coding-workflow-guide/)
+[3] [https://github.com](https://github.com/elbruno/graphify-dotnet)
+
+</td></tr>
+</table>
+
+### code-review-graph
+
+- https://github.com/tirth8205/code-review-graph
+
+### GitNexus
+
+- https://github.com/abhigyanpatwari/GitNexus
+
+### TrueCourse
+
+- https://github.com/truecourse-ai/truecourse
