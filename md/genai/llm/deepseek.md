@@ -1048,3 +1048,12 @@ Citations:
 - Paper:
   - https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf
   - https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf
+
+# DeepSeek V4
+
+## DeepSeek V4 Pro - DSpark
+
+- HuggingFace
+  - https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark
+- Git Repo
+  - https://github.com/deepseek-ai/DeepSpec
