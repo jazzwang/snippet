@@ -28,3 +28,13 @@
 - 2025-11-10T13:51:47.178Z
   - GLM-4.6: How to Run Locally
   - https://docs.unsloth.ai/models/glm-4.6-how-to-run-locally
+
+## GLM 5.2
+
+- https://docs.z.ai/guides/llm/glm-5.2
+- HuggingFace
+  - https://huggingface.co/zai-org/GLM-5.2
+- Git Repo
+  - https://github.com/zai-org/GLM-5
+- GGUF
+  - https://huggingface.co/unsloth/GLM-5.2-GGUF
