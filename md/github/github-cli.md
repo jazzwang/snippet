@@ -4,7 +4,7 @@
 - https://github.com/cli/cli
 - https://cli.github.com/
 
-## 2024-06-28 
+## 2024-06-28
 
 - Installation
 ```bash
@@ -20,7 +20,7 @@ jazzwang:~$ gh auth refresh -h github.com -s codespace
 ```
 - fetch codespace list
 ```bash
-jazzwang:~$ gh codespace 
+jazzwang:~$ gh codespace
 Connect to and manage codespaces
 
 USAGE
@@ -52,12 +52,12 @@ LEARN MORE
   Read the manual at https://cli.github.com/manual
 
 jazzwang:~$ gh codespace list
-NAME                       DISPLAY NAME  REPOSITORY        BRANCH  STATE     CREATED AT        
+NAME                       DISPLAY NAME  REPOSITORY        BRANCH  STATE     CREATED AT
 shiny-zebra-jjrxjgp652gqw  snippet       jazzwang/snippet  master  Shutdown  about 2 months ago
 ```
 - ssh codespace
 ```bash
-jazzwang:~$ gh cs ssh 
+jazzwang:~$ gh cs ssh
 ? Choose codespace: jazzwang/snippet (master): snippet
 Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.5.0-1022-azure x86_64)
 
@@ -66,7 +66,7 @@ Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.5.0-1022-azure x86_64)
  * Support:        https://ubuntu.com/pro
 Last login: Fri Jun 28 13:32:06 2024 from ::1
 manpath: can't set the locale; make sure $LC_* and $LANG are correct
-@jazzwang ➜ /workspaces/snippet (master) $ 
+@jazzwang ➜ /workspaces/snippet (master) $
 ```
 - generate ssh config
 ```bash
@@ -88,7 +88,7 @@ run `gh cs ssh`, select a codespace interactively, and connect.
 The `ssh` command will automatically create a public/private ssh key pair in the
 `~/.ssh` directory if you do not have an existing valid key pair. When selecting the
 key pair to use, the preferred order is:
-  
+
 1. Key specified by `-i` in `<ssh-flags>`
 2. Automatic key, if it already exists
 3. First valid key pair in ssh config (according to `ssh -G`)
@@ -133,7 +133,7 @@ INHERITED FLAGS
 
 EXAMPLES
   $ gh codespace ssh
-  
+
   $ gh codespace ssh --config > ~/.ssh/codespaces
   $ printf 'Match all\nInclude ~/.ssh/codespaces\n' >> ~/.ssh/config
 
@@ -730,7 +730,7 @@ Yes, there are methods using the **GitHub API** to list repositories a specific 
 
 The GitHub REST API doesn't have a direct endpoint like `/users/{username}/contributed_repos`. A common and effective workaround is to use the **Search API** to find all the user's **Pull Requests (`type:pr`)** and then extract the repository information from those results.
 
-### 1\. API Endpoint
+### 1. API Endpoint
 
 You will use the **Search Issues and Pull Requests** endpoint:
 
@@ -739,7 +739,7 @@ You will use the **Search Issues and Pull Requests** endpoint:
       * **Example for user `octocat`:** `q=author:octocat+type:pr`
   * **Pagination:** You'll need to paginate through the results to get a complete list, as the API limits results per page (max 100) and the total number of results returned (up to 1,000 for searches).
 
-### 2\. Request Example (with `curl`)
+### 2. Request Example (with `curl`)
 
 This example uses `curl` and `jq` (a command-line JSON processor) to fetch the first page of results and list the unique repository names (`owner/repo`). You'd need a loop to handle multiple pages.
 
@@ -758,7 +758,7 @@ curl -sS -G \
 
 The **GitHub CLI (`gh`)** provides the most convenient way to do this from the command line by leveraging the same Search API logic with a simpler syntax.
 
-### 1\. `gh api` Command
+### 1. `gh api` Command
 
 You can use the `gh api` command to hit the same Search API endpoint and pipe the output to `jq`:
 
@@ -859,7 +859,7 @@ gh search commits --author=USERNAME --json repository \
 
 The GraphQL API is superior to the REST API for this task because it allows you to retrieve the repository information directly while fetching the commit contributions, making it far more efficient than the REST API's search endpoint.
 
-### 1\. GraphQL Query
+### 1. GraphQL Query
 
 You can use the `repositoriesContributedTo` field on the `User` object. This specifically lists repositories where the user has made contributions (including commits, pull requests, and issues).
 
@@ -876,7 +876,7 @@ query CommitsBy($username: String!, $cursor: String) {
       after: $cursor
       contributionTypes: [COMMIT]
       # Set to PUBLIC or ALL (requires auth with 'repo' scope)
-      privacy: PUBLIC 
+      privacy: PUBLIC
     ) {
       pageInfo {
         hasNextPage
@@ -890,7 +890,7 @@ query CommitsBy($username: String!, $cursor: String) {
 }
 ```
 
-### 2\. Execution with `gh api` (The easiest way)
+### 2. Execution with `gh api` (The easiest way)
 
 You can execute this GraphQL query directly using the `gh api` command, which simplifies authentication and pagination (if you remove the pagination logic and rely on the maximum `first: 100` results).
 
@@ -1019,7 +1019,7 @@ The key is to search for Pull Requests that are `merged` and filter by the `merg
 
 The `gh` CLI provides the most straightforward command-line method by combining the powerful Search API with JSON filtering (`jq`).
 
-### 1\. The `gh` Command
+### 1. The `gh` Command
 
 You use the `gh api` command to access the GitHub Search API and construct a query that filters for merged PRs by the merger.
 
@@ -1048,13 +1048,13 @@ gh api search/issues \
 
 You can achieve the same result directly using the **REST API's Search Issues and Pull Requests** endpoint. This requires manual handling of pagination in your script.
 
-### 1\. API Endpoint and Query
+### 1. API Endpoint and Query
 
   * **Endpoint:** `GET /search/issues`
   * **Query Parameter (`q`):**
       * `q=is:pr+is:merged+merger:USERNAME`
 
-### 2\. Request Example (`curl` with Pagination Concept)
+### 2. Request Example (`curl` with Pagination Concept)
 
 You would need a loop to increment the `&page=` parameter until `total_count` is reached or the array of `items` is empty.
 
@@ -1099,7 +1099,7 @@ The key is to search for Pull Requests where the user is listed as a **reviewer*
 
 The `gh` CLI offers the most convenient command-line method by executing the API search and handling the output and pagination for you.
 
-### 1\. The `gh` Command
+### 1. The `gh` Command
 
 You use the `gh api` command to access the GitHub Search API and construct a query that filters for Pull Requests reviewed by the specific user (`reviewed-by`).
 
@@ -1122,7 +1122,7 @@ gh api search/issues \
 | **`grep -oP 'repos/\K.*'`** | Strips the API prefix to yield the clean repository name, e.g., `owner/repo-name`. |
 | **`sort -u`** | Sorts the list alphabetically and filters out duplicate repository names. |
 
-### 2\. Filtering by Review Status (Optional)
+### 2. Filtering by Review Status (Optional)
 
 You can refine this query if you only want to see repositories where the user **approved** the PR by changing the query:
 
@@ -1162,3 +1162,89 @@ You would use the `gh api graphql` command to execute this, adding pagination lo
   - 搭配 git-extras 的 `git summary --line` 就可以得到每個團隊成員貢獻的程式碼總行數
   - 當然也可以得到總 commit 次數跟 Merge 了多少 PR，Review 了多少 PR
   - 這有點像是 Github 開發者個人版上的雷達圖，可以生成一個「量化」的貢獻度視覺化圖表
+
+## 2026-07-07
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+can I trigger github action via gh CLI?
+</td></tr><tr><td>A:</td><td>
+
+### Trigger Github Action via Github CLI
+
+Yes, you can absolutely trigger a GitHub Actions workflow using the GitHub CLI (`gh`). [1]
+To do this, your workflow file must include the `workflow_dispatch` trigger in its configuration. [1, 2]
+
+#### 1. Prepare your workflow file
+
+Ensure your YAML file (e.g., `.github/workflows/main.yml`) has `workflow_dispatch` configured under the `on` key: [1, 3, 4, 5]
+```yaml
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
+```
+
+#### 2. Trigger the workflow via CLI
+
+You can use the [`gh workflow run`](https://cli.github.com/manual/gh_workflow_run) command. You can target the workflow by its filename, ID, or display name. [1, 6]
+
+- Interactive Mode:
+  Running the command by itself will prompt you to select the workflow and manually type any required inputs:
+
+  ```bash
+  gh workflow run
+  ```
+
+- Standard Trigger (Default Branch):
+
+  ```bash
+  gh workflow run main.yml
+  ```
+
+- Triggering on a Specific Branch:
+  Use the `--ref` flag to run the workflow against a specific branch or git tag:
+
+    ```bash
+    gh workflow run main.yml --ref feature-branch
+    ```
+
+- Passing Inputs:
+  Use the `-f` or `-F` flag to pass key-value inputs required by your workflow: [1, 7, 8, 9]
+
+  ```bash
+  gh workflow run main.yml -f environment=production -f debug_mode=true
+  ```
+
+#### 3. Track the execution
+
+Once triggered, you don't need to open your browser to check on it. You can monitor the progress directly from your terminal using the [`gh run`](https://cli.github.com/manual/gh_run) commands: [10, 11, 12, 13, 14]
+
+- List recent runs: `gh run list --workflow=main.yml`
+- Watch live progress: `gh run watch` [10, 15, 16, 17]
+
+If you want to dive deeper, let me know if you need help setting up workflow inputs or automating this inside a bash script!
+
+[1] [https://cli.github.com](https://cli.github.com/manual/gh_workflow_run)
+[2] [https://graphite.com](https://graphite.com/guides/manually-trigger-github-actions)
+[3] [https://docs.jfrog.com](https://docs.jfrog.com/integrations/docs/trigger-a-github-action-using-a-custom-webhook)
+[4] [https://www.inmotionhosting.com](https://www.inmotionhosting.com/support/website/git/deploy-files-github-actions/)
+[5] [https://medium.com](https://medium.com/@helmuthdu/automated-frontend-workflow-f7fc512591c3)
+[6] [https://docs.github.com](https://docs.github.com/actions/managing-workflow-runs/manually-running-a-workflow)
+[7] [https://stackoverflow.com](https://stackoverflow.com/questions/74948724/how-to-run-a-github-action-from-command-line)
+[8] [https://stackoverflow.com](https://stackoverflow.com/questions/66416590/how-to-trigger-github-actions-with-dispatch-using-gh-cli)
+[9] [https://levelup.gitconnected.com](https://levelup.gitconnected.com/triggering-a-github-actions-workflow-without-merging-into-the-default-branch-a-guide-8a2265aba998)
+[10] [https://www.youtube.com](https://www.youtube.com/shorts/0G1XoIQCA_c)
+[11] [https://cli.github.com](https://cli.github.com/manual/gh_run)
+[12] [https://www.youtube.com](https://www.youtube.com/shorts/xlf82T2z5Uo)
+[13] [https://www.youtube.com](https://www.youtube.com/watch?v=Nn8hYDhmizM)
+[14] [https://dev.to](https://dev.to/github/top-10-tips-for-using-github-from-the-command-line-1me6)
+[15] [https://cli.github.com](https://cli.github.com/manual/gh_run_watch)
+[16] [https://dev.to](https://dev.to/nadia/github-cli-working-with-github-workflow-from-terminal-1dd8)
+[17] [https://cli.github.com](https://cli.github.com/manual/gh_run_list)
+</td></tr>
+</table>
