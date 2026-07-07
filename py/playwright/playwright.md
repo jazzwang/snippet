@@ -172,3 +172,93 @@ Examples:
   $ codegen --target=python
   $ codegen -b webkit https://example.com
 ```
+
+## 2026-07-07
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+如果我需要 AI Code Agent (如 OpenCode)參考我的瀏覽器操作,看我如何執行 Jira JQL 查詢,並將結果下載成 Excel 檔案,並且開啟 Excel,將特定區域建立新的 Excel Table,再用該 Table 產生三個固定的 Pivot Table 樞紐分析。將這個程序生成 Python 自動化程式(例如結合 Playwright 跟 Python Excel library)。可以幫我規劃 step-by-step instruction 嗎?
+</td></tr><tr><td>A:</td><td>
+
+略 -- 詳 [browser-use.md](../browser-use/browser-use.md)
+</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
+如何讓 OpenCode Agent 錄製 existing browser session 的操作?
+</td></tr><tr><td>A:</td><td>
+
+要讓 OpenCode Agent（或類似的 AI Code Agent、Playwright 腳本）直接接管或「錄製」你當前已經打開、登入好 Jira 的瀏覽器視窗（Existing Browser Session），最有效且能繞過 2FA 驗證的方法，就是利用 Chromium 的 遠端除錯連接埠（Remote Debugging Port）。
+這樣 AI 就不需要從頭模擬登入，而是直接在你已經開好的瀏覽器中「看著你操作」並自動生成 Playwright 程式碼。
+以下是具體的實作步驟：
+
+### 第一步：完全關閉現有的 Chrome / Edge 瀏覽器
+
+為了重啟帶有除錯功能的瀏覽器，必須先將後台所有該瀏覽器的程序（Processes）完全關閉。
+
+### 第二步：從終端機啟動「除錯模式」的瀏覽器
+
+打開你的終端機（Terminal 或 Command Prompt），依據你的作業系統執行以下指令，這會打開一個全新、乾淨但允許外部控制的瀏覽器視窗：
+
+-   Windows (Chrome):
+    ```bash
+    "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\ChromeDebug"
+    ```
+
+-   Mac (Chrome):
+    ```bash
+    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/tmp/chrome_dev"
+    ```
+
+> 💡 重要：請在這個剛剛跳出來的新瀏覽器視窗中，手動登入你的 Jira，並切換到你要開始查詢的畫面。
+
+### 第三步：讓 OpenCode / Playwright 接管並開始錄製
+
+此時，該瀏覽器已經在 `9222` 連接埠（Port）等待指令 \[1\]。你可以給 OpenCode Agent 以下的指令，讓它啟動 Playwright 的錄製器（Codegen）直接連入該視窗：
+
+### 🤖 提供給 OpenCode 的 Prompt 指令：
+
+> "Please start the Playwright recorder to connect to my existing Chrome browser session on port 9222, and record my actions as I run a JQL query and download the Excel file. Generate a Python script from it."
+
+### ⚙️ Agent 會在後台執行的指令：
+
+OpenCode 收到後，會在終端機執行這行 Playwright 內建的接管錄製指令：
+```
+playwright codegen localhost:9222
+```
+
+執行後，你會看到 Playwright 的程式碼生成視窗（Inspector）跳出來。此時，你只要在剛剛打開的 Jira 網頁上進行以下操作：
+
+1.  點擊 JQL 輸入框並輸入查詢。
+2.  點擊 Export 按鈕。
+3.  下載 Excel 檔案。
+
+Playwright Inspector 視窗就會即時（Real-time）將你的滑鼠點擊與鍵盤輸入轉化為 Python (Playwright) 程式碼。
+
+### 第四步：將錄製的程式碼與 Excel 自動化整合
+
+錄製完成後，OpenCode 拿到的 Playwright 接管程式碼結構會類似這樣：
+```python
+from playwright.sync_api import sync_playwright
+
+def run():
+    with sync_playwright() as p:
+        # 連接到你已經開啟的 9222 視窗，不用重新登入
+        browser = p.chromium.connect_over_cdp("http://localhost:9222")
+        default_context = browser.contexts[0]
+        page = default_context.pages[0]
+        
+        # 以下為 Playwright 自動錄製生成的點擊與下載代碼
+        # page.locator("...").click()
+        # with page.expect_download() as download_info:
+        #     page.locator("text=Export").click()
+            
+        print("錄製成功，已取得網頁操作邏輯！")
+
+run()
+```
+
+此時，你就可以叫 OpenCode 接續進行：*「請將這段錄製好的 Playwright 程式碼，與先前規劃的 pandas/openpyxl Excel 樞紐分析腳本結合成一個完整的自動化流程。」*
+
+你想先讓 OpenCode 嘗試連線到 `9222` 連接埠並測試能否成功控制網頁，還是直接開始撰寫後續整合 Excel 處理的程式碼呢？
+</td></tr>
+</table>
