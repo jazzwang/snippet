@@ -103,6 +103,9 @@ Tool: Google NotebookLM
 
 ## Ornith 1.0
 
+- 2026-06-25
+  - Ornith-1.0: Self-Scaffolding LLMs for Agentic Coding
+  - https://deep-reinforce.com/ornith_1_0.html
 - HuggingFace Collection
   - https://huggingface.co/collections/deepreinforce-ai/ornith-10
 - Ornith-1.0-9B-GGUF
