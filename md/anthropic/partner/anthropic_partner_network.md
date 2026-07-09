@@ -16,3 +16,10 @@
   - 2026-03-13
     - Anthropic 1 億美元打造 Claude Partner Network！培訓、認證、共同投資全面支援合作夥伴
     - https://www.aiposthub.com/anthropic-100-million-claude-partner-network/
+
+## 2026-07-08
+
+- [入口] Anthropic Partner Academy
+  - https://anthropic-partners.skilljar.com/
+- [歷史錄影] Claude Partner Network Connect On Demand Library
+  - https://anthropic-partners.skilljar.com/page/cpnc-on-demand-library
