@@ -368,3 +368,98 @@ Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Re
   - DNS 反查失敗，懷疑是 IPv6 DNS 優先造成的狀況
 - 參考：
   - https://github.com/gnmspo/cht-ipv6-config
+
+## 2026-07-09
+
+- 緣起：原本在 `.bashrc` 裡面定義了 `alias pbcopy=clip`，但總是無法正確顯示 UTF-8 文字檔的中文內容，覺得很奇怪。
+- 查證：原來背後的原因還是底層程式邏輯。
+- 解法：雖然 PowerShell 也有對應的解法，但改用 `win32yank` 或 `utf8clip` 來當 `pbcopy` 或許比較簡單。
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+為何 windows 11 的 clip 指令複製 bash for windows 的輸出無法正常顯示 UTF-8 中文字元
+</td></tr><tr><td>A:</td><td>
+
+## Windows 11 的 clip.exe 無法正常接收 UTF-8 中文字元
+
+Windows 11 的 clip.exe 無法正常接收並複製 Bash (如 WSL 或 Git Bash) 的 UTF-8 中文字元，根本原因在於 clip.exe 這個 Windows 內建工具並不支援直接讀取標準輸入 (stdin) 的 UTF-8 編碼組合；==它會強制使用 Windows 系統預設的 OEM 程式碼頁 (Code Page)（例如台灣繁體中文環境的 CP950 / Big5）去解析傳入的資料位元組，導致編碼不一致而產生亂碼==。 [1, 2, 3] 
+
+以下為您詳細說明背後的原因與具體的解決方案。
+
+### 核心原因分析
+
+* Bash 端的輸出：Linux 環境（如 WSL）或 Git Bash 預設是以 UTF-8 編碼輸出所有文字。
+* clip.exe 的限制：當您使用管道 | clip.exe 時，clip.exe 會以 Windows 的傳統 ANSI/OEM 編碼（如 CP950）來解讀這串二進位資料。
+* 亂碼的產生：將 UTF-8 的 3 位元組中文字當成 Big5 的 2 位元組中文字去直譯，在剪貼簿中就會變成完全無意義的破碎亂碼（俗稱「字串變形」）。
+
+### 三種最佳解決方案
+
+您不能直接改變 clip.exe 的底層行為，但可以透過以下幾種替代方案或轉譯方式，完美解決中文複製亂碼的問題：
+### 方案一：藉由 Windows PowerShell 進行編碼轉換 (最推薦)
+
+這是不需要安裝額外工具的最快解法。透過呼叫 Windows 內建的 PowerShell，強制在複製前將編碼轉換為 UTF-8。 [1, 4] 
+在 Bash 中，您可以使用以下指令來代替原本的 clip.exe：
+
+#### 範例：將 echo 的中文透過 powershell 丟進剪貼簿
+
+```bash
+echo "測試中文字元" | powershell.exe -NoProfile -Command "[[Console]]::InputEncoding = [[Console]]::OutputEncoding = [System.Text.Encoding]::UTF8; $input | Set-Clipboard"
+```
+
+設定永久別名 (Alias)：
+為了方便使用，建議將其寫入您的 ~/.bashrc 或 ~/.zshrc 設定檔中：
+
+```bash
+alias clip='powershell.exe -NoProfile -Command "[[Console]]::InputEncoding = [[Console]]::OutputEncoding = [System.Text.Encoding]::UTF8; \$input | Set-Clipboard"'
+```
+
+重新載入設定（source ~/.bashrc）後，之後直接輸入 echo "中文" | clip 就能完美複製。 [4] 
+
+### 方案二：使用 iconv 轉換編碼後再送給 clip.exe
+
+如果您的 Windows 系統預設是 Big5 (CP950)，您可以利用 Linux 內建的 iconv 工具，在資料送進 clip.exe 之前，先將 UTF-8 強制轉碼為 big5： [5] 
+
+```bash
+echo "測試中文字元" | iconv -f UTF-8 -t BIG5 | clip.exe
+```
+
+註：此方法缺點是無法複製 Big5 碼位以外的特殊 Unicode 字元（例如部分罕用字或 Emoji 繪文字）。
+
+### 方案三：安裝開源替代工具 win32yank 或 utf8clip
+
+許多開發者為了在 WSL 中使用 Vim/Neovim 的剪貼簿，會選擇使用專門支援 UTF-8 的第三方命令列工具來徹底取代 clip.exe。 [3, 6] 
+
+   1. 下載支援跨平台剪貼簿的 [win32yank](https://github.com/equalsraf/win32yank/releases)。
+   2. 將解壓後的 win32yank.exe 放入 WSL 能夠讀取到的 Windows 環境變數路徑中（例如 C:\Windows\ 或自訂的工具資料夾）。
+   3. 在 Bash 中使用以下指令進行複製：
+   ```bash
+   echo "測試中文字元" | win32yank.exe -i
+   ```
+   
+您目前是在 WSL2 還是 Git Bash 的環境下遇到這個問題呢？如果有特定的軟體（如 Vim 或 tmux）需要整合剪貼簿，我可以為您提供更針對性的設定步驟！ [1, 3] 
+
+[1] [https://github.com](https://github.com/tmux-plugins/tmux-yank/issues/144)
+[2] [https://github.com](https://github.com/rajveerb/wsl-clip-bridge)
+[3] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/701108127)
+[4] [https://superuser.com](https://superuser.com/questions/1618537/use-clipboard-through-wsl)
+[5] [https://github.com](https://github.com/microsoft/WSL/issues/11047)
+[6] [https://stackoverflow.com](https://stackoverflow.com/questions/59984528/copy-the-contents-of-a-file-to-clipboard-from-wsl-to-windows)
+
+</td></tr>
+</table>
+
+```bash
+~/git/snippet$ scoop info win32yank
+
+
+Name        : win32yank
+Description : A clipboard tool for Windows
+Version     : 0.1.1
+Source      : main
+Website     : https://github.com/equalsraf/win32yank
+License     : MIT
+Updated at  : 2023-05-03 4:58:53 AM
+Updated by  : StarsbySea
+Binaries    : win32yank.exe
+```
