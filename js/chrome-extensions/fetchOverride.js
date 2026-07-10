@@ -14,9 +14,8 @@
 						console.log("[!NOTE!] Temporary WebVTT Download URL:", temporaryDownloadUrl + '?format=json');
 						var dl = document.createElement('a');
 						dl.href = temporaryDownloadUrl + '?format=json';
-						filename = document.querySelector("[data-unique-id='DocumentTitleContent']").innerText + '.json';
+						var filename = document.querySelector("[data-unique-id='DocumentTitleContent']").innerText + '.json';
 						dl.download = filename;
-						console.log(dl);
 						dl.click();
 					}
 				})
