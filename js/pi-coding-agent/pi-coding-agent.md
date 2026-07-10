@@ -3,7 +3,7 @@
 - Git Repo
   - https://github.com/earendil-works/pi
 - Website
-  - 
+  - https://pi.dev/
 
 ## 2026-06-10
 
