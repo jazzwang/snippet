@@ -54,3 +54,21 @@
 - https://npmtrends.com/@anthropic-ai/claude-code-vs-@github/copilot-vs-@google/gemini-cli-vs-@kilocode/cli-vs-@openai/codex-vs-opencode-ai
 - 2026-04-11 的排行榜：
   - Claude Code > OpenAI Codex > Github Copilot CLI (後來居上 2025-09 發布，快速竄升至第三名) > Google Gemini CLI > OpenCode
+
+## 2026-07-10
+
+- 緣起：
+  - 因為研究 [Token Efficiency](../topics/token-efficeincy.md) 所以想看一下 Pi Code Agent 的下載量與 OpenCode 的比較
+- 排行榜
+  - https://npmtrends.com/@anthropic-ai/claude-code-vs-@earendil-works/pi-coding-agent-vs-@github/copilot-vs-@google/gemini-cli-vs-@kilocode/cli-vs-@openai/codex-vs-opencode-ai
+- 2026-07-05 的週下載量排行榜
+  - OpenAI Codex > Claude Code > OpenCode > Pi Code Agent > Github Copilot > Gemini CLI > Kilo CLI
+```
+10106046  @openai/codex
+9075756   @anthropic-ai/claude-code
+1529197   opencode-ai
+1161110   @earendil-works/pi-coding-agent
+1083325   @github/copilot
+458602    @google/gemini-cli
+49756     @kilocode/cli
+```
