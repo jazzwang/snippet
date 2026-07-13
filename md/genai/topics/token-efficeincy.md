@@ -1,10 +1,11 @@
 # LLM Token Usage Efficiency of different AI Code Agents
 
-## 2026-06-09
+## 2026-07-09
 
 - 緣起：同仁分享 Benchmarking Coding Agents on Databricks’ Multi-Million Line Codebase
   - https://www.databricks.com/blog/benchmarking-coding-agents-databricks-multi-million-line-codebase
   - 提到 Pi harness 比較省 token
+  <img src='https://www.databricks.com/sites/default/files/inline-images/pareto.png?v=1783530297'>
   <img src='https://www.databricks.com/sites/default/files/inline-images/dumbell.png?v=1783530297'>
 - 查證：
   - 是否有其他研究結果也存在類似的結論呢？
@@ -86,10 +87,11 @@ Would you like details on how to set up context compression tools for a specific
 [26] [https://www.developersdigest.tech](https://www.developersdigest.tech/blog/code-cleanliness-affects-ai-coding-agents)
 
 </td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-</td></tr>
 </table>
+
+## 2026-07-13
+
+- 2026-07-12
+  - Claude Code Is Way More Token-Hungry Than OpenCode. We Measured Exactly How Much
+  - https://systima.ai/blog/claude-code-vs-opencode-token-overhead 
+  - 測驗工具：https://github.com/systima-ai/agentic-coding-tools-comparison
