@@ -1,0 +1,6 @@
+#!/bin/bash
+source ~/bin/gemini-keys
+echo "GEMINI_API_KEY=${GEMINI_API_KEY}" > .env
+INPUT=$1
+aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash -m "/ask could you generate report based on this meeting transcript in markdown syntax? in 2 sections: (A) Tone of each attendee (B) Potential Conflict. Thanks." --chat-history-file ${INPUT%.json}.md $INPUT
+touch $INPUT
