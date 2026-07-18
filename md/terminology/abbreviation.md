@@ -258,4 +258,10 @@ Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍�
 
 | Abbreviation | Full Form | 中文 | Reference | Domain |
 |--------------|-----------|------|-----------|--------|
-| PLLG | Product-Led Growth | 產品驅動成長 | https://share.google/aimode/4b8LjAmuYXEIkJSdn |  |
+| PLG | Product-Led Growth | 產品驅動成長 | https://share.google/aimode/4b8LjAmuYXEIkJSdn |  |
+
+## 2026-07-10
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| BTL | Below the Line | 低於水平 | https://share.google/aimode/5jLuGMwJqHwMLk5oF |  |
