@@ -36,3 +36,9 @@
 > -   在 M3 Max MacBook Pro 上每秒產生 26 個令牌
 > 
 > 先使用 git clone 指令，執行 **./download\_model.sh q2 指令**，然後執行 make 指令，並將你的編碼代理指向 localhost:8000。
+
+## 2026-08-03
+
+- 唐鳳寫了 `pi-ds4` 的文件 https://pi.audreyt.org/
+  - https://github.com/audreyt/pi-ds4
+  - 看起來是 fork https://github.com/mitsuhiko/pi-ds4 並加入一些文件修改
