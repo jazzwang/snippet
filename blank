@@ -4,6 +4,7 @@ if [ $# -lt 1 ]; then
   echo "$0 init - create new Github CodeSpace"
   echo "$0 ssh  - connect Github CodeSpace via SSH"
   echo "$0 code - connect Github CodeSpace via VS Code"
+  echo "$0 delete - existing Github CodeSpace"
   exit 1
 fi
 

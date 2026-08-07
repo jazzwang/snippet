@@ -1,6 +1,7 @@
 #!/bin/bash
 if [ $# -lt 2 ]; then
   echo "Usage: $0 <NOTEBOOK_ID> <URL>"
+  nlm alias list
   exit 1
 fi
 
@@ -8,4 +9,5 @@ NOTEBOOK=$1
 URL=$2
 
 SRC_ID=$(nlm source add $NOTEBOOK -y $URL | grep 'Source ID' | awk '{ print $3 }')
+echo "Source ID: $SRC_ID"
 nlm report create $NOTEBOOK -y --language zh_TW -s ${SRC_ID}
