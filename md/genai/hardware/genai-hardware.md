@@ -1,5 +1,9 @@
 # GenAI Hardware
 
+### 2026-08-14
+
+- 觀察市場價格 - https://maq.tw/
+
 ## Intel Arc A770 ( 16 GB VRAM )
 
 ### 2026-04-21
