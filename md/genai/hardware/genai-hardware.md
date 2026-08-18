@@ -1,5 +1,7 @@
 # GenAI Hardware
 
+[TOC]
+
 ### 2026-08-14
 
 - 觀察市場價格 - https://maq.tw/
