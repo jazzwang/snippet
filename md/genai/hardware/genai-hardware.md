@@ -185,6 +185,76 @@ Intel Arc Pro B60 成功實現了「廉價顯存」的承諾，證明了即使�
 </td></tr>
 </table>
 
+### 2026-04-05
+
+- From: https://www.youtube.com/watch?v=-aEHitayNts
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+NotebookLM - Report
+</td></tr><tr><td>A:</td><td>
+
+### 想要 96GB VRAM 又不想破產？這套 Intel 方案可能是目前最強的「窮人救星」
+
+#### 引言：AI 時代的「記憶體焦慮」
+
+對於當前的 AI 開發者而言，硬體選購中最令人挫折的莫過於「記憶體焦慮」。想流暢執行大型語言模型（LLM），動輒需要數十 GB 的顯存（VRAM）來容納模型權重與 KV Cache。然而，市場上的專業級顯卡售價卻如同天頂星科技。以 Nvidia RTX Pro 6000 為例，即便售價從 10,000 美元降至約 8,500 美元，對大多數個人開發者或小型團隊來說仍是遙不可及。
+
+但作為一名系統架構師，我始終在尋找打破壟斷的替代路徑。如果我告訴你，只需不到四分之一的預算，就能構建出一套擁有 96GB VRAM 的系統，你是否願意接受這場伴隨著噪音與熱浪的效能挑戰？
+
+#### 第一大看點：Intel Arc Pro B60 ------ 打破規則的「顯存密度」策略
+
+Intel Arc Pro B60 的存在，本質上是 Intel 對 Nvidia 與 AMD 顯存定價策略的精準狙擊。當 Nvidia 的前代旗艦 RTX 4090（24GB）溢價依然嚴重，而新一代 Blackwell 架構的 RTX 5080（24GB）市場街價仍徘徊在 1,500 至 1,800 美元時，Intel 選擇了一條「高顯存密度優先」的生存之道。
+
+目前 Sparkle 版本的 B60 建議售價約為 799 美元，但在 Newegg 等通路的促銷價已下探至 **650 美元**。這意味著在相同的預算下，你可以部署更多的顯存容量，而非追求極致但昂貴的運算頻寬。
+
+**Intel Arc Pro B60 核心規格清單：**
+
+-   **顯存容量：** 24GB GDDR6
+-   **記憶體頻寬：** 456 GB/s
+-   **板卡功耗 (TBP)：** 200W（需額外供電）
+-   **入手價格：** 約 $650 美元 (Newegg 實測價格)
+
+#### 第二大看點：架構師的對決 ------ 頻寬與容量的權衡
+
+在 800 美元以下的級距，Intel B60 面對的是兩位截然不同的對手：Nvidia RTX Pro 2000 (Blackwell) 與 AMD RX 7900 XT。
+
+-   **Nvidia RTX Pro 2000：** 走的是「極致能效」路線。雖然僅有 16GB VRAM，且頻寬僅 288 GB/s，但其 70W 的低功耗讓它只需 PCIe 插槽供電即可運作。
+-   **AMD RX 7900 XT：** 則是「高頻寬」代表。雖然具備 20GB VRAM，但其擁有高達 800 GB/s 的記憶體頻寬。
+
+「Nvidia 在**預填階段 (Pre-fill / Prompt Processing)** 的速度優勢非常明顯，即便是在這類小型 GPU 上，其效率依然令人印象深刻。」
+
+然而，從系統架構的角度來看，當我們執行 BF16 格式的大型模型（例如 Qwen 34B）時，Nvidia 的 16GB 或 AMD 的 20GB 顯存會迅速成為瓶頸。即便 AMD 頻寬更高，但容量不足會導致無法處理長文本或龐大的 KV Cache。這正是 Intel B60 以 24GB 容量勝出的關鍵：**先求能跑，再求跑得快。**
+
+#### 第三大看點：實戰 96GB ------ 跑起 65GB 的 DeepSeek R1 是什麼感覺？
+
+透過 Intel 的 **LLM Scaler** 工具，我們將四張 B60 組合成一個 **Tensor Parallelism (張量並行)** 叢集，總計擁有 96GB VRAM。這讓我們能執行 **DeepSeek R1 Qwen 32B Distill (BF16 版本)**。這是一個在硬碟上佔用約 65GB 的稠密模型（Dense Model），傳統的單張消費級顯卡根本無法運行。
+
+**實測效能分析：**
+
+-   **Pre-fill (Prompt Processing) 速度：** 在併發數 (Concurrency) 為 32 時，速度可達 2,931 tokens/s。
+-   **Decoding (Token Generation) 速度：** 在 **64 併發** 的設定下，系統達到了「甜點位」。峰值吞吐量約為 **574 tokens/s**，持續生成速度穩定在 **289 tokens/s** 左右。
+
+**架構師觀點：** 測試顯示，當併發數推升至 128 或 256 時，系統會出現明顯的報酬遞減現象。因此，這套系統的最佳實踐場景是作為「智能體 (Agentic) 伺服器」或是辦公室多人共享的 AI 工作站，在 64 併發下能榨取硬體的最高價值。
+
+#### 不可忽視的代價：噪音、熱量與軟體棧的「未熟感」
+
+雖然性價比誘人，但這套方案的「副作用」極其明顯，普通用戶務必三思：
+
+1.  **物理風險與極限熱量：** 四張卡全速運作時，系統總功耗飆升至 **933W**，且閒置 (Idle) 功耗竟高達 **350W - 372W**。顯卡表面的熱度極為驚人，實測中甚至是「手指觸摸會被燙傷」的程度。
+2.  **噪音污染：** 風扇全速運轉的聲音如同飛機引擎，完全不適合放在一般辦公室或居家書桌旁，必須隔離在機房或機櫃中。
+3.  **軟體棧的挑戰：** 這是目前最大的硬傷。Intel 的軟體更新節奏（如 VLM 的 Intel 專用分支）大約落後主流社群一個月。實測中，儘管官方宣稱支援，但 **GLM Flash 4.7** 完全無法載入，而 **Qwen Coder 30B** 在高併發測試中頻繁崩潰報錯。
+
+#### 結論：這是一場划算的賭注嗎？
+
+由四張 Intel Arc Pro B60 組成的 96GB 方案，是目前市場上針對「大容量顯存需求」最激進的窮人救星。它最適合那些**預算極度受限、但必須執行大型 BF16 模型進行 Agent 測試的開發者**。
+
+你必須忍受不成熟的軟體棧、隨時可能燙傷手的硬體溫度，以及落後社群一個月的模型支援度。但如果你追求的是每一塊錢能換到的顯存密度，Intel 目前確實提供了一個 Nvidia 無法給予的生存空間。
+
+隨著 Intel 持續修正 LLM Scaler 並追趕模型支援速度，Nvidia 在中階 AI 工作站市場的壟斷地位，或許正由這些看似「非主流」的硬體悄悄侵蝕。
+
+</td></tr>
+</table>
+
 ## Intel Arc Pro B70 ( 32 GB VRAM )
 
 - From: https://www.youtube.com/watch?v=RcIWhm16ouQ
@@ -276,79 +346,6 @@ AWQ 的精髓在於它不會粗暴地壓縮所有參數，而是先分析模型�
 </td></tr>
 </table>
 
-## Intel Arc Pro B60 ( 96 GB VRAM )
-
-### 2026-04-05
-
-- From: https://www.youtube.com/watch?v=-aEHitayNts
-
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
-### 想要 96GB VRAM 又不想破產？這套 Intel 方案可能是目前最強的「窮人救星」
-
-#### 引言：AI 時代的「記憶體焦慮」
-
-對於當前的 AI 開發者而言，硬體選購中最令人挫折的莫過於「記憶體焦慮」。想流暢執行大型語言模型（LLM），動輒需要數十 GB 的顯存（VRAM）來容納模型權重與 KV Cache。然而，市場上的專業級顯卡售價卻如同天頂星科技。以 Nvidia RTX Pro 6000 為例，即便售價從 10,000 美元降至約 8,500 美元，對大多數個人開發者或小型團隊來說仍是遙不可及。
-
-但作為一名系統架構師，我始終在尋找打破壟斷的替代路徑。如果我告訴你，只需不到四分之一的預算，就能構建出一套擁有 96GB VRAM 的系統，你是否願意接受這場伴隨著噪音與熱浪的效能挑戰？
-
-#### 第一大看點：Intel Arc Pro B60 ------ 打破規則的「顯存密度」策略
-
-Intel Arc Pro B60 的存在，本質上是 Intel 對 Nvidia 與 AMD 顯存定價策略的精準狙擊。當 Nvidia 的前代旗艦 RTX 4090（24GB）溢價依然嚴重，而新一代 Blackwell 架構的 RTX 5080（24GB）市場街價仍徘徊在 1,500 至 1,800 美元時，Intel 選擇了一條「高顯存密度優先」的生存之道。
-
-目前 Sparkle 版本的 B60 建議售價約為 799 美元，但在 Newegg 等通路的促銷價已下探至 **650 美元**。這意味著在相同的預算下，你可以部署更多的顯存容量，而非追求極致但昂貴的運算頻寬。
-
-**Intel Arc Pro B60 核心規格清單：**
-
--   **顯存容量：** 24GB GDDR6
--   **記憶體頻寬：** 456 GB/s
--   **板卡功耗 (TBP)：** 200W（需額外供電）
--   **入手價格：** 約 $650 美元 (Newegg 實測價格)
-
-#### 第二大看點：架構師的對決 ------ 頻寬與容量的權衡
-
-在 800 美元以下的級距，Intel B60 面對的是兩位截然不同的對手：Nvidia RTX Pro 2000 (Blackwell) 與 AMD RX 7900 XT。
-
--   **Nvidia RTX Pro 2000：** 走的是「極致能效」路線。雖然僅有 16GB VRAM，且頻寬僅 288 GB/s，但其 70W 的低功耗讓它只需 PCIe 插槽供電即可運作。
--   **AMD RX 7900 XT：** 則是「高頻寬」代表。雖然具備 20GB VRAM，但其擁有高達 800 GB/s 的記憶體頻寬。
-
-「Nvidia 在**預填階段 (Pre-fill / Prompt Processing)** 的速度優勢非常明顯，即便是在這類小型 GPU 上，其效率依然令人印象深刻。」
-
-然而，從系統架構的角度來看，當我們執行 BF16 格式的大型模型（例如 Qwen 34B）時，Nvidia 的 16GB 或 AMD 的 20GB 顯存會迅速成為瓶頸。即便 AMD 頻寬更高，但容量不足會導致無法處理長文本或龐大的 KV Cache。這正是 Intel B60 以 24GB 容量勝出的關鍵：**先求能跑，再求跑得快。**
-
-#### 第三大看點：實戰 96GB ------ 跑起 65GB 的 DeepSeek R1 是什麼感覺？
-
-透過 Intel 的 **LLM Scaler** 工具，我們將四張 B60 組合成一個 **Tensor Parallelism (張量並行)** 叢集，總計擁有 96GB VRAM。這讓我們能執行 **DeepSeek R1 Qwen 32B Distill (BF16 版本)**。這是一個在硬碟上佔用約 65GB 的稠密模型（Dense Model），傳統的單張消費級顯卡根本無法運行。
-
-**實測效能分析：**
-
--   **Pre-fill (Prompt Processing) 速度：** 在併發數 (Concurrency) 為 32 時，速度可達 2,931 tokens/s。
--   **Decoding (Token Generation) 速度：** 在 **64 併發** 的設定下，系統達到了「甜點位」。峰值吞吐量約為 **574 tokens/s**，持續生成速度穩定在 **289 tokens/s** 左右。
-
-**架構師觀點：** 測試顯示，當併發數推升至 128 或 256 時，系統會出現明顯的報酬遞減現象。因此，這套系統的最佳實踐場景是作為「智能體 (Agentic) 伺服器」或是辦公室多人共享的 AI 工作站，在 64 併發下能榨取硬體的最高價值。
-
-#### 不可忽視的代價：噪音、熱量與軟體棧的「未熟感」
-
-雖然性價比誘人，但這套方案的「副作用」極其明顯，普通用戶務必三思：
-
-1.  **物理風險與極限熱量：** 四張卡全速運作時，系統總功耗飆升至 **933W**，且閒置 (Idle) 功耗竟高達 **350W - 372W**。顯卡表面的熱度極為驚人，實測中甚至是「手指觸摸會被燙傷」的程度。
-2.  **噪音污染：** 風扇全速運轉的聲音如同飛機引擎，完全不適合放在一般辦公室或居家書桌旁，必須隔離在機房或機櫃中。
-3.  **軟體棧的挑戰：** 這是目前最大的硬傷。Intel 的軟體更新節奏（如 VLM 的 Intel 專用分支）大約落後主流社群一個月。實測中，儘管官方宣稱支援，但 **GLM Flash 4.7** 完全無法載入，而 **Qwen Coder 30B** 在高併發測試中頻繁崩潰報錯。
-
-#### 結論：這是一場划算的賭注嗎？
-
-由四張 Intel Arc Pro B60 組成的 96GB 方案，是目前市場上針對「大容量顯存需求」最激進的窮人救星。它最適合那些**預算極度受限、但必須執行大型 BF16 模型進行 Agent 測試的開發者**。
-
-你必須忍受不成熟的軟體棧、隨時可能燙傷手的硬體溫度，以及落後社群一個月的模型支援度。但如果你追求的是每一塊錢能換到的顯存密度，Intel 目前確實提供了一個 Nvidia 無法給予的生存空間。
-
-隨著 Intel 持續修正 LLM Scaler 並追趕模型支援速度，Nvidia 在中階 AI 工作站市場的壟斷地位，或許正由這些看似「非主流」的硬體悄悄侵蝕。
-
-</td></tr>
-</table>
-
-
 ## Tesla V100 SXM2 ( 16 GB or 32 GB VRAM )
 
 ### 2026-04-21
@@ -431,7 +428,7 @@ NotebookLM - Report
 
 當你擁有了強大的本地算力，你可能會想嘗試像 **Malt Book**（AI 代理社交網路）或是最近火熱的 **Open Claw**（AI 代理軟體）。
 
-**嚴正警告：** 
+**嚴正警告：**
 **Open Claw** 具備「自動化代理」特性，它能獲取你電腦的所有存取權限，從 WhatsApp 到銀行帳戶。根據測試模型的反饋，這類工具具備 **「Rootkit」** 特徵，本質上是一個安全噩夢。身為黑客，我當然會去嘗試它，但我強烈建議讀者：**絕對要在物理隔離的沙盒環境中運行**，不要拿你的真實數據開玩笑。
 
 #### 8. 結論：這場冒險值得嗎？
@@ -441,6 +438,185 @@ NotebookLM - Report
 這場冒險伴隨著伺服器等級的噪音、繁瑣的硬體修改以及軟體除錯的折磨。但當 AI 算力逐漸淪為科技巨頭壟斷的武器時，這種「硬體黑客」精神，或許是我們普通人維持技術民主化、保護數據隱私的唯一出路。
 
 去建立你自己的本地 AI 實驗室吧！別讓那張 5,000 美元的標價標籤，限制了你的創造力。
+
+</td></tr>
+</table>
+
+## AMD Radeon VII
+
+### 2026-08-17
+
+- https://share.google/aimode/kAVAdPUMcd9MVNVck
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+為何大家搶 GFX906
+</td></tr><tr><td>A:</td><td>
+
+大家瘋搶 GFX906（主要指 AMD Radeon VII、Instinct MI50、MI60 等使用該架構的舊款繪圖晶片），核心原因在於它是目前性價比極高、專門用來跑本地 AI 大語言模型（LLM）的「神級洋垃圾」。 [1]
+隨著 DeepSeek、Qwen 等大模型爆火，大眾對大容量顯示記憶體（VRAM）的需求暴增，而 GFX906 晶片正好踩中了這個痛點。以下是它被瘋搶的四大核心關鍵： [2, 3]
+
+#### 📈 超狂的性價比與大顯存
+
+* 極低成本：買一張 NVIDIA RTX 4090 的預算，在二手市場可以買到 3~4 張 GFX906 晶片卡（如 MI50 32GB 或 MI60 32GB）。 [1, 4]
+* 顯存容量稱王：多卡並聯後可輕鬆堆疊出 128GB 甚至更多的 VRAM，能以極低代價在本地流暢運行 32B、72B 甚至 120B 以上的重量級大模型。 [1]
+
+#### ⚡ HBM2 超高記憶體頻寬
+
+* 速度突破瓶頸：GFX906 晶片普遍搭載 HBM2 記憶體，具備高達 1TB/s 的記憶體頻寬。
+* 推理性能極佳：AI 模型推理（Inference）的速度極度依賴記憶體頻寬，HBM2 讓它在執行 Token 輸出時，速度表現驚人，甚至超越許多同價位的新款消費級顯卡。 [5, 6, 7]
+
+#### 💡 核心開源社群的救贖（vLLM 突破）
+
+* 打破官方棄用限制：雖然 AMD 官方在較新版本的 ROCm 中將 GFX906 列入維護/棄用狀態，但全球開源社群（如 [GitHub 上的 vllm-gfx906 專案](https://github.com/nlzy/vllm-gfx906)）為它量身打造了特製的 Docker 容器與編譯修補檔。 [1, 8, 9]
+* 解鎖張量並行：社群成功解鎖了 vLLM 的張量並行（Tensor Parallelism） 功能。讓多張 MI50 或 Radeon VII 可以完美協同運作，速度比原本使用 Ollama 提升了數倍，正式成為兼具實用與低成本的 AI 推理伺服器。
+
+#### 🔎 二手市場的「賽博微調與推理」主力
+
+* 開源模型蓬勃發展：現今開源權重模型百家爭鳴，自由開發者與 AI 愛好者不願支付高昂的雲端算力費用，紛紛轉向建立本地端機器。這波風潮讓這批從資料中心退役、原本乏人問津的 AMD 運算卡，一躍成為最炙手可熱的搶手貨。 [10]
+
+⚠️ 入手前的隱藏風險與成本：
+
+雖然晶片便宜，但這類退役運算卡（如 MI50）通常沒有主動散熱風扇，需要自行 3D 列印風罩並改裝高轉速暴力風扇。此外，驅動與環境部署需要一定的 Linux 與 Docker 除錯能力，屬於高技術門檻、高折騰度，但回報率極高的 AI 算力方案。 [4]
+如果你也打算入手 GFX906 陣營，讓我知道你預計要運行哪一個規格的大模型，或者你的總預算上限，我可以幫你評估需要幾張卡以及周邊電源、散熱該如何配置！
+
+[1] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1ca7a9n/128gb_of_vram_for_the_price_of_a_single_4090_for/?tl=zh-hant)
+[2] [https://www.facebook.com](https://www.facebook.com/groups/aigctw/posts/3118343478349543/)
+[3] [https://blog.csdn.net](https://blog.csdn.net/huang9604/article/details/145554497)
+[4] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1g37nad/2x_amd_mi60_inference_speed_mlcllm_is_a_fast/?tl=zh-hans)
+[5] [https://news.xfastest.com](https://news.xfastest.com/amd/58961/amd-radeon-vii-gfx906-delivers-90-mhs-ethash/)
+[6] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/1916628414087029268)
+[7] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1g37nad/2x_amd_mi60_inference_speed_mlcllm_is_a_fast/?tl=zh-hant)
+[8] [https://github.com](https://github.com/nlzy/vllm-gfx906)
+[9] [https://www.leftso.com](https://www.leftso.com/article/2604081303303675.html)
+[10] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1qmqmb9/should_i_invest_in_a_beefy_machine_for_local_ai/?tl=zh-hant)
+
+</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
+有其他 AMD 性價比高,顯存大的二手選擇嗎?
+</td></tr><tr><td>A:</td><td>
+
+除了目前最火紅的 GFX906（MI50/MI60/Radeon VII）之外，二手市場上確實還有其他幾款 AMD 大顯存、高性價比的選擇。
+這些選擇主要分為兩大派系：一種是極致便宜、但折騰度更高的舊款運算卡；另一種是隨插即用、生態相對健康的消費級/專業級顯卡。以下為您盤點最熱門的替代方案： [1]
+
+#### 一、 撿漏極致性價比：AMD Instinct MI25 (16GB HBM2)
+
+如果 GFX906 對你來說還是太貴，這張 MI25 就是極致預算流的終極選擇。
+
+* 顯存與頻寬：16GB HBM2 顯存，記憶體頻寬高達 484 GB/s。 [2]
+* 核心優勢：在二手市場價格極低（通常只要幾千元台幣），是目前取得 16GB HBM2 顯存最便宜的渠道。 [3]
+* 運行方式：它屬於 GFX900 架構（Vega 10）。雖然早就被官方 ROCm 淘汰，但開源社群近期利用 Vulkan API（如 Llama.cpp 或 LM Studio 的 Vulkan 後端） 成功讓它復活，跑大模型推理依舊能有不錯的 Token 輸出速度。 [3, 4, 5]
+* 缺點（極度折騰）：預設 BIOS 功耗被鎖在 100W 效能極差，玩家通常需要強行刷入 Radeon Pro WX9100 的 BIOS 來解鎖 170W 功耗並開啟 Mini-DP 輸出。同樣無風扇，必須手動改裝散熱。 [4, 6]
+
+#### 二、 現代平價大顯存：Radeon RX 6800 / 6800 XT (16GB GDDR6)
+
+如果您不想折騰 Linux 命令、Docker 容器或物理改裝散熱，希望在 Windows 下隨插即用，Radeon RX 6000 系列是目前的二手中流砥柱。 [1]
+
+* 顯存與頻寬：16GB GDDR6。
+* 核心優勢：它是標準的消費級遊戲顯卡，自帶優良的風扇散熱與視訊輸出接口，完美支援 Windows 系統。
+* AI 支援度：這是 AMD 官方 ROCm 軟體生態正式支援的消費級架構（RDNA 2）。現在使用 Windows 版本的 LM Studio 或 Ollama，能直接調用這張卡的算力，拿來跑 7B 到 22B 的中小型模型非常流暢。
+* 缺點：GDDR6 的頻寬（約 512 GB/s）不比 HBM2 的 1TB/s，在大批次（Batch Size）並發推理時，速度會慢於 GFX906 系列。 [1]
+
+#### 三、 24GB 顯存的消費級頂峰：Radeon RX 7900 XTX (24GB GDDR6)
+
+如果預算較充裕，想一步到位挑戰單卡大容量，二手 RX 7900 XTX 是對標 NVIDIA 24GB 顯存的最佳性價比方案。 [1, 7]
+
+* 顯存與頻寬：24GB GDDR6，記憶體頻寬高達 960 GB/s（接近 HBM2 速度）。
+* 核心優勢：採用現代的 RDNA 3 架構，官方對其 AI 最佳化力度極大。在 PyTorch、vLLM 以及 GGUF 模型的支援度上都是 AMD 消費級最強。
+* 性價比：在二手市場上，它的價格遠低於 NVIDIA RTX 3090 或 RTX 4090，但卻能提供相同的 24GB 滿血大顯存，可以單卡輕鬆啃下 70B 的量化模型（如 Q4_K_M 格式）。 [1, 7, 8, 9]
+
+#### 四、 隱藏的企業級大容量：Radeon Pro W6800 (32GB GDDR6)
+
+這是一張較為冷門、但偶爾會在二手市場出現驚喜價的「工作站專業卡」。 [1]
+
+* 顯存與頻寬：32GB GDDR6。
+* 核心優勢：單卡直接給到 32GB 超大顯存，而且是標準的主動式風扇散熱。由於工作站退役潮，有時二手的價格比買兩張舊運算卡還要划算，且單卡 32GB 可以省去多卡並聯（Tensor Parallel）的硬體架構麻煩，單卡就能跑高權重的 70B 模型。
+* 缺點：核心運算速度較慢，這張卡強在「顯存容量大」，但「推理速度（Tokens/s）」會比較佛系。 [1]
+
+#### 💡 總結與選購建議
+
+| 選項 | 顯存大小 | 二手折騰度 | 核心優勢 | 適合人群 |
+|---|---|---|---|---|
+| Instinct MI25 | 16GB HBM2 | ⭐⭐⭐⭐⭐ (極高) | 垃圾級價格、高記憶體頻寬 | 預算極限、愛刷網誌與改裝的極客玩家 |
+| GFX906 (MI50) | 32GB HBM2 | ⭐⭐⭐⭐☆ (高) | 開源 vLLM 多卡並聯完美解鎖 | 本地 LLM 伺服器多卡堆疊用戶 |
+| RX 6800 XT | 16GB GDDR6 | ⭐☆☆☆☆ (極低) | 隨插即用、Windows 相容性好 | 想兼顧遊戲與輕度 AI 嘗試的 Windows 用戶 |
+| RX 7900 XTX | 24GB GDDR6 | ⭐☆☆☆☆ (極低) | 官方現代生態支援、單卡 24GB 大顯存 | 預算充足、追求速度與大顯存的開發者 |
+
+如果想進一步評估，可以告訴我你目前主要的作業系統（Windows 還是 Linux），以及你最常使用的 AI 工具（如 Ollama、LM Studio 或 vLLM），我能為你挑選最不會踩雷的硬體路線！
+
+[1] [https://www.promptquorum.com](https://www.promptquorum.com/local-llms/best-amd-gpus-local-llm)
+[2] [https://www.fitmyllm.com](https://www.fitmyllm.com/blog/gpu/radeon-instinct-mi25)
+[3] [https://medium.com](https://medium.com/@rafaelmanzanom/ditching-cuda-for-amd-rocm-for-more-accessible-llm-inference-ryzen-apus-edition-92c3649f8f7d)
+[4] [https://www.techpowerup.com](https://www.techpowerup.com/forums/threads/amd-radeon-instinct-mi25-llm-performance-with-gpt-oss-20-via-vulkan-api-updated.347108/)
+[5] [https://www.youtube.com](https://www.youtube.com/watch?v=t4J_KYp0NGM)
+[6] [https://wiki.archlinux.org](https://wiki.archlinux.org/title/AMD_Radeon_Instinct_MI25)
+[7] [https://viperatech.com](https://viperatech.com/news-details/gpu-for-running-llms-locally-in-2026-nvidia-vs-amd)
+[8] [https://www.youtube.com](https://www.youtube.com/watch?v=-aEHitayNts)
+[9] [https://www.reddit.com](https://www.reddit.com/r/ROCm/comments/1h6a6o3/vllm_now_supports_running_gguf_on_amd/)
+
+</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
+幫我搜尋一下台灣二手市場的價格。預計使用 Linux 搭配 vLLM
+</td></tr><tr><td>A:</td><td>
+
+在台灣二手市場（主要參考蝦皮購物、露天市集、Facebook 臉書社團及 PTT HardwareSale 板）中，您所預計使用的 Linux + vLLM 組合，是發揮這些 AMD 舊卡、消費級顯卡性價比的最高解法。因為 vLLM 在 Linux 下能跑滿內存頻寬，且開源社群對其張量並行（Tensor Parallelism）的優化最好。 [1, 2, 3, 4]
+以下為您盤點 2026 年最新台灣二手市場的行情實測、預算落點與在 vLLM 架構下的實用避坑指南：
+
+#### 💵 台灣二手市場價格與 vLLM 實測指南## 1. 垃圾級代價的極致：AMD Instinct MI25 (16GB HBM2)
+
+* 台灣二手市場行情：約 $2,500 ~ $3,500 TWD（常以「AI 運算卡/電子垃圾」名義拋售）。
+* vLLM 適用度：⭐⭐（不推薦作為 vLLM 首選）。
+* Linux 實戰現狀：雖然極度便宜，但其 GFX900 架構已經完全被現代 ROCm 剝離。在 Linux 下，vLLM 官方主流的分支幾乎無法直接驅動它。若要在 Linux 跑大模型，通常必須放棄 vLLM，改用 Llama.cpp 的 Vulkan 後端來進行推理，折騰時間成本極高。 [1]
+
+#### 2. 當前瘋搶的 C 位：GFX906 / AMD Instinct MI50 (32GB HBM2 版)
+
+* 台灣二手市場行情：約 $7,800 ~ $12,000 TWD。
+(註：市場上有早期 16GB 版本與主流 32GB 兩種，務必認明 32GB 版，價差僅一兩千元；另外常有賣家販售「已刷可輸出畫面 BIOS 且改好水冷/改主動風扇」的完全體，價格通常落在萬元大關)。 [2, 5, 6, 7]
+* vLLM 適用度：⭐⭐⭐⭐⭐（極度推薦）。
+* Linux 實戰現狀：這是最適合 Linux + vLLM 的窮人救星。藉由 [GitHub 社群維護的 vllm-gfx906 專案](https://github.com/nlzy/vllm-gfx906)，在 Linux 上透過特製 Docker 部署，可以完美開啟多卡 Tensor Parallelism。用 2 張卡（共 64GB VRAM）並聯，能用極高速度硬啃 DeepSeek-Coder 或 Qwen 32B/72B 規格模型。
+
+#### 3. 免折騰的平民保險：Radeon RX 6800 / 6800 XT (16GB GDDR6)
+
+* 台灣二手市場行情：約 $8,500 ~ $11,500 TWD。
+* vLLM 適用度：⭐⭐⭐☆（中規中矩）。
+* Linux 實戰現狀：好處是自帶風扇、有保固、隨插即用。但在 Linux vLLM 生態中，RDNA2 架構（GFX1030）需要設定環境變數 HSA_OVERRIDE_GFX_VERSION=10.3.0 進行欺騙。最大的瓶頸在於 GDDR6 的頻寬（~512 GB/s）只有 MI50 的一半，當 vLLM 處理多用戶高併發（High Concurrency）時，Token 輸出速度會明顯慢於 MI50 的 HBM2。 [1, 3, 8]
+
+#### 4. 滿血版消費級旗艦：Radeon RX 7900 XTX (24GB GDDR6)
+
+* 台灣二手市場行情：約 $23,800 ~ $32,000 TWD（視廠牌、保固剩餘長短而定）。
+* vLLM 適用度：⭐⭐⭐⭐⭐（推力極強）。
+* Linux 實戰現狀：目前 AMD 在 Linux 官方生態（ROCm 6.x+）中大力扶持的消費級顯示卡。vLLM 官方原生完美支援。雖然記憶體頻寬仍是 GDDR6，但其頻寬高達 960 GB/s，已經摸到了 HBM2 的屁股。其單核運算速度極快，單卡 24GB 跑量化模型非常省心，唯一的缺點是二手價格在台灣依然相對硬朗。 [1, 4, 9, 10]
+
+#### 🛠️ Linux + vLLM 環境下的「避坑三部曲」
+
+既然您決定使用 Linux 搭配 vLLM，部署這些高性價比二手 AMD 卡時請特別注意以下硬體代價：
+
+   1. 主機板 PCIe 頻寬通道（非常重要！）：
+   vLLM 跑多卡並聯（Tensor Parallelisme）時，顯示卡與顯示卡之間會產生極為恐怖的資料交換。如果您買了兩張 MI50（32GB+32GB），請務必確保主機板能支援 PCIe 3.0/4.0 x8 + x8 以上的直連通道。若是插在晶片組擴充的 PCIe x4 甚至 x1 槽上，vLLM 的並聯速度會直接雪崩。
+   2. Linux 核心與 ROCm 版本對齊：
+   GFX906 在最新版的官方 ROCm 6.x 中已被移出預設支援名單。您在 Linux 部署時，必須使用開源社群編譯好的 ROCm 5.7 或特定 6.1.x Docker 鏡像，直接在宿主機裝最新版驅動反而會無法識別。 [1, 11]
+   3. 電量與改裝散熱成本：
+   二手 MI50 一張滿載功耗約 200W-250W。若打算堆疊 2~3 張，必須準備 1000W 級別以上、且具備多組獨立 PCIe 8-pin 供電的電競電源。同時，運算卡在台灣二手市場常是「被動散熱（無風扇）」，您必須在預算中多抓 $500~$1,000 元台幣去網購 3D 列印暴力風扇風罩，否則開機跑 vLLM 5分鐘內就會因為過熱（Thermal Throttling）直接掉卡。
+
+💡 最後的選購指引：
+
+* 如果您有預算上限，且具備豐富的 Linux 系統除錯經驗：請直接上網尋找 台灣現貨、已改好主動風扇的 MI50 32GB（二手單卡成本控制在 9,000 元台幣上下最划算）。
+* 如果您希望系統穩定，不想為了解決 Docker 環境熬夜：多花點預算捏上去買二手的 RX 7900 XTX 24GB，官方原生支援能幫您省下數十個小時的除錯時間。 [2, 7, 9]
+
+您目前看中的是市場上哪一款？您手邊預計用來搭建這套系統的 CPU、主機板型號是什麼？我可以幫您檢視它的 PCIe 通道夠不夠跑 vLLM 的多卡並聯！
+
+[1] [https://electronics.alibaba.com](https://electronics.alibaba.com/buyingguides/mi50-32gb-guide-is-it-worth-it-for-local-llms)
+[2] [https://biggo.com.tw](https://biggo.com.tw/s/MI50%2032G)
+[3] [https://www.facebook.com](https://www.facebook.com/groups/694880387379853/posts/3146554242212443/)
+[4] [https://feebee.com.tw](https://feebee.com.tw/s/rx%207900%20xtx%E4%B8%AD%E5%8F%A4/)
+[5] [https://biggo.com.tw](https://biggo.com.tw/s/Vega+16g/)
+[6] [https://post.m.smzdm.com](https://post.m.smzdm.com/p/ae580d04/)
+[7] [https://biggo.com.tw](https://biggo.com.tw/s/amd%20mi50)
+[8] [https://feebee.com.tw](https://feebee.com.tw/all/rx%206800%E4%BA%8C%E6%89%8B/)
+[9] https://www.yifa-tech.shop
+[10] [https://biggo.com.tw](https://biggo.com.tw/s/RX%207900%20XTX%2024G)
+[11] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1ca7a9n/128gb_of_vram_for_the_price_of_a_single_4090_for/?tl=zh-hant)
 
 </td></tr>
 </table>
