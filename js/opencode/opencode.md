@@ -336,10 +336,45 @@ OpenCode 整合了 GitHub 自動化工作流程。你可以在專案中建立 .g
 [7] [https://www.runoob.com](https://www.runoob.com/opencode/opencode-cli.html)
 
 </td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
+</table>
+
+## 2026-08-18
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+which LLM model behind Big Pickle OpenCode Zen?
 </td></tr><tr><td>A:</td><td>
+
+The Big Pickle model behind OpenCode Zen is officially classified as a "stealth model" with rotating underlying capabilities, but it is primarily based on Zhipu AI's GLM-4.6 architecture. [1, 2] 
+
+Because it is a curated cloud gateway model, its exact technical identity features a mix of official specifications and community findings: [1, 3] 
+
+* Underlying Architecture: While the developers do not explicitly label the third-party model in the official documentation to maintain it as a proprietary "stealth" option, engineering tests, API behaviors, and video teardowns confirm it is a slightly modified version of GLM-4.6. [1, 2, 4, 5] 
+* Context Capabilities: It features a massive 200k token context window and can output up to 32k tokens. [6] 
+* Pricing & Availability: It is provided entirely free of charge ($0.00 per 1M tokens) through the OpenCode Zen tier to lower the cost barrier for developers using agentic workflows. [6, 7] 
+
+If you are trying to configure your coding environment, what specific editor or agent framework (like Agent Zero, Cursor, or Mastra) are you trying to connect Big Pickle to?
+
+[1] [https://www.youtube.com](https://www.youtube.com/watch?v=FPJ4nZ_iVRk)
+[2] [https://github.com](https://github.com/agent0ai/agent-zero/issues/1302)
+[3] [https://github.com](https://github.com/12britz/awesome-free-models)
+[4] [https://www.reddit.com](https://www.reddit.com/r/opencodeCLI/comments/1qfa59w/love_for_big_pickle/)
+[5] [https://www.linkedin.com](https://www.linkedin.com/posts/solomonvimal_opencode-claudecode-exaai-activity-7459730141838192640-Gaa1)
+[6] [https://custom.typingmind.com](https://custom.typingmind.com/tools/estimate-llm-usage-costs/opencode/big-pickle)
+[7] [https://www.youtube.com](https://www.youtube.com/watch?v=F_eMaWlxAtU)
+
 </td></tr>
 <tr style="background-color:lightyellow;"><td>Q:</td><td>
+改用中文回答
 </td></tr><tr><td>A:</td><td>
-</td></tr>
+
+OpenCode Zen 平台上的 Big Pickle 是一款官方定位為「隱身模型」（Stealth Model）的服務，其背後的核心架構主要是基於智譜 AI 的 GLM-4.6 模型。
+以下是關於這款模型的關鍵技術細節與背景：
+
+* 核心架構：為了維持產品的獨特性與服務彈性，官方在文檔中並未直接標註第三方廠商名稱。但經過多方工程測試、API 反應特徵以及技術拆解，確認其本質上是經過微調的 GLM-4.6。
+* 脈絡長度：具備強大的長文本處理能力，支援最高 200k tokens 的輸入脈絡，以及最高 32k tokens 的單次輸出。
+* 資費優勢：在 OpenCode Zen 平台上，該模型目前提供完全免費（$0.00 / 1M tokens）的優惠，旨在降低開發者使用 AI Agent（智能體）工作流的成本門檻。
+
+請問您目前是打算將 Big Pickle 串接到哪一款程式碼編輯器（如 Cursor、VS Code）或 Agent 開發框架（如 Agent Zero、Mastra）中呢？您可以告訴我您使用的開發工具，我能為您提供具體的配置步驟。
 </table>
