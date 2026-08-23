@@ -1,5 +1,6 @@
 <table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
+</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
 </td></tr><tr><td>A:</td><td>
 </td></tr>
 <tr style="background-color:lightyellow;"><td>Q:</td><td>
@@ -40,3 +41,11 @@
   - 取代 `\[` 為 `[`
   - 取代 `\]` 為 `]`
   - 取代 `\. ` 為 `. `
+
+* LaTeX to Mermaid:
+  有時候 AI Mode 或 Deep Research 用 LaTeX 語法，
+  為了在 Markdown 中正常呈現，可以改成 Memaid 語法：
+  ```
+  graph LR
+  A["把 LaTex 語法放這邊"]
+  ```
