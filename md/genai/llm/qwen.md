@@ -1,3 +1,5 @@
+[TOC]
+
 # Qwen
 
 ## 2025-03-07
@@ -512,17 +514,17 @@ give a more precise explanation!
 - https://huggingface.co/bartowski/cerebras_Qwen3-Coder-REAP-25B-A3B-GGUF
   - 這個把 30B 壓縮到 25B，而最小的 2-bit 是有機會可以塞進 8GB VRAM 顯卡
     | Quant type | File Size|
-    |--|--| 
+    |--|--|
     | IQ2_XXS | 6.23 GB |
     | IQ2_XS | 7.11 GB |
     | IQ2_S | 7.19 GB |
     | Q2_K | 8.95 GB |
 
-## Qwen 3.5
+# Qwen 3.5
 
 - https://huggingface.co/collections/Qwen/qwen35
 
-## Qwen 3.6
+# Qwen 3.6
 
 - https://huggingface.co/collections/Qwen/qwen36
 
@@ -539,7 +541,7 @@ give a more precise explanation!
   - Qwen3.6-35B-A3B 越獄版來了！目前最強“無審查”開源模型？6G 視訊記憶體都能跑，本地 AI 徹底自由了
   - https://www.freedidi.com/24284.html
 
-## Qwen 3.7
+# Qwen 3.7
 
 ### 2026-05-25
 
@@ -549,6 +551,161 @@ give a more precise explanation!
 - 2026-05-22
   - Qwen3.7-Max: Features, Benchmarks, and the Agent Frontier
   - https://www.datacamp.com/blog/qwen3-7-max
+
+# Qwen 3.8
+
+- 2026-08-03
+  - Qwen3.8-Max: A New Bar for Coding and Cowork
+  - https://qwen.ai/blog?id=qwen3.8
+- https://huggingface.co/collections/Qwen/qwen38
+
+## Qwen 3.8 27B
+
+- Overview
+  - https://www.qwencloud.com/models/qwen3.8-27b
+- HuggingFace
+  - https://huggingface.co/Qwen/Qwen3.8-27B
+- GGUF
+  - https://huggingface.co/unsloth/Qwen3.8-27B-GGUF
+- 實測：llama.cpp + pi coding agent
+  - https://huggingface.co/unsloth/Qwen3.8-27B-GGUF?show_file_info=Qwen3.8-27B-UD-IQ2_XXS.gguf&local-app=pi
+```
+ 4135  [08/24 13:45:09] llama serve -hf unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS
+ 4187  [08/24 18:10:16] llama serve -hf unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS
+```
+```bash
+~$ llama serve -hf unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS
+Downloading mmproj-BF16.gguf ─────────────────────────────────────── 100%
+Downloading Qwen3.8-27B-UD-IQ2_XXS.gguf ──────────────────────────── 100%
+3.43.292.488 I log_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+3.43.292.692 I device_info:
+3.43.299.663 I   - Vulkan0 : AMD Radeon(TM) Graphics (16253 MiB, 15440 MiB free)
+3.44.894.828 I   - Vulkan1 : NVIDIA GeForce RTX 4060 Laptop GPU (7956 MiB, 7188 MiB free)
+3.44.897.674 I   - CPU     : AMD Ryzen 7 7735HS with Radeon Graphics         (31994 MiB, 16342 MiB free)
+3.44.898.364 I system_info: n_threads = 8 (n_threads_batch = 8) / 16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |
+3.44.898.811 I srv  llama_server: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true
+3.44.901.288 I srv          init: running without SSL
+3.44.902.371 I srv          init: using 15 threads for HTTP server
+3.44.905.995 I srv         start: binding port with default address family
+3.44.911.628 I srv  llama_server: loading model
+3.44.911.894 I srv    load_model: loading model 'C:\Users\jazzw\.cache\huggingface\hub\models--unsloth--Qwen3.8-27B-GGUF\snapshots\4ca720788d1e01f1bff70c033e0d0028fd02e502\Qwen3.8-27B-UD-IQ2_XXS.gguf'
+3.54.721.554 I srv    load_model: [mtmd] estimated worst-case memory usage of mmproj is 1161.02 MiB
+3.54.722.776 I common_init_result: fitting params to device memory ...
+3.54.722.788 I common_init_result: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)
+4.13.696.810 W llama_context: n_ctx_seq (4096) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+4.14.071.733 W sched_reserve: layer 0 is assigned to device CPU but the fused Gated Delta Net tensor is assigned to device Vulkan1 (usually due to missing support)
+4.14.071.743 W sched_reserve: fused Gated Delta Net (chunked) not supported, set to disabled
+4.14.165.535 I common_init_from_params: warming up the model with an empty run - please wait ... (--no-warmup to disable)
+4.22.103.131 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks
+4.22.103.138 W load_hparams: if you encounter problems with accuracy, try adding --image-min-tokens 1024
+4.22.103.138 W load_hparams: more info: https://github.com/ggml-org/llama.cpp/issues/16842
+
+4.23.212.697 I srv    load_model: loaded multimodal model, 'C:\Users\jazzw\.cache\huggingface\hub\models--unsloth--Qwen3.8-27B-GGUF\snapshots\4ca720788d1e01f1bff70c033e0d0028fd02e502\mmproj-BF16.gguf'
+4.23.212.718 I srv    load_model: initializing slots, n_slots = 4
+4.23.671.707 W srv    load_model: speculative decoding will use checkpoints
+4.23.674.827 W common_speculative_init: no implementations specified for speculative decoding
+4.23.674.834 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 4096
+4.23.674.836 I slot   load_model: id  1 | task -1 | new slot, n_ctx = 4096
+4.23.674.837 I slot   load_model: id  2 | task -1 | new slot, n_ctx = 4096
+4.23.674.838 I slot   load_model: id  3 | task -1 | new slot, n_ctx = 4096
+4.23.674.898 I srv    load_model: prompt cache is enabled, size limit: 8192 MiB
+4.23.674.899 I srv    load_model: use `--cache-ram 0` to disable the prompt cache
+4.23.674.900 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391
+4.23.674.904 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 256
+4.23.674.924 I srv          init: idle slots will be saved to prompt cache and cleared upon starting a new task
+4.23.717.815 I init: chat template, example_format: '<|im_start|>system
+Reasoning effort is set to xhigh. Please think carefully through the task, validate key assumptions, consider plausible alternatives, and prioritize correctness, consistency, and clarity in the final answer.
+
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+Hello<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+Hi there<|im_end|>
+<|im_start|>user
+How are you?<|im_end|>
+<|im_start|>assistant
+<think>
+'
+4.23.739.922 I srv          init: init: chat template, thinking = 1
+4.23.740.782 I srv  llama_server: model loaded
+4.23.740.788 I srv  llama_server: server is listening on http://127.0.0.1:8080
+4.23.740.798 I srv  update_slots: all slots are idle
+```
+- 雖然照著指引，設定 pi 的
+```
+```
+- 進入 pi 以後，用 `/model` 選擇
+- 但試了兩個 Prompt 都顯示超過 context window
+```bash
+ Update Available
+ New version 0.84.3 is available. Run pi update
+ Changelog: https://pi.dev/changelog
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ Package Updates Available
+ Package updates are available. Run pi update --extensions
+ Packages:
+ - pi-web-access
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ Model: unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS
+
+
+ 使用 python + playwright 首先存取 https://share.google/aimode/c61jOgQXCYJmhkOV9 並將 devtool 的網路互動存成 HAR 檔案
+
+
+ Error: 400: {"code":400,"message":"request (5827 tokens) exceeds the available context size (4096 tokens), try increasing
+ it","type":"exceed_context_size_error","n_prompt_tokens":5827,"n_ctx":4096}
+
+
+ write a hello world in python
+
+
+ Error: 400: {"code":400,"message":"request (5838 tokens) exceeds the available context size (4096 tokens), try increasing
+ it","type":"exceed_context_size_error","n_prompt_tokens":5838,"n_ctx":4096}
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+~\AppData\Local\Temp\qwen38-27b-q2
+0.0%/128k (auto)                                                                       (llama-cpp) unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS
+```
+- llama.cpp 的 log 也顯示一樣的錯誤訊息
+```bash
+115.09.901.636 I srv  params_from_: Chat format: peg-native
+115.09.913.346 I slot get_availabl: id  3 | task -1 | selected slot by LRU, t_last = -1
+115.09.913.355 I srv  get_availabl: updating prompt cache
+115.09.913.606 I srv          load:  - looking for better prompt, base f_keep = -1.000, sim = 0.000
+115.09.913.611 I srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 4096 tokens, 8589934592 est)
+115.09.913.614 I srv  get_availabl: prompt cache update took 0.26 ms
+115.09.914.418 I reasoning-budget: activated, budget=2147483647 tokens
+115.09.914.444 I slot launch_slot_: id  3 | task 0 | processing task, is_child = 0
+115.09.914.455 E srv    send_error: task id = 0, error: request (5827 tokens) exceeds the available context size (4096 tokens), try increasing it
+115.09.914.459 I slot      release: id  3 | task 0 | stop processing: n_tokens = 0, truncated = 0
+115.09.914.462 W srv  update_slots: no tokens to decode
+115.09.914.465 I srv  update_slots: all slots are idle
+115.09.914.472 W srv          stop: cancel task, id_task = 0
+115.09.914.504 I srv  update_slots: all slots are idle
+115.49.382.553 I srv  params_from_: Chat format: peg-native
+115.49.393.275 I slot get_availabl: id  2 | task -1 | selected slot by LRU, t_last = -1
+115.49.393.279 I srv  get_availabl: updating prompt cache
+115.49.393.288 I srv          load:  - looking for better prompt, base f_keep = -1.000, sim = 0.000
+115.49.393.291 I srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 4096 tokens, 8589934592 est)
+115.49.393.292 I srv  get_availabl: prompt cache update took 0.01 ms
+115.49.393.778 I reasoning-budget: activated, budget=2147483647 tokens
+115.49.393.797 I slot launch_slot_: id  2 | task 3 | processing task, is_child = 0
+115.49.393.805 E srv    send_error: task id = 3, error: request (5838 tokens) exceeds the available context size (4096 tokens), try increasing it
+115.49.393.811 I slot      release: id  2 | task 3 | stop processing: n_tokens = 0, truncated = 0
+115.49.393.813 W srv  update_slots: no tokens to decode
+115.49.393.815 I srv  update_slots: all slots are idle
+115.49.393.822 W srv          stop: cancel task, id_task = 3
+115.49.393.849 I srv  update_slots: all slots are idle
+```
 
 # Qwen AgentWorld
 
