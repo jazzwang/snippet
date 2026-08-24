@@ -1,6 +1,20 @@
 #!/bin/bash
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 <Input Filename> [Language (defaul: en_US)]"
+  exit 1
+fi
+
 source ~/bin/gemini-keys
 echo "GEMINI_API_KEY=${GEMINI_API_KEY}" > .env
 INPUT=$1
-aider --no-auto-commits --no-gitignore --model gemini/gemini-2.5-flash -m "/ask could you generate report based on this transcript in markdown syntax? in 3 sections: (A) Mindmap (in markmap.js syntax) (B) Help Needed (C) Potential Risk. Thanks." --chat-history-file ${INPUT%.json}.md $INPUT
+if [ $# -gt 1 ]; then
+  CHAT_LANG="--chat-language $2"
+fi
+aider --no-auto-commits \
+      --no-gitignore \
+      --model gemini/gemini-2.5-flash \
+      -m "/ask could you generate report based on this transcript in markdown syntax? \
+	  in 3 sections: (A) Mindmap (in markmap.js syntax) (B) Help Needed (C) Potential Risk. Thanks." \
+      --chat-history-file ${INPUT%.json}.md \
+      $INPUT ${CHAT_LANG}
 touch $INPUT

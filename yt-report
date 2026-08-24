@@ -8,6 +8,57 @@ fi
 NOTEBOOK=$1
 URL=$2
 
-SRC_ID=$(nlm source add $NOTEBOOK -y $URL | grep 'Source ID' | awk '{ print $3 }')
-echo "Source ID: $SRC_ID"
-nlm report create $NOTEBOOK -y --language zh_TW -s ${SRC_ID}
+###
+# nlm source add $NOTEBOOK -y $URL 的執行結果如下：
+###
+# ✓ Added source: 192GB of VRAM in One PC… The Cheap Way
+# Source ID: 944337bd-db45-4cac-bd66-89407dc3ba7c
+###
+
+SRC_ID=$(nlm source add ${NOTEBOOK} -y ${URL} | grep 'Source ID' | awk '{ print $3 }')
+echo "Source ID: ${SRC_ID}"
+
+###
+# nlm report create $NOTEBOOK -y -f 'Blog Post' --language zh_TW -s ${SRC_ID} 的執行結果如下：
+###
+# ⠴ Creating report...
+# ✓ Report generation started
+#   Artifact ID: 22b9f78c-d9f3-4d47-9c56-77b0f411a081
+#
+# Run 'nlm studio status 20aca253-87a1-4e72-8071-b8702b212767' to check progress.
+###
+
+RPT_ID=$(nlm report create ${NOTEBOOK} -y -f 'Blog Post' --language zh_TW -s ${SRC_ID} | grep 'Artifact ID:' | awk '{ print $3 }')
+echo "Report ID: ${RPT_ID}"
+
+TITLE=$(nlm source get -j ${SRC_ID} | jq '.title')
+
+echo "YouTube Title: ${TITLE}"
+
+###
+# wait for the report to be generated
+###
+
+echo "⠴ Waiting 1 minute for report generation to complete ..."
+sleep 60
+
+nlm studio status ${NOTEBOOK} --artifact-id ${RPT_ID}
+
+echo "⠴ Please enter a filename to download report ..."
+read -r FILENAME
+
+nlm source get -j ${SRC_ID} > "${FILENAME}.json"
+
+TITLE=$(jq -r '.title' "${FILENAME}.json")
+
+nlm download report ${NOTEBOOK} --id ${RPT_ID} -o "${FILENAME}.md"
+
+sed -i "1i ---\r\n\
+title: ${TITLE}\r\n\
+source: ${URL}\r\n\
+created: $(date +"%Y-%m-%d")\r\n\
+notebooklm: ${NOTEBOOK}\r\n\
+source-id: ${SRC_ID}\r\n\
+report-id: ${RPT_ID}\r\n\
+---\r\n\
+" ${FILENAME}.md
