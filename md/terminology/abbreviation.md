@@ -265,3 +265,41 @@ Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍�
 | Abbreviation | Full Form | 中文 | Reference | Domain |
 |--------------|-----------|------|-----------|--------|
 | BTL | Below the Line | 低於水平 | https://share.google/aimode/5jLuGMwJqHwMLk5oF |  |
+
+## 2026-08-21
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| NTD | Need to Drop | 需要先離席 | https://share.google/aimode/CrrY8koB6qCRbxfOe |  |
+
+如果這句話出自印度人之口，再結合前後文 **"NTD. Thanks all."（NTD，謝謝大家）**，這個 **NTD** 絕對不是台幣，也跟台灣社群無關。在印度人的商務、工作或日常英語對話中，它最可能是以下幾種縮寫：
+
+1\. 職場/線上會議最常見：**Need to Drop**（需要先離席）
+在微軟 [Microsoft Teams](https://www.microsoft.com/en-us/worklab/what-new-terms-like-goblin-mode-reveal-about-work-in-2023)、Zoom 或 Slack 的職場通訊中，這是在印度及全球外商非常普及的企業黑話。
+
+-   **意思**：「我需要先離開會議了（因為有下一場會、或有事要忙）。」
+-   **情境**：會議快結束、或會議超時，某人要在群組留言告退，就會說：**"NTD. Thanks all."**（我先下線了，謝謝大家）。
+
+## 2026-08-26
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| PET | Privacy-Enhancing Technology | 隱私強化技術 | https://share.google/aimode/cANxtuevuedhzKwr8 |  |
+
+在這段對話中，PETs 指的是「隱私強化技術」（Privacy-Enhancing Technologies）。 [1] 
+這段文字出自 2023 年 2 月時任數位發展部部長[唐鳳](https://www.google.com/search?q=%E5%94%90%E9%B3%B3&kgmid=/m/05r2c3)與國科會前副主委[李育杰](https://www.google.com/search?q=%E6%9D%8E%E8%82%B2%E6%9D%B0&kgmid=/g/11xvxd1wrj)的業務拜會逐字稿。當時雙方正在討論如何利用大型語言模型（LLM）來建立能夠輔助政府回答民眾問題的 AI 系統（例如針對台北市 1999 市民熱線的問答紀錄進行訓練與應用）。 [1, 2] 
+
+### 💡 為什麼與「台北市 1999」有關？
+
+   1. 處理敏感個資：民眾撥打 1999 通報時，對話往往包含姓名、電話、住址等敏感個人隱私。
+   2. 導入 PETs 的目的：為了在訓練 AI 模型的過程中，能夠合法、安全地使用這些 1999 的歷史問答資料（Q&A），政府必須導入隱私強化技術（PETs）。 [1] 
+   3. 去識別化流程：透過 PETs 技術，系統能自動將對話中的個資進行去識別化（遮蔽、加密或匿名化），讓整個流程都無涉個資，同時又能保留市民「發問的問題（Q）」，用來作為測試或訓練 AI 的基準（Benchmark）。 [1] 
+
+### 🛠️ 常見的 PETs 技術包括：
+
+* 差分隱私 (Differential Privacy)：在數據中加入數學雜訊，讓人無法回推特定個人的真實資料。
+* 聯邦學習 (Federated Learning)：資料留在本地端（例如市政府內網），不用集中上傳就能訓練 AI 模型。
+* 資料去識別化與遮蔽 (Anonymization & Masking)：自動偵測並抹除對話中的個資。
+
+[1] [https://moda.gov.tw](https://moda.gov.tw/press/background-information/3975)
+[2] [https://archive.tw](https://archive.tw/speaker/%E5%94%90%E9%B3%B3-3?page=179)
