@@ -1,3 +1,4 @@
 #!/bin/sh
-start https://github.com/jazzwang
-start https://github.com/settings/billing/usage?period=5&group=2&customer=6261886&query=product:codespaces
+start https://github.com/jazzwang				## Daily Contribution
+start https://github.com/settings/billing/usage?period=5	## Github Codespace Usage
+start https://github.com/settings/copilot/features 		## Github Copilot Usage

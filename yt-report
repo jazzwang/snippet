@@ -1,12 +1,13 @@
 #!/bin/bash
-if [ $# -lt 2 ]; then
-  echo "Usage: $0 <NOTEBOOK_ID> <URL>"
+if [ $# -lt 3 ]; then
+  echo "Usage: $0 <NOTEBOOK_ID> <URL> <FILENAME>"
   nlm alias list
   exit 1
 fi
 
 NOTEBOOK=$1
 URL=$2
+FILENAME=$3
 
 ###
 # nlm source add $NOTEBOOK -y $URL 的執行結果如下：
@@ -44,8 +45,11 @@ sleep 60
 
 nlm studio status ${NOTEBOOK} --artifact-id ${RPT_ID}
 
-echo "⠴ Please enter a filename to download report ..."
-read -r FILENAME
+### -------------
+### 2026-08-27: use 3rd argument as filename to download report
+### -------------
+## echo "⠴ Please enter a filename to download report ..."
+## read -r FILENAME
 
 nlm source get -j ${SRC_ID} > "${FILENAME}.json"
 
