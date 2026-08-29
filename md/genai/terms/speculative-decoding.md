@@ -15,3 +15,9 @@
 
 - 更多論文與分類
   - https://github.com/hemingkx/SpeculativeDecodingPapers
+
+## 2026-08-28
+
+- 2026-08-23
+  - Exploring Speculative Decoding in vLLM on AMD GPUs
+  - https://vllm.ai/blog/2026-08-23-speculative-decoding-amd-gpus
