@@ -48,6 +48,90 @@ Welcome to day one and let me guess, you're overwhelmed by all of the places you
 
 Yesterday on day one, you picked your number one boundary focus. Today, we make sure you don't accidentally add three more things to your plate before lunchtime. Now, most overcommitment happens when we're caught off guard. It's the Teams ping that comes out of nowhere, the grab in the hallway when someone says, hey, you got a sec? And before your brain even computes, you've already said yes. But just as often, we are the ones creating the urgency. You see a message at 10 p.m., and you sacrifice sleep, convinced it needed to be handled ASAP. Today, we install a pattern interrupt to create space between the ask and your response, so you can make a conscious choice about what you are prioritizing. Whenever a new demand comes in, your default is now a deferral. For example, let me check a few things so I can tell you what's possible with that timeline. Or saying yes to this may affect other priorities, and I don't wanna create a bottleneck. I'll get back to you with some options by Friday. And when a demand comes from the inside your own head, the deferral sounds more like this. This feels urgent, but I need to check whether it actually is, or I can revisit this tomorrow when I'm better rested. The verbal is all the more powerful when it is paired with physical grounding. Tension, it often shows up in our face first. So unclench your jaw, drop your tongue down from the roof of your mouth. You can also put your hands or just one hand on your stomach or ribs as you breathe in and out. And this shifts the focus from the emotional urgency you may feel to safety in your body. Or if you have the opportunity, take a lap around your office or your house, grab water or a coffee. If you disconnect, you may return with a different perspective. What's great about each of these is they take almost no time and no one else knows you're doing them. So your task today, use the reference guide that you find after this video to pick one somatic reset to try before you deliver the deferral. I'll see you back tomorrow.
 
+## Day 2 Reference Guide
+
+Today's goal is to create a pause between the request and your response. Use this guide to choose for both mental and physical mini-resets
+
+### Mental Pattern Interrupts
+
+When a request comes your way, your brain may say:
+
+-   "They'll be annoyed if I don't answer right away."
+-   "I don't want to seem difficult."
+-   "It's easier to say yes than explain."
+-   "I can just knock this out tonight."
+-   "I won't be able to relax until it's done."
+-   "If I wait, I'll fall behind."
+-   "I should be able to keep up."
+
+Do not argue with those thoughts, but counter them with self-talk like: 
+
+-   "Their urgency is not automatically my emergency."
+-   "Someone else's lack of planning does not have to become my immediate problem."
+-   "Checking my capacity is responsible, not selfish."
+-   "I can be helpful without always being available."
+-   "If I say yes too quickly, I may create a bigger problem later."
+-   "My brain wants closure, but that doesn't mean this needs to happen now."
+-   "I can care about this without fixing it right now."
+-   "A rested response will be better than a rushed one."
+-   "I do not have to turn every thought or urge into an assignment."
+-   "If this still matters tomorrow, I can handle it then."
+
+### Physical Grounding Exercises
+
+When your nervous system is activated, it becomes much harder to think clearly. These resets help you move out of a stress state. 
+
+#### 1\. Longer exhale
+
+Take one slow inhale. Then exhale slightly longer than you inhaled.
+
+-   Inhale for 3 counts.
+-   Exhale for 6 counts.
+-   Repeat 1-3 times. 
+
+Longer exhales [activate](https://pmc.ncbi.nlm.nih.gov/articles/PMC6037091/?utm_source=chatgpt.com) your rest and digest response. 
+
+#### 2\. Jaw release
+
+Stress and tension often shows up in the face first.
+
+-   Imagine your face melting to unlock your jaw. 
+-   Move your jaw around in a circular motion.
+-   Drop your tongue from the roof of your mouth.
+
+#### 3\. Anchor into the present
+
+This pulls you out of worrying about future worries and back to feeling safe now. 
+
+-   Press both feet firmly into the floor. Wiggle or press each of your toes.
+-   Press your back into your chair. Feel the support behind you.
+-   Relax your thighs into your chair. Feel the support under you. 
+
+#### 4\. Hand on ribs or stomach
+
+This gives your mind something concrete to focus on and shifts attention away from emotional urgency to your body. 
+
+-   Place one hand on your stomach or ribs.
+-   Take one slow breath and feel your body expand into your hand.
+
+#### 5\. Object transfer
+
+Under your desk, transfer the excess energy into a small object. 
+
+-   Click a pen cap
+-   Spin a ring on your finger
+-   Squeeze a stress ball
+-   Rub your thumb over the edge of a notebook.
+
+The small repetitive motion gives your nervous system an outlet. 
+
+#### 6\. Ice water or cold exposure
+
+Stress can raise your internal temperature and make you feel flushed, tense, or keyed up. The cold gives your body a quick cooling. 
+
+-   Come prepared before a high-stakes meeting or conversation with a glass or bottle of ice water nearby.
+-   Take a long sip when you need a moment to pause
+
 ## Day 3: Renegotiate a commitment
 
 
