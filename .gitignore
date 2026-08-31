@@ -242,3 +242,6 @@ gradle-app.setting
 
 # backup file
 *.bak
+
+# pi coding agent
+*.html
