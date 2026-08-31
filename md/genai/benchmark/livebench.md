@@ -16,17 +16,19 @@ Google Search - AI Mode
 <tr style="background-color:lightyellow;"><td>Q:</td><td>
 我可以自己用 https://github.com/livebench/livebench 跑新模型的 benchmark 並回饋給 livebench?
 </td></tr><tr><td>A:</td><td>
+
 是的，你可以自己下載並運行 LiveBench 來測試新模型。 [1, 2] 
 
 [LiveBench 的 GitHub 儲存庫](https://github.com/livebench/livebench)是一個開源項目，設計的目的之一就是讓研究人員與開發者可以自行驗證分數，或接入自定義的模型 API 進行跑分。 [1, 2] 
+
 關於運行測試與回饋數據的具體運作方式如下：
 
 ### 🛠️ 如何自己跑新模型 Benchmark
 
-   1. 建立環境：建議使用虛擬環境（如 conda 或 venv），並複製安裝專案依賴。
-   2. 設定 API / 模型路徑：你可以透過專案支援的框架（如 vLLM）載入本地開源模型，或填入你新模型的 API 密鑰與 Endpoint。
-   3. 執行腳本：運行 python run_livebench.py 來對模型進行自動化評測。
-   4. 檢視結果：評測完成後，使用 show_livebench_result.py 來計算並呈現該模型在數學、寫程式、推理等各大維度的客觀得分。 [1, 3] 
+1. 建立環境：建議使用虛擬環境（如 conda 或 venv），並複製安裝專案依賴。
+2. 設定 API / 模型路徑：你可以透過專案支援的框架（如 vLLM）載入本地開源模型，或填入你新模型的 API 密鑰與 Endpoint。
+3. 執行腳本：運行 python run_livebench.py 來對模型進行自動化評測。
+4. 檢視結果：評測完成後，使用 show_livebench_result.py 來計算並呈現該模型在數學、寫程式、推理等各大維度的客觀得分。 [1, 3] 
 
 ### 📊 如何將結果回饋給 LiveBench 官方？
 
@@ -37,6 +39,7 @@ LiveBench 官方排行榜（livebench.ai）的更新與維護主要由發起團�
 * 貢獻新問題（回饋社群）：除了回饋模型分數，你也可以向 LiveBench 貢獻尚未被污染的新測試題目，幫助這個 Benchmark 保持最新狀態。 [1, 2] 
 
 若你想開始動手測試，建議先閱讀 LiveBench GitHub Readme 內的 Installation 與 Running Evaluation 詳細指引。 [1] 
+
 如果你在操作過程中遇到問題，可以告訴我：
 
 * 你打算測試的是本地開源模型（如 Llama、Mistral 變體）還是雲端 API 模型？
@@ -71,7 +74,9 @@ Based on the definition and structure used by the [LiveBench benchmark](https://
 ### Why This Matters for Performance
 
 As highlighted in user discussions of LiveBench data on platforms like the [AI Agents community on Reddit](https://www.reddit.com/r/AI_Agents/comments/1urc1rf/the_may_2025_sonnet_still_beats_sonnet_5_on/), a model can rank exceptionally high in standard Coding but crash severely in Agentic Coding. [4] 
+
 For instance, an advanced reasoning model might score heavily on standard coding syntax but fail agentic benchmarks if it gets caught in loop formatting errors or lacks the specific autonomy required to coordinate tool usage across complex workflows. [4, 7] 
+
 If you are interested in exploring how specific AI models compare on these tasks, I can fetch the latest model leaderboard data or break down how LiveBench builds its Python and JavaScript environments. What would you like to explore next?
 
 [1] https://livebench.ai
@@ -104,7 +109,9 @@ If you are interested in exploring how specific AI models compare on these tasks
 ### 為什麼這個區分很重要？
 
 在 LiveBench 的實際數據中，這兩項指標展現出截然不同的結果。有些推理模型在標準的 Coding（語法、演算法邏輯）分數極高，但在 Agentic Coding 上卻表現不佳。
+
 這是因為「寫出一段正確的代碼」與「在真實電腦環境中，像工程師一樣切換檔案、看報錯日誌、逐步修復 Bug」是完全不同的能力。後者極度考驗 AI 是否具備長文本的邏輯規劃，以及在工具調用（Tool Calling）時不發生格式錯誤的自主能力。
+
 如果你有興趣，我可以為你查詢 LiveBench 當前最新的模型排行榜數據，或是進一步解說它如何構建 Python 和 JavaScript 的測試環境。接下來你想了解哪一部分呢？
 
 </td></tr>
