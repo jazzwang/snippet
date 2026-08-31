@@ -403,3 +403,137 @@ llama server listening at http://127.0.0.1:8080
 
 @jazzwang ➜ /workspaces/snippet (master) $
 ```
+
+## 2026-08-31
+
+<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
+Google Search - AI Mode</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
+有技術可以把 GGUF 變成單檔可執行檔? 類似 llamafile
+</td></tr><tr><td>A:</td><td>
+
+得知您會在 Windows 與 Linux 之間切換使用，這正是 llamafile 這項技術發揮最大價值的場景！因為它使用了 APE（Actually Portable Executable）技術，您打包出來的同一個單檔，在兩個系統上都能直接執行。
+以下為您整理在跨系統切換時，最完美的打包步驟、執行方式與注意事項：
+
+### 跨平台單檔打包實戰（Windows / Linux 通用）
+
+建議您直接在 Linux 環境（或 Windows 的 Git Bash / WSL）下進行封裝，步驟最為順暢：
+
+#### 1. 下載官方核心骨幹
+
+您需要先下載官方已經編譯好的跨平台執行檔（它本身就是一個 APE 檔）。
+
+* 前往 [Mozilla AI llamafile GitHub](https://github.com/mozilla-ai/llamafile/releases) 下載最新的 llamafile-<版本號>（這是一個沒有包含模型的純執行檔）。
+* 將它重命名為較短的名字，例如：llamafile-main。
+
+#### 2. 使用 zipalign 進行雙系統完美打包
+為了讓模型在 Windows（透過內建機制對齊）和 Linux（透過 mmap）上都能達到最高的記憶體讀取效率，官方強烈建議使用 zipalign 工具來合併檔案：
+
+- 1. 賦予下載的執行檔執行權限
+
+```bash
+chmod +x llamafile-main
+```
+
+- 2. 建立一個空的 zip 檔案，並把 .gguf 模型以 4KB 對齊的方式塞進去# 假設您的模型是 model.gguf，目標產出是 my-assistant.llamafile
+
+```bash
+cp llamafile-main my-assistant.llamafile
+zipalign -j0 4096 my-assistant.llamafile /path/to/model.gguf
+```
+
+(註：zipalign 工具可以在官方 Release 的 llamafile-<版本號>.zip 解壓後的 bin/ 目錄中找到)
+
+### 雙系統切換時的執行方式
+
+打包好 my-assistant.llamafile 後，您可以把它放進隨身碟或雙系統共享的硬碟分區（如 exFAT/NTFS），在兩個系統下直接啟動：
+
+#### 🐧 在 Linux 下執行
+
+打開終端機，直接賦予權限並執行：
+
+```
+chmod +x my-assistant.llamafile
+./my-assistant.llamafile
+```
+
+#### 🪟 在 Windows 下執行
+
+在 Windows 下，作業系統需要透過副檔名來識別可執行檔：
+
+   1. 將檔案加上 .exe 後綴，重命名為 my-assistant.llamafile.exe。
+   2. 直接雙擊它，或者在 PowerShell 中執行 ./my-assistant.llamafile.exe。
+   (注意：加上 .exe 後，這個檔案拿回 Linux 一樣可以用 ./my-assistant.llamafile.exe 繼續執行，跨平台特性不會消失！)
+
+### 💡 跨系統切換的關鍵痛點與解決方案
+
+在 Windows 和 Linux 之間切換時，您一定會遇到以下兩個核心技術限制，請務必留意：
+
+   1. Windows 的 4GB 檔案執行限制 (WINE/APE 限制)
+   * 問題：Windows 的執行緒載入機制有先天限制。如果您的單檔（執行檔+GGUF）總容量超過 4GB，在 Windows 上雙擊會跳出「不是有效的 Win32 應用程式」錯誤。
+      * 解法：如果您的模型大於 4GB（例如 7B-Q4 約 4.5GB），就不能打包成單檔。此時必須維持「執行檔與模型分離」，在執行時帶入參數：
+      ```
+      # 這樣做在雙系統依然通用，且不受 4GB 限制
+      ./llamafile-main -m model.gguf
+      ```
+      2. Windows 執行大檔案會非常慢（首次啟動）
+   * 問題：在 Linux 上，系統會直接透過 mmap 讀取檔案尾端的模型；但在 Windows 上，系統在啟動 .exe 時會試圖把整個數 GB 的檔案先複製到暫存區（%temp%），導致啟動要卡好幾分鐘。
+      * 解法：如果您想在 Windows 獲得秒開的體驗，維持檔案分離（執行檔 + 外掛 .gguf）是更務實的跨切換選擇。
+
+您目前預計使用的 GGUF 模型大約是幾 GB（或是哪一個模型）呢？
+如果超過 4GB，我可以為您提供雙系統都能「秒開」且共用同一個模型路徑的腳本配置。
+
+</td></tr>
+<tr style="background-color:lightyellow;"><td>Q:</td><td>
+pi coding agent 可以搭配 llamafile 的模型嗎?
+</td></tr><tr><td>A:</td><td>
+
+可以，Pi Coding Agent 完全可以搭配 llamafile 運作！ [1]
+
+Pi Coding Agent 本身具備高度相容的多供應商設計 (Multi-provider)，只要本地模型伺服器提供相容於 OpenAI 規範的 API 介面，Pi 就能成功讀取並驅動模型。 [1, 2]
+
+由於 llamafile 底層是基於 llama.cpp 開發，當你啟動 llamafile 時，它預設會在本地端（例如 http://localhost:8080）架設一個相容於 OpenAI API 的網頁伺服器。你只需要修改 Pi 的設定檔，即可完成串接。 [1]
+
+### 🛠️ 快速設定三步驟
+
+   1. 啟動你的 llamafile
+   請確保你的 llamafile 模型已經在本地運行（預設埠號通常為 8080），並可以透過瀏覽器存取 http://localhost:8080。
+   2. 編輯 Pi 的設定檔
+   開啟 Pi 的全域設定檔，路徑通常位於 ~/.pi/agent/models.json。在 providers 欄位中加入 llamafile 的設定：
+
+   ```json
+   {
+     "providers": {
+       "llamafile": {
+         "baseUrl": "http://localhost:8080/v1",
+         "api": "openai-completions",
+         "apiKey": "none",
+         "models": [
+           {
+             "id": "你的模型名稱（例如：qwen2.5-7b-instruct）"
+           }
+         ]
+       }
+     }
+   }
+   ```
+   (註：若埠號不同，請依實際狀況修改 baseUrl) [1]
+   3. 啟動 Pi Agent
+   在你的專案目錄下直接執行 pi 指令。進入互動介面後，使用 /model 指令切換至你剛剛設定的本地 llamafile 模型即可開始離線寫 code！ [1, 2, 3]
+
+### 💡 實用小建議
+
+* 模型選擇：Coding Agent 需要非常強的指令遵循（Instruction Following）與結構化輸出能力。建議搭配本地模型時，優先選用對代碼優化過的模型（例如 Qwen-2.5-Coder 或 DeepSeek-Coder 系列），執行效果會比通用型模型更好。
+* 安全隔離：Pi 具備讀寫本機檔案與執行終端指令的權限。即便使用完全離線的 llamafile，為了避免模型誤刪重要系統檔案，強烈建議在 Docker 容器內或獨立的虛擬環境中執行 Pi 的開發任務。 [2]
+
+若在修改 models.json 時遇到格式錯誤，或者想了解如何為本地模型調整設定，請隨時告訴我！
+
+[1] [https://huggingface.tw](https://huggingface.tw/docs/hub/agents-local)
+[2] [https://altsol.tw](https://altsol.tw/pi-agent-install-guide)
+[3] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/2072440015578215998)
+
+</td></tr>
+</table>
+
+- Using llamafile with external weights
+- https://docs.mozilla.ai/llamafile/getting-started/quickstart#using-llamafile-with-external-weights
