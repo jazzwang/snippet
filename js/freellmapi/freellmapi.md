@@ -4,15 +4,15 @@
 > **License:** MIT
 > **撰寫日期：** 2025-07
 
----
+## 2026-08-31
+
+- Learn from https://www.linkedin.com/feed/update/urn:li:activity:7499087991601131520/
 
 ## 一、專案概述
 
 FreeLLMAPI 是一個開源的 LLM 代理路由器（proxy router），將 **34 家免費 LLM 提供商** 的免費額度彙整為單一的 OpenAI 相容 API 端點。透過智慧路由與自動故障轉移，使用者每月可獲得約 **74 億 tokens** 的免費推論能力，涵蓋 **474 個模型系列 / 635 個免費端點**。
 
 核心理念：每家 AI 實驗室的免費額度單獨使用只是玩具，但疊加在一起便構成可用的推論容量。FreeLLMAPI 將「手動管理 34 個 SDK、34 組速率限制」的痛苦，收斂為一個統一端點。
-
----
 
 ## 二、系統架構
 
@@ -48,8 +48,6 @@ FreeLLMAPI 是一個開源的 LLM 代理路由器（proxy router），將 **34 �
 | **Storage** | SQLite (`better-sqlite3`) | AES-256-GCM 信封加密儲存 API keys |
 | **CLI** | `cli/` | 命令列工具，用於設定與管理 |
 
----
-
 ## 三、路由機制
 
 ### 3.1 自動故障轉移（Automatic Fallover）
@@ -79,8 +77,6 @@ FreeLLMAPI 是一個開源的 LLM 代理路由器（proxy router），將 **34 �
 ### 3.4 統一模型（Unified Models）
 
 同一邏輯模型由多家 provider 提供時（如 GLM-4.7 同時在 Cloudflare 與 Z.ai 上），會合併為單一條目，在 `/v1/models` 中只出現一次，並在同群組內嚴格 failover。
-
----
 
 ## 四、API 相容性
 
@@ -118,8 +114,6 @@ FreeLLMAPI 是一個開源的 LLM 代理路由器（proxy router），將 **34 �
 - **Prompt Compression** — 可選的提示壓縮功能，降低 token 消耗
 - **Response Cache** — 可選的精確匹配 LRU 快取，命中時零 provider 配額消耗
 
----
-
 ## 五、支援的 Provider（34 家）
 
 主要包含：
@@ -133,8 +127,6 @@ FreeLLMAPI 是一個開源的 LLM 代理路由器（proxy router），將 **34 �
 | **社群平台** | AI Horde、OVH AI Endpoints、Ollama Cloud |
 | **自訂** | 任何 OpenAI 相容端點（llama.cpp、LM Studio、vLLM、Ollama 本地等） |
 
----
-
 ## 六、相容的 CLI 與程式碼代理
 
 FreeLLMAPI 已驗證可與以下工具搭配使用：
@@ -143,8 +135,6 @@ FreeLLMAPI 已驗證可與以下工具搭配使用：
 - **Aider** / **Cline** / **Roo Code** / **Continue**
 - **OpenCode** / **Goose** 及其他 OpenAI 相容客戶端
 
----
-
 ## 七、安全與儲存
 
 - **AES-256-GCM 信封加密**：API key 加密後存入 SQLite，僅在請求時於記憶體中解密
@@ -152,8 +142,6 @@ FreeLLMAPI 已驗證可與以下工具搭配使用：
 - **Dashboard 登入**：email + password 帳號（scrypt 雜湊），session-token 認證
 - **可撤銷 URL Token**：為無 header 客戶端提供 `/v1/t/{token}/…` 路徑，以 hash 儲存、可即時撤銷
 - **加密資料庫備份**：可選的定期加密 SQLite 快照
-
----
 
 ## 八、技術棧
 
@@ -167,16 +155,12 @@ FreeLLMAPI 已驗證可與以下工具搭配使用：
 | **CI/CD** | GitHub Actions |
 | **國際化** | 支援 50+ 語言 |
 
----
-
 ## 九、部署方式
 
 1. **Docker Compose**（推薦用於自架伺服器）
 2. **桌面應用**（macOS / Windows 安裝檔）
 3. **Android 應用**（Google Play）
 4. **CLI 安裝**（npm / 安裝腳本）
-
----
 
 ## 十、限制與注意事項
 
@@ -190,14 +174,10 @@ FreeLLMAPI 已驗證可與以下工具搭配使用：
 | **單用戶設計** | 無多租戶認證，不應直接暴露於網際網路 |
 | **不支援** | `/v1/moderations`、`n > 1` 多重完成 |
 
----
-
 ## 十一、Premium 方案
 
 - **免費版**：每月快照更新模型目錄（延遲 30 天）
 - **Premium**（$19/年）：即時同步模型目錄簽名更新，新免費模型、配額變更當天生效
-
----
 
 ## 十二、總結
 

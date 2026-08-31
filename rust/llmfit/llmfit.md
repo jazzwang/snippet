@@ -1,5 +1,10 @@
 # llmfit 技術摘要
 
+- Git Repo
+  - https://github.com/AlexsJones/llmfit
+
+## 2026-08-31
+
 > **Hundreds of models & providers. One command to find what runs on your hardware.**
 
 本文根據 [AlexsJones/llmfit](https://github.com/AlexsJones/llmfit) 儲存庫的 README、核心技術文件與 provider/platform 文件整理。模型目錄、硬體 profile 與 benchmark 資料會隨版本更新。
@@ -294,3 +299,34 @@ llmfit 將模型規格、動態量化、硬體資源、推論 runtime、速度�
 - [Runtime Provider Integration](https://github.com/AlexsJones/llmfit/blob/main/docs/providers.md)
 - [Platform Support](https://github.com/AlexsJones/llmfit/blob/main/docs/platform-support.md)
 - [Development](https://github.com/AlexsJones/llmfit/blob/main/docs/development.md)
+
+## 2026-08-31 實測
+
+- 先前有測試過 `llmfit` 指令，這個工具應該是從 LinkedIn 看到的。
+- 測試環境：
+```bash
+OS: Windows (Unknown) x86_64
+Uptime: 3 days, 14 hours, 57 mins
+Packages: 23 (scoop)
+Shell: bash 5.3.15
+DE: Aero
+Terminal: Windows Terminal
+CPU: AMD Ryzen 7 7735HS with Radeon Graphics (16) @ 3.200GHz
+Memory: 21376MiB / 31994MiB
+```
+- 安裝方式：
+```bash
+~/git/snippet/rust/llmfit$ scoop search llmfit
+Results from local buckets...
+
+Name   Version Source Binaries
+----   ------- ------ --------
+llmfit 1.1.12  main
+
+
+~/git/snippet/rust/llmfit$ winget search llmfit
+No package found matching input criteria.
+```
+```bash
+~/git/snippet/rust/llmfit$ scoop install llmfit
+```
