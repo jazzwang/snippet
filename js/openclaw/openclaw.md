@@ -79,3 +79,57 @@ OpenClaw 的出現，揭示了 AI 從「指令驅動」轉向「目標驅動」�
 - 2026-03-09
   - OpenClaw Architecture - Part 4: Security Boundaries, Tool Risk, and Authorization
   - https://theagentstack.substack.com/p/openclaw-architecture-part-4-security
+
+## 2026-08-03
+
+- 2026-08-01: OpenClaw 2.0 — "Accidentally" the Biggest Release Ever
+  - https://openclaw.ai/blog/openclaw-2-accidentally
+  - Release Notes: https://docs.openclaw.ai/releases/2026.8.1
+
+## 2026-08-31
+
+- Learn from Zhu Lin
+- 2026-08-30:
+  - OpenClaw 2.0, Accidentally
+  - https://openclaw.ai/blog/openclaw-2-accidentally
+
+### 技術摘要：OpenClaw 2.0 — 一場「意外」誕生的里程碑級大版本
+
+#### 規模與社群
+
+- 由 **933 位貢獻者**（含 569 位首次貢獻者）共同打造，包含超過 **16,000 個 Pull Requests**，約占 OpenClaw 歷史總 PR 數的 **50%**。
+- 此前 230 天內已連續發佈 106 個版本，此次為近 **7 週未發版**後的首次更新——原因是團隊規模擴張，開發量與節奏超出原有基礎架構與發佈流程的承載力，因此同時重構了兩者。
+
+#### 安裝與初始體驗大幅簡化
+
+- **零配置起步**：首次安裝時自動偵測使用者電腦上已有的 ChatGPT / Claude 訂閱、API Key 及本地模型，大幅縮減初始設定步驟，讓使用者更快進入第一次對話。
+- **對話式設定**：剩餘設定項目從安裝流程中移出，改為透過與 Claw 對話的方式逐步完成。
+
+#### 瀏覽器 App 重構為一級體驗
+
+- 瀏覽器端 [Control UI](https://docs.openclaw.ai/web/control-ui) 全面重建，成為大多數使用者首次接觸 OpenClaw 的主要入口。
+- 開啟即進入對話介面，可持續設定、回到進行中的工作，或即時觀看 Claw 的執行過程。
+
+#### 從單人到多人協作：Shared Cloud Sessions
+
+- 新增 [Shared Cloud Sessions](https://docs.openclaw.ai/gateway/cloud-sessions)，支援多人即時協作（Multiplayer）。
+- 團隊成員可即時加入正在進行的工作、接手任務，且完整保留 Claw 已累積的上下文（Context），無需從頭交接。
+- OpenClaw 團隊自身已在日常開發中使用此功能來建構 OpenClaw。
+
+#### 設計哲學：從簡單工作流漸進式成長
+
+- 一個 Claw 可以從最簡單的自動化開始（例如：監控學校信箱 → 重要通知轉發至 Telegram），再逐步擴展至跨應用、跨情境的複雜任務鏈。
+- 強調使用者**擁有權（Ownership）**：開源、不綁定單一公司或模型供應商，軟體由使用者與社群共同定義與塑造。
+
+#### 影響範圍
+
+此次更新觸及 OpenClaw 的幾乎所有子系統：
+- 安裝流程（Installation）
+- 訊息系統（Messaging）
+- 記憶機制（Memory）
+- 技能系統（Skills）
+- 模型整合（Models）
+- 自動化任務（Automations）
+- 瀏覽器與原生 App（Browser & Native Apps）
+- 外掛系統（Plugins）
+- 安全機制（Security）
