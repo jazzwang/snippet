@@ -1,3 +1,10 @@
+# Bonsai 27B
+
+- HuggingFace
+  - https://huggingface.co/prism-ml/Bonsai-27B-gguf
+
+## 2026-08-27
+
 ---
 title: Can a 3.5GB model replace my 35B daily driver? (Bonsai 27B)
 source: https://www.youtube.com/watch?v=rBLWDJrXCp0
