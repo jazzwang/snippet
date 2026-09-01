@@ -1,5 +1,19 @@
 # Munder Difflin 技術摘要
 
+- Git repo
+  - https://github.com/chaitanyagiri/munder-difflin
+- Website
+  - https://munderdiffl.in/
+
+> [!INFO]
+> Agent harness to run an office of your clones
+
+## 2026-08-27
+
+- 已經忘了是否在 LinkedIn 上看到這個專案，挺有趣的～設計成有點像遊戲一樣的界面。
+
+## 2026-09-01
+
 > 本摘要依據 [chaitanyagiri/munder-difflin](https://github.com/chaitanyagiri/munder-difflin) repository 的 README、`HIVE.md`、`SPEC.md`、`DESIGN.md` 與 `TELEMETRY.md` 整理；版本背景以 repository README 所標示的 v0.4.6 為準。
 
 ## 1. 專案定位
