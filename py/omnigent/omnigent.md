@@ -1,4 +1,21 @@
-# Omnigent 技術摘要
+# Omnigent
+
+- Git Repo
+  - https://github.com/omnigent-ai/omnigent
+- Website
+  - https://omnigent.ai/
+
+## 2026-09-01
+
+- 今天再次在 [AI Coding 預算暴衝怎麼辦？Databricks 揭 4 招省錢心法，先找效率前沿模型就對了](https://fc.bnext.com.tw/articles/view/4884) 看到 Meta-Harness 跟 Omnigent 的描述。從 [Databricks 的文章 "Managing AI Coding Costs at Scale" (August 7, 2026)](https://www.databricks.com/blog/managing-ai-coding-costs-scale) 也連結了 Smart Routing 的重要性。
+
+![](https://www.databricks.com/sites/default/files/inline-images/2026-08-Blog-Managing-AI-coding-costs-at-scale-Inline-01-960x385-2x-1.png)
+
+<center>Smart Routing 可以省約 30%</center>
+
+![](https://www.databricks.com/sites/default/files/inline-images/2026-08-Blog-Managing-AI-coding-costs-at-scale-Inline-02-960x548-2x-1.png)
+
+<center>meta-harness</center>
 
 > 本摘要依據 [omnigent-ai/omnigent](https://github.com/omnigent-ai/omnigent) 儲存庫的 README、`pyproject.toml`、`docs/AGENT_YAML_SPEC.md`、`docs/POLICIES.md`、`omnigent/server/API.md` 與 `deploy/README.md` 整理。儲存庫目前標示為 Alpha；版本資訊以本次檢視到的 `0.12.0.dev0` 為準，實際使用時應以目標 commit 或 release 為準。
 
