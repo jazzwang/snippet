@@ -1,5 +1,8 @@
 # Motif-3
 
+- HuggingFace
+  - https://huggingface.co/Motif-Technologies/Motif-3
+
 ## 2026-08-27
 
 <table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
