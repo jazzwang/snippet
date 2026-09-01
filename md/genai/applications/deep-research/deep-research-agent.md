@@ -152,5 +152,4 @@ Markdown 報告與可觀測執行紀錄
 
 ## 參考
 
-- 原始摘錄：`Clippings/Deep-Research-Agent.md`
 - Liner API：<https://lnkd.in/g6JTXs8Y>
