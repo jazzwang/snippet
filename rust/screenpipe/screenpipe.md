@@ -12,7 +12,7 @@
 - 研究 Plaude.AI 替代方案時發現的。
   - see [plaude-ai.md](../../md/genai/applications/dictation/plaude-ai.md)
 - 這個專案的描述看起來也挺有『侵略性』的: 
-> [!INFO]
+> [!NOTE]
 > Record your screen 24/7 and plug into your agents.
 > 24/7 全天候把畫面錄起來給 AI Agent 用
 

@@ -5,7 +5,7 @@
 - Website
   - https://munderdiffl.in/
 
-> [!INFO]
+> [!NOTE]
 > Agent harness to run an office of your clones
 
 ## 2026-08-27

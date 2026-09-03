@@ -5,7 +5,7 @@
 - Website
   - https://livebench.ai/#/
 
-> [!INFO]
+> [!NOTE]
 > LiveBench: A Challenging, Contamination-Free LLM Benchmark
 
 ## 2026-08-31

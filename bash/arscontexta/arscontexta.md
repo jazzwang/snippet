@@ -5,5 +5,5 @@
 - Website
   - https://www.arscontexta.org/
 
-> [!INFO]
+> [!NOTE]
 > Claude Code plugin that generates individualized knowledge systems from conversation. You describe how you think and work, have a conversation and get a complete second brain as markdown files you own.

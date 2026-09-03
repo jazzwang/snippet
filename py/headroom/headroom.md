@@ -13,5 +13,5 @@
 - Read from DevPost Newsletter (2026-06-26)
   - Subject: `They were swapping PNGs over Slack at 3am. So they built this.`
 
-> [!INFO]
+> [!NOTE]
 > **headroom (by Headroomlabs-ai):** An open-source MCP proxy layer that compresses tool outputs, system logs, and large data files by 60~95% before they hit the LLM context window.

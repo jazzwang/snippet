@@ -5,7 +5,7 @@
 - Website
   - https://firecrawl.github.io/anydoc/
 
-> [!INFO]
+> [!NOTE]
 > Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown. Built in Rust, with Node.js and Python bindings.
 
 ## 2026-08-17
