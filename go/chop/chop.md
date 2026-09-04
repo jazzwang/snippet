@@ -131,3 +131,7 @@ chop init --global
 [4] [https://deepakness.com](https://deepakness.com/blog/pi-agent-setup/)
 [5] [https://github.com](https://github.com/realchendahuang/pi-config)
 [6] [https://www.facebook.com](https://www.facebook.com/jackshenadvisor/photos/-ai-%E4%B8%8D%E5%8F%AA%E6%9C%83%E8%81%8A%E5%A4%A9%E9%82%84%E8%83%BD%E5%8B%95%E6%89%8B%E5%81%9A%E4%BA%8Bpi-coding-agent-%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E7%9C%8B%E6%87%82%E4%BD%A0%E6%9C%89%E6%B2%92%E6%9C%89%E6%83%B3%E9%81%8E%E5%A6%82%E6%9E%9C-ai-%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%9B%9E%E7%AD%94%E6%80%8E%E9%BA%BC%E5%81%9A%E8%80%8C%E6%98%AF%E7%9C%9F%E7%9A%84%E5%8F%AF%E4%BB%A5%E5%B9%AB%E4%BD%A0%E5%9F%B7%E8%A1%8C%E5%B7%A5%E4%BD%9C%E6%9C%83%E7%99%BC%E7%94%9F%E4%BB%80%E9%BA%BC%E4%BA%8B%E4%BE%8B%E5%A6%82%E4%BD%A0%E8%AA%AA-/28643476051911448/)
+
+### Pi Coding Agent 的 Hook Support
+
+- 查了一下，應該可以用 https://pi.dev/packages/@fyeeme/pi-hooks?name=pre-tool
