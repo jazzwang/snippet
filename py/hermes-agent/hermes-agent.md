@@ -485,3 +485,9 @@ python -m pip install -e '.[termux-all]'
         -   依照 `uv.lock` 進行 locked/hash-verified dependency installation
         -   安裝額外的 voice/wake dependencies
         -   以 `uv tool install` 安裝獨立的 `browser-use` CLI
+
+## 2026-09-04
+
+- 如果要開始做實驗，這篇 HackMD 寫得蠻仔細的
+  - Hermes Agent Docker 安裝指南
+  - https://hackmd.io/@tech-book-community/HkHhBCMJMx
