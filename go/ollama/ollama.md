@@ -788,8 +788,6 @@ qwen3.5:9b    6488c96fa5fa    6.6 GB    5 minutes ago
 - Ollama 官方 Gemma 4 E4B 需要 9.6 GB. HuggingFace 上 Unsloth 則只需要 5.48 GB
 - 在 Github Codespace 裡面拉下來看一下 modelfile
 ```bash
-@jazzwang ➜ ~ $ ollama pull hf.co/unsloth/gemma-4-E4B-it-GGUF:Q5_K_M
-Error: could not connect to ollama server, run 'ollama serve' to start it
 @jazzwang ➜ ~ $ ollama serve &
 @jazzwang ➜ ~ $ ollama pull hf.co/unsloth/gemma-4-E4B-it-GGUF:Q5_K_M
 @jazzwang ➜ ~ $ ollama list
@@ -849,4 +847,10 @@ cautious-trout-pj7xj6vg9h94wp
 -FROM /home/codespace/.ollama/models/blobs/sha256-83ee4f4f205fa514161778c41df1ea14144faa0f713510893b63c2395f5c2d53
  TEMPLATE "{{ if .System }}<|im_start|>system
  Reasoning effort is set to xhigh. Please think carefully through the task, validate key assumptions, consider plausible alternatives, and prioritize correctness, consistency, and clarity in the final answer.
+```
+- 本來想使用 HuggingFace 上的 GGUF 並匯入本機的 ollama，不過本機只有 8GB VRAM，所以必須靠其他方法把一些層放在系統記憶體。
+```bash
+~/.ollama$ wget -c https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/resolve/main/Qwen3.8-27B-UD-IQ4_XS.gguf
+~/.ollama$ cp ~/git/snippet/go/ollama/qwen38-27b-ud-iq4_xs .
+~/.ollama$ ollama create Qwen38-27B:IQ4_XS -f qwen38-27b-ud-iq4_xs
 ```
