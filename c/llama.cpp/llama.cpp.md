@@ -208,11 +208,9 @@ error: invalid argument: --ctx-scale-value-quant
 
 ## 2026-06-12
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-steps to install llama.cpp on linux without GPU
-</td></tr><tr><td>A:</td><td>'
+- Tool: Google Search - AI Mode
+> [!QUESTION]
+> steps to install llama.cpp on linux without GPU
 
 To install and run llama.cpp on Linux for CPU-only inference (without a GPU), you need to compile the code from source using CMake. By default, compiling llama.cpp without specifying any GPU flags automatically optimizes the build for your local CPU. [1, 2, 3, 4]
 
@@ -297,18 +295,15 @@ If you plan on writing Python applications around this build, let me know if you
 [14] [https://github.com](https://github.com/abetlen/llama-cpp-python/issues/1963)
 [15] [https://github.com](https://github.com/abetlen/llama-cpp-python/issues/877)
 
-</td></tr>
-</table>
-
 ## 2026-06-13
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-支援 CPU 的 LLM model servicing 工具,除了 llama.cpp 以外,還有其他工具嗎?
-</td></tr><tr><td>A:</td><td>
+- Tool: Google Search - AI Mode
+
+> [!QUESTION]
+> 支援 CPU 的 LLM model servicing 工具,除了 llama.cpp 以外,還有其他工具嗎?
 
 ### Llama.cpp Alternatives
+
 除了 llama.cpp 以外，目前市面上還有許多專門針對 CPU 優化、或對 CPU 支援度極佳的大語言模型（LLM）推論與伺服端工具。
 以下為您盤點 5 個主流的替代方案：
 
@@ -360,10 +355,9 @@ Google Search - AI Mode
 [8] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/m/articles/10386239)
 [9] [https://www.bilibili.com](https://www.bilibili.com/video/BV1ihXrYEEyn/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-AMD. GGUF. 個人測試
-</td></tr><tr><td>A:</td><td>
+
+> [!QUESTION]
+> AMD. GGUF. 個人測試
 
 ### Test GGUF on AMD
 
@@ -396,10 +390,8 @@ AMD. GGUF. 個人測試
 
 您可以告訴我您目前正在使用的是哪一個 AMD CPU 型號（例如 Ryzen 7 5800X、Ryzen 9 7900 等）？我可以幫您預估大約的推論速度（Tokens/second），或是直接提供您 Ollama 匯入 GGUF 的指令步驟。
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Ryzen 7 7735HS. 可以預估 vLLM 推論速度嗎?
-</td></tr><tr><td>A:</td><td>
+> [!QUESTION]
+> Ryzen 7 7735HS. 可以預估 vLLM 推論速度嗎?
 
 ### AMD Ryzen 7 vLLM inference speed
 
@@ -445,5 +437,131 @@ Ryzen 7 7735HS. 可以預估 vLLM 推論速度嗎?
 [7] [https://laptopmedia.com](https://laptopmedia.com/news/cpu-rankings-the-new-amd-ryzen-7-7735hs-is-just-below-the-top-5-laptop-cpus/)
 [8] [https://github.com](https://github.com/ollama/ollama/issues/2637)
 
-</td></tr>
-</table>
+## 2026-08-27
+
+> [!QUESTION]
+> 請問執行 llama serve -hf unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS 指令,llama.cpp 會把 GGUF 檔案存放在哪裡?作業系統是 Windows 11
+
+在 Windows 11 作業系統下，執行 `llama serve -hf` 指令時，`llama.cpp` 會將下載的 GGUF 檔案自動存放在 Hugging Face 的標準本地快取路徑： [1, 2]
+
+👉 `C:\Users\<您的用戶名>\.cache\huggingface\hub\models--unsloth--Qwen3.8-27B-GGUF` [3, 4]
+
+### 📂 詳細檔案結構與路徑
+
+在該目錄下，實際的 `.gguf` 檔案通常會以符號連結（Symlink）或直接儲存在以下結構中： [5]
+
+-   快取根目錄： `C:\Users\<您的用戶名>\.cache\huggingface\hub\`
+-   專案資料夾： `models--unsloth--Qwen3.8-27B-GGUF\`
+-   實際檔案位置： 該資料夾內的 `blobs\`（存放實際資料）與 `snapshots\<一串雜湊值>\`（存放指向 blobs 的連結，包含您的 `UD-IQ2_XXS` 檔案）。 [3, 4, 5]
+
+### ⚙️ 如何自訂存放位置？
+
+如果您想更換路徑（例如 C 槽空間不足），可以透過設定 Windows 環境變數來改變預設位置（優先權由高到低）： [3, 4]
+
+1.  `HF_HUB_CACHE`：直接指定快取資料夾路徑。
+2.  `HF_HOME`：指定 Hugging Face 的根目錄（模型會存在該目錄下的 `hub\` 中）。 [2, 6, 7]
+
+設定方法（以命令提示字元 CMD 為例）：
+
+```cmd
+set HF_HOME=D:\AI_Models\huggingface
+llama serve -hf unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS
+```
+
+*設定後，檔案就會改存在 `D:\AI_Models\huggingface\hub\` 底下。* [7]
+
+[1] [https://tech-insider.org](https://tech-insider.org/llama-cpp-tutorial-2026/)
+[2] [https://github.com](https://github.com/janhq/jan/issues/8252)
+[3] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/7252)
+[4] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/7252)
+[5] [https://forums.developer.nvidia.com](https://forums.developer.nvidia.com/t/can-i-salvage-a-model-in-hf-cache-into-a-normal-directory-with-safetensors/369507)
+[6] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/20994)
+[7] [https://huggingface.co](https://huggingface.co/docs/hub/local-cache)
+
+## 2026-08-31
+
+> [!QUESTION]
+> 最佳化自行佈署 Qwen 3.8 27B 的作法?vLLM?llama.cpp?llamafile?
+
+佈署 Qwen 3.8 27B 的最佳化作法，取決於你的硬體規格（單卡/多卡/VRAM 大小）以及應用場景（單人使用/Agent 任務/多人高吞吐）。 [1, 2, 3]
+結論先行：首選 vLLM（搭配官方 FP8）進行高吞吐與 Agent 服務；單卡 24GB（如 RTX 4090）單人任務、大 context 首選 llama.cpp；而 llamafile 僅適合要求「極簡部署」的非極致效能場景。 [1, 2, 3]
+
+### 一、 三大引擎核心對比與最佳化策略
+
+#### 1\. vLLM：高吞吐、多人並發與 Agent 首選
+
+-   核心優勢：擁有 PagedAttention、連續批處理（Continuous Batching），並支援 Qwen 3.8 內建的 MTP（Multi-Token Prediction，多 token 預測）。開啟 MTP-2 後，單人推理速度最高可提升 73.5%。 [3, 4]
+-   最佳化作法：
+
+        -   模型選擇：直接跑官方 FP8 量化版本（約佔 27GB VRAM）。
+        -   硬體建議：1 張 32GB/48GB 顯卡（如 [RTX 5090](https://www.google.com/search?kgmid=FAILED_OR_SKIPPED)、[RTX 6000 Ada](https://www.google.com/search?kgmid=FAILED_OR_SKIPPED)），或 2 張 24GB 顯卡（如兩張 4090 做 Tensor Parallelism）。
+        -   情境限制：在長 Context（超過 60k-70k）時，vLLM 的 KV Cache 會吞噬大量顯存，此時效能或容量可能會遇到瓶頸。 [1, 2, 3, 4, 5]
+
+#### 2\. llama.cpp：單卡戰神、長 Context 與資源受限最佳解
+
+-   核心優勢：記憶體管理極其精細，支援 GGUF 格式。在 24GB 顯卡（如 RTX 4090）上，它是唯一能讓你舒服跑起 Qwen 3.8 27B 的解法。 [1, 2]
+-   最佳化作法：
+
+        -   模型選擇：下載 Q4\_K\_M（約 15-17GB，保留空間給 KV Cache）或 Q5\_K\_M。
+        -   Context 密技：llama.cpp 支援 Flash Attention 與更好的 KV Cache 量化（如轉為 `q8_0` 或 `q4_0` 的 KV Cache），可以在有限顯存下壓榨出 1.5 倍的長度。
+        -   情境限制：雖然也能開啟 MTP，但提升僅約 20%（遠輸 vLLM），且多人高並發吞吐量較差。 [2, 3, 4, 6]
+
+#### 3\. llamafile：極簡單一檔案部署，非效能極致流
+
+-   核心優勢：將 `llama.cpp` 和模型權重打包成一個可執行檔（Executable），跨平台、雙擊即跑。
+-   最佳化作法：只適合用於快速概念驗證（PoC）或內部離線、無運維基礎的伺服器。
+-   情境限制：底層雖是 `llama.cpp`，但因為打包限制，無法靈活微調最前端的 MTP、KV Cache 壓縮或進階張量並行（Tensor Parallelism）等最佳化參數。
+
+### 二、 部署決策樹（依據硬體與情境選擇）
+
+| 硬體與情境 | 推薦引擎 | 推薦模型格式 | 核心優化參數 / 理由 |
+| --- |  --- |  --- |  --- |
+| 單張 24GB 顯卡(如 RTX 3090 / 4090) | llama.cpp(或經由 Ollama) | GGUF (Q4\_K\_M) | 開啟 `--flash-attn`，並將 KV Cache 設定為 `q8_0` 以節省顯存並拉長 Context。 |
+| 單張 32GB/48GB 顯卡或雙卡並行 | vLLM / SGLang | 官方 FP8 | 開啟 MTP-2 (Multi-Token Prediction)，在 Agent 任務與多人調用時，吞吐量高達數百 tok/s。 |
+| 需要極高並發的服務(API 供應商、多員工共用) | vLLM | FP8 | 利用 vLLM 的 PagedAttention 機制，一卡可以同時流暢餵飽多個用戶。 |
+| 無 GPU / 純 CPU 伺服器 | llama.cpp | GGUF (Q4\_0) | 使用多執行緒（Thread）綁定，利用 CPU 和系統記憶體硬扛（速度較慢）。 |
+| 零基礎部署、跨平台 | llamafile | 內嵌 GGUF | 不用安裝 Python、CUDA 驅動等環境，一鍵跑起來。 |
+
+### 三、 實戰最佳化參數範例
+
+#### 💡 若選擇 vLLM 路線（以 Docker 部署 FP8 為例）
+
+為了最大化 Qwen 3.8 的速度，強烈建議開啟多 Token 預測：
+
+```bash
+docker run --gpus all --ipc=host\
+  -v ~/.cache/huggingface:/root/.cache/huggingface\
+  vllm/vllm-openai:latest\
+  --model Qwen/Qwen3.8-27B-Instruct-FP8\
+  --max-model-len 32768\
+  --gpu-memory-utilization 0.90\
+  --enable-chunked-prefill\
+  --num-scheduler-steps 2# 啟用類似 MTP/Speculative Decoding 的推測加速
+```
+
+#### 💡 若選擇 llama.cpp 路線（單卡 4090 的極致榨乾參數）
+
+```bash
+./llama-server\
+  -m qwen3.8-27b-instruct-q4_k_m.gguf\
+  -c 32768\
+  --flash-attn\
+  --ctk q8_0\
+  --ctv q8_0\
+  -ngl 99# 將所有 Layer 塞進 4090 顯存
+```
+
+*(註：`--ctk q8_0` 和 `--ctv q8_0` 可以把 KV Cache 進行量化，這就是讓 4090 能白嫖 1.5 倍 Context 長度的關鍵！)* [2]
+如果你想進一步評估，請告訴我：
+
+-   你目前的顯示卡型號與 VRAM 容量是多少？
+-   這個模型主要拿來做什麼任務（例如：本地 Coding Agent、多人共用 API、長文本分析）？ [2, 3]
+
+我可以為你提供專屬的啟動腳本與顯存估算。
+
+[1] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/articles/10405431)
+[2] [https://medium.com](https://medium.com/@changtimwu/%E4%B8%80%E5%BC%B5-4090-%E8%B7%91-qwen3-8-27b-vllm-vs-llama-cpp-%E5%AF%A6%E6%B8%AC-%E5%92%8C%E4%B8%80%E5%80%8B%E6%B2%92%E4%BA%BA%E5%9C%A8%E8%AC%9B%E7%9A%84%E5%85%8D%E8%B2%BB-1-5-%E5%80%8D-context-fdb32a769b64)
+[3] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/2071984701632419778)
+[4] [https://ai-coding.wiselychen.com](https://ai-coding.wiselychen.com/youtube-qwen38-27b-rtx5090-sglang-vllm-mtp-transcript/)
+[5] [https://www.autobuy.tw](https://www.autobuy.tw/thread_19)
+[6] [https://bbs.csdn.net](https://bbs.csdn.net/weixin_29031057/article/details/100267175)
