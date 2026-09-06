@@ -737,3 +737,93 @@ OPENCODE_MODEL=qwen2.5-coder-7b
 [6] [https://www.facebook.com](https://www.facebook.com/groups/gaitech/posts/1771293924054815/)
 [7] [https://www.alphalab.site](https://www.alphalab.site/qwen38-27b-local-agent-test)
 [8] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/articles/10406812)
+
+> [!QUESTION]
+> 我已經正確跑 llama-server 指令,並確認監聽於 127.0.0.1:8080.
+> 但在 Pi Coding Agent 中使用 `/login` 選 llama.cpp 後,
+> 錯誤訊息是
+> ```
+> Error: Failed to save API key for llama.cpp: Server is not running in llama.cpp router mode
+> ```
+> 可以如何修改呢?
+
+這個錯誤的原因是 Pi Coding Agent 的內建 `llama.cpp` 連接器預設採用了 `llama.cpp` 的「多模型路由模式（Router Mode）」。 [1, 2]
+
+當你使用指令 `-m "/路徑/模型.gguf"` 啟動時，`llama-server` 會進入單一模型模式。由於 Pi Agent 無法在該埠口偵測到路由端點（如 `/llama` 分發路徑），因而拒絕綁定金鑰並拋出 `Server is not running in llama.cpp router mode` 的錯誤。 [2, 3]
+
+要解決這個問題，你有兩種修改方式：
+
+### 方法一：將 `llama-server` 切換為「路由模式」（推薦 🌟）
+
+新版的 `llama.cpp` 支援類似 Ollama 的動態模型管理（Router Mode），你只需要將 GGUF 模型放到一個專屬資料夾中，並調整啟動指令即可。 [4]
+
+1.  建立模型目錄：
+
+    建立一個名為 `models` 的資料夾，並把你的 `.gguf` 檔案放進去（可以放多個）。
+
+    ```bash
+    mkdir ./my_models
+    mv 你的模型.gguf ./my_models/
+    ```
+
+2.  以路由模式啟動 `llama-server`：
+
+    不要使用 `-m` 或 `--model` 參數。改用 `--models-dir` 指向剛才建立的資料夾：
+
+    ```bash
+    ./llama-server --models-dir ./my_models --host 127.0.0.1 --port 8080
+    ```
+
+3.  返回 Pi Agent 設定：
+
+    現在回到 Pi Agent 的終端機再次輸入 `/login` 並選 `llama.cpp`，這時就能夠順利儲存並通過驗證。登入成功後，你可以透過 `/llama` 指令列出、載入模型，或用 `/model` 切換模型。 [2, 3, 5]
+
+### 方法二：維持原本單模型啟動，改用「環境變數」強行對接
+
+如果你不想改變 `llama-server` 的啟動方式，只想維持原來的指令，那你就不需要在 Pi Agent 裡面執行 `/login`。你可以直接透過環境變數跳過路由驗證，將 Pi Agent 引導到你的 OpenAI 相容端點： [6]
+
+1.  關閉目前的 Pi Agent 視窗。
+2.  在終端機中，直接設定 Base URL 環境變數：
+
+    -   Linux / macOS:
+        ```bash
+        export LLAMA_BASE_URL="http://127.0.0"
+        pi
+        ```
+
+    -   Windows (Command Prompt / CMD):
+        ```cmd
+        set LLAMA_BASE_URL=http://127.0.0
+        pi
+        ```
+
+    -   Windows (PowerShell):
+        ```powershell
+        $env:LLAMA_BASE_URL="http://127.0.0"
+        pi
+        ```
+
+3.  進入 Pi Agent 後，直接使用 `/model` 指令選擇你的本地模型即可。 [6, 7]
+
+如果你在調整後遇到模型無法正確解析程式碼、或是在工具呼叫（Tool Call）時發生錯誤，可以告訴我你目前使用的是哪一款 GGUF 模型（例如 Qwen2.5-Coder、Llama-3 等），我能幫你確認特定的 Prompt Template 設定。
+
+[1] [https://stackoverflow.max-everyday.com](https://stackoverflow.max-everyday.com/2026/08/pi-coding-agent-llama-server/)
+[2] [https://github.com](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/providers.md)
+[3] [https://github.com](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/llama-cpp.md)
+[4] [https://huggingface.co](https://huggingface.co/blog/ggml-org/model-management-in-llamacpp)
+[5] [https://pi.dev](https://pi.dev/docs/latest/llama-cpp)
+[6] [https://www.kdnuggets.com](https://www.kdnuggets.com/run-the-mythos-enhanced-coding-model-locally-with-llama-cpp-and-pi)
+[7] [https://deepakness.com](https://deepakness.com/blog/pi-agent-setup/)
+
+> [!TIP]
+> 以下是實際測試過程，意外發現 llama.cpp 已經有自己的 Web UI
+
+```bash
+[09/06 15:12:06] ~$ mkdir -p .models
+[09/06 15:13:06] ~$ cd .models/
+[09/06 15:14:47] ~/.models$ wget -c https://huggingface.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF/resolve/main/Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
+[09/06 15:15:05] ~/.models$ wget -c https://huggingface.co/Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF/resolve/main/Qwen3.5-9B.Q4_K_M.gguf
+[09/06 15:15:51] ~/.models$ llama-server --models-dir ~/.models
+```
+
+![](llama-cpp-web-ui.png)
