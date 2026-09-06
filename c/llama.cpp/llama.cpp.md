@@ -565,3 +565,108 @@ docker run --gpus all --ipc=host\
 [4] [https://ai-coding.wiselychen.com](https://ai-coding.wiselychen.com/youtube-qwen38-27b-rtx5090-sglang-vllm-mtp-transcript/)
 [5] [https://www.autobuy.tw](https://www.autobuy.tw/thread_19)
 [6] [https://bbs.csdn.net](https://bbs.csdn.net/weixin_29031057/article/details/100267175)
+
+> [!QUESTION]
+> 使用 vLLM 對比 llama.cpp 來 serve 同一個模型的 FP8 跟 GGUF Q4_K_M 效能上有何優缺點?
+
+使用 vLLM 部署 FP8 模型與使用 llama.cpp 部署 GGUF Q4\_K\_M 模型，是目前主流的兩種大語言模型（LLM）推論優化方案。
+核心結論：vLLM (FP8) 專為「高併發、高吞吐量」的雲端伺服器場景設計；llama.cpp (GGUF Q4\_K\_M) 則專為「低硬體門檻、單用戶、消費級顯示卡或 CPU」的本地邊緣端優化。
+以下為您詳細對比兩者的效能與優缺點：
+
+### 核心性能對比總覽
+
+| 評比維度 | vLLM (FP8) | llama.cpp (GGUF Q4\_K\_M) |
+| --- |  --- |  --- |
+| 硬體要求 | 高（需 Ada/Hopper 架構以後的 NVIDIA GPU，如 RTX 40/H100） | 極低（支援 Apple Silicon、Intel/AMD CPU、舊款顯示卡） |
+| 首字延遲 (TTFT) | 極快（GPU 原生 Tensor Core 加速） | 較慢（取決於硬體，解量化需要計算開銷） |
+| 每秒吞吐量 (TPS) | 極高（高併發下因 PagedAttention 表現極佳） | 較低（適合單人或少數人同時使用） |
+| 記憶體佔用 | 約為原模型的 50%（每 1B 參數約 1 GB VRAM） | 約為原模型的 30%（每 1B 參數約 0.6 GB VRAM） |
+| 模型精準度 | 較高（FP8 活化值與權重保留較多語義資訊） | 稍低（4-bit 量化有輕微精準度損失） |
+
+### vLLM (FP8) 的優缺點
+
+#### 🟢 優點
+
+-   吞吐量（Throughput）極致： 內建 PagedAttention 技術，能有效管理 KV Cache 記憶體碎片。在多用戶同時發送請求（高併發）時，吞吐量比 llama.cpp 高出數倍。
+-   精準度損失極小： 雖然 FP8 只有 8-bit，但由於保留了動態範圍且通常搭配 KV Cache FP8 量化，對於多數模型（如 Llama 3）而言，其基準測試（Benchmark）得分幾乎與不量化的原模型持平。
+-   原生生產級 API： 完美相容 OpenAI API 格式，內建動態批處理（Continuous Batching），非常適合直接部署為商業服務。
+
+#### 🔴 缺點
+
+-   硬體架構限制嚴格： FP8 計算需要特定顯示卡硬體支援（NVIDIA Ampere 架構如 A100 僅支援儲存，必須到 Ada Lovelace/Hopper 架構 如 RTX 40 系列、L4、H100 才能獲得硬體加速）。
+-   VRAM 門檻相對較高： 8-bit 佔用的記憶體是 4-bit 的兩倍。如果顯示卡記憶體（VRAM）放不下模型，vLLM 無法像 llama.cpp 那樣優雅地將部分層分流（Offload）到系統記憶體（RAM），容易直接導致 OOM（記憶體溢出）。
+
+### llama.cpp (GGUF Q4\_K\_M) 的優缺點
+
+#### 🟢 優點
+
+-   極致的硬體兼容性與彈性： 支援混合推論（Hybrid Inference）。如果 VRAM 不夠大，可以設定將 30 層放進 VRAM，剩下的層放進系統 RAM 執行。甚至在純 CPU（如 Mac M 系列晶片）上也能跑出不錯的速度。
+-   記憶體佔用極小： Q4\_K\_M（約 4.5-bit）將模型體積壓縮了近 70%。一台 16GB VRAM 的顯示卡可能放不下 FP8 的大模型，但能輕鬆塞下 GGUF Q4\_K\_M，還能留出空間給長文本的 KV Cache。
+-   單人使用首字反應快： 在單一用戶（Concurrency = 1）的情境下，llama.cpp 的啟動速度與反應時間非常迅速。
+
+#### 🔴 缺點
+
+-   高併發性能低落： 缺乏類似 PagedAttention 的現代記憶體管理機制。當並行請求增加時，效能會急劇下降，不適合用於公開的雲端 API 服務。
+-   量化精度損失： 4-bit 量化相較於 FP8，在邏輯推理、程式碼生成（Coding）以及複雜數學題上，會出現較明顯的「降智」或幻覺現象。
+-   計算開銷（De-quantization Overhead）： 權重在計算時需要實時解量化回浮點數，這會消耗額外的運算資源。
+
+### 您該如何選擇？
+
+-   選擇 vLLM (FP8) 的場景：
+    1.  您正在開發一款要給多個用戶同時使用的應用（如公司內部工具、SaaS 產品）。
+    2.  您擁有 RTX 40 系列或企業級（L4/H100） 以上的 NVIDIA 顯示卡。
+    3.  您的任務對模型精準度要求極高，不能接受 4-bit 量化帶來的能力衰退。
+
+-   選擇 llama.cpp (GGUF Q4\_K\_M) 的場景：
+    1.  您是在本地個人電腦（如 MacBook、單張消費級顯卡）上進行開發、測試或個人日常使用。
+    2.  顯示卡 VRAM 嚴重不足，必須依賴系統記憶體（RAM）共享。
+    3.  需要處理的併發量極低（通常只有您自己一個人用）。
+
+如果想更進一步評估，可以告訴我：您預計使用的 GPU/CPU 型號、模型參數大小（例如 8B, 70B）以及預期的同時使用人數，我可以為您提供更精準的架構部署建議。
+
+> [!QUESTION]
+> 請根據 Qwen 3.8 27B 為例,製作 side-by-side comparison table,請提供使用 vLLM 跟 llama.cpp 的最低硬體需求、TTFT、TPS、VRAM 用量、精準度損失
+
+以阿里巴巴最新推出的 Qwen 3.8 27B Dense 多模態模型為例，此模型原生支援 MTP（多Token預測）加速機制，上下文長度達 256K。 [1, 2, 3]
+以下為您整理使用 vLLM (FP8) 與 llama.cpp (GGUF Q4\_K\_M) 部署該模型的 Side-by-Side 效能與硬體需求對比表。
+
+### Qwen 3.8 27B 部署效能對比表
+
+| 評估維度 | vLLM (FP8 版) | llama.cpp (GGUF Q4\_K\_M 版) |
+| --- |  --- |  --- |
+| 最低硬體需求 | 單卡 RTX 4090 (24GB) 或 [RTX 5090](https://www.google.com/search?kgmid=FAILED_OR_SKIPPED) (32GB)（必須具備 Ada/Hopper 以上架構以支援 FP8 硬體加速） | MacBook (32GB 統一記憶體) 或單卡 [RTX 3090](https://www.google.com/search?kgmid=FAILED_OR_SKIPPED)/4080 (16GB~24GB) 搭配部分層分流 |
+| 模型權重體積 | 約 27.5 GB | 約 17 GB ~ 18 GB |
+| 運行時 VRAM 估算*(含基礎 KV Cache)* | 約 30 GB ~ 32 GB*(註：24GB 顯卡需搭配量化 KV Cache 或壓低 Context)* | 約 20 GB ~ 22 GB*(剩餘 VRAM 可留給更長的 256K 上下文)* |
+| 首字延遲 (TTFT) | 極低（反應極快）GPU 矩陣乘法原生運算，無需解量化開銷 | 中等計算時需將 4-bit 即時還原，輸入極長文本時延遲明顯 |
+| 每秒吞吐量 (TPS)*(單人 Concurrency=1)* | 約 60 ~ 90+ tokens/s*(開啟 vLLM 的 MTP 猜測加速後表現極佳)* | 約 35 ~ 50 tokens/s*(4090/5090 搭配 GGUF 新版 MTP 亦有顯著提升)* |
+| 每秒吞吐量 (TPS)*(高併發多用戶)* | 極高（維持 80% 以上效能）動態批處理與 PagedAttention 確保多用戶不卡頓 | 極低（斷崖式下跌）多用戶同時排隊會造成嚴重的排隊延遲 |
+| 精準度損失 | 極低（低於 1%）幾乎等同於 BF16 原版，精準保留 Coding 邏輯 | 輕微至中等（約 1% ~ 3%）在極為複雜的程式碼生成與多模態推理上有微幅降智 |
+| 最大上下文彈性 | 受限於 VRAM一旦 VRAM 耗盡即 OOM 崩潰，長文本需高度依賴 KV 量化 | 極高可將 KV Cache 放至系統記憶體（RAM），支援超長文本 |
+
+### 關鍵決策點分析
+
+1.  單卡 24GB VRAM (如 RTX 4090) 的尷尬點：
+
+    -   Qwen 3.8 27B 由於是 Dense（稠密）模型，FP8 的權重（~27.5GB）已經超越了 24GB 顯示卡的上限。
+    -   若用 vLLM： 您必須使用特定優化分支（如 Unsloth 的 NVFP4/W4A16 混合量化），或者使用兩張顯示卡（Tensor Parallel）才能完美跑起 FP8。
+    -   若用 llama.cpp： GGUF Q4\_K\_M 僅需 18GB，在 24GB 顯卡上運作綽綽有餘，還能留下 6GB 的 VRAM 塞滿 KV Cache，跑長文字非常穩定。 [1, 2, 4, 5, 6, 7]
+
+2.  多模態（Vision）與 MTP 的支援：
+
+    -   Qwen 3.8 27B 內建強大的多模態（看圖、看影片）與 MTP（Multi-Token Prediction）機制。
+    -   vLLM 在生產環境下對多模態 API 的支援度更完整，且高併發下 MTP 帶來的效能放大效應（Token 噴發速度）遠超 llama.cpp。 [2, 3, 8, 9, 10]
+
+如果您目前手邊只有單張 24GB 顯卡（如 3090/4090）且是個人開發，強烈建議先從 llama.cpp (GGUF Q4\_K\_M) 開始；若是 伺服器端要開 API 給團隊使用且有 32GB 以上 VRAM (如 5090 或雙卡)，則無腦選擇 vLLM (FP8)。 [3, 6, 7]
+
+請問您目前預計用來部署這尊 27B 模型的具體硬體配置（例如：幾張顯卡、多少 VRAM）是什麼呢？我可以為您規劃專屬的啟動參數與量化檔選擇。
+
+[1] [https://qwen.ai](https://qwen.ai/blog?id=qwen3.6-27b)
+[2] [https://vocus.cc](https://vocus.cc/article/6a7fa7b1fd897800010a91cc)
+[3] [https://pub.towardsai.net](https://pub.towardsai.net/qwen-3-8-27b-runs-faster-on-a-3090-than-a-4090-the-gpu-isnt-why-a01034210337)
+[4] [https://syntalith.ai](https://syntalith.ai/en/blog/llama-cpp-or-vllm-for-qwen3-8)
+[5] [https://www.orcarouter.ai](https://www.orcarouter.ai/zh-TW/blog/qwen-3-8-27b-ollama)
+[6] [https://ofox.ai](https://ofox.ai/blog/qwen-3-8-27b-run-locally-vram-gguf-2026/)
+[7] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1w2pk15/which_is_better_ninfer_vs_vllm_for_qwen_38_27b_on/)
+[8] [https://huggingface.co](https://huggingface.co/Qwen/Qwen3.8-27B)
+[9] [https://gigagpu.com](https://gigagpu.com/vllm-vs-llama-cpp-gpu-servers/)
+[10] [https://www.reddit.com](https://www.reddit.com/r/IntelArcPro/comments/1vzxxgj/llamacpp_vs_vllm_high_raw_tps_but_poor_realworld/)
