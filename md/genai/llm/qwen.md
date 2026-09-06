@@ -567,6 +567,9 @@ give a more precise explanation!
   - https://huggingface.co/Qwen/Qwen3.8-27B
 - GGUF
   - https://huggingface.co/unsloth/Qwen3.8-27B-GGUF
+
+### 2026-08-24
+
 - 實測：llama.cpp + pi coding agent
   - https://huggingface.co/unsloth/Qwen3.8-27B-GGUF?show_file_info=Qwen3.8-27B-UD-IQ2_XXS.gguf&local-app=pi
 ```
@@ -706,6 +709,94 @@ How are you?<|im_end|>
 115.49.393.822 W srv          stop: cancel task, id_task = 3
 115.49.393.849 I srv  update_slots: all slots are idle
 ```
+
+### 2026-08-31
+
+> [!QUESTION]
+> 如果想把 Qwen 3.8 27B 跑在 GCP TPU 上,有建議的作法嗎?
+
+在 Google Cloud Platform (GCP) 的 TPU 上部署 Qwen 3.8 27B，首選方案也是 vLLM。 [1]
+Google Cloud 已經原生整合 vLLM 作為 TPU（特別是 TPU v6e 與 v5e）的主力推論服務框架。GCP 目前提供兩種主要架構來部署： [1, 2]
+
+#### 一、 最佳部署路徑選擇
+
+##### 1\. 企業生產環境：GKE (Google Kubernetes Engine) + vLLM
+
+這是官方最推薦的標準作法。 [3]
+
+-   優勢：GKE 支援 llm-d（分離式推論架構），可將 Prefill（預填階段）與 Decode（解碼階段）拆分到不同 TPU 節點上，對 Qwen 3.8 這種原生支援高達 256K 至 100 萬長 Context 的模型來說，能大幅避免解碼卡頓。 [2, 4]
+-   作法：使用 Google 提供的預先設定 IaC 架構（透過 Terraform），在 GKE 叢集上建立 TPU 節點池並直接透過 Helm 部署 vLLM。 [2, 3]
+
+##### 2\. 開發與單機測試：TPU VM (Standalone) + vLLM
+
+如果不想維護 K8s 叢集，只想快速開一台機器測試。 [1]
+
+-   優勢：架構簡單，類似於 GPU VM 的 Docker 部署，適合進行基準測試（Benchmark）。
+-   作法：直接申請一台 `ct5lp-hightpu-4t`（TPU v5e-4）或 `v6e-4` / `v6e-8` 的獨立 TPU VM 機型。 [1, 2]
+
+#### 二、 TPU 專屬的最佳化調整指南
+
+將 Qwen 3.8 27B 搬上 TPU 時，必須注意以下幾點與 GPU 不同的最佳化細節：
+
+##### 1\. 硬體規格與 VRAM (HBM) 估算
+
+Qwen 3.8 27B 在 BF16 精度下需要約 55GB 的記憶體空間。 [5]
+
+-   TPU v5e / v6e 單晶片（TensorCore） 只有 16GB HBM。
+-   部署建議：必須使用 TPU v5e-4 / v6e-4（4 晶片，共 64GB 記憶體，非常緊湊），或直上 v5e-8 / v6e-8（8 晶片，共 128GB 記憶體）以留下足夠空間給 Qwen 的大 Context KV Cache 與視覺多模態組件。
+-   使用多晶片時，vLLM 會自動透過 Tensor Parallelism (TP) 在 TPU 網格間進行切分。 [2, 4, 5]
+
+##### 2\. 量化與編譯編譯器（XLA）限制
+
+-   避免使用 GGUF/AWQ：TPU 嚴重依賴 XLA（加速線性代數）進行靜態圖編譯。GGUF（llama.cpp 格式）無法在 TPU 上運行。
+-   最佳選擇：使用 Hugging Face 的原版 BF16 權重，或由 vLLM 提供支援的 INT8/FP8 W8A8 量化版本（必須是靜態張量形狀友好的量化格式）。 [6]
+
+##### 3\. 靜態形狀 (Static Shapes) 最佳化
+
+TPU 如果遇到動態輸入形狀，會導致 XLA 頻繁重新編譯（重新編譯一次可能需要數分鐘），造成嚴重的卡頓。
+
+-   解決方案：在 vLLM 啟動參數中，務必配置 `--max-model-len`（例如設定為 `32768` 或更低）與固定批處理參數，強迫 vLLM 在 TPU 上使用固定大小的 Padding 區塊。
+
+#### 三、 Standalone TPU VM 部署實戰範例
+
+以下是在 GCP 獨立 TPU VM 環境下，使用官方 vLLM Docker 映像檔啟動 Qwen 3.8 27B 的腳本範例：
+
+```bash
+# 1. 在 TPU VM 內啟動專為 TPU 優化的 vLLM 容器
+docker run --entrypoint sh\
+  --net=host --shm-size=16g\
+  --privileged\
+  -v /usr/share/tpu:/usr/share/tpu\
+  -v ~/.cache/huggingface:/root/.cache/huggingface\
+  -it vllm/vllm-openai:latest
+
+# 2. 在容器內執行啟動指令 (假設使用 4 核心或 8 核心 TPU 晶片)
+python3 -m vllm.entrypoints.openai.api_server\
+  --model Qwen/Qwen3.8-27B-Instruct\
+  --tensor-parallel-size 4\
+  --max-model-len 32768\
+  --gpu-memory-utilization 0.85\
+  --trust-remote-code
+
+```
+
+*(注意：在 TPU 環境下，`--tensor-parallel-size` 代表呼叫的 TPU TensorCore 數量，且 `--gpu-memory-utilization` 在 TPU 上同樣代表 HBM 記憶體的分配比例。)*
+
+#### 四、 官方技術文件參考
+
+如果你打算立刻動手實作，可以參考 Google Cloud 的 AI Hypercomputer 指南：
+
+-   [透過 vLLM 在 TPU 上提供 Qwen 系列服務官方教學](https://docs.cloud.google.com/ai-hypercomputer/docs/tutorials/tpu/serve-qwen3-8b-base?hl=zh-tw)（雖然範例是 8B，但更改模型名稱與節點數量即可適用於 27B）。
+-   [在 GKE 上使用 llm-d 部署分離式 TPU vLLM 推論實作坊](https://codelabs.developers.google.com/next26/aiinfra-learning-pod/screen2-advanced-inferencing-part-2?hl=zh-tw)。 [1, 2]
+
+請問你目前在 GCP 上預計申請的 TPU 世代與規格（例如 v5e 還是 v6e）是多少？是否已經有建立好的 GKE 叢集了呢？我可以依據你的雲端架構提供對應的 Terraform 或 Kubernetes YAML 設定檔。
+
+[1] [https://docs.cloud.google.com](https://docs.cloud.google.com/ai-hypercomputer/docs/tutorials/tpu/serve-qwen3-8b-base?hl=zh-tw)
+[2] [https://codelabs.developers.google.com](https://codelabs.developers.google.com/next26/aiinfra-learning-pod/screen2-advanced-inferencing-part-2?hl=zh-tw)
+[3] [https://docs.cloud.google.com](https://docs.cloud.google.com/kubernetes-engine/docs/tutorials/serve-open-models-tpu-terraform?hl=zh-tw)
+[4] [https://www.blocktempo.com](https://www.blocktempo.com/alibaba-qwen-27b-open-source-beats-claude-nine-fourteen-benchmarks/)
+[5] [https://www.autobuy.tw](https://www.autobuy.tw/thread_19)
+[6] [https://huggingface.co](https://huggingface.co/Qwen/Qwen3.8-27B)
 
 # Qwen AgentWorld
 
