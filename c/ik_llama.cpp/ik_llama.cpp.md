@@ -66,3 +66,179 @@ ik_llama.cpp 引入了創新的圖表分割模式（Split mode graph），解決
 [8] [https://daily.dev](https://daily.dev/posts/ikawrakow-ik-llama-cpp-llama-cpp-fork-with-additional-sota-quants-and-improved-performance-esem3uuzj)
 [9] [https://medium.com](https://medium.com/@jagusztinl/llama-cpp-performance-breakthrough-for-multi-gpu-setups-04c83a66feb2)
 [10] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1m0wji2/i_feel_that_the_duality_of_llamacpp_and_ikllama/)
+
+## 2026-09-07
+
+- Tool: Pi Agent + llama.cpp + Qwen 3.5 9B Q4_K_M
+> [!QUESTION]
+> 參考 https://github.com/ikawrakow/ik_llama.cpp 撰寫一篇技術摘要，並附加到 @ik_llama.cpp.md
+
+# 技術摘要：ik_llama.cpp
+
+## 概述
+
+ik_llama.cpp 是 llama.cpp 專案的一個分支，始於 2024 年 6 月，旨在提供改進的 CPU 性能、更先進的量化技術和最先於 mainstream llama.cpp 出現的 LLM 推論功能。
+
+## 核心特性
+
+### 1. 量化技術創新
+
+#### 1.1 新增量化類型
+
+**Trellis 量化** (`IQ1_KT`, `IQ2_KT`, `IQ3_KT`, `IQ4_KT`)
+- 基於新型整數基數網格結構
+- 實現於 CUDA、Metal、NEON 和 CPU
+- 在 CPU 上達到合理的性能表現
+
+**IQK 量化** 系列：
+- `IQ2_K`, `IQ3_K`, `IQ4_K`, `IQ5_K`, `IQ6_K`
+- `IQ1_S_R4`, `IQ1_M_R4`, `IQ2_KS`, `IQ2_KS_R4`
+- `IQ3_KS`, `IQ4_KS`, `IQ4_KSS`, `IQ5_KS`, `IQ5_KS_R4`
+- `IQ4_K_R4`, `IQ5_K_R4`, `IQ2_K_R4`, `IQ3_K_R4`
+- 支援 Zen4、AVX2、ARM_NEON 架構
+
+**其他量化改進**：
+- `IQ1_M`, `IQ2_XS`, `IQ2_KL`
+- `Q2_K`, `Q4_K`, `Q5_K`, `Q4_1`, `Q5_1`, `Q4_0`, `Q5_0`, `Q6_0`, `Q3_K`, `Q6_K`
+- `Q8_KV` - 8 位 KV 快取量化
+- `IQ4_XS`, `IQ4_NL`
+
+#### 1.2 量化性能優化
+
+- 所有非交叉量化類型在 CPU 上的提示處理速度大幅提升
+- 所有量化類型均支援 CUDA 量化矩陣乘法核
+- Trellis 量化和 MoE 模型的 CPU 提示處理加速
+- MXFP4 量化支援（用於 gpt-oss 模型）
+
+### 2. 架構特性
+
+#### 2.1 推理加速技術
+
+- **MLA (Multi-Head Latent Attention)** - 多頭潛在注意力機制
+- **FlashMLA** - 結合 Flash Attention 的 MLA 實現
+- **Flash Attention** - 用於 GQA 模型的 GPU 加速
+- **Fused Delta-Net (Fused Gated Delta Net)** - 用於 Qwen3-Next 和 Qwen3.5-MoE
+- **Quant Repacking** - 量化重打包技術
+- **Hadamard 變換** - 用於 K 快取和 V 快取
+
+#### 2.2 多 GPU 和 MoE 支援
+
+- **Tensor Parallel (TP)** - 張量平行處理
+- **MTP (Multi-Token Parallel)** - 多 token 並行
+- **DFlash** - 初始支援
+- **DSpark** - 初始支援
+- **Smart Expert Reduction** - 更快速的 DeepSeek 推論
+- **Auto-fit offloaded tensors** - 自動適應可用 VRAM 的離載張量
+
+### 3. 模型支援
+
+支援的模型包括：
+
+- LLaMA-3-Nemotron
+- Qwen3 (包括 Qwen3-VL)
+- GLM-4, GLM-4.5, GLM-4.6, GLM-4.7, GLM-5
+- Command-A
+- DeepSeek-V3, DeepSeek-V4
+- Kimi-2
+- dots.llm1
+- Hunyuan
+- Gemma3, Gemma4
+- Mistral 4
+- Ernie 4.5 MOE
+- grok-2
+- Ling/Ring (Bailing-MoE2)
+- 以及更多...
+
+### 4. 功能增強
+
+- **函數呼叫支援** - 完整的 API 端點
+- **Jinja 模板支援** - 用於提示工程
+- **多模態視覺支援** - 在 `llama-mtmd-cli` 和 `llama-server` 中
+- **OpenAI /v1/responses API** - 完整 API 相容性
+- **適應性-P 採樣器** - 由原作者設計的採樣器
+- **自 speculative 解碼** - ngram 和 suffix 支援
+- **圖形平行模式 (graph)** - 用於多 GPU 設置
+
+### 5. 後端支援
+
+- **CPU** - AVX2 或更高級別，ARM_NEON 或更高級別
+- **CUDA** - Turing 或更新版本
+- **Metal** (有限支援)
+- **注意**：ROCm、Vulkan、舊版 NVIDIA GPU 的支援有限
+
+## 重要注意事項
+
+### ⚠️ 混合 CPU/GPU MoE 推理警告
+
+對於 MoE 模型，當部分專家留在 CPU 上時，**不要使用 `-rtr` 選項**，除非您完全了解其影響：
+
+- `-rtr` 選項會將所有留在 RAM 中的張量重新打包為行間隔格式
+- 並非所有量化類型都有 CUDA 行間隔實現
+- 這會導致這些張量的矩陣乘法**永遠在 CPU 上執行**，即使 GPU 處理會更快
+- 特別影響 k-量化類型（K2_K, Q3_K, Q4_K, Q5_K, Q6_K）
+
+### ⚠️ Unsloth 模型兼容性
+
+避免使用 Unsloth 名稱中包含 `_XL` 的量化模型，這些模型可能無法正常工作（特別是包含 f16 張量的模型）。
+
+### ⚠️ 圖形平行問題
+
+在使用圖形平行模式（split mode `graph`）和部分 GPU 卸載時，某些用戶報告了無意義回答的問題。建議添加 `-cuda graphs=0` 來解決。
+
+## 快速開始
+
+### 安裝
+
+```bash
+git clone https://github.com/ikawrakow/ik_llama.cpp
+cd ik_llama.cpp
+apt-get update && apt-get install build-essential git libcurl4-openssl-dev curl libgomp1 cmake
+```
+
+### 編譯
+
+**CPU 編譯**：
+```bash
+cmake -B build -DGGML_NATIVE=ON
+cmake --build build --config Release -j$(nproc)
+```
+
+**GPU 編譯**：
+```bash
+cmake -B build -DGGML_NATIVE=ON -DGGML_CUDA=ON
+cmake --build build --config Release -j$(nproc)
+```
+
+### 運行
+
+```bash
+./build/bin/llama-server --model <model.gguf> --ctx-size 4096
+```
+
+或 GPU 加速：
+```bash
+./build/bin/llama-server --model <model.gguf> --ctx-size 4096 -ngl 999
+```
+
+### Docker 支援
+
+```bash
+docker pull ghcr.io/ikawrakow/ik-llama-cpp:cpu-server
+docker pull ghcr.io/ikawrakow/ik-llama-cpp:cu12-server
+```
+
+## 技術亮點總結
+
+1. **最先端的量化技術** - Trellis 和 IQK 量化系列領先 mainstream llama.cpp
+2. **優化的 CPU 性能** - AVX-512 專為 CPU 設計，支援 IQK 量化 GEMM 核
+3. **先進的架構技術** - MLA、FlashMLA、Flash Attention 實現
+4. **廣泛的模型支援** - 支援最新和最大的開源模型
+5. **完整的 API 相容性** - OpenAI API 端點、函數呼叫、多模態支援
+6. **多平台支援** - Linux、Windows、Docker、Android
+
+## 資源
+
+- 維基頁面：https://github.com/ikawrakow/ik_llama.cpp/wiki
+- 性能比較：https://github.com/ikawrakow/ik_llama.cpp/wiki
+- 開發文檔：https://github.com/ikawrakow/ik_llama.cpp/docs
+- Docker 指南：https://github.com/ikawrakow/ik_llama.cpp/docs/docker.md
