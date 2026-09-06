@@ -464,3 +464,70 @@ opencode
 [5] [https://opencode.ai](https://opencode.ai/docs/zh-tw/config/)
 [6] [https://pub.towardsai.net](https://pub.towardsai.net/build-local-ai-coding-agent-llama-cpp-826a8357b510)
 [7] [https://opencode.ai](https://opencode.ai/docs/providers/)
+
+## 2026-09-06
+
+> [!QUESTION]
+> 已有下載 GGUF 模型,如何用 llama.cpp 來 serve llm model 並且設定成 opencode 可以呼叫該模型
+
+要使用 `llama.cpp` 將已下載的 GGUF 模型 啟動為 API 伺服器，並將其連接到 OpenCode（如 OpenCode / OpenCode-Interpreter 等 [Coding Agent](https://haimaker.ai/zh-tw/blog/opencode%E9%80%A3%E6%8E%A5ollama%E6%9C%AC%E6%A9%9F%E6%A8%A1%E5%9E%8B/) 工具），你可以透過 `llama.cpp` 內建的 `llama-server` 執行檔 來建立一個相容於 OpenAI 規範的 HTTP 端點。 [1, 2, 3, 4]
+
+請依照以下兩個主要步驟進行設定：
+
+### 步驟一：使用 `llama-server` 啟動 GGUF 模型
+
+`llama.cpp` 編譯或下載完成後，會包含一個名為 `llama-server`（Windows 上為 `llama-server.exe`）的程式。打開終端機（Terminal）或命令提示字元，執行以下指令來 Serve 你的模型： [5, 6]
+
+```bash
+# 基本啟動指令
+./llama-server -m "/路徑/到/你的/模型.gguf" --host 127.0.0.1 --port 8080 -c 4096# 如果你想發揮顯卡效能（以 NVIDIA CUDA 為例，將所有模型層(layers)搬到 GPU）
+./llama-server -m "/路徑/到/你的/模型.gguf" --host 127.0.0.1 --port 8080 -c 8192 -ngl 99
+```
+
+#### 💡 常用關鍵參數說明：
+
+-   `-m`：指定你下載的 GGUF 模型檔案路徑。
+-   `--host` 與 `--port`：設定伺服器接聽的 IP 與連接埠（預設通常為 `127.0.0.1` 與 `8080`）。
+-   `-c` (或 `--ctx-size`)：設定上下文視窗大小（如 `4096` 或 `8192`）。如果你的模型和記憶體夠大，且 OpenCode 需要讀取大量程式碼，可以視情況調高。
+-   `-ngl` (或 `--n-gpu-layers`)：將多少層模型分配給 GPU 運算。設定 `99` 代表全送進 GPU；若只用 CPU 運行則可忽略此參數。 [6]
+
+啟動成功後，終端機會顯示 `HTTP server listening` 等字樣，這代表你的本地 OpenAI 相容伺服器已架設完成。 [1, 4]
+
+### 步驟二：在 OpenCode 中配置該模型
+
+OpenCode 通常支援自訂 OpenAI 相容端點（OpenAI-Compatible Endpoint） 或藉由配置檔連線。請依你的 OpenCode 版本介面或設定檔（如 `.env` 或 `config.json`）進行以下對接： [7]
+
+#### 情況 A：透過圖形介面 (UI) 設定
+
+如果在 OpenCode 的設定（Settings）或模型提供者（Provider）選單中：
+
+1.  Provider / 平台：選擇 OpenAI 增強/相容模式（OpenAI-Compatible / Custom）。
+2.  Base URL / API 網址：填入 `http://127.0.0`（注意尾端需加上 `/v1`）。
+3.  API Key / 金鑰：因為是本地端，若 `llama-server` 沒特別設密碼，通常填入任意字串（例如 `local-secret` 或 `ollama`）即可。
+4.  Model Name / 模型名稱：填入你自訂的名稱，或與你的 GGUF 檔名一致（例如 `qwen2.5-coder-7b`）。
+
+#### 情況 B：透過環境變數或設定檔設定
+
+若是使用 CLI 版本的 OpenCode，請在專案根目錄的 `.env` 檔案中加入以下設定：
+
+```bash
+OPENCODE_API_KEY=local-secret
+OPENCODE_BASE_URL=http://127.0.0
+OPENCODE_MODEL=qwen2.5-coder-7b
+```
+
+#### ⚠️ 進階注意事項（Coding Agent 避坑指南）
+
+1.  工具呼叫 (Tool Call / Function Calling)：OpenCode 在執行自動化寫程式時，極度依賴模型的 Tool Call 能力。請確保你下載的 GGUF 模型本身是具備 Tool Use 能力的（例如 `Qwen2.5-Coder` 系列 或是 `Gemma-2`）。 [3, 7]
+2.  前綴快取 (Prompt Cache)：處理大量原始碼時，建議在 `llama-server` 啟動參數中加上 `-fa`（開啟 Flash Attention） 與快取參數，以大幅加快 OpenCode 重複讀取專案上下文時的推論速度。 [6, 8]
+
+如果想進一步調校，請問你目前下載的是哪一個具體的 GGUF 模型（例如 Qwen, Llama3）？以及你的電腦是否有 NVIDIA 獨立顯卡 呢？我可以為你提供最合適的優化啟動參數。 [5, 6]
+
+[1] [https://viml.nchc.org.tw](https://viml.nchc.org.tw/create-openai-compatible-server-with-llama-cpp/)
+[2] [https://haimaker.ai](https://haimaker.ai/zh-tw/blog/opencode%E9%80%A3%E6%8E%A5ollama%E6%9C%AC%E6%A9%9F%E6%A8%A1%E5%9E%8B/)
+[3] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1qqpon2/opencode_llamacpp_glm47_flash_claude_code_at_home/?tl=zh-hant)
+[4] [https://sider.ai](https://sider.ai/zh-TW/blog/ai-tools/so-you-want-to-use-llama_cpp-start-here-skip-the-nonsense)
+[5] [https://huggingface.tw](https://huggingface.tw/docs/hub/gguf-llamacpp)
+[6] [https://www.facebook.com](https://www.facebook.com/groups/gaitech/posts/1771293924054815/)
+[7] [https://www.alphalab.site](https://www.alphalab.site/qwen38-27b-local-agent-test)
+[8] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/articles/10406812)
