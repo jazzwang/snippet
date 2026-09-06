@@ -29,23 +29,23 @@ Google Search - AI Mode
 pi code agent 可以使用 opencode zen 的模型嗎?若可以,該如何設定?
 </td></tr><tr><td>A:</td><td>
 
-是的，Pi Code Agent 可以完全支援 OpenCode Zen 的模型。 [1] 
+是的，Pi Code Agent 可以完全支援 OpenCode Zen 的模型。 [1]
 
-Pi Agent（pi-ai）的核心優勢之一是擁有一個統一的接口，支援包括 OpenCode 在內超過 20 家供應商的模型。設定的核心邏輯在於配置 OpenCode Zen 的 API Key，並使用 OpenAI 兼容的 API 端點（Base URL） 來進行對接。 [2, 3] 
+Pi Agent（pi-ai）的核心優勢之一是擁有一個統一的接口，支援包括 OpenCode 在內超過 20 家供應商的模型。設定的核心邏輯在於配置 OpenCode Zen 的 API Key，並使用 OpenAI 兼容的 API 端點（Base URL） 來進行對接。 [2, 3]
 
 以下是具體的設定與使用步驟：
 
 ### 1. 取得 OpenCode Zen 的 API Key
 
    1. 前往 [OpenCode 官方後台](https://opencode.ai/)。
-   2. 建立一組用於 Zen 服務的 API Key（請注意不要與免費的公共 Key 混淆，需使用個人生成的金鑰）。 [1] 
+   2. 建立一組用於 Zen 服務的 API Key（請注意不要與免費的公共 Key 混淆，需使用個人生成的金鑰）。 [1]
 
 ### 2. 設定環境變數
 
-為了讓 Pi Agent 能夠讀取到 OpenCode Zen 的憑證與伺服器位置，您需要在終端機（Terminal）中設定以下兩個環境變數： [3] 
+為了讓 Pi Agent 能夠讀取到 OpenCode Zen 的憑證與伺服器位置，您需要在終端機（Terminal）中設定以下兩個環境變數： [3]
 
 * OPENAI_API_KEY：填入您的 OpenCode Zen API Key。
-* OPENAI_BASE_URL：填入 OpenCode Zen 的 API 接入點 https://opencode.ai/zen/go/v1/（或官方指定的 OpenAI 兼容端點）。 [1, 2] 
+* OPENAI_BASE_URL：填入 OpenCode Zen 的 API 接入點 https://opencode.ai/zen/go/v1/（或官方指定的 OpenAI 兼容端點）。 [1, 2]
 
 在 Linux / macOS 設定方法：
 
@@ -66,7 +66,7 @@ $env:OPENAI_BASE_URL="https://opencode.ai/zen/go/v1/"
 ### 3. 呼叫與切換模型
 
 設定完成後，在啟動 Pi Agent 時，使用 --model 參數來指定 OpenCode Zen 所提供的模型 ID 即可。
-例如，呼叫 OpenCode Zen 平台上常見的 MiniMax M3 或 GLM 5.2 模型： [4] 
+例如，呼叫 OpenCode Zen 平台上常見的 MiniMax M3 或 GLM 5.2 模型： [4]
 
 ```
 # 使用 MiniMax M3 模型啟動 Pi Agent
@@ -77,8 +77,8 @@ pi --model glm/5.2
 
 ### 💡 實用小提示
 
-* 前綴字注意：由於是透過 OpenAI 兼容端點接入，有時根據 Pi 版本的不同，模型名稱可能需要加上前綴（例如 openai/minimax-m3 或 opencode-go/minimax-m3）。若遇到無法識別，可透過 pi models list（或對應命令）檢查當前供應商辨識出的 ID 格式。 [5, 6] 
-* 計費確認：OpenCode Zen 屬於按量計費（Pay-as-you-go）機制。開始高強度的 Coding 任務前，請確保您的 OpenCode 帳戶內有足夠的點數或額度。 [5] 
+* 前綴字注意：由於是透過 OpenAI 兼容端點接入，有時根據 Pi 版本的不同，模型名稱可能需要加上前綴（例如 openai/minimax-m3 或 opencode-go/minimax-m3）。若遇到無法識別，可透過 pi models list（或對應命令）檢查當前供應商辨識出的 ID 格式。 [5, 6]
+* 計費確認：OpenCode Zen 屬於按量計費（Pay-as-you-go）機制。開始高強度的 Coding 任務前，請確保您的 OpenCode 帳戶內有足夠的點數或額度。 [5]
 
 如果您在執行 pi --model 時遇到特定的錯誤訊息，可以告訴我錯誤代碼或終端機回應，我能協助您進一步排查是網路端點（Base URL）還是憑證（API Key）的問題！
 
@@ -94,15 +94,15 @@ pi --model glm/5.2
 可以設定在 pi code agent 的設定檔中嗎?
 </td></tr><tr><td>A:</td><td>
 
-可以，Pi Code Agent 完全支援將模型供應商與憑證直接寫在設定檔中。這樣您就不用每次開啟終端機都重新輸入環境變數。 [1] 
+可以，Pi Code Agent 完全支援將模型供應商與憑證直接寫在設定檔中。這樣您就不用每次開啟終端機都重新輸入環境變數。 [1]
 
-在 Pi Agent 中，這些自訂供應商的資訊可以透過編輯 ~/.pi/agent/ 目錄下的兩個關鍵檔案來設定：models.json（配置供應商與模型列表）與 auth.json（放置 API 金鑰）。 [2, 3] 
+在 Pi Agent 中，這些自訂供應商的資訊可以透過編輯 ~/.pi/agent/ 目錄下的兩個關鍵檔案來設定：models.json（配置供應商與模型列表）與 auth.json（放置 API 金鑰）。 [2, 3]
 
 以下是將 OpenCode Zen 寫入設定檔的具體做法：
 
 ### 1. 配置模型與 API 端點 (models.json)
 
-請在全域設定目錄 ~/.pi/agent/ 底下建立或修改 models.json 檔案，將 OpenCode Zen 偽裝成自訂的 openai 相容供應商（也可以另外命名為 opencode）： [4] 
+請在全域設定目錄 ~/.pi/agent/ 底下建立或修改 models.json 檔案，將 OpenCode Zen 偽裝成自訂的 openai 相容供應商（也可以另外命名為 opencode）： [4]
 
 ```json
 {
@@ -126,11 +126,11 @@ pi --model glm/5.2
 }
 ```
 
-(註：apiKey 欄位如果填寫 $OPENCODE_ZEN_KEY，代表它會去抓取您在下一步 auth.json 中設定的對應變數。) [2] 
+(註：apiKey 欄位如果填寫 $OPENCODE_ZEN_KEY，代表它會去抓取您在下一步 auth.json 中設定的對應變數。) [2]
 
 ### 2. 安全地配置 API 金鑰 (auth.json)
 
-為了避免將機密金鑰直接暴露在公開的專案或模型設定中，Pi Agent 推薦將密碼類資訊獨立放在 ~/.pi/agent/auth.json 檔案內： [3, 5] 
+為了避免將機密金鑰直接暴露在公開的專案或模型設定中，Pi Agent 推薦將密碼類資訊獨立放在 ~/.pi/agent/auth.json 檔案內： [3, 5]
 
 ```json
 {
@@ -140,7 +140,7 @@ pi --model glm/5.2
 
 ### 3. 將其設定為預設啟動模型 (settings.json)
 
-如果您希望每次直接輸入 pi 啟動時，預設就使用 OpenCode Zen 的模型，您可以去修改全域設定檔 ~/.pi/agent/settings.json： [3, 6] 
+如果您希望每次直接輸入 pi 啟動時，預設就使用 OpenCode Zen 的模型，您可以去修改全域設定檔 ~/.pi/agent/settings.json： [3, 6]
 
 ```json
 {
@@ -150,11 +150,11 @@ pi --model glm/5.2
 
 ### 💡 互動式儲存技巧（更簡單）
 
-除了手動修改 settings.json 外，您也可以透過 Pi Agent 內建的指令直接將當前選擇儲存到設定檔中： [7] 
+除了手動修改 settings.json 外，您也可以透過 Pi Agent 內建的指令直接將當前選擇儲存到設定檔中： [7]
 
    1. 在終端機進入 Pi Agent：輸入 pi
    2. 輸入 \model 切換到您想要的 OpenCode 模型。
-   3. 停留在該模型上時，按下 Ctrl + S，Pi Agent 就會自動將該模型儲存為每次啟動的預設值！ [7] 
+   3. 停留在該模型上時，按下 Ctrl + S，Pi Agent 就會自動將該模型儲存為每次啟動的預設值！ [7]
 
 這樣一來，不論是 OpenCode Zen 的連線 API 位置、金鑰還是預設模型，都能完美脫離臨時的環境變數，永久保存在設定檔中。您目前在設定這些 .json 檔案時，有遇到語法報錯或找不到路徑的問題嗎？
 
@@ -261,3 +261,146 @@ Pi 社群有專門為 OpenCode Zen 封裝好的套件，完全不需要手動填
 </table>
 
 - 後來用 `/login` 比較容易解決。選擇 `Open Code Zen (Free)` 然後選輸入 `API Key`
+
+## 2026-09-04
+
+> [!QUESTION]
+> 我用指令啟動了 llama.cpp 的 server,可以給我 step-by-step 設定 Pi Coding Agent (https://pi.dev) 連上 http://127.0.0.1:8080 的方法嗎?
+> ```
+> 0.13.009.715 I srv llama_server: server is listening on http://127.0.0.1:8080
+> ```
+
+要讓 Pi Coding Agent ([pi.dev](https://pi.dev/)) 連上你已經啟動的 llama.cpp server (`http://127.0.0.1:8080`)，你需要透過修改 Pi 的 `models.json` 設定檔，將其作為自定義的 OpenAI 兼容端點（OpenAI-compatible endpoint）讀入。 [1]
+請按照以下 Step-by-Step 步驟設定：
+
+### 步驟 1：建立或修改 `models.json`
+
+Pi 會自動讀取使用者家目錄下的全域設定。請在你的終端機中，於指定路徑建立或編輯 `models.json`： [2]
+
+-   檔案路徑： `~/.pi/agent/models.json`
+-   如果 `~/.pi/agent/` 資料夾不存在，請先手動建立：
+    ```bash
+    mkdir -p ~/.pi/agent
+    ```
+
+### 步驟 2：貼入自定義 Provider 設定
+
+使用文字編輯器打開 `~/.pi/agent/models.json`，並填入以下內容：
+```json
+{
+  "providers": {
+    "local-llama": {
+      "baseUrl": "http://127.0.0",
+      "api": "openai-completions",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "your-model-name",
+          "name": "Local Llama",
+          "contextWindow": 32000,
+          "maxTokens": 4096
+        }
+      ]
+    }
+  },
+  "defaultProvider": "local-llama",
+  "defaultModel": "your-model-name"
+}
+```
+
+#### ⚠️ 注意事項與參數調整：
+
+1.  `baseUrl`：務必在 `http://127.0.0.1:8080` 後面加上 /v1，因為 `llama.cpp` 的 OpenAI 兼容路由群組位於 `/v1/chat/completions`。
+2.  `id`：請改為你目前在 `llama.cpp` 中載入的模型名稱（如果不知道，可以用 `curl http://127.0.0` 查詢其產生的 `id`）。
+3.  `compat`：設定 `supportsDeveloperRole: false` 可以防止 Pi 誤發送新版 OpenAI 的 `developer` 角色，確保本機相容性。
+4.  `contextWindow`：請根據你啟動 `llama.cpp` 時設定的 `-c`（Context Size）填寫正確數值，避免 Pi 發生 Token 溢出。
+5.  模型能力提示：Coding Agent 需要模型具備強大的程式碼編輯與 Tool Calling（工具呼叫）能力。如果本機模型太小或不支援 Tooling，Agent 運作時可能會頻繁出錯。 [3, 4, 5, 6, 7, 8]
+
+### 步驟 3：設定虛擬 API Key（若有需要）
+
+某些版本的 Pi 或背後的連接套件會強制檢驗是否有 API Key。
+如果遇到連線驗證問題，請建立 `~/.pi/agent/auth.json` 檔案： [6, 9]
+
+```json
+{
+  "local-llama": {
+    "type": "api-key",
+    "key": "not-needed-for-local"
+  }
+}
+```
+
+*(註：`llama.cpp` 預設不需要 Key，這裡隨便填寫一個非空字串即可放行。)* [6]
+
+### 步驟 4：啟動 Pi Coding Agent 測試
+
+完成設定後，切換到你的專案目錄下，直接輸入指令啟動：
+```bash
+pi
+```
+
+進入介面後，你可以輸入 `/model` 或 `/status` 檢查當前使用的模型是否已成功切換為 Local Llama。
+
+你在 `llama.cpp` 端有看到任何 `POST /v1/chat/completions` 的連線日誌跳出來嗎？如果連線時跳出特定錯誤，請告訴我，我來幫你微調 `compat` 的參數！
+
+[1] [https://skywirex.com](https://skywirex.com/pi-agent-custom-llm/)
+[2] [https://www.youtube.com](https://www.youtube.com/watch?v=N30XGyPrr6I)
+[3] [https://github.com](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/models.md)
+[4] [https://ofox.ai](https://ofox.ai/blog/pi-coding-agent-custom-provider-setup-2026/)
+[5] [https://medium.com](https://medium.com/@michael.hannecke/building-a-sovereign-coding-agent-on-apple-silicon-with-pi-and-mlx-swift-ef9bb23cafe2)
+[6] [https://zarar.dev](https://zarar.dev/run-a-local-coding-model-with-pi-and-lm-studio/)
+[7] [https://voipnuggets.com](https://voipnuggets.com/2026/07/12/how-to-run-local-ai-coding-agent-mac/)
+[8] [https://thomas-wiegold.com](https://thomas-wiegold.com/blog/pi-coding-agent/)
+[9] [https://pi.dev](https://pi.dev/packages/pi-sub2api-provider)
+
+> [!QEUSTION]
+> 可以用 `/login` 設定嗎?
+
+無法直接透過 `/login` 指令來完成本機 `llama.cpp` 的所有連線設定。 [1]
+
+在 [Pi Coding Agent (pi.dev)](https://pi.dev/) 的架構中，`/login` 主要用途是設定雲端供應商的 API Key 或 OAuth 登入。雖然它能幫你寫入部分的認證金鑰，但對於你自架的本機服務，`/login` 並無法幫你設定自定義的 `baseUrl`（例如 `http://127.0.0`）或宣告自訂的模型名稱與 Context 窗口大小。 [1, 2, 3, 4, 5]
+
+不過，如果你希望盡可能少去手動編輯 JSON 檔案，你可以利用官方社群專門為本機模型開發的擴充套件（Extension）來大幅簡化這個流程。
+
+
+### 💡 替代方案：使用 `pi-local-models` 自動偵測（免手動改 JSON）
+
+[Pi 官方包管理器](https://pi.dev/packages/pi-local-models) 提供了一個名為 `pi-local-models` 的擴充功能，它能自動掃描並綁定本機相容 OpenAI 端點的服務（包含 `llama.cpp`、`Ollama`、`LM Studio` 等）。 [6]
+
+#### 步驟 1：在終端機安裝本機模型套件
+
+直接使用 Pi 的內建套件管理指令進行安裝： [6]
+```bash
+pi install npm:pi-local-models
+```
+
+#### 步驟 2：用環境變數直接啟動 Pi
+
+安裝完成後，你連 `models.json` 都不需要建立。只需要在啟動 `pi` 時，前面加上 `LLAMA_API_URL` 或透過預設路由，它就會自動對接。或者你可以直接一行指令把端點餵給它：
+
+```bash
+# 告訴 Pi 本機端點的位置，它會自動完成其餘的相容性對接
+LOCAL_MODEL_URL="http://127.0.0.1:8080" pi
+```
+
+#### 步驟 3：進入後切換模型
+
+進入 Pi 的互動式介面後，你就可以像平常一樣使用斜線指令來切換至你本機的模型了： [6]
+```
+/models
+```
+
+此時選單中會出現它從你的 `llama.cpp` 伺服器自動抓取到的本機模型名稱，點選即可直接開始使用。 [6]
+
+如果你想確認你的 `llama.cpp` 伺服器是否有正常回應，或者在安裝過程中遇到特定報錯，歡迎隨時告訴我！
+
+[1] [https://pi.dev](https://pi.dev/docs/latest/quickstart)
+[2] [https://pi.dev](https://pi.dev/)
+[3] [https://pi.dev](https://pi.dev/docs/latest/providers)
+[4] [https://stackoverflow.max-everyday.com](https://stackoverflow.max-everyday.com/2026/08/pi-coding-agent-llama-server/)
+[5] [https://pi.dev](https://pi.dev/docs/latest/custom-provider)
+[6] [https://pi.dev](https://pi.dev/packages/pi-local-models)
+

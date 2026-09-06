@@ -47,7 +47,7 @@
   - oh-my-opencode
     - https://www.opencode.cafe/plugin/oh-my-opencode
     - https://github.com/code-yeongyu/oh-my-opencode
-    - README 介紹中提到 
+    - README 介紹中提到
     > Anthropic blocked OpenCode because of us. Yes this is true. They want you locked in. Claude Code's a nice prison, but it's still a prison.
   - opencode-md-table-formatter
     - https://www.opencode.cafe/plugin/opencode-md-table-formatter
@@ -272,10 +272,10 @@ docs  process-notes.md
 - https://www.youtube.com/watch?v=lB7Pl8Dl_Rw
 ```
 還在為了每個月20美金的AI訂閱費傷腦筋，又覺得傳統生成式AI不夠聰明、無法應付連續任務嗎 ？
-這支影片將顛覆你對工具使用的既定想像，由三師爸現場實測，手把手帶你跨入免費AI Agent的全新世界 ！  
-Harness Engineering架構解密：用電腦硬體妙喻AI Agent，帶你秒懂作業系統、CPU與記憶體的協同原理，不再只盲目追求單一模型能力 。  
-OpenCode免費用法實操：現場示範如何下載與設定開源Harness桌面版，並透過OpenRouter完美、安全地串接雲端免費頂級模型 。  
-多模態任務自動化工作流：實測串接NotebookLM與聯網搜尋，讓免費AI分身幫你搞定日常瑣碎的行政與勞務工作 。  
+這支影片將顛覆你對工具使用的既定想像，由三師爸現場實測，手把手帶你跨入免費AI Agent的全新世界 ！
+Harness Engineering架構解密：用電腦硬體妙喻AI Agent，帶你秒懂作業系統、CPU與記憶體的協同原理，不再只盲目追求單一模型能力 。
+OpenCode免費用法實操：現場示範如何下載與設定開源Harness桌面版，並透過OpenRouter完美、安全地串接雲端免費頂級模型 。
+多模態任務自動化工作流：實測串接NotebookLM與聯網搜尋，讓免費AI分身幫你搞定日常瑣碎的行政與勞務工作 。
 想知道如何用最低成本發揮AI的最大威力、建立流暢的自動化工作流嗎 ？
 立刻觀看影片，並記得訂閱頻道、開啟小鈴鐺，在評論區留下你的測試心得，讓我們一起解鎖最強生產力！
 ```
@@ -309,23 +309,23 @@ Google Search - AI Mode
 opencode 支援排程執行工作嗎
 </td></tr><tr><td>A:</td><td>
 
-是的，OpenCode 支援排程執行工作。 它身為一個靈活的開源 AI 編碼代理，除了傳統在終端機與開發者即時協作（TUI 模式）外，也能透過多種官方或社群擴充方式來進行週期性與自動化的排程任務。 [1, 2, 3, 4, 5] 
+是的，OpenCode 支援排程執行工作。 它身為一個靈活的開源 AI 編碼代理，除了傳統在終端機與開發者即時協作（TUI 模式）外，也能透過多種官方或社群擴充方式來進行週期性與自動化的排程任務。 [1, 2, 3, 4, 5]
 以下是 OpenCode 實現排程執行的三種主要方式：
 
 ## 1. 透過 GitHub Actions 定時觸發 (官方支援)
 
-OpenCode 整合了 GitHub 自動化工作流程。你可以在專案中建立 .github/workflows/opencode-scheduled.yml 檔案，利用標準的 Cron 語法 定時啟動 OpenCode 執行特定任務（例如：每週一早上自動審查程式碼並建立 Issue）。 [5, 6] 
-（此處省略具體的 YAML 設定範例內容，使用者可在原參考文檔中找到完整代碼。） [5] 
+OpenCode 整合了 GitHub 自動化工作流程。你可以在專案中建立 .github/workflows/opencode-scheduled.yml 檔案，利用標準的 Cron 語法 定時啟動 OpenCode 執行特定任務（例如：每週一早上自動審查程式碼並建立 Issue）。 [5, 6]
+（此處省略具體的 YAML 設定範例內容，使用者可在原參考文檔中找到完整代碼。） [5]
 
 ## 2. 使用社群擴充套件 opencode-scheduler
 
-在 OpenCode 生態系中，[opencode-scheduler](https://opencode.ai/docs/zh-tw/ecosystem/) 套件支援透過 Cron 語法，整合底層系統（如 Mac 的 launchd 或 Linux 的 systemd）在本地進行定時排程。 [2] 
+在 OpenCode 生態系中，[opencode-scheduler](https://opencode.ai/docs/zh-tw/ecosystem/) 套件支援透過 Cron 語法，整合底層系統（如 Mac 的 launchd 或 Linux 的 systemd）在本地進行定時排程。 [2]
 
 ## 3. CLI 搭配系統工具
 
-利用 OpenCode 強大的 命令列介面 (CLI)，可將 opencode --prompt "任務內容" 指令封裝為 Shell 腳本，並搭配系統原生工具（如 Windows 工作排程器、macOS/Linux 的 crontab）來執行任務。 [7] 
+利用 OpenCode 強大的 命令列介面 (CLI)，可將 opencode --prompt "任務內容" 指令封裝為 Shell 腳本，並搭配系統原生工具（如 Windows 工作排程器、macOS/Linux 的 crontab）來執行任務。 [7]
 
-若需更自主的長駐自動化，可搭配 OpenClaw。如有具體應用情境（本地或雲端、執行任務類型），可進一步提供更精確的設定建議。 [3] 
+若需更自主的長駐自動化，可搭配 OpenClaw。如有具體應用情境（本地或雲端、執行任務類型），可進一步提供更精確的設定建議。 [3]
 
 [1] [https://opencode.ai](https://opencode.ai/zht)
 [2] [https://opencode.ai](https://opencode.ai/docs/zh-tw/ecosystem/)
@@ -346,13 +346,13 @@ Google Search - AI Mode
 which LLM model behind Big Pickle OpenCode Zen?
 </td></tr><tr><td>A:</td><td>
 
-The Big Pickle model behind OpenCode Zen is officially classified as a "stealth model" with rotating underlying capabilities, but it is primarily based on Zhipu AI's GLM-4.6 architecture. [1, 2] 
+The Big Pickle model behind OpenCode Zen is officially classified as a "stealth model" with rotating underlying capabilities, but it is primarily based on Zhipu AI's GLM-4.6 architecture. [1, 2]
 
-Because it is a curated cloud gateway model, its exact technical identity features a mix of official specifications and community findings: [1, 3] 
+Because it is a curated cloud gateway model, its exact technical identity features a mix of official specifications and community findings: [1, 3]
 
-* Underlying Architecture: While the developers do not explicitly label the third-party model in the official documentation to maintain it as a proprietary "stealth" option, engineering tests, API behaviors, and video teardowns confirm it is a slightly modified version of GLM-4.6. [1, 2, 4, 5] 
-* Context Capabilities: It features a massive 200k token context window and can output up to 32k tokens. [6] 
-* Pricing & Availability: It is provided entirely free of charge ($0.00 per 1M tokens) through the OpenCode Zen tier to lower the cost barrier for developers using agentic workflows. [6, 7] 
+* Underlying Architecture: While the developers do not explicitly label the third-party model in the official documentation to maintain it as a proprietary "stealth" option, engineering tests, API behaviors, and video teardowns confirm it is a slightly modified version of GLM-4.6. [1, 2, 4, 5]
+* Context Capabilities: It features a massive 200k token context window and can output up to 32k tokens. [6]
+* Pricing & Availability: It is provided entirely free of charge ($0.00 per 1M tokens) through the OpenCode Zen tier to lower the cost barrier for developers using agentic workflows. [6, 7]
 
 If you are trying to configure your coding environment, what specific editor or agent framework (like Agent Zero, Cursor, or Mastra) are you trying to connect Big Pickle to?
 
@@ -378,3 +378,89 @@ OpenCode Zen 平台上的 Big Pickle 是一款官方定位為「隱身模型」�
 
 請問您目前是打算將 Big Pickle 串接到哪一款程式碼編輯器（如 Cursor、VS Code）或 Agent 開發框架（如 Agent Zero、Mastra）中呢？您可以告訴我您使用的開發工具，我能為您提供具體的配置步驟。
 </table>
+
+## 2026-09-04
+
+> [!QUESTION]
+> 可以引導我設定 opencode 怎麼接上 llama.cpp 設定的 Qwen3.8 27B ?
+
+要將 OpenCode 串接到由 `llama.cpp` 所託管的 Qwen3.8 27B 模型，核心邏輯是利用 OpenCode 的自定義 OpenAI 兼容端點（OpenAI-compatible provider）機制。 [1]
+由於 Qwen 3.8 27B 具備強大的原生思考（Reasoning）能力與工具呼叫（Tool Call）功能，我們在設定檔中必須明確為它宣告這兩項特性，才能完全釋放這款模型的實力。以下是 Step-by-Step 引導： [2, 3]
+
+### 步驟 1：確認 `llama.cpp` 啟動參數
+
+Qwen3.8 27B 擁有極大的上下文潛力（高達 128k/131k context），為了確保 Agent 在讀取多檔案程式碼時不會輕易溢出，建議你在啟動 `llama-server` 時，至少配置 8192 以上（主機 VRAM 夠大可開到 32768 或更高）的 Context 大小。 [2, 4]
+
+啟動範例：
+
+```bash
+./llama-server -m unsloth/Qwen3.8-27B-GGUF:Q5_K_XL.gguf --port 8080 -c 65536
+```
+
+### 步驟 2：建立或修改 OpenCode 全域設定檔
+
+OpenCode 會讀取你電腦使用者目錄底下的全域設定檔： [5]
+
+-   檔案路徑： `~/.config/opencode/opencode.json`
+-   如果資料夾不存在，請先在終端機建立：
+    ```bash
+    mkdir -p ~/.config/opencode
+    ```
+
+### 步驟 3：填入 Qwen 3.8 的專屬配置
+
+用文字編輯器打開 `opencode.json`，並貼入以下內容： [2, 6]
+
+```json
+{
+  "providers": {
+    "local-llama": {
+      "baseUrl": "http://127.0.0.1:8080/v1",
+      "api": "openai-compatible"
+    }
+  },
+  "models": {
+    "local-llama/qwen-3.8-27b": {
+      "name": "Qwen3.8-27B",
+      "tool_call": true,
+      "reasoning": true,
+      "limit": {
+        "context": 65536,
+        "output": 16384
+      }
+    }
+  },
+  "model": "local-llama/qwen-3.8-27b"
+}
+```
+
+#### 💡 設定要點說明：
+
+1.  `baseUrl`：後方必須加上 `/v1`，以便正確對接 `llama.cpp` 的端點。 [1]
+2.  `tool_call: true`：啟用此項後，OpenCode 才能命令 Qwen3.8 去執行建立檔案、執行終端機指令或搜尋程式碼等 Agent 行為。 [2]
+3.  `reasoning: true`：Qwen 3.8 內建 Reasoning 思考鏈，開啟此項能讓 OpenCode 在終端機介面中正確渲染出模型的「思考小畫布」，不會把思考過程與真正的程式碼混在一起。 [3]
+4.  `context` 限制：這裡建議設定為 65536（或對應你 `llama.cpp` 啟動的 `-c` 數值），留下一點輸出 Headroom 可以防止 Agent 因過度消耗 Token 而卡死。 [1]
+
+### 步驟 4：免手動編輯的替代方案（使用 `/connect`）
+
+如果你不希望手動改 JSON，可以直接在終端機開啟 OpenCode：
+```bash
+opencode
+```
+
+1.  進入 TUI（文字介面）後，在對話框輸入指令 `/connect`。
+2.  選擇或搜尋 OpenAI Compatible (或 Custom Provider)。
+3.  依提示填入 URL：`http://127.0.0.1:8080/v1`
+4.  接著輸入指令 `/models`，手動切換或確認目前連接的模型為本機的 Qwen3.8 即可。 [1, 7]
+
+請試著在專案目錄下敲入 `opencode` 啟動它，隨便給它一個寫 Code 的任務（例如：「幫我用 Python 寫一個小型的 TODO 網頁」）。 [4]
+
+啟動後，你的 `llama.cpp` 終端機有沒有開始刷出 `POST /v1/chat/completions` 的請求紀錄？ 還是 OpenCode 介面有彈出什麼錯誤提示呢？
+
+[1] [https://www.datacamp.com](https://www.datacamp.com/tutorial/run-qwen3-8-flash-next-locally)
+[2] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1vuxi87/opencode_llamacpp_unslothqwen3827bggufq6_k_xl/)
+[3] [https://gist.github.com](https://gist.github.com/komikndr/b17955e1a80ce6ede9a3115f16216bc5)
+[4] [https://mykolaaleksandrov.dev](https://mykolaaleksandrov.dev/posts/2026/07/blog-opencode-llamacpp/)
+[5] [https://opencode.ai](https://opencode.ai/docs/zh-tw/config/)
+[6] [https://pub.towardsai.net](https://pub.towardsai.net/build-local-ai-coding-agent-llama-cpp-826a8357b510)
+[7] [https://opencode.ai](https://opencode.ai/docs/providers/)
