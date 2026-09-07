@@ -1,5 +1,22 @@
 # Tantivy 全文索引技術摘要
 
+- Git Repo
+  - https://github.com/quickwit-oss/tantivy
+- Website
+  - https://docs.rs/tantivy/latest/tantivy/
+
+> [!NOTE]
+> Tantivy is a full-text search engine library inspired by Apache Lucene and written in Rust
+
+## 2026-09-07
+
+- 緣起：
+  - 在研究 [rust/utopia](../utopia/utopia.md) 時，看到的 Tantivy 全文搜尋引擎
+- 技術摘要：
+
+> [!QUESTION]
+> 請透過 web search 搜尋並整理關於 Tantivy 全文索引的技術摘要，並儲存到 rust/tantivy/tantivy.md
+
 > Tantivy 是以 Rust 撰寫、受 Apache Lucene 設計啟發的全文搜尋函式庫，不是像 Elasticsearch 或 Solr 那樣的獨立搜尋伺服器。
 
 ## 1. 定位與核心特性
