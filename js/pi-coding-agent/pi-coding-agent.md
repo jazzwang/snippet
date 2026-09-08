@@ -408,8 +408,8 @@ LOCAL_MODEL_URL="http://127.0.0.1:8080" pi
 
 - 在參考過以下兩個連結後，發現可以從 llama.cpp Web UI 查到不同模型的參數設定，其次就是 Pi Coding Agent 該如何設定才能連上本機的 llama.cpp server。
   - https://stackoverflow.max-everyday.com/2026/08/pi-coding-agent-llama-server/
-  -
-
+  - https://pi.dev/docs/latest/llama-cpp
+- 首先，先啟動 llama.cpp 的 router mode
 > [!TIP]
 > 以下是實際測試過程，意外發現 llama.cpp 已經有自己的 Web UI
 
@@ -420,3 +420,38 @@ LOCAL_MODEL_URL="http://127.0.0.1:8080" pi
 [09/06 15:15:05] ~/.models$ wget -c https://huggingface.co/Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF/resolve/main/Qwen3.5-9B.Q4_K_M.gguf
 [09/06 15:15:51] ~/.models$ llama-server --models-dir ~/.models
 ```
+- 接著，手動設定
+```bash
+~$ vi ~/.pi/agent/models.json
+```
+```json
+{
+  "providers": {
+    "llama.cpp": {
+      "baseUrl": "http://127.0.0.1:8080/v1",
+      "apiKey": "12345678",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "Qwen3.5-9B.Q4_K_M",
+          "name": "Qwen3.5-9B",
+          "contextWindow": 26368
+        },
+        {
+          "id": "Qwen2.5-Coder-7B-Instruct-Q4_K_M",
+          "name": "Qwen2.5-Coder-7B",
+          "contextWindow": 32768
+        },
+        {
+          "id": "Qwythos-9B-v2-MTP-Q4_K_M",
+          "name": "Qwythos-9B-v2-MTP",
+          "contextWindow": 18176
+        }
+      ]
+    }
+  }
+}
+```
+- 實測：
+  - Qwen 2.5 Coder 7B 沒辦法跟 Pi Coding Agent 一起用（沒辦法做 Reasoning，只支援 Tool Calling）
+  - Qwen 3.5 9B (Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF）做一些比較簡短的文件整理、規劃 web search 跟寫程式都可以。但偶爾會遇到 context window 的限制
