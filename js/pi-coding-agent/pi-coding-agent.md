@@ -404,3 +404,19 @@ LOCAL_MODEL_URL="http://127.0.0.1:8080" pi
 [5] [https://pi.dev](https://pi.dev/docs/latest/custom-provider)
 [6] [https://pi.dev](https://pi.dev/packages/pi-local-models)
 
+## 2026-09-06
+
+- 在參考過以下兩個連結後，發現可以從 llama.cpp Web UI 查到不同模型的參數設定，其次就是 Pi Coding Agent 該如何設定才能連上本機的 llama.cpp server。
+  - https://stackoverflow.max-everyday.com/2026/08/pi-coding-agent-llama-server/
+  -
+
+> [!TIP]
+> 以下是實際測試過程，意外發現 llama.cpp 已經有自己的 Web UI
+
+```bash
+[09/06 15:12:06] ~$ mkdir -p .models
+[09/06 15:13:06] ~$ cd .models/
+[09/06 15:14:47] ~/.models$ wget -c https://huggingface.co/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF/resolve/main/Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
+[09/06 15:15:05] ~/.models$ wget -c https://huggingface.co/Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF/resolve/main/Qwen3.5-9B.Q4_K_M.gguf
+[09/06 15:15:51] ~/.models$ llama-server --models-dir ~/.models
+```
