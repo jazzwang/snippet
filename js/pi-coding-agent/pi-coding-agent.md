@@ -456,6 +456,9 @@ LOCAL_MODEL_URL="http://127.0.0.1:8080" pi
   - Qwen 2.5 Coder 7B 沒辦法跟 Pi Coding Agent 一起用（沒辦法做 Reasoning，只支援 Tool Calling）
   - Qwen 3.5 9B (Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF）做一些比較簡短的文件整理、規劃 web search 跟寫程式都可以。
     - 缺點：偶爾會遇到 context window 的限制.
+
+## 2026-09-08
+
 - 疑問：
   - Pi Coding Agent 為何沒有在用滿 context window 前執行 `/compact` 來釋放一些 context window 的空間呢？ 還是我應該照著 Pi Coding Agent 的官方文件建議，強制將 llama.cpp 的 context window 設定成 `-c 32768` 來避免這個問題？
   ```
@@ -528,3 +531,30 @@ Loaded Qwen3.5-9B.Q4_K_M
 ```
 0.0%/128k (auto)       (llama.cpp) Qwen3.5-9B.Q4_K_M
 ```
+
+## 2026-09-09
+
+> [!QUESTION]
+> Pi Agent (https://pi.dev/) 支援修改 System Prompt 嗎?
+
+是的，Pi Agent（pi.dev）支援修改 System Prompt。 [1]
+
+根據[官方使用文件](https://pi.dev/docs/latest/usage)，你可以透過在特定目錄下放置 Markdown 檔案，來完全替換或額外追加 System Prompt：
+
+* 完全替換（Replace）預設提示詞：
+* 專案級設定： 在專案根目錄建立 `.pi/SYSTEM.md`
+   * 全域級設定： 在用戶家目錄建立 `~/.pi/agent/SYSTEM.md` [1]
+* 額外追加（Append）在預設提示詞後方：
+* 如果你不想覆蓋 Pi Agent 原本內建的提示詞，只想補充規則，可以在相同目錄下建立 `APPEND_SYSTEM.md`。 [1]
+
+此外，社群與官方套件生態中也有提供如 [pi-custom-system-prompt](https://pi.dev/packages/pi-custom-system-prompt) 等擴充套件，方便你在多個不同的自訂 Prompt 檔案之間進行切換與管理。 [2]
+
+需要注意的是，Pi Agent 的核心哲學是「極簡設計」，其內建的 System Prompt 加上預設工具（read, write, edit, bash）定義總共不到 1,000 個 token。這把高度的 Context 控制權交還給使用者，非常適合工程師根據具體專案需求自訂專屬的開發指令。 [3, 4, 5]
+
+你想了解如何為特定專案撰寫自訂的 System Prompt，還是需要安裝相關擴充套件的步驟呢？
+
+[1] [https://pi.dev](https://pi.dev/docs/latest/usage)
+[2] [https://pi.dev](https://pi.dev/packages/pi-custom-system-prompt)
+[3] [https://altsol.tw](https://altsol.tw/pi-agent-extensions)
+[4] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/articles/10408441)
+[5] [https://www.threads.com](https://www.threads.com/@t945935/post/DcbZUHWGLWd/%E9%81%A9%E5%90%88%E4%BD%BF%E7%94%A8-pi%E8%B3%87%E6%B7%B1%E5%B7%A5%E7%A8%8B%E5%B8%AB%E6%83%B3%E8%A6%81%E5%AE%8C%E5%85%A8%E6%8E%A7%E5%88%B6-agent-%E8%A1%8C%E7%82%BA%E5%B9%B3%E5%8F%B0%E5%B7%A5%E7%A8%8B%E5%B8%AB%E9%9C%80%E8%A6%81%E8%87%AA%E8%A8%82%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8Bai-%E5%B7%A5%E5%85%B7%E9%96%8B%E7%99%BC%E8%80%85%E9%9C%80%E8%A6%81%E5%8F%AF%E5%B5%8C%E5%85%A5%E7%9A%84-agent-runtime%E5%AE%89%E5%85%A8%E6%95%8F%E6%84%9F%E7%92%B0%E5%A2%83%E9%9C%80%E8%A6%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%9A%94/)
