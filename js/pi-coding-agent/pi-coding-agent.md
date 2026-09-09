@@ -454,4 +454,17 @@ LOCAL_MODEL_URL="http://127.0.0.1:8080" pi
 ```
 - 實測：
   - Qwen 2.5 Coder 7B 沒辦法跟 Pi Coding Agent 一起用（沒辦法做 Reasoning，只支援 Tool Calling）
-  - Qwen 3.5 9B (Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF）做一些比較簡短的文件整理、規劃 web search 跟寫程式都可以。但偶爾會遇到 context window 的限制
+  - Qwen 3.5 9B (Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF）做一些比較簡短的文件整理、規劃 web search 跟寫程式都可以。
+    - 缺點：偶爾會遇到 context window 的限制.
+    - 疑問：
+      - Pi Coding Agent 為何沒有在用滿 context window 前執行 `/compact` 來釋放一些 context window 的空間呢？ 還是我應該照著 Pi Coding Agent 的官方文件建議，強制將 llama.cpp 的 context window 設定成 `-c 32768` 來避免這個問題？
+      ```
+      llama-server \
+      --models-dir ~/models \
+      --no-models-autoload \
+      --jinja \
+      --host 127.0.0.1 \
+      --port 8080 \
+      -ngl 999 \
+      -c 32768
+      ```
