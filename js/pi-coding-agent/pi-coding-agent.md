@@ -456,38 +456,70 @@ LOCAL_MODEL_URL="http://127.0.0.1:8080" pi
   - Qwen 2.5 Coder 7B 沒辦法跟 Pi Coding Agent 一起用（沒辦法做 Reasoning，只支援 Tool Calling）
   - Qwen 3.5 9B (Jackrong/Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF）做一些比較簡短的文件整理、規劃 web search 跟寫程式都可以。
     - 缺點：偶爾會遇到 context window 的限制.
-    - 疑問：
-      - Pi Coding Agent 為何沒有在用滿 context window 前執行 `/compact` 來釋放一些 context window 的空間呢？ 還是我應該照著 Pi Coding Agent 的官方文件建議，強制將 llama.cpp 的 context window 設定成 `-c 32768` 來避免這個問題？
-      ```
-      llama-server \
-      --models-dir ~/models \
-      --no-models-autoload \
-      --jinja \
-      --host 127.0.0.1 \
-      --port 8080 \
-      -ngl 999 \
-      -c 32768
-      ```
-    - 驗證：
-      - 看過 https://pi.dev/docs/latest/compaction
-      > [!NOTE]
-      > Auto-compaction triggers when:
-      > contextTokens > contextWindow - reserveTokens
-      > By default, reserveTokens is `16384` tokens
-      - 這說明了為什麼 Pi Coding Agent 在 context window 用到 80% 左右就停止 response。
-    - 實測強制將 llama.cpp 的 context window 設定成 `-c 32768`
-      但 Pi 用 `/llama` 指令，使用 Enter 載入(load) 之後，下方 footer 仍顯示 `26K (auto)` 而非 `33K`
-      ```
-      0.0%/26k (auto)    (llama.cpp) Qwen3.5-9B.Q4_K_M
-      ```
-    - 在移除 pi models.json 的 `contextWindow` 設定後，
-    ```
-    0.0%/128k (auto)     (llama.cpp) Qwythos-9B-v2-MTP-Q4_K_M
-    ```
+- 疑問：
+  - Pi Coding Agent 為何沒有在用滿 context window 前執行 `/compact` 來釋放一些 context window 的空間呢？ 還是我應該照著 Pi Coding Agent 的官方文件建議，強制將 llama.cpp 的 context window 設定成 `-c 32768` 來避免這個問題？
+  ```
+  llama-server \
+  --models-dir ~/models \
+  --no-models-autoload \
+  --jinja \
+  --host 127.0.0.1 \
+  --port 8080 \
+  -ngl 999 \
+  -c 32768
+  ```
+- 驗證：
+  - 看過 https://pi.dev/docs/latest/compaction
+  > [!NOTE]
+  > Auto-compaction triggers when:
+  > contextTokens > contextWindow - reserveTokens
+  > By default, reserveTokens is `16384` tokens
+  - 這說明了為什麼 Pi Coding Agent 在 context window 用到 80% 左右就停止 response。
+- 實測強制將 llama.cpp 的 context window 設定成 `-c 32768`
+  但 Pi 用 `/llama` 指令，使用 Enter 載入(load) 之後，下方 footer 仍顯示 `26K (auto)` 而非 `33K`
 ```
+0.0%/26k (auto)    (llama.cpp) Qwen3.5-9B.Q4_K_M
+```
+```diff
+--- .pi/agent/models.json.old   2026-09-08 13:43:20.211556300 +0800
++++ .pi/agent/models.json       2026-09-09 10:21:23.218491800 +0800
+@@ -7,20 +7,17 @@
+       "models": [
+         {
+           "id": "Qwen3.5-9B.Q4_K_M",
+-          "name": "Qwen3.5-9B",
+-          "contextWindow": 26368
++          "name": "Qwen3.5-9B"
+         },
+         {
+           "id": "Qwen2.5-Coder-7B-Instruct-Q4_K_M",
+-          "name": "Qwen2.5-Coder-7B",
+-          "contextWindow": 32768
++          "name": "Qwen2.5-Coder-7B"
+         },
+         {
+           "id": "Qwythos-9B-v2-MTP-Q4_K_M",
+-          "name": "Qwythos-9B-v2-MTP",
+-          "contextWindow": 18176
++          "name": "Qwythos-9B-v2-MTP"
+         }
+       ]
+     }
+   }
+-}
+\ No newline at end of file
++}
+```
+
+- 在 Github Copilot Inline 建議下，移除 pi models.json 的 `contextWindow` 設定後，不管切換哪個模型都是 `128K`
+
+```text
+0.0%/128k (auto)     (llama.cpp) Qwythos-9B-v2-MTP-Q4_K_M
+```
+```text
 Loaded Qwen3.5-9B.Q4_K_M
 
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────
  llama.cpp models
  http://127.0.0.1:8080
 
