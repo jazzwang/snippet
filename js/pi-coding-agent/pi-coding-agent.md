@@ -468,3 +468,31 @@ LOCAL_MODEL_URL="http://127.0.0.1:8080" pi
       -ngl 999 \
       -c 32768
       ```
+    - 驗證：
+      - 看過 https://pi.dev/docs/latest/compaction
+      > [!NOTE]
+      > Auto-compaction triggers when:
+      > contextTokens > contextWindow - reserveTokens
+      > By default, reserveTokens is `16384` tokens
+      - 這說明了為什麼 Pi Coding Agent 在 context window 用到 80% 左右就停止 response。
+    - 實測強制將 llama.cpp 的 context window 設定成 `-c 32768`
+      但 Pi 用 `/llama` 指令，使用 Enter 載入(load) 之後，下方 footer 仍顯示 `26K (auto)` 而非 `33K`
+      ```
+      0.0%/26k (auto)    (llama.cpp) Qwen3.5-9B.Q4_K_M
+      ```
+    - 在移除 pi models.json 的 `contextWindow` 設定後，
+    ```
+    0.0%/128k (auto)     (llama.cpp) Qwythos-9B-v2-MTP-Q4_K_M
+    ```
+```
+Loaded Qwen3.5-9B.Q4_K_M
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ llama.cpp models
+ http://127.0.0.1:8080
+
+→ Qwen3.5-9B.Q4_K_M                   loaded · 33k context
+```
+```
+0.0%/128k (auto)       (llama.cpp) Qwen3.5-9B.Q4_K_M
+```
