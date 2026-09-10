@@ -8,10 +8,16 @@
   - 原本在 VS Code `Markdown Preview Enhanced` 裡發現一個新語法，會產生像電子書裡常見的「注意」框。英文說明寫著 Admonitions
     - https://shd101wyy.github.io/markdown-preview-enhanced/#/markdown-basics?id=admonition
   - 想查一下 Github 是否有支援對應的語法
-- 結果：2024-12-14 已經有官方支援了。但對應的語法 VS Code `Markdown Preview Enhanced` 沒有支援。
+- 結果：2024-12-14 已經有官方支援了。~~但對應的語法 VS Code `Markdown Preview Enhanced` 沒有支援。~~
   - 2023-12-14: [New Markdown extension: Alerts provide distinctive styling for significant content](https://github.blog/changelog/2023-12-14-new-markdown-extension-alerts-provide-distinctive-styling-for-significant-content/)
   - 文件說明：[Alerts Syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)
   - 2024-06-07: [How to Create Admonitions in GitHub Markdown](https://blog.solichain.com/how-to-create-admonitions-in-github-markdown-ab580debcfdc)
+  - 2026-09-10: 後來發現 Markdown Preview Enhanced 有支援了，應該是底層使用的函式庫支援，就自動支援了。
+    - https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage
+    - https://shd101wyy.github.io/markdown-preview-enhanced/#/markdown-basics?id=admonition
+    - 不確定是因為 markdown-it 還是 mkdoc-material 才支援的
+    - https://marketplace.visualstudio.com/items?itemName=yahyabatulu.vscode-markdown-alert
+    - https://dev.to/supportic/markdown-badges-for-vscode-markdown-preview-enhanced-users-3e84
 
 > [!NOTE]
 > Make sure to check the compatibility of this library with your project's dependencies.
