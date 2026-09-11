@@ -23,7 +23,7 @@ def download_file(url, headers):
         # It's set globally here, but in a real-world scenario, you might
         # remove it or adjust it based on the file.
         print(f"Attempting to download to: {output_filename}")
-        
+
         # Use stream=True for large files
         response = requests.get(url, headers=headers, stream=True)
         response.raise_for_status() # Raise an exception for bad status codes (4xx or 5xx)
@@ -33,11 +33,12 @@ def download_file(url, headers):
             for chunk in response.iter_content(chunk_size=8192):
                 if chunk:  # filter out keep-alive chunks
                     f.write(chunk)
-                    
+
         print(f"✅ Success! Content saved to {output_filename}")
 
     except requests.exceptions.RequestException as e:
         print(f"❌ Error downloading {url}: {e}")
+        print(f"wget -O {output_filename} {url}")
     except Exception as e:
         print(f"❌ An unexpected error occurred for {url}: {e}")
     print("-" * 40)
