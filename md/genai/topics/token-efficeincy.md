@@ -93,5 +93,112 @@ Would you like details on how to set up context compression tools for a specific
 
 - 2026-07-12
   - Claude Code Is Way More Token-Hungry Than OpenCode. We Measured Exactly How Much
-  - https://systima.ai/blog/claude-code-vs-opencode-token-overhead 
+  - https://systima.ai/blog/claude-code-vs-opencode-token-overhead
   - 測驗工具：https://github.com/systima-ai/agentic-coding-tools-comparison
+
+## 2026-09-14
+
+> [!NOTE]
+> - title: "I Cut My OpenCode Token Usage by 96%  - Here's How"
+> - source: https://www.youtube.com/watch?v=FX7jcd3GYtI
+> - created: 2026-09-14
+> - notebooklm: Harness
+> - report-id: e2a398cb-d5c4-41a0-bb50-28e020197888
+
+## 為什麼說聲「你好」要花 8,000 個 Token？OpenCode 隱藏成本大揭密與 96% 節省策略
+
+### 一個價值 8,000 Token 的招呼語：當 UI 糖衣變成帳單負擔
+
+想像一下，你在當紅的 AI 寫程式工具 OpenCode 中輸入一個簡單的「hello」。你既沒有要求它重構複雜的遺留程式碼，也沒有請它從零構建一個 React 組件。然而，透過底層監測發現，這一個簡單的招呼，在背後竟然消耗了高達 8,000 個 Token。
+
+這並非發生在複雜的開發場景，而僅僅是初始化階段。這 8,000 個 Token 相當於 8 到 10 頁的 A4 紙張內容。作為一名 AI 效能優化專家，我必須直言：**Token 就是金錢，更是珍貴的上下文空間。** 本文將透過可觀測性（Observability）技術，揭開 OpenCode 運作背後的「Prompt Overhead」，並分享如何透過精簡的代理工程，將 Token 用量大幅削減 96%。
+
+### 偵探工具箱：如何看穿 LLM 背後的傳輸細節
+
+要優化效能，第一步必須實現完全的透明化。
+
+1.  **失效的方案 A：內建 OpenTelemetry**
+    OpenCode 雖然提供了實驗性的 OpenTelemetry 支援，但對於效能優化者來說極其雞肋。它能記錄 HTTP 狀態碼與延遲，卻完全無法提供 Token 消耗細項，更看不見具體的 Prompt 內容與工具定義（Tool Definitions）。
+
+2.  **成功的方案 B：MITM Proxy 與自定義攔截腳本**
+    我最終採用了 **MITM Proxy（中間人代理）**。這個工具攔截了 OpenCode 與 LLM 伺服器之間的所有通訊。我撰寫了一段約 40 行的 Python 腳本，專門捕捉所有 `system role` 的請求與回應，將其轉存為 JSON。這讓我們能以「上帝視角」檢視模型（本案例使用 **MIMO 2.5**）到底接收了什麼。
+
+### Token 消失的真相：兩階段的隱形成本
+
+數據顯示，當你輸入 "hello" 時，OpenCode 實際上發送了兩次獨立的請求。
+
+#### 第一階段：代價昂貴的「UI 糖衣」
+
+在你收到回應前，OpenCode 會先自動發送一次請求，僅為了替這段對話產生一個標題。
+
+> **這是一個極其諷刺的發現：** OpenCode 消耗了約 500 個 Prompt Token 與 1,500 個 Completion Token，僅為了在視窗頂端顯示一個詞：**"Greeting"**。在真正的對話開始前，2,000 個 Token 已付諸流水。
+
+#### 第二階段：巨大的「支架（Scaffolding）」與系統提示詞
+
+當真正的 "hello" 被送出時，模型接收到的是一個臃腫不堪的封包。我們來算一下這筆帳：
+
+*   **系統提示詞（System Message）：** 約 9,500 個字元。包含行為準則、格式規範、甚至詳細到規定 AI 該使用哪些表情符號。
+*   **工具定義（Tool Definitions）：** OpenCode 預設附帶 11 個工具的完整 JSON Schema。
+    *   **Bash 工具（4,700 字元）：** 詳細描述了作業系統環境、Shell 指令規則、目錄驗證步驟及引號處理慣例。
+    *   **Task 工具（3,000 字元）：** 定義了如何委派子代理（Sub-agents）任務的複雜邏輯。
+    *   **Edit 與 Read 工具：** 各佔約 1,000 字元以上的參數說明。
+
+**核心數學計算：**
+
+9,500 字元的系統提示 + 超過 10,000 字元的工具定義 $\approx$ 20,000+ 字元。按照「4 字元 $\approx$ 1 Token」的通則計算，這正是那 5,000 至 8,000 個 Token 的來源。
+
+> **關鍵統計數據：** 使用者輸入的 "hello"（5 個字元）僅佔總傳輸數據量的 **0.025%**。其餘 99.975% 全是為了讓 AI 維持運作的支架資訊。
+
+### 破解迷思：為什麼快取（Caching）救不了你？
+
+開發者常有一種誤解：「既然有快取，這些重複的 System Prompt 應該不花錢吧？」
+事實上，快取是 **供應商的優化**，而非使用者的。
+
+1.  **傳輸延遲與頻寬：** 無論是否快取，這 8,000 個 Token 每次都必須從你的筆電傳送到雲端，這造成了不必要的延遲。
+2.  **Context Window Bloat（上下文視窗膨脹）：** 這些 Token 依然佔用了模型有限的上下文空間。如果你在處理大型專案，這 8,000 個 Token 可能就是導致模型「忘記」前面程式碼的最後一根稻草。
+3.  **環境成本：** 處理如此龐大的冗餘數據，背後的電力損耗與碳足跡亦不容忽視。
+
+### 實戰優化：建立自定義輕量代理 (Custom Agents)
+
+OpenCode 的 `build` 代理之所以臃腫，是因為它想做「全能助手」。但 90% 的時間，你不需要 MCP Servers 或複雜的 Bash 工具。
+
+**優化步驟：**
+
+1.  **建立目錄：** 在專案根目錄下建立 `open code/agents/` 資料夾（請注意目錄名稱包含空格）。
+2.  **建立檔案：** 建立一個名為 `agentx.md` 的 Markdown 檔案。
+3.  **置入極簡指令：** 拷貝以下結構以取代預設的百行提示詞：
+
+```markdown
+---
+name: Agent X
+model: mimo-2.5
+temperature: 0
+primary: true
+---
+
+You are a minimalist coding assistant.
+You have access to NO tools.
+Respond concisely to user questions.
+```
+
+透過將 `primary` 設為 `true`，你可以利用 Tab 鍵在 OpenCode 中快速切換到這個極簡環境。
+
+### 成果對比：極簡主義的威力
+
+| 項目 | 預設 Build 代理 | 自定義 Agent X | 改善幅度 |
+| :--- | :--- | :--- | :--- |
+| **Token 消耗** | 約 8,000 | 300 - 500 | **~96% 節省** |
+| **Context Window 佔用** | 高 (10+ 頁 A4) | 極低 (幾行字) | 大幅釋放空間 |
+| **API 成本** | 全額支付 (含快取折扣) | 忽略不計 | **極大幅降低** |
+| **工具功能** | 11 種工具 (全功能) | 無工具 / 按需添加 | 視需求動態調整 |
+
+### 結論與核心行動建議
+
+這不是魔術，而是「代理工程（Agent Engineering）」與「可觀測性」的具體實踐。我們不需要為了修剪一個指甲而啟動一整台重型機械。
+
+**給開發者的行動清單：**
+1.  **透明化：** 永遠了解你的 IDE 究竟偷偷發送了什麼。
+2.  **按需添加（Start Minimal）：** 預設使用 Agent X 處理日常對談，僅在需要執行 Bash 或讀取檔案時，才切換到功能完整的代理。
+3.  **剝離冗餘：** 90% 的任務不需要 MCP Servers 或複雜的子代理邏輯，果斷移除它們。
+
+掌握了這些技巧，你將擁有更快的反應速度與更精確的對話脈絡。在下一篇文章中，我將探討「Orchestrator 模式」——如何透過一個中控代理來動態調度這些輕量代理，進一步優化複雜專案的開發成本。
