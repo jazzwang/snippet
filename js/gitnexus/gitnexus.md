@@ -481,3 +481,39 @@ $ npx gitnexus list
     Clusters:   745
     Processes:  1279
 ```
+
+> [!QUESTION]
+> gitnexus 的 PDG 是什麼
+
+在 [GitNexus](https://github.com/abhigyanpatwari/GitNexus) 中，PDG 指的是 程式相依圖（Program Dependence Graph）。 [1]
+
+這是一種用來表示程式碼內部控制流（Control Dependence）與資料流（Data Dependence）關係的圖形結構。在 GitNexus 的使用情境中，PDG 的核心作用與功能如下：
+
+## 1. 提供深度的代碼關係分析
+
+GitNexus 本身是一個將程式碼庫轉換為知識圖譜的工具。當你在建立索引時加上 --pdg 參數，GitNexus 就會深入分析函數與變數之間的調用、傳遞關係： [1, 2, 3]
+
+* 資料流（Data Flow）：追蹤某個變數或資料從哪裡輸入、經過哪些計算、最後從哪裡輸出。
+* 控制流（Control Flow）：分析程式碼執行的先後順序與條件判定。 [1]
+
+## 2. 核心應用場景
+開啟 PDG 功能後，主要會用在以下兩個 GitNexus 的內建命令： [1]
+
+* `explain`：用來向開發者或 AI 解釋某段複雜程式碼的具體執行邏輯。
+* `pdg_query`：讓開發者可以精準查詢特定的業務鏈路或跨檔案的調用關係。
+
+## 3. 與常規代碼圖譜的差別
+
+GitNexus 預設的知識圖譜主要處理的是巨觀的結構關係（如：哪個類別繼承了誰、A 函數調用了 B 函數）。而 PDG 則是微觀的代碼分析，它會去看函數內部的邏輯。 [1, 4]
+
+## 💡 開發實務建議
+
+雖然 PDG 分析非常精準，但它會顯著增加索引（Index）的時間與記憶體消耗。一般日常開發、重構或單純透過 [MCP 協定](https://modelcontextprotocol.io/) 提供上下文給 AI Agent（如 Claude Code、Cursor）時，通常不需要開啟 --pdg。除非你需要進行非常嚴格的業務鏈路追蹤或安全審計，才建議加上此參數。 [1, 5]
+
+您目前是在配置 GitNexus 的環境，還是正在嘗試解決特定程式碼的影響範圍分析（Blast Radius）呢？如果需要，我可以為您提供 GitNexus CLI 常見命令的配置範例。
+
+[1] [https://mcp.csdn.net](https://mcp.csdn.net/6a7541bc99d9213aaa7e3121.html)
+[2] [https://termdock.com](https://termdock.com/zh/blog/gitnexus-code-intelligence-knowledge-graph)
+[3] [https://www.bydfi.com](https://www.bydfi.com/zh/crypto-news/gitnexus-102020)
+[4] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/articles/10399650)
+[5] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/2034594927980581273)
