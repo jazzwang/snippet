@@ -190,3 +190,8 @@ curl -s http://localhost:11434/api/tags
 ```bash
 ~$ uv tool install repowiki[dev,web]
 ```
+- 成功，找得到指令
+```bash
+~$ which repowiki
+/c/Users/jazzw/scoop/persist/uv/tools/shims/repowiki
+```
