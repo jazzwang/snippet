@@ -827,3 +827,183 @@ OPENCODE_MODEL=qwen2.5-coder-7b
 ```
 
 ![](llama-cpp-web-ui.png)
+
+## 2026-09-15
+
+- Google Search - AI Mode
+
+> [!QUESTION]
+> how to make llama-server router mode follow different ctx-size?
+
+To make llama-server router mode follow different context sizes (ctx-size) for different models, you must use a configuration preset file (.ini). [1, 2]
+
+By default, launching llama-server with dynamic model loading causes child processes to inherit global router settings or fallback values. Using a configuration file allows you to map unique context sizes and GPU layers per model block. [2, 3, 4]
+
+### 1. Create a Configuration File (models.ini)
+
+Create a file named models.ini (or config.ini). Use the [*] section to define your global defaults, and then create individual blocks for each model where you override the ctx-size. [3, 5, 6]
+
+```ini
+## Global settings for all models
+[*]
+threads = 8
+flash-attn = true
+
+## Model 1: Small context profile
+[llama-3-8b]
+model = /path/to/models/Meta-Llama-3-8B-Instruct.Q4_K_M.gguf
+ctx-size = 8192
+ngl = 99
+
+## Model 2: Massive context profile
+[qwen-2.5-7b-long]
+model = /path/to/models/Qwen2.5-7B-Instruct-1M.Q4_K_M.gguf
+ctx-size = 65536
+ngl = 48
+```
+(Note: Ensure the block name like [llama-3-8b] matches what you intend to pass in the model parameter of your OpenAI-compatible API request). [2, 5]
+
+### 2. Launch the Router Server
+
+When starting llama-server, omit a direct model path and instead point the server to your configuration preset using the --models-preset flag: [3, 7]
+```bash
+llama-server --host 127.0.0.1 --port 8080 --models-preset models.ini --models-max 2
+```
+
+* --models-preset: Loads your custom .ini map.
+* --models-max: Specifies how many of these models can be held concurrently in memory before the router triggers Least Recently Used (LRU) eviction. [2, 3]
+
+### ⚠️ Important Caveats & Known Edge Cases
+
+* Process Fallback Constraints: Depending on your specific version of llama.cpp, the router may handle architectural shifts by launching distinct sub-processes. If you have severe hardware memory overrides (e.g., trying to swap between an 8K context and a 128K context on a tightly budgeted VRAM setup), the child process allocation can occasionally trigger out-of-memory (OOM) bugs if --models-max allows too many heavy context graphs to sit in memory concurrently. Keep --models-max 1 if you have limited VRAM. [2, 3, 4, 8]
+* The --parallel Divisor: Keep in mind that llama-server divides the ctx-size by your parallel sequence count (-np or --parallel). If your global block or a specific model block sets --parallel 4, a ctx-size = 32768 allocates roughly 8,192 tokens per slot. Balance your ctx-size configuration with the expected slots per model block. [7, 9]
+
+To help optimize your configuration further, could you share:
+
+* The exact names and context sizes of the models you are swapping between?
+* The total VRAM/RAM available on your host system?
+
+This will ensure your preset flags don't trigger unexpected Out Of Memory crashes.
+
+[1] [https://soypetetech.substack.com](https://soypetetech.substack.com/p/from-one-model-to-many-hosting-multiple)
+[2] [https://huggingface.co](https://huggingface.co/blog/ggml-org/model-management-in-llamacpp)
+[3] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1sb3ecw/switching_models_locally_with_llamaserver_and_the/)
+[4] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/20851)
+[5] [https://www.youtube.com](https://www.youtube.com/watch?v=V2t_YRsyqeI&t=81)
+[6] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1ve851t/quick_tip_how_to_launch_llamacpp_router_mode_with/)
+[7] [https://llama.app](https://llama.app/docs/serve)
+[8] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/23704)
+[9] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/11681)
+
+> [!QUESTION]
+> 改以中文回答
+
+若要讓 llama-server 的路由模式（Router Mode） 針對不同模型採用不同的上下文大小（ctx-size），你必須使用 配置預設檔案（.ini）。
+
+在預設情況下，啟動 llama-server 的動態模型載入功能時，子程序會直接繼承全域的路由器設定。透過配置檔案，你就能為各個模型區塊獨立指定獨特的上下文大小和 GPU 載入層數（ngl）。
+
+### 1. 建立配置文件（models.ini）
+
+建立一個名為 models.ini（或 config.ini）的檔案。使用 [*] 區塊來定義全域的預設值，接著針對各個模型建立專屬區塊，並在裡面覆寫 ctx-size。
+
+```ini
+## 所有模型的全域設定
+[*]
+threads = 8
+flash-attn = true
+
+## 模型 1：較小上下文的設定檔
+[llama-3-8b]
+model = /path/to/models/Meta-Llama-3-8B-Instruct.Q4_K_M.gguf
+ctx-size = 8192
+ngl = 99
+
+## 模型 2：超大上下文的設定檔
+[qwen-2.5-7b-long]
+model = /path/to/models/Qwen2.5-7B-Instruct-1M.Q4_K_M.gguf
+ctx-size = 65536
+ngl = 48
+```
+
+（注意：區塊名稱如 [llama-3-8b] 必須與你之後在 OpenAI 相容 API 請求中傳入的 model 參數完全一致）。
+
+### 2. 啟動路由伺服器
+
+啟動 llama-server 時，請不要直接指定模型路徑，而是使用 --models-preset 參數指向你的配置文件：
+
+```bash
+llama-server --host 127.0.0.1 --port 8080 --models-preset models.ini --models-max 2
+```
+
+* --models-preset：載入你自訂的 .ini 映射檔。
+* --models-max：指定記憶體中最多可以同時常駐幾個模型。當超過此數量時，路由器會自動觸發 LRU（最近最少使用）淘汰機制釋放記憶體。
+
+### ⚠️ 重要注意事項與常見限制
+
+* VRAM 與 OOM 風險： 如果你在記憶體有限的環境中，頻繁切換 8K 上下文與 128K 上下文的模型，大型的上下文圖形（Context Graph）可能會在記憶體中堆疊。若 VRAM 較為吃緊，建議將 --models-max 設為 1，確保每次切換模型時都會完全釋放前一個模型的記憶體。
+* 平行處理的分配（--parallel）： 請記得 llama-server 會將 ctx-size 除以你的平行序列數（-np 或 --parallel）。例如，若某一模型區塊設定 --parallel 4 且 ctx-size = 32768，則每個連線槽（Slot）實際分配到的上限約為 8,192 token。設定時請務必將平行連線數納入考量。
+
+為了幫你更精準地優化設定，請告訴我：
+
+* 你預計切換的模型名稱與各自目標的 Context Size 分別是多少？
+* 你的主機目前擁有的 總 VRAM / RAM 容量？
+
+這樣我可以幫你評估是否會觸發記憶體不足（OOM）的崩潰問題。
+
+> [!QUESTION]
+> 可以再哪裡查到 models.ini 或 models.json 的語法定義?
+
+關於 llama-server 的路由模式預設設定檔（目前官方主要採用 .ini 格式，而非 .json），其語法與參數定義可以從以下三個官方管道查閱： [1, 2]
+
+### 1. 官方文檔路徑
+
+* 基本預設檔介紹：在 [llama.cpp 官方倉庫的 docs/preset.md](https://github.com/ggml-org/llama.cpp/blob/master/docs/preset.md)，裡面記錄了關於 INI Presets 的功能沿革與全域配置邏輯。 [3, 4]
+* 伺服器路由模式文檔：在 [llama.cpp 的 tools/server/README.md](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md) 的 "Model presets" 專欄，有明確提到路由器的運作方式與配置範例。 [5, 6]
+
+### 2. 語法轉換的核心規則
+
+官方表示，為了維持簡單與直覺性，.ini 檔案內的欄位名稱就是直接對應 llama-server 命令列參數（CLI Flags）去掉開頭的破折號（--）。 [5]
+
+* 參數名對映：例如命令列中的 --ctx-size 8192 寫成 ctx-size = 8192 或縮寫 c = 8192；--n-gpu-layers 35 寫成 n-gpu-layers = 35 或 ngl = 35。
+* 環境變數對映：支援使用環境變數的格式（如 LLAMA_ARG_N_GPU_LAYERS = 35）作為 Key。
+* 註解語法：支援以分號 ; 或井字號 # 作為註解開頭。 [5, 7]
+
+如果你想查詢所有可以填入 .ini 的參數，直接在終端機輸入 llama-server --help，裡面列出的所有推論引數都可以去掉 -- 後寫進該檔案中。 [5, 8]
+
+### 3. 最準確的源碼定義
+
+由於 llama.cpp 發展非常迅速，若要查看最底層、完全沒有時間差的參數解析邏輯，可以去翻閱原始碼：
+
+* 處理核心引數的 ggml-org/llama.cpp 的 common/arg.cpp 原始碼（負責解析 CLI 參數與 INI 預設值）。
+* 伺服器端路由與加載的 tools/server/server.cpp，裡面能看到伺服器專屬的控制參數。 [7, 9]
+
+### 💡 路由器專屬隱藏參數
+
+除了常見的推論參數外，在 models.ini 的個別模型區塊中，你還可以設定以下幾個官方為路由模式設計的專屬引數：
+```ini
+[my-heavy-model]
+model = /path/to/model.gguf
+ctx-size = 32768
+
+## 路由器專屬參數：
+load-on-startup = true    ; 伺服器啟動時是否直接將此模型加載至記憶體（預設為 false，有請求才載入）
+stop-timeout = 300        ; 閒置多少秒後自動從記憶體釋放/卸載該模型（預設為 0 代表永不釋放）
+default-model = true      ; 若客戶端 API 請求沒有指定 model 欄位時，是否預設路由到此模型
+```
+如果你的專案強制需要 JSON 格式來管理模型，通常需要透過外部包裝（例如建立一個 Python 腳本讀取 models.json 並自動生成對應的 models.ini 供 llama-server 讀取）。
+
+請問你需要這類自動轉換的 腳本工具 或是 設定檔範本 嗎？
+
+[1] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/22364)
+[2] [https://www.glukhov.org](https://www.glukhov.org/llm-hosting/llama-cpp/llama-server-router-mode/)
+[3] [https://github.com](https://github.com/ggml-org/llama.cpp/blob/master/docs/preset.md)
+[4] [https://huggingface.co](https://huggingface.co/Maoweicao/my-bu-30b-a3b-gguf-q4km/blob/main/llama.cpp/docs/preset.md)
+[5] [https://fossies.org](https://fossies.org/linux/llama.cpp/tools/server/README.md)
+[6] [https://medium.com](https://medium.com/coding-nexus/llama-cpp-server-gets-router-mode-switch-models-on-the-fly-without-restarting-d3a159dd567a)
+[7] [https://github.com](https://github.com/ggml-org/llama.cpp/discussions/23487)
+[8] [https://manpages.debian.org](https://manpages.debian.org/unstable/llama.cpp-tools/llama-server.1.en.html)
+[9] [https://github.com](https://github.com/ggml-org/llama.cpp/pull/19855)
+
+> [!TIP]
+> 自己查的結果
+> https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md#model-presets
