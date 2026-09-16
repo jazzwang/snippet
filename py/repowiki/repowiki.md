@@ -195,3 +195,77 @@ curl -s http://localhost:11434/api/tags
 ~$ which repowiki
 /c/Users/jazzw/scoop/persist/uv/tools/shims/repowiki
 ```
+
+## 2026-09-17
+
+> [!QUESTION]
+> repowiki 可以跟 llama.cpp 整合嗎
+
+可以，[he-yufeng/RepoWiki](https://github.com/he-yufeng/RepoWiki) 完全可以跟 llama.cpp 整合。 [1]
+
+因為 he-yufeng/RepoWiki 底層呼叫大語言模型（LLM）的通訊庫是 LiteLLM，而 LiteLLM 原生支援任何相容 OpenAI API 格式的自訂端點。llama.cpp 內建的 llama-server 工具正好能提供標準的 OpenAI 相容介面。 [1, 2]
+
+以下為您說明如何完成整合設定：
+
+## 步驟 1：啟動 llama.cpp API 伺服器
+
+   1. 下載您想用來分析程式碼的模型（如：qwen2.5-coder-7b-instruct-q4_k_m.gguf）。
+   2. 使用 llama-server 啟動 API 服務。請務必使用 -c 參數加大上下文視窗（建議至少 32k），因為代碼庫分析需要同時吞吐大量的程式碼片段：
+   ```bash
+   ./llama-server -m qwen2.5-coder-7b-instruct-q4_k_m.gguf -c 32768 --port 8080
+   ```
+
+## 步驟 2：配置 RepoWiki 對接 llama.cpp
+
+您可以透過項目支援的 repo-wiki.yaml 檔案，或是直接設定「環境變數」來將 RepoWiki 指向您的 llama.cpp 本地端點： [3]
+
+## 方法 A：使用環境變數（最快）
+
+在執行 repowiki 指令前，在終端機（Terminal）中輸入以下變數：
+
+```bash
+export LLM_API_BASE="http://localhost:8080/v1"
+export LLM_MODEL="openai/custom-model" # 這裡前面一定要加 openai/ 來觸發 LiteLLM 的 OpenAI 格式解析
+export REPO_WIKI_LLM_API_KEY="llama.cpp" # llama.cpp 不需要 Key，但必須填入任意字串以通過程式檢查
+```
+
+## 方法 B：使用專案設定檔 repo-wiki.yaml
+
+在您要分析的程式碼庫根目錄下建立一個 repo-wiki.yaml，內容配置如下： [3]
+
+```
+project:
+  name: my_projectllm:
+  provider: openai
+  model: custom-model
+  base_url: http://localhost:8080/v1
+  api_key_env: REPO_WIKI_LLM_API_KEY
+```
+
+然後同樣在終端機中隨便設定一個假的 Key 即可： [3]
+
+```bash
+export REPO_WIKI_LLM_API_KEY="local-bypass"
+```
+
+## 步驟 3：開始執行分析
+
+設定完成後，在代碼庫根目錄執行以下指令，RepoWiki 就會將代碼脈絡源源不斷地送給您本地的 llama.cpp 進行分析與文件生成： [1]
+
+```bash
+repowiki scan .
+```
+
+## ⚠️ 本地 llama.cpp 運行的兩點關鍵提醒：
+
+   1. Context Window（上下文長度）：RepoWiki 在掃描專案模組時，會把檔案關聯性與程式碼架構打包送出。如果 llama-server 啟動時的 -c 參數開得不夠大（例如預設可能只有 2048 或 4096），模型在接收長代碼時會遺忘前半段，導致生成的 Markdown 結構破損。
+   2. 硬體與模型搭配：本地代碼分析極度推薦 Qwen 2.5 Coder 系列，對邏輯與 Mermaid 流程圖的支援最佳。7B 模型大約需要 6GB 到 8GB 的 VRAM，請確保您的顯示卡規格足以完整將模型加載入 VRAM（完全 GPU 加速），否則純靠 CPU 跑程式碼庫分析，速度會非常緩慢。
+
+為了給您更具體的硬體優化建議，方便透露：
+
+* 您的顯示卡型號與 VRAM 大小（例如：RTX 4060 8GB / Mac M3 16GB）？
+* 目前打算用 llama.cpp 跑哪一個特定的 GGUF 模型（例如 Qwen-2.5-Coder、DeepSeek）？
+
+[1] [https://github.com](https://github.com/he-yufeng/RepoWiki)
+[2] [https://www.linkedin.com](https://www.linkedin.com/posts/thenextgentechinsider_opencode-llmwiki-localllm-activity-7453761285952856064-cNy2)
+[3] [https://github.com](https://github.com/bingooyong/repo-wiki-agent)
