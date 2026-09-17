@@ -1007,3 +1007,172 @@ default-model = true      ; 若客戶端 API 請求沒有指定 model 欄位時�
 > [!TIP]
 > 自己查的結果
 > https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md#model-presets
+
+## 2026-09-17
+
+- 根據[文件](https://github.com/ggml-org/llama.cpp/blob/master/docs/preset.md)跟 https://github.com/ggml-org/llama.cpp/pull/17859 的說明，其實可以混用 `--models-dir` 跟 `--models-preset`
+```
+llama-server --models-dir ./local-models --models-preset ./custom-configs.ini -ngl 999 -fa
+```
+- 目標：調整不同模型的 context size (`ctx-size`)
+- 實驗：
+```bash
+~$ cat ~/.models/preset.ini
+## 所有模型的全域設定
+[*]
+threads = 1
+flash-attn = true
+jinja = true
+models-autoload = false
+
+## 模型 1：較小上下文的設定檔
+[Qwen3.5-9B:Q4_K_M]
+model = Qwen3.5-9B.Q4_K_M.gguf
+ctx-size = 262144
+ngl = 99
+
+## 模型 2：超大上下文的設定檔
+[Qwythos-9B-v2:Q4_K_M]
+model = Qwythos-9B-v2-MTP-Q4_K_M.gguf
+ctx-size = 1048576
+ngl = 99
+
+~$ llama-server --models-dir ~/.models --models-preset ~/.models/preset.ini | tee local-llm.log
+```
+- 結果：
+  - Pi Agent 有看到新的名稱，但因為不能使用相對路徑，無法載入
+```text
+[56990] 0.02.432.807 E gguf_init_from_file: failed to open GGUF file 'Qwen3.5-9B.Q4_K_M.gguf' (No such file or directory)
+[56990] 0.02.456.892 E llama_model_load: error loading model: llama_model_loader: failed to load model from Qwen3.5-9B.Q4_K_M.gguf
+[56990] 0.02.456.904 E llama_model_load_from_file_impl: failed to load model
+```
+- 修正一：
+  - 參考先前單純跑 `llama-server --models-dir ~/.models` 的 log，改 `preset.ini` 用絕對路徑
+  - 然後不要混用 `--models-dir ~/.models` ，只單用 `--models-preset ~/.models/preset.ini`
+- 結果一：
+  - 還是失敗，無法 allocate 足夠的記憶體
+```bash
+~$ cat ~/.models/preset.ini
+## 所有模型的全域設定
+[*]
+threads = 1
+flash-attn = true
+jinja = true
+models-autoload = false
+
+## 模型 1：較小上下文的設定檔
+[Qwen3.5-9B:Q4_K_M]
+model = C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+ctx-size = 262144
+ngl = 99
+
+## 模型 2：超大上下文的設定檔
+[Qwythos-9B-v2:Q4_K_M]
+model = C:/Users/jazzw/.models/Qwythos-9B-v2-MTP-Q4_K_M.gguf
+ctx-size = 1048576
+ngl = 99
+~$ llama-server --models-preset ~/.models/preset.ini | tee -a local-llm.log
+0.02.191.944 I log_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.02.192.023 I system_info: n_threads = 8 (n_threads_batch = 8) / 16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |
+0.02.192.034 I srv  llama_server: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true
+0.02.192.115 I srv          init: running without SSL
+0.02.192.177 I srv          init: using 15 threads for HTTP server
+0.02.197.282 I srv   load_models: Loaded 0 cached model presets
+0.02.198.096 I srv   load_models: Loaded 2 custom model presets from C:/Users/jazzw/.models/preset.ini
+0.02.198.250 I srv    operator(): Available models (2) (*: custom preset)
+0.02.198.263 I srv    operator():   * Qwen3.5-9B:Q4_K_M
+0.02.198.264 I srv    operator():   * Qwythos-9B-v2:Q4_K_M
+0.02.198.541 I srv  llama_server: starting router server, no model will be loaded in this process
+0.02.198.543 I srv         start: binding port with default address family
+0.02.209.904 I srv  llama_server: router server is listening on http://127.0.0.1:8080
+0.02.209.911 W srv  llama_server: NOTE: router mode is experimental
+0.02.209.912 W srv  llama_server:       it is not recommended to use this mode in untrusted environments
+0.14.484.767 I srv          load: spawning server instance with name=Qwen3.5-9B:Q4_K_M on port 63365
+0.14.484.824 I srv          load: spawning server instance with args:
+0.14.484.825 I srv          load:   C:\Users\jazzw\AppData\Local\Microsoft\WinGet\Packages\ggml.llamacpp_Microsoft.Winget.Source_8wekyb3d8bbwe\llama-server.exe
+0.14.484.826 I srv          load:   --host
+0.14.484.827 I srv          load:   127.0.0.1
+0.14.484.827 I srv          load:   --jinja
+0.14.484.828 I srv          load:   --port
+0.14.484.829 I srv          load:   63365
+0.14.484.830 I srv          load:   --alias
+0.14.484.830 I srv          load:   Qwen3.5-9B:Q4_K_M
+0.14.484.831 I srv          load:   --ctx-size
+0.14.484.832 I srv          load:   262144
+0.14.484.832 I srv          load:   --flash-attn
+0.14.484.833 I srv          load:   true
+0.14.484.834 I srv          load:   --model
+0.14.484.834 I srv          load:   C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+0.14.484.835 I srv          load:   --n-gpu-layers
+0.14.484.835 I srv          load:   99
+0.14.484.836 I srv          load:   --threads
+0.14.484.836 I srv          load:   1
+[63365] 0.02.014.639 I log_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+[63365] 0.02.014.648 I device_info:
+[63365] 0.02.018.494 I   - Vulkan0 : AMD Radeon(TM) Graphics (16253 MiB, 15440 MiB free)
+[63365] 0.02.022.153 I   - Vulkan1 : NVIDIA GeForce RTX 4060 Laptop GPU (7956 MiB, 7188 MiB free)
+[63365] 0.02.022.165 I   - CPU     : AMD Ryzen 7 7735HS with Radeon Graphics         (31994 MiB, 16660 MiB free)
+[63365] 0.02.022.228 I system_info: n_threads = 1 (n_threads_batch = 1) / 16 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 |
+[63365] 0.02.022.238 I srv  llama_server: n_parallel is set to auto, using n_parallel = 4 and kv_unified = true
+[63365] 0.02.022.288 I srv          init: running without SSL
+[63365] 0.02.022.318 I srv          init: using 15 threads for HTTP server
+[63365] 0.02.022.461 I srv         start: binding port with default address family
+[63365] 0.02.025.501 I srv  llama_server: loading model
+[63365] 0.02.025.518 I srv    load_model: loading model 'C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf'
+[63365] 0.02.025.607 I common_init_result: fitting params to device memory ...
+[63365] 0.02.025.609 I common_init_result: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)
+[63365] 0.04.476.806 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort
+[63365] ggml_vulkan: Device memory allocation of size 1073741824 failed.
+[63365] ggml_vulkan: vk::Device::allocateMemory: ErrorOutOfDeviceMemory
+[63365] 0.10.096.280 E alloc_tensor_range: failed to allocate Vulkan1 buffer of size 1073741824
+[63365] 0.10.177.921 E llama_init_from_model: failed to initialize the context: failed to allocate buffer for kv cache
+[63365] 0.10.177.929 E common_init_result: failed to create context with model 'C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf'
+[63365] 0.10.177.934 E common_init_from_params: failed to create context with model 'C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf'
+```
+- 算一下數學： 記憶體 1073741824 / 上下文 262144 = 4096 (4K) 應該是因為 Q4 量化的關係（？）
+```
+~$ python3
+Python 3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 1073741824/262144
+4096.0
+```
+- 修正二：拿掉 `-ngl 99` 再跑一次
+- 結果二：成功！！兩個模型都照設定的 `ctx-size` 正常載入。
+```bash
+~$ cat ~/.models/preset.ini
+## 所有模型的全域設定
+[*]
+threads = 1
+flash-attn = true
+jinja = true
+models-autoload = false
+
+## 模型 1：較小上下文的設定檔
+[Qwen3.5-9B:Q4_K_M]
+model = C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+ctx-size = 262144
+
+## 模型 2：超大上下文的設定檔
+[Qwythos-9B-v2:Q4_K_M]
+model = C:/Users/jazzw/.models/Qwythos-9B-v2-MTP-Q4_K_M.gguf
+ctx-size = 1048576
+~$
+~$ llama-server --models-preset ~/.models/preset.ini | tee -a local-llm.log
+```
+```bash
+ Loaded Qwythos-9B-v2:Q4_K_M
+
+────────────────────────────────────────────────────────────────────────────
+ llama.cpp models
+ http://127.0.0.1:8080
+
+→ Qwythos-9B-v2:Q4_K_M                loaded · 1049k context
+  Qwen3.5-9B:Q4_K_M
+  Download model…                     Hugging Face owner/repository[:quant]
+
+ enter load/unload/download • escape/ctrl+c close
+```
+- 感想：
+  - 近期覺得一些額外 fine-tune 的模型，能力其實已經不差。寫文件、生 HTML 大約都落在 10~30 token/second 的範圍。
+  - 從這些小實驗的體感來說，`llama.cpp` 新的 `-fit on` 參數，感覺做了不少事情，會幫忙計算怎麼把 weight layer 跟真實有的 GPU 記憶體空間做一個權衡。很厲害～
