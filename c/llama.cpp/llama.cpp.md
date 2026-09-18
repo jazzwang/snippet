@@ -11,7 +11,7 @@
   - 根據 https://github.com/ggml-org/llama.cpp/blob/master/docs/install.md
   - Windows 機器可以用以下指令安裝
 ```bash
-$ winget install llama.cpp
+~$ winget install llama.cpp
 Found llama.cpp [ggml.llamacpp] Version b9159
 This application is licensed to you by its owner.
 Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
@@ -499,12 +499,11 @@ llama serve -hf unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS
 
 #### 2\. llama.cpp：單卡戰神、長 Context 與資源受限最佳解
 
--   核心優勢：記憶體管理極其精細，支援 GGUF 格式。在 24GB 顯卡（如 RTX 4090）上，它是唯一能讓你舒服跑起 Qwen 3.8 27B 的解法。 [1, 2]
--   最佳化作法：
-
-        -   模型選擇：下載 Q4\_K\_M（約 15-17GB，保留空間給 KV Cache）或 Q5\_K\_M。
-        -   Context 密技：llama.cpp 支援 Flash Attention 與更好的 KV Cache 量化（如轉為 `q8_0` 或 `q4_0` 的 KV Cache），可以在有限顯存下壓榨出 1.5 倍的長度。
-        -   情境限制：雖然也能開啟 MTP，但提升僅約 20%（遠輸 vLLM），且多人高並發吞吐量較差。 [2, 3, 4, 6]
+- 核心優勢：記憶體管理極其精細，支援 GGUF 格式。在 24GB 顯卡（如 RTX 4090）上，它是唯一能讓你舒服跑起 Qwen 3.8 27B 的解法。 [1, 2]
+- 最佳化作法：
+  - 模型選擇：下載 Q4_K_M（約 15-17GB，保留空間給 KV Cache）或 Q5_K_M。
+  - Context 密技：llama.cpp 支援 Flash Attention 與更好的 KV Cache 量化（如轉為 `q8_0` 或 `q4_0` 的 KV Cache），可以在有限顯存下壓榨出 1.5 倍的長度。
+  - 情境限制：雖然也能開啟 MTP，但提升僅約 20%（遠輸 vLLM），且多人高並發吞吐量較差。 [2, 3, 4, 6]
 
 #### 3\. llamafile：極簡單一檔案部署，非效能極致流
 
@@ -708,7 +707,7 @@ OpenCode 通常支援自訂 OpenAI 相容端點（OpenAI-Compatible Endpoint） 
 如果在 OpenCode 的設定（Settings）或模型提供者（Provider）選單中：
 
 1.  Provider / 平台：選擇 OpenAI 增強/相容模式（OpenAI-Compatible / Custom）。
-2.  Base URL / API 網址：填入 `http://127.0.0`（注意尾端需加上 `/v1`）。
+2.  Base URL / API 網址：填入 `http://127.0.0.1:8080/v1`（注意尾端需加上 `/v1`）。
 3.  API Key / 金鑰：因為是本地端，若 `llama-server` 沒特別設密碼，通常填入任意字串（例如 `local-secret` 或 `ollama`）即可。
 4.  Model Name / 模型名稱：填入你自訂的名稱，或與你的 GGUF 檔名一致（例如 `qwen2.5-coder-7b`）。
 
@@ -718,7 +717,7 @@ OpenCode 通常支援自訂 OpenAI 相容端點（OpenAI-Compatible Endpoint） 
 
 ```bash
 OPENCODE_API_KEY=local-secret
-OPENCODE_BASE_URL=http://127.0.0
+OPENCODE_BASE_URL=http://127.0.0.1:8080/v1
 OPENCODE_MODEL=qwen2.5-coder-7b
 ```
 
@@ -787,19 +786,19 @@ OPENCODE_MODEL=qwen2.5-coder-7b
 
     -   Linux / macOS:
         ```bash
-        export LLAMA_BASE_URL="http://127.0.0"
+        export LLAMA_BASE_URL="http://127.0.0.1:8080/v1"
         pi
         ```
 
     -   Windows (Command Prompt / CMD):
         ```cmd
-        set LLAMA_BASE_URL=http://127.0.0
+        set LLAMA_BASE_URL=http://127.0.0.1:8080/v1
         pi
         ```
 
     -   Windows (PowerShell):
         ```powershell
-        $env:LLAMA_BASE_URL="http://127.0.0"
+        $env:LLAMA_BASE_URL="http://127.0.0.1:8080/v1"
         pi
         ```
 
@@ -875,8 +874,8 @@ llama-server --host 127.0.0.1 --port 8080 --models-preset models.ini --models-ma
 
 ### ⚠️ Important Caveats & Known Edge Cases
 
-* Process Fallback Constraints: Depending on your specific version of llama.cpp, the router may handle architectural shifts by launching distinct sub-processes. If you have severe hardware memory overrides (e.g., trying to swap between an 8K context and a 128K context on a tightly budgeted VRAM setup), the child process allocation can occasionally trigger out-of-memory (OOM) bugs if --models-max allows too many heavy context graphs to sit in memory concurrently. Keep --models-max 1 if you have limited VRAM. [2, 3, 4, 8]
-* The --parallel Divisor: Keep in mind that llama-server divides the ctx-size by your parallel sequence count (-np or --parallel). If your global block or a specific model block sets --parallel 4, a ctx-size = 32768 allocates roughly 8,192 tokens per slot. Balance your ctx-size configuration with the expected slots per model block. [7, 9]
+* Process Fallback Constraints: Depending on your specific version of llama.cpp, the router may handle architectural shifts by launching distinct sub-processes. If you have severe hardware memory overrides (e.g., trying to swap between an 8K context and a 128K context on a tightly budgeted VRAM setup), the child process allocation can occasionally trigger out-of-memory (OOM) bugs if `--models-max` allows too many heavy context graphs to sit in memory concurrently. Keep `--models-max 1` if you have limited VRAM. [2, 3, 4, 8]
+* The `--parallel` Divisor: Keep in mind that llama-server divides the ctx-size by your parallel sequence count (`-np` or `--parallel`). If your global block or a specific model block sets `--parallel 4`, a ctx-size = 32768 allocates roughly 8,192 tokens per slot. Balance your ctx-size configuration with the expected slots per model block. [7, 9]
 
 To help optimize your configuration further, could you share:
 
@@ -935,13 +934,13 @@ ngl = 48
 llama-server --host 127.0.0.1 --port 8080 --models-preset models.ini --models-max 2
 ```
 
-* --models-preset：載入你自訂的 .ini 映射檔。
-* --models-max：指定記憶體中最多可以同時常駐幾個模型。當超過此數量時，路由器會自動觸發 LRU（最近最少使用）淘汰機制釋放記憶體。
+* `--models-preset`：載入你自訂的 .ini 映射檔。
+* `--models-max`：指定記憶體中最多可以同時常駐幾個模型。當超過此數量時，路由器會自動觸發 LRU（最近最少使用）淘汰機制釋放記憶體。
 
 ### ⚠️ 重要注意事項與常見限制
 
-* VRAM 與 OOM 風險： 如果你在記憶體有限的環境中，頻繁切換 8K 上下文與 128K 上下文的模型，大型的上下文圖形（Context Graph）可能會在記憶體中堆疊。若 VRAM 較為吃緊，建議將 --models-max 設為 1，確保每次切換模型時都會完全釋放前一個模型的記憶體。
-* 平行處理的分配（--parallel）： 請記得 llama-server 會將 ctx-size 除以你的平行序列數（-np 或 --parallel）。例如，若某一模型區塊設定 --parallel 4 且 ctx-size = 32768，則每個連線槽（Slot）實際分配到的上限約為 8,192 token。設定時請務必將平行連線數納入考量。
+* VRAM 與 OOM 風險： 如果你在記憶體有限的環境中，頻繁切換 8K 上下文與 128K 上下文的模型，大型的上下文圖形（Context Graph）可能會在記憶體中堆疊。若 VRAM 較為吃緊，建議將 `--models-max` 設為 1，確保每次切換模型時都會完全釋放前一個模型的記憶體。
+* 平行處理的分配（`--parallel`）： 請記得 llama-server 會將 ctx-size 除以你的平行序列數（`-np` 或 `--parallel`）。例如，若某一模型區塊設定 `--parallel 4` 且 `ctx-size = 32768`，則每個連線槽（Slot）實際分配到的上限約為 8,192 token。設定時請務必將平行連線數納入考量。
 
 為了幫你更精準地優化設定，請告訴我：
 
@@ -953,7 +952,7 @@ llama-server --host 127.0.0.1 --port 8080 --models-preset models.ini --models-ma
 > [!QUESTION]
 > 可以再哪裡查到 models.ini 或 models.json 的語法定義?
 
-關於 llama-server 的路由模式預設設定檔（目前官方主要採用 .ini 格式，而非 .json），其語法與參數定義可以從以下三個官方管道查閱： [1, 2]
+關於 llama-server 的路由模式預設設定檔（目前官方主要採用 `.ini` 格式，而非 .json），其語法與參數定義可以從以下三個官方管道查閱： [1, 2]
 
 ### 1. 官方文檔路徑
 
@@ -964,11 +963,11 @@ llama-server --host 127.0.0.1 --port 8080 --models-preset models.ini --models-ma
 
 官方表示，為了維持簡單與直覺性，.ini 檔案內的欄位名稱就是直接對應 llama-server 命令列參數（CLI Flags）去掉開頭的破折號（--）。 [5]
 
-* 參數名對映：例如命令列中的 --ctx-size 8192 寫成 ctx-size = 8192 或縮寫 c = 8192；--n-gpu-layers 35 寫成 n-gpu-layers = 35 或 ngl = 35。
-* 環境變數對映：支援使用環境變數的格式（如 LLAMA_ARG_N_GPU_LAYERS = 35）作為 Key。
+* 參數名對映：例如命令列中的 `--ctx-size 8192` 寫成 `ctx-size = 8192` 或縮寫 `c = 8192`；`--n-gpu-layers 35` 寫成 `n-gpu-layers = 35` 或 `ngl = 35`。
+* 環境變數對映：支援使用環境變數的格式（如 `LLAMA_ARG_N_GPU_LAYERS = 35`）作為 Key。
 * 註解語法：支援以分號 ; 或井字號 # 作為註解開頭。 [5, 7]
 
-如果你想查詢所有可以填入 .ini 的參數，直接在終端機輸入 llama-server --help，裡面列出的所有推論引數都可以去掉 -- 後寫進該檔案中。 [5, 8]
+如果你想查詢所有可以填入 `.ini` 的參數，直接在終端機輸入 llama-server --help，裡面列出的所有推論引數都可以去掉 -- 後寫進該檔案中。 [5, 8]
 
 ### 3. 最準確的源碼定義
 
@@ -1176,3 +1175,336 @@ ctx-size = 1048576
 - 感想：
   - 近期覺得一些額外 fine-tune 的模型，能力其實已經不差。寫文件、生 HTML 大約都落在 10~30 token/second 的範圍。
   - 從這些小實驗的體感來說，`llama.cpp` 新的 `-fit on` 參數，感覺做了不少事情，會幫忙計算怎麼把 weight layer 跟真實有的 GPU 記憶體空間做一個權衡。很厲害～
+
+## 2026-09-18
+
+- 觀察：
+  - 雖然昨天順利地把這兩個 local model context window size 放大到跟 training 一樣，但也發現 response 變慢許多（從 17.x token/second 降到 1.x token/second）。
+  - 從 llama.cpp 的 log 注意到每個模型都開了四個 slot，但實際上我也只用一個 slot
+  ```text
+  [59295] 0.50.872.380 W common_speculative_init: no implementations specified for speculative decoding
+  [59295] 0.50.872.389 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 262144
+  [59295] 0.50.872.924 I slot   load_model: id  1 | task -1 | new slot, n_ctx = 262144
+  [59295] 0.50.872.936 I slot   load_model: id  2 | task -1 | new slot, n_ctx = 262144
+  [59295] 0.50.872.937 I slot   load_model: id  3 | task -1 | new slot, n_ctx = 262144
+  [59295] 0.50.875.842 I srv    load_model: prompt cache is enabled, size limit: 8192 MiB
+  ```
+  ```text
+  [63681] 1.59.870.219 I slot get_availabl: id  3 | task -1 | selected slot by LRU, t_last = -1
+  ```
+  ```text
+  [59295] 6.40.050.264 I slot print_timing: id  3 | task 246 | n_decoded =    100, tg =   1.55 t/s
+  [59295] 6.43.636.262 I slot print_timing: id  3 | task 246 | n_decoded =    106, tg =   1.56 t/s
+  ```
+  - 其次，使用時也注意到同時載入兩個模型，這應該也會影響單機推論的效能，所以應該限制一次只保留一個模型。
+  ```
+  [59295] 26.32.330.435 I srv  update_slots: all slots are idle
+  37.41.582.156 I srv    operator(): operator(): cleaning up before exit...
+  37.41.582.197 I srv    unload_all: stopping model instance name=Qwen3.5-9B:Q4_K_M
+  37.41.582.241 I srv    unload_all: stopping model instance name=Qwythos-9B-v2:Q4_K_M
+  37.41.582.265 I srv    operator(): stopping model instance name=Qwen3.5-9B:Q4_K_M
+  37.41.582.275 I srv    operator(): stopping model instance name=Qwythos-9B-v2:Q4_K_M
+  37.44.477.972 I srv    operator(): instance name=Qwen3.5-9B:Q4_K_M exited with status 0
+  37.44.532.148 I srv    operator(): instance name=Qwythos-9B-v2:Q4_K_M exited with status 0
+  ```
+- 研究：
+
+> [!QUESTION]
+> llama.cpp 如果減少每個模型的 slot ? 預設似乎是 4 slots，增加 context window size 是否也因此增加了 VRAM 的需求？
+
+是的，增加 context window size（上下文視窗大小）會直接且顯著地增加 VRAM 的需求。 [1, 2]
+
+在 llama.cpp（特別是 llama-server）中，KV Cache（鍵值快取） 是動態佔用 VRAM 的大戶。它的大小與「Context Window Size」以及「Slots 數量（並發請求數）」成正比。 [2, 3, 4]
+
+### 1. 減少 Slot 數量如何影響 VRAM？
+
+當你啟動 llama-server 時，預設可能會自動配置 4 個 slots（由 -np 或 --parallel 參數控制）以支援多用戶同時對話。 [5, 6]
+
+* 記憶體乘數效應：在傳統的固定分配模式下，總 KV Cache 的 VRAM 開銷是 $Slots \times Context\ Size$。這意味著 4 個 slots 會將你設定的上下文記憶體開銷直接放大 4 倍。 [3]
+* 釋放 VRAM 做法：如果你是單人使用，可以透過加入 -np 1（或配合 -kvu 啟用統一 KV 快取 --kv-unified）將 slot 限制為 1 個。這樣做能大幅砍掉原本預留給其他平行連線的 VRAM 空間。 [3, 7, 8]
+
+### 2. Context Window 與 VRAM 的線性暴漲
+
+當模型處理或生成越長的文字，GPU 就需要存放越多的 KV Cache 資訊。 [2]
+
+* 線性增長：上下文從 4K 提升到 32K 或 128K 時，VRAM 需求會隨之線性暴漲，有時甚至會消耗數 GB 到十幾 GB 的顯存。 [1, 9]
+* 資源重分配：如果你減少了 slots 數量（例如從 4 減到 1），省下來的 VRAM 空間就可以完全讓渡給更大的 context window size，讓單一對話能吃下更長的文件或歷史紀錄。 [3, 10]
+
+### 💡 優化建議對照表
+
+| 目標 | 建議參數設定 | 效果說明 |
+|---|---|---|
+| 極致單人長文本 | -np 1 -c 32768 (依需求調整) | 關閉多餘 slot，將所有 VRAM 留給大上下文。 |
+| 彈性多用戶共享 | -kvu 或 --kv-unified | 開啟統一快取，多個 slot 共享同一個記憶體池，避免資源浪費。 |
+| 進一步壓縮 VRAM | --flash-attn (閃電注意力機制) | 降低長上下文時的 VRAM 峰值開銷。 |
+
+為了幫您精確計算設定值，請問：
+
+* 您目前使用的是哪一張 GPU（VRAM 容量）？
+* 預計要跑的模型名稱與量化版本（例如 Llama-3-8B Q4_K_M）？
+* 您的實際使用情境是單人本地使用還是需要支援多人同時連線？
+
+[1] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1vnpbxy/does_your_llamacpp_backend_also_uses_tons_of_vram/)
+[2] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/articles/10402145)
+[3] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/5737)
+[4] [https://localllm.in](https://localllm.in/blog/llamacpp-vram-requirements-for-local-llms)
+[5] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/17300)
+[6] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1fkeami/i_am_disappointed_with_the_performance_and/?tl=zh-hant)
+[7] [https://medium.com](https://medium.com/@michael.hannecke/tuning-llama-server-on-apple-silicon-9b3e778ab100)
+[8] [https://github.com](https://github.com/ggml-org/llama.cpp/discussions/17006)
+[9] [https://medium.com](https://medium.com/@ekansh.jain2011/squeezing-every-drop-of-performance-out-of-llama-cpp-the-practitioners-guide-to-local-ai-2bcc3663f06f)
+[10] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1pl087v/llamacpp_and_vram_vs_context_size_vs_cache_quant/)
+
+- 實驗：
+  - 因為目前我都只是單人單機單執行緒在跑 Local LLM 模型，我應該強迫只使用 1 個 slot 來降低 VRAM 需求的壓力，flash-attn 已經有開了
+  - 修改 `preset.ini` 並重新啟動 llama.cpp llama-server
+    - 強迫只用 1 個 slot
+    - 一次只保留 1 個模型
+```bash
+~$ cat ~/.models/preset.ini
+## 所有模型的全域設定
+[*]
+threads = 1                  ## 只支援單一執行緒
+flash-attn = true            ## 啟用閃電注意力機制，降低長上下文時的 VRAM 峰值開銷
+jinja = true
+models-autoload = false      ## 啟動時不自動載入模型
+np = 1                       ## 每個模型只跑 1 個 slot (因為暫時沒有併發需求，預設值為 4)
+models-max = 1               ## 確保 Router Mode 一次只 serve 一個模型，不在使用中的就釋放掉
+sleep-idle-seconds = 300     ## 閒置五分鐘就釋放模型，降低 VRAM 壓力
+stop-timeout = 600           ## 十分鐘後關閉模型所屬的後端獨立子進程（Subprocess）
+
+## 模型 1：較小上下文的設定檔
+[Qwen3.5-9B:Q4_K_M]
+model = C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+ctx-size = 262144
+
+## 模型 2：超大上下文的設定檔
+[Qwythos-9B-v2:Q4_K_M]
+model = C:/Users/jazzw/.models/Qwythos-9B-v2-MTP-Q4_K_M.gguf
+ctx-size = 1048576
+
+~$ llama-server --models-preset ~/.models/preset.ini | tee -a local-llm.log
+```
+- 結果:
+  - GPU VRAM 用量：5.2 GB - Qwen3.5-9B:Q4_K_M - ctx-size 262144
+  - 還是只有 1.85 t/s
+```
+[52561] 2.35.470.111 I slot print_timing: id  0 | task 100 | n_decoded =    100, tg =   1.85 t/s
+[52561] 2.38.750.752 I slot print_timing: id  0 | task 100 | n_decoded =    106, tg =   1.85 t/s
+```
+  - 確實閒置 5 分鐘進入 sleep ，VRAM 也確認被釋放了。
+```
+[52561] 19.11.419.504 I srv  handle_sleep: server is entering sleeping state
+```
+- 實驗一：
+  - 降低 ctx-size 到 128K
+  - 同一個模型 GGUF 檔，設定多個 ctx-size 的 endpoint
+```bash
+~$ cat ~/.models/preset.ini
+## 所有模型的全域設定
+[*]
+threads = 1                  ## 只支援單一執行緒
+flash-attn = true            ## 啟用閃電注意力機制，降低長上下文時的 VRAM 峰值開銷
+jinja = true
+models-autoload = false      ## 啟動時不自動載入模型
+np = 1                       ## 每個模型只跑 1 個 slot (因為暫時沒有併發需求，預設值為 4)
+models-max = 1               ## 確保 Router Mode 一次只 serve 一個模型，不在使用中的就
+sleep-idle-seconds = 300     ## 閒置五分鐘就釋放模型，降低 VRAM 壓力
+stop-timeout = 300           ## 五分鐘後關閉模型所屬的後端獨立子進程（Subprocess）
+
+## 模型 1：較小上下文的設定檔
+[Qwen3.5-9B:128K]
+model = C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+ctx-size = 131072
+
+[Qwen3.5-9B:256K]
+model = C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+ctx-size = 262144
+
+## 模型 2：超大上下文的設定檔
+[Qwythos-9B-v2:128K]
+model = C:/Users/jazzw/.models/Qwythos-9B-v2-MTP-Q4_K_M.gguf
+ctx-size = 131072
+
+[Qwythos-9B-v2:1M]
+model = C:/Users/jazzw/.models/Qwythos-9B-v2-MTP-Q4_K_M.gguf
+ctx-size = 1048576
+
+~$ cat ~/.pi/agent/models.json
+{
+  "providers": {
+    "llama.cpp": {
+      "baseUrl": "http://127.0.0.1:8080/v1",
+      "apiKey": "12345678",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "Qwen3.5-9B:128K",
+          "name": "Qwen3.5-9B:128K",
+          "contextWindow": 131072
+        },
+        {
+          "id": "Qwen3.5-9B:256K",
+          "name": "Qwen3.5-9B:256K",
+          "contextWindow": 262144
+        },
+        {
+          "id": "Qwythos-9B-v2:128K",
+          "name": "Qwythos-9B-v2:128K",
+          "contextWindow": 131072
+        },
+        {
+          "id": "Qwythos-9B-v2:1M",
+          "name": "Qwythos-9B-v2:1M",
+          "contextWindow": 1048576
+        }
+      ]
+    }
+  }
+}
+
+~$
+~$ llama-server --models-preset ~/.models/preset.ini | tee -a local-llm.log
+```
+- Pi Agent 先選 `Qwen3.5-9B:128K` 觀察一下推論的速度變成多少
+```
+~\git\snippet\py\artemis (master)
+0.0%/131k (auto)                                  (llama.cpp) Qwen3.5-9B:128K
+```
+- 挺有趣的是模型載入以後，VRAM 需求 5.5 GB 反而比 ctx-size 256K (5.2 GB) 多一些
+- ctx-size 縮小一半，速度約兩倍 2.45 token/second
+```
+[50733] 4.08.214.757 I slot print_timing: id  0 | task 297 | n_decoded =    100, tg =   2.46 t/s
+[50733] 4.11.517.404 I slot print_timing: id  0 | task 297 | n_decoded =    108, tg =   2.45 t/s
+[50733] 4.14.664.219 I slot print_timing: id  0 | task 297 | n_decoded =    116, tg =   2.46 t/s
+```
+- 心得：
+  - 相較於先前沒有設定 ctx-size 時，可以高達 ，修改 ctx-size 以後，回答的速度卻下降了。目前觀察到的是 GPU 使用率其實也是低的。因為 `-fit on` 的關係，VRAM 大概都是落在塞得進去的水位，所以看起來就是需要一個權衡，簡單的工作，忍受 ctx-size 小，但回應速度快，只要對話內容不會撞到 context window 上限，性價比較高。需要長上下文的工作，就只能丟給它慢慢跑了。
+- 實驗二：
+  - 多加一個不強制 ctx-size 的設定，讓 `llama-server` 與 `pi` 自己決定
+```bash
+~$ cat .models/preset.ini
+## 所有模型的全域設定
+[*]
+threads = 1                  ## 只支援單一執行緒
+flash-attn = true            ## 啟用閃電注意力機制，降低長上下文時的 VRAM 峰值開銷
+jinja = true
+models-autoload = false      ## 啟動時不自動載入模型
+np = 1                       ## 每個模型只跑 1 個 slot (因為暫時沒有併發需求，預設值為 4)
+models-max = 1               ## 確保 Router Mode 一次只 serve 一個模型，不在使用中的就
+sleep-idle-seconds = 300     ## 閒置五分鐘就釋放模型，降低 VRAM 壓力
+stop-timeout = 300           ## 五分鐘後關閉模型所屬的後端獨立子進程（Subprocess）
+
+## 模型 1：較小上下文的設定檔
+[Qwen3.5-9B]
+model = C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+
+[Qwen3.5-9B:128K]
+model = C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+ctx-size = 131072
+
+[Qwen3.5-9B:256K]
+model = C:/Users/jazzw/.models/Qwen3.5-9B.Q4_K_M.gguf
+ctx-size = 262144
+
+## 模型 2：超大上下文的設定檔
+[Qwythos-9B-v2]
+model = C:/Users/jazzw/.models/Qwythos-9B-v2-MTP-Q4_K_M.gguf
+
+[Qwythos-9B-v2:128K]
+model = C:/Users/jazzw/.models/Qwythos-9B-v2-MTP-Q4_K_M.gguf
+ctx-size = 131072
+
+[Qwythos-9B-v2:1M]
+model = C:/Users/jazzw/.models/Qwythos-9B-v2-MTP-Q4_K_M.gguf
+ctx-size = 1048576
+~$
+~$ cat .pi/agent/models.json
+{
+  "providers": {
+    "llama.cpp": {
+      "baseUrl": "http://127.0.0.1:8080/v1",
+      "apiKey": "12345678",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "Qwen3.5-9B",
+          "name": "Qwen3.5-9B"
+        },
+        {
+          "id": "Qwen3.5-9B:128K",
+          "name": "Qwen3.5-9B:128K",
+          "contextWindow": 131072
+        },
+        {
+          "id": "Qwen3.5-9B:256K",
+          "name": "Qwen3.5-9B:256K",
+          "contextWindow": 262144
+        },
+        {
+          "id": "Qwythos-9B-v2",
+          "name": "Qwythos-9B-v2"
+        },
+        {
+          "id": "Qwythos-9B-v2:128K",
+          "name": "Qwythos-9B-v2:128K",
+          "contextWindow": 131072
+        },
+        {
+          "id": "Qwythos-9B-v2:1M",
+          "name": "Qwythos-9B-v2:1M",
+          "contextWindow": 1048576
+        }
+      ]
+    }
+  }
+}
+~$
+```
+- 結果二：
+  - Qwen3.5-9B 顯示使用 `35584` context (34.75 K? 好怪的數字)
+```text
+[55097] 0.06.090.008 W llama_context: n_ctx_seq (35584) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+```
+```python
+>>> 35584/1024
+34.75
+```
+  - pi 顯示 36k (因為顯示成小 k 所以是用 1000 而不是 1024 )
+```text
+Loaded Qwen3.5-9B
+
+───────────────────────────────────────────────────────────
+ llama.cpp models
+ http://127.0.0.1:8080
+
+→ Qwen3.5-9B                          loaded · 36k context
+```
+  - Qwythos-9B-v2 顯示 `27648` context (27K)
+```
+[53210] 0.08.128.455 W llama_context: n_ctx_seq (27648) < n_ctx_train (1048576) -- the full capacity of the model will not be utilized
+```
+```python
+>>> 27648/1024
+27.0
+```
+  - pi 顯示 28k (因為顯示成小 k 所以是用 1000 而不是 1024 )
+```text
+Loaded Qwythos-9B-v2
+───────────────────────────────────────────────────────────
+ llama.cpp models
+ http://127.0.0.1:8080
+
+→ Qwythos-9B-v2                       loaded · 28k context
+```
+- 測試生成速度
+```text
+[62819] 0.19.864.513 I slot print_timing: id  0 | task 98 | n_decoded =    220, tg =  39.97 t/s
+[62819] 0.22.886.774 I slot print_timing: id  0 | task 98 | n_decoded =    340, tg =  39.88 t/s
+[62819] 0.25.908.313 I slot print_timing: id  0 | task 98 | n_decoded =    460, tg =  39.83 t/s
+```
+- 實驗數據整理：
+
+| Model       | 36k | 128K     | 256K       |
+|-------------|-----|----------|------------|
+| Qwen3.5-9B  | 39.83 t/s | 2.45 t/s | 1.85 t/s |
