@@ -1,4 +1,4 @@
-- Source: 
+- Source:
   - 2026-09-15
   - Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train
   - https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/
@@ -30,9 +30,11 @@
 
 框架用一個數學化的複合獎勵函數，包含三個主要部分：
 
+| 獎勵類型 | 描述 |
+|---------|------|
 | Groundedness（基礎性） | 懲罰與資料庫的距離，確保生成的子查詢對應資料庫中真實可檢索的項目 |
-| Diversity（多樣性） | 用 Vendi Score 衡量整個子查詢集合的廣度 |
-| Alignment（對齊性） | 將候選子查詢錨定到原始搜尋提示，避免語義漂移 |
+| Diversity（多樣性）    | 用 Vendi Score 衡量整個子查詢集合的廣度       |
+| Alignment（對齊性）    | 將候選子查詢錨定到原始搜尋提示，避免語義漂移           |
 
 這些獎勵相互制衡，防止模型透過獎勵欺騙尋找捷徑。
 
@@ -68,3 +70,13 @@ Retrieve-for-Train 建立了一個高度可擴展、資料效率的集合檢索�
 透過將重計算的獎勵驅行為探索與最終部署模型解耦，成功繞過典型線上 LLM 部署的高延遲與高計算成本。
 
 更多細節請參閱原始論文：Efficient, Property-Aligned Fan-Out Retrieval via RL-Compiled Diffusion（ICML 2026）
+
+---
+
+*本文摘錄自 Google Research Blog 發表之研究論文*
+
+- Source: https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/
+
+- Paper: https://arxiv.org/abs/2603.06397
+
+- ICML 2026 Poster: https://icml.cc/virtual/2026/poster/66354
