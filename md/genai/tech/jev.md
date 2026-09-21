@@ -1,12 +1,23 @@
-# Jev 研究整理
+# Jev
+
+- https://typesafe.ai/blog/introducing-system-one-models-and-jev
+
+## 2026-09-20
+
+- Pi Coding Agent + github-copilot/gpt-5.6-luna
+
+> [!QUESTION]
+> /skill:firecrawl-deep-research 請參考 https://typesafe.ai/blog/introducing-system-one-models-and-jev , https://news.ycombinator.com/item?id=49736660 , https://www.langchain.com/blog/building-a-harness-with-jev , https://www.alphalab.site/jev-ai-decision-primitive 幫我整理 (1) Jev 的技術創新 (2) 如何測試 Jev 模型 (3) Jev 是否為公開模型？若不是，有沒有 Alternative 可以在 HuggingFace 取得？ (4) 如果目前我主要使用 Pi Coding Agent (https://pi.dev) ，我可以做什麼 hands-on lab 來實測 Jev？
+
+## Jev 研究整理
 
 > Jev 不是另一個用來寫程式或產生文章的聊天模型，而是一個「把非結構化狀態轉成帶機率的型別化決策」的模型。它適合放在 agent 或工作流的控制層，例如分流、風險判斷、工具呼叫攔截、模型路由、品質檢查與人工升級。
 >
 > 目前 Jev 是 TypeSafe 的雲端 early-access 模型；TypeSafe 沒有公開模型權重、參數規模或自架部署方式。若要在 Pi Coding Agent 中實驗，實用路線是：先透過 TypeSafe API 使用真正的 Jev，再以 Hugging Face 模型搭配 constrained classification 或 logits scoring 建立本地替代品，最後在 Pi extension 中實作工具風險閘門。
 
-## 1. Jev 的技術創新
+### 1. Jev 的技術創新
 
-### 1.1 從「生成文字」改成「直接做決策」
+#### 1.1 從「生成文字」改成「直接做決策」
 
 傳統 LLM 的介面大致是：
 
@@ -28,7 +39,7 @@ Jev 的主要設計分工是：
 - Jev：判斷、評分、分流與驗證。
 - 程式碼：控制流程、權限與副作用。
 
-### 1.2 非自回歸、平行的 decision sampling
+#### 1.2 非自回歸、平行的 decision sampling
 
 一般 LLM 是 autoregressive model：
 
@@ -54,9 +65,9 @@ Jev 的方向則是：
 
 LangChain 的 Jev 整合文章也強調，同一個 state 的多個問題可在一次請求中平行處理，增加問題數量對延遲的影響相對有限。
 
-### 1.3 三種 decision primitive
+#### 1.3 三種 decision primitive
 
-#### Noul：真假判斷
+##### Noul：真假判斷
 
 用於單一二元命題：
 
@@ -74,7 +85,7 @@ LangChain 的 Jev 整合文章也強調，同一個 state 的多個問題可在�
 
 代表模型認為命題為真的機率約為 94%。
 
-#### Choice：固定選項中選一個
+##### Choice：固定選項中選一個
 
 用於分流、路由與分類：
 
@@ -92,7 +103,7 @@ LangChain 的 Jev 整合文章也強調，同一個 state 的多個問題可在�
 
 答案必須來自開發者預先提供的選項，因此模型不能憑空產生另一個類別。
 
-#### Score：依照有順序的 rubric 評分
+##### Score：依照有順序的 rubric 評分
 
 適合：
 
@@ -112,7 +123,7 @@ LangChain 的 Jev 整合文章也強調，同一個 state 的多個問題可在�
 4 = 極高風險
 ```
 
-### 1.4 RLCD：Reinforcement Learning for Calibrated Decisions
+#### 1.4 RLCD：Reinforcement Learning for Calibrated Decisions
 
 TypeSafe 宣稱 Jev 使用 **Reinforcement Learning for Calibrated Decisions（RLCD）**。
 
@@ -129,7 +140,7 @@ TypeSafe 宣稱 Jev 使用 **Reinforcement Learning for Calibrated Decisions（R
 
 「0% type error」不等於「0% decision error」。
 
-### 1.5 共享 state、多個判斷、程式分支
+#### 1.5 共享 state、多個判斷、程式分支
 
 Jev 的價值可能不在單次分類，而在於把多個小判斷放進同一個 workflow。例如 Pi Coding Agent 的一次工具呼叫可以同時判斷：
 
@@ -150,7 +161,7 @@ destructive > 0.85 → 阻擋並要求使用者確認
 < 0.55 → 人工處理
 ```
 
-### 1.6 Jev 的實際定位
+#### 1.6 Jev 的實際定位
 
 | 任務 | 適合程度 |
 |---|---:|
@@ -169,7 +180,7 @@ destructive > 0.85 → 阻擋並要求使用者確認
 
 一句話：**Jev 是 decision layer，不是 agent，也不是聊天模型。**
 
-## 2. 如何測試 Jev 模型
+### 2. 如何測試 Jev 模型
 
 應測試四個維度：
 
@@ -178,7 +189,7 @@ destructive > 0.85 → 阻擋並要求使用者確認
 3. 延遲與成本；
 4. 低信心案例是否能正確升級。
 
-### 2.1 建立 golden dataset
+#### 2.1 建立 golden dataset
 
 選一個狹窄且可標註的任務，例如 Pi 的 bash 工具風險分類：
 
@@ -211,11 +222,11 @@ destructive > 0.85 → 阻擋並要求使用者確認
 
 保留一份模型未參與設計的 holdout test set。
 
-### 2.2 和 baseline 比較
+#### 2.2 和 baseline 比較
 
 至少比較：
 
-#### Baseline A：規則
+##### Baseline A：規則
 
 ```text
 command.includes("rm -rf")
@@ -223,7 +234,7 @@ command.includes("sudo")
 command.includes("git push --force")
 ```
 
-#### Baseline B：一般 LLM structured output
+##### Baseline B：一般 LLM structured output
 
 要求一般 LLM 回傳：
 
@@ -234,11 +245,11 @@ command.includes("git push --force")
 }
 ```
 
-#### Baseline C：本地分類模型或 HF alternative
+##### Baseline C：本地分類模型或 HF alternative
 
 例如 Qwen、DeBERTa、NLI model，或 Qwen + constrained scoring。
 
-### 2.3 基本分類指標
+#### 2.3 基本分類指標
 
 對 `Choice` 或 `Noul` 測試：
 
@@ -251,11 +262,11 @@ command.includes("git push --force")
 
 對安全閘門而言，False negative（危險操作被放行）通常比 False positive 更嚴重。
 
-### 2.4 Calibration 測試
+#### 2.4 Calibration 測試
 
 建議測：
 
-#### Reliability diagram
+##### Reliability diagram
 
 將預測分成 0.50–0.59、0.60–0.69、0.70–0.79、0.80–0.89、0.90–0.99 等區間，並比較：
 
@@ -263,7 +274,7 @@ command.includes("git push --force")
 平均預測機率 vs 實際正確率
 ```
 
-#### ECE
+##### ECE
 
 Expected Calibration Error 越低越好：
 
@@ -271,7 +282,7 @@ Expected Calibration Error 越低越好：
 ECE = 各信心區間的 |平均 confidence - accuracy| 加權平均
 ```
 
-#### Brier score
+##### Brier score
 
 對 binary Noul：
 
@@ -279,7 +290,7 @@ ECE = 各信心區間的 |平均 confidence - accuracy| 加權平均
 Brier = (predicted_probability - actual_label)^2
 ```
 
-### 2.5 測試 confidence gate
+#### 2.5 測試 confidence gate
 
 可先採用下列研究用門檻：
 
@@ -299,7 +310,7 @@ confidence >= 0.90：自動執行
 
 模型機率可以協助控制流程，但不能取代 authorization、sandbox 或使用者同意。
 
-### 2.6 測試延遲與成本
+#### 2.6 測試延遲與成本
 
 記錄：
 
@@ -324,7 +335,7 @@ vs.
 多次 LLM tool-risk check
 ```
 
-### 2.7 官方 benchmark 的解讀限制
+#### 2.7 官方 benchmark 的解讀限制
 
 TypeSafe 官方 workflow eval 使用大型模型的輸出機率作為 reference probability，而不是完全由人工標註的 ground truth。
 
@@ -343,9 +354,9 @@ TypeSafe 官方 workflow eval 使用大型模型的輸出機率作為 reference 
 3. 大模型作為輔助 judge；
 4. 真實 workflow outcome。
 
-## 3. Jev 是否為公開模型？替代方案
+### 3. Jev 是否為公開模型？替代方案
 
-### 3.1 Jev 本身不是公開權重模型
+#### 3.1 Jev 本身不是公開權重模型
 
 目前可查到的資料顯示，Jev 是：
 
@@ -359,9 +370,9 @@ TypeSafe 官方 workflow eval 使用大型模型的輸出機率作為 reference 
 
 TypeSafe 公開的是 System One 概念、parallel sampler 方向、RLCD 訓練方法名稱、API、使用情境與 benchmark，而不是可下載的 Jev 權重。
 
-### 3.2 Hugging Face 與開源替代方案
+#### 3.2 Hugging Face 與開源替代方案
 
-#### 方案 A：直接使用 Jev API
+##### 方案 A：直接使用 Jev API
 
 最接近真正 Jev：
 
@@ -373,7 +384,7 @@ Pi → TypeSafe API → Jev
 
 缺點：需要 API key、資料會離開本機、不能 offline、服務可能變動。
 
-#### 方案 B：Qwen / Llama + constrained output
+##### 方案 B：Qwen / Llama + constrained output
 
 架構：
 
@@ -393,20 +404,20 @@ Choice probability
 
 缺點：不是 Jev；一般 LLM logits 不等於校準良好的 probability；需要自行處理多 token label 與 calibration。
 
-#### 方案 C：jevlike
+##### 方案 C：jevlike
 
 [jevlike](https://github.com/vinnylarouge/jevlike) 是獨立的 Jev-like 研究實作：輸入文字與候選選項，一次輸出各選項機率。
 
 適合研究非自回歸 decision model，但不是 TypeSafe 官方模型，泛化能力與校準品質不能直接等同於 Jev。
 
-#### 方案 D：OpenJev / mini-jev 類專案
+##### 方案 D：OpenJev / mini-jev 類專案
 
 - [OpenJev](https://github.com/OpenJev/OpenJev)
 - [mini-jev](https://github.com/mini-jev/mini-jev)
 
 這些 project 通常以 Qwen 為基礎，從 hidden state 或 logits 計算候選選項的機率。它們是獨立近似或研究實作，不是 Jev weights 的官方下載。
 
-#### 方案 E：傳統 NLI 或分類模型
+##### 方案 E：傳統 NLI 或分類模型
 
 如果任務只是：
 
@@ -418,7 +429,7 @@ Choice probability
 
 可使用 DeBERTa、ModernBERT、BERT/RoBERTa fine-tuned classifier，或 Qwen 0.5B/1.5B 進行 constrained scoring。
 
-### 3.3 替代方案建議
+#### 3.3 替代方案建議
 
 | 目標 | 建議 |
 |---|---|
@@ -430,11 +441,11 @@ Choice probability
 | 想模擬 Choice probability | constrained logits |
 | 想模擬可靠 confidence | 自行做 calibration、ECE、Brier 測試 |
 
-## 4. 使用 Pi Coding Agent 的 hands-on lab
+### 4. 使用 Pi Coding Agent 的 hands-on lab
 
 Pi 提供 `tool_call` event、custom tools、project-local extensions 與 `/reload`，很適合把 Jev 放在 agent harness 的控制層。
 
-### Lab 1：用 curl 測試 Jev API
+#### Lab 1：用 curl 測試 Jev API
 
 ```bash
 export TYPESAFE_API_KEY="your-api-key"
@@ -482,7 +493,7 @@ curl https://api.typesafe.ai/v1/systemone \
 - needs_approval probability；
 - token usage。
 
-### Lab 2：建立 Pi 的 `jev_decide` custom tool
+#### Lab 2：建立 Pi 的 `jev_decide` custom tool
 
 建立：
 
@@ -572,7 +583,7 @@ pi -e ./.pi/extensions/jev.ts
 git push --force origin main
 ```
 
-### Lab 3：建立 bash tool risk gate
+#### Lab 3：建立 bash tool risk gate
 
 目標：
 
@@ -655,7 +666,7 @@ Pi UI：讓使用者做最後決定
 OS sandbox：限制真正可造成的損害
 ```
 
-### Lab 4：建立 Pi 命令風險資料集
+#### Lab 4：建立 Pi 命令風險資料集
 
 建立：
 
@@ -686,7 +697,7 @@ experiments/jev-bash-cases.jsonl
 - p50 / p95 latency
 ```
 
-### Lab 5：比較 Jev、一般 LLM 與本地模型
+#### Lab 5：比較 Jev、一般 LLM 與本地模型
 
 對同一份資料集跑：
 
@@ -720,37 +731,37 @@ Pipeline D: local Qwen / jevlike
 
 這個實驗能回答：在 Pi 工作流中，Jev 是否真的比規則、一般 LLM 或本地分類器更值得使用。
 
-## 建議的實驗順序
+### 建議的實驗順序
 
-### 第一階段：API smoke test
+#### 第一階段：API smoke test
 
 - 用 curl 呼叫 Jev；
 - 測試 Choice、Score、Noul；
 - 觀察回應與 latency；
 - 不接入 Pi 工具執行。
 
-### 第二階段：Pi custom tool
+#### 第二階段：Pi custom tool
 
 - 建立 `jev_decide`；
 - 讓 Pi agent 手動呼叫；
 - 將結果寫入 JSONL；
 - 測試多問題平行評估。
 
-### 第三階段：Pi bash risk gate
+#### 第三階段：Pi bash risk gate
 
 - 只攔截 `bash`；
 - 初期只提示，不阻擋；
 - 收集 false positive / false negative；
 - 再加入 confidence threshold。
 
-### 第四階段：離線替代品
+#### 第四階段：離線替代品
 
 - 用 Qwen + constrained logits 或 jevlike；
 - 實作相同的 `Choice / Noul / Score` schema；
 - 與 Jev API 對照；
 - 做 calibration。
 
-### 第五階段：真實工作流評估
+#### 第五階段：真實工作流評估
 
 選一個真實但可回復的任務：
 
@@ -761,7 +772,7 @@ Pipeline D: local Qwen / jevlike
 - code review 優先級；
 - prompt injection 偵測。
 
-## 最終建議
+### 最終建議
 
 建議在 Pi 中採用：
 
@@ -784,7 +795,7 @@ Pi 主 agent
 
 Jev 的價值在於讓 Pi 的安全與路由策略更有語意、更有機率資訊；真正的權限、沙盒與不可逆操作控制，仍然必須由程式碼和作業系統負責。
 
-## 來源
+### 來源
 
 - [TypeSafe — Introducing System One Models & Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev)：Jev 的官方定位、parallel sampling、RLCD、效能與 workflow eval。
 - [LangChain — Building a Harness with Jev](https://www.langchain.com/blog/building-a-harness-with-jev)：Jev 在 model routing 與 tool-risk gating 中的使用方式。
@@ -796,7 +807,7 @@ Jev 的價值在於讓 Pi 的安全與路由策略更有語意、更有機率資
 - [Hugging Face — DeepMost sales conversion model](https://huggingface.co/DeepMostInnovations/sales-conversion-model-reinf-learning)：可取得的領域型替代模型。
 - [jevlike](https://github.com/vinnylarouge/jevlike)：獨立的 Jev-like decision model 研究實作。
 
-## Rerun Inputs
+### Rerun Inputs
 
 ```yaml
 workflow: firecrawl-deep-research
