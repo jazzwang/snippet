@@ -52,3 +52,8 @@
   - STEP 1: 安裝 Microsoft Authenticator
   - STEP 2: 如果有個人 live.com / hotmail.com 帳號，在舊手機登入，選擇備份資料。到新手機一樣登入，選擇還原，就會有多數的 MFA。但是企業用戶 Microsoft 365 不能還原，必須重新掃描 QR Code。這時候在筆電端先做上述步驟，理論上會顯示 QR Code
   - STEP 3: 點選還原後需要額外掃描 QR Code 的帳號，對著筆電螢幕上的 QR Code 就可以將新筆電加入企業帳號的 MFA Device 清單中。
+
+## 其他參考資料
+
+- https://learn.microsoft.com/en-us/answers/questions/5694148/how-to-change-or-add-on-microsoft-authenticator-to
+- https://www.reddit.com/r/Office365/comments/tjtck9/changing_devices_with_ms_authenticator_is_too_hard/?tl=zh-hant
