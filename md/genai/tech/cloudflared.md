@@ -6,6 +6,7 @@
 ## 2026-09-22
 
 - Tool: Pi Agent +  google/gemini-2.5-flash
+- Learn from : https://blog.gslin.org/archives/2026/09/21/13216/
 
 > [!QUESTION]
 > 將 `cloudflare-quick-tunnels.md` 整理成繁體中文部落格文章，使用 speak-human-tw skill 潤飾詞句，不必列表，請直接修改，最後存成 `cloudflare-quick-tunnels.blog.md`
