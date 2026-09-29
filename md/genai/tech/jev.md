@@ -815,3 +815,10 @@ topic: Jev 技術創新、模型測試、公開性、Hugging Face alternatives �
 depth: thorough
 output: markdown
 ```
+
+## 2026-09-29
+
+- https://github.com/kraayenjon/awesome-jev
+
+> [!NOTE]
+> A curated list of Jev use cases, projects, SDKs, and resources. Jev is TypeSafe AI's System One model for fast, typed decisions in software — Choice, Score, and Noul with calibrated probabilities.
