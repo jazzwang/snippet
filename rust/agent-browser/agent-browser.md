@@ -15,8 +15,10 @@
   - https://agent-browser.dev/sessions
 - Q1: 待比較 browser-use 跟 agent-browser 有什麼差異？
 - A1:
-  - Google Search - AI Mode
-  > https://browser-use.com 跟 https://agent-browser.dev/ 有什麼不同？
+  - Tool: Google Search - AI Mode
+
+> [!NOTE]
+> https://browser-use.com 跟 https://agent-browser.dev/ 有什麼不同？
 
 browser-use 與 agent-browser 是兩款專為 AI 智慧體（Agent）設計的瀏覽器自動化工具。它們的核心定位、架構設計與整合方式有顯著不同： [1, 2]
 
