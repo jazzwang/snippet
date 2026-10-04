@@ -1,0 +1,1 @@
+- https://academy.openai.com/
