@@ -23,12 +23,9 @@
 
 - Q1: 待比較 browser-use 跟 agent-browser 有什麼差異？
 - A1:
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-https://browser-use.com 跟 https://agent-browser.dev/ 有什麼不同？
-
-</td></tr><tr><td>A:</td><td>
+  - Tool: Google Search - AI Mode
+> [!NOTE]
+> https://browser-use.com 跟 https://agent-browser.dev/ 有什麼不同？
 
 `browser-use` 與 `agent-browser` 是兩款專為 AI 智慧體（Agent）設計的瀏覽器自動化工具。它們的核心定位、架構設計與整合方式有顯著不同： [1, 2]
 
@@ -83,16 +80,12 @@ https://browser-use.com 跟 https://agent-browser.dev/ 有什麼不同？
 [13] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/1885651451088462924)
 [14] [https://classic.yarnpkg.com](https://classic.yarnpkg.com/en/package/agent-browser-mcp)
 
-</td></tr>
-</table>
-
 ## 2026-07-06
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-如果我需要 AI Code Agent （如 OpenCode）參考我的瀏覽器操作，看我如何執行 Jira JQL 查詢，並將結果下載成 Excel 檔案，並且開啟 Excel，將特定區域建立新的 Excel Table，再用該 Table 產生三個固定的 Pivot Table 樞紐分析。將這個程序生成 Python 自動化程式（例如結合 Playwright 跟 Python Excel library）。可以幫我規劃 step-by-step instruction 嗎？
-</td></tr><tr><td>A:</td><td>
+- Tool: Google Search - AI Mode
+
+> [!NOTE]
+> 如果我需要 AI Code Agent （如 OpenCode）參考我的瀏覽器操作，看我如何執行 Jira JQL 查詢，並將結果下載成 Excel 檔案，並且開啟 Excel，將特定區域建立新的 Excel Table，再用該 Table 產生三個固定的 Pivot Table 樞紐分析。將這個程序生成 Python 自動化程式（例如結合 Playwright 跟 Python Excel library）。可以幫我規劃 step-by-step instruction 嗎？
 
 要讓 AI Code Agent（例如 OpenCode、Devin 或 AutoGPT）完美複製你的瀏覽器與 Excel 操作，你需要提供結構極高、無歧義且包含精確定位點（Selectors）的步驟指南。AI 主要是透過 DOM 結構（如 `id`, `data-testid`）與程式庫 API 來思考，而非視覺畫面。
 以下為你規劃的 Step-by-Step Instruction 範本，你可以直接將其餵給 AI Agent。這份規劃結合了 Playwright（負責網頁自動化）與 openpyxl / pandas（負責 Excel 自動化）。
@@ -174,17 +167,14 @@ Google Search - AI Mode
 
 > 如果在 `openpyxl` 中建立原生 Excel 樞紐分析快取（Pivot Cache）過於複雜，允許使用 `pandas.pivot_table` 產生聚合數據，再將結果寫入 Excel，並透過 `openpyxl` 套用樣式（如 Table Style 或欄寬自適應），以達到完全相同的視覺與數據效果。
 
-* * * *
-
 若要讓我幫你精確寫出這個 Python 程式碼，你可以提供：
 
 -   你目前使用的 Jira 是雲端版（Cloud）還是地端版（Server）？（這會影響下載按鈕的網頁標籤）
 -   你的 JQL 查詢語句大概長怎樣？
 -   你的 Jira 欄位名稱（例如：經辦人是叫 `Assignee` 還是中文的 `經辦人`）？
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-如何讓 OpenCode Agent 錄製 existing browser session 的操作？
-</td></tr><tr><td>A:</td><td>
+
+> [!NOTE]
+> 如何讓 OpenCode Agent 錄製 existing browser session 的操作？
 
 ### OpenCode + Chrome Remote Debugging
 
@@ -216,7 +206,7 @@ Google Search - AI Mode
 
 #### 第三步：讓 OpenCode / Playwright 接管並開始錄製
 
-此時，該瀏覽器已經在 `9222` 連接埠（Port）等待指令 \[1\]。你可以給 OpenCode Agent 以下的指令，讓它啟動 Playwright 的錄製器（Codegen）直接連入該視窗：
+此時，該瀏覽器已經在 `9222` 連接埠（Port）等待指令 [1]。你可以給 OpenCode Agent 以下的指令，讓它啟動 Playwright 的錄製器（Codegen）直接連入該視窗：
 
 #### 🤖 提供給 OpenCode 的 Prompt 指令：
 
@@ -256,21 +246,16 @@ run()
 
 此時，你就可以叫 OpenCode 接續進行：*「請將這段錄製好的 Playwright 程式碼，與先前規劃的 pandas/openpyxl Excel 樞紐分析腳本結合成一個完整的自動化流程。」*
 
-* * * *
-
 你想先讓 OpenCode 嘗試連線到 `9222` 連接埠並測試能否成功控制網頁，還是直接開始撰寫後續整合 Excel 處理的程式碼呢？
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-OpenCode 搭配 browser-use 可以達成類似的目標嗎？
-</td></tr><tr><td>A:</td><td>
+
+> [!NOTE]
+> OpenCode 搭配 browser-use 可以達成類似的目標嗎？
 
 ### OpenCode + Browser-Use
 
-可以，而且使用 OpenCode 搭配 `browser-use` 達成的效果會比單純用 Playwright 錄製更強大、更聰明。 \[1\]
-`browser-use` 是專門為大型語言模型（LLM）設計的瀏覽器控制框架 \[1\]。它不採用「錄製死板腳本」的邏輯，而是讓 AI Agent 像人類一樣看著網頁、理解內容，並動態做出決策。
+可以，而且使用 OpenCode 搭配 `browser-use` 達成的效果會比單純用 Playwright 錄製更強大、更聰明。 [1]
+`browser-use` 是專門為大型語言模型（LLM）設計的瀏覽器控制框架 [1]。它不採用「錄製死板腳本」的邏輯，而是讓 AI Agent 像人類一樣看著網頁、理解內容，並動態做出決策。
 以下為你拆解 OpenCode 搭配 `browser-use` 實作此任務的核心機制與步驟：
-
-* * * *
 
 #### 💡 為什麼搭配 `browser-use` 更適合？
 
@@ -285,7 +270,8 @@ OpenCode 搭配 browser-use 可以達成類似的目標嗎？
 ##### 第一步：啟動除錯模式的 Chrome (與前述相同)
 
 在終端機啟動一個允許外部控制、且你已經手動登入 Jira 的 Chrome：
-```
+
+```cmd
 # Windows
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\ChromeDebug"
 # Mac
@@ -295,13 +281,15 @@ OpenCode 搭配 browser-use 可以達成類似的目標嗎？
 ##### 第二步：讓 OpenCode 安裝依賴套件
 
 在 OpenCode 的環境中執行：
-```
+
+```bash
 pip install browser-use langchain-openai pandas openpyxl
 ```
 
 ##### 第三步：撰寫 `browser-use` 執行腳本
 
 你可以要求 OpenCode 生成如下的 Python 程式碼。這段程式碼會連進你的 Chrome，自動執行 JQL 並下載檔案，最後交給 Excel 處理函式：
+
 ```python
 import asyncio
 from browser_use import Agent, Browser, BrowserConfig
@@ -318,7 +306,7 @@ config = BrowserConfig(
 
 async def main():
     browser = Browser(config=config)
-    
+
     # 2. 定義給 AI Agent 的自然語言任務指令
     task_description = """
     1. 前往我已經打開的 Jira 分頁（或輸入網址 https://atlassian.net）。
@@ -326,18 +314,18 @@ async def main():
     3. 點擊右上角的 'Export' 按鈕，並選擇 'Export Excel' 或 'Export CSV' 下載檔案。
     4. 將下載下來的檔案重新命名並儲存為 'jira_raw_data.xlsx'。
     """
-    
+
     # 3. 啟動 browser-use Agent
     agent = Agent(
         task=task_description,
         llm=ChatOpenAI(model="gpt-4o"), # 或 Claude 3.5 Sonnet
         browser=browser
     )
-    
+
     # 執行網頁操作
     history = await agent.run()
     await browser.close()
-    
+
     # 4. 接續執行你的 Excel 處理邏輯
     process_excel_report()
 
@@ -350,19 +338,16 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-* * * *
-
 ##### ⚖️ Playwright 錄製 vs Browser-use 方案對比
 
 | 特性 | Playwright 錄製 (Codegen) | OpenCode + browser-use |
 | --- |  --- |  --- |
-| 撰寫難度 | 需手動錄製、點擊，再調整程式碼 | 極低，直接寫中文/英文原理想法 \[1\] |
-| 維護成本 | 高，網頁稍微改版（如 ID 改變）就需重新錄製 | 極低，AI 會自己看畫面重新尋找按鈕 \[2\] |
-| 執行速度 | 快（直接執行底層網頁指令） | 稍慢（AI 每一步需要思考與解讀畫面） \[2\] |
-| 除錯難度 | 需工程師看懂 Playwright 語法 | AI 會自己看 Log 嘗試自我修復 \[2\] |
+| 撰寫難度 | 需手動錄製、點擊，再調整程式碼 | 極低，直接寫中文/英文原理想法 [1] |
+| 維護成本 | 高，網頁稍微改版（如 ID 改變）就需重新錄製 | 極低，AI 會自己看畫面重新尋找按鈕 [2] |
+| 執行速度 | 快（直接執行底層網頁指令） | 稍慢（AI 每一步需要思考與解讀畫面） [2] |
+| 除錯難度 | 需工程師看懂 Playwright 語法 | AI 會自己看 Log 嘗試自我修復 [2] |
 
 總結來說：如果你希望一勞永逸，不想因為 Jira 未來按鈕改位置、換顏色而常常進去修程式碼，強烈建議讓 OpenCode 採用 `browser-use` 方案。
+
 如果準備好了，我們可以先請 OpenCode 寫出連接 `9222` 連接埠並嘗試在 Jira 搜尋的 `browser-use` 測試腳本，你覺得如何？
-</td></tr>
-</table>
 
