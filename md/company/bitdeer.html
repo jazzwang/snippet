@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比特小鹿 (Bitdeer) 深度市場研究與競爭力分析報告</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mermaid.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#F87C27',
+                            gold: '#FAB44A',
+                            dark: '#0d0e12',
+                            card: '#161821',
+                            border: '#2e303f',
+                            text: '#e4e6eb',
+                            muted: '#a3a5b6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0d0e12;
+            color: #e4e6eb;
+            font-family: 'Noto Sans TC', 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d0e12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2e303f;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F87C27;
+        }
+        /* Active side nav styling */
+        .nav-link.active {
+            color: #F87C27;
+            border-left-color: #F87C27;
+            background-color: rgba(248, 124, 39, 0.1);
+        }
+        /* Mermaid dark mode adjustment */
+        .mermaid {
+            background: #161821 !important;
+            border: 1px solid #2e303f;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+
+    <!-- Sidebar Navigation -->
+    <aside class="hidden lg:flex flex-col w-72 bg-brand-card border-r border-brand-border fixed top-0 bottom-0 left-0 z-20">
+        <div class="p-6 border-b border-brand-border flex items-center gap-3">
+            <div class="bg-brand-orange text-white p-2.5 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-cubes text-xl"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg leading-none text-white tracking-wide">BITDEER</h1>
+                <span class="text-xs text-brand-orange font-semibold tracking-wider">NASDAQ: BTDR</span>
+            </div>
+        </div>
+        <nav class="flex-1 p-4 overflow-y-auto space-y-1">
+            <a href="#overview" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-zinc-800 border-l-4 border-transparent transition-all">
+                <i class="fa-solid fa-chart-line w-5"></i>
+                <span>報告總覽</span>
+            </a>
+            <a href="#funding" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-zinc-800 border-l-4 border-transparent transition-all">
+                <i class="fa-solid fa-wallet w-5"></i>
+                <span>(A) 資金來源</span>
+            </a>
+            <a href="#debt" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-zinc-800 border-l-4 border-transparent transition-all">
+                <i class="fa-solid fa-hand-holding-dollar w-5"></i>
+                <span>(B) 現有債務</span>
+            </a>
+            <a href="#competitors" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-zinc-800 border-l-4 border-transparent transition-all">
+                <i class="fa-solid fa-arrows-left-right-to-line w-5"></i>
+                <span>(C) 競爭對手</span>
+            </a>
+            <a href="#competitiveness" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-zinc-800 border-l-4 border-transparent transition-all">
+                <i class="fa-solid fa-gem w-5"></i>
+                <span>(D) 核心競爭力</span>
+            </a>
+            <a href="#products" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-zinc-800 border-l-4 border-transparent transition-all">
+                <i class="fa-solid fa-box-open w-5"></i>
+                <span>(E) 主要產品布局</span>
+            </a>
+            <a href="#stakeholders" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-zinc-800 border-l-4 border-transparent transition-all">
+                <i class="fa-solid fa-users w-5"></i>
+                <span>(F) 關鍵利害關係人</span>
+            </a>
+        </nav>
+        <div class="p-6 border-t border-brand-border bg-zinc-950/40">
+            <p class="text-xs text-brand-muted text-center">
+                數據中心年份: 2026<br>
+                自研 SEALMINER A4 晶片時代
+            </p>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 lg:ml-72 min-h-screen flex flex-col">
+        <!-- Top Sticky Header -->
+        <header class="sticky top-0 bg-brand-dark/90 backdrop-blur-md border-b border-brand-border px-6 py-4 flex justify-between items-center z-10">
+            <div class="flex items-center gap-4">
+                <button id="sidebarToggle" class="lg:hidden text-white text-xl p-1 hover:text-brand-orange">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="lg:hidden flex items-center gap-2">
+                    <div class="bg-brand-orange text-white p-1.5 rounded-md">
+                        <i class="fa-solid fa-cubes text-sm"></i>
+                    </div>
+                    <span class="font-bold text-sm tracking-wide">BITDEER</span>
+                </div>
+                <h2 class="hidden md:block font-bold text-lg tracking-tight text-white">比特小鹿（Bitdeer）多維度核心市場競爭力與戰略深度分析</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="bg-brand-orange/20 text-brand-orange text-xs font-semibold px-3 py-1 rounded-full border border-brand-orange/30">
+                    <i class="fa-solid fa-microchip mr-1.5"></i>NVIDIA 首選合作夥伴
+                </span>
+            </div>
+        </header>
+
+        <!-- Container -->
+        <div class="flex-1 p-6 space-y-12 max-w-7xl mx-auto w-full">
+
+            <!-- Title Section -->
+            <section id="overview" class="bg-gradient-to-br from-brand-card to-zinc-900 border border-brand-border rounded-xl p-8 shadow-xl relative overflow-hidden">
+                <div class="absolute right-0 top-0 opacity-10 pointer-events-none translate-x-20 -translate-y-20">
+                    <i class="fa-solid fa-cubes text-[300px] text-brand-orange"></i>
+                </div>
+                <div class="relative z-10 space-y-4">
+                    <div class="flex flex-wrap items-center gap-2 text-xs font-bold text-brand-orange uppercase tracking-wider">
+                        <span>深度研究報告</span>
+                        <span class="text-brand-muted">•</span>
+                        <span>高精度模型分析</span>
+                        <span class="text-brand-muted">•</span>
+                        <span>Mermaid.js 互動可視化</span>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
+                        比特小鹿 <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-gold">(Bitdeer)</span> 運營與架構深度剖析
+                    </h1>
+                    <p class="text-brand-muted max-w-3xl text-sm md:text-base leading-relaxed">
+                        比特小鹿（NASDAQ: BTDR）由比特大陸（Bitmain）聯合創辦人吳忌寒創立，是全球領先的高性能計算（HPC）、AI 基礎設施和可持續比特幣挖掘解決方案提供商。本報告針對其資金流向、債務負載、行業對手、市場壁壘、產品矩陣及利害關係人進行全景式分析。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+                        <div class="bg-brand-dark/50 border border-brand-border/60 rounded-lg p-4">
+                            <span class="text-xs text-brand-muted block">股票代碼</span>
+                            <span class="text-lg font-bold text-white">NASDAQ: BTDR</span>
+                        </div>
+                        <div class="bg-brand-dark/50 border border-brand-border/60 rounded-lg p-4">
+                            <span class="text-xs text-brand-muted block">自研核心產品</span>
+                            <span class="text-lg font-bold text-brand-orange">SEALMINER 系列</span>
+                        </div>
+                        <div class="bg-brand-dark/50 border border-brand-border/60 rounded-lg p-4">
+                            <span class="text-xs text-brand-muted block">核心算力樞紐</span>
+                            <span class="text-lg font-bold text-white">美、挪、不丹</span>
+                        </div>
+                        <div class="bg-brand-dark/50 border border-brand-border/60 rounded-lg p-4">
+                            <span class="text-xs text-brand-muted block">戰略定位</span>
+                            <span class="text-lg font-bold text-brand-gold">HPC / AI 算力雲</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mermaid 0: Organizational Structure -->
+            <section class="bg-brand-card border border-brand-border rounded-xl p-6 shadow-md">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-sitemap text-brand-orange"></i> 比特小鹿組織結構與垂直整合架構
+                </h3>
+                <div class="mermaid">
+                    graph TD
+                        BTDR[Bitdeer Technologies Group - NASDAQ: BTDR] --> Founder[創辦人 & 董事長: 吳忌寒]
+                        BTDR --> BU1[自營挖礦與託管事業部 - Self-Mining & Hosting]
+                        BTDR --> BU2[晶片研發與硬件製造 - SEALMINER & Minerbase]
+                        BTDR --> BU3[AI與高性能計算 - AI Cloud & HPC]
+                        BU1 --> Datacenters[全球數據中心: 美國、挪威、不丹]
+                        BU2 --> SEAL[SEAL 晶片設計 & A系列礦機生產]
+                        BU3 --> AICloud[GPU 算力雲端服務 & AI Studio]
+                        
+                        style BTDR fill:#F87C27,stroke:#fff,stroke-width:2px,color:#fff
+                        style Founder fill:#2e303f,stroke:#FAB44A,stroke-width:1px,color:#fff
+                        style BU1 fill:#1a1c24,stroke:#3b82f6,stroke-width:1px,color:#fff
+                        style BU2 fill:#1a1c24,stroke:#10b981,stroke-width:1px,color:#fff
+                        style BU3 fill:#1a1c24,stroke:#8b5cf6,stroke-width:1px,color:#fff
+                </div>
+            </section>
+
+            <!-- (A) 資金來源 -->
+            <section id="funding" class="space-y-6">
+                <div class="border-l-4 border-brand-orange pl-4">
+                    <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                        <span class="text-brand-orange">A</span> 資金來源分析 <span class="text-sm text-brand-muted font-normal">(Funding Sources)</span>
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-4">
+                        <div class="bg-brand-orange/10 text-brand-orange w-12 h-12 rounded-lg flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">資本市場融資 (Equity Markets)</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            作為 NASDAQ 上市公司（BTDR），比特小鹿具備公開市場募資渠道。主要通過 IPO、定向增發（PIPE）以及配股等手段，直接對接全球資本，為需要大筆資本支出的數據中心建設和 GPU 採購提供穩定的股權資金。
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-4">
+                        <div class="bg-brand-orange/10 text-brand-orange w-12 h-12 rounded-lg flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-money-bill-trend-up"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">核心主營業務現金流 (Operating Cash Flow)</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            公司日常運營資金主要來自：
+                            <br>• <strong>自有自營挖礦</strong>：每日產出的 BTC 直接變現或作為儲備。
+                            <br>• <strong>算力共享與託管服務</strong>：提供穩定、高毛利的日常現金流。
+                            <br>• <strong>SEALMINER 礦機銷售</strong>：硬體銷售回籠研發資金。
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-4">
+                        <div class="bg-brand-orange/10 text-brand-orange w-12 h-12 rounded-lg flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">可轉債與債務工具 (Debt & Convertible Notes)</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            公司在 2024 至 2025 年間發行多筆可轉換優先票據（Convertible Senior Notes），以較低的利息成本借入資金，並允許債權人在未來轉換為股份，有效降低了即時的現金付息壓力。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mermaid 1: Business Model & Capital Flow -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-6 shadow-md mt-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-arrows-spin text-brand-orange"></i> 商業模式與資金流動全景圖
+                    </h3>
+                    <div class="mermaid">
+                        graph LR
+                            Capital[資金來源] --> IPO[NASDAQ 股權融資]
+                            Capital --> Revenue[業務營收現金流]
+                            Capital --> Debt[可轉債與融資租賃]
+                            
+                            Revenue --> MineRev[自營 BTC 挖礦]
+                            Revenue --> MinerSale[SEALMINER 礦機銷售]
+                            Revenue --> HostingRev[雲託管與雲算力]
+                            Revenue --> AICloudRev[AI/HPC GPU 雲服務]
+                            
+                            Debt --> CapEx[資本支出: 數據中心與晶片研發]
+                            IPO --> CapEx
+                            MineRev --> CapEx
+                            
+                            style Capital fill:#F87C27,stroke:#fff,stroke-width:2px,color:#fff
+                            style Revenue fill:#1a1c24,stroke:#FAB44A,stroke-width:1px,color:#fff
+                            style Debt fill:#1a1c24,stroke:#3b82f6,stroke-width:1px,color:#fff
+                    </div>
+                </div>
+            </section>
+
+            <!-- (B) 現有債務 -->
+            <section id="debt" class="space-y-6">
+                <div class="border-l-4 border-brand-orange pl-4">
+                    <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                        <span class="text-brand-orange">B</span> 現有債務分析 <span class="text-sm text-brand-muted font-normal">(Current Debt Structure)</span>
+                    </h2>
+                </div>
+
+                <div class="bg-brand-card border border-brand-border rounded-xl p-8 space-y-6">
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        與傳統的高槓桿矿業公司不同，比特小鹿在債務管理上相對穩健。但由於 HPC/AI 雲和數據中心的重資產特性，公司維持著幾項核心債務與負債結構：
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-brand-dark/60 border border-brand-border/80 rounded-lg p-5 space-y-3">
+                            <h4 class="text-brand-orange font-bold text-md flex items-center gap-2">
+                                <i class="fa-solid fa-file-invoice-dollar"></i> 可轉換優先票據 (Convertible Notes)
+                            </h4>
+                            <p class="text-sm text-brand-muted leading-relaxed">
+                                這是比特小鹿最主要的長期負債項目。這類債務允許債權人在特定條件下以約定價格轉換為 BTDR 普通股。優點是其票面利率（Coupon Rate）遠低於常規信用貸款，大幅減輕了日常的利息支出負擔，但存在股權被稀釋的潛在風險。
+                            </p>
+                        </div>
+
+                        <div class="bg-brand-dark/60 border border-brand-border/80 rounded-lg p-5 space-y-3">
+                            <h4 class="text-brand-orange font-bold text-md flex items-center gap-2">
+                                <i class="fa-solid fa-truck-ramp-box"></i> 融資租賃與基礎設施承諾 (Capital Leases)
+                            </h4>
+                            <p class="text-sm text-brand-muted leading-relaxed">
+                                主要用於數據中心的重型冷卻系統、配電變壓器以及 NVIDIA GPU 伺服器等高值設備。通過融資租賃，小鹿得以延期付款，將大額 CapEx 轉化為分期的營運支出（OpEx），維持資金鏈的高流動性。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-brand-border/50 pt-6">
+                        <div class="flex items-start gap-4">
+                            <div class="text-brand-orange text-xl mt-1">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">債務健康度評估</h4>
+                                <p class="text-xs text-brand-muted mt-1 leading-relaxed">
+                                    比特小鹿利用其自營比特幣產出作為天然的對沖資產。隨著 2024-2026 年自研晶片 SEALMINER 投產與 AI HPC 業務營收爬坡，其息稅折舊攤銷前利潤（EBITDA）大幅改善，利息保障倍數維持在健康區間，債務違約風險處於行業低水平。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- (C) 競爭對手 -->
+            <section id="competitors" class="space-y-6">
+                <div class="border-l-4 border-brand-orange pl-4">
+                    <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                        <span class="text-brand-orange">C</span> 競爭對手與行業格局 <span class="text-sm text-brand-muted font-normal">(Competitor Analysis)</span>
+                    </h2>
+                </div>
+
+                <div class="overflow-x-auto bg-brand-card border border-brand-border rounded-xl shadow-md">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-brand-dark border-b border-brand-border text-white font-bold text-xs uppercase tracking-wider">
+                                <th class="p-4">公司名稱</th>
+                                <th class="p-4">主營模式</th>
+                                <th class="p-4">晶片研發能力</th>
+                                <th class="p-4">AI / HPC 布局</th>
+                                <th class="p-4">電力成本與能源組合</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm text-brand-muted divide-y divide-brand-border/50">
+                            <tr class="hover:bg-brand-dark/20">
+                                <td class="p-4 font-bold text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
+                                    比特小鹿 (Bitdeer)
+                                </td>
+                                <td class="p-4">垂直整合 (挖礦+晶片+AI)</td>
+                                <td class="p-4 text-emerald-400 font-semibold"><i class="fa-solid fa-check mr-1"></i> 極強 (自研 SEALMINER)</td>
+                                <td class="p-4 text-emerald-400 font-semibold"><i class="fa-solid fa-check mr-1"></i> 領先 (NVIDIA 首選合作夥伴)</td>
+                                <td class="p-4">多國部署，不丹清潔水電極低成本</td>
+                            </tr>
+                            <tr class="hover:bg-brand-dark/20">
+                                <td class="p-4 font-bold text-white">Marathon Digital</td>
+                                <td class="p-4">輕資產挖礦 & 算力收購</td>
+                                <td class="p-4 text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> 無 (依賴採購 Bitmain/MicroBT)</td>
+                                <td class="p-4 text-amber-400">起步階段 (小規模試水)</td>
+                                <td class="p-4">主要在美國，受制於當地高昂電費</td>
+                            </tr>
+                            <tr class="hover:bg-brand-dark/20">
+                                <td class="p-4 font-bold text-white">Riot Platforms</td>
+                                <td class="p-4">重資產，專注德州大礦場</td>
+                                <td class="p-4 text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> 無 (依賴第三方礦機)</td>
+                                <td class="p-4 text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> 極少 (專注純 BTC 挖掘)</td>
+                                <td class="p-4">依賴德州電網，受限於極端氣候限電</td>
+                            </tr>
+                            <tr class="hover:bg-brand-dark/20">
+                                <td class="p-4 font-bold text-white">CleanSpark</td>
+                                <td class="p-4">100% 綠色能源挖礦</td>
+                                <td class="p-4 text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> 無 (採購第三方硬體)</td>
+                                <td class="p-4 text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> 無 (純比特幣方向)</td>
+                                <td class="p-4">美國本土水電、核能為主</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mermaid 2: Competitor Comparison Diagram -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-6 shadow-md mt-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-arrows-left-right text-brand-orange"></i> 競爭格局：垂直整合型 vs 純挖礦型
+                    </h3>
+                    <div class="mermaid">
+                        graph TD
+                            Bitdeer[比特小鹿 Bitdeer] --> Multi[多業務並行: 挖礦 + 自研晶片 + AI/HPC]
+                            Marathon[Marathon Digital] --> Mining1[純比特幣挖礦 + 輕資產外包]
+                            Riot[Riot Platforms] --> Mining2[純比特幣挖礦 + 德州超大型單一礦場]
+                            CleanSpark[CleanSpark] --> Mining3[純比特幣挖礦 + 綠色能源]
+                            
+                            style Bitdeer fill:#F87C27,stroke:#fff,stroke-width:2px,color:#fff
+                            style Marathon fill:#1a1c24,stroke:#2e303f,stroke-width:1px,color:#a3a5b6
+                            style Riot fill:#1a1c24,stroke:#2e303f,stroke-width:1px,color:#a3a5b6
+                            style CleanSpark fill:#1a1c24,stroke:#2e303f,stroke-width:1px,color:#a3a5b6
+                    </div>
+                </div>
+            </section>
+
+            <!-- (D) 核心市場競爭力 -->
+            <section id="competitiveness" class="space-y-6">
+                <div class="border-l-4 border-brand-orange pl-4">
+                    <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                        <span class="text-brand-orange">D</span> 核心市場競爭力 <span class="text-sm text-brand-muted font-normal">(Core Competitiveness)</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-3">
+                        <div class="text-brand-orange text-2xl">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">1. 自研晶片研發與供應鏈控制力</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            比特小鹿擁有一流的晶片設計團隊，成功研發出 <strong>SEAL 晶片系列</strong>。自研晶片使小鹿擺脫了對比特大陸（Bitmain）和神馬（MicroBT）等上游廠商的硬體依賴，在減半周期後大幅降低了每 TH/s 的部署成本，並能通過銷售硬體直接獲利。
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-3">
+                        <div class="text-brand-orange text-2xl">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">2. 全球低成本清潔能源布局</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            公司在不丹、挪威與美國德州等地建設了可持續能源數據中心。特別是在不丹，與不丹皇家主權基金 Druk Holding & Investments（DHI）合作，獲得了極低成本的純淨水力發電支持，使小鹿具備抗衡比特幣減半波動的超強底線防禦力。
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-3">
+                        <div class="text-brand-orange text-2xl">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">3. NVIDIA 首選合作夥伴與 HPC 轉型</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            作為 NVIDIA 推薦並深度結盟的 Cloud Service Provider (CSP)，比特小鹿部署了包括 H100、B200 及 GB200 在內的尖端 GPU 集群，向亞洲及全球提供 AI 算力雲服務。這使其估值模型從單一「週期性矿企」轉變為「科技成長型 HPC 雲服務商」。
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-3">
+                        <div class="text-brand-orange text-2xl">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">4. 軟硬一體化自主生態</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            研發了 <strong>Minerplus</strong> 及 <strong>MiningSentry</strong> 等智慧運維平台，實現了對數十萬台硬體的秒級監控、自動降頻和故障預警。硬體設計（SEALMINER + Minerbase 貨櫃）與軟體相結合，將設備在線率提升至 98% 以上。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- (E) 主要產品布局 -->
+            <section id="products" class="space-y-6">
+                <div class="border-l-4 border-brand-orange pl-4">
+                    <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                        <span class="text-brand-orange">E</span> 主要產品與業務布局 <span class="text-sm text-brand-muted font-normal">(Product Portfolio)</span>
+                    </h2>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Product 1 -->
+                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden hover:border-brand-orange/50 transition-all flex flex-col">
+                        <div class="p-6 flex-1 space-y-4">
+                            <span class="bg-brand-orange/10 text-brand-orange text-xs font-bold px-2.5 py-1 rounded">自研硬體設備</span>
+                            <h3 class="text-xl font-bold text-white">SEALMINER 礦機系列</h3>
+                            <p class="text-xs text-brand-muted leading-relaxed">
+                                專為極致能效比設計。最新 <strong>SEALMINER A4 Ultra Hydro</strong> 採用先進的水冷散熱架構，算力高達 886T，能效比降至驚人的 9.45 J/T，代表了當前比特幣挖礦硬體設計的行業最高峰。
+                            </p>
+                        </div>
+                        <div class="bg-brand-dark/40 p-4 border-t border-brand-border text-xs text-brand-muted flex justify-between">
+                            <span>主攻市場: 專業礦工與大型機構</span>
+                            <span class="text-brand-orange font-bold">自研晶片</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden hover:border-brand-orange/50 transition-all flex flex-col">
+                        <div class="p-6 flex-1 space-y-4">
+                            <span class="bg-brand-orange/10 text-brand-orange text-xs font-bold px-2.5 py-1 rounded">基礎設施解決方案</span>
+                            <h3 class="text-xl font-bold text-white">Minerbase 智慧貨櫃</h3>
+                            <p class="text-xs text-brand-muted leading-relaxed">
+                                革命性的全合一模組化礦業貨櫃，支持液冷（A40-UL）與風冷（A40-CE）雙模式。集成配電、冷卻與智能監控系統，支持在各種嚴苛自然環境下快速部署超大算力中心。
+                            </p>
+                        </div>
+                        <div class="bg-brand-dark/40 p-4 border-t border-brand-border text-xs text-brand-muted flex justify-between">
+                            <span>主攻市場: 全球礦場營建</span>
+                            <span class="text-brand-orange font-bold">高擴展性</span>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden hover:border-brand-orange/50 transition-all flex flex-col">
+                        <div class="p-6 flex-1 space-y-4">
+                            <span class="bg-gradient-to-r from-purple-500/20 to-brand-orange/20 text-brand-gold text-xs font-bold px-2.5 py-1 rounded border border-brand-orange/30">HPC / AI 算力</span>
+                            <h3 class="text-xl font-bold text-white">Bitdeer AI Cloud</h3>
+                            <p class="text-xs text-brand-muted leading-relaxed">
+                                基於 NVIDIA 最先進的 GPU 集群打造，配備專屬 AI Studio 平台。為大語言模型、電腦視覺、深度學習和圖形運算提供彈性、高安全性的雲端 GPU 算力租賃服務。
+                            </p>
+                        </div>
+                        <div class="bg-brand-dark/40 p-4 border-t border-brand-border text-xs text-brand-muted flex justify-between">
+                            <span>主攻市場: AI 初創企業與科研機構</span>
+                            <span class="text-brand-gold font-bold">NVIDIA GB200 READY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mermaid 3: Product Architecture Diagram -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-6 shadow-md mt-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-cubes text-brand-orange"></i> 比特小鹿硬體與軟體生態架構
+                    </h3>
+                    <div class="mermaid">
+                        graph TD
+                            Products[Bitdeer 產品與服務矩陣] --> Hardware[硬體產品]
+                            Products --> SaaS[雲端與軟體服務]
+                            
+                            Hardware --> SEALMINER[SEALMINER 礦機 A3 Pro / A4 Ultra]
+                            Hardware --> Minerbase[Minerbase 智慧移動集裝箱]
+                            
+                            SaaS --> CloudMining[雲算力 / 雲託管]
+                            SaaS --> AICloud[AI Cloud NVIDIA GPU服務]
+                            SaaS --> Software[Minerplus / MiningSentry 運維軟體]
+                            
+                            style Products fill:#F87C27,stroke:#fff,stroke-width:2px,color:#fff
+                            style Hardware fill:#1a1c24,stroke:#FAB44A,stroke-width:1px,color:#fff
+                            style SaaS fill:#1a1c24,stroke:#8b5cf6,stroke-width:1px,color:#fff
+                    </div>
+                </div>
+            </section>
+
+            <!-- (F) 關鍵利害關係人 -->
+            <section id="stakeholders" class="space-y-6">
+                <div class="border-l-4 border-brand-orange pl-4">
+                    <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                        <span class="text-brand-orange">F</span> 關鍵利害關係人 <span class="text-sm text-brand-muted font-normal">(Key Stakeholders)</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Stakeholder 1 -->
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-brand-orange/10 text-brand-orange w-12 h-12 rounded-full flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">創辦團隊與核心管理層</h4>
+                                <span class="text-xs text-brand-orange font-semibold">以吳忌寒為核心</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            吳忌寒作為比特大陸的共同創辦人，在加密貨幣晶片研發、礦場營運和資本運作領域具備全球領先的行業影響力，是比特小鹿最核心的戰略決策者與靈魂人物。
+                        </p>
+                    </div>
+
+                    <!-- Stakeholder 2 -->
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-brand-orange/10 text-brand-orange w-12 h-12 rounded-full flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">NVIDIA (輝達)</h4>
+                                <span class="text-xs text-brand-orange font-semibold">首選合作與技術夥伴</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            NVIDIA 的鼎力支持保證了小鹿在 AI 算力短缺的市場環境下，仍能優先獲取最先進的 GPU 架構（如 GB200），共同開發極具市場競爭力的雲計算服務生態。
+                        </p>
+                    </div>
+
+                    <!-- Stakeholder 3 -->
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-brand-orange/10 text-brand-orange w-12 h-12 rounded-full flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">不丹皇家主權基金 (DHI)</h4>
+                                <span class="text-xs text-brand-orange font-semibold">國家級合資戰略夥伴</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            不丹 Druk Holding and Investments（DHI）與比特小鹿在不丹合資建設了數百兆瓦級的零碳、綠色水電數據中心，是小鹿最可靠的能源與法規保障壁壘。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mermaid 4: Stakeholder Relations Diagram -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-6 shadow-md mt-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-users text-brand-orange"></i> 關鍵利害關係人與權益交互網
+                    </h3>
+                    <div class="mermaid">
+                        graph TD
+                            Bitdeer[比特小鹿 Bitdeer] <--> Investors[股東與資本市場 - NASDAQ: BTDR]
+                            Bitdeer <--> Customers[客戶 - 礦工 / AI開發者]
+                            Bitdeer <--> TechPartners[技術夥伴 - NVIDIA]
+                            Bitdeer <--> Governments[各國政府 - 美國、挪威、不丹]
+                            Bitdeer <--> Energy[能源供應商 - 電力與綠能]
+                            
+                            style Bitdeer fill:#F87C27,stroke:#fff,stroke-width:2px,color:#fff
+                            style Investors fill:#1a1c24,stroke:#FAB44A,stroke-width:1px,color:#fff
+                            style Customers fill:#1a1c24,stroke:#3b82f6,stroke-width:1px,color:#fff
+                            style TechPartners fill:#1a1c24,stroke:#8b5cf6,stroke-width:1px,color:#fff
+                            style Governments fill:#1a1c24,stroke:#10b981,stroke-width:1px,color:#fff
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-zinc-950 border-t border-brand-border py-8 px-6 mt-12">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-brand-muted">
+                <div class="flex items-center gap-2">
+                    <div class="bg-brand-orange text-white p-1 rounded">
+                        <i class="fa-solid fa-cubes text-xs"></i>
+                    </div>
+                    <span class="font-bold text-white">BITDEER TECHNOLOGIES GROUP</span>
+                </div>
+                <p>© 2026 Bitdeer. 本報告僅供學術與市場分析研究參考，不構成任何投資建議。</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Sidebar Toggle Script & Mermaid Initializer -->
+    <script>
+        // Sidebar Toggle for Mobile
+        const sidebar = document.querySelector('aside');
+        const toggleBtn = document.getElementById('sidebarToggle');
+        
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('flex');
+        });
+
+        // Highlight Active Link on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                background: '#161821',
+                primaryColor: '#F87C27',
+                primaryTextColor: '#fff',
+                lineColor: '#2e303f',
+                secondaryColor: '#FAB44A',
+                tertiaryColor: '#1a1c24'
+            }
+        });
+    </script>
+</body>
+</html>
