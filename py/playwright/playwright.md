@@ -262,3 +262,12 @@ run()
 你想先讓 OpenCode 嘗試連線到 `9222` 連接埠並測試能否成功控制網頁，還是直接開始撰寫後續整合 Excel 處理的程式碼呢？
 </td></tr>
 </table>
+
+## 2026-08-19
+
+- 實測：
+  - 原本在 Edge 開了新的 Profile，並且刻意地在 Windows 捷徑加上 `--remote-debugging-port=9222` 結果並沒有成功
+  - 後來跟 Gemini 討論了一下，確認一定要指定 `--user-data-dir=` 指定一個非預設 Edge Profile 路徑的目錄，才能順利啟用 Debug 模式，監聽於指定的 port (9222)
+```
+"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --remote-debugging-port=9222 --user-data-dir="C:\EdgeDebugProfile" --remote-allow-origins=*
+```
