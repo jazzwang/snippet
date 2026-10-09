@@ -9,7 +9,7 @@
 
 - 緣起：
   - 持續思考怎麼建立日常工作流中
-  - 在評估能否把開啟 vs code 編輯器改成 neovim 
+  - 在評估能否把開啟 vs code 編輯器改成 neovim
     - 目前想到可能的障礙反而是 Markdown Preview Enhanced 的一些整合功能，像是 mermaid.js 的 render 結果
     - 另一個就是把工作流改成在 VS Code + Terminal 一起用
   - 在 Pi Coding Agent 作者的文章中，提到開多個 tmux 視窗，所以想測看看能否在 Windows 平台上跑 tmux。
@@ -34,7 +34,7 @@ Binaries    : psmux.exe | pmux.exe | tmux.exe
 ```
 - 以下是 GPT 5.6 Luna 寫的技術摘要，經 speak-human-tw skill 修改：
 
-> [!QUESTION]
+> [!NOTE]
 > 參考 https://github.com/psmux/psmux 與 https://psmux.pages.dev/ 撰寫一則技術摘要並更新於 psmux.md
 
 -----

@@ -8,7 +8,7 @@
 - Tool Calls: 49
 - Tokens: ↑168 ↓40k R4.6M W128k
 
-> [!QUESTION]
+> [!NOTE]
 > /skill:firecrawl-deep-research let's research AI Code Agent Data Privacy issue, start from the following links
 > - https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/
 > - https://the-agent-report.com/2026/07/grok-build-cli-repo-upload-privacy-july-2026/
@@ -273,7 +273,7 @@ starting_sources:
   - https://www.dexpose.io/ai-data-leaks/
 ```
 
-> [!QUESTION]
+> [!NOTE]
 > 改以中文輸出至 ai-code-agent-data-privacy.zh_TW.md
 > 使用 speak-human-tw skill 不列清單，請直接修改 ai-code-agent-data-privacy.zh_TW.md
 

@@ -8,7 +8,7 @@
 
 ## 2026-09-15
 
-> [!Question]
+> [!NOTE]
 >
 
 ## GitNexus 技術簡介與功能驗證指南
@@ -482,7 +482,7 @@ $ npx gitnexus list
     Processes:  1279
 ```
 
-> [!QUESTION]
+> [!NOTE]
 > gitnexus 的 PDG 是什麼
 
 在 [GitNexus](https://github.com/abhigyanpatwari/GitNexus) 中，PDG 指的是 程式相依圖（Program Dependence Graph）。 [1]

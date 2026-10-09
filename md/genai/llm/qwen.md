@@ -712,7 +712,7 @@ How are you?<|im_end|>
 
 ### 2026-08-31
 
-> [!QUESTION]
+> [!NOTE]
 > 如果想把 Qwen 3.8 27B 跑在 GCP TPU 上,有建議的作法嗎?
 
 在 Google Cloud Platform (GCP) 的 TPU 上部署 Qwen 3.8 27B，首選方案也是 vLLM。 [1]

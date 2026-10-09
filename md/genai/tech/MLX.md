@@ -4,7 +4,7 @@
 
 - Tool: Google Search - AI Mode
 
-> [!QUESTION]
+> [!NOTE]
 > MLX 是哪一個 LLM 技術
 
 MLX（Machine Learning X）是由 Apple（蘋果公司）機器學習研究團隊開發的開源機器學習與陣列運算框架。 [1, 2]
@@ -47,7 +47,7 @@ MLX 的核心特色與優勢如下：
 [7] [https://mashdigi.com](https://mashdigi.com/in-depth-analysis-how-does-apple-achieve-zero-cloud-and-zero-cost-device-side-ai-proxy-on-mac-using-the-mlx-architecture/)
 [8] [https://maq.tw](https://maq.tw/blog/wwdc26-mlx-local-agentic-ai-mac/)
 
-> [!QUESTION]
+> [!NOTE]
 > MLX 與 llama.cpp 的技術差異
 
 MLX 與 llama.cpp 的核心差異在於「硬體平台」與「硬體架構的底層優化」。

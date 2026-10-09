@@ -2,7 +2,7 @@
 
 - Tool: Google Search - AI Mode
 
-> [!QUESTION]
+> [!NOTE]
 > gptq-int4 與 awq-4bit 有什麼差異
 
 GPTQ-Int4 與 AWQ-4bit 是目前最主流的兩種 4-bit 權重顯卡（GPU）後訓練量化（PTQ）技術。
@@ -42,7 +42,7 @@ GPTQ-Int4 與 AWQ-4bit 是目前最主流的兩種 4-bit 權重顯卡（GPU）�
 
 請問你目前是打算在自建的伺服器（NVIDIA 顯示卡）上架設 LLM API，還是單純在個人電腦上進行測試呢？我可以根據你的顯示卡型號（如 RTX 4090、A100）與目標模型，為你建議最合適的量化格式與部署框架！
 
-> [!QUESTION]
+> [!NOTE]
 > 若上游模型是 GPTQ-INT4 要變成 AWQ-4bit 該怎麼做呢?需要重新訓練嗎?
 
 不需要重新訓練（Retraining）！ 量化技術屬於「後訓練量化（PTQ, Post-Training Quantization）」，因此不需要像預訓練或微調模型那樣，花費巨大的算力與時間去重新調整模型參數。

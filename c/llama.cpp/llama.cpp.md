@@ -209,7 +209,7 @@ error: invalid argument: --ctx-scale-value-quant
 ## 2026-06-12
 
 - Tool: Google Search - AI Mode
-> [!QUESTION]
+> [!NOTE]
 > steps to install llama.cpp on linux without GPU
 
 To install and run llama.cpp on Linux for CPU-only inference (without a GPU), you need to compile the code from source using CMake. By default, compiling llama.cpp without specifying any GPU flags automatically optimizes the build for your local CPU. [1, 2, 3, 4]
@@ -299,7 +299,7 @@ If you plan on writing Python applications around this build, let me know if you
 
 - Tool: Google Search - AI Mode
 
-> [!QUESTION]
+> [!NOTE]
 > 支援 CPU 的 LLM model servicing 工具,除了 llama.cpp 以外,還有其他工具嗎?
 
 ### Llama.cpp Alternatives
@@ -356,7 +356,7 @@ If you plan on writing Python applications around this build, let me know if you
 [9] [https://www.bilibili.com](https://www.bilibili.com/video/BV1ihXrYEEyn/)
 
 
-> [!QUESTION]
+> [!NOTE]
 > AMD. GGUF. 個人測試
 
 ### Test GGUF on AMD
@@ -390,7 +390,7 @@ If you plan on writing Python applications around this build, let me know if you
 
 您可以告訴我您目前正在使用的是哪一個 AMD CPU 型號（例如 Ryzen 7 5800X、Ryzen 9 7900 等）？我可以幫您預估大約的推論速度（Tokens/second），或是直接提供您 Ollama 匯入 GGUF 的指令步驟。
 
-> [!QUESTION]
+> [!NOTE]
 > Ryzen 7 7735HS. 可以預估 vLLM 推論速度嗎?
 
 ### AMD Ryzen 7 vLLM inference speed
@@ -439,7 +439,7 @@ If you plan on writing Python applications around this build, let me know if you
 
 ## 2026-08-27
 
-> [!QUESTION]
+> [!NOTE]
 > 請問執行 llama serve -hf unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS 指令,llama.cpp 會把 GGUF 檔案存放在哪裡?作業系統是 Windows 11
 
 在 Windows 11 作業系統下，執行 `llama serve -hf` 指令時，`llama.cpp` 會將下載的 GGUF 檔案自動存放在 Hugging Face 的標準本地快取路徑： [1, 2]
@@ -480,7 +480,7 @@ llama serve -hf unsloth/Qwen3.8-27B-GGUF:UD-IQ2_XXS
 
 ## 2026-08-31
 
-> [!QUESTION]
+> [!NOTE]
 > 最佳化自行佈署 Qwen 3.8 27B 的作法?vLLM?llama.cpp?llamafile?
 
 佈署 Qwen 3.8 27B 的最佳化作法，取決於你的硬體規格（單卡/多卡/VRAM 大小）以及應用場景（單人使用/Agent 任務/多人高吞吐）。 [1, 2, 3]
@@ -565,7 +565,7 @@ docker run --gpus all --ipc=host\
 [5] [https://www.autobuy.tw](https://www.autobuy.tw/thread_19)
 [6] [https://bbs.csdn.net](https://bbs.csdn.net/weixin_29031057/article/details/100267175)
 
-> [!QUESTION]
+> [!NOTE]
 > 使用 vLLM 對比 llama.cpp 來 serve 同一個模型的 FP8 跟 GGUF Q4_K_M 效能上有何優缺點?
 
 使用 vLLM 部署 FP8 模型與使用 llama.cpp 部署 GGUF Q4\_K\_M 模型，是目前主流的兩種大語言模型（LLM）推論優化方案。
@@ -623,7 +623,7 @@ docker run --gpus all --ipc=host\
 
 如果想更進一步評估，可以告訴我：您預計使用的 GPU/CPU 型號、模型參數大小（例如 8B, 70B）以及預期的同時使用人數，我可以為您提供更精準的架構部署建議。
 
-> [!QUESTION]
+> [!NOTE]
 > 請根據 Qwen 3.8 27B 為例,製作 side-by-side comparison table,請提供使用 vLLM 跟 llama.cpp 的最低硬體需求、TTFT、TPS、VRAM 用量、精準度損失
 
 以阿里巴巴最新推出的 Qwen 3.8 27B Dense 多模態模型為例，此模型原生支援 MTP（多Token預測）加速機制，上下文長度達 256K。 [1, 2, 3]
@@ -672,7 +672,7 @@ docker run --gpus all --ipc=host\
 
 ## 2026-09-06
 
-> [!QUESTION]
+> [!NOTE]
 > 已有下載 GGUF 模型,如何用 llama.cpp 來 serve llm model 並且設定成 opencode 可以呼叫該模型
 
 要使用 `llama.cpp` 將已下載的 GGUF 模型 啟動為 API 伺服器，並將其連接到 OpenCode（如 OpenCode / OpenCode-Interpreter 等 [Coding Agent](https://haimaker.ai/zh-tw/blog/opencode%E9%80%A3%E6%8E%A5ollama%E6%9C%AC%E6%A9%9F%E6%A8%A1%E5%9E%8B/) 工具），你可以透過 `llama.cpp` 內建的 `llama-server` 執行檔 來建立一個相容於 OpenAI 規範的 HTTP 端點。 [1, 2, 3, 4]
@@ -737,7 +737,7 @@ OPENCODE_MODEL=qwen2.5-coder-7b
 [7] [https://www.alphalab.site](https://www.alphalab.site/qwen38-27b-local-agent-test)
 [8] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/articles/10406812)
 
-> [!QUESTION]
+> [!NOTE]
 > 我已經正確跑 llama-server 指令,並確認監聽於 127.0.0.1:8080.
 > 但在 Pi Coding Agent 中使用 `/login` 選 llama.cpp 後,
 > 錯誤訊息是
@@ -831,7 +831,7 @@ OPENCODE_MODEL=qwen2.5-coder-7b
 
 - Google Search - AI Mode
 
-> [!QUESTION]
+> [!NOTE]
 > how to make llama-server router mode follow different ctx-size?
 
 To make llama-server router mode follow different context sizes (ctx-size) for different models, you must use a configuration preset file (.ini). [1, 2]
@@ -894,7 +894,7 @@ This will ensure your preset flags don't trigger unexpected Out Of Memory crashe
 [8] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/23704)
 [9] [https://github.com](https://github.com/ggml-org/llama.cpp/issues/11681)
 
-> [!QUESTION]
+> [!NOTE]
 > 改以中文回答
 
 若要讓 llama-server 的路由模式（Router Mode） 針對不同模型採用不同的上下文大小（ctx-size），你必須使用 配置預設檔案（.ini）。
@@ -949,7 +949,7 @@ llama-server --host 127.0.0.1 --port 8080 --models-preset models.ini --models-ma
 
 這樣我可以幫你評估是否會觸發記憶體不足（OOM）的崩潰問題。
 
-> [!QUESTION]
+> [!NOTE]
 > 可以再哪裡查到 models.ini 或 models.json 的語法定義?
 
 關於 llama-server 的路由模式預設設定檔（目前官方主要採用 `.ini` 格式，而非 .json），其語法與參數定義可以從以下三個官方管道查閱： [1, 2]
@@ -1209,7 +1209,7 @@ ctx-size = 1048576
   ```
 - 研究：
 
-> [!QUESTION]
+> [!NOTE]
 > llama.cpp 如果減少每個模型的 slot ? 預設似乎是 4 slots，增加 context window size 是否也因此增加了 VRAM 的需求？
 
 是的，增加 context window size（上下文視窗大小）會直接且顯著地增加 VRAM 的需求。 [1, 2]

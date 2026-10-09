@@ -15,7 +15,7 @@
 
 - Tool: Pi Agent + llama.cpp/Qwen3.5-9B.Q4_K_M
 
-> [!QUESTION]
+> [!NOTE]
 > 根據 https://github.com/magnitudedev/magnitude 撰寫一篇中文技術簡介，包括如何 step-by-step 測試，經 /skill:speak-human-tw 潤飾詞句後，存到 `magnitude.md`
 
 ## Magnitude 技術簡介

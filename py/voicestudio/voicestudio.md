@@ -9,7 +9,7 @@
 
 - Learn from Alpha Signal
 
-> [!QUESTION]
+> [!NOTE]
 > 參考 https://github.com/debpalash/VoiceStudio 撰寫一篇技術簡介，並說明如何 step-by-step 測試，最後使用 speak-human-tw skill 潤飾詞句，不必列清單，請直接修改，最後將結果新增至 voicestudio.md
 
 ## VoiceStudio 技術簡介與測試指南

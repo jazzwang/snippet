@@ -19,7 +19,7 @@
 
 ## 2026-09-09
 
-> [!QUESTION]
+> [!NOTE]
 > WebMCP 如何讓 AI Agent 知道網站是如何運作?
 
 WebMCP（Web Model Context Protocol）讓網站從被動地「讓 AI 猜測畫面」，轉變為主動「宣告自己的功能與規則」。 [1, 2]

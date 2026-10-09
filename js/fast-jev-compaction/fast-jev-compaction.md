@@ -13,7 +13,7 @@
 - Tool: Pi Agent + llama.cpp + Qwen3.5-9B
 
 !!! QUESTION
-> [!QUESTION]
+> [!NOTE]
 > 請根據 https://github.com/tamaratran/fast-jev-compaction 撰寫一篇技術報告並包含 step-by-step 測試步驟，經 /skill:speak-human-tw 潤飾詞句後，儲存至 fast-jev-compaction.md
 
 ## fast-jev-compaction 技術報告

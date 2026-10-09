@@ -16,7 +16,7 @@
     - 註：看到這裡才比較知道 Claude Code Hook 的功能有點類似 git 的 `pre-commit`, `post-commit` hook
 - 繼續研究如何讓 Chop 可以整合 `Pi Coding Agent`
 
-> [!QUESTION]
+> [!NOTE]
 > https://pi.dev/ 支援 pre-tool 嗎?
 
 感謝您提供更精確的官方網頁資訊，讓我能針對這款由 Earendil Inc. 開發的 Pi Coding Agent (@earendil-works/pi-coding-agent) 給您最正確的答案。
@@ -46,7 +46,7 @@
 * 您希望在工具執行前，自動幫您執行什麼地端指令（例如：預先備份、先執行 lint、或是進行安全檢查）？
 * 您希望這個前置動作是全域生效，還是只針對特定專案（透過 `AGENTS.md`）呢？
 
-> [!QUESTION]
+> [!NOTE]
 > 可以做成全域生效嗎?
 
 可以，完全可以做成全域生效！

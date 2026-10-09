@@ -246,7 +246,7 @@ sequenceDiagram
 - `--ensure node,browser,ripgrep,ffmpeg`：只處理指定依賴，不 clone repository 或建立 venv。
 - `--manifest`：只輸出 stage manifest，不執行安裝。
 
-> [!QUESTION]
+> [!NOTE]
 > 請根據 @install.sh 的內容，回答以下問題：(1) hermes-agent 是從 PyPI 安裝的？還是直接 clone git repo 來安裝？(2) uv 在這裡扮演的角色是什麼？用來安裝哪些套件？
 
 根據 `install.sh`，答案如下：

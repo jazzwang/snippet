@@ -24,7 +24,7 @@
 - 研究：
   - 用 Pi Agent + llama.cpp/Qwen3.5-9B:64K 幫我快速整理中文技術報告，以利快速理解這個專案。
 
-> [!QUESTION]
+> [!NOTE]
 > 根據 https://github.com/HarnessRouter/harnessrouter 內容撰寫一篇技術報告，包括 step-by-step 測試步驟，經 /skill:speak-human-tw 潤飾詞句後，存成 harnessrouter.md
 
 ## HarnessRouter 技術報告

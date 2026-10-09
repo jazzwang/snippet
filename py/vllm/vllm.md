@@ -118,7 +118,7 @@ ModuleNotFoundError: No module named 'vllm._C'
 
 ## 2026-08-31
 
-> [!QUESTION]
+> [!NOTE]
 > 除了 FP8, INT16 以外,有近似 Q4_K_M 的 vLLM 支援?
 
 有的，而且非常多。如果您希望在 vLLM 中獲得類似 GGUF Q4\_K\_M 的低 VRAM 佔用（約 4-bit 體積），但又想保有 vLLM 的高吞吐量與高併發優勢，您最完美的替代方案是 AWQ 和 GPTQ（尤其是搭配 Marlin 核心加速 的版本）。 [1, 2, 3]
@@ -174,7 +174,7 @@ ModuleNotFoundError: No module named 'vllm._C'
 [12] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1s9iyrw/has_anyone_tested_the_quantization_quality/)
 [13] [https://docs.vllm.ai](https://docs.vllm.ai/en/v0.8.5/features/quantization/gguf.html)
 
-> [!QUESTION]
+> [!NOTE]
 > 如果用 AMD 顯示卡,vLLM 也跑得動 Qwen 3.8 27B AWQ 嗎?
 
 答案是：可以跑得動，但這並非最佳解，且體驗可能非常痛苦。

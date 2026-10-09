@@ -11,7 +11,7 @@
 - *Chat*:
 
 **Your prompt:**
-> [!QUESTION]
+> [!NOTE]
 > 在系統思考中，System One跟System 2的定義是什麼
 
 **Search's response:**

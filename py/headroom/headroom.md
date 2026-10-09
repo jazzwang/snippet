@@ -18,7 +18,7 @@
 
 ## 2026-08-17
 
-> [!QUESTION]
+> [!NOTE]
 > Token Optimization alternative to headroom
 
 The best token optimization alternatives to Headroom depend on whether you want to compress terminal noise, change retrieval behavior, or manage enterprise-wide language model traffic. [1, 2]
@@ -91,7 +91,7 @@ To help pick the ideal alternative, could you let me know:
 - 預估產出：
   - 找到合適跟 Pi Coding Agent 一起用的工具
 
-> [!QUESTION]
+> [!NOTE]
 > 那一套比較合適跟 Pi Coding Agent 一起搭配使用呢？
 
 如果你正在使用 [Pi Coding Agent (pi.dev)](https://pi.dev/)，最適合與它搭配的 Token 優化替代方案是 TokenShift 或者是從它內建的 /compact 壓縮機制著手。 [1, 2]
@@ -129,7 +129,7 @@ Reddit 的 r/PiCodingAgent 社群網友特別強調，很多人抱怨 Pi Token �
 [7] https://pi.dev
 [8] [https://www.youtube.com](https://www.youtube.com/watch?v=6xXjHM3V1zM)
 
-> [!QUESTION]
+> [!NOTE]
 > tokenshift 是 open source 嗎？若不是，open source 那一套比較合適跟 Pi Coding Agent 搭配使用？
 
 TokenShift 不是開源的（Open Source）。

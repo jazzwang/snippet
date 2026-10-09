@@ -2,7 +2,7 @@
 
 ## 2026-09-05 - `ps aux` alternatives
 
-> [!QUESTION]
+> [!NOTE]
 > windows 可以用什麼指令列出類似 linux `ps aux` 的結果?
 
 在 Windows 環境下，如果想要列出類似 Linux ps aux 的所有處理程序與詳細資訊，主要有以下三種最常用的指令（依據您使用的終端機環境而定）： [1]

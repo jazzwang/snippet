@@ -2,7 +2,7 @@
 
 - Too: Pi Agent + github-copilot/gpt-5.6-luna
 
-> [!QUESTION]
+> [!NOTE]
 > /skill:firecrawl-market-research 請先幫我搜尋 Databricks 最近六個月的重要財經新聞，試著撰寫一篇市場分析報告，需包含 (1) Databricks 的主要投資人有哪些？投資金額有多少？Databricks 是否有債權、債卷等負債？(2) Databricks 過去五年的營收走勢 (3) Databricks 有 IPO 的消息嗎？若有，市場估值是多少？
 
 ## Databricks 市場分析報告

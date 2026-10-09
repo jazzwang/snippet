@@ -16,7 +16,7 @@
 
 ## 2026-09-27
 
-> [!QUESTION]
+> [!NOTE]
 > /skill:understand given https://github.com/haydenbleasel/blume 可以告訴我 Blume 的技術創新為何？跟其他程式框架的差異為何？使用的限制與需求為何？
 
 ## Blume 技術分析報告

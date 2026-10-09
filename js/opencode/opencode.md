@@ -381,7 +381,7 @@ OpenCode Zen 平台上的 Big Pickle 是一款官方定位為「隱身模型」�
 
 ## 2026-09-04
 
-> [!QUESTION]
+> [!NOTE]
 > 可以引導我設定 opencode 怎麼接上 llama.cpp 設定的 Qwen3.8 27B ?
 
 要將 OpenCode 串接到由 `llama.cpp` 所託管的 Qwen3.8 27B 模型，核心邏輯是利用 OpenCode 的自定義 OpenAI 兼容端點（OpenAI-compatible provider）機制。 [1]
@@ -467,7 +467,7 @@ opencode
 
 ## 2026-09-06
 
-> [!QUESTION]
+> [!NOTE]
 > 已有下載 GGUF 模型,如何用 llama.cpp 來 serve llm model 並且設定成 opencode 可以呼叫該模型
 
 要使用 `llama.cpp` 將已下載的 GGUF 模型 啟動為 API 伺服器，並將其連接到 OpenCode（如 OpenCode / OpenCode-Interpreter 等 [Coding Agent](https://haimaker.ai/zh-tw/blog/opencode%E9%80%A3%E6%8E%A5ollama%E6%9C%AC%E6%A9%9F%E6%A8%A1%E5%9E%8B/) 工具），你可以透過 `llama.cpp` 內建的 `llama-server` 執行檔 來建立一個相容於 OpenAI 規範的 HTTP 端點。 [1, 2, 3, 4]

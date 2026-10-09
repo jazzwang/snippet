@@ -2,7 +2,7 @@
 
 ## 2026-09-21
 
-> [!QUESTION]
+> [!NOTE]
 > 換手機時,如何重新取得 Microsoft 365 MFA organization QR code?
 
 換手機時，若需要重新取得 Microsoft 365 MFA（多重身份驗證）的組織 QR code 來綁定新手機，主要取決於您目前是否還能登入公司/學校帳戶。

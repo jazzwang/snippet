@@ -6,7 +6,7 @@
 
 ### VS Code - Terminal
 
-> [!QUESTION]
+> [!NOTE]
 > VS Code 有辦法讓 Terminal 視窗跟其他檔案一樣開成一個分頁嗎？遇到的問題是當開啟 Markdown Preview 時，Terminal 會被強迫壓縮回下方
 
 可以 — 把 Terminal 移到「編輯器區域（editor area）」就會像其他檔案一樣以分頁/分割視窗存在，開啟 Markdown Preview 就不會把它強制壓到下方面板了。
@@ -31,7 +31,7 @@
 
 如果要把它移回下面的 panel，右鍵該 Terminal 的編輯器分頁，選「Move Terminal to Panel」或用 Command Palette 對應的命令即可。
 
-> [!QUESTION]
+> [!NOTE]
 > 怎麼設定 VS Code 預設 Trim Trailing Whitespace?
 
 可以，VS Code 的設定名稱是：

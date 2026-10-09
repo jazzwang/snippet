@@ -3,7 +3,7 @@
 
 ## 2026-09-18
 
-> [!QUESTION]
+> [!NOTE]
 > 請根據 https://harnesstax.github.io/ 內容撰寫一篇繁體中文的技術摘要，並經 /skill:speak-human-tw 潤飾詞句後存成 HarnessTax.md
 
 ## HarnessTax 研究技術摘要

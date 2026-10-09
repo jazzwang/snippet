@@ -8,7 +8,7 @@
 
 ## 2026-09-18
 
-> [!QUESTION]
+> [!NOTE]
 > 請根據 https://github.com/google/artemis 撰寫一篇技術簡介，包括 step-by-step 測試範例，經 /skill:speak-human-tw 潤飾詞句後，存到 artemis.md
 
 ## Google Artemis：AI 驅動的手機自動化測試平台

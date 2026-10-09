@@ -264,7 +264,7 @@ Pi 社群有專門為 OpenCode Zen 封裝好的套件，完全不需要手動填
 
 ## 2026-09-04
 
-> [!QUESTION]
+> [!NOTE]
 > 我用指令啟動了 llama.cpp 的 server,可以給我 step-by-step 設定 Pi Coding Agent (https://pi.dev) 連上 http://127.0.0.1:8080 的方法嗎?
 > ```
 > 0.13.009.715 I srv llama_server: server is listening on http://127.0.0.1:8080
@@ -534,7 +534,7 @@ Loaded Qwen3.5-9B.Q4_K_M
 
 ## 2026-09-09
 
-> [!QUESTION]
+> [!NOTE]
 > Pi Agent (https://pi.dev/) 支援修改 System Prompt 嗎?
 
 是的，Pi Agent（pi.dev）支援修改 System Prompt。 [1]

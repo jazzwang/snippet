@@ -14,7 +14,7 @@
   - 在研究 [rust/utopia](../utopia/utopia.md) 時，看到的 Tantivy 全文搜尋引擎
 - 技術摘要：
 
-> [!QUESTION]
+> [!NOTE]
 > 請透過 web search 搜尋並整理關於 Tantivy 全文索引的技術摘要，並儲存到 rust/tantivy/tantivy.md
 
 > Tantivy 是以 Rust 撰寫、受 Apache Lucene 設計啟發的全文搜尋函式庫，不是像 Elasticsearch 或 Solr 那樣的獨立搜尋伺服器。

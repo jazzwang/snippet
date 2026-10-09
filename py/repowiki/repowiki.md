@@ -9,7 +9,7 @@
 
 - **Tool**: Pi Coding Agent + llama.cpp + Qwen 3.5 9B Q4_K_M
 
-> [!QUESTION]
+> [!NOTE]
 > 參考 https://github.com/he-yufeng/RepoWiki 撰寫一篇技術簡介，並說明如何 step-by-step 測試 RepoWiki，研究是否可以跟 llama.cpp local LLM 整合，最後使用 /skill:speak-human-tw 潤飾詞句後存成 @repowiki.md
 
 ## RepoWiki 技術簡介：測試與 llama.cpp 整合
@@ -198,7 +198,7 @@ curl -s http://localhost:11434/api/tags
 
 ## 2026-09-17
 
-> [!QUESTION]
+> [!NOTE]
 > repowiki 可以跟 llama.cpp 整合嗎
 
 可以，[he-yufeng/RepoWiki](https://github.com/he-yufeng/RepoWiki) 完全可以跟 llama.cpp 整合。 [1]

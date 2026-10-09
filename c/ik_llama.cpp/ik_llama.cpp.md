@@ -8,7 +8,7 @@
 
 ## 2026-09-05
 
-> [!QUESTION]
+> [!NOTE]
 > ik_llama.cpp 與 llama.cpp 的關係與差異
 
 ik_llama.cpp 與 llama.cpp 的關係是「激進實驗分支（Fork）」與「主線（Mainline）」的關係。
@@ -70,7 +70,7 @@ ik_llama.cpp 引入了創新的圖表分割模式（Split mode graph），解決
 ## 2026-09-07
 
 - Tool: Pi Agent + llama.cpp + Qwen 3.5 9B Q4_K_M
-> [!QUESTION]
+> [!NOTE]
 > 參考 https://github.com/ikawrakow/ik_llama.cpp 撰寫一篇技術摘要，並附加到 @ik_llama.cpp.md
 
 # 技術摘要：ik_llama.cpp

@@ -7,7 +7,7 @@ created: 2026-09-23
 description: "造AI的人开始公开踩刹车：OpenAI、Anthropic接连警告失控风险"
 ---
 
-> [!QUESTION]
+> [!NOTE]
 >  將 https://www.infoq.cn/article/FA80wgNMOwCRrXsSIAwX 重新整理成繁體中文部落格文章，經 speak-human-tw skill 潤飾詞句，不列清單，直接修改，將結果存於 GenAI-Risk-Alert.md
 
 **「我們正在拿生命做賭注」：打造 AI 的人為何開始密集預警？**

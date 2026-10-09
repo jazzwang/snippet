@@ -6,7 +6,7 @@
 
 - Pi Coding Agent + github-copilot/gpt-5.6-luna
 
-> [!QUESTION]
+> [!NOTE]
 > /skill:firecrawl-deep-research 請參考 https://typesafe.ai/blog/introducing-system-one-models-and-jev , https://news.ycombinator.com/item?id=49736660 , https://www.langchain.com/blog/building-a-harness-with-jev , https://www.alphalab.site/jev-ai-decision-primitive 幫我整理 (1) Jev 的技術創新 (2) 如何測試 Jev 模型 (3) Jev 是否為公開模型？若不是，有沒有 Alternative 可以在 HuggingFace 取得？ (4) 如果目前我主要使用 Pi Coding Agent (https://pi.dev) ，我可以做什麼 hands-on lab 來實測 Jev？
 
 ## Jev 研究整理
