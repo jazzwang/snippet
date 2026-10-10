@@ -10,11 +10,9 @@
 > **We strongly recommend using a Node version manager like [nvm](https://github.com/nvm-sh/nvm) to install Node.js and npm.**
 
 - 模型： Ollama + Qwen 2.5 Coder 7B
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you guide me how to install nvm using scoop?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you guide me how to install nvm using scoop?
+
 Certainly! Installing `nvm` (Node Version Manager) using Scoop is a straightforward process. Here’s a step-by-step guide:
 
 1. **Install Scoop**:
@@ -69,8 +67,7 @@ That's it! You should now have `nvm` installed and ready to use on your system. 
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 how can I find npm after installed nvm?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 After installing `nvm`, you will also have `npm` (Node Package Manager) available because it comes bundled with Node.js. Here’s how you can verify that `npm` is installed and check its version:
 

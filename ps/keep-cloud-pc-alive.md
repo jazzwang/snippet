@@ -5,11 +5,9 @@
 - 限制：Azure Cloud PC 會在 Windows App 或 Client 斷線後，自動登出
 - 需求：怎麼讓 Cloud PC 不要自動登出呢？可否每一段時間送出某個特殊鍵盤事件？
 - 2025-07-25 9:56 AM @ Gemini 2.5 Flash
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to send numlock key every 5 seconds using powershell?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how to send numlock key every 5 seconds using powershell?
+
 You can send the NumLock key every 5 seconds using PowerShell by utilizing the `SendKeys` method from the .NET Framework's `System.Windows.Forms` namespace. Here's a script that accomplishes this:
 
 ```powershell

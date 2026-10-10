@@ -8,16 +8,14 @@
     把 confluence wiki page 轉成 markdown 也存一份在 Local，
     除了分析 confluence wiki page 跟 contributor 之間的關聯之外，
     還可以把這些 markdown 轉成 embedding 存到 vector store，當作 RAG 知識庫使用呢？
-- 2025-09-15 23:22 PM 
+- 2025-09-15 23:22 PM
   - 問 Gemini 可否給我一個 example python program
   - 本想看是否會建議用 `httpx` 或 `requests` 搭配其他 python HTML to Markdown 的 library 來把 confluence page 轉成 Markdown 檔。
     結果建議使用 `confluence-markdown-exporter` (當然可能也只是隨機得到的結果，因為範例程式是用 python `subprocess` 還呼叫命令列工具 `cf-export`)
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you show me an example Python program to convert confluence wiki page into markdown file? e.g. https://cwiki.apache.org/confluence/display/HADOOP/Roadmap
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you show me an example Python program to convert confluence wiki page into markdown file? e.g. https://cwiki.apache.org/confluence/display/HADOOP/Roadmap
+
 To convert a Confluence wiki page to a Markdown file in Python, you can use the `confluence-markdown-exporter` library, which is specifically designed for this purpose.
 
 Here is an example program that uses this library to convert the page you specified (`https://cwiki.apache.org/confluence/display/HADOOP/Roadmap`) and saves it to a file.
@@ -69,16 +67,16 @@ def convert_confluence_to_markdown(confluence_url, output_dir=".", file_name="ou
         print(f"Converting page from {confluence_url}...")
         result = subprocess.run(command, check=True, capture_output=True, text=True)
         print("Conversion successful!")
-        
+
         # The tool might save a file with a name based on the page title.
         # Find the newly created file and rename it if needed.
         # Note: The tool creates a nested directory structure.
-        
+
         # In this specific case, the tool will create a file at:
         # ./output_dir/HADOOP/Roadmap.md
         # The user's request is for a simple file, so we'll just show the tool's output
         # since it correctly places the file in the specified directory.
-        
+
         print("\n" + "="*50)
         print("Tool Output:")
         print(result.stdout)
@@ -93,10 +91,10 @@ def convert_confluence_to_markdown(confluence_url, output_dir=".", file_name="ou
 if __name__ == "__main__":
     # The public Confluence URL to convert
     confluence_page_url = "https://cwiki.apache.org/confluence/display/HADOOP/Roadmap"
-    
+
     # Define the output directory and file name
     output_directory = "./confluence_export"
-    
+
     # Run the function
     convert_confluence_to_markdown(confluence_page_url, output_dir=output_directory)
 

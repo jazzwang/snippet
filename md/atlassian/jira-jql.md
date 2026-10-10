@@ -4,11 +4,9 @@
 
 - 需求：查詢最近兩週的異動
 - Bing Copilot Search
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-jql last 14 days
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> jql last 14 days
+
 To create a JQL (Jira Query Language) query for issues related to the **last 14 days**, you can use the `-14d` relative date format. Below are some examples based on common use cases:
 
 * * * *
@@ -103,9 +101,9 @@ Let me know if you need further clarification or additional examples!
     - https://community.atlassian.com/forums/Jira-questions/How-can-I-search-for-all-tickets-that-have-issue-links-to/qaq-p/1231423
     - Will all issues which are linked or links project JQL
         > issue in linkedByIssueProject("JQL")
-    - Find issues which link at least one issue from project JQL. 
+    - Find issues which link at least one issue from project JQL.
         > issue in links("project = JQL")
-    - Find issues which "blocks" at least one issue from project JQL. 
+    - Find issues which "blocks" at least one issue from project JQL.
         > issue in links("blocks", "project = JQL")
 
 ## 2026-04-12

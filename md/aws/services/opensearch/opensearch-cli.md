@@ -3,11 +3,9 @@
 - Created with 2.5 Flash May 27, 2025 at 11:54 AM
 - https://g.co/gemini/share/3b57f8bc02c7
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Are there CLI tool for OpenSearch?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Are there CLI tool for OpenSearch?
+
 Yes, OpenSearch provides several command-line interface (CLI) tools for managing your cluster and performing various tasks:
 
 1.  **OpenSearch CLI (`opensearch-cli`)**:
@@ -47,10 +45,10 @@ OpenSearch aims to provide a unified command-line interface in the future to int
 - 在 Github Codespace 上測試
 ```bash
 @jazzwang ➜ /workspaces/snippet (master) $ wget https://artifacts.opensearch.org/opensearch-clients/opensearch-cli/opensearch-cli-1.2.0-linux-x64.zip
-@jazzwang ➜ /workspaces/snippet (master) $ unzip opensearch-cli-1.2.0-linux-x64.zip 
+@jazzwang ➜ /workspaces/snippet (master) $ unzip opensearch-cli-1.2.0-linux-x64.zip
 Archive:  opensearch-cli-1.2.0-linux-x64.zip
-  inflating: opensearch-cli          
-@jazzwang ➜ /workspaces/snippet (master) $ ./opensearch-cli 
+  inflating: opensearch-cli
+@jazzwang ➜ /workspaces/snippet (master) $ ./opensearch-cli
 opensearch-cli is a unified command line interface for managing OpenSearch clusters
 
 Usage:

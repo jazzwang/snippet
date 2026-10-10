@@ -262,30 +262,28 @@ flowchart LR
 - 方法：
   - 問 DeepWiki
   - https://deepwiki.com/search/where-did-gemini-cli-store-his_fd93f653-8a88-40e4-bf00-de9203676ca4?mode=fast
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-where did gemini cli store history?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> where did gemini cli store history?
+
 The Gemini CLI stores history in two different locations depending on the type of history:
 
 ## Shell Command History
 
-Shell commands executed via the `!` prefix or shell mode are stored in a project-specific directory: [1](#0-0) 
+Shell commands executed via the `!` prefix or shell mode are stored in a project-specific directory: [1](#0-0)
 
-**Location:** `~/.gemini/tmp/<project_hash>/shell_history` [1](#0-0) 
+**Location:** `~/.gemini/tmp/<project_hash>/shell_history` [1](#0-0)
 
-The `<project_hash>` is a unique identifier generated from your project's root path, which prevents conflicts between different projects. [1](#0-0) 
+The `<project_hash>` is a unique identifier generated from your project's root path, which prevents conflicts between different projects. [1](#0-0)
 
 ## Chat Conversation History
 
-Chat checkpoints saved via the `/chat save` command are stored in: [2](#0-1) 
+Chat checkpoints saved via the `/chat save` command are stored in: [2](#0-1)
 
 **Default locations:**
 - Linux/macOS: `~/.gemini/tmp/<project_hash>/`
-- Windows: `C:\Users\<YourUsername>\.gemini\tmp\<project_hash>\` [2](#0-1) 
+- Windows: `C:\Users\<YourUsername>\.gemini\tmp\<project_hash>\` [2](#0-1)
 
-When you run `/chat list`, the CLI scans these specific directories to find available checkpoints. [2](#0-1) 
+When you run `/chat list`, the CLI scans these specific directories to find available checkpoints. [2](#0-1)
 
 ## Notes
 
@@ -322,16 +320,14 @@ Wiki pages you might want to explore:
           [Checkpointing documentation](../cli/checkpointing.md).
 ```
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-can gemini cli output to stdout?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
-Yes, Gemini CLI can output to stdout, particularly in **headless/non-interactive mode**. [1](#1-0) 
+> [!NOTE]
+> can gemini cli output to stdout?
+
+Yes, Gemini CLI can output to stdout, particularly in **headless/non-interactive mode**. [1](#1-0)
 
 ## How It Works
 
-When you run Gemini CLI with the `--prompt` flag or pipe input via stdin, it operates in non-interactive mode and writes responses directly to stdout: [2](#1-1) 
+When you run Gemini CLI with the `--prompt` flag or pipe input via stdin, it operates in non-interactive mode and writes responses directly to stdout: [2](#1-1)
 
 ```bash
 gemini --prompt "What is machine learning?"
@@ -339,30 +335,30 @@ gemini --prompt "What is machine learning?"
 echo "Explain this code" | gemini
 ```
 
-The implementation in `runNonInteractive()` writes content events directly to `process.stdout`: [3](#1-2) 
+The implementation in `runNonInteractive()` writes content events directly to `process.stdout`: [3](#1-2)
 
 ## Output Formats
 
 You have two output format options:
 
 ### 1. Text Output (Default)
-Standard human-readable output written directly to stdout as the model generates it: [3](#1-2) 
+Standard human-readable output written directly to stdout as the model generates it: [3](#1-2)
 
 ### 2. JSON Output
-Structured output with response, statistics, and metadata, buffered and written once at the end: [4](#1-3) 
+Structured output with response, statistics, and metadata, buffered and written once at the end: [4](#1-3)
 
 You can enable JSON output with:
 ```bash
 gemini -p "Your prompt" --output-format json
 ```
 
-The JSON format includes the response text, model usage stats, tool execution metrics, and error information if applicable. [5](#1-4) 
+The JSON format includes the response text, model usage stats, tool execution metrics, and error information if applicable. [5](#1-4)
 
 ## Configuration
 
 The output format can be configured via:
-- Command-line flag: `--output-format <format>` (values: `text` or `json`) [6](#1-5) 
-- Settings file: `output.format` setting [7](#1-6) 
+- Command-line flag: `--output-format <format>` (values: `text` or `json`) [6](#1-5)
+- Settings file: `output.format` setting [7](#1-6)
 
 ## Notes
 

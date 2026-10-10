@@ -2,11 +2,9 @@
 
 - By Google Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you create a python program using request and markitdown, use user-agent header "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" and read url from args, fetch the context from url, convert html to markdown using markitdown, save to output file specified in '-o' option.
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you create a python program using request and markitdown, use user-agent header "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" and read url from args, fetch the context from url, convert html to markdown using markitdown, save to output file specified in '-o' option.
+
 It seems you meant the Python library `markdownify` for converting HTML to Markdown, as `markitdown` isn't a standard Python library for this task.
 
 Here is a Python program that uses `requests` to fetch content, `markdownify` to convert HTML to Markdown, and the `argparse` module to handle the command-line arguments (URL and output file).
@@ -76,14 +74,14 @@ def main():
     parser = argparse.ArgumentParser(
         description="Fetch HTML from a URL, convert it to Markdown, and save it to a file."
     )
-    
+
     # Required positional argument for the URL
     parser.add_argument(
         'url',
         type=str,
         help="The URL of the webpage to fetch."
     )
-    
+
     # Required optional argument for the output file
     parser.add_argument(
         '-o', '--output',

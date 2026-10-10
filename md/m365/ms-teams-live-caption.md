@@ -1,11 +1,9 @@
 # MS Teams Live Caption Saver
 
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there a way to save Microsoft Teams Live Caption as output file?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there a way to save Microsoft Teams Live Caption as output file?
+
 Microsoft Teams **does not natively allow saving Live Captions** as a file during a meeting. However, there are a few workarounds depending on your needs:
 
 ---

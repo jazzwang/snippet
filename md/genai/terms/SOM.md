@@ -3,11 +3,9 @@
 - 2025-08-13 17:39 PM
 - Google Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what is self-organized maps (SOMs)?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what is self-organized maps (SOMs)?
+
 **Self-Organizing Maps (SOMs)**, also known as Kohonen maps or Kohonen networks, are a type of **unsupervised artificial neural network** that are primarily used for **dimensionality reduction, clustering, and data visualization**. They are designed to produce a low-dimensional (typically two-dimensional) representation of a higher-dimensional dataset while preserving the topological structure of the data. This means that data points that are similar in the high-dimensional input space will be mapped to nearby locations on the low-dimensional SOM grid. 🗺️
 
 ***
@@ -43,7 +41,7 @@ Once the SOM is trained, it can be used to classify new, unseen input data. For 
 * **Dimensionality Reduction**: They effectively reduce high-dimensional data into a lower-dimensional representation, typically a 2D grid, making complex datasets easier to visualize and understand.
 * **Topology Preservation**: A crucial feature of SOMs is that they preserve the topological relationships of the input data. This means that data points that are close to each other in the original high-dimensional space will also be mapped to nearby neurons on the SOM grid.
 * **Competitive Learning**: Unlike many other neural networks that use error-correction learning (like backpropagation), SOMs employ competitive learning, where neurons compete to be the BMU for an input.
-* **Grid Structure**: Neurons in a SOM are typically arranged in a rectangular or hexagonal grid, forming a visual "map" of the data. 
+* **Grid Structure**: Neurons in a SOM are typically arranged in a rectangular or hexagonal grid, forming a visual "map" of the data.
 
 ***
 

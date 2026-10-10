@@ -101,17 +101,15 @@ Global options:
 - ( 2025-03-26 18:23:57 )
 - 問 Gemini 怎麼安裝本地的 Python package，畢竟一些小工具，也不好老是產生小專案到 PyPI 上。
 - https://g.co/gemini/share/9f7bf5c43829
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-can the PACKAGE of the following uv command be local package? if yes, could you provide a helloworld example?
+> [!NOTE]
+> can the PACKAGE of the following uv command be local package? if yes, could you provide a helloworld example?
 
 ```bash
 Usage: uv.exe tool install [OPTIONS] <PACKAGE>
 Arguments:
   <PACKAGE>  The package to install commands from
 ```
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Yes, indeed! The `<PACKAGE>` argument in `uv tool install` can absolutely be a local package. Let's walk through a "Hello, world!" example to show you how it works.
 
 **1. Create a Simple Local Package**
@@ -202,12 +200,10 @@ So, yes, installing local packages as tools with `uv` is definitely possible and
 - ( 2025-03-26 18:34:46 )
 - 看起來用 `requirements.txt` 會比較麻煩。
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me another example using `requirements.txt`?
+> [!NOTE]
+> could you give me another example using `requirements.txt`?
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 You got it! Let's create another "Hello, world!" example, this time using a `requirements.txt` file to define our local package for `uv tool install`.
 
@@ -339,7 +335,7 @@ Resolved 97 packages in 4.73s
       Built aider-chat @ file:///C:/Users/jazzw/git/aider
       Built pyperclip==1.9.0
 ⠼ Preparing packages... (94/97)
-tree-sitter-language-pack ------------------------------ 12.12 MiB/12.37 MiB 
+tree-sitter-language-pack ------------------------------ 12.12 MiB/12.37 MiB
 ```
 - 看起來少了在 Windows 底下編譯 Fortran 的環境（為了 scipy 1.13.1 版本）
 ```bash

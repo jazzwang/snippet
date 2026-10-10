@@ -4,9 +4,8 @@
 
 - By Microsoft 365 Copilot
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you create a bash script in order to meet the following requirements using express.js?
+> [!NOTE]
+> could you create a bash script in order to meet the following requirements using express.js?
 
 - Given a Swagger document
   - https://petstore.swagger.io/#/pet/addPet
@@ -30,8 +29,7 @@ could you create a bash script in order to meet the following requirements using
 - Test Cases:
   - there will be 3 test cases based on expected business logic
   - you can use `curl` or `postman` to validate your API endpoint
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Here's a **Bash script** that sets up a minimal Express.js server to meet your requirements. It includes logic to handle a POST request to `/pet`, validate the `id` field, and respond accordingly.
 
 ---

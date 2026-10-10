@@ -369,11 +369,9 @@ https://github.com/orgs/datacontw/projects/1
 ## 2025-07-06
 
 - https://g.co/gemini/share/0313b8116d7b
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-is it possible to use github cli (gh) to create a codespace template?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> is it possible to use github cli (gh) to create a codespace template?
+
 
 While the GitHub CLI (`gh`) can be used to **create a codespace from an existing repository or template**, it doesn't have a direct command like `gh codespace create-template` to *create* a new codespace template from scratch in the same way you might create a new repository.
 
@@ -441,11 +439,9 @@ This will create a new codespace based on the `devcontainer.json` configuration 
 
 **In summary:** The `gh` CLI is excellent for interacting with existing codespaces and creating new ones from repositories (including template repositories), but the "template creation" itself involves setting up a standard GitHub repository with a `.devcontainer` configuration and marking it as a template through GitHub's web interface or the `gh repo create --template` command.
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a step-by-step command line instruction to create a github page?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a step-by-step command line instruction to create a github page?
+
 Sure, here are step-by-step command-line instructions to create a GitHub Page. These instructions assume you already have Git and the GitHub CLI (`gh`) installed and authenticated on your system.
 
 ### Step-by-Step Command Line Instructions to Create a GitHub Page
@@ -716,11 +712,9 @@ To github.com:jazzwang/aider-labs.git
 ## 2025-12-10
 
 - 緣起：想要查詢 Github Enterprise 上，特定使用者曾經貢獻過哪些 Git Repo
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there github api or gh cli command to list of git repositories contributed by specific user?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there github api or gh cli command to list of git repositories contributed by specific user?
+
 
 Yes, there are methods using the **GitHub API** to list repositories a specific user has contributed to, though it's not a single, direct endpoint for "all contributed repositories." There is also a powerful way to do this using the **`gh cli`** by combining commands.
 
@@ -819,11 +813,9 @@ tenmax/azurekit
 
 - 改問能否查詢曾經 commit 過的 git repo 列表
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there github api or gh cli command to list of git repositories committed by specific user?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there github api or gh cli command to list of git repositories committed by specific user?
+
 
 Yes, you can list the GitHub repositories a specific user has committed to using both the **GitHub API** (specifically the GraphQL API or Search REST API) and a powerful two-step method with the **GitHub CLI (`gh`)**.
 
@@ -1003,11 +995,9 @@ Would you like me to show you how to construct a more complex script that handle
 
 - 那如果想要看是誰 merge 了 PR 呢？
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there github api or gh cli command to list of git repositories whose PR were  resolved by specific user?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there github api or gh cli command to list of git repositories whose PR were  resolved by specific user?
+
 
 Yes, the most reliable way to find a list of repositories where a specific user **merged** a Pull Request is by using the **GitHub Search API** or the **GitHub CLI (`gh`)** which wraps that API.
 
@@ -1083,11 +1073,9 @@ You can learn more about managing pull requests from the command line by checkin
 
 - 如果想查有參與過 PR Review 的呢？
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there github api or gh cli command to list of git repositories whose PR were  reviewed by specific user?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there github api or gh cli command to list of git repositories whose PR were  reviewed by specific user?
+
 
 Yes, the most effective way to list repositories where a specific user has **reviewed** a Pull Request is by using the **GitHub Search API** or the **GitHub CLI (`gh`)**, which utilizes the same search capabilities.
 

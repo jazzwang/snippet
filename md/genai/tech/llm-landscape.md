@@ -2,7 +2,7 @@
 
 ## 2025-04-13
 
-- 
+-
 ```mermaid
 graph LR
     subgraph A["LLM Inference and Deployment"]
@@ -50,11 +50,9 @@ graph LR
 ```
 - 2025-04-13 12:13 PM
 - https://g.co/gemini/share/5f13f897b845
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to segment the following technologies: vLLM, LiteLLM, OpenRouter, Ollama, llama.cpp, LangChain, LlamaIndex, LangFlow, n8n, LangGraph, LangSmith, Pinecone, Chroma, Streamlit, Gradio, Chainlit, Google ADK, MCP, Google A2A, aider, windsurf.com?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how to segment the following technologies: vLLM, LiteLLM, OpenRouter, Ollama, llama.cpp, LangChain, LlamaIndex, LangFlow, n8n, LangGraph, LangSmith, Pinecone, Chroma, Streamlit, Gradio, Chainlit, Google ADK, MCP, Google A2A, aider, windsurf.com?
+
 Okay, let's segment this final, *final* list, incorporating `windsurf.com`. Given that it's a website domain, it's highly unlikely to be a direct peer to the other software technologies in the context of LLM development. It most likely represents an external resource or a potential application area.
 
 Here's the segmentation, with `windsurf.com` placed in a separate "External Resources/Applications" category:

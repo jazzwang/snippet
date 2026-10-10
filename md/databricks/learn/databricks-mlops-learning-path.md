@@ -1,4 +1,4 @@
-# 2-Week Databricks Learning Path: 
+# 2-Week Databricks Learning Path:
 ## Mastering ML Model Governance with <mark>Unity Catalog</mark> and Interactive <mark>Streamlit</mark> Applications
 
 > created by Gemini Deep Research
@@ -8,8 +8,7 @@
 <table><tr><td valign="middle">Q:</td><td valign="middle">
 <!-- add your Prompt bellow-->
 could you plan 2-weeks Databricks learning outline, especially targeting learning to register ML models to unity catelog and build Streamlit App to interact with specific ML model? if possible, look into Databricks documents and certification training materials. thanks!
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 ## **I. Introduction: The Databricks Lakehouse for MLOps**
 
 This report outlines a comprehensive 2-week learning path designed to equip practitioners with the knowledge and practical skills necessary to manage machine learning (ML) models effectively on the Databricks Lakehouse Platform, with a particular focus on model registration to Unity Catalog and building interactive Streamlit applications. The Databricks Lakehouse Platform represents a paradigm shift in data management, offering a unified environment that seamlessly integrates data warehousing and data lake capabilities. This architecture is purpose-built to support the entire spectrum of data workloads, from traditional business intelligence (BI) to advanced artificial intelligence (AI) and machine learning operations (MLOps).1
@@ -22,26 +21,26 @@ The foundational strength of the Databricks Lakehouse Platform lies in its abili
 
 Two pivotal technologies underpin the Databricks Lakehouse:
 
-* **Delta Lake:** This optimized storage layer provides ACID (Atomicity, Consistency, Isolation, Durability) transactions, schema enforcement, and versioning capabilities. These features are fundamental for ensuring data reliability, quality, and enabling incremental data refinement through a medallion architecture.1  
+* **Delta Lake:** This optimized storage layer provides ACID (Atomicity, Consistency, Isolation, Durability) transactions, schema enforcement, and versioning capabilities. These features are fundamental for ensuring data reliability, quality, and enabling incremental data refinement through a medallion architecture.1
 * **Unity Catalog:** Serving as the unified, fine-grained governance solution for all data and AI assets, Unity Catalog is a central metadata layer that manages access policies across multiple workspaces. It supports a wide array of assets, including tables, volumes, features, and crucially, ML models.1
 
 #### **Operational Components**
 
 The Databricks platform is composed of several interconnected operational components that facilitate diverse workflows:
 
-* **Workspaces:** A workspace acts as a cloud-based deployment and an environment where teams can organize and access Databricks assets, including notebooks, libraries, dashboards, and experiments. It provides the necessary access to data objects and computational resources for collaborative analysis.4  
-* **Compute:** Databricks offers flexible compute options tailored for specific workload patterns:  
-  * *All-purpose clusters* are designed for interactive, collaborative analysis, allowing multiple users to share resources for ad-hoc queries and development.4  
-  * *Job clusters* are ephemeral, created by the Databricks job scheduler for automated workloads and terminated upon job completion, which optimizes cost efficiency for production jobs.4  
-  * *Databricks Runtime for Machine Learning (Databricks Runtime ML)* is a specialized runtime that automates compute creation with pre-built infrastructure for machine learning and deep learning. It includes pre-configured common ML/DL libraries and GPU support, significantly simplifying environment setup for ML workloads.4  
+* **Workspaces:** A workspace acts as a cloud-based deployment and an environment where teams can organize and access Databricks assets, including notebooks, libraries, dashboards, and experiments. It provides the necessary access to data objects and computational resources for collaborative analysis.4
+* **Compute:** Databricks offers flexible compute options tailored for specific workload patterns:
+  * *All-purpose clusters* are designed for interactive, collaborative analysis, allowing multiple users to share resources for ad-hoc queries and development.4
+  * *Job clusters* are ephemeral, created by the Databricks job scheduler for automated workloads and terminated upon job completion, which optimizes cost efficiency for production jobs.4
+  * *Databricks Runtime for Machine Learning (Databricks Runtime ML)* is a specialized runtime that automates compute creation with pre-built infrastructure for machine learning and deep learning. It includes pre-configured common ML/DL libraries and GPU support, significantly simplifying environment setup for ML workloads.4
 * **Notebooks:** These web-based interfaces are central to creating data science and machine learning workflows, enabling the combination of runnable commands, visualizations, and narrative text in a single document.4
 
 #### **MLOps Specific Components**
 
 For the machine learning lifecycle, Databricks provides specialized tools that are deeply integrated within the Lakehouse ecosystem:
 
-* **MLflow:** An open-source platform specifically designed to manage the complexities of the machine learning process. MLflow encompasses experiment tracking (recording and comparing parameters and results), model management (Model Registry for versioning and annotation), and model deployment capabilities.5 Databricks offers a fully managed and hosted version of MLflow, which is seamlessly integrated with other Databricks services like Unity Catalog and Model Serving, enhancing its robustness and scalability for enterprise use.6  
-* **Model Serving (Mosaic AI Model Serving):** This component provides a unified, scalable, and serverless interface for deploying, governing, and querying AI models as REST API endpoints. Its tight integration with MLflow Model Registry and Unity Catalog ensures robust management of model versions, dependencies, validation, and overall governance.6  
+* **MLflow:** An open-source platform specifically designed to manage the complexities of the machine learning process. MLflow encompasses experiment tracking (recording and comparing parameters and results), model management (Model Registry for versioning and annotation), and model deployment capabilities.5 Databricks offers a fully managed and hosted version of MLflow, which is seamlessly integrated with other Databricks services like Unity Catalog and Model Serving, enhancing its robustness and scalability for enterprise use.6
+* **Model Serving (Mosaic AI Model Serving):** This component provides a unified, scalable, and serverless interface for deploying, governing, and querying AI models as REST API endpoints. Its tight integration with MLflow Model Registry and Unity Catalog ensures robust management of model versions, dependencies, validation, and overall governance.6
 * **Databricks Apps:** This feature empowers developers to build and deploy secure data and AI applications (e.g., using Python frameworks like Streamlit, Dash, or Gradio) directly on the Databricks serverless platform. These applications natively integrate with Unity Catalog for data governance, Databricks SQL for querying data, and Model Serving for deploying AI models, eliminating the need for separate infrastructure.8
 
 ### **The Importance of MLOps, Unity Catalog, and Interactive Applications in Modern ML Workflows**
@@ -89,10 +88,10 @@ For enhanced efficiency, Databricks recommends leveraging MLflow autologging. Th
 
 **Hands-on Exercise:**
 
-1. Set up a Databricks workspace and create an all-purpose cluster configured with Databricks Runtime ML.4  
-2. Create a new Databricks notebook.  
-3. Train a simple machine learning model, such as a scikit-learn classifier on a public dataset like Iris.19  
-4. Implement MLflow autologging for the training process.18  
+1. Set up a Databricks workspace and create an all-purpose cluster configured with Databricks Runtime ML.4
+2. Create a new Databricks notebook.
+3. Train a simple machine learning model, such as a scikit-learn classifier on a public dataset like Iris.19
+4. Implement MLflow autologging for the training process.18
 5. Navigate to the MLflow UI (Experiments section) to view the logged runs, compare parameters and metrics, and inspect artifacts.18
 
 ### **Day 3-4: Deep Dive into Unity Catalog for Data & AI Governance**
@@ -109,18 +108,18 @@ In Unity Catalog, all metadata is registered in a metastore, and data and AI ass
 
 Unity Catalog offers a comprehensive suite of features for robust data and AI governance:
 
-* **Centralized Access Control:** It provides fine-grained access control at the catalog, schema, table, column, and ML model levels.3 This is achieved using standard ANSI SQL syntax for granting and revoking permissions, which simplifies security management and ensures consistency across the platform.11  
-* **Data Lineage:** Unity Catalog automatically captures runtime data lineage across queries executed on Databricks clusters or SQL warehouses. This capability tracks how data assets are created and used across all languages, down to the column level, and includes lineage for notebooks, jobs, and dashboards.2 This provides a transparent view of data transformations, which is invaluable for auditing, debugging, and understanding the impact of data changes on downstream processes, including ML models.  
-* **Auditing:** User-level audit logs that record access to data and AI assets are automatically captured by Unity Catalog. These logs, along with billable usage and lineage information, can be easily accessed and queried via system tables, supporting compliance and operational monitoring.2  
-* **Data Discovery (Catalog Explorer):** The Databricks Catalog Explorer offers a user interface to explore and manage all data and AI assets, including registered ML models, their permissions, owners, and storage locations. The ability to tag and document data assets further enhances discoverability for data consumers.10  
+* **Centralized Access Control:** It provides fine-grained access control at the catalog, schema, table, column, and ML model levels.3 This is achieved using standard ANSI SQL syntax for granting and revoking permissions, which simplifies security management and ensures consistency across the platform.11
+* **Data Lineage:** Unity Catalog automatically captures runtime data lineage across queries executed on Databricks clusters or SQL warehouses. This capability tracks how data assets are created and used across all languages, down to the column level, and includes lineage for notebooks, jobs, and dashboards.2 This provides a transparent view of data transformations, which is invaluable for auditing, debugging, and understanding the impact of data changes on downstream processes, including ML models.
+* **Auditing:** User-level audit logs that record access to data and AI assets are automatically captured by Unity Catalog. These logs, along with billable usage and lineage information, can be easily accessed and queried via system tables, supporting compliance and operational monitoring.2
+* **Data Discovery (Catalog Explorer):** The Databricks Catalog Explorer offers a user interface to explore and manage all data and AI assets, including registered ML models, their permissions, owners, and storage locations. The ability to tag and document data assets further enhances discoverability for data consumers.10
 * **Delta Sharing:** An open protocol developed by Databricks, Delta Sharing facilitates secure data and AI asset sharing with other organizations or internal teams, irrespective of their underlying computing platforms.10
 
 **Hands-on Exercise:**
 
-1. Navigate to the Catalog Explorer in your Databricks workspace.10  
-2. Explore existing catalogs, schemas, and tables to gain practical understanding of the three-level namespace (catalog.schema.object).11  
-3. Practice creating a new catalog and a new schema using SQL commands (e.g., CREATE CATALOG IF NOT EXISTS \<catalog\_name\>; USE CATALOG \<catalog\_name\>; CREATE SCHEMA IF NOT EXISTS \<schema\_name\>;).12  
-4. Grant basic permissions, such as USE CATALOG and CREATE SCHEMA, to a test user or group.12  
+1. Navigate to the Catalog Explorer in your Databricks workspace.10
+2. Explore existing catalogs, schemas, and tables to gain practical understanding of the three-level namespace (catalog.schema.object).11
+3. Practice creating a new catalog and a new schema using SQL commands (e.g., CREATE CATALOG IF NOT EXISTS \<catalog\_name\>; USE CATALOG \<catalog\_name\>; CREATE SCHEMA IF NOT EXISTS \<schema\_name\>;).12
+4. Grant basic permissions, such as USE CATALOG and CREATE SCHEMA, to a test user or group.12
 5. If sample data is available, load it into a Delta table within your new schema and observe how Unity Catalog tracks its lineage.1
 
 ### **Day 5-7: MLflow Model Registry & Unity Catalog Integration**
@@ -137,14 +136,14 @@ Databricks provides a hosted version of the MLflow Model Registry that is seamle
 
 The recommended workflow for registering models involves two main phases:
 
-1. **Experimentation in MLflow:** Models are trained, and all relevant metrics, parameters, and artifacts are tracked using MLflow.13  
+1. **Experimentation in MLflow:** Models are trained, and all relevant metrics, parameters, and artifacts are tracked using MLflow.13
 2. **Registering in Unity Catalog:** Once the optimal model is identified, it is registered in Unity Catalog. This ensures that the model's lifecycle is tightly managed, versioned, and governed. Models are registered using the three-level namespace (\<catalog\>.\<schema\>.\<model\>), which ensures consistency with other data assets and simplifies organization and discoverability.13
 
 Models can be registered using several methods:
 
-* **UI-based Registration:** From the MLflow Run page, accessible via the Experiments UI, users can click "Register Model," select "Unity Catalog," and then choose an existing model or create a new one.19  
-* **Programmatic Registration (during run):** Within an MLflow run, mlflow.\<model-flavor\>.log\_model(registered\_model\_name="\<model-name\>") can be used. If the specified registered model does not exist, it will be automatically created.19  
-* **Programmatic Registration (after run):** To register a model from a completed MLflow run, mlflow.register\_model("runs:/\<run\_id\>/\<artifact\_path\>", "\<model-name\>") is utilized.21  
+* **UI-based Registration:** From the MLflow Run page, accessible via the Experiments UI, users can click "Register Model," select "Unity Catalog," and then choose an existing model or create a new one.19
+* **Programmatic Registration (during run):** Within an MLflow run, mlflow.\<model-flavor\>.log\_model(registered\_model\_name="\<model-name\>") can be used. If the specified registered model does not exist, it will be automatically created.19
+* **Programmatic Registration (after run):** To register a model from a completed MLflow run, mlflow.register\_model("runs:/\<run\_id\>/\<artifact\_path\>", "\<model-name\>") is utilized.21
 * **Programmatic Creation of Registered Model:** A new registered model can be created in Unity Catalog using MlflowClient().create\_registered\_model("\<model-name\>").21
 
 To create new registered models in Unity Catalog, specific permissions are required: USE SCHEMA and USE CATALOG privileges on the enclosing schema and catalog, respectively, along with CREATE\_MODEL or CREATE\_FUNCTION privilege on the schema.19 For creating new model versions, the user must be the owner of the registered model and possess USE SCHEMA and USE CATALOG privileges.19
@@ -181,17 +180,17 @@ Deploying a model with Model Serving requires certain prerequisites: a registere
 
 Endpoint creation can be performed via two primary methods:
 
-* **Using the Serving UI:** Users navigate to "Serving" in the Databricks sidebar and click "Create serving endpoint." Configuration involves providing an endpoint name, selecting the model and a specific version from Unity Catalog (using the full catalog.schema.model name), specifying traffic percentage, compute size (CPU/GPU), and whether the endpoint should scale to zero when idle.26 The requirement to specify the full catalog.schema.model name when deploying a model to Model Serving directly links back to Unity Catalog's object model, ensuring that the same discoverability, access control, and lineage tracking applied during model registration are seamlessly extended through the deployment phase.11 This consistency reinforces the treatment of ML models as first-class, governed assets throughout their lifecycle.  
+* **Using the Serving UI:** Users navigate to "Serving" in the Databricks sidebar and click "Create serving endpoint." Configuration involves providing an endpoint name, selecting the model and a specific version from Unity Catalog (using the full catalog.schema.model name), specifying traffic percentage, compute size (CPU/GPU), and whether the endpoint should scale to zero when idle.26 The requirement to specify the full catalog.schema.model name when deploying a model to Model Serving directly links back to Unity Catalog's object model, ensuring that the same discoverability, access control, and lineage tracking applied during model registration are seamlessly extended through the deployment phase.11 This consistency reinforces the treatment of ML models as first-class, governed assets throughout their lifecycle.
 * **Programmatic Creation (REST API / MLflow Deployments SDK):** Endpoints can also be created and managed programmatically using the Databricks REST API or the MLflow Deployments SDK (mlflow.deployments.get\_deploy\_client("databricks")). This method also requires the full catalog.schema.model name for model identification.26
 
 Querying the deployed endpoint is straightforward. The easiest and fastest way to test and send scoring requests is through the "Query endpoint" tab within the Serving UI.27 For programmatic access from external applications or notebooks, HTTP POST requests containing input data (typically in JSON format) are sent to the Model Serving endpoint's URL.27 For secure interaction, especially in production environments, machine-to-machine OAuth tokens are recommended for authentication. For development purposes, a DATABRICKS\_API\_TOKEN (such as a Personal Access Token or PAT) can be used, ideally retrieved securely from a Databricks secret scope rather than hardcoding credentials.25
 
 **Hands-on Exercise:**
 
-1. Select one of the ML models previously registered to Unity Catalog in Week 1\.  
-2. Deploy this model as a Model Serving endpoint using the Databricks Serving UI. Configure basic settings such as the endpoint name, the model version (e.g., referencing it by an alias like "Champion"), and the desired compute size.26  
-3. Once the endpoint status changes to "Ready," navigate to its details page.  
-4. Utilize the "Query endpoint" tab in the UI to send sample inference requests and observe the predictions returned by the model.27  
+1. Select one of the ML models previously registered to Unity Catalog in Week 1\.
+2. Deploy this model as a Model Serving endpoint using the Databricks Serving UI. Configure basic settings such as the endpoint name, the model version (e.g., referencing it by an alias like "Champion"), and the desired compute size.26
+3. Once the endpoint status changes to "Ready," navigate to its details page.
+4. Utilize the "Query endpoint" tab in the UI to send sample inference requests and observe the predictions returned by the model.27
 5. Write a simple Python script in a Databricks notebook (or locally) to programmatically query the deployed Model Serving endpoint using the requests library, ensuring proper authentication handling (e.g., using a PAT for development).25
 
 ### **Day 10-11: Introduction to Streamlit on Databricks Apps**
@@ -210,9 +209,9 @@ Streamlit is an open-source Python framework that enables data scientists and ML
 
 Key components of Streamlit include:
 
-* st.sidebar: Used for organizing input elements and widgets, keeping the main app interface clean.14  
-* st.write(): A versatile function for displaying text, data, and visualizations.14  
-* Widgets: Functions like st.text\_input(), st.button(), st.slider(), st.selectbox(), and st.multiselect() enable user interaction with the application.14  
+* st.sidebar: Used for organizing input elements and widgets, keeping the main app interface clean.14
+* st.write(): A versatile function for displaying text, data, and visualizations.14
+* Widgets: Functions like st.text\_input(), st.button(), st.slider(), st.selectbox(), and st.multiselect() enable user interaction with the application.14
 * st.session\_state: A crucial feature for maintaining context and conversation history across app reruns, particularly important in interactive chat applications.30 Streamlit's design also ensures real-time updates to the app when the underlying code or data changes, providing a dynamic and responsive user experience.14
 
 #### **Local Development and Deployment using Databricks Asset Bundles (DABs)**
@@ -225,10 +224,10 @@ Databricks Asset Bundles (DABs) represent the recommended method for packaging a
 
 **Hands-on Exercise:**
 
-1. Initialize a new Databricks Asset Bundle project with a Streamlit app template using the command: databricks bundle init https://github.com/databricks/bundle-examples \--template-dir contrib/templates/streamlit-app.32  
-2. Explore the generated app.py (the main Streamlit script), app.yaml (app configuration), and requirements.txt (dependencies).  
-3. Modify app.py to create a simple interactive Streamlit UI, such as a text input field and a button that displays the input text.  
-4. Deploy the app to your Databricks workspace using databricks bundle deploy.32  
+1. Initialize a new Databricks Asset Bundle project with a Streamlit app template using the command: databricks bundle init https://github.com/databricks/bundle-examples \--template-dir contrib/templates/streamlit-app.32
+2. Explore the generated app.py (the main Streamlit script), app.yaml (app configuration), and requirements.txt (dependencies).
+3. Modify app.py to create a simple interactive Streamlit UI, such as a text input field and a button that displays the input text.
+4. Deploy the app to your Databricks workspace using databricks bundle deploy.32
 5. Access the deployed app via the endpoint URL provided in the bundle summary output.32
 
 ### **Day 12-13: Connecting Streamlit to ML Models & Performance Optimization**
@@ -239,24 +238,24 @@ These days focus on the practical integration of Streamlit applications with ML 
 
 Two primary methods exist for a Streamlit application to interact with an ML model:
 
-* Loading Models Directly from Unity Catalog (for specific use cases):  
-  A model version can be directly loaded from Unity Catalog into the Streamlit app's environment using mlflow.pyfunc.load\_model() or mlflow.\<flavor\>.load\_model().19 Models can be referenced either by their alias (e.g., models:/\<catalog\_name\>.\<schema\_name\>.\<model\_name\>@\<alias\_name\>) for dynamic updates, or by their specific version number (e.g., models:/\<catalog\_name\>.\<schema\_name\>.\<model\_name\>/\<version\_number\>).19 To enable this, the Streamlit app's service principal (or the user running it) requires EXECUTE privilege on the registered model, along with USE SCHEMA and USE CATALOG privileges on the containing schema and catalog.19 However, it is important to note that direct model loading within a Streamlit app's limited compute resources (2 vCPUs, 6 GB memory) 8 can be inefficient for large models or high concurrency, potentially leading to cold-start issues if the model is not properly cached.39 This approach is generally more suitable for prototyping or very low-traffic internal tools where latency is less critical.  
-* Calling Model Serving Endpoints from Streamlit (Recommended for Production):  
+* Loading Models Directly from Unity Catalog (for specific use cases):
+  A model version can be directly loaded from Unity Catalog into the Streamlit app's environment using mlflow.pyfunc.load\_model() or mlflow.\<flavor\>.load\_model().19 Models can be referenced either by their alias (e.g., models:/\<catalog\_name\>.\<schema\_name\>.\<model\_name\>@\<alias\_name\>) for dynamic updates, or by their specific version number (e.g., models:/\<catalog\_name\>.\<schema\_name\>.\<model\_name\>/\<version\_number\>).19 To enable this, the Streamlit app's service principal (or the user running it) requires EXECUTE privilege on the registered model, along with USE SCHEMA and USE CATALOG privileges on the containing schema and catalog.19 However, it is important to note that direct model loading within a Streamlit app's limited compute resources (2 vCPUs, 6 GB memory) 8 can be inefficient for large models or high concurrency, potentially leading to cold-start issues if the model is not properly cached.39 This approach is generally more suitable for prototyping or very low-traffic internal tools where latency is less critical.
+* Calling Model Serving Endpoints from Streamlit (Recommended for Production):
   The most robust and scalable method for a Streamlit app to interact with an ML model is by calling a deployed Model Serving endpoint via its REST API.7 This is implemented using Python's requests library to send HTTP POST requests containing input data (typically in JSON format) to the Model Serving endpoint's URL.27 For secure interaction, especially in production environments, machine-to-machine OAuth tokens are recommended. For development, a Personal Access Token (PAT) can be retrieved securely from a Databricks secret scope to avoid hardcoding credentials.25 This approach offloads the heavy inference computation to the dedicated, scalable, and serverless Model Serving infrastructure.7 This ensures low latency, high availability, and efficient resource utilization, aligning with Databricks' best practices for AI inference workloads.39 The choice between direct model loading and Model Serving in Streamlit represents a trade-off between simplicity/cost for prototyping and scalability/performance for production. While direct loading might seem simpler initially, the limitations of Databricks App compute make Model Serving the clear path for production-grade applications, emphasizing a clear architectural pattern: Streamlit for the UI, Model Serving for the heavy inference lifting, and Unity Catalog for governance.
 
 #### **Best Practices for Streamlit Performance on Databricks**
 
 Optimizing performance and user experience in Streamlit applications running on Databricks is crucial for effective MLOps.
 
-* **Caching for Efficiency:**  
-  * @st.cache\_data: This decorator is used for functions that return data, such as results from external APIs, database queries, or the output of ML inference for a given input. It caches results, preventing redundant computations and API calls, which significantly speeds up response times and can reduce costs.30  
-  * @st.cache\_resource: This is essential for caching computationally expensive global resources that should be loaded only once and shared across all users and sessions, such as ML models themselves or database connections. This dramatically improves the app's responsiveness by avoiding repeated loading of large objects.30  
-* **Asynchronous Operations for Responsiveness:**  
-  * **Non-Blocking Calls:** Long-running operations, such as network calls to a Model Serving endpoint, can cause the Streamlit UI to freeze. Python's asyncio library with async/await syntax should be used to make these I/O operations non-blocking, ensuring a smooth user experience.30 API call functions should be defined with async def, using await with asynchronous clients.  
-  * **User Feedback:** Providing visual feedback during lengthy tasks is vital. Streamlit offers elements like st.spinner("Thinking..."), st.progress(0), st.status("Working on it..."), or st.toast("Done\!").30  
-  * **Stream Responses:** For generative AI models or other models producing incremental output, st.write\_stream() can display the response as it's generated, making the app feel significantly faster.30 Caching and asynchronous operations are not merely performance optimizations; they are fundamental for delivering a positive user experience in interactive ML applications. They address the inherent challenges of computationally intensive ML inference and network latency, ensuring the app feels fast, smooth, and usable, which directly impacts user adoption and satisfaction.  
-* **Minimize Container Startup Time:** The app's initialization logic should be kept lightweight. Heavy resources, such as large models, should only be loaded when actually needed, ideally using @st.cache\_resource, to reduce cold-start latency.39  
-* **Leverage Databricks-Native Features:** It is important to remember that app compute is optimized for UI rendering. For heavy data processing, Databricks SQL should be used, and for AI inference, Model Serving is the recommended service.39  
+* **Caching for Efficiency:**
+  * @st.cache\_data: This decorator is used for functions that return data, such as results from external APIs, database queries, or the output of ML inference for a given input. It caches results, preventing redundant computations and API calls, which significantly speeds up response times and can reduce costs.30
+  * @st.cache\_resource: This is essential for caching computationally expensive global resources that should be loaded only once and shared across all users and sessions, such as ML models themselves or database connections. This dramatically improves the app's responsiveness by avoiding repeated loading of large objects.30
+* **Asynchronous Operations for Responsiveness:**
+  * **Non-Blocking Calls:** Long-running operations, such as network calls to a Model Serving endpoint, can cause the Streamlit UI to freeze. Python's asyncio library with async/await syntax should be used to make these I/O operations non-blocking, ensuring a smooth user experience.30 API call functions should be defined with async def, using await with asynchronous clients.
+  * **User Feedback:** Providing visual feedback during lengthy tasks is vital. Streamlit offers elements like st.spinner("Thinking..."), st.progress(0), st.status("Working on it..."), or st.toast("Done\!").30
+  * **Stream Responses:** For generative AI models or other models producing incremental output, st.write\_stream() can display the response as it's generated, making the app feel significantly faster.30 Caching and asynchronous operations are not merely performance optimizations; they are fundamental for delivering a positive user experience in interactive ML applications. They address the inherent challenges of computationally intensive ML inference and network latency, ensuring the app feels fast, smooth, and usable, which directly impacts user adoption and satisfaction.
+* **Minimize Container Startup Time:** The app's initialization logic should be kept lightweight. Heavy resources, such as large models, should only be loaded when actually needed, ideally using @st.cache\_resource, to reduce cold-start latency.39
+* **Leverage Databricks-Native Features:** It is important to remember that app compute is optimized for UI rendering. For heavy data processing, Databricks SQL should be used, and for AI inference, Model Serving is the recommended service.39
 * **Pin Dependency Versions:** Always specify exact version numbers in the requirements.txt file to ensure consistent and reproducible environments across builds.39
 
 **Table 3: Loading Models from Unity Catalog for Inference**
@@ -293,26 +292,26 @@ Furthermore, the emphasis on performance and scalability in interactive Streamli
 
 Beyond the core learning path, several advanced MLOps topics are crucial for building mature and robust ML systems on Databricks:
 
-* **CI/CD for Databricks Apps and ML Workflows:** Databricks Asset Bundles (DABs), which are used for deploying Streamlit applications, also provide robust support for Continuous Integration/Continuous Delivery (CI/CD) pipelines.32 This enables automated testing, deployment, and version control for both ML models and their associated applications, ensuring reliable and repeatable deployments across different environments.  
-* **Model Monitoring and Observability:** Databricks Lakehouse monitoring capabilities extend to tracking the performance and data quality of tables, as well as the performance of machine learning models and model-serving endpoints.2 MLflow tracking, particularly with MLflow Tracing, captures detailed execution information for AI agents and models, significantly enhancing generative AI observability.6 These monitoring tools are essential for detecting issues such as model drift, performance degradation, and data quality anomalies in production environments.  
-* **A/B Testing and Canary Deployments:** The ability of Model Serving to route traffic to different served model versions 26, combined with MLflow Model Aliases 19, facilitates advanced deployment strategies like A/B testing and canary deployments. These techniques allow for controlled rollout of new model versions and enable performance comparisons in real-world scenarios, minimizing risk during production updates.  
+* **CI/CD for Databricks Apps and ML Workflows:** Databricks Asset Bundles (DABs), which are used for deploying Streamlit applications, also provide robust support for Continuous Integration/Continuous Delivery (CI/CD) pipelines.32 This enables automated testing, deployment, and version control for both ML models and their associated applications, ensuring reliable and repeatable deployments across different environments.
+* **Model Monitoring and Observability:** Databricks Lakehouse monitoring capabilities extend to tracking the performance and data quality of tables, as well as the performance of machine learning models and model-serving endpoints.2 MLflow tracking, particularly with MLflow Tracing, captures detailed execution information for AI agents and models, significantly enhancing generative AI observability.6 These monitoring tools are essential for detecting issues such as model drift, performance degradation, and data quality anomalies in production environments.
+* **A/B Testing and Canary Deployments:** The ability of Model Serving to route traffic to different served model versions 26, combined with MLflow Model Aliases 19, facilitates advanced deployment strategies like A/B testing and canary deployments. These techniques allow for controlled rollout of new model versions and enable performance comparisons in real-world scenarios, minimizing risk during production updates.
 * **Feature Store:** Databricks provides a Feature Store designed to simplify the discovery, reuse, and governance of machine learning features. It automates feature lookups and helps reduce common errors in ML pipelines, promoting consistency and reusability of features across different models.6
 
 ### **Relevant Databricks Certifications for Continued Learning**
 
 For practitioners seeking to validate and deepen their expertise, Databricks offers several certifications directly relevant to the learning path:
 
-* **Databricks Certified Machine Learning Associate:** This certification is designed for data scientists and ML practitioners. It assesses the ability to leverage Databricks Machine Learning and AutoML tools, utilize Feature Store and Spark ML, track experiments with MLflow, and scale ML models within the Databricks ecosystem. The certification specifically covers MLflow and Unity Catalog for comprehensive model packaging and governance, aligning directly with the core objectives of this learning path.34  
-* **Databricks Certified Generative AI Engineer Associate:** This newer certification focuses on the practical aspects of building and deploying Large Language Model (LLM)-based solutions. It evaluates skills in designing Retrieval-Augmented Generation (RAG) pipelines, selecting and utilizing generative AI models, implementing semantic search with Vector Search, managing solutions with MLflow, deploying with Model Serving, and applying data governance using Unity Catalog.42 This certification is highly relevant for individuals interested in the rapidly evolving field of Generative AI.  
+* **Databricks Certified Machine Learning Associate:** This certification is designed for data scientists and ML practitioners. It assesses the ability to leverage Databricks Machine Learning and AutoML tools, utilize Feature Store and Spark ML, track experiments with MLflow, and scale ML models within the Databricks ecosystem. The certification specifically covers MLflow and Unity Catalog for comprehensive model packaging and governance, aligning directly with the core objectives of this learning path.34
+* **Databricks Certified Generative AI Engineer Associate:** This newer certification focuses on the practical aspects of building and deploying Large Language Model (LLM)-based solutions. It evaluates skills in designing Retrieval-Augmented Generation (RAG) pipelines, selecting and utilizing generative AI models, implementing semantic search with Vector Search, managing solutions with MLflow, deploying with Model Serving, and applying data governance using Unity Catalog.42 This certification is highly relevant for individuals interested in the rapidly evolving field of Generative AI.
 * **Databricks Certified Data Engineer Associate:** While not exclusively focused on machine learning, this certification covers foundational skills essential for any MLOps professional. It assesses the ability to build ETL pipelines, handle batch and streaming data, and manage data governance with Unity Catalog.42 A strong data engineering foundation is invaluable for ensuring robust and reliable data pipelines that feed ML models.
 
 ### **Resources for Continued Learning and Community Engagement**
 
 Continuous learning is vital in the rapidly evolving field of data and AI. Practitioners are encouraged to leverage the following resources:
 
-* **Official Documentation:** Regular consultation of the comprehensive Databricks documentation 17, MLflow documentation 5, and Streamlit documentation 29 is recommended for accessing the latest features, best practices, and troubleshooting guides.  
-* **Databricks Academy:** The Databricks Academy and Training Catalog offer a wealth of self-paced courses and structured learning pathways to deepen platform knowledge and MLOps skills.34  
-* **Community Forums:** Engaging with the Databricks Community Forum provides an avenue to ask questions, share insights, and learn from the experiences of other practitioners.28  
+* **Official Documentation:** Regular consultation of the comprehensive Databricks documentation 17, MLflow documentation 5, and Streamlit documentation 29 is recommended for accessing the latest features, best practices, and troubleshooting guides.
+* **Databricks Academy:** The Databricks Academy and Training Catalog offer a wealth of self-paced courses and structured learning pathways to deepen platform knowledge and MLOps skills.34
+* **Community Forums:** Engaging with the Databricks Community Forum provides an avenue to ask questions, share insights, and learn from the experiences of other practitioners.28
 * **GitHub Examples:** Exploring official Databricks and MLflow GitHub repositories for sample code and practical examples can provide hands-on learning opportunities and inspiration for new projects.
 
 ## **Conclusions and Recommendations**
@@ -323,62 +322,62 @@ For practitioners, the ability to leverage MLflow's experiment tracking and mode
 
 To maximize the learning experience and build production-ready systems, it is recommended that learners:
 
-1. **Prioritize Hands-on Practice:** Actively engage with the provided exercises, replicating and extending them within a Databricks workspace.  
-2. **Embrace Best Practices:** Consistently apply performance optimization techniques for Streamlit applications, particularly caching and asynchronous operations, and always leverage Model Serving for production-grade ML inference.  
-3. **Understand the Ecosystem:** Recognize that individual Databricks components are most powerful when used in concert, forming a cohesive MLOps lifecycle.  
-4. **Pursue Certifications:** Consider Databricks certifications, such as the Machine Learning Associate or Generative AI Engineer Associate, to validate skills and demonstrate proficiency in the platform.  
+1. **Prioritize Hands-on Practice:** Actively engage with the provided exercises, replicating and extending them within a Databricks workspace.
+2. **Embrace Best Practices:** Consistently apply performance optimization techniques for Streamlit applications, particularly caching and asynchronous operations, and always leverage Model Serving for production-grade ML inference.
+3. **Understand the Ecosystem:** Recognize that individual Databricks components are most powerful when used in concert, forming a cohesive MLOps lifecycle.
+4. **Pursue Certifications:** Consider Databricks certifications, such as the Machine Learning Associate or Generative AI Engineer Associate, to validate skills and demonstrate proficiency in the platform.
 5. **Engage with the Community:** Actively participate in Databricks forums and explore official documentation and GitHub resources for continuous learning and problem-solving.
 
 By following this comprehensive learning path, individuals can gain the expertise required to build, govern, and deploy sophisticated machine learning solutions on the Databricks Lakehouse Platform, contributing significantly to data-driven innovation within their organizations.
 
 #### **Works cited**
 
-1. What is a data lakehouse? \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/lakehouse/](https://docs.databricks.com/aws/en/lakehouse/)  
-2. Lakehouse reference architectures (download) \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/lakehouse-architecture/reference](https://docs.databricks.com/aws/en/lakehouse-architecture/reference)  
-3. Mastering Data Governance with Databricks Unity Catalog \- Valanor, accessed June 5, 2025, [https://valanor.co/data-governance-with-databricks-unity-catalog/](https://valanor.co/data-governance-with-databricks-unity-catalog/)  
-4. Databricks components | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/getting-started/concepts](https://docs.databricks.com/aws/en/getting-started/concepts)  
-5. MLflow: A Tool for Managing the Machine Learning Lifecycle, accessed June 5, 2025, [https://mlflow.org/docs/2.21.3/](https://mlflow.org/docs/2.21.3/)  
-6. MLflow for gen AI agent and ML model lifecycle | Databricks ..., accessed June 5, 2025, [https://docs.databricks.com/aws/en/mlflow/](https://docs.databricks.com/aws/en/mlflow/)  
-7. Deploy models using Mosaic AI Model Serving \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/model-serving/](https://docs.databricks.com/aws/en/machine-learning/model-serving/)  
-8. Databricks Apps | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/)  
-9. Databricks Apps \- Azure Databricks | Microsoft Learn, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/)  
-10. Data governance with Unity Catalog | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/data-governance/](https://docs.databricks.com/aws/en/data-governance/)  
-11. What is Unity Catalog? \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/data-governance/unity-catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog)  
-12. Databricks Unity Catalog 101: A Complete Overview (2025) \- Chaos Genius, accessed June 5, 2025, [https://www.chaosgenius.io/blog/databricks-unity-catalog/](https://www.chaosgenius.io/blog/databricks-unity-catalog/)  
-13. Building an ML and AI Data Catalog with Unity Catalog and MLflow, accessed June 5, 2025, [https://www.unitycatalog.io/blogs/machine-learning-data-catalog](https://www.unitycatalog.io/blogs/machine-learning-data-catalog)  
-14. Building Interactive AI Applications with Streamlit: Technical Insights and Best Practices, accessed June 5, 2025, [https://www.kubernet.dev/building-interactive-ai-applications-with-streamlit-technical-insights-and-best-practices/](https://www.kubernet.dev/building-interactive-ai-applications-with-streamlit-technical-insights-and-best-practices/)  
-15. Build a ML Web App with Streamlit and Pipelines \- Artur Lunardi, accessed June 5, 2025, [https://arturlunardi.com/en/build-a-ml-web-app-with-streamlit-and-pipelines/](https://arturlunardi.com/en/build-a-ml-web-app-with-streamlit-and-pipelines/)  
-16. 4\. Unity Catalog and Compute \- Data Governance with Unity Catalog on Databricks \[Book\], accessed June 5, 2025, [https://www.oreilly.com/library/view/data-governance-with/9781098179625/ch04.html](https://www.oreilly.com/library/view/data-governance-with/9781098179625/ch04.html)  
-17. Databricks documentation | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/](https://docs.databricks.com/aws/en/)  
-18. Track model development using MLflow \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/mlflow/tracking](https://docs.databricks.com/aws/en/mlflow/tracking)  
-19. Manage model lifecycle in Unity Catalog | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle](https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle)  
-20. Customizing a Model's predict method \- MLflow, accessed June 5, 2025, [https://mlflow.org/docs/latest/traditional-ml/creating-custom-pyfunc/notebooks/override-predict](https://mlflow.org/docs/latest/traditional-ml/creating-custom-pyfunc/notebooks/override-predict)  
-21. Manage model lifecycle using the Workspace Model Registry (legacy), accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/workspace-model-registry](https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/workspace-model-registry)  
-22. MLflow Model Registry, accessed June 5, 2025, [https://mlflow.org/docs/latest/model-registry](https://mlflow.org/docs/latest/model-registry)  
-23. w.registered\_models: Registered Models — Databricks SDK for Python beta documentation, accessed June 5, 2025, [https://databricks-sdk-py.readthedocs.io/en/latest/workspace/catalog/registered\_models.html](https://databricks-sdk-py.readthedocs.io/en/latest/workspace/catalog/registered_models.html)  
-24. Manage model lifecycle in Unity Catalog \- Azure Databricks | Microsoft Learn, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/machine-learning/manage-model-lifecycle/](https://learn.microsoft.com/en-us/azure/databricks/machine-learning/manage-model-lifecycle/)  
-25. From Zero to GenAI Hero: Building Your GenAI App with HuggingFace and Databricks, accessed June 5, 2025, [https://www.databricks.com/blog/zero-genai-hero-building-your-genai-app-huggingface-and-databricks](https://www.databricks.com/blog/zero-genai-hero-building-your-genai-app-huggingface-and-databricks)  
-26. Create custom model serving endpoints \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/model-serving/create-manage-serving-endpoints](https://docs.databricks.com/aws/en/machine-learning/model-serving/create-manage-serving-endpoints)  
-27. Tutorial: Deploy and query a custom model \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/model-serving/model-serving-intro](https://docs.databricks.com/aws/en/machine-learning/model-serving/model-serving-intro)  
-28. Streamlit Databricks App Compute Scaling, accessed June 5, 2025, [https://community.databricks.com/t5/data-engineering/streamlit-databricks-app-compute-scaling/td-p/110676](https://community.databricks.com/t5/data-engineering/streamlit-databricks-app-compute-scaling/td-p/110676)  
-29. Streamlit documentation, accessed June 5, 2025, [https://docs.streamlit.io/](https://docs.streamlit.io/)  
-30. Best Practices for Building GenAI Apps with Streamlit \- Streamlit Blog, accessed June 5, 2025, [https://blog.streamlit.io/best-practices-for-building-genai-apps-with-streamlit/](https://blog.streamlit.io/best-practices-for-building-genai-apps-with-streamlit/)  
-31. Develop Databricks apps, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/app-development](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/app-development)  
-32. Manage Databricks apps using Databricks Asset Bundles \- Learn Microsoft, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/dev-tools/bundles/apps-tutorial](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/bundles/apps-tutorial)  
-33. Key concepts in Databricks Apps, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/key-concepts](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/key-concepts)  
-34. Trainings Catalog \- Databricks, accessed June 5, 2025, [https://www.databricks.com/training/catalog](https://www.databricks.com/training/catalog)  
-35. Define environment variables in a Databricks app \- Learn Microsoft, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/environment-variables](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/environment-variables)  
-36. Define environment variables in a Databricks app, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/environment-variables](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/environment-variables)  
-37. Log, load, and register MLflow models \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/mlflow/models](https://docs.databricks.com/aws/en/mlflow/models)  
-38. Log, load, and register MLflow models \- Azure Databricks | Microsoft Learn, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/mlflow/models](https://learn.microsoft.com/en-us/azure/databricks/mlflow/models)  
-39. Best practices for Databricks Apps | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/best-practices](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/best-practices)  
-40. Best practices for Databricks Apps \- Azure Databricks | Microsoft Learn, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/best-practices](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/best-practices)  
-41. Caching overview \- Streamlit Docs, accessed June 5, 2025, [https://docs.streamlit.io/develop/concepts/architecture/caching](https://docs.streamlit.io/develop/concepts/architecture/caching)  
-42. Databricks Certifications in 2025 to Enhance AI/ML and Data Analysis Skills : r/ExamRanch, accessed June 5, 2025, [https://www.reddit.com/r/ExamRanch/comments/1kxdmnx/databricks\_certifications\_in\_2025\_to\_enhance\_aiml/](https://www.reddit.com/r/ExamRanch/comments/1kxdmnx/databricks_certifications_in_2025_to_enhance_aiml/)  
-43. What Are the Key ML Models in Databricks AI Certification? \- Whizlabs, accessed June 5, 2025, [https://www.whizlabs.com/blog/key-ml-models-in-databricks-ai-certification/](https://www.whizlabs.com/blog/key-ml-models-in-databricks-ai-certification/)  
-44. Solved: Databricks data engineer associate exam, accessed June 5, 2025, [https://community.databricks.com/t5/data-engineering/databricks-data-engineer-associate-exam/td-p/115283](https://community.databricks.com/t5/data-engineering/databricks-data-engineer-associate-exam/td-p/115283)  
-45. Topic for Databricks data engineer Associate certification course, accessed June 5, 2025, [https://community.databricks.com/t5/databricks-academy-learners/topic-for-databricks-data-engineer-associate-certification/td-p/113015](https://community.databricks.com/t5/databricks-academy-learners/topic-for-databricks-data-engineer-associate-certification/td-p/113015)  
-46. Databricks Certification, accessed June 5, 2025, [https://www.databricks.com/learn/training/certification](https://www.databricks.com/learn/training/certification)  
-47. Databricks and streamlit and fast API combination, accessed June 5, 2025, [https://community.databricks.com/t5/get-started-discussions/databricks-and-streamlit-and-fast-api-combination/td-p/63992](https://community.databricks.com/t5/get-started-discussions/databricks-and-streamlit-and-fast-api-combination/td-p/63992)  
+1. What is a data lakehouse? \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/lakehouse/](https://docs.databricks.com/aws/en/lakehouse/)
+2. Lakehouse reference architectures (download) \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/lakehouse-architecture/reference](https://docs.databricks.com/aws/en/lakehouse-architecture/reference)
+3. Mastering Data Governance with Databricks Unity Catalog \- Valanor, accessed June 5, 2025, [https://valanor.co/data-governance-with-databricks-unity-catalog/](https://valanor.co/data-governance-with-databricks-unity-catalog/)
+4. Databricks components | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/getting-started/concepts](https://docs.databricks.com/aws/en/getting-started/concepts)
+5. MLflow: A Tool for Managing the Machine Learning Lifecycle, accessed June 5, 2025, [https://mlflow.org/docs/2.21.3/](https://mlflow.org/docs/2.21.3/)
+6. MLflow for gen AI agent and ML model lifecycle | Databricks ..., accessed June 5, 2025, [https://docs.databricks.com/aws/en/mlflow/](https://docs.databricks.com/aws/en/mlflow/)
+7. Deploy models using Mosaic AI Model Serving \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/model-serving/](https://docs.databricks.com/aws/en/machine-learning/model-serving/)
+8. Databricks Apps | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/)
+9. Databricks Apps \- Azure Databricks | Microsoft Learn, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/)
+10. Data governance with Unity Catalog | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/data-governance/](https://docs.databricks.com/aws/en/data-governance/)
+11. What is Unity Catalog? \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/data-governance/unity-catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog)
+12. Databricks Unity Catalog 101: A Complete Overview (2025) \- Chaos Genius, accessed June 5, 2025, [https://www.chaosgenius.io/blog/databricks-unity-catalog/](https://www.chaosgenius.io/blog/databricks-unity-catalog/)
+13. Building an ML and AI Data Catalog with Unity Catalog and MLflow, accessed June 5, 2025, [https://www.unitycatalog.io/blogs/machine-learning-data-catalog](https://www.unitycatalog.io/blogs/machine-learning-data-catalog)
+14. Building Interactive AI Applications with Streamlit: Technical Insights and Best Practices, accessed June 5, 2025, [https://www.kubernet.dev/building-interactive-ai-applications-with-streamlit-technical-insights-and-best-practices/](https://www.kubernet.dev/building-interactive-ai-applications-with-streamlit-technical-insights-and-best-practices/)
+15. Build a ML Web App with Streamlit and Pipelines \- Artur Lunardi, accessed June 5, 2025, [https://arturlunardi.com/en/build-a-ml-web-app-with-streamlit-and-pipelines/](https://arturlunardi.com/en/build-a-ml-web-app-with-streamlit-and-pipelines/)
+16. 4\. Unity Catalog and Compute \- Data Governance with Unity Catalog on Databricks \[Book\], accessed June 5, 2025, [https://www.oreilly.com/library/view/data-governance-with/9781098179625/ch04.html](https://www.oreilly.com/library/view/data-governance-with/9781098179625/ch04.html)
+17. Databricks documentation | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/](https://docs.databricks.com/aws/en/)
+18. Track model development using MLflow \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/mlflow/tracking](https://docs.databricks.com/aws/en/mlflow/tracking)
+19. Manage model lifecycle in Unity Catalog | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle](https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle)
+20. Customizing a Model's predict method \- MLflow, accessed June 5, 2025, [https://mlflow.org/docs/latest/traditional-ml/creating-custom-pyfunc/notebooks/override-predict](https://mlflow.org/docs/latest/traditional-ml/creating-custom-pyfunc/notebooks/override-predict)
+21. Manage model lifecycle using the Workspace Model Registry (legacy), accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/workspace-model-registry](https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/workspace-model-registry)
+22. MLflow Model Registry, accessed June 5, 2025, [https://mlflow.org/docs/latest/model-registry](https://mlflow.org/docs/latest/model-registry)
+23. w.registered\_models: Registered Models — Databricks SDK for Python beta documentation, accessed June 5, 2025, [https://databricks-sdk-py.readthedocs.io/en/latest/workspace/catalog/registered\_models.html](https://databricks-sdk-py.readthedocs.io/en/latest/workspace/catalog/registered_models.html)
+24. Manage model lifecycle in Unity Catalog \- Azure Databricks | Microsoft Learn, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/machine-learning/manage-model-lifecycle/](https://learn.microsoft.com/en-us/azure/databricks/machine-learning/manage-model-lifecycle/)
+25. From Zero to GenAI Hero: Building Your GenAI App with HuggingFace and Databricks, accessed June 5, 2025, [https://www.databricks.com/blog/zero-genai-hero-building-your-genai-app-huggingface-and-databricks](https://www.databricks.com/blog/zero-genai-hero-building-your-genai-app-huggingface-and-databricks)
+26. Create custom model serving endpoints \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/model-serving/create-manage-serving-endpoints](https://docs.databricks.com/aws/en/machine-learning/model-serving/create-manage-serving-endpoints)
+27. Tutorial: Deploy and query a custom model \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/machine-learning/model-serving/model-serving-intro](https://docs.databricks.com/aws/en/machine-learning/model-serving/model-serving-intro)
+28. Streamlit Databricks App Compute Scaling, accessed June 5, 2025, [https://community.databricks.com/t5/data-engineering/streamlit-databricks-app-compute-scaling/td-p/110676](https://community.databricks.com/t5/data-engineering/streamlit-databricks-app-compute-scaling/td-p/110676)
+29. Streamlit documentation, accessed June 5, 2025, [https://docs.streamlit.io/](https://docs.streamlit.io/)
+30. Best Practices for Building GenAI Apps with Streamlit \- Streamlit Blog, accessed June 5, 2025, [https://blog.streamlit.io/best-practices-for-building-genai-apps-with-streamlit/](https://blog.streamlit.io/best-practices-for-building-genai-apps-with-streamlit/)
+31. Develop Databricks apps, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/app-development](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/app-development)
+32. Manage Databricks apps using Databricks Asset Bundles \- Learn Microsoft, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/dev-tools/bundles/apps-tutorial](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/bundles/apps-tutorial)
+33. Key concepts in Databricks Apps, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/key-concepts](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/key-concepts)
+34. Trainings Catalog \- Databricks, accessed June 5, 2025, [https://www.databricks.com/training/catalog](https://www.databricks.com/training/catalog)
+35. Define environment variables in a Databricks app \- Learn Microsoft, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/environment-variables](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/environment-variables)
+36. Define environment variables in a Databricks app, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/environment-variables](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/environment-variables)
+37. Log, load, and register MLflow models \- Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/mlflow/models](https://docs.databricks.com/aws/en/mlflow/models)
+38. Log, load, and register MLflow models \- Azure Databricks | Microsoft Learn, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/mlflow/models](https://learn.microsoft.com/en-us/azure/databricks/mlflow/models)
+39. Best practices for Databricks Apps | Databricks Documentation, accessed June 5, 2025, [https://docs.databricks.com/aws/en/dev-tools/databricks-apps/best-practices](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/best-practices)
+40. Best practices for Databricks Apps \- Azure Databricks | Microsoft Learn, accessed June 5, 2025, [https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/best-practices](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-apps/best-practices)
+41. Caching overview \- Streamlit Docs, accessed June 5, 2025, [https://docs.streamlit.io/develop/concepts/architecture/caching](https://docs.streamlit.io/develop/concepts/architecture/caching)
+42. Databricks Certifications in 2025 to Enhance AI/ML and Data Analysis Skills : r/ExamRanch, accessed June 5, 2025, [https://www.reddit.com/r/ExamRanch/comments/1kxdmnx/databricks\_certifications\_in\_2025\_to\_enhance\_aiml/](https://www.reddit.com/r/ExamRanch/comments/1kxdmnx/databricks_certifications_in_2025_to_enhance_aiml/)
+43. What Are the Key ML Models in Databricks AI Certification? \- Whizlabs, accessed June 5, 2025, [https://www.whizlabs.com/blog/key-ml-models-in-databricks-ai-certification/](https://www.whizlabs.com/blog/key-ml-models-in-databricks-ai-certification/)
+44. Solved: Databricks data engineer associate exam, accessed June 5, 2025, [https://community.databricks.com/t5/data-engineering/databricks-data-engineer-associate-exam/td-p/115283](https://community.databricks.com/t5/data-engineering/databricks-data-engineer-associate-exam/td-p/115283)
+45. Topic for Databricks data engineer Associate certification course, accessed June 5, 2025, [https://community.databricks.com/t5/databricks-academy-learners/topic-for-databricks-data-engineer-associate-certification/td-p/113015](https://community.databricks.com/t5/databricks-academy-learners/topic-for-databricks-data-engineer-associate-certification/td-p/113015)
+46. Databricks Certification, accessed June 5, 2025, [https://www.databricks.com/learn/training/certification](https://www.databricks.com/learn/training/certification)
+47. Databricks and streamlit and fast API combination, accessed June 5, 2025, [https://community.databricks.com/t5/get-started-discussions/databricks-and-streamlit-and-fast-api-combination/td-p/63992](https://community.databricks.com/t5/get-started-discussions/databricks-and-streamlit-and-fast-api-combination/td-p/63992)
 48. Databricks Apps \- Streamlit Performance Hangups, accessed June 5, 2025, [https://community.databricks.com/t5/data-engineering/databricks-apps-streamlit-performance-hangups/td-p/110264](https://community.databricks.com/t5/data-engineering/databricks-apps-streamlit-performance-hangups/td-p/110264)
 </td></tr></table>

@@ -2,11 +2,9 @@
 
 - Source: Google AI Overview
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what is monthly ctc in salary?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what is monthly ctc in salary?
+
 Monthly CTC (Cost to Company) represents the total annual cost an employer incurs for an employee, divided by 12 to get a monthly figure. It includes not just the employee's salary, but also benefits like employer contributions to provident fund, health insurance, and other allowances. Essentially, it's the total expense the company bears to have you on their payroll, encompassing both direct and indirect costs. 
 
 Here's a breakdown:

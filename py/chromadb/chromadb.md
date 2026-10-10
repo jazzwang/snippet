@@ -21,11 +21,9 @@
 ### ChromaDB 與 ClickHouse 的黑歷史
 
 - https://g.co/gemini/share/bc8686250b5a
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there relationship between chromadb and clickhouse?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there relationship between chromadb and clickhouse?
+
 There's an interesting history between ChromaDB and ClickHouse.
 
 **Historically, ChromaDB used ClickHouse as an optional document store, especially for client/server deployments.** If ClickHouse wasn't used, ChromaDB would store data in an <mark>in-process DuckDB database</mark>.
@@ -45,11 +43,9 @@ Despite this shift, the connection isn't entirely severed:
 
 - https://g.co/gemini/share/206632776e8d
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Could you create a comparison table of Faiss, ChromaDB, LanceDB, Pinecone, Milvus and Qdrant using markdown syntax?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Could you create a comparison table of Faiss, ChromaDB, LanceDB, Pinecone, Milvus and Qdrant using markdown syntax?
+
 Alright, let's get this updated comparison table whipped up for you, keeping in mind the current date and location (though those don't directly impact the technical features!).
 
 | Feature             | Faiss                                      | ChromaDB                                 | LanceDB                                    | Pinecone                                    | Milvus                                      | Qdrant                                       |
@@ -83,11 +79,9 @@ Choosing the best one depends heavily on your project's specific requirements, s
 
 - https://g.co/gemini/share/c5b5a67f4b2f
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Are there integration between llama-index and ChromaDB?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Are there integration between llama-index and ChromaDB?
+
 Yes, there is a strong and direct integration between LlamaIndex and ChromaDB.
 
 LlamaIndex is a framework for building applications powered by large language models (LLMs). It helps you ingest, structure, and access your private or domain-specific data. Vector databases play a crucial role in this process by providing efficient storage and retrieval of vector embeddings, which are numerical representations of your data's meaning.
@@ -113,11 +107,9 @@ Here's how the integration works:
 
 - https://g.co/gemini/share/5708e3d5ae8e
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a step-by-step example in Python, to create a git repository RAG using LlamaIndex, ChromaDB and LangChain?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a step-by-step example in Python, to create a git repository RAG using LlamaIndex, ChromaDB and LangChain?
+
 Alright, let's craft a step-by-step Python example to build a Git repository RAG (Retrieval-Augmented Generation) application using LlamaIndex, ChromaDB, and LangChain. This will guide you through the process of cloning a Git repository, indexing its content using LlamaIndex and ChromaDB, and then querying it using LangChain for the language model.
 
 **Prerequisites:**
@@ -423,11 +415,9 @@ This will clone the LangChain repository, index its content in ChromaDB, and the
 
 - https://g.co/gemini/share/e7c4d92255df
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Does chromadb store as local file?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Does chromadb store as local file?
+
 Yes, ChromaDB can store its data as local files. It offers a **PersistentClient** that allows you to specify a directory on your local machine where the database will be saved.
 
 Here's how it works:

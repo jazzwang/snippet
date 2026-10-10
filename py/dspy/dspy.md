@@ -10,11 +10,9 @@
   - https://pypi.org/project/dspy/
 
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me an example using DSPy to tune prompt?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me an example using DSPy to tune prompt?
+
 Here is an example of how to use DSPy for prompt tuning, based on Python code and concepts from DSPy tutorials and documentation:
 
 1. First, set up your environment by installing DSPy and configuring your OpenAI API key:
@@ -93,11 +91,9 @@ If you want, I can provide a runnable Python script for this example or help you
 [10](https://www.digitalocean.com/community/tutorials/prompting-with-dspy)
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Can you show me an example of using DSPy to tune a prompt with few-shot examples
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Can you show me an example of using DSPy to tune a prompt with few-shot examples
+
 Here's an example of using DSPy to tune a prompt with few-shot examples. This process involves defining a task with input-output specifications, providing a set of few-shot examples, and then using DSPy's optimizer to improve the prompt quality based on a metric.
 
 ### Step-by-Step Example of Prompt Tuning with Few-Shot Examples in DSPy
@@ -193,11 +189,9 @@ This is a concise and practical demonstration of tuning few-shot prompts using D
 [9](https://dspy.ai)
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you provide a full runnable script of DSPy prompt-tuning?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you provide a full runnable script of DSPy prompt-tuning?
+
 Certainly! Below is a full runnable Python script demonstrating DSPy prompt tuning with few-shot examples. Make sure to replace `"your-api-key"` with your real OpenAI API key before running.
 
 ```python

@@ -3,11 +3,9 @@
 - 2025-09-22 11:36 AM
 - By Google Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what's the difference between git flow and github flow?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what's the difference between git flow and github flow?
+
 Git Flow and GitHub Flow are two popular branching strategies for Git, but they have key differences in complexity, number of branches, and their intended use cases.
 
 * **Git Flow** is a complex, highly structured workflow with multiple long-lived branches, making it ideal for large projects with scheduled releases and distinct versions.

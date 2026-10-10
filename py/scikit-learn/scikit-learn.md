@@ -4,11 +4,9 @@
 
 - 2025-04-13 13:23 PM
 - https://g.co/gemini/share/2bd9fbdb7cb1
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Could you give me a step-by-step example to create a t-SNE visualization of chromadb local file created from a langchain git repository?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Could you give me a step-by-step example to create a t-SNE visualization of chromadb local file created from a langchain git repository?
+
 Absolutely! Let's break down how you can create a t-SNE visualization of a ChromaDB instance you've built from a Langchain Git repository. This involves a few steps, pulling data from ChromaDB and then using `scikit-learn` and `matplotlib`.
 
 **Assumptions:**

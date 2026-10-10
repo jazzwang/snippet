@@ -5,11 +5,9 @@
 - 2025-09-11 13:36 PM
 - By Google Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-What is the config file of SonarQube that we can put in a Java SpringBoot git repository?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> What is the config file of SonarQube that we can put in a Java SpringBoot git repository?
+
 For a Java Spring Boot project, the main configuration file for SonarQube is `sonar-project.properties`. ⚙️ This file is placed in the **root directory** of your Git repository and defines the project-specific settings for the SonarScanner.
 
 -----
@@ -65,11 +63,9 @@ While `sonar-project.properties` is the standard for standalone projects, if you
 - 2025-09-11 13:40 PM
 - By Google Gemini
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a step-by-step command line instruction to create a sample springboot project and configure sonarqube for code coverage scan?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a step-by-step command line instruction to create a sample springboot project and configure sonarqube for code coverage scan?
+
 Creating a Spring Boot project and configuring SonarQube for code coverage involves a few command-line steps using Maven. The key is to first generate a report with a tool like JaCoCo and then provide that report to the SonarScanner during the analysis.
 
 ### Step 1: Create a Spring Boot Project

@@ -2,11 +2,9 @@
 
 - 2025-07-23 9:15 - By Gemeni 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there best practices for data scientist research team to run Scrum/Agile ( 2-week Sprint )?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there best practices for data scientist research team to run Scrum/Agile ( 2-week Sprint )?
+
 Applying Scrum/Agile, particularly with 2-week sprints, to a data scientist research team presents unique challenges and opportunities compared to traditional software development. The exploratory and iterative nature of data science research means that strict adherence to software development Scrum can be counterproductive. However, with adaptations, it can bring significant benefits.
 
 Here are best practices for a data scientist research team to run Scrum/Agile with 2-week sprints:
@@ -55,11 +53,9 @@ While challenges exist, adapting Scrum with these best practices can help data s
 
 - https://www.perplexity.ai/search/are-there-best-practices-for-d-TdkE3o.7TpeXP_FFeH4r1Q?0=d
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there best practices for data scientist research team to run Scrum/Agile ( 2-week Sprint )?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there best practices for data scientist research team to run Scrum/Agile ( 2-week Sprint )?
+
 **Running High-Impact 2-Week Sprints in a Data-Science Research Team**
 
 **Main takeaway:** Scrum can accelerate data-science research—but only when ceremonies, artefacts, and metrics are adapted to the exploratory nature of experimentation. The practices below show how successful teams keep a fast two-week cadence without crushing creativity.

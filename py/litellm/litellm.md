@@ -129,11 +129,9 @@ Options:
 
 ## 2025-11-14
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what's the difference between openrouter and litellm?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what's the difference between openrouter and litellm?
+
 The biggest difference between **OpenRouter** and **LiteLLM** lies in their **deployment model** and **control over infrastructure**.
 
 In short: **OpenRouter is a fully managed, unified API gateway (SaaS),** while **LiteLLM is a self-hosted, open-source proxy/router.**

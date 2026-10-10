@@ -3,11 +3,9 @@
 - 2025-09-11 13:19 PM
 - By Google Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what can DIT, QAT stands for? as I know, DIT is for development environment, QAT is for staging environment.
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what can DIT, QAT stands for? as I know, DIT is for development environment, QAT is for staging environment.
+
 In software development, the acronyms **DIT** and **QAT** refer to different stages in the software testing lifecycle, often associated with specific environments.
 
 * * * *
@@ -25,11 +23,9 @@ In software development, the acronyms **DIT** and **QAT** refer to different sta
 ![the software development life cycle](https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQ-GFsopPSGQW3lP9YwgrC5Ra9e3RMYwjm63AWdJDzpIsLYL7EHRa_xhstzgxjqQCUtWJ1m2NoHc_gkNIcwz6TU1nD5lXmuv9bRnSY6DixxXfjx2SU)
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-What is UAT?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> What is UAT?
+
 **UAT** stands for **User Acceptance Testing**. It's the final phase of the software testing process, where a system's end-users or clients test the software to ensure it meets their needs and business requirements before it's released to the public.
 
 ***
@@ -48,17 +44,15 @@ The main goal of UAT is to validate that the software works as intended in real-
 UAT is typically performed in a dedicated environment that closely mimics the live production environment. A small group of actual end-users or stakeholders, who are familiar with the business processes, are given a set of predefined test scenarios to execute. They perform tasks and validate the software's functionality, then provide feedback, which is used to make any necessary final adjustments before the system is officially signed off for release.
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what's the difference between QAT, CERT and PROD?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what's the difference between QAT, CERT and PROD?
+
 QAT, CERT, and PROD are all different environments in the software development lifecycle, each with a specific purpose. The key difference lies in their function and who uses them.
 
 ***
 
 ### QAT (Quality Assurance Testing)
-The **QAT** environment is where the dedicated **QA team** conducts thorough testing to find bugs and ensure the software meets its specified requirements. It's a controlled environment designed for structured testing, including automated and manual test suites. The data used here is typically test data, not live user data. Its purpose is to ensure quality and stability before the software moves to the next phase. 
+The **QAT** environment is where the dedicated **QA team** conducts thorough testing to find bugs and ensure the software meets its specified requirements. It's a controlled environment designed for structured testing, including automated and manual test suites. The data used here is typically test data, not live user data. Its purpose is to ensure quality and stability before the software moves to the next phase.
 
 ***
 

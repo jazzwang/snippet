@@ -3,11 +3,9 @@
 - 2025-09-15 21:11 PM
 - By Google Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-if I have a "storage_state.json" saved by Playwright, how can I use Python requests to read it and load `cookies` from it?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> if I have a "storage_state.json" saved by Playwright, how can I use Python requests to read it and load `cookies` from it?
+
 You can read the `storage_state.json` file saved by Playwright and load the cookies into a Python `requests.Session` object. The `storage_state.json` file is a JSON object that contains cookies, local storage, and other data. The `cookies` key holds a list of dictionaries, where each dictionary represents a single cookie.
 
 Here's how to do it:
@@ -103,7 +101,7 @@ cookie_jar = load_cookies_from_playwright_state('storage_state.json')
 
 if cookie_jar:
     session.cookies.update(cookie_jar)
-    
+
     # Now you can use the session for authenticated requests
     response = session.get('https://example.com/protected_page')
     print(response.text)

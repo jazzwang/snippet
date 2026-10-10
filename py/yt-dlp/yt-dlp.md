@@ -9,11 +9,9 @@
 
 ## 2025-07-09
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a command line example to extract subtitle from YouTube using yt-dlp?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a command line example to extract subtitle from YouTube using yt-dlp?
+
 
 To extract subtitles from a YouTube video using `yt-dlp`, you can use various command-line options depending on your specific needs. Here are several examples:
 
@@ -121,11 +119,9 @@ yt-dlp -U
 
 ## 2025-09-25
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how can I download transcript of specific youtube link using yt-dlp?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how can I download transcript of specific youtube link using yt-dlp?
+
 
 To download the transcript for a specific YouTube video using yt-dlp, you'll use a command-line interface with a few key options. The most important options are those that tell yt-dlp to download subtitles/captions and to skip downloading the video itself.
 

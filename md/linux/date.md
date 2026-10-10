@@ -3,11 +3,9 @@
 ## 2025-09-22
 
 - convert date string (`ISO 8601`) to `epoch`
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to convert time stamp from ISO string to epoch using 'date' command?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how to convert time stamp from ISO string to epoch using 'date' command?
+
 To convert an **ISO 8601 string** to an **epoch timestamp** using the `date` command in a Unix-like environment, you need to use the `-d` (or `--date`) option along with the `+%s` format specifier.
 
 ### The Command
@@ -60,11 +58,9 @@ This converts the local time `10:00` in the `+05:30` timezone to the equivalent 
 
 ## 2025-12-18
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how can I get the date 8 weeks later using `date` command?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how can I get the date 8 weeks later using `date` command?
+
 To get the date 8 weeks from now, the command depends on which operating system you are using, as **Linux (GNU)** and **macOS/BSD** use different versions of the `date` command.
 
 ---

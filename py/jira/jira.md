@@ -25,11 +25,9 @@
 
 ## 2026-01-17
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there API or CLI tool that can fetch single Jira ticket including comments as JSON file?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there API or CLI tool that can fetch single Jira ticket including comments as JSON file?
+
 Yes, there are two primary ways to do this: using the **Jira REST API** (via `curl`) or using a dedicated **CLI tool**.
 
 ### Method 1: The "Universal" Way (cURL)

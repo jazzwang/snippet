@@ -4,11 +4,9 @@
 
 ### Databricks Access Token
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you show me where to create my databricks token?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you show me where to create my databricks token?
+
 To create a Databricks personal access token, follow these steps:
 
 1.  In your Databricks workspace, click your Databricks username in the top bar, and then select **Settings** from the drop-down menu.
@@ -29,11 +27,9 @@ If you are not able to create or use tokens in your workspace, this might be bec
 
 - 術語：PAT = `Personal Access Token`
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-How do I configure the Databricks CLI with my personal access token?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> How do I configure the Databricks CLI with my personal access token?
+
 To configure the Databricks CLI with your personal access token, follow these steps:
 
 1.  **Install the Databricks CLI**:
@@ -71,27 +67,21 @@ Then follow the same prompts to enter your Databricks host URL and personal acce
 
 This process will add the configuration profile to your `.databrickscfg` file, allowing you to use the Databricks CLI with your personal access token for authentication [[1]](https://docs.databricks.com/aws/en/dev-tools/auth/pat) [[2]](https://docs.databricks.com/aws/en/dev-tools/cli/authentication).
 
-- [1] [Databricks personal access token authentication](https://docs.databricks.com/aws/en/dev-tools/auth/pat) 
+- [1] [Databricks personal access token authentication](https://docs.databricks.com/aws/en/dev-tools/auth/pat)
 - [2] [Authentication for the Databricks CLI](https://docs.databricks.com/aws/en/dev-tools/cli/authentication)
 </td></tr></table>
 
 ## Databricks CLI
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+>
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+>
 </td></tr></table>
 
 ## Databricks Tutorials
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+>
 </td></tr></table>

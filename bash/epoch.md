@@ -4,11 +4,9 @@
   - https://unix.stackexchange.com/a/2993
   - https://www.epochconverter.com/ - this website shows the difference between 'milisecond' epoch and 'second' epoch
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how can I convert "1751294737224" to "1751294737.224" using bash script?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+>how can I convert "1751294737224" to "1751294737.224" using bash script?
+
 You can convert "1751294737224" to "1751294737.224" in a bash script using several methods. Here are a few common approaches:
 
 -----
@@ -72,11 +70,9 @@ echo "$converted_number"
       * `$((length-3)):3`: Extracts three characters starting from three characters before the end (i.e., the last three characters).
 
 Each of these methods will successfully convert "1751294737224" to "1751294737.224". The best method depends on your preference and the specific context of your script. For simple string manipulation like this, `sed` is often considered very concise and readable.
-</td></tr><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to check string length using bash?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how to check string length using bash?
+
 You can check a string's length in Bash using the **`${#string}`** parameter expansion. This syntax directly provides the number of characters in the specified string variable.
 
 -----

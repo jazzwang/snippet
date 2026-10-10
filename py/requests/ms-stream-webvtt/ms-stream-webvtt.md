@@ -2,11 +2,9 @@
 
 ## from Bing Copilot
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to download a transcript from Microsoft Stream using python or powershell?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how to download a transcript from Microsoft Stream using python or powershell?
+
 Downloading a transcript from Microsoft Stream using Python or PowerShell requires interacting with the Microsoft Graph API, as Microsoft Stream integrates with it for managing video content and metadata. Below are examples for both Python and PowerShell approaches:
 
 ### **Python Approach**
@@ -16,7 +14,7 @@ Downloading a transcript from Microsoft Stream using Python or PowerShell requir
     -   Register an app in Azure Active Directory.
     -   Obtain the necessary permissions (e.g., `Video.Read.All`).
     -   Generate a client ID, client secret, and tenant ID.
-    
+
 2.  **Install Required Libraries**:
 
     ```bash
@@ -118,11 +116,9 @@ If you encounter issues, verify permissions and API endpoint availability. Let m
 
 - https://www.perplexity.ai/search/how-to-download-a-transcript-f-ENk5H5HOT7WrqucyUJ3YZg
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to download a transcript from Microsoft Stream using python or powershell?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how to download a transcript from Microsoft Stream using python or powershell?
+
 To download a transcript from Microsoft Stream using Python or PowerShell, here are the practical approaches based on available information:
 
 ### Using Python
@@ -194,11 +190,9 @@ Answer from Perplexity: https://www.perplexity.ai/search/how-to-download-a-trans
 
 - https://g.co/gemini/share/75e9629d91e8
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to download a transcript from Microsoft Stream using python or powershell?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how to download a transcript from Microsoft Stream using python or powershell?
+
 Downloading transcripts from Microsoft Stream programmatically (using Python or PowerShell) can be a bit tricky because Microsoft Stream, especially the newer version built on SharePoint, doesn't always expose a direct public API for this purpose. However, there are a few approaches and workarounds you can explore:
 
 **Understanding the Challenge**

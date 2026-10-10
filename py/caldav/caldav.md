@@ -3,11 +3,9 @@
 - 緣起：
   - 想自動化產生 Confluence Calendar 的 Event
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there RESTful API of confluence to create calendar event?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there RESTful API of confluence to create calendar event?
+
 While Confluence offers REST APIs for general content management (pages, spaces, etc.), a dedicated, officially documented REST API for directly creating **Team Calendar events** isn't as straightforward or universally available across all Confluence versions (Cloud, Server, Data Center).
 
 Here's a breakdown of the situation:
@@ -15,7 +13,7 @@ Here's a breakdown of the situation:
 * **No Direct Official Confluence REST API for Team Calendar Events:** Atlassian's main Confluence REST API (for content like pages and spaces) does not explicitly include endpoints for creating, editing, or deleting Team Calendar events. This has been a long-standing feature request in the Atlassian community.
 
 * **Workarounds and Unofficial Endpoints:**
-    * **CalDAV API:** Confluence Team Calendars supports the **CalDAV protocol**. This means you can use CalDAV clients or libraries to interact with Confluence calendars. CalDAV is a standardized way to access scheduling information on a remote server, and it can be used for creating and retrieving calendar details and events. 
+    * **CalDAV API:** Confluence Team Calendars supports the **CalDAV protocol**. This means you can use CalDAV clients or libraries to interact with Confluence calendars. CalDAV is a standardized way to access scheduling information on a remote server, and it can be used for creating and retrieving calendar details and events.
     * **Undocumented/Internal Endpoints:** Some community threads and third-party tools suggest using internal or "undocumented" REST endpoints that the Confluence UI itself uses to create calendar events. These typically look like `/rest/calendar-services/1.0/calendar/events.json` and involve specific JSON payloads. However, these are **not officially supported** and can change without notice in future Confluence updates, potentially breaking your integrations.
     * **Third-Party Add-ons/Integrations:** For specific Confluence versions (like Data Center), there might be third-party apps or integrations that expose their own REST APIs for calendar event management. For example, "Company Calendar for Jira" mentions a REST API for creating and editing events.
     * **Python Wrappers:** There are community-contributed Python wrappers (like `confluence-calendar-api` on PyPI) that attempt to simplify interactions with these less-documented calendar APIs.
@@ -33,11 +31,9 @@ If you need to programmatically create calendar events in Confluence, your best 
 Always refer to the official Atlassian Developer documentation for the most up-to-date and supported REST API information for your specific Confluence version (Cloud, Server, or Data Center).
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a python example to leveraging confluence CalDAV API to create a new event?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a python example to leveraging confluence CalDAV API to create a new event?
+
 Yes, you can leverage the Confluence CalDAV API to create a new event using Python. The most convenient way to do this is by using a CalDAV client library like `caldav`.
 
 Here's a Python example that demonstrates how to create a new event in a Confluence Team Calendar using the `caldav` library.
@@ -101,7 +97,7 @@ def create_confluence_calendar_event():
             if calendar.url.path.strip('/') == CALDAV_PATH.strip('/'):
                 target_calendar = calendar
                 break
-        
+
         if not target_calendar:
             print(f"Could not find calendar with path: {CALDAV_PATH}. Ensure the path is correct and the user has access.")
             print("Available calendars:")

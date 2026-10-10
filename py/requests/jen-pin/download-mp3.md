@@ -1,10 +1,9 @@
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-convert the following curl command to python requests program:
+> [!NOTE]
+> convert the following curl command to python requests program:
 ```
 curl 'https://storage.googleapis.com/listen-jen-pin-com-tw/mlgy-hhye-abrs/01-01-%E9%96%8B%E5%A0%B4.mp3' \
     -H 'sec-ch-ua-platform: "Windows"' \
-    -H 'Referer: https://listen.jen-pin.com.tw/' \  
+    -H 'Referer: https://listen.jen-pin.com.tw/' \
     -H 'sec-ch-ua: "Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'   \
     -H 'sec-ch-ua-mobile: ?0'   \
     -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36'   \
@@ -12,8 +11,7 @@ curl 'https://storage.googleapis.com/listen-jen-pin-com-tw/mlgy-hhye-abrs/01-01-
     -H 'Range: bytes=131072-' \
     --output 01-01-開場.mp3
 ```
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Converting that `curl` command to a Python `requests` program involves setting the **URL**, defining the **headers**, and then making a **GET** request. Since the `curl` command uses the `--output` flag and a `Range` header, the Python code should also handle saving the received content to a file, potentially continuing a download.
 
 Here is the equivalent Python program using the `requests` library:
@@ -54,11 +52,11 @@ try:
     # If we were continuing a failed download, we would check the existing file size and adjust the 'Range'
     # and use 'ab', but for a direct translation, 'wb' for the initial range request works.
     # However, if the file already exists and we use 'wb', it will overwrite.
-    
+
     # Using 'ab' (append binary) is safer if the intent of the Range header is to append to an existing part,
     # but since this is a direct translation of a *single* curl command, let's assume the goal is to save the
     # content we receive from the range request to the file.
-    
+
     # Given the curl command is meant to save the output, let's open the file in binary write mode ('wb')
     # to store the data received from the range request.
 
@@ -67,7 +65,7 @@ try:
         for chunk in response.iter_content(chunk_size=8192):
             if chunk:  # filter out keep-alive chunks
                 f.write(chunk)
-                
+
     print(f"Download complete. Content saved to {output_filename}")
 
 except requests.exceptions.RequestException as e:
@@ -75,11 +73,9 @@ except requests.exceptions.RequestException as e:
 
 ```
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-modify the python program and read from input file, each line contains a url. use urllib to decode the url and use the basename of url as output_filename
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> modify the python program and read from input file, each line contains a url. use urllib to decode the url and use the basename of url as output_filename
+
 That's a great functional improvement\! To modify the Python program to read URLs from an input file, use the `urllib.parse` module to decode the URL (specifically the path/filename part) and the `os.path` module to extract the filename's basename for the output.
 
 Since you requested using **`urllib`** for decoding, I'll modify the previous `requests` program to read from a file named `urls.txt` (you can change this filename).
@@ -111,7 +107,7 @@ def download_file(url, headers):
         # It's set globally here, but in a real-world scenario, you might
         # remove it or adjust it based on the file.
         print(f"Attempting to download to: {output_filename}")
-        
+
         # Use stream=True for large files
         response = requests.get(url, headers=headers, stream=True)
         response.raise_for_status() # Raise an exception for bad status codes (4xx or 5xx)
@@ -121,7 +117,7 @@ def download_file(url, headers):
             for chunk in response.iter_content(chunk_size=8192):
                 if chunk:  # filter out keep-alive chunks
                     f.write(chunk)
-                    
+
         print(f"✅ Success! Content saved to {output_filename}")
 
     except requests.exceptions.RequestException as e:
@@ -141,7 +137,7 @@ COMMON_HEADERS = {
     'sec-ch-ua-mobile': '?0',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
     'DNT': '1',
-    # Note: The Range header is kept for direct translation, 
+    # Note: The Range header is kept for direct translation,
     # but might not be desired for all URLs in a list.
     'Range': 'bytes=131072-'
 }

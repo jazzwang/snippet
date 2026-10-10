@@ -3,11 +3,9 @@
 - 2025-07-29 15:11 PM
 - By Google Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a step-by-step command line instruction to create a Python Chainlit Copilot app?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a step-by-step command line instruction to create a Python Chainlit Copilot app?
+
 A Chainlit Copilot app is essentially a Chainlit application designed to be embedded within an existing website or web application. It functions as a floating chatbot widget that can interact with your website's elements and send/receive data.
 
 Here's a step-by-step command-line guide to create a basic Python Chainlit Copilot app.

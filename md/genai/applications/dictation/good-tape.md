@@ -4,11 +4,9 @@
 
 - https://g.co/gemini/share/2ff83e3e5713
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-如何用 Python 實作類似 Good Tape 逐字稿的 CLI 工具呢？
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> 如何用 Python 實作類似 Good Tape 逐字稿的 CLI 工具呢？
+
 
 好的，以下是如何使用 Python 實作類似 Good Tape 逐字稿功能的 CLI 工具的基本步驟和程式碼範例。這個範例將使用 OpenAI 的 Whisper 模型，因為它提供了相對較好的準確性和易用性，並且有一個免費的 API 額度。
 

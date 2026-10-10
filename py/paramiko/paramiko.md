@@ -150,11 +150,9 @@ Please add this file to the chat so I can review and confirm if any changes are 
 
 - https://g.co/gemini/share/b0682a75efcc
 - Created with 2.5 Flash June 4, 2025 at 09:29 PM
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-can paramiko support listing SFTP file timestamp like `ls -al`?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> can paramiko support listing SFTP file timestamp like `ls -al`?
+
 Yes, Paramiko can support listing SFTP file timestamps in a way that gives you information similar to what `ls -al` provides.
 
 While Paramiko doesn't directly execute the `ls -al` command on the remote server (because SFTP is a protocol, not a shell), it provides methods to retrieve file attributes, including timestamps.
@@ -258,8 +256,7 @@ This approach gives you programmatic access to all the file attributes, allowing
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 can paramiko support listing SFTP file timestamp like `ls -al *_20250603*`?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 You're hitting an important distinction between SFTP and a typical shell command like `ls`.
 
 **SFTP (SSH File Transfer Protocol) does not natively support wildcards in its commands.** When you use `ls -al *_20250603*` in a shell, the shell itself (e.g., Bash) is expanding the wildcard (`*`) into a list of matching filenames *before* passing them to the `ls` command. SFTP clients like Paramiko don't have this built-in shell-like wildcard expansion for directory listings.
@@ -344,8 +341,7 @@ This approach ensures you get the desired filtered listing with timestamps, even
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 are paramiko similiar to winexpect or wexpect?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 While both Paramiko and `winexpect` (or `wexpect`, which is the Windows variant of `pexpect`) are Python libraries used for automation, they operate at very different levels and are designed for distinct purposes.
 
 Here's a breakdown of their similarities and differences:
@@ -405,9 +401,8 @@ In essence, Paramiko is like a sophisticated SSH *library*, while `pexpect`/`wex
 
 ## 2025-09-30
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how can i resolve this error?
+> [!NOTE]
+> how can i resolve this error?
 ```python
 Traceback (most recent call last):
   File "C:\Users\wangjaz\git\edp\check-edp-files.py", line 8, in <module>
@@ -422,8 +417,7 @@ Traceback (most recent call last):
     from cryptography.hazmat.bindings._rust import openssl as rust_openssl
 ModuleNotFoundError: No module named '_cffi_backend'
 ```
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 The error you're seeing:
 
 ```

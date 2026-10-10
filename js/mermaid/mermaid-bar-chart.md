@@ -1,10 +1,8 @@
 - 實驗 mermaid.js 能否顯示負數，不過這種顯示方式有點不直覺 :(
   - x 軸應該是畫在 0
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-is it possible to show both positive and negative value using mermaid.js bar chart syntax? if yes, could you give me an example?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> is it possible to show both positive and negative value using mermaid.js bar chart syntax? if yes, could you give me an example?
+
 Yes, it is **possible** to show both positive and negative values using the new **Mermaid.js XY Chart** syntax for a bar chart.
 
 The axis will automatically adjust to display the zero line, with positive bars extending in one direction (e.g., up for a vertical chart) and negative bars extending in the opposite direction (e.g., down).

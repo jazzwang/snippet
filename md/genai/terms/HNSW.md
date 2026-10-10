@@ -26,11 +26,9 @@ Within the `persist_directory` you specify, ChromaDB will create a structure con
 ## 2025-04-14
 
 - https://www.perplexity.ai/search/what-is-hnsw-index-bBIG04AqTY2ESCCy6HzYyw#0
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-What is HNSW index?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> What is HNSW index?
+
 The Hierarchical Navigable Small World (HNSW) index is a sophisticated data structure designed for efficient **Approximate Nearest Neighbor (ANN)** searches in high-dimensional vector spaces. It is widely used in vector databases and applications like recommendation systems, image retrieval, and generative AI.
 
 ### **Key Features of HNSW**
@@ -73,11 +71,9 @@ Answer from Perplexity: pplx.ai/share
 </td></tr></table>
 
 - https://g.co/gemini/share/54529c88d0d0
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-What is HNSW index?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> What is HNSW index?
+
 
 The Hierarchical Navigable Small World (HNSW) index is a graph-based algorithm that excels at performing approximate nearest neighbor (ANN) searches, particularly in high-dimensional vector spaces. Think of it as creating a smart map for your data points, allowing for quick and efficient searches for similar items.
 

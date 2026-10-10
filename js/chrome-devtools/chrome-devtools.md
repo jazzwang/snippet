@@ -1,6 +1,6 @@
 # Development Notes
 
-> https://developer.chrome.com/docs/devtools 會是個好的起點！ 
+> https://developer.chrome.com/docs/devtools 會是個好的起點！
 
 
 [TDC]
@@ -139,11 +139,9 @@ console.log(JSON.stringify(document.cookie.split(';').map(c => splitOnFirstEqual
 
 ## 2026-01-04
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how can I put javascript in Chrome DevTool as snippet? how can it reduce the time when I need to run the same code
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how can I put javascript in Chrome DevTool as snippet? how can it reduce the time when I need to run the same code
+
 
 Using Snippets in Chrome DevTools is a powerful way to manage "mini-scripts" that you use frequently. Instead of re-typing or copy-pasting code into the Console every time you visit a site, Snippets save the code directly in the browser's internal storage.
 

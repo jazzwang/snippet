@@ -2,47 +2,45 @@
 
 - https://www.perplexity.ai/search/what-are-the-common-data-prepa-gRZH50zdT9mBSen_n3.gcw#0
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-
+> [!NOTE]
+>
 What are the common data preparation strategy if we don't have clean internal dataset and don't have reference ground truth for AI RAG application?
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 When preparing data for a RAG application without clean internal datasets or ground truth, focus on leveraging external resources, strategic preprocessing, and adaptive validation methods. Here’s a structured approach:
 
 ---
 
 ### **1. Data Sourcing and Curation**
-- **Use external datasets**: Platforms like Kaggle or industry-specific repositories provide structured data that can supplement sparse internal resources [^2] [^4].  
-- **Synthetic data generation**: Create representative queries and answers from existing documents using LLMs (e.g., GPT-4, Claude) to simulate real-world use cases [^6].  
-- **Manual curation**: Involve domain experts to annotate and segment documents into topics or semantic groups, improving retrieval relevance [^2] [^6].  
+- **Use external datasets**: Platforms like Kaggle or industry-specific repositories provide structured data that can supplement sparse internal resources [^2] [^4].
+- **Synthetic data generation**: Create representative queries and answers from existing documents using LLMs (e.g., GPT-4, Claude) to simulate real-world use cases [^6].
+- **Manual curation**: Involve domain experts to annotate and segment documents into topics or semantic groups, improving retrieval relevance [^2] [^6].
 
 ---
 
 ### **2. Preprocessing Strategies**
-- **Format standardization**: Convert all data (text, tables, images) into a unified format (e.g., plain text, JSON) using Python scripts or tools like Pandas for scalability [^1] [^4].  
+- **Format standardization**: Convert all data (text, tables, images) into a unified format (e.g., plain text, JSON) using Python scripts or tools like Pandas for scalability [^1] [^4].
 - **Chunking with metadata**: Break documents into smaller segments and enrich them with metadata (e.g., timestamps, tags) to enhance retrieval accuracy [^1] [^3].
 
-- **Noise reduction**:  
-  - Remove duplicates and incomplete entries.  
-  - Impute missing values using statistical methods (mean/median) or predictive models [^4].  
+- **Noise reduction**:
+  - Remove duplicates and incomplete entries.
+  - Impute missing values using statistical methods (mean/median) or predictive models [^4].
 
 ---
 
-### **3. Validation Without Ground Truth**  
-- **Cross-LLM evaluation**: Compare outputs from multiple LLMs (e.g., GPT-4 vs. Gemini) to assess response coherence and relevance [^2].  
-- **Vector similarity thresholds**: Use cosine similarity scores from embeddings to gauge alignment between queries and retrieved content [^2] [^5].  
-- **Human-in-the-loop feedback**:  
-  - Define evaluation criteria (relevance, fluency).  
-  - Collect expert ratings and average scores to minimize bias [^2] [^4].  
+### **3. Validation Without Ground Truth**
+- **Cross-LLM evaluation**: Compare outputs from multiple LLMs (e.g., GPT-4 vs. Gemini) to assess response coherence and relevance [^2].
+- **Vector similarity thresholds**: Use cosine similarity scores from embeddings to gauge alignment between queries and retrieved content [^2] [^5].
+- **Human-in-the-loop feedback**:
+  - Define evaluation criteria (relevance, fluency).
+  - Collect expert ratings and average scores to minimize bias [^2] [^4].
 
 ---
 
-### **4. Iterative Improvement**  
-- **Incremental updates**: Regularly refresh external data sources and retrain embedding models to reflect new information [^3] [^7].  
-- **Dynamic testing**: Segment documents into topic-specific datasets to evaluate retrieval performance across domains [^2] [^6].  
+### **4. Iterative Improvement**
+- **Incremental updates**: Regularly refresh external data sources and retrain embedding models to reflect new information [^3] [^7].
+- **Dynamic testing**: Segment documents into topic-specific datasets to evaluate retrieval performance across domains [^2] [^6].
 
 ---
 
@@ -62,54 +60,52 @@ Answer from Perplexity: pplx.ai/share
 
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-
+> [!NOTE]
+>
 - How can I ensure data accuracy if I don't have a reference ground truth?
 - What are the best practices for chunking data without a clean dataset?
 - How can I use metadata to improve data preparation for RAG systems?
 - What tools can help automate data formatting for RAG systems?
 - How do embedding techniques work in data preparation for RAG systems?
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 When dealing with imperfect datasets and lacking ground truth for RAG systems, implement these strategies across key preparation phases:
 
 ---
 
 ### **Ensuring Data Accuracy Without Ground Truth**
-1. **LLM-generated synthetic benchmarks**  
-   Use tools like Ragas or LlamaIndex to create test questions/answers from proprietary documents, enabling quantitative evaluation of answer correctness and context relevance[1][2].  
+1. **LLM-generated synthetic benchmarks**
+   Use tools like Ragas or LlamaIndex to create test questions/answers from proprietary documents, enabling quantitative evaluation of answer correctness and context relevance[1][2].
 
-2. **Cross-model validation**  
-   Compare outputs from multiple LLMs (e.g., GPT-4 vs. Claude) to identify consensus responses, reducing single-model bias[2].  
+2. **Cross-model validation**
+   Compare outputs from multiple LLMs (e.g., GPT-4 vs. Claude) to identify consensus responses, reducing single-model bias[2].
 
-3. **Vector similarity thresholds**  
-   Set cosine similarity cutoffs (e.g., >0.85) between query embeddings and retrieved chunks to filter irrelevant content[2][6].  
+3. **Vector similarity thresholds**
+   Set cosine similarity cutoffs (e.g., >0.85) between query embeddings and retrieved chunks to filter irrelevant content[2][6].
 
-4. **Human evaluation protocols**  
-   - Define criteria: relevance (0-5 scale), fluency, completeness  
-   - Use averaged expert ratings with Pearson correlation to minimize individual bias[2].  
-
----
-
-### **Chunking Strategies for Unstructured Data**  
-| Method | Implementation | Use Case |  
-|--------|----------------|----------|  
-| Fixed-size with overlap | Split at 500 tokens, 10% overlap between chunks | Technical manuals[3][4] |  
-| Recursive splitting | Prioritize separators: paragraphs → sentences → commas | Legal contracts[3] |  
-| Semantic chunking | Cluster text using embeddings before splitting | Research papers[4] |  
-| Metadata-aware | Align chunks with headers/timestamps in source files | Financial reports[5] |  
-
-**Key considerations**:  
-- Preserve logical boundaries (e.g., section headers in PDFs)  
-- Balance chunk size (200-800 tokens) with retrieval latency[3][4]  
+4. **Human evaluation protocols**
+   - Define criteria: relevance (0-5 scale), fluency, completeness
+   - Use averaged expert ratings with Pearson correlation to minimize individual bias[2].
 
 ---
 
-### **Metadata Optimization Techniques**  
-**Essential metadata fields**:  
+### **Chunking Strategies for Unstructured Data**
+| Method | Implementation | Use Case |
+|--------|----------------|----------|
+| Fixed-size with overlap | Split at 500 tokens, 10% overlap between chunks | Technical manuals[3][4] |
+| Recursive splitting | Prioritize separators: paragraphs → sentences → commas | Legal contracts[3] |
+| Semantic chunking | Cluster text using embeddings before splitting | Research papers[4] |
+| Metadata-aware | Align chunks with headers/timestamps in source files | Financial reports[5] |
+
+**Key considerations**:
+- Preserve logical boundaries (e.g., section headers in PDFs)
+- Balance chunk size (200-800 tokens) with retrieval latency[3][4]
+
+---
+
+### **Metadata Optimization Techniques**
+**Essential metadata fields**:
 ```python
 {
   "source": "SEC_2024Q4_report.pdf",
@@ -119,22 +115,22 @@ When dealing with imperfect datasets and lacking ground truth for RAG systems, i
   "confidence_score": 0.92
 }
 ```
-- **Filtering**: Exclude documents with low confidence scores (<0.7)[5]  
-- **Boost mechanisms**: Prioritize recent (timestamp) and authoritative (peer-reviewed) sources in retrieval[5]  
-- **Context enrichment**: Append section headers to chunk text during embedding[5]  
+- **Filtering**: Exclude documents with low confidence scores (<0.7)[5]
+- **Boost mechanisms**: Prioritize recent (timestamp) and authoritative (peer-reviewed) sources in retrieval[5]
+- **Context enrichment**: Append section headers to chunk text during embedding[5]
 
 ---
 
-### **Automation Tools**  
-1. **Data formatting**  
-   - **LlamaIndex**: Auto-convert PDF/HTML to structured JSON with metadata preservation  
-   - **Unstructured.io**: Clean OCR outputs from scanned documents  
+### **Automation Tools**
+1. **Data formatting**
+   - **LlamaIndex**: Auto-convert PDF/HTML to structured JSON with metadata preservation
+   - **Unstructured.io**: Clean OCR outputs from scanned documents
 
-2. **Evaluation**  
-   - **TruLens-Eval**: Monitor RAG triad metrics (context/answer relevance, groundedness)  
-   - **Ragas**: Generate synthetic test sets and calculate CRFM (Contextual Relevance F1 Metric)[1]  
+2. **Evaluation**
+   - **TruLens-Eval**: Monitor RAG triad metrics (context/answer relevance, groundedness)
+   - **Ragas**: Generate synthetic test sets and calculate CRFM (Contextual Relevance F1 Metric)[1]
 
-3. **Embedding pipelines**  
+3. **Embedding pipelines**
    ```bash
    # Sentence-transformers example
    python -m pip install sentence-transformers
@@ -142,24 +138,24 @@ When dealing with imperfect datasets and lacking ground truth for RAG systems, i
    model = SentenceTransformer('all-mpnet-base-v2')
    chunk_embeddings = model.encode(chunks)
    ```
-   Use models optimized for retrieval (e.g., `BAAI/bge-large-en-v1.5`) with dynamic quantization for efficiency[6].  
+   Use models optimized for retrieval (e.g., `BAAI/bge-large-en-v1.5`) with dynamic quantization for efficiency[6].
 
 ---
 
-### **Embedding Best Practices**  
-1. **Domain adaptation**  
-   Fine-tune base models on 5-10% of domain-specific data using contrastive loss:  
+### **Embedding Best Practices**
+1. **Domain adaptation**
+   Fine-tune base models on 5-10% of domain-specific data using contrastive loss:
    ```python
    from sentence_transformers import InputExample, losses
    train_examples = [InputExample(texts=["chunk A", "relevant chunk B"], label=1.0)]
    loss = losses.CosineSimilarityLoss(model)
    model.fit(train_examples, loss=loss)
    ```
-2. **Dynamic pooling**  
-   Apply attention-weighted mean pooling to handle variable-length documents[6].  
+2. **Dynamic pooling**
+   Apply attention-weighted mean pooling to handle variable-length documents[6].
 
-3. **Hybrid indexing**  
-   Combine dense vectors with sparse BM25 retrieval for improved recall in technical domains[6].  
+3. **Hybrid indexing**
+   Combine dense vectors with sparse BM25 retrieval for improved recall in technical domains[6].
 
 By implementing these strategies, teams can compensate for missing ground truth through iterative validation, smart chunking, and metadata-driven quality control, while leveraging modern tooling to automate error-prone preparation tasks.
 

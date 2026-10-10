@@ -1,10 +1,8 @@
 - 2025-06-09 8:25 AM - Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what can EDA stand for in "Conducting EDA on text data as well as small scale LLM based experiments"?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what can EDA stand for in "Conducting EDA on text data as well as small scale LLM based experiments"?
+
 In the context of "Conducting EDA on text data as well as small scale LLM based experiments," EDA stands for **Exploratory Data Analysis**.
 
 > 在「對文字資料進行 EDA 以及基於小規模 LLM 的實驗」的背景下，EDA 代表**探索性資料分析** 。
@@ -13,7 +11,7 @@ Here's what that means in this context:
 
 > 在這種情況下，這意味著：
 
-* **Exploratory Data Analysis (EDA) on text data:** This involves analyzing and summarizing the main characteristics of your text dataset. For text data, EDA typically includes: 
+* **Exploratory Data Analysis (EDA) on text data:** This involves analyzing and summarizing the main characteristics of your text dataset. For text data, EDA typically includes:
   > **文本資料的探索性資料分析 (EDA)**： 這涉及分析和總結文本資料集的主要特徵。對於文字數據，EDA 通常包括：
 
     * **Basic statistics:** Word counts, character counts, sentence counts, average sentence/word length.
@@ -46,7 +44,7 @@ In essence, EDA is a crucial preliminary step to gain insights, identify pattern
 
 </td></tr></table>
 
-* `Lemmatization` is a process in Natural Language Processing (NLP) that reduces words to their base or dictionary form, known as a lemma. It aims to identify the root form of a word by considering its context and meaning, ensuring that the output is a valid and meaningful word. Unlike stemming, which may produce non-meaningful stems, lemmatization relies on dictionaries and morphological analysis to determine the correct lemma. 
+* `Lemmatization` is a process in Natural Language Processing (NLP) that reduces words to their base or dictionary form, known as a lemma. It aims to identify the root form of a word by considering its context and meaning, ensuring that the output is a valid and meaningful word. Unlike stemming, which may produce non-meaningful stems, lemmatization relies on dictionaries and morphological analysis to determine the correct lemma.
   - https://en.wikipedia.org/wiki/Lemmatization
 
 > `Lemmatization` 是自然語言處理 (NLP) 中的一個過程，它將單字還原為其基本形式或字典形式，即詞幹。它旨在透過考慮單字的上下文和含義來識別單字的詞根形式，從而確保輸出的單字有效且有意義。與詞幹提取（可能產生無意義的詞幹）不同，詞形還原依賴字典和形態學分析來確定正確的詞幹。

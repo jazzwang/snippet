@@ -2,11 +2,9 @@
 
 - 2022-08-08: [Is it possible to save a transcript of live captions in Windows 11?](https://answers.microsoft.com/en-us/windows/forum/all/is-it-possible-to-save-a-transcript-of-live/3474cc04-1d34-4e51-bf99-aa7dc0e0fdd0)
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there a way to save Windows Live Caption as output file?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there a way to save Windows Live Caption as output file?
+
 Currently, **Windows Live Captions does not natively support saving or exporting transcripts** to a file. The captions are generated in real-time and are not stored on disk or in any accessible log file by default [1](https://answers.microsoft.com/en-us/windows/forum/all/is-it-possible-to-save-a-transcript-of-live/3474cc04-1d34-4e51-bf99-aa7dc0e0fdd0).
 
 However, there is a **third-party solution** available:

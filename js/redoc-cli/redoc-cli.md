@@ -2,11 +2,9 @@
 
 - from Bing Copilot Search
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-openapi generate html from yaml
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> openapi generate html from yaml
+
 To generate HTML documentation from an OpenAPI YAML file, you can use tools like **Swagger UI**, **Redoc**, or **openapi-generator-cli**. Here's how you can do it:
 
 * * * *

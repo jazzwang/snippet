@@ -55,11 +55,9 @@
 
 - Copilot Search Branding
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-jql linked issues type is bug
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> jql linked issues type is bug
+
 To filter issues in Jira using JQL (Jira Query Language) where the linked issues are of type "Bug," you can use the following query:
 
 ```jql
@@ -79,11 +77,9 @@ Notes:
 Let me know if you need further clarification! 😊
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-"issueFunction" site:atlassian.com
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> "issueFunction" site:atlassian.com
+
 ##### IssueFunction Documentation in JQL
 
 **IssueFunction** is a powerful feature in Jira Query Language (JQL) that allows users to perform advanced searches by leveraging custom functions. These functions can be used to retrieve specific subsets of issues based on relationships, workflows, or custom criteria. Below are key details and examples of how IssueFunction can be utilized effectively.

@@ -2,11 +2,9 @@
 
 ## 2025-07-03
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there python library that can read ical file and show the detailed invitation description?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there python library that can read ical file and show the detailed invitation description?
+
 Yes, there are excellent Python libraries that can read iCalendar (ICS) files and extract detailed invitation descriptions and other event information. The most popular and well-regarded ones are:
 
 1.  **`icalendar`**: This is a robust and widely used library for parsing and generating iCalendar files (RFC 5545 compliant). It allows you to:
@@ -89,7 +87,7 @@ This example demonstrates how to extract various details, including the `DESCRIP
 - 複製範例程式到 `icalendar-example.py` 並安裝 `pip install icalendar`
 - 實測：
 ```bash
-~/git/snippet/py/icalendar$ python icalendar-example.py 
+~/git/snippet/py/icalendar$ python icalendar-example.py
 Event Summary: Important Meeting
 Description: This is a detailed description of the meeting.This will cover project updates, next steps, and action items.Please come prepared with your progress reports.
 Start Time: 2025-07-10 09:00:00+00:00

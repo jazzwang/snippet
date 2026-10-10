@@ -4,11 +4,9 @@
 - Created with 2.5 Flash June 19, 2025 at 01:41 PM
 Published July 4, 2025 at 12:38 AM
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a step-by-step instruction to write a small project and test MutationObserver() and setInterval() using Chrome DevTool?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a step-by-step instruction to write a small project and test MutationObserver() and setInterval() using Chrome DevTool?
+
 I can certainly help you with that! We'll create a simple HTML page with some JavaScript that uses both `MutationObserver` and `setInterval`. Then, I'll guide you through testing them in Chrome DevTools.
 
 Here's the HTML and JavaScript code for your project:

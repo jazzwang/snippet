@@ -7,11 +7,9 @@
   - 有時候想到曾經看過某篇 LinkedIn 貼文，也應該有按 Save，但很難在茫茫清單中找到想要的文章。所以想說把這些貼文下載下來，看能否做本地備份跟索引。
 - 工具：
   - curl 或 wget 或 `httpx`
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-given 1000 url, how can I check each url with `wget` or `curl` but log url which return status code 404?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> given 1000 url, how can I check each url with `wget` or `curl` but log url which return status code 404?
+
 You can achieve this by scripting with `wget` or `curl` and directing the output to a log file. Here's how you can do it for both tools, assuming you have your 1000 URLs in a file named `urls.txt`, with one URL per line.
 
 ### Method 1: Using `curl`
@@ -161,15 +159,15 @@ After execution, a file named `404_urls.log` will be created in the same directo
 - 實測：
   - 1273 筆網址貼文，有 26 筆可能需要 OAuth token 在 LinkedIn 登入狀態下才能讀取。
 ```bash
-~/Downloads/linkedin-feed$ wc 2025-07-21_linkedin-saved-posts-full.txt 
+~/Downloads/linkedin-feed$ wc 2025-07-21_linkedin-saved-posts-full.txt
  1273  1273 92929 2025-07-21_linkedin-saved-posts-full.txt
-~/Downloads/linkedin-feed$ wc 2025-07-21_404_urls.log 
+~/Downloads/linkedin-feed$ wc 2025-07-21_404_urls.log
   26  104 2288 2025-07-21_404_urls.log
 ```
    - 但實測也發現 1247 筆 curl 可以成功抓取(沒有 `404`)的 html 檔案，有 269 筆是 0 Byte
 ```bash
-~/Downloads/linkedin-feed$ for i in $(find . -size 0 -name "*.html"); do F=$(basename $i); echo "https://www.linkedin.com/feed/update/urn:li:activity:${F//.html}"; done | tee 2025-07-21_fetch_fail.txt 
-~/Downloads/linkedin-feed$ wc 2025-07-21_fetch_fail.txt 
+~/Downloads/linkedin-feed$ for i in $(find . -size 0 -name "*.html"); do F=$(basename $i); echo "https://www.linkedin.com/feed/update/urn:li:activity:${F//.html}"; done | tee 2025-07-21_fetch_fail.txt
+~/Downloads/linkedin-feed$ wc 2025-07-21_fetch_fail.txt
   269   269 19637 2025-07-21_fetch_fail.txt
 ```
 - 可能還在查一下，或許是 rate limit，也許是 Authentication 權限問題。

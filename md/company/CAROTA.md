@@ -1,15 +1,13 @@
 # CAROTA
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Could you do a quick company survey of CAROTA (Car OTA)? highlight product, target audience, market segment, market share, financial forecast, key competency, leadership, growth potential.
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Could you do a quick company survey of CAROTA (Car OTA)? highlight product, target audience, market segment, market share, financial forecast, key competency, leadership, growth potential.
+
 # CAROTA (Car OTA) – Company Survey
 
 **Main takeaway:** CAROTA has leveraged patented over-the-air (OTA) update technology and remote-diagnostics know-how to win-digit share in China’s fast-growing smart-vehicle software market. Backed by tier-one tech investors and fresh Series C funding, the firm is scaling beyond China into Japan, Europe and Southeast Asia just as the global automotive-OTA industry enters a 16--19% CAGR growth phase—positioning CAROTA for outsized expansion.
 
-## 1  Product Portfolio & Core Competencies  
+## 1  Product Portfolio & Core Competencies
 | Product/Service | What it does | Differentiators |
 |---|---|---|
 | Full-vehicle OTA platform (FOTA + SOTA) | Secure cloud-to-car delivery of firmware & software to multiple ECUs | Patented delta-compression update, 99.95% upgrade success rate, ISO/IEC & TÜV certifications[1][2] |
@@ -18,41 +16,41 @@ Could you do a quick company survey of CAROTA (Car OTA)? highlight product, targ
 | Fleet video-telematics & image management | Real-time tracking, driver monitoring, accident forensics | Largest such service in Taiwan; 320 M smart devices connected[1][7] |
 | OTA test racks & simulation tools | Hardware-in-loop systems for OEM validation | Adopted by official testing institutes in several countries[8] |
 
-**Key competencies**  
+**Key competencies**
 -  End-to-end solution covering pre-production, line-off and lifetime updates—unique among OTA vendors.  [1]
 -  Deep security stack: HSM root-of-trust, quantum algorithms, VSOC integration.  [2][5]
 -  Broad chip partnerships (NXP, Qualcomm) and >2.5 M vehicles installed worldwide.[9]
 
-## 2  Target Customers & Market Segment  
--  Primary: global automakers (passenger EV & ICE), commercial-vehicle OEMs, Tier-1 suppliers, chip makers.  
+## 2  Target Customers & Market Segment
+-  Primary: global automakers (passenger EV & ICE), commercial-vehicle OEMs, Tier-1 suppliers, chip makers.
 -  Secondary: fleet operators, IoT/AIoT device manufacturers (street-lights, AMR robots, wearables).  [10]
 CAROTA therefore sits in the **automotive OTA software, remote-diagnostics and connected-fleet** segment of the broader smart-mobility market.
 
-## 3  Market Position & Share  
-Metric | Latest figure | Context  
----|---|---  
-Chinese passenger-car OTA market share | “>10%”[11][12] | 25 Chinese OEMs adopted CAROTA as of 2023[11]  
-Installed base | >2.5 M vehicles, tens of millions ECUs[9] | Adds millions more via SGMW, NETA, KAIYI, Dongfeng programmes[4]  
+## 3  Market Position & Share
+Metric | Latest figure | Context
+---|---|---
+Chinese passenger-car OTA market share | “>10%”[11][12] | 25 Chinese OEMs adopted CAROTA as of 2023[11]
+Installed base | >2.5 M vehicles, tens of millions ECUs[9] | Adds millions more via SGMW, NETA, KAIYI, Dongfeng programmes[4]
 Global coverage | Clients in 20+ countries; 320 M connected devices[1][13] | Offices in Taiwan, China, Germany, Japan, India, U.S.
 
 **Competitors**: ABUP (China), PATEO, Airbiquity, Harman, Excelfore, Bosch; CB Insights lists FESCARO & TTTech as closest peers.[14]
 
-## 4  Financial Snapshot & Forecast  
+## 4  Financial Snapshot & Forecast
 Item | 2022 | 2023 | 2024e/2025e*
 ---|---|---|---
-Revenue (USD) | 6.6 M[11] | n/a | 8-10 M (proj.)  
-Funding | Series C $8 M Oct-2023[8][15] | – | runway supports int’l expansion  
-Vehicles served | 1.8 M est. | 2.5 M+[9] | >4 M (based on OEM roll-outs)  
+Revenue (USD) | 6.6 M[11] | n/a | 8-10 M (proj.)
+Funding | Series C $8 M Oct-2023[8][15] | – | runway supports int’l expansion
+Vehicles served | 1.8 M est. | 2.5 M+[9] | >4 M (based on OEM roll-outs)
 
 \*Illustrative projection applying the global automotive-OTA CAGR (16.5%-19%) to CAROTA’s 2022 base, plus new OEM wins publicly announced 2023-25.[16][17]
 
-## 5  Industry Growth Tailwinds  
+## 5  Industry Growth Tailwinds
 -  Automotive-OTA market poised to jump from USD 4.4 B (2024) to USD 33 B by 2037 (16.5% CAGR); similar studies see $10.2 B by 2029 (19.3% CAGR).  [16][17]
 -  China’s OTA installation rate already 71.7% (Jan-Sept 2024) and forecast >90% by 2030.  [18]
 -  Mandatory cybersecurity standards and 5G penetration accelerate demand for secure, high-frequency updates.  [19][20]
 These macro trends expand CAROTA’s serviceable market while rewarding its security-first design.
 
-## 6  Leadership & Ownership  
+## 6  Leadership & Ownership
 | Executive | Role | Background |
 |---|---|---|
 | Paul Wu | Founder, Chairman & Group CEO | Ex-MediaTek; founded General Mobile & MOX accelerator; MBA Rotterdam[21][22] |
@@ -62,7 +60,7 @@ These macro trends expand CAROTA’s serviceable market while rewarding its secu
 
 Major shareholders include MediaTek, Trend Micro, Singtel, AUO, Delta Electronics, CID Group and Acer.[11][13]
 
-## 7  Growth Prospects  
+## 7  Growth Prospects
 1. **Geographic scale-up** – strategic partnership with NTT DATA to penetrate Japanese OEM ecosystem; expansion to Germany, SEA, U.S..  [9]
 2. **EV software subscriptions** – platform already enables paid feature unlocks; EV uptake drives recurring SaaS revenue.  [5][12]
 3. **Fleet telematics cross-sell** – leverages Taiwan leadership in video telematics to upsell remote diagnostics to logistics fleets.  [7]

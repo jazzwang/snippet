@@ -3,11 +3,9 @@
 ## 2025-10-02
 
 - By M365 Copilot (GPT-4-Turbo)
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Can Power Automate run a script and download file from Github Actions?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Can Power Automate run a script and download file from Github Actions?
+
 Yes, **Power Automate** can interact with **GitHub Actions** to run scripts and download files, but it requires some integration setup. Here's how you can approach it:
 
 ---
@@ -71,11 +69,9 @@ Make sure your GitHub PAT has the correct scopes:
 
 Would you like a **sample Power Automate flow** or a **GitHub Actions workflow YAML** to go with this?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Can Power Automate run a script to download file from Github Actions and save to OneDrive?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Can Power Automate run a script to download file from Github Actions and save to OneDrive?
+
 Yes, **Power Automate can run a script to download a file from GitHub Actions and save it to OneDrive**, but it requires combining a few steps using GitHub's API and OneDrive connectors.
 
 Here’s a high-level breakdown of how to do it:
@@ -96,7 +92,7 @@ Here’s a high-level breakdown of how to do it:
 #### ✅ **1. Trigger GitHub Actions (Optional)**
 Use the **HTTP action** in Power Automate:
 - Method: `POST`
-- URL:  
+- URL:
   ```
   https://api.github.com/repos/{owner}/{repo}/actions/workflows/{workflow_file_name}/dispatches
   ```
@@ -143,11 +139,9 @@ Make sure your GitHub **Personal Access Token (PAT)** has:
 
 Would you like a **ready-to-import Power Automate flow (in .zip format)** or a **step-by-step visual guide** for this setup?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Send me the ready-to-import flow.
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Send me the ready-to-import flow.
+
 Here is your **ready-to-import Power Automate flow** that:
 
 - Triggers a GitHub Actions workflow
@@ -155,7 +149,7 @@ Here is your **ready-to-import Power Automate flow** that:
 - Downloads the artifact
 - Saves it to OneDrive
 
-📦 **Download the flow**:  
+📦 **Download the flow**:
 GitHubArtifactToOneDriveFlow.zip
 
 ---
@@ -174,11 +168,9 @@ GitHubArtifactToOneDriveFlow.zip
 
 Would you like help customizing this flow for your specific GitHub repo and workflow?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Can Power Automate trigger by Github Actions using Webhook?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Can Power Automate trigger by Github Actions using Webhook?
+
 Yes, **Power Automate can be triggered by GitHub Actions using a webhook**, and this is a powerful way to integrate the two platforms.
 
 ---
@@ -220,11 +212,9 @@ You can also send dynamic data like artifact URLs, commit info, etc.
 
 Would you like a **sample GitHub Actions YAML** and a **Power Automate flow template** for this webhook setup?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Can Github Actions save files to OneDrive?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Can Github Actions save files to OneDrive?
+
 GitHub Actions **cannot directly save files to OneDrive**, because OneDrive doesn’t offer a native API or CLI tool that integrates easily with GitHub Actions. However, you **can make it work** using one of these approaches:
 
 ---
@@ -264,11 +254,9 @@ Use **GitHub Actions → Power Automate (via webhook) → OneDrive**. It’s sec
 
 Would you like a **sample GitHub Actions workflow** that sends a file to Power Automate for OneDrive upload?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Can a Power Automate webhook shared by a Group instead of owning by 1 user who create it?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Can a Power Automate webhook shared by a Group instead of owning by 1 user who create it?
+
 Great question! Here's how it works:
 
 ---
@@ -315,11 +303,9 @@ Even if shared, **webhook URLs are public endpoints**. Always:
 
 Would you like help setting up a **shared environment** or creating a **secure webhook validation** in Power Automate?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Will the Power Automate webhook be removed if the owner's Microsoft 365 account was deactive or removed?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Will the Power Automate webhook be removed if the owner's Microsoft 365 account was deactive or removed?
+
 Yes — if the **owner of a Power Automate flow is deactivated or removed**, then:
 
 ### ⚠️ **The webhook (HTTP trigger) will stop working.**
@@ -353,11 +339,9 @@ To ensure continuity and shared ownership, consider these options:
 
 Would you like help setting up a **shared environment** or a **template for a service account strategy**?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Is it possible to transfer ownership of Power Automate webhook?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Is it possible to transfer ownership of Power Automate webhook?
+
 No, **you cannot directly transfer ownership of a Power Automate flow**, including those triggered by a webhook. However, there are **workarounds** to achieve the same outcome:
 
 ---
@@ -397,11 +381,9 @@ If you’re using the webhook in production, always:
 
 Would you like help exporting and re-importing a flow, or setting up a shared environment for your team?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-How to create Microsoft 365 service account for Power Automate?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> How to create Microsoft 365 service account for Power Automate?
+
 Creating a **Microsoft 365 service account** for Power Automate is a smart move for long-term automation stability. Here's how you can do it step by step:
 
 ---
@@ -488,13 +470,11 @@ Would you like a **checklist template** or a **PowerShell script** to automate p
 ## 2026-05-03
 
 - By M365 Copilot (Model: GPT-5)
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-
+> [!NOTE]
+>
 are there project template tool (like python cookiecutter) for microsoft 365 power automate?
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 Short answer: **there's no first‑party "cookiecutter‑style" scaffold tool for Power Automate**, but there *are* several **official and community‑supported ways to template, clone, and standardize Power Automate projects** that serve the same purpose.
 

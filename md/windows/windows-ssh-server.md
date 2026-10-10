@@ -1,11 +1,9 @@
 # SSH Server on Windows 11
 
 - [Reference Microsoft 365 Copilot Link](https://www.microsoft365.com/chat/entity1-d870f6cd-4aa5-4d42-9626-ab690c041429/eyJpZCI6IlZYTmxjbFl4ZkdoMGRIQnpPaTh2YzNWaWMzUnlZWFJsTFdsdWRDNXZabVpwWTJVdVkyOXRMM3hQU1VRNlpXSTFOamM0T0RrdE1XSTBPUzAwWkdaaUxUZ3hOak10TURabVpqbGhOamczTnpkamZHRmxNRFExWTJJeExXTXdOV1l0TkRSak1DMDVNemN6TFRsak9EWmxaakkzTXpObU4zd3lNREkxTFRBekxUSTBWREE0T2pReU9qSXdMamMxTWpjNE5ETmEiLCJzY2VuYXJpbyI6InNoYXJlTGlua1ZpYVJpY2hDb3B5IiwicHJvcGVydGllcyI6eyJwcm9tcHRTb3VyY2UiOiJ1c2VyIiwiY2xpY2tUaW1lc3RhbXAiOiIyMDI1LTAzLTI0VDA4OjQyOjIwLjMxMVoifSwiY2hhdFR5cGUiOiJ3ZWIiLCJ2ZXJzaW9uIjoxLjF9)
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me more details on setting up SSH server on Windows 11 if I don't have admin permission?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me more details on setting up SSH server on Windows 11 if I don't have admin permission?
+
 
 Setting up an SSH server on Windows 11 without admin permissions is challenging because installing and configuring the OpenSSH server typically requires administrative rights. However, there are a few workarounds you can try:
 

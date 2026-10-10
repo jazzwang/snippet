@@ -298,9 +298,8 @@ UnicodeEncodeError: 'charmap' codec can't encode character '\u200c' in position 
 
 - https://www.cloudskillsboost.google/paths/118/course_templates/536/video/520739
 ```
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you help me to resolve this error message?
+> [!NOTE]
+> could you help me to resolve this error message?
 
 ```python
 Traceback (most recent call last):
@@ -318,8 +317,7 @@ Traceback (most recent call last):
 UnicodeEncodeError: 'charmap' codec can't encode character '\u200c' in position 6242: character maps to <undefined>
 ```
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 This `UnicodeEncodeError` happens when your program tries to print a character that your system's default encoding (likely **CP1252**) can't display. Specifically, the character `\u200c` (which is a **Zero Width Non-Joiner**) is causing the problem.
 

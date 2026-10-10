@@ -7,11 +7,9 @@
 >  - Due to limitation of [mermaid.js issue #458](https://github.com/mermaid-js/mermaid/issues/458)
 >    I've correct the mermaid.js `note over` syntax error in Gemini's response.
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you draw dealership user journey diagram using mermaid.js sequence diagram syntax to visualize the interaction between potential vehicle buyer, sales agent, sales manager, finance and insurance (F&I) manager, vehicle inventory clerk, accounting receiver clerk, service agent, technician and part inventory clerk?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you draw dealership user journey diagram using mermaid.js sequence diagram syntax to visualize the interaction between potential vehicle buyer, sales agent, sales manager, finance and insurance (F&I) manager, vehicle inventory clerk, accounting receiver clerk, service agent, technician and part inventory clerk?
+
 Okay, I can help you visualize that! Here's the Mermaid.js sequence diagram syntax for a dealership user journey. This diagram will show the interactions between the potential buyer and the various dealership roles you mentioned.
 
 This diagram outlines the key interactions in a typical dealership journey. You can copy this syntax and use it with any tool that supports Mermaid.js to generate the visual sequence diagram.
@@ -116,11 +114,9 @@ sequenceDiagram
 > - Source: https://www.perplexity.ai/search/could-you-draw-dealership-user-bePPwCRNQxGrk1mtZsYjHA#0
 > - Created: Wednesday, June 4, 2025 at 11:56:27 PM Taipei Standard Time = 2025-06-05T23:56:27+08:00
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you draw dealership user journey diagram using mermaid.js sequence diagram syntax to visualize the interaction between potential vehicle buyer, sales agent, sales manager, finance and insurance (F\&I) manager, vehicle inventory clerk, accounting receiver clerk, service agent, technician and part inventory clerk?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you draw dealership user journey diagram using mermaid.js sequence diagram syntax to visualize the interaction between potential vehicle buyer, sales agent, sales manager, finance and insurance (F\&I) manager, vehicle inventory clerk, accounting receiver clerk, service agent, technician and part inventory clerk?
+
 Here is a dealership user journey sequence diagram using Mermaid.js syntax. This diagram visualizes the key interactions between a potential vehicle buyer and the core dealership roles: Sales Agent, Sales Manager, Finance \& Insurance (F\&I) Manager, Vehicle Inventory Clerk, Accounting Receiver Clerk, Service Agent, Technician, and Parts Inventory Clerk. The flow covers the typical buyer journey from initial inquiry to post-sale service, based on industry-standard processes[^3][^6][^1].
 
 ```mermaid

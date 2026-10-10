@@ -99,8 +99,7 @@ Lee 強調，沒有人在這四個面向都很強。「我尋找的是各有所�
 
 JQ 低的人，則可能做出一連串看似合理、實則偏離方向的決策。「很多技術背景的創辦人都是這樣，」Lee 觀察。他們 IQ 超高，產品做得很好，但不知道該在什麼時候轉型、該把力氣花在哪個市場，最後錯失良機。
 ```
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 好的，這是一個很棒的設計，能夠透過多維度評估來更全面地了解人才。
 
 根據您提供的 EQ、IQ、PQ、JQ 四個維度的描述，我為每個維度設計了三個面試問題。這些問題旨在誘發候選人分享具體的行為和思考過程，以便面試官進行 $1-5$ 分的評分。
@@ -176,8 +175,7 @@ JQ 低的人，則可能做出一連串看似合理、實則偏離方向的決�
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 could you help me to translate it into English and create a google forms?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 好的，我很樂意為您將這些面試題目翻譯成英文，並為您設計一個 Google Forms 的架構，讓您能直接應用於面試評分。
 
 -----

@@ -3,11 +3,9 @@
 ## 2025-10-06
 - By Microsoft Bing
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-mount usb drive wsl2
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> mount usb drive wsl2
+
 ### Mounting a USB Drive in WSL
 
 [1]: https://learn.microsoft.com/en-us/windows/wsl/wsl2-mount-disk
@@ -235,11 +233,9 @@ Device      Start        End    Sectors   Size Type
 ## 2025-12-07
 
 * Google AI Mode
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-mount: /mnt/usb/macos: unknown filesystem type 'hfsplus'. dmesg(1) may have more information after failed mount system call.
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> mount: /mnt/usb/macos: unknown filesystem type 'hfsplus'. dmesg(1) may have more information after failed mount system call.
+
 This error message indicates that your operating system (likely Linux) does not inherently support the Apple HFS Plus (HFS+) filesystem used by the macOS drive you are trying to mount [1]. The necessary kernel module or software tools are either missing or not loaded. 
 Here is how you can resolve this issue on a typical Linux distribution:
 
@@ -301,11 +297,9 @@ This output might reveal if the disk is corrupted or if there is another specifi
 
 - Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-can WSL install hfsplus module?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> can WSL install hfsplus module?
+
 Yes, you can **install the `hfsprogs` package** (which contains utilities like `fsck.hfsplus` and `mkfs.hfsplus`) inside your WSL distribution, but this **does not guarantee** the ability to mount or fully access an HFS+ formatted disk.
 
 -----
@@ -417,11 +411,9 @@ nodev   configfs
 
 ## 2025-12-08
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a step=by-step command line instruction in order to enabling `CONFIG_HFSPLUS_FS` and compile WSL2 user-built kernel by editing the `.wslconfig` file?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a step=by-step command line instruction in order to enabling `CONFIG_HFSPLUS_FS` and compile WSL2 user-built kernel by editing the `.wslconfig` file?
+
 Building a custom kernel for WSL 2 is an advanced process. The steps below provide the command-line instructions to clone the Microsoft WSL 2 kernel source, modify the configuration to enable HFS+ support (`CONFIG_HFSPLUS_FS`), compile the new kernel, and configure WSL 2 to use it.
 
 ## 🛠️ Step-by-Step Kernel Compilation

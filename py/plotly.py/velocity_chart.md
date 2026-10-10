@@ -1,10 +1,8 @@
 # Jira Velocity Chart
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-If I have a CSV file exported from Jira, could you recommend any python library that I can create a HTML file and show Velocity Chart like Jira?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> If I have a CSV file exported from Jira, could you recommend any python library that I can create a HTML file and show Velocity Chart like Jira?
+
 ## Recommended Python Libraries for a Jira Velocity Chart 📊
 
 The best tools for this task are a combination of two powerful Python libraries: **Pandas** for data manipulation and a plotting library like **Plotly** or **Altair** for visualization and HTML export.
@@ -15,7 +13,7 @@ The best tools for this task are a combination of two powerful Python libraries:
 The first step is to use the **Pandas** library to read your exported Jira CSV file. Pandas is the industry standard for data manipulation in Python and is perfect for this job.
 
 * **Read the Data:** You can load the CSV file directly into a `DataFrame`, which is a flexible table-like data structure.
-* **Calculate Velocity:** You can then process the `DataFrame` to group issues by sprint and calculate key metrics, such as the total story points committed at the start of the sprint and the total story points completed at the end. 
+* **Calculate Velocity:** You can then process the `DataFrame` to group issues by sprint and calculate key metrics, such as the total story points committed at the start of the sprint and the total story points completed at the end.
 * **Data Cleaning:** Pandas also makes it easy to handle missing data or non-numeric values that might be in your CSV file, ensuring your calculations are accurate.
 
 ***
@@ -39,8 +37,7 @@ Here's a general outline of the steps you would follow to achieve your goal:
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 could you give me an Altair example to generate interactive charts like Velocity Chart?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 Yes, here is a complete Python code example that uses the **Altair** library to generate an interactive Velocity Chart. The code creates a layered chart with bars for committed and completed story points and a line for the completed points, which represents velocity.
 
@@ -109,8 +106,7 @@ print("Velocity chart saved as velocity_chart.html")
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 can it be 2 bar per sprint? e.g. 1 bar for committed points, 1 bar for completed and line chart for say/do ratio (i.e. completed divided by committed )
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 Yes, you can create a chart with two bars per sprint and a line chart for the Say/Do ratio. This requires creating three separate charts and then combining them.
 
@@ -188,8 +184,7 @@ final_chart.save('velocity_say_do_chart_hconcat.html')
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 could you give me a Plotly example to generate interactive charts like Velocity Chart?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 Yes, **Plotly** is an excellent choice for creating interactive Velocity Charts. Unlike Altair, which is best for declarative charts, Plotly uses an imperative approach that gives you more control over complex layouts, like charts with multiple Y-axes. This makes it perfect for displaying story points and a ratio on the same graph.
 

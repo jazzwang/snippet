@@ -2,11 +2,9 @@
 
 ## 2025-12-24
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what's the difference between OLAP and OLTP?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what's the difference between OLAP and OLTP?
+
 The simplest way to think about the difference is: **OLTP runs your business**, while **OLAP helps you understand it.**
 
 ---

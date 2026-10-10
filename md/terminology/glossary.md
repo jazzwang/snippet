@@ -1,10 +1,8 @@
-# Glossary 
+# Glossary
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-glossary 跟 terminology 有何不同?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> glossary 跟 terminology 有何不同?
+
 這兩個詞都與特定領域的詞彙有關，但它們的**含義、範圍和呈現形式**有所不同：
 
 ---

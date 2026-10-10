@@ -2,11 +2,9 @@
 
 ## 2025-07-03
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-is it possible to open chrome devtool-like console of Microsoft Teams?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> is it possible to open chrome devtool-like console of Microsoft Teams?
+
 Yes, it is absolutely possible to open a Chrome DevTools-like console for Microsoft Teams, especially for debugging purposes. The exact method depends on whether you're using the web version or the desktop client (and if it's the "new" Teams client or the "classic" one).
 
 Here's a breakdown based on the information available:

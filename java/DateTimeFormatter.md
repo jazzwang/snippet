@@ -9,11 +9,9 @@
   - 2025-09-11 20:30 PM
   - By Google Gemini
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-create a Java program to show 2025-09-11 using two different format "yyyyMMdd", "yyyyMMDD"
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> create a Java program to show 2025-09-11 using two different format "yyyyMMdd", "yyyyMMDD"
+
 ```java
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

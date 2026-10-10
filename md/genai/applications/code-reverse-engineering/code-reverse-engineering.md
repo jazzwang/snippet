@@ -1,11 +1,9 @@
 # Source Code Reverse Engineering
 
 - Gemini 2.5 Flash
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what are the common steps to build a source code reverse engineering chatbot using LLM? how to build source code index?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what are the common steps to build a source code reverse engineering chatbot using LLM? how to build source code index?
+
 Building a source code reverse engineering chatbot using a large language model (LLM) involves a multi-step process that combines natural language processing with code analysis. The core idea is to leverage an LLM's ability to understand and generate human-like text to explain complex codebases, with the help of a specialized code index. This approach, often referred to as Retrieval-Augmented Generation (RAG), prevents the LLM from hallucinating or providing incorrect information by grounding its responses in the actual source code.
 
 ***
@@ -37,7 +35,7 @@ Building a source code reverse engineering chatbot using a large language model 
 
 ### How to Build a Source Code Index
 
-Building a source code index for an LLM chatbot is essentially an exercise in **Retrieval-Augmented Generation (RAG)**. It's a pipeline that transforms a codebase into a searchable, machine-readable format. 
+Building a source code index for an LLM chatbot is essentially an exercise in **Retrieval-Augmented Generation (RAG)**. It's a pipeline that transforms a codebase into a searchable, machine-readable format.
 
 Here's a more detailed breakdown:
 
@@ -63,11 +61,9 @@ Here's a more detailed breakdown:
     * This metadata can be used to create more sophisticated queries and to provide a more comprehensive answer. For example, if a user asks about a function, the chatbot could also retrieve the functions that call it or are called by it, providing a more complete picture of its role in the codebase.
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how can DSPy help in reverse engineering chatbot?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how can DSPy help in reverse engineering chatbot?
+
 DSPy is an excellent framework for building a reverse engineering chatbot because it shifts the focus from **manual prompt engineering** to **declarative programming**. Instead of painstakingly crafting and tweaking long prompts, you define the high-level logic of your chatbot using DSPy's modules, signatures, and optimizers. This makes the development process more robust, efficient, and easier to manage, especially for complex tasks like reverse engineering source code.
 
 ***
@@ -103,11 +99,9 @@ In essence, DSPy allows you to treat your chatbot's logic like a software progra
 
 - Gemini 2.5 Pro
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-what are the common steps to build a source code reverse engineering chatbot using LLM? how to build source code index?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> what are the common steps to build a source code reverse engineering chatbot using LLM? how to build source code index?
+
 ## Navigating the Labyrinth of Code: A Guide to Building a Source Code Reverse Engineering Chatbot with LLMs
 
 Revolutionizing the intricate process of source code reverse engineering, Large Language Models (LLMs) can now power intelligent chatbots capable of dissecting and explaining complex codebases. This guide outlines the essential steps to construct such a chatbot and delves into the critical process of building a comprehensive source code index, the backbone of this powerful tool.
@@ -174,11 +168,9 @@ The code chunks, their metadata, and their corresponding vector embeddings are t
 By following these steps, you can create a powerful and insightful source code reverse engineering chatbot that can significantly accelerate the process of understanding and navigating complex software systems. This tool can serve as an invaluable assistant for developers, security researchers, and anyone tasked with delving into the intricacies of existing codebases.
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-given a git repo with Perl, Bash scripts and Makefile, how can I build source code index especially leveraging tree-sitter-language-pack using Python and store the index into SQLite as vectore database?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> given a git repo with Perl, Bash scripts and Makefile, how can I build source code index especially leveraging tree-sitter-language-pack using Python and store the index into SQLite as vectore database?
+
 
 \<think\>
 **Beginning the Answer**
@@ -255,7 +247,7 @@ def setup_tree_sitter_languages():
             subprocess.run(["git", "clone", "https://github.com/tree-sitter/tree-sitter-bash", "vendor/tree-sitter-bash"], check=True)
         if not os.path.exists('vendor/tree-sitter-make'):
             subprocess.run(["git", "clone", "https://github.com/tree-sitter/tree-sitter-make", "vendor/tree-sitter-make"], check=True)
-        
+
         Language.build_library(
             'build/my-languages.so',
             [
@@ -287,7 +279,7 @@ def setup_database():
     print(f"Setting up database at {DB_FILE}...")
     conn = sqlite3.connect(DB_FILE)
     conn.enable_load_extension(True)
-    
+
     try:
         # Try loading the pre-compiled extension
         import sqlite_vss
@@ -322,7 +314,7 @@ def setup_database():
         chunk_embedding(384)
     )
     ''')
-    
+
     conn.commit()
     print("Database setup complete.")
     return conn
@@ -342,7 +334,7 @@ def get_chunks(file_path, language_name, code_content):
     parser.set_language(language)
     tree = parser.parse(bytes(code_content, "utf8"))
     root_node = tree.root_node
-    
+
     chunks = []
     # Query to find top-level functions/subroutines/rules
     # These queries might need adjustment for different grammar versions
@@ -351,7 +343,7 @@ def get_chunks(file_path, language_name, code_content):
         "bash": "(function_definition) @func",
         "make": "(rule) @rule"
     }
-    
+
     capture_query = language.query(query_map.get(language_name, ""))
     captures = capture_query.captures(root_node)
 
@@ -377,7 +369,7 @@ def get_chunks(file_path, language_name, code_content):
                 "start_line": i + 1,
                 "end_line": i + len(chunk_lines)
             })
-            
+
     return chunks
 
 # --- Main Indexing Logic ---
@@ -390,7 +382,7 @@ def main():
     conn = setup_database()
     if not conn:
         return
-        
+
     model = SentenceTransformer(EMBEDDING_MODEL)
 
     # 2. Clone the repository if it doesn't exist
@@ -410,7 +402,7 @@ def main():
         for file in files:
             total_files += 1
             file_path = os.path.join(root, file)
-            
+
             # Determine language from extension or filename
             language = None
             if file in SUPPORTED_EXTENSIONS:
@@ -426,7 +418,7 @@ def main():
                 try:
                     with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                         content = f.read()
-                    
+
                     # Get code chunks
                     chunks = get_chunks(file_path, language, content)
                     if not chunks:
@@ -443,7 +435,7 @@ def main():
                             (file_path, language, chunk['text'], chunk['start_line'], chunk['end_line'])
                         )
                         chunk_id = cursor.lastrowid
-                        
+
                         # Vector embedding needs to be a JSON string for sqlite-vss
                         embedding_json = json.dumps(embeddings[i].tolist())
                         cursor.execute(
@@ -453,7 +445,7 @@ def main():
 
                 except Exception as e:
                     print(f"  - Error processing file {file_path}: {e}")
-    
+
     conn.commit()
     conn.close()
     print("\nIndexing complete!")

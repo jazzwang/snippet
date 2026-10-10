@@ -8,11 +8,9 @@
 
 ## 2026-01-06
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-databricks partner network 的點數是如何計算？certification 是否根據 professional, foundation 等有差異？customer reference 的點數是多少？請彙整最新官方指南手冊資訊，並以英文回答。
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> databricks partner network 的點數是如何計算？certification 是否根據 professional, foundation 等有差異？customer reference 的點數是多少？請彙整最新官方指南手冊資訊，並以英文回答。
+
 
 ### The Strategic Architecture of the Databricks Partner Network: Quantitative Point Frameworks, Certification Hierarchies, and the Transition to Consumption-Based Value Models (2025)
 

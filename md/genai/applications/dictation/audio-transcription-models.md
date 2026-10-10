@@ -4,11 +4,9 @@
 
 - By M365 Copilot (GPT-4-Turbo)
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you compare OpenAI Whisper with Microsoft SpeechT5?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you compare OpenAI Whisper with Microsoft SpeechT5?
+
 Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for English audio transcription, based on current benchmarks and usage scenarios:
 
 ---
@@ -78,11 +76,9 @@ Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for En
 Would you like a code comparison using both models on the same audio file? Or help choosing the best model for your specific use case (e.g., meetings, podcasts, noisy environments)?
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-What's the difference between Whisper, WhisperX and FasterWhisper? could you give me comparison tables?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> What's the difference between Whisper, WhisperX and FasterWhisper? could you give me comparison tables?
+
 Here’s a clear comparison of **Whisper**, **WhisperX**, and **FasterWhisper**, three popular tools for automatic speech recognition (ASR) based on OpenAI’s Whisper model:
 
 ---
@@ -116,11 +112,9 @@ Here’s a clear comparison of **Whisper**, **WhisperX**, and **FasterWhisper**,
 Would you like a code example comparing Whisper and FasterWhisper on the same audio file? Or help setting up WhisperX for speaker diarization?
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you do code example comparing Whisper and FasterWhisper on the same audio file?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you do code example comparing Whisper and FasterWhisper on the same audio file?
+
 Here’s a side-by-side code example comparing **OpenAI Whisper** and **FasterWhisper** on the same audio file. This will help you evaluate differences in speed and output quality.
 
 ---
@@ -183,11 +177,9 @@ for segment in segments:
 Would you like me to help you run this on a sample AAC file or add speaker diarization using WhisperX?
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Add speaker diarization with WhisperX
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Add speaker diarization with WhisperX
+
 To add **speaker diarization** using **WhisperX**, you'll need to combine Whisper transcription with speaker segmentation from `pyannote-audio`. Here's a complete example:
 
 ---

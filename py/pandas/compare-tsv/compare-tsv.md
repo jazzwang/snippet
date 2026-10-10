@@ -5,11 +5,9 @@
 - 2025-04-10 11:23 PM
 - https://g.co/gemini/share/a7fbedcd9a1a
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Prompted if I have 2 TSV files, I need a Python program to compare (1) header difference (2) column value difference (3) row difference. Could you write a example program that can meet those requirements?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Prompted if I have 2 TSV files, I need a Python program to compare (1) header difference (2) column value difference (3) row difference. Could you write a example program that can meet those requirements?
+
 ```python
 import pandas as pd
 
@@ -147,9 +145,8 @@ The output will show you the differences found in the headers, the unique values
 </td></tr></table>
 
 - https://g.co/gemini/share/9310474f3a34
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-if I need to consider the order of each row, do we need to rewrite the python program?
+> [!NOTE]
+> if I need to consider the order of each row, do we need to rewrite the python program?
 
 e.g. Here is an example: file1 and file2 have the same `ID` and `Date` columns, but row order of A in file1 show as A_in_file1, A in file2 show as A_in_file2
 
@@ -161,8 +158,7 @@ ID  Date    A_in_file1  A_in_file2
 1ABCDEFGHIJKLMNOP   04/07/2025  73583   73584
 1ABCDEFGHIJKLMNOP   04/07/2025  73583   73585
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 You're absolutely right! If the order of rows matters, the previous approach of using sets for row comparison won't work because sets are unordered collections. We need to modify the program to account for the sequence of rows.
 
 Here's a revised Python program that considers the order of rows when comparing the TSV files:
@@ -366,11 +362,9 @@ The output will now provide insights into the differences in your TSV files whil
 - 2025-04-10 23:40 PM
 - https://g.co/gemini/share/88a2af0291b4
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-is it possible to leverage SQLite and use pandas to do the comparison?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> is it possible to leverage SQLite and use pandas to do the comparison?
+
 Absolutely, leveraging SQLite along with pandas is a powerful and often more performant approach for comparing larger TSV files, especially when you need to perform more complex comparisons or when memory becomes a constraint. Here's how you can do it:
 
 **General Strategy:**

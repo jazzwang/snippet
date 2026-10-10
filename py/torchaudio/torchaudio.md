@@ -1,6 +1,6 @@
 # torchaudio
 
-> 
+>
 
 - PyPI
   - https://pypi.org/project/torchaudio/
@@ -12,11 +12,9 @@
 - By M365 Copilot
   - powered by GPT-4-turbo
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a python example to read a AAC audio file and output the transcript? use any popular huggingface model would be great.
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a python example to read a AAC audio file and output the transcript? use any popular huggingface model would be great.
+
 To transcribe an AAC audio file using a Hugging Face model in Python, you can use the **Whisper** model from OpenAI, which is available via the `transformers` and `torchaudio` libraries. Here's a complete example:
 
 ### ✅ Requirements
@@ -58,11 +56,9 @@ print(transcription["text"])
 Would you like me to adapt this for a specific language or help you run it on a sample file?
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there recommended huggingface model for transcribe audio in English?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there recommended huggingface model for transcribe audio in English?
+
 For transcribing English audio, Hugging Face offers several high-quality models. Here are the most recommended ones:
 
 #### 🥇 Top Hugging Face Models for English Audio Transcription

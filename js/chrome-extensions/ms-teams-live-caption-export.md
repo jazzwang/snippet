@@ -5,11 +5,9 @@
 - https://g.co/gemini/share/a8a7452803ee
 - Created with 2.5 Flash June 19, 2025 at 10:46 PM
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Is it possible to call a function when DOM subtree added new element?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Is it possible to call a function when DOM subtree added new element?
+
 Yes, it's absolutely possible to call a function when a new element is added to a DOM subtree. The primary way to achieve this in modern JavaScript is by using the **MutationObserver API**.
 
 The `MutationObserver` provides a way to react to changes in the DOM. It's much more efficient and robust than older methods like polling or using deprecated `DOMNodeInserted` events.

@@ -27,8 +27,7 @@
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 為何 windows 11 突然一直在讀取硬碟，根據 `Resource Monitor` 的查詢結果，判定主要是 `System (PID=4)` 跟 `SearchIndexer.exe` 兩個執行檔
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 這是一個在 Windows 11 非常常見且令人煩躁的問題。這通常不是病毒，而是 Windows 的**維護機制失控**或**卡在某個檔案上**。
 
 簡單來說：
@@ -137,8 +136,7 @@
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 看起來一直在讀取 `C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.db`
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 這是一個非常經典的 Windows 11 效能問題。`Windows.db` 是 Windows 搜尋索引的**核心資料庫檔案**。
 
@@ -322,10 +320,10 @@ drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 Projects
   - https://www.reddit.com/r/techsupport/comments/1i1i6z4/comment/mxm9nqn/?tl=zh-hant
     - 控制台 > 檢視方式：小圖示 > 電源選項 > 選擇電源按鈕的功能 > 在底部，關閉「開啟快速啟動」和「睡眠」。啟用「休眠」
   - https://www.asus.com/tw/support/faq/1044624/#Win11_A3
-    - 在Windows搜尋欄輸入[選擇電源計劃]①，然後點選[開啟]②。 
-    - 點選[選擇按下電源按鈕時的行為]③。 
-    - 點擊[變更目前無法使用的設定]④。 
-    - 將關機設定中的休眠選項打勾⑤，然後點選[儲存變更]⑥。 
+    - 在Windows搜尋欄輸入[選擇電源計劃]①，然後點選[開啟]②。
+    - 點選[選擇按下電源按鈕時的行為]③。
+    - 點擊[變更目前無法使用的設定]④。
+    - 將關機設定中的休眠選項打勾⑤，然後點選[儲存變更]⑥。
 
 ## 2026-04-12
 
@@ -343,7 +341,7 @@ drwxr-xr-x 1 jazzw 197609          0 Sep  9  2024 Projects
 - 後來重開了幾次，原本都還是沒有作用，結果按了 `Fn + Windows Key` 也就是所謂的 WinLock 鍵
 - https://share.google/aimode/G8rxgWMxXbaF7LSZw
 > To fix a non-working Windows key, first try toggling the "[Win Lock](https://www.google.com/search?q=Win+Lock&ved=2ahUKEwiy46yunuaTAxXIe_UHHc0zJcsQgK4QegYIAQgAEA8)" feature by pressing **Fn + Windows Key** or **Fn + F11/F12**. Other quick fixes include restarting Windows Explorer in Task Manager (Ctrl+Shift+Esc), disabling Game Mode in Settings, or turning off Sticky/Filter keys in Accessibility settings.
-> 
+>
 > Here are the most effective solutions:
 >
 > -   **Unlock the Key (Most Common):** Many keyboards have a "WinLock" function. Press **Fn + Windows key**, **Fn + F6**, or a specific key with a lock/Windows icon to unlock it.
@@ -357,7 +355,7 @@ Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Re
 > -   **Update Keyboard Drivers:** Open **Device Manager**, expand **Keyboards**, right-click your keyboard, and select **Update driver**.
 >
 > **If these do not work:**
-> 
+>
 > -   Try a different keyboard to rule out hardware damage.
 > -   Run `sfc /scannow` in Command Prompt to fix corrupted system files.
 > -   Temporarily disable any keyboard remapping software.
@@ -383,7 +381,7 @@ Google Search - AI Mode
 
 ## Windows 11 的 clip.exe 無法正常接收 UTF-8 中文字元
 
-Windows 11 的 clip.exe 無法正常接收並複製 Bash (如 WSL 或 Git Bash) 的 UTF-8 中文字元，根本原因在於 clip.exe 這個 Windows 內建工具並不支援直接讀取標準輸入 (stdin) 的 UTF-8 編碼組合；==它會強制使用 Windows 系統預設的 OEM 程式碼頁 (Code Page)（例如台灣繁體中文環境的 CP950 / Big5）去解析傳入的資料位元組，導致編碼不一致而產生亂碼==。 [1, 2, 3] 
+Windows 11 的 clip.exe 無法正常接收並複製 Bash (如 WSL 或 Git Bash) 的 UTF-8 中文字元，根本原因在於 clip.exe 這個 Windows 內建工具並不支援直接讀取標準輸入 (stdin) 的 UTF-8 編碼組合；==它會強制使用 Windows 系統預設的 OEM 程式碼頁 (Code Page)（例如台灣繁體中文環境的 CP950 / Big5）去解析傳入的資料位元組，導致編碼不一致而產生亂碼==。 [1, 2, 3]
 
 以下為您詳細說明背後的原因與具體的解決方案。
 
@@ -398,7 +396,7 @@ Windows 11 的 clip.exe 無法正常接收並複製 Bash (如 WSL 或 Git Bash) 
 您不能直接改變 clip.exe 的底層行為，但可以透過以下幾種替代方案或轉譯方式，完美解決中文複製亂碼的問題：
 ### 方案一：藉由 Windows PowerShell 進行編碼轉換 (最推薦)
 
-這是不需要安裝額外工具的最快解法。透過呼叫 Windows 內建的 PowerShell，強制在複製前將編碼轉換為 UTF-8。 [1, 4] 
+這是不需要安裝額外工具的最快解法。透過呼叫 Windows 內建的 PowerShell，強制在複製前將編碼轉換為 UTF-8。 [1, 4]
 在 Bash 中，您可以使用以下指令來代替原本的 clip.exe：
 
 #### 範例：將 echo 的中文透過 powershell 丟進剪貼簿
@@ -414,11 +412,11 @@ echo "測試中文字元" | powershell.exe -NoProfile -Command "[[Console]]::Inp
 alias clip='powershell.exe -NoProfile -Command "[[Console]]::InputEncoding = [[Console]]::OutputEncoding = [System.Text.Encoding]::UTF8; \$input | Set-Clipboard"'
 ```
 
-重新載入設定（source ~/.bashrc）後，之後直接輸入 echo "中文" | clip 就能完美複製。 [4] 
+重新載入設定（source ~/.bashrc）後，之後直接輸入 echo "中文" | clip 就能完美複製。 [4]
 
 ### 方案二：使用 iconv 轉換編碼後再送給 clip.exe
 
-如果您的 Windows 系統預設是 Big5 (CP950)，您可以利用 Linux 內建的 iconv 工具，在資料送進 clip.exe 之前，先將 UTF-8 強制轉碼為 big5： [5] 
+如果您的 Windows 系統預設是 Big5 (CP950)，您可以利用 Linux 內建的 iconv 工具，在資料送進 clip.exe 之前，先將 UTF-8 強制轉碼為 big5： [5]
 
 ```bash
 echo "測試中文字元" | iconv -f UTF-8 -t BIG5 | clip.exe
@@ -428,7 +426,7 @@ echo "測試中文字元" | iconv -f UTF-8 -t BIG5 | clip.exe
 
 ### 方案三：安裝開源替代工具 win32yank 或 utf8clip
 
-許多開發者為了在 WSL 中使用 Vim/Neovim 的剪貼簿，會選擇使用專門支援 UTF-8 的第三方命令列工具來徹底取代 clip.exe。 [3, 6] 
+許多開發者為了在 WSL 中使用 Vim/Neovim 的剪貼簿，會選擇使用專門支援 UTF-8 的第三方命令列工具來徹底取代 clip.exe。 [3, 6]
 
    1. 下載支援跨平台剪貼簿的 [win32yank](https://github.com/equalsraf/win32yank/releases)。
    2. 將解壓後的 win32yank.exe 放入 WSL 能夠讀取到的 Windows 環境變數路徑中（例如 C:\Windows\ 或自訂的工具資料夾）。
@@ -436,8 +434,8 @@ echo "測試中文字元" | iconv -f UTF-8 -t BIG5 | clip.exe
    ```bash
    echo "測試中文字元" | win32yank.exe -i
    ```
-   
-您目前是在 WSL2 還是 Git Bash 的環境下遇到這個問題呢？如果有特定的軟體（如 Vim 或 tmux）需要整合剪貼簿，我可以為您提供更針對性的設定步驟！ [1, 3] 
+
+您目前是在 WSL2 還是 Git Bash 的環境下遇到這個問題呢？如果有特定的軟體（如 Vim 或 tmux）需要整合剪貼簿，我可以為您提供更針對性的設定步驟！ [1, 3]
 
 [1] [https://github.com](https://github.com/tmux-plugins/tmux-yank/issues/144)
 [2] [https://github.com](https://github.com/rajveerb/wsl-clip-bridge)

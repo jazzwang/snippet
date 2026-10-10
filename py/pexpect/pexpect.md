@@ -3,17 +3,15 @@
 - PyPI
   - https://pypi.org/project/pexpect/
 - Document
-  - 
+  -
 - Git Repo
   - https://github.com/pexpect/pexpect
 
 ## 2025-05-16
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there python library similar to expect which can be use to enter sftp password?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there python library similar to expect which can be use to enter sftp password?
+
 While `pexpect` is a powerful Python library for automating interactive applications, including those that prompt for passwords like `sftp`, it might not be the most straightforward or recommended solution specifically for handling SFTP password entry in all scenarios. Here's why and what alternatives exist:
 
 **Why `pexpect` might be less ideal for SFTP password entry:**
@@ -128,11 +126,9 @@ In summary, while `pexpect` *can* be used to enter an SFTP password by interacti
 
 ## 2025-05-20
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me an example python script using `pexpect` to list SFTP files based on pattern `*_20250519_*` and use 'mget *_20250519*` to download those files?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me an example python script using `pexpect` to list SFTP files based on pattern `*_20250519_*` and use 'mget *_20250519*` to download those files?
+
 Got it. Here's a Python script using `pexpect` to interact with an `sftp` command-line client, list files matching a pattern, and then `mget` them.
 
 **Important Considerations Before Running:**
@@ -413,19 +409,19 @@ searcher: searcher_re:
 - 根據  [Pexpect on Windows](https://pexpect.readthedocs.io/en/stable/overview.html#windows) 的解釋，`PopenSpawn` 不是拿來取代 `spawn`，在 Windows 平台上的行為可能會不同。
 
 > **Pexpect on Windows**
-> 
+>
 > New in version 4.0: Windows support
-> 
+>
 > Pexpect can be used on Windows to wait for a pattern to be produced by a child process, using [`pexpect.popen_spawn.PopenSpawn`](https://pexpect.readthedocs.io/en/stable/api/popen_spawn.html#pexpect.popen_spawn.PopenSpawn "pexpect.popen_spawn.PopenSpawn"), or a file descriptor, using [`pexpect.fdpexpect.fdspawn`](https://pexpect.readthedocs.io/en/stable/api/fdpexpect.html#pexpect.fdpexpect.fdspawn "pexpect.fdpexpect.fdspawn").
-> 
+>
 > <mark>[`pexpect.spawn`](https://pexpect.readthedocs.io/en/stable/api/pexpect.html#pexpect.spawn "pexpect.spawn") and [`pexpect.run()`](https://pexpect.readthedocs.io/en/stable/api/pexpect.html#pexpect.run "pexpect.run") ***are *not* available*** on Windows</mark>, as they rely on Unix pseudoterminals (ptys). Cross platform code must not use these.
-> 
+>
 > <mark>`PopenSpawn` is not a direct replacement for `spawn`.</mark> Many programs only offer interactive behaviour if they detect that they are running in a terminal. When run by `PopenSpawn`, they may behave differently.
 >
 > **See also**
 >
 > [winpexpect](https://pypi.python.org/pypi/winpexpect) and [wexpect](https://gist.github.com/anthonyeden/8488763)
-> 
+>
 > Two unmaintained pexpect-like modules for Windows, which work with a hidden console.
 - ( 2025-06-02 12:55:48 )
 - 在 WSL 裡面測試，遇到另一個狀況

@@ -1,10 +1,8 @@
 - https://www.perplexity.ai/search/could-you-do-a-deep-research-a-Xcl6vDlHS1idNEUPEFLFjw#0
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Could you do a deep research about "Data Engineering in the Age of AI" and create a mind map using markmap.js syntax? cover 20 items at top level.
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Could you do a deep research about "Data Engineering in the Age of AI" and create a mind map using markmap.js syntax? cover 20 items at top level.
+
 
 # Data Engineering in the Age of AI: Comprehensive Research Report
 

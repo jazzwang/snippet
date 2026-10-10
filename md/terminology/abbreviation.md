@@ -3,11 +3,9 @@
 - 論文寫作：同樣是縮寫，abbreviation、acronym和initialism有何不同？
   - https://www.editage.com.tw/blog/research/difference-between-abbreviation.html
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-abbreviation、acronym和initialism有何不同
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> abbreviation、acronym和initialism有何不同
+
 這三個術語都與縮短詞語有關，但在用法和發音上有細微的區別：
 
 ---
@@ -73,11 +71,9 @@ abbreviation、acronym和initialism有何不同
 因為 Initialism 和 Acronym **都**是用首字母構成的，所以在口語中，人們經常會將它們統稱為 **Acronym**（首字母縮略詞），但嚴格來說，發音方式是區分它們的關鍵。
 </td></tr></table>
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you visualize the relationship between Terminology, Glossary, Abbreviation, Acronym, Initialism using plantuml syntax?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you visualize the relationship between Terminology, Glossary, Abbreviation, Acronym, Initialism using plantuml syntax?
+
 You absolutely can visualize those relationships using **PlantUML** syntax. The diagram below uses the PlantUML standard for a simple tree or hierarchy, highlighting the containment and classification structure.
 
 Here is the PlantUML code, followed by an explanation of the relationships:
@@ -104,7 +100,7 @@ package "Concept Examples" {
     [NASA] as ExAcro
     [FBI] as ExInit
     [Dr.] as ExAbbr
-    
+
     Acro --> ExAcro
     Init --> ExInit
     Abbr --> ExAbbr
@@ -148,7 +144,7 @@ end legend
 | Abbreviation | Full Form | 中文 | Reference |
 |--------------|-----------|------|-----------|
 | FOMO | Fear of missing out | 錯失恐懼症 | https://en.wikipedia.org/wiki/Fear_of_missing_out |
-| FOFO | Fear of finding out | 發現恐懼症 | https://www.managertoday.com.tw/articles/view/71302 | 
+| FOFO | Fear of finding out | 發現恐懼症 | https://www.managertoday.com.tw/articles/view/71302 |
 
 ## 2025-12-04
 
@@ -224,25 +220,25 @@ end legend
 | DLT | Distributed Ledger Technology | 分散式帳本技術 | https://en.wikipedia.org/wiki/Distributed_ledger |  #Web3 #BlockChain |
 
 <table><tr><td>
-Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍稱為「分散式帳本技術」，在香港或中國大陸則常譯為「分布式分類帳技術」或「分布式账本技术」。 [1, 2, 3, 4] 
+Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍稱為「分散式帳本技術」，在香港或中國大陸則常譯為「分布式分類帳技術」或「分布式账本技术」。 [1, 2, 3, 4]
 
 ### 💡 核心概念
 
-這是一種去中心化的數位記錄系統。它允許網路中的多個參與者（節點）在沒有中央管理器（如銀行或政府）的情況下，共同維護、共享與同步一份一模一樣的資料庫。 [1, 2, 4] 
+這是一種去中心化的數位記錄系統。它允許網路中的多個參與者（節點）在沒有中央管理器（如銀行或政府）的情況下，共同維護、共享與同步一份一模一樣的資料庫。 [1, 2, 4]
 
 ### 🧱 與區塊鏈（Blockchain）的關係
 
 許多人常將兩者混用，但其範圍不同：
 
 * DLT 是母類別：它是所有此類分散式記帳技術的統稱。
-* 區塊鏈是子類別：區塊鏈只是 DLT 的其中一種實現方式。它是將資料打包成「區塊」並串聯成「鏈」來運作的 DLT。 [5, 6] 
+* 區塊鏈是子類別：區塊鏈只是 DLT 的其中一種實現方式。它是將資料打包成「區塊」並串聯成「鏈」來運作的 DLT。 [5, 6]
 
 ### 🌟 DLT 的四大核心特性
 
    1. 去中心化（Distributed）：所有成員都擁有完整帳本副本，不依賴單一中央伺服器。
    2. 不可篡改（Immutable）：資料一旦經加密驗證寫入，就無法被刪除或更改。
    3. 共識機制（Consensus）：各節點透過演算法（如投票）自動達成資訊正確性的共識。
-   4. 透明與安全（Secure）：資訊透明可追溯，並透過密碼學技術確保數據安全。 [2, 5, 7, 8] 
+   4. 透明與安全（Secure）：資訊透明可追溯，並透過密碼學技術確保數據安全。 [2, 5, 7, 8]
 
 [1] [https://zh.wikipedia.org](https://zh.wikipedia.org/zh-tw/%E5%88%86%E6%95%A3%E5%BC%8F%E8%B3%AC%E6%9C%AC)
 [2] [https://andyhuang76.medium.com](https://andyhuang76.medium.com/%E5%88%86%E6%95%A3%E5%BC%8F%E5%B8%B3%E6%9C%AC%E6%8A%80%E8%A1%93dlt%E8%B7%9F%E5%8D%80%E5%A1%8A%E9%8F%88blockchain%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E5%90%8C-d6c2dee7ff6d)
@@ -286,14 +282,14 @@ Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍�
 |--------------|-----------|------|-----------|--------|
 | PET | Privacy-Enhancing Technology | 隱私強化技術 | https://share.google/aimode/cANxtuevuedhzKwr8 |  |
 
-在這段對話中，PETs 指的是「隱私強化技術」（Privacy-Enhancing Technologies）。 [1] 
-這段文字出自 2023 年 2 月時任數位發展部部長[唐鳳](https://www.google.com/search?q=%E5%94%90%E9%B3%B3&kgmid=/m/05r2c3)與國科會前副主委[李育杰](https://www.google.com/search?q=%E6%9D%8E%E8%82%B2%E6%9D%B0&kgmid=/g/11xvxd1wrj)的業務拜會逐字稿。當時雙方正在討論如何利用大型語言模型（LLM）來建立能夠輔助政府回答民眾問題的 AI 系統（例如針對台北市 1999 市民熱線的問答紀錄進行訓練與應用）。 [1, 2] 
+在這段對話中，PETs 指的是「隱私強化技術」（Privacy-Enhancing Technologies）。 [1]
+這段文字出自 2023 年 2 月時任數位發展部部長[唐鳳](https://www.google.com/search?q=%E5%94%90%E9%B3%B3&kgmid=/m/05r2c3)與國科會前副主委[李育杰](https://www.google.com/search?q=%E6%9D%8E%E8%82%B2%E6%9D%B0&kgmid=/g/11xvxd1wrj)的業務拜會逐字稿。當時雙方正在討論如何利用大型語言模型（LLM）來建立能夠輔助政府回答民眾問題的 AI 系統（例如針對台北市 1999 市民熱線的問答紀錄進行訓練與應用）。 [1, 2]
 
 ### 💡 為什麼與「台北市 1999」有關？
 
    1. 處理敏感個資：民眾撥打 1999 通報時，對話往往包含姓名、電話、住址等敏感個人隱私。
-   2. 導入 PETs 的目的：為了在訓練 AI 模型的過程中，能夠合法、安全地使用這些 1999 的歷史問答資料（Q&A），政府必須導入隱私強化技術（PETs）。 [1] 
-   3. 去識別化流程：透過 PETs 技術，系統能自動將對話中的個資進行去識別化（遮蔽、加密或匿名化），讓整個流程都無涉個資，同時又能保留市民「發問的問題（Q）」，用來作為測試或訓練 AI 的基準（Benchmark）。 [1] 
+   2. 導入 PETs 的目的：為了在訓練 AI 模型的過程中，能夠合法、安全地使用這些 1999 的歷史問答資料（Q&A），政府必須導入隱私強化技術（PETs）。 [1]
+   3. 去識別化流程：透過 PETs 技術，系統能自動將對話中的個資進行去識別化（遮蔽、加密或匿名化），讓整個流程都無涉個資，同時又能保留市民「發問的問題（Q）」，用來作為測試或訓練 AI 的基準（Benchmark）。 [1]
 
 ### 🛠️ 常見的 PETs 技術包括：
 

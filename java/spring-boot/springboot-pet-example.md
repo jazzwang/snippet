@@ -4,9 +4,8 @@
 
 - By Microsoft 365 Copilot
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me step-by-step command line instruction using Java SpringBoot to meet the following requirements?
+> [!NOTE]
+> could you give me step-by-step command line instruction using Java SpringBoot to meet the following requirements?
 
 - Given a Swagger document
   - https://petstore.swagger.io/#/pet/addPet
@@ -30,8 +29,7 @@ could you give me step-by-step command line instruction using Java SpringBoot to
 - Test Cases:
   - there will be 3 test cases based on expected business logic
   - you can use `curl` or `postman` to validate your API endpoint
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Here’s a **step-by-step command line guide** to quickly build and test a minimal **Java Spring Boot** API in **GitHub Codespaces** that meets your requirements. This setup is optimized for a **20–30 minute time-box**.
 
 ---
@@ -179,11 +177,9 @@ Expected: Returns `405`.
 
 Would you like me to generate a `README.md`, a Postman collection, or a Swagger annotation for this controller?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you fix the step to use `gradlew` instead of `mvnw`?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you fix the step to use `gradlew` instead of `mvnw`?
+
 Absolutely! Here's the **updated step-by-step guide using `gradlew` (Gradle Wrapper)** instead of `mvnw` for your **Java Spring Boot** API setup in GitHub Codespaces.
 
 ---

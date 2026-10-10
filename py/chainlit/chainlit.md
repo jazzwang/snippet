@@ -17,11 +17,9 @@
   - 最近需要整合 Databricks Apps 到現有產品，想說可否用 Chainlit Copilot 來達成展示給產品經理看 POC 比較有感覺。
 - 嘗試：
   - https://g.co/gemini/share/32e7bdb816f2
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a step-by-step command line instructions to create a Chainlit sample app, make it a docker image and deploy huggingface space?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a step-by-step command line instructions to create a Chainlit sample app, make it a docker image and deploy huggingface space?
+
 This guide will walk you through creating a simple Chainlit application, containerizing it with Docker, and deploying it to Hugging Face Spaces.
 
 **Prerequisites:**
@@ -235,11 +233,9 @@ Once the status is "Running", your Chainlit app will be live on your Hugging Fac
   * **Authentication:** If `git push` fails, ensure you have correctly authenticated with Hugging Face, either via the CLI (`huggingface-cli login`) or by providing your username and a write-access token when prompted.
   * **Chainlit `-h` flag:** For production environments like Hugging Face Spaces, always include the `-h` (headless) flag in your `chainlit run` command within the `Dockerfile`'s `CMD` instruction to prevent a browser window from opening server-side.
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a step-by-step command line instruction to create a Python Chainlit Copilot app?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a step-by-step command line instruction to create a Python Chainlit Copilot app?
+
 A Chainlit Copilot app is essentially a Chainlit application designed to be embedded within an existing website or web application. It functions as a floating chatbot widget that can interact with your website's elements and send/receive data.
 
 Here's a step-by-step command-line guide to create a basic Python Chainlit Copilot app.

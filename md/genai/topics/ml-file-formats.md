@@ -1,14 +1,12 @@
 # List of ML file formats
 
-## 
+##
 
 - https://www.perplexity.ai/search/what-s-the-difference-between-Df0R2_LJSy.JKlK2i3nwDg#2
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Are there a full list of model formats?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Are there a full list of model formats?
+
 Here is a comprehensive list of various model file formats used in machine learning, along with their descriptions and common extensions:
 
 **Common Model File Formats**

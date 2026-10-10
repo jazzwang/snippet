@@ -2,13 +2,11 @@
 
 ## 2025-07-18
 
-- July 18 at 1:42 PM - Gemini 2.5 Flash 
+- July 18 at 1:42 PM - Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a playwright Python live debugging example using VS Code?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a playwright Python live debugging example using VS Code?
+
 Live debugging Playwright with Python in VS Code is a powerful way to understand and fix issues in your automation scripts. Here's a comprehensive example and guide:
 
 **Prerequisites:**

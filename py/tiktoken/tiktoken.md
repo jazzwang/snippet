@@ -11,11 +11,9 @@
   - 使用不同 LLM 模型時，context window (max token) 會影響輸出結果。所以想知道如何估算 token 個數。
 - 搜尋：
   - 問 Gemini 2.5 Flash
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there python program or library that can count how many tokens does a plain text file have?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there python program or library that can count how many tokens does a plain text file have?
+
 Yes, there are several Python programs and libraries that can count tokens in a plain text file, but the correct approach depends on **how you define a "token"**.
 
 Since token counting is crucial for Large Language Models (LLMs), I'll cover both general-purpose tokenization and LLM-specific tokenization.

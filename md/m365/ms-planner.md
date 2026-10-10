@@ -3,11 +3,9 @@
 - 2025-08-24
 - By Microsoft 365 Copilot (GPT-4)
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-is there a programmatic way to create multiple planner tasks based on a list of task template?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> is there a programmatic way to create multiple planner tasks based on a list of task template?
+
 Yes, you can programmatically create multiple Microsoft Planner tasks based on a list of task templates using the **Microsoft Graph API**. Here's a high-level overview of how you can do it:
 
 * * * *
@@ -82,8 +80,7 @@ Would you like a sample Python script to create tasks from a JSON template? Or a
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 If we don't have access to Graph API and don't have client_id and client_secret, are there alternatives?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 If you don't have access to the Microsoft Graph API (i.e., no `client_id`, `client_secret`, or app registration), there are still a few alternative approaches you can consider to create multiple Planner tasks programmatically or semi-automatically:
 
 * * * *
@@ -220,8 +217,7 @@ Would you like a sample Excel template or a visual diagram of the flow? I can al
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 help me build the flow step-by-step trigger by file-based
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Perfect! Let's build a **Power Automate flow** that triggers when an Excel file is updated in **OneDrive for Business** or **SharePoint**, and then creates tasks in **Microsoft Planner** based on the rows in that file.
 
 * * * *
@@ -326,11 +322,9 @@ Would you like a **sample Excel file** and a **visual diagram** of this flow? I 
 
 - 2025-09-11
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Is there a program or tool that I can use to backup or export Microsoft Planner?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Is there a program or tool that I can use to backup or export Microsoft Planner?
+
 Yes, there are several ways to **backup or export Microsoft Planner data**, depending on your needs. Here are the most effective options:
 
 * * * *

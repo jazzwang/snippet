@@ -3,11 +3,9 @@
 - 2025-09-03 21:21 GMT+8
 - Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-FPGA 用什麼程式語言做開發？開發流程又可以分成幾個不同的階段？
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> FPGA 用什麼程式語言做開發？開發流程又可以分成幾個不同的階段？
+
 FPGA 的開發主要使用兩種硬體描述語言（Hardware Description Language, HDL）：**Verilog** 和 **VHDL**。
 
 * **Verilog**：語法類似 C 語言，對軟體工程師來說比較容易上手，是目前業界最普遍使用的語言之一。

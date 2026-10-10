@@ -2,11 +2,9 @@
 
 ## 2025-01-03
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give a step-by-step instructions how to use gemini "compute use" ?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give a step-by-step instructions how to use gemini "compute use" ?
+
 
 Gemini's **Computer Use** (officially part of the Gemini 2.5/3 series) is a specialized capability that allows the AI to interact with a computer interface—specifically a web browser—just as a human would. It doesn't just "read" a page; it can click, type, scroll, and navigate through multi-step workflows.
 
@@ -66,7 +64,7 @@ config = types.GenerateContentConfig(
         types.Tool(
             computer_use=types.ComputerUse(
                 # Currently optimized for browser environments
-                environment=types.Environment.ENVIRONMENT_BROWSER 
+                environment=types.Environment.ENVIRONMENT_BROWSER
             )
         )
     ]
@@ -123,8 +121,7 @@ If you are not a developer and just want to use this feature as an end-user:
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 yes, could you provide a complete Python script template?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 This script provides a foundational "Agentic Loop." It uses **Playwright** to control a browser and the **Google Gen AI SDK** to process screenshots and decide on actions.
 
@@ -172,7 +169,7 @@ async def run_computer_use_loop(prompt: str):
         for i in range(15):  # Limit steps to prevent infinite loops
             # 1. Capture current state (Screenshot)
             screenshot_bytes = await page.screenshot(type="png")
-            
+
             # 2. Add screenshot to the last message for context
             # In a real loop, you'd append the result of the previous action here
             messages[-1].parts.append(types.Part.from_bytes(data=screenshot_bytes, mime_type="image/png"))
@@ -202,7 +199,7 @@ async def run_computer_use_loop(prompt: str):
 
                 # 5. Execute the Tool (Mapping Gemini actions to Playwright)
                 result = await execute_tool(page, name, args)
-                
+
                 # 6. Feed the result back to the model
                 messages.append(types.Content(
                     role="user",
@@ -219,24 +216,24 @@ async def execute_tool(page, name, args):
     """Maps Gemini's coordinate-based commands to Playwright actions."""
     # Gemini uses a 0-1000 scale. We map it to our 1280x800 viewport.
     width, height = 1280, 800
-    
+
     if name == "navigate":
         await page.goto(args['url'])
         return f"Navigated to {args['url']}"
-    
+
     elif name == "click_at":
         x = (args['x'] / 1000) * width
         y = (args['y'] / 1000) * height
         await page.mouse.click(x, y)
         return f"Clicked at {x}, {y}"
-    
+
     elif name == "type_text_at":
         x = (args['x'] / 1000) * width
         y = (args['y'] / 1000) * height
         await page.mouse.click(x, y)
         await page.keyboard.type(args['text'])
         return f"Typed '{args['text']}' at {x}, {y}"
-    
+
     elif name == "scroll_document":
         direction = args.get('direction', 'down')
         await page.evaluate("window.scrollBy(0, 500)" if direction == "down" else "window.scrollBy(0, -500)")

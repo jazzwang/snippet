@@ -11,18 +11,16 @@
 
 - 需求：從 JSON 檔案資料轉成 JSON Schema 定義
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there command line tool to convert JSON file to JSON Schema?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there command line tool to convert JSON file to JSON Schema?
+
 Yes, there are several command-line tools available to convert a JSON file into a JSON Schema. These tools typically work by analyzing the structure and data types within one or more sample JSON documents and then inferring a schema that would validate them.
 
 ### Popular Command-Line Tools
 
 There are a few key options you can consider, depending on your environment and needs.
 
-* **`json-schema-generator` (NPM Package)**: This is a popular tool for Node.js environments. It's easy to install via npm and provides a straightforward command-line interface. You can pipe a JSON file to it or specify an input file directly. The tool analyzes the JSON and outputs a draft of a schema. 
+* **`json-schema-generator` (NPM Package)**: This is a popular tool for Node.js environments. It's easy to install via npm and provides a straightforward command-line interface. You can pipe a JSON file to it or specify an input file directly. The tool analyzes the JSON and outputs a draft of a schema.
 
 * **`quicktype`**: While `quicktype` is best known for generating code from JSON, it also has a feature to generate JSON Schema. It's a versatile tool that can be used on the command line to infer a schema from a JSON file or a directory of sample files.
 

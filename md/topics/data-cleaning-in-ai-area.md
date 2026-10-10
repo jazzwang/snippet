@@ -239,15 +239,14 @@ confirmation. Here's how it looks when rendered:
 <table>
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
-how can I troubleshoot unicode decode error using `vi` ? 
-here is the python error: 
+how can I troubleshoot unicode decode error using `vi` ?
+here is the python error:
 
 ```python
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa0 in position 193: invalid start byte
 ```
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 Dealing with a `UnicodeDecodeError` in Python usually means your file contains a character that doesn't belong in the encoding Python is expecting (UTF-8). The byte `0xa0` is a classic culprit—it's often a **non-breaking space** from a copy-paste job.
 
@@ -330,8 +329,7 @@ help me to resolve this error:
 ```
 UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f917' in position 27: character maps to <undefined>
 ```
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 This error is the opposite of your previous one. While a `DecodeError` happens when **reading** a file, a `UnicodeEncodeError` happens when Python tries to **write or print** a character that the destination (your terminal, a file, or a Windows pipe) doesn't understand.
 

@@ -13,11 +13,9 @@ SYNOPSIS
 ## 2025-05-26
 
 - Model: Gemini 2.5 Flash
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-can I list empty files using linux command like find or ls?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> can I list empty files using linux command like find or ls?
+
 
 Yes, you can definitely list empty files using Linux commands like `find` and `ls`.
 
@@ -90,11 +88,9 @@ ls -s | grep '^0 '
 
 - Model: Gemini 2.5 Flash
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to use `find` command to fetch linux file that created on 2025-07-23
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> how to use `find` command to fetch linux file that created on 2025-07-23
+
 
 To find Linux files created on a specific date using the `find` command, you'll typically use the `-newermt` option (for "newer than modification time").
 

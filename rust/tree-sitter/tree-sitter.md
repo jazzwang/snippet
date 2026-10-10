@@ -120,14 +120,14 @@ injection_regex: Some(Regex("py"))
 - 因為縱使 `tree-sitter dump-languages` 看到有判斷到 Perl 跟 Python 兩個語言，但實測 `tree-sitter parse test.py` 還是有錯誤訊息。
 ```bash
 ~/src/tree-sitter-python$ cd ..
-~/src$ cat example.py 
+~/src$ cat example.py
 import utils
 
 def add_four(x):
   return x + 4
 
 print(add_four(5))
-~/src$ tree-sitter parse example.py 
+~/src$ tree-sitter parse example.py
 Failed to load language for file name example.py
 
 Caused by:
@@ -136,11 +136,9 @@ Caused by:
     1: program not found
 ```
 - 紀錄一下 Bing 給的回答：
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-py-tree-sitter perl
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> py-tree-sitter perl
+
 Tree-sitter is a powerful tool for parsing and analyzing code, and while it supports many languages, Perl is not officially supported by the Tree-sitter organization as of now. However, there are community-driven efforts to create a Tree-sitter grammar for Perl. Here's how you can approach using Tree-sitter for Perl in Python:
 
 1. **Check for a Perl Grammar**

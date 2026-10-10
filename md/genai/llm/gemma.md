@@ -784,11 +784,9 @@ Resolved 115 packages in 3.22s
   - https://huggingface.co/google/gemma-3n-E4B-it
   - https://huggingface.co/models?other=base_model:quantized:google%2Fgemma-3n-E4B-it&sort=trending
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a brief introduction of Gemma 3n, especially highlighting its strength, architecture, context window length, benchmark, dataset, knowledge cutoff date?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a brief introduction of Gemma 3n, especially highlighting its strength, architecture, context window length, benchmark, dataset, knowledge cutoff date?
+
 Gemma 3n is a generative AI model from Google, specifically designed for efficient use on devices with limited resources, like phones and laptops. It stands out for its innovations that make it performant despite its constrained environment.
 
 ***

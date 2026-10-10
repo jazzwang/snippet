@@ -10,14 +10,12 @@
 - 緣起：
   - 想試試看能否在沒有管理者權限的 Winodws VM 上啟動 SSH Server。想要跑 SSH Tunnel，來做一些簡單的操作。
 - 備註：
-  - 後來想一想，如果 WSL 裡面可以裝 Ubuntu 的 openssh-server，好像也不用多此一舉。 
+  - 後來想一想，如果 WSL 裡面可以裝 Ubuntu 的 openssh-server，好像也不用多此一舉。
 - 構想：
   - 來跟 Gemini 2.5 Flash 腦力激盪一下
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-are there ssh server implement in golang or python?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> are there ssh server implement in golang or python?
+
 Yes, there are SSH server implementations and libraries available in both **Go** and **Python**.
 
 ---
@@ -46,11 +44,9 @@ Python libraries are often used to build **honeypots**, specialized SSH frontend
 
 Would you like to know more about the **capabilities** or see a **simple code example** for implementing an SSH server in one of these languages?
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-can I run a SSH server implemented by golang on Windows without System Admin permission?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> can I run a SSH server implemented by golang on Windows without System Admin permission?
+
 Yes, you **can** run an SSH server implemented in Go (Golang) on Windows without System Administrator permission, with one major caveat.
 
 ## Key Requirement: The Listening Port
@@ -75,11 +71,9 @@ The ability to run a network server without administrative privileges on any ope
 Instead of using `ssh.Listen("0.0.0.0:22", config)`, you would use:
 `ssh.Listen("0.0.0.0:2222", config)`
 </td></tr></table>
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a golang example running SSH server on Windows 11?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> could you give me a golang example running SSH server on Windows 11?
+
 Yes, here is a working Go example for an SSH server.
 
 This example uses the popular and high-level `github.com/gliderlabs/ssh` library, which simplifies server creation compared to the low-level standard package. As discussed, it's configured to run on a non-privileged port (**2222**) so you won't need System Admin permissions on your Windows 11 machine.

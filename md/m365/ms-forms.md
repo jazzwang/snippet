@@ -4,11 +4,9 @@
 
 - By Microsoft 365 Copilot (GPT-4)
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Is there a way to convert a CSV file with 6 columns ("question", "option 1", "option 2", "option 3", "option 4", "answer") into a Microsoft Form Quiz?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> Is there a way to convert a CSV file with 6 columns ("question", "option 1", "option 2", "option 3", "option 4", "answer") into a Microsoft Form Quiz?
+
 Yes, you **can** convert a CSV file with columns like `"question", "option 1", "option 2", "option 3", "option 4", "answer"` into a **Microsoft Forms Quiz**, but **Microsoft Forms does not natively support importing quizzes from CSV files**. However, there are a few workarounds:
 
 * * * *
@@ -59,8 +57,7 @@ Would you like to go ahead with that?
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 If I have 50 quiz questions in plain text, what is the recommended way to create a Microsoft Form Quiz?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 If you have **50 quiz questions in plain text**, the most efficient way to create a **Microsoft Form Quiz** depends on how much automation you're comfortable with. Here's a breakdown of the **recommended approaches**:
 
 ---
@@ -108,8 +105,7 @@ Would you like to upload your quiz file so I can assist with automation?
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 Could you give me a step-by-step instruction to create Microsoft Form Quiz based on given Excel file stored on OneDrive?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Here’s a **step-by-step guide** to create a **Microsoft Form Quiz** from an Excel file stored on **OneDrive**:
 
 ---
@@ -137,7 +133,7 @@ Go to Power Automate and sign in with your Microsoft 365 account.
 #### **Step 3: Create a New Flow**
 1. Click **Create** > **Automated cloud flow**.
 2. Name your flow (e.g., “Create Quiz from Excel”).
-3. Choose a trigger:  
+3. Choose a trigger:
    - Use **“When a file is created or modified in OneDrive”** or manually trigger it.
 
 ---
@@ -189,8 +185,7 @@ Would you like to upload the file now so I can assist further?
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 Could you give me a step-by-step instruction to create Microsoft Form Quiz based on given Excel file stored on OneDrive using Power Automate?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Here’s a **step-by-step guide** to create a **Microsoft Form Quiz** from an Excel file stored on **OneDrive**, using **Power Automate**. While Microsoft Forms doesn't have a direct connector to create questions, you can use a combination of Excel + Power Automate + Microsoft Graph API to automate the process.
 
 ---
@@ -259,7 +254,7 @@ You’ll need:
 #### **Step 6: Add HTTP Connector to Call Microsoft Graph API**
 1. Add action: **HTTP**.
 2. Set method to `POST`.
-3. URL:  
+3. URL:
    ```
    https://graph.microsoft.com/v1.0/users/{user-id}/forms
    ```
@@ -293,8 +288,7 @@ Would you like to upload your Excel file now so I can assist with the automation
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 I don't have Graph API access. What is the best way to create Microsoft Form?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Thanks for clarifying! Since you **don’t have access to Microsoft Graph API**, the best way to create a **Microsoft Form Quiz** from an Excel file stored on OneDrive is to use a **semi-manual method** that balances efficiency and ease of use.
 
 ---

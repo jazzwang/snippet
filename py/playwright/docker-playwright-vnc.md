@@ -172,13 +172,11 @@ To stop and remove the container:
 ```
 - 看起來是 APT Repo 的 GPG public key 問題，有點怪，上週測試都正常。
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-how to resolve this error?
+> [!NOTE]
+> how to resolve this error?
 
 W: http://security.ubuntu.com/ubuntu/dists/jammy-security/InRelease: The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg are ignored as the file is not readable by user '_apt' executing apt-key.
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 This error message: "W: [http://security.ubuntu.com/ubuntu/dists/jammy-security/InRelease](http://security.ubuntu.com/ubuntu/dists/jammy-security/InRelease): The key(s) in the keyring /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg are ignored as the file is not readable by user '\_apt' executing apt-key." indicates a permissions issue with a GPG key file used by `apt`. The `_apt` user, which `apt` runs as, doesn't have the necessary read permissions for that file.
 
 Here's how to resolve it:

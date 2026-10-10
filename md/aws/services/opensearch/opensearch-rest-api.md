@@ -10,16 +10,14 @@
 ## 2025-09-20
 
 - By Microsoft 365 Copilot
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-could you give me a Python CLI example with the following functionality?
+> [!NOTE]
+> could you give me a Python CLI example with the following functionality?
 
 1. read OpenSearch Server URL from option `-s`
 2. read AWS Cognito authentication tokens from cookie file (default: storage_state.json) from option `-c`
 3. call OpenSearch API and show Server Information as response
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Here's a Python CLI example using `argparse` to read the OpenSearch server URL and AWS Cognito authentication tokens from a cookie file, then call the OpenSearch API to retrieve and display server information.
 
 ### ✅ Features:
@@ -81,11 +79,9 @@ Would you like me to help you test this with a mock OpenSearch server or generat
 </td></tr></table>
 
 - By Microsoft Bing Copilot
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-opensearch restful api swagger
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> opensearch restful api swagger
+
 OpenSearch provides a RESTful API that can be documented and explored using **Swagger/OpenAPI** specifications. Here's how you can work with OpenSearch's REST API and Swagger:
 
 * * * *

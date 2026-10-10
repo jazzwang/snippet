@@ -15,13 +15,11 @@
 
 - https://g.co/gemini/share/25434a5296ba
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-
+> [!NOTE]
+>
 Can Python openpyxl create multiple worksheets?
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 Yes, the Python `openpyxl` library is fully capable of creating and managing multiple worksheets within an Excel (.xlsx) file. Here's a breakdown of how it works:
 
@@ -78,13 +76,11 @@ Therefore, `openpyxl` is well-suited for tasks that require generating Excel fil
 
 -https://g.co/gemini/share/87a167649555
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-
+> [!NOTE]
+>
 how can pandas write to different worksheet using openpyxl?
 
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 When using Pandas to write data to different worksheets in an Excel file, you leverage the `ExcelWriter` class, specifying the `openpyxl` engine. This method allows you to control which DataFrames go to which sheets.
 

@@ -2,8 +2,7 @@
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 如何在 reveal.js 簡報中加入一頁「引言 Quote」？
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 在 **reveal.js** 中加入一頁「引言（Quote）」非常簡單，因為 reveal.js 本質上是 HTML，所以你可以利用標準的 HTML 標籤或是 Markdown 語法來達成。
 
@@ -48,7 +47,7 @@
 ```markdown
 <section data-markdown>
   <textarea data-template>
-  
+
   > "Stay hungry, stay foolish."
   >
   > -- Steve Jobs
@@ -122,8 +121,7 @@
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 提供一段自定義的 CSS 代碼，讓引言擁有特殊的字型或邊框樣式
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 沒問題！要讓引言在簡報中脫穎而出，CSS 是最強大的武器。Reveal.js 的預設樣式有時稍微單調，我們可以透過自定義 CSS 來增加**層次感**與**設計感**。
 
@@ -252,8 +250,7 @@
 <tr><td>Q:</td><td>
 <!-- add your Prompt bellow-->
 整合一段完整的 HTML 模板，包含這些 CSS 與字體設定
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 
 沒問題！這是一個完整的 **reveal.js** 單檔案模板。我幫你把剛剛討論的「現代優雅」與「巨型引號」兩種風格都整合進去了，並且加入了 Google Fonts 的思源宋體，讓文字看起來更有深度。
 
@@ -279,7 +276,7 @@
         :root {
             --accent-color: #42affa; /* 主題色：水藍色 */
         }
-        
+
         .reveal h1, .reveal h2, .reveal h3 {
             font-family: 'Noto Serif TC', serif;
         }

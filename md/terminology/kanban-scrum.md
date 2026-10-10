@@ -3,11 +3,9 @@
 - 2026-02-14 20:00 PM
 - By Google Gemini 3
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-What's the key difference between Kanban and Scrum board?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> What's the key difference between Kanban and Scrum board?
+
 
 While they might look similar at a glance (sticky notes moving across columns), the logic behind how they function is quite different. The fundamental split is between **continuous flow** and **fixed intervals**.
 

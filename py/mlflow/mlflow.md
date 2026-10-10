@@ -17,15 +17,13 @@
 
 - https://g.co/gemini/share/c59bcca08ee5
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-Let's answer the following question one by one:
+> [!NOTE]
+> Let's answer the following question one by one:
 
 1. Could you give me a breif introduction of mlflow?
 2. Can I integrate mlflow with ollama and litellm, especially to tracking user prompt go through litellm, mlflow, ollama to Qwen 2.5 model? If yes, can you give me an example?
 3. Could you visualize the relationship between a Python program, litellm, mlflow, ollama, and Qwen 2.5 model using Mermaid.js sequence diagram syntax?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+
 Of course, here are the answers to your questions.
 
 ### 1. A Brief Introduction to MLflow
@@ -99,7 +97,7 @@ print("Sending prompt to Qwen 2.5 via litellm and ollama...")
 # The model name 'ollama/qwen:2.5b' tells litellm to use the 'qwen:2.5b' model from the local ollama server.
 try:
     response = litellm.completion(
-        model="ollama/qwen:2.5b", 
+        model="ollama/qwen:2.5b",
         messages=user_prompt,
         max_tokens=100,
         temperature=0.7
@@ -136,7 +134,7 @@ sequenceDiagram
     participant Q as Qwen 2.5 Model
 
     P->>L: litellm.completion(model="ollama/qwen:2.5b", messages=...)
-    
+
     note right of L: mlflow.litellm.autolog() is active
     L->>M: Log prompt, params & metadata (start trace)
     L->>O: Forward standardized API request

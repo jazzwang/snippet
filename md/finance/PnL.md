@@ -6,11 +6,9 @@
   - https://trueprofit.io/blog/what-is-pnl
   - https://bluefin.io/blog/understanding-pnl-meaning-calculation-and-key-metrics
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-pnl meaning in business
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> pnl meaning in business
+
 In business, PnL, also known as Profit and Loss or P&L, is a crucial financial metric that summarizes a company's revenue, expenses, and resulting profit or loss over a specific period. It's a fundamental financial statement that provides insights into a company's financial performance and profitability. 
 
 Here's a breakdown:

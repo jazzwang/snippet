@@ -5,11 +5,9 @@
 ### From Perplexity Deep Research
 
 - https://www.perplexity.ai/search/what-are-the-technical-compone-Dn.p5lESRVGABAfpDTppQQ
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-What are the technical components and related paper publications behind Google NotebookLM?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> What are the technical components and related paper publications behind Google NotebookLM?
+
 Google NotebookLM is an AI-powered research assistant that combines advanced language models with user-provided documents to deliver tailored insights. Here's a breakdown of its technical components and related research foundations:
 
 ## Core Technical Components
@@ -73,11 +71,9 @@ Answer from Perplexity: https://www.perplexity.ai/search/what-are-the-technical-
 - 2025-04-14 12:17 PM
 - https://g.co/gemini/share/62c50ee1a0e3
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-What are the technical components and related paper publications behind Google NotebookLM?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> What are the technical components and related paper publications behind Google NotebookLM?
+
 While specific technical white papers or detailed architectural blueprints of Google NotebookLM may not be publicly available at this time, we can infer its technical components and related concepts based on Google's descriptions, features, and general AI practices.
 
 **Technical Components (Inferred):**
@@ -132,11 +128,9 @@ As NotebookLM evolves from an experimental phase to a more integrated part of Go
 - https://g.co/gemini/share/3fb087293915
 - Created with 2.5 Flash June 6, 2025 at 01:29 PM
 
-<table><tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
-is there a way to interact with Google NotebookLM using API or python library?
-</td></tr><tr><td>A:</td><td>
-<!-- add Chatbot Response bellow-->
+> [!NOTE]
+> is there a way to interact with Google NotebookLM using API or python library?
+
 Yes, there are ways to interact with Google NotebookLM programmatically, though the official API for the general public is primarily for the Enterprise version. Here's a breakdown:
 
 **1. NotebookLM Enterprise API (Official):**
