@@ -12,10 +12,8 @@
 
 - From: https://www.youtube.com/watch?v=cD11SvJwGes
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### 預算 200 美金的 AI 逆襲：如何利用 Intel A770 顯卡讓你的 VRAM 翻倍？
 
 ##### 前言：高昂顯卡稅下的另一條路
@@ -91,22 +89,16 @@ Intel Arc A770 的案例證明了：AI 算力不應只是預算競賽。透過�
 
 既然我們已經驗證了「PCIe 頻寬不影響推論速度」這一關鍵結論，那麼未來是否還有更靈活的方案？**你是否願意嘗試在 Mini PC 上透過 Oculink 外接 A770，結合內顯 iGPU 協同推論，來打造更極簡的 AI 工作站？** 這或許就是通往 AI 算力平權的下一個技術前沿。
 
-</td></tr>
-</table>
-
-</td></tr>
-</table>
-
+---
+---
 ##  Intel ARC Pro B60 x 4 ( 24 GB VRAM -- 用四張顯卡，合計 96 GB VRAM )
 
 ### 2026-05-12
 
 - From: https://www.youtube.com/watch?v=-aEHitayNts
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### 突破 VRAM 瓶頸：如何用最低預算打造 96GB 顯存的 AI 夢幻主機？
 
 ##### 1. 前言：大語言模型的「顯存焦慮」
@@ -182,17 +174,13 @@ Intel Arc Pro B60 成功實現了「廉價顯存」的承諾，證明了即使�
 
 當 VRAM 不再是少數精英的奢侈品時，我們是否能在辦公室部署更私密的、具備萬級上下文處理能力的「Agent 叢集」？雖然軟體棧與功耗控制仍有待磨合，但這場去壟斷化的 VRAM 之戰，才剛揭開序幕。我們也將持續追蹤更強悍的旗艦卡 B50，看看 Intel 是否能在 AI 基礎設施市場進一步攻城掠地。
 
-</td></tr>
-</table>
-
+---
 ### 2026-04-05
 
 - From: https://www.youtube.com/watch?v=-aEHitayNts
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### 想要 96GB VRAM 又不想破產？這套 Intel 方案可能是目前最強的「窮人救星」
 
 #### 引言：AI 時代的「記憶體焦慮」
@@ -252,17 +240,13 @@ Intel Arc Pro B60 的存在，本質上是 Intel 對 Nvidia 與 AMD 顯存定價
 
 隨著 Intel 持續修正 LLM Scaler 並追趕模型支援速度，Nvidia 在中階 AI 工作站市場的壟斷地位，或許正由這些看似「非主流」的硬體悄悄侵蝕。
 
-</td></tr>
-</table>
-
+---
 ## Intel Arc Pro B70 ( 32 GB VRAM )
 
 - From: https://www.youtube.com/watch?v=RcIWhm16ouQ
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### 比 Nvidia 便宜一半卻擁有 32GB VRAM？Intel Arc Pro B70 正在顛覆 Local AI 的遊戲規則
 
 #### 1. 前言：Local AI 的「硬體成癮症」與預算困境
@@ -343,19 +327,15 @@ AWQ 的精髓在於它不會粗暴地壓縮所有參數，而是先分析模型�
 
 隨著 2026 年的到來，大顯存不再是少數人的奢侈品。感謝 Intel 的介入，Local AI 的「硬體成癮症」或許終於有了一款價格合理的解藥。
 
-</td></tr>
-</table>
-
+---
 ## Tesla V100 SXM2 ( 16 GB or 32 GB VRAM )
 
 ### 2026-04-21
 
 - From: https://www.youtube.com/watch?v=jt_LZYJ2mIo
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### 別等 $5,000 美元的 RTX 5090 了：如何將數據中心級 SXM2 加速器塞進你的工作站？
 
 #### 1. 引言：顯示卡通膨時代的生存指南
@@ -439,21 +419,16 @@ NotebookLM - Report
 
 去建立你自己的本地 AI 實驗室吧！別讓那張 5,000 美元的標價標籤，限制了你的創造力。
 
-</td></tr>
-</table>
-
+---
 ## AMD Radeon VII
 
 ### 2026-08-17
 
 - https://share.google/aimode/kAVAdPUMcd9MVNVck
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-為何大家搶 GFX906
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 為何大家搶 GFX906
+A:
 大家瘋搶 GFX906（主要指 AMD Radeon VII、Instinct MI50、MI60 等使用該架構的舊款繪圖晶片），核心原因在於它是目前性價比極高、專門用來跑本地 AI 大語言模型（LLM）的「神級洋垃圾」。 [1]
 隨著 DeepSeek、Qwen 等大模型爆火，大眾對大容量顯示記憶體（VRAM）的需求暴增，而 GFX906 晶片正好踩中了這個痛點。以下是它被瘋搶的四大核心關鍵： [2, 3]
 
@@ -492,11 +467,9 @@ Google Search - AI Mode
 [9] [https://www.leftso.com](https://www.leftso.com/article/2604081303303675.html)
 [10] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1qmqmb9/should_i_invest_in_a_beefy_machine_for_local_ai/?tl=zh-hant)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-有其他 AMD 性價比高,顯存大的二手選擇嗎?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 有其他 AMD 性價比高,顯存大的二手選擇嗎?
+A:
 除了目前最火紅的 GFX906（MI50/MI60/Radeon VII）之外，二手市場上確實還有其他幾款 AMD 大顯存、高性價比的選擇。
 這些選擇主要分為兩大派系：一種是極致便宜、但折騰度更高的舊款運算卡；另一種是隨插即用、生態相對健康的消費級/專業級顯卡。以下為您盤點最熱門的替代方案： [1]
 
@@ -555,11 +528,9 @@ Google Search - AI Mode
 [8] [https://www.youtube.com](https://www.youtube.com/watch?v=-aEHitayNts)
 [9] [https://www.reddit.com](https://www.reddit.com/r/ROCm/comments/1h6a6o3/vllm_now_supports_running_gguf_on_amd/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-幫我搜尋一下台灣二手市場的價格。預計使用 Linux 搭配 vLLM
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 幫我搜尋一下台灣二手市場的價格。預計使用 Linux 搭配 vLLM
+A:
 在台灣二手市場（主要參考蝦皮購物、露天市集、Facebook 臉書社團及 PTT HardwareSale 板）中，您所預計使用的 Linux + vLLM 組合，是發揮這些 AMD 舊卡、消費級顯卡性價比的最高解法。因為 vLLM 在 Linux 下能跑滿內存頻寬，且開源社群對其張量並行（Tensor Parallelism）的優化最好。 [1, 2, 3, 4]
 以下為您盤點 2026 年最新台灣二手市場的行情實測、預算落點與在 vLLM 架構下的實用避坑指南：
 
@@ -618,18 +589,14 @@ Google Search - AI Mode
 [10] [https://biggo.com.tw](https://biggo.com.tw/s/RX%207900%20XTX%2024G)
 [11] [https://www.reddit.com](https://www.reddit.com/r/LocalLLaMA/comments/1ca7a9n/128gb_of_vram_for_the_price_of_a_single_4090_for/?tl=zh-hant)
 
-</td></tr>
-</table>
-
+---
 ## AMD Ryzen AI Max+ 395 ( 128 GB System RAM )
 
 - From: https://www.youtube.com/watch?v=1N6a46QqdhI
 - https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### 從此告別「Token 刺客」：128GB 統一記憶體主機，如何成為你的 24 小時私密 AI 助理？
 
 #### 1. 前言：當 AI 熱情撞上硬體天花板
@@ -680,19 +647,15 @@ AMD Ryzen AI Max+ 395 配合其內置的 **Radeon 8060S** 核顯（性能足以�
 
 本地 AI 的浪潮才剛剛掀起。如果你也擁有一塊可以自由耕耘、且無需支付 Token 費用的數位田地，你最想種出什麼樣的果實？是一個不眠不休的策劃團隊，還是一個絕對忠誠的私人管家？歡迎在評論區分享你的見解與腦洞。
 
-</td></tr>
-</table>
-
+---
 ## AMD Ryzen AI Max 400 ( 192 GB System RAM )
 
 ### 2026-08-12
 
 - From: https://www.youtube.com/watch?v=zFOGWazE1aU (影片被移除了)
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### AMD 192GB 統一內存技術與 AI 市場動態簡報
 
 #### 執行摘要
@@ -764,17 +727,13 @@ AMD 的財務表現處於歷史最佳期，但股價卻呈現負面反應：
 3.  **市場觀察點：** 關注 9 月 4 日 IFA 柏林展會。屆時 AMD 可能發布更具價格親和力的「消費級」版本，這將是觀察其能否在發燒友市場普及的關鍵指標。
 4.  **軟體修補進度：** 持續關注 AMD 在 Linux 內核驅動（如 HDMI 2.1 補丁）及 ROCm 易用性上的改進速度。這些細節將直接影響核心用戶群（Linux AI 開發者）的信任度。
 
-</td></tr>
-</table>
-
+---
 ## Nvidia RTX Spark
 
 - From: https://www.youtube.com/watch?v=VGVwOI2gcF4
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### Nvidia RTX Spark：是 AI 時代的革命，還是被浪費的硬體？
 
 #### **引言：當 Jensen 的豪言壯語遇上網路負評**

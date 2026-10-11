@@ -55,4 +55,4 @@ GitHub Flow is best for **smaller teams** and **web applications** that need to 
 | **Release Cycle** | Designed for scheduled, versioned releases | Designed for continuous delivery and frequent deployments |
 | **Best For** | Large, complex projects with specific versions (e.g., software, mobile apps) | Projects with frequent releases (e.g., web apps, SaaS) |
 | **Flexibility** | Less flexible due to rigid structure | More flexible and adaptable to agile workflows |
-</td></tr></table>
+---

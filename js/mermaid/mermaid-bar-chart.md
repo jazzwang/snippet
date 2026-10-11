@@ -31,4 +31,4 @@ xychart
 | **45** (Jan) | A **positive** value, which will be above the zero line. |
 | **-20** (Feb) | A **negative** value, which will be below the zero line. |
 | **80** (Mar) | A **positive** value, which will be above the zero line. |
-</td></tr></table>
+---

@@ -406,12 +406,9 @@ llama server listening at http://127.0.0.1:8080
 
 ## 2026-08-31
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-有技術可以把 GGUF 變成單檔可執行檔? 類似 llamafile
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode> [!NOTE]
+> Q: 有技術可以把 GGUF 變成單檔可執行檔? 類似 llamafile
+A:
 得知您會在 Windows 與 Linux 之間切換使用，這正是 llamafile 這項技術發揮最大價值的場景！因為它使用了 APE（Actually Portable Executable）技術，您打包出來的同一個單檔，在兩個系統上都能直接執行。
 以下為您整理在跨系統切換時，最完美的打包步驟、執行方式與注意事項：
 
@@ -483,11 +480,9 @@ chmod +x my-assistant.llamafile
 您目前預計使用的 GGUF 模型大約是幾 GB（或是哪一個模型）呢？
 如果超過 4GB，我可以為您提供雙系統都能「秒開」且共用同一個模型路徑的腳本配置。
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-pi coding agent 可以搭配 llamafile 的模型嗎?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: pi coding agent 可以搭配 llamafile 的模型嗎?
+A:
 可以，Pi Coding Agent 完全可以搭配 llamafile 運作！ [1]
 
 Pi Coding Agent 本身具備高度相容的多供應商設計 (Multi-provider)，只要本地模型伺服器提供相容於 OpenAI 規範的 API 介面，Pi 就能成功讀取並驅動模型。 [1, 2]
@@ -532,8 +527,6 @@ Pi Coding Agent 本身具備高度相容的多供應商設計 (Multi-provider)�
 [2] [https://altsol.tw](https://altsol.tw/pi-agent-install-guide)
 [3] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/2072440015578215998)
 
-</td></tr>
-</table>
-
+---
 - Using llamafile with external weights
 - https://docs.mozilla.ai/llamafile/getting-started/quickstart#using-llamafile-with-external-weights

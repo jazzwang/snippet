@@ -2,12 +2,9 @@
 
 ## 2026-06-06
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-AI Agent 的 WebFetch 跟 Web Search 有何不同？WebFetch 有特定的程式實作或函式庫嗎？
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: AI Agent 的 WebFetch 跟 Web Search 有何不同？WebFetch 有特定的程式實作或函式庫嗎？
+A:
 WebFetch 與 Web Search 的核心差異在於「直接獲取特定網頁的原始內容」與「透過搜尋引擎搜尋關鍵字並篩選網頁」。 WebFetch 專注於下載指定 URL 的 HTML、JSON 或文字資料，而 Web Search 則是利用搜尋引擎（如 Google、Bing）找出與關鍵字相關的一系列連結與摘要。
 在 AI Agent（人工智慧代理）的架構中，這兩個工具通常是相輔相成的。
 ------------------------------
@@ -54,13 +51,11 @@ WebFetch 與 Web Search 的核心差異在於「直接獲取特定網頁的原�
 
 我可以為您提供更具體的程式碼實作範例。
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Q1: LangChian / LangGraph 內建的函數也是用 Requests, Playwright, Scrapy 實作的嗎？什麼是 Jina Reader API？
+> [!NOTE]
+> Q: Q1: LangChian / LangGraph 內建的函數也是用 Requests, Playwright, Scrapy 實作的嗎？什麼是 Jina Reader API？
 Q2: Firecrawl 與 CrewAI 有關係嗎？
 Q3: 根據 OpenCode 的原始碼，可以知道 WebFetch 工具是如何實作的嗎？
-</td></tr><tr><td>A:</td><td>
-針對您提出的三個進階問題，以下為您進行深度的技術拆解：
+A: 針對您提出的三個進階問題，以下為您進行深度的技術拆解：
 ------------------------------
 ## Q1: LangChain / LangGraph 內建函數也是用 Requests, Playwright, Scrapy 實作的嗎？什麼是 Jina Reader API？## 1. LangChain / LangGraph 的底層實作
 是的，LangChain 的內建網頁讀取工具（Document Loaders），底層確實大量封裝了傳統的 Python 網路庫。
@@ -71,19 +66,19 @@ LangChain 本身並不發明新的網路傳輸協定，而是將現有技術包�
 * Scrapy 則較少作為 LangChain 內建核心：因為 Scrapy 是一個大型的非同步爬蟲框架，架構較重，更適合做大規模數據集爬取；AI Agent 通常需要的是單次、即時的網頁抓取，因此 LangChain 內建工具更傾向使用 BeautifulSoup 搭配 Requests 來解析靜態文字。
 
 ## 2. 什麼是 Jina Reader API？
-Jina Reader API 是一個專門為大語言模型（LLM）量身打造的網頁轉換服務。 [1] 
+Jina Reader API 是一個專門為大語言模型（LLM）量身打造的網頁轉換服務。 [1]
 
-* 運作原理：傳統爬蟲抓回來的 HTML 夾雜了大量的 <div> 標籤、廣告、JavaScript、CSS，直接丟給 LLM 會浪費大量的 Token 且干擾理解。Jina Reader 做的事情就是輸入任意網址，直接將其轉化為乾淨、排版整齊的 Markdown 文字。 [1] 
+* 運作原理：傳統爬蟲抓回來的 HTML 夾雜了大量的 <div> 標籤、廣告、JavaScript、CSS，直接丟給 LLM 會浪費大量的 Token 且干擾理解。Jina Reader 做的事情就是輸入任意網址，直接將其轉化為乾淨、排版整齊的 Markdown 文字。 [1]
 * 最大特色（超簡單調用）：它不需要你寫複雜的爬蟲程式碼。你只需要在你想爬的網址前面加上 https://r.jina.ai/ 即可。
 * 例如：在瀏覽器或程式中請求 https://r.jina.ai/https://example.com。
-   * 回傳的內容就是專屬給 LLM 閱讀的「閱讀模式」Markdown 文字。它已經被廣泛整合進各種 AI Agent 框架中作為高效率的 WebFetch 後端。 [1] 
+   * 回傳的內容就是專屬給 LLM 閱讀的「閱讀模式」Markdown 文字。它已經被廣泛整合進各種 AI Agent 框架中作為高效率的 WebFetch 後端。 [1]
 
 ------------------------------
 ## Q2: Firecrawl 與 CrewAI 有關係嗎？
 兩者在官方組織上沒有直接的血緣關係（由不同團隊開發），但在生態系與應用上有極為緊密的整合關係。
 
 * CrewAI 是一個 AI Agent 協同框架（負責管代理、分配任務、決定工作流）。
-* Firecrawl 是一個專為 LLM 設計的開源網頁爬蟲與數據轉換工具，它能將整個網站或單一網頁轉成 Clean Markdown 或結構化 JSON。 [1, 2, 3] 
+* Firecrawl 是一個專為 LLM 設計的開源網頁爬蟲與數據轉換工具，它能將整個網站或單一網頁轉成 Clean Markdown 或結構化 JSON。 [1, 2, 3]
 
 ## 他們之間的關係：
 
@@ -92,21 +87,21 @@ Jina Reader API 是一個專門為大語言模型（LLM）量身打造的網頁�
 
 ------------------------------
 ## Q3: 根據 OpenCode 的原始碼，可以知道 WebFetch 工具是如何實作的嗎？
-是的，根據熱門開源 AI 編程助手 OpenCode 的官方 GitHub 儲存庫原始碼（具體位於 packages/opencode/src/tool/webfetch.ts），我們可以非常清楚地看到其 webfetch 工具的實作邏輯： [4, 5, 6] 
+是的，根據熱門開源 AI 編程助手 OpenCode 的官方 GitHub 儲存庫原始碼（具體位於 packages/opencode/src/tool/webfetch.ts），我們可以非常清楚地看到其 webfetch 工具的實作邏輯： [4, 5, 6]
 ## 1. 技術棧：Bun + TypeScript
-OpenCode 是基於 Bun（一個極快的 JavaScript/TypeScript 執行環境）所開發的。它的 webfetch 核心並不是使用 Python，而是使用 TypeScript 撰寫。 [4] 
+OpenCode 是基於 Bun（一個極快的 JavaScript/TypeScript 執行環境）所開發的。它的 webfetch 核心並不是使用 Python，而是使用 TypeScript 撰寫。 [4]
 ## 2. 底層核心實作：Bun.fetch + 瀏覽器偽裝 (Spoofing)
-在源碼中，webfetch 的實作本質上是一個高級的 HTTP 請求，具有以下特徵： [4] 
+在源碼中，webfetch 的實作本質上是一個高級的 HTTP 請求，具有以下特徵： [4]
 
-* 不使用完整瀏覽器：它為了追求極致的速度，並沒有在預設情況下啟動像 Playwright 這樣沈重的無頭瀏覽器，而是直接調用 Bun 內建的高效能 fetch() 函式。 [4] 
-* User-Agent 偽裝：為了避免被許多網站的防火牆直接阻擋，OpenCode 在發送請求時，會在 Header 中配置常見的瀏覽器 User-Agent（例如偽裝成 Chrome 或 Safari 瀏覽器）。 [4] 
-* HTML 轉 Markdown 處理：當 fetch 成功拿回網頁的原始 HTML 後，OpenCode 會在記憶體中利用解析庫（如 cheerio 或類似的 HTML Parser）將網頁中的導覽列、頁尾、腳本剔除，最後將核心內容格式化為 Markdown 文本 回傳給 LLM。 [7, 8] 
+* 不使用完整瀏覽器：它為了追求極致的速度，並沒有在預設情況下啟動像 Playwright 這樣沈重的無頭瀏覽器，而是直接調用 Bun 內建的高效能 fetch() 函式。 [4]
+* User-Agent 偽裝：為了避免被許多網站的防火牆直接阻擋，OpenCode 在發送請求時，會在 Header 中配置常見的瀏覽器 User-Agent（例如偽裝成 Chrome 或 Safari 瀏覽器）。 [4]
+* HTML 轉 Markdown 處理：當 fetch 成功拿回網頁的原始 HTML 後，OpenCode 會在記憶體中利用解析庫（如 cheerio 或類似的 HTML Parser）將網頁中的導覽列、頁尾、腳本剔除，最後將核心內容格式化為 Markdown 文本 回傳給 LLM。 [7, 8]
 
 ## 3. 原始碼中暴露的限制（反爬蟲碰撞）
 從 OpenCode 的社群討論與原始碼更新中（如 Issue #2228），這種實作方式也揭示了 AI Agent 常遇到的瓶頸：
 
-* 因為它使用 fetch（非真實瀏覽器）卻帶有瀏覽器的 User-Agent，當它遇到部署了 Anubis 或 Cloudflare 高級防護的網站時（例如 kernel.org），網站會要求進行「客戶端計算證明（Proof of Work / 驗證碼挑戰）」。 [4] 
-* 由於 Bun.fetch 無法像真實瀏覽器一樣執行這些複雜的驗證腳本，這會導致 OpenCode 的 webfetch 工具在這些網站上被直接封鎖（Block）。這也是為什麼有些開發者在本地使用 OpenCode 時，會選擇額外掛載像 TinyFish MCP 這類的外部聯網插件來增強其 WebFetch 能力。 [4, 9] 
+* 因為它使用 fetch（非真實瀏覽器）卻帶有瀏覽器的 User-Agent，當它遇到部署了 Anubis 或 Cloudflare 高級防護的網站時（例如 kernel.org），網站會要求進行「客戶端計算證明（Proof of Work / 驗證碼挑戰）」。 [4]
+* 由於 Bun.fetch 無法像真實瀏覽器一樣執行這些複雜的驗證腳本，這會導致 OpenCode 的 webfetch 工具在這些網站上被直接封鎖（Block）。這也是為什麼有些開發者在本地使用 OpenCode 時，會選擇額外掛載像 TinyFish MCP 這類的外部聯網插件來增強其 WebFetch 能力。 [4, 9]
 
 ------------------------------
 如果您正準備為自己的專案開發聯網功能，我們可以進一步討論：

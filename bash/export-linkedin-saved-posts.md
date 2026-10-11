@@ -152,7 +152,7 @@ After execution, a file named `404_urls.log` will be created in the same directo
   * **Concurrency**: For a very large number of URLs (e.g., tens of thousands or more), running them sequentially can be slow. You might consider using tools like GNU Parallel or writing a more complex script that processes URLs in batches concurrently. However, for 1000 URLs, a sequential script like these should be reasonably fast.
   * **Error Handling**: The scripts above are basic. For production use, you might want more robust error handling (e.g., what if a URL is malformed, or the DNS lookup fails?). `curl` usually provides more detailed error messages if you remove the `-s` flag or capture `stderr`.
   * **Network Stability**: Ensure a stable internet connection for the duration of the script.
-</td></tr></table>
+---
 
 - 實作：
   - 將 Gemini 2.5 Flash 給的 `curl` 版本略做修改，讓 Bash 腳本讀入檔名，並且在判斷不會回傳 404 時，用 `curl` 指令去下載成 `html` 檔案。

@@ -899,12 +899,9 @@ deactivate tryRegisterSetting
 
 ## 2026-06-12
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-有可能從 Chrome DevTool 查詢 Network 中符合特定字串的 request 嗎?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 有可能從 Chrome DevTool 查詢 Network 中符合特定字串的 request 嗎?
+A:
 ### DevTools - Network - Search
 
 可以，Chrome DevTools 的 Network 面板提供了非常強大的篩選和搜尋功能。 [1]
@@ -942,11 +939,9 @@ Google Search - AI Mode
 [2] [https://www.volcengine.com](https://www.volcengine.com/article/660801)
 [3] [https://developer.chrome.com](https://developer.chrome.com/docs/devtools/search?hl=zh-tw)
 [4] [https://www.f5.com.cn](https://www.f5.com.cn/company/blog/intercepting-and-modifying-responses-with-chrome-via-the-devtools-protocol)
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-有可能在 Chrome DevTool 的 Console 中,使用 JavaScript 語法查詢 Network 中符合特定字串的 request 嗎?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 有可能在 Chrome DevTool 的 Console 中,使用 JavaScript 語法查詢 Network 中符合特定字串的 request 嗎?
+A:
 ### DevTools - Console - User-defined Script
 
 在 Chrome DevTools 的 Console 中，無法直接透過標準的 JavaScript 語法去讀取或查詢 Network 面板中已經產生的歷史請求紀錄。
@@ -993,10 +988,8 @@ matches.forEach(req => console.log(req.name));
 請問您之所以想用 JavaScript 查詢，是為了要自動化提取資料，還是因為特定請求數量太多、用內建篩選器看不完呢？
 
 </td></tr>
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-為了自動化提取特定的 fetch() 呼叫紀錄
-</td></tr><tr><td>A:</td><td>
-
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 為了自動化提取特定的 fetch() 呼叫紀錄
+A:
 ### 3 Solutions to list history of fetch() requests
 
 既然您的目標是自動化提取 fetch 呼叫紀錄，且需要在特定時間點或自動化流程中將資料撈出來，最有效率的做法取決於您的自動化情境。
@@ -1081,10 +1074,8 @@ const { chromium } = require('playwright');
 -   還是希望在現有的網頁畫面上，透過 Console 提取完直接下載成 JSON 檔呢？
 
 </td></tr>
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-希望在現有的網頁畫面上,透過 Console 提取完直接下載成 JSON 檔
-</td></tr><tr><td>A:</td><td>
-
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 希望在現有的網頁畫面上,透過 Console 提取完直接下載成 JSON 檔
+A:
 ### DevTools - Console - 複寫 `windows.fetch()`
 
 這裡為您編寫了一段可以直接複製貼上到 Console 的完整腳本。
@@ -1172,10 +1163,8 @@ const { chromium } = require('playwright');
 
 如果您的網站除了 `fetch` 以外，還有使用舊式的 `XMLHttpRequest` (Axios 常見的底層) 導致漏抓，我可以幫您把 XHR 的攔截與 Response 讀取邏輯也整合進這個按鈕中。
 請問目前這個純 `fetch` 的版本，有成功幫您抓到目標資料嗎？
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-使用 performance.getEntriesByType,可以找到 fetch() 的歷史網址嗎?
-</td></tr><tr><td>A:</td><td>
-
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 使用 performance.getEntriesByType,可以找到 fetch() 的歷史網址嗎?
+A:
 ### DevTools - Console - 用 `performance.getEntriesByType("resource")`
 
 可以，使用 performance.getEntriesByType("resource") 完全可以找到 fetch() 的歷史網址。 [1, 2]
@@ -1226,9 +1215,7 @@ fetchMatches.forEach((entry, index) => {
 [7] [https://www.sitepoint.com](https://www.sitepoint.com/introduction-resource-timing-api/)
 [8] [https://developer.mozilla.org](https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceResourceTiming)
 
-</td></tr>
-</table>
-
+---
 - 實測以下這段，可以在 Edge 瀏覽器順利下載網址有 `audioTracks` 的 JSON 檔。但我要的其實是這個 JSON 檔中 `temporaryDownloadUrl` 指向的網址。
 ```js
 (function() {

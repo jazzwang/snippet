@@ -1,9 +1,6 @@
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-FID 在 AI/ML 領域是什麼 distance?
-</td></tr><tr><td>A:</td><td>
-在 AI/ML（人工智慧與機器學習）領域中，FID 指的是 Fréchet Inception Distance（弗雷歇開端距離）。
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: FID 在 AI/ML 領域是什麼 distance?
+A: 在 AI/ML（人工智慧與機器學習）領域中，FID 指的是 Fréchet Inception Distance（弗雷歇開端距離）。
 它是一種用來評估生成模型（特別是 GANs 和擴散模型等圖像生成 AI）品質的核心指標。FID 分數越低，代表生成出來的圖片越逼真、越接近真實世界的水準。
 
 ## FID 的核心運作原理
@@ -41,5 +38,4 @@ A["$$d^2((\mu_r, \Sigma_r), (\mu_g, \Sigma_g)) = \Vert{}\mu_r - \mu_g\Vert{}_2^2
 FID 在 AI 領域代表 Fréchet Inception Distance。它透過比較真實圖片與生成圖片在 Inception 網路特徵空間中的高斯分佈差異，來量化生成圖像的品質與多樣性。分數越低，代表生成效果越完美。
 倘若您正在實作相關模型，需要了解如何用 Python (PyTorch/TensorFlow) 計算 FID，或者想知道它與 IS (Inception Score) 的具體差異，請隨時告訴我！
 
-</td></tr>
-</table>
+---

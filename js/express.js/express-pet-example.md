@@ -117,4 +117,4 @@ curl -X POST http://localhost:3000/pet \
 ---
 
 Would you like me to package this into a downloadable `.zip` file or help you run it in a Docker container for easier testing?
-</td></tr></table>
+---

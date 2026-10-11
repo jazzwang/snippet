@@ -171,4 +171,4 @@ In short: **OpenRouter is a fully managed, unified API gateway (SaaS),** while *
     > *Analogy: Think of LiteLLM as a **universal remote control and dashboard** you install on your own network.*
 
 It's also worth noting that **LiteLLM can be configured to use OpenRouter** as one of its model providers, allowing a user to combine LiteLLM's powerful local proxy features (like logging and custom routing) with OpenRouter's simplified billing and model access.
-</td></tr></table>
+---

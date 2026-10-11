@@ -48,7 +48,7 @@ To stop the script, press `Ctrl+C` in the PowerShell console.
   * **Administrative Privileges:** In most cases, you won't need administrative privileges for this script, but if you encounter issues with applications not responding, try running PowerShell as an administrator.
   * **Security:** Be cautious when using `SendKeys` in more complex scripts, as it can potentially interfere with user input or trigger unintended actions if not managed carefully.
   * **Alternative (Less Common for this specific task):** For more robust and controlled automation, especially in scenarios where you need to interact with specific UI elements regardless of the active window, consider using UI automation libraries like `WinAppDriver` (for Windows applications) or `Selenium` (for web browsers) if your goal extends beyond just toggling NumLock. However, for simply sending the NumLock key, `SendKeys` is the most straightforward approach.
-</td></tr></table>
+---
 
 - 實測：直接在 Cloud PC 的 Powershell 視窗貼上以下程式碼：
 

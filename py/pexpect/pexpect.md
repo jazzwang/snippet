@@ -122,7 +122,7 @@ When automating SFTP with passwords, it's generally more secure to avoid hardcod
 * **Secure credential management:** Use dedicated libraries or tools for securely storing and retrieving sensitive credentials.
 
 In summary, while `pexpect` *can* be used to enter an SFTP password by interacting with the `sftp` command-line client, libraries like `paramiko` and `pysftp` are generally better suited for SFTP automation in Python due to their direct support for the SFTP protocol and more secure handling of authentication. If you specifically need Expect-like interaction, `pexpect` (or `wexpect` on Windows) is an option, but be mindful of security implications.
-</td></tr></table>
+---
 
 ## 2025-05-20
 
@@ -354,7 +354,7 @@ if __name__ == '__main__':
   * `child.exitstatus` / `child.signalstatus`: Provide information about how the child process terminated.
 
 This script provides a functional example for your request, but remember the strong recommendation to use libraries like `paramiko` for more robust and secure SFTP interactions in Python.
-</td></tr></table>
+---
 
 ## 2025-06-01
 

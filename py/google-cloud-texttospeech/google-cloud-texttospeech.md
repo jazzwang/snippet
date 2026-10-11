@@ -354,8 +354,7 @@ If you're willing to do a *little* initial setup, you could potentially create a
 
 For a truly "easy way" with a web UI and no coding, your best bet is to explore reputable **third-party web-based text-to-speech converters** that integrate with Google Cloud TTS. These services abstract away the API complexities and provide a user-friendly experience for generating audio from long texts. Just be sure to check their pricing, features, and terms of service.
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 could you give me reference url links of Third-Party Web UIs/Tools that Integrate with Google Cloud TTS?
 
 You're looking for third-party web UIs that specifically integrate with Google Cloud Text-to-Speech (TTS) for converting long texts, without needing to write code.
@@ -395,7 +394,7 @@ It's important to note that the landscape of online tools changes frequently. Wh
 * **Google AI Studio (for Gemini API with TTS):** More recently, Google has integrated TTS capabilities into its Gemini API, and you can test this in Google AI Studio. While it's primarily for developers, AI Studio offers a web interface to experiment with the Gemini models, including their text-to-speech capabilities. This is also often limited for direct long text conversion without further integration. You can find more about it here: [https://ai.google.dev/gemini-api/docs/speech-generation](https://ai.google.dev/gemini-api/docs/speech-generation)
 
 Always visit the specific website to understand their current features, pricing, and how they implement text-to-speech, as these details can change.
-</td></tr></table>
+---
 
 ### from Perplexity
 
@@ -435,8 +434,7 @@ These links point to platforms and tools that facilitate or demonstrate integrat
 [9] https://cloud.google.com/translate
 [10] https://stackoverflow.com/questions/35002003/how-to-use-google-translate-tts-with-the-new-v2-api
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 is there a easy way to put a long text and create speech using Google Cloud text-to-speech? any Web UI that I don't need to write code and use API?
 
 **Easy Ways to Use Google Cloud Text-to-Speech Without Coding**
@@ -515,7 +513,7 @@ You can generate speech from long text using Google Cloud TTS without writing co
 [18] https://community.openhab.org/t/text-based-configuration-of-google-cloud-text-to-speech-settings/132174
 [19] https://chromewebstore.google.com/detail/text-to-speech-tts/cpnomhnclohkhnikegipapofcjihldck
 [20] https://videotronicmaker.com/arduino-tutorials/lm-studio-local-inference-server-nlp-upgrade-using-free-google-text-to-speech-api/
-</td></tr></table>
+---
 
 ## 2025-07-28
 

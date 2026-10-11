@@ -28,4 +28,4 @@ cargo run -- --file output.txt --interval 1
 This command captures captions every second and writes them to `output.txt`.
 
 Would you like help setting this up or exploring alternative methods like screen recording with OCR?
-</td></tr></table>
+---

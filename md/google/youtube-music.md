@@ -35,12 +35,9 @@
 
 ## 2026-06-14
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-為什麼 YouTube Music 網頁版會把播放紀錄同步到 YouTube，而 YouTube Music Mobile App 卻不會？
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 為什麼 YouTube Music 網頁版會把播放紀錄同步到 YouTube，而 YouTube Music Mobile App 卻不會？
+A:
 ### YouTube Music - 歷史紀錄 - 網頁版與行動版行為不同
 
 這是因為 YouTube Music 網頁版與 YouTube 本質上共享同一個瀏覽器架構與帳號快取，而行動 App 版則是完全獨立運作的應用程式。
@@ -78,11 +75,9 @@ Google Search - AI Mode
 
 [1] [https://www.reddit.com](https://www.reddit.com/r/YoutubeMusic/comments/1ptav16/is_there_a_way_to_have_yt_music_playlists/?tl=zh-hans)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-單純不喜歡 歷史紀錄看起來很雜亂
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 單純不喜歡 歷史紀錄看起來很雜亂
+A:
 ### YouTube Music 如何簡化歷史紀錄
 
 如果你只是單純不喜歡歷史紀錄看起來很雜亂，你可以透過以下幾個簡單的設定，把音樂紀錄從 YouTube 的歷史紀錄中徹底隱藏或清除：
@@ -116,10 +111,8 @@ Google Search - AI Mode
 如果想徹底根治這個問題，最推薦的方法還是建立一個「品牌帳戶」，把看影片和聽音樂的身份完全切開。
 你需要我提供 如何建立 YouTube 品牌帳戶並轉移音樂設定 的詳細步驟教學嗎？
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: A:
 ### YouTube 品牌帳號
 
 只要你用「同一個 Google 帳號（Email）」來建立品牌帳戶，新建立的品牌帳戶就能無縫共享你原本訂閱的 YouTube Premium 福利，完全不需要額外付費。 [1, 2]
@@ -161,5 +154,4 @@ YouTube Premium 的會員資格是綁定在整個 Google 帳號上，而不是�
 [7] [https://support.google.com](https://support.google.com/youtube/answer/3056283?hl=zh-Hant)
 [8] [https://www.scu.edu](https://www.scu.edu/training/resources/youtubebrandaccounts/)
 
-</td></tr>
-</table>
+---

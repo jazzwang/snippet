@@ -18,33 +18,30 @@
     - https://github.com/hugobatista/joplin-to-obsidian
     - https://forum.obsidian.md/t/importing-from-joplin/41483
   - AI Mode
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-joplin to obsidian
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search AI Mode
-</td></tr><tr><td>A:</td><td>
-
-Migrating your notes from Joplin to Obsidian is a straightforward process. Because Joplin natively supports exporting to plain text, you can move your data over without losing your organizational structure. [1, 2] 
+<table><tr style="background-color:lightyellow;"><td>Q: joplin to obsidian
+</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Search AI Mode
+A:
+Migrating your notes from Joplin to Obsidian is a straightforward process. Because Joplin natively supports exporting to plain text, you can move your data over without losing your organizational structure. [1, 2]
 ## How to Migrate in 3 Steps
 
    1. Export from Joplin
    * Open the [Joplin desktop application](https://joplinapp.org/).
       * Click on File > Export all in the top menu.
       * Select MD - Markdown + Front Matter as the format. This ensures that note metadata like tags, creation dates, and original timestamps are embedded directly inside the files.
-      * Choose a target folder on your computer to save the export. [1, 2, 3, 4, 5, 6] 
+      * Choose a target folder on your computer to save the export. [1, 2, 3, 4, 5, 6]
    2. Move to Obsidian
    * Create a new folder on your computer to act as your destination.
       * Copy or move all the exported Markdown files and folders from the previous step into this new folder.
       * Open the Obsidian application.
-      * Click Open folder as vault and select your newly filled directory. [1, 3, 6, 7, 8] 
+      * Click Open folder as vault and select your newly filled directory. [1, 3, 6, 7, 8]
    3. Format Attachments (If Needed)
    * Joplin exports all non-markdown attachments into a global folder called _resources.
       * In Obsidian, open your settings and choose Files and links.
-      * Change your attachment folder settings to match where your images/PDFs are stored so links display properly in preview mode. [1, 3, 9, 10, 11] 
-   
+      * Change your attachment folder settings to match where your images/PDFs are stored so links display properly in preview mode. [1, 3, 9, 10, 11]
+
 ------------------------------
 ## Comparison: Key Workflow Differences
-If you are evaluating which tool to stick with long-term, their design philosophies cater to very different workflows: [12] 
+If you are evaluating which tool to stick with long-term, their design philosophies cater to very different workflows: [12]
 
 | Feature [13, 14, 15, 16, 17, 18, 19, 20] | Joplin | Obsidian |
 |---|---|---|
@@ -56,11 +53,11 @@ If you are evaluating which tool to stick with long-term, their design philosoph
 
 ## Summary Checklist for Choosing
 
-* Choose Joplin if you want an open-source, Evernote-style folder system that offers free cross-device cloud syncing right out of the box. [13, 14, 20] 
-* Choose [Obsidian](https://obsidian.md/) if you prefer a "second brain" workflow, highly customizable themes, extensive plugin options, and interconnected, linked ideas. [14, 19, 20] 
+* Choose Joplin if you want an open-source, Evernote-style folder system that offers free cross-device cloud syncing right out of the box. [13, 14, 20]
+* Choose [Obsidian](https://obsidian.md/) if you prefer a "second brain" workflow, highly customizable themes, extensive plugin options, and interconnected, linked ideas. [14, 19, 20]
 
 ------------------------------
-To ensure a smooth transition, would you like to explore community plugins to handle broken internal links, or do you need assistance setting up a free cross-device syncing workaround for your new vault? [2, 17, 21] 
+To ensure a smooth transition, would you like to explore community plugins to handle broken internal links, or do you need assistance setting up a free cross-device syncing workaround for your new vault? [2, 17, 21]
 
 [1] [https://forum.obsidian.md](https://forum.obsidian.md/t/importing-from-joplin/41483)
 [2] [https://petronellatech.com](https://petronellatech.com/blog/obsidian-vs-joplin/)
@@ -84,5 +81,4 @@ To ensure a smooth transition, would you like to explore community plugins to ha
 [20] [https://www.youtube.com](https://www.youtube.com/watch?v=WN6_bXyc7_w)
 [21] [https://www.reddit.com](https://www.reddit.com/r/ObsidianMD/comments/ybaygx/should_i_switch_from_joplin_to_obsidian/)
 
-</td></tr>
-</table>
+---

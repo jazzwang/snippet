@@ -400,9 +400,7 @@ The `transcripts` array will be transformed into:
 * **Stripping out unnecessary data:** If the `ID` property is only needed for internal processing or identification *before* this step, but not for subsequent rendering or storage, this is a clean way to remove it.
 * **Creating a subset of data:** You might be preparing data for a different part of your application or an API call that doesn't require the `ID`.
 * **Data normalization:** Ensuring that the objects in the array have a consistent structure by excluding certain fields.
-</td></tr>
-</table>
-
+---
 > [!NOTE]
 > Is setInterval() a built-in browser function? if yes, how can I disable the callback?
 
@@ -473,7 +471,7 @@ transcriptCheckerId = setInterval(checkTranscripts, 10000);
 ```
 
 **Key takeaway:** Always store the ID returned by `setInterval()` if you intend to stop the interval later.
-</td></tr></table>
+---
 
 > [!NOTE]
 > how to disable or stop MutationObserver() callback?
@@ -563,7 +561,7 @@ setTimeout(() => {
 ```
 
 In summary, remember the `disconnect()` method. It's your primary tool for stopping a `MutationObserver` from listening for further DOM changes and executing its callback.
-</td></tr></table>
+---
 
 - https://g.co/gemini/share/a8a7452803ee
 - Created with 2.5 Flash June 19, 2025 at 10:46 PM
@@ -614,7 +612,7 @@ While DOM breakpoints are the go-to, these can also provide clues:
 * **Search in Sources:** Once you've identified a function in the call stack, you can use the "Search" feature in the "Sources" tab (`Ctrl+Shift+F` / `Cmd+Option+F`) to find all occurrences of that function name or relevant keywords in your project's JavaScript files.
 
 By mastering DOM breakpoints in Chrome DevTools, you'll be well-equipped to pinpoint the JavaScript code responsible for any DOM manipulation on your web pages.
-</td></tr></table>
+---
 
 - [Chrome] 如何設定 DOM Breakpoint
   - Pause your code with breakpoints

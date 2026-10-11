@@ -21,7 +21,7 @@ In software development, the acronyms **DIT** and **QAT** refer to different sta
 **QAT** stands for **Quality Assurance Testing**. This is a more formal and comprehensive phase of testing, typically conducted by a dedicated QA team. This team tests the software to ensure it meets the specified requirements and functions correctly. QAT is usually performed in a staging environment, which is a near-replica of the production environment, as you mentioned. This is a critical step to identify any bugs, usability issues, or deviations from the expected design before the software is released to end-users.
 
 ![the software development life cycle](https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQ-GFsopPSGQW3lP9YwgrC5Ra9e3RMYwjm63AWdJDzpIsLYL7EHRa_xhstzgxjqQCUtWJ1m2NoHc_gkNIcwz6TU1nD5lXmuv9bRnSY6DixxXfjx2SU)
-</td></tr></table>
+---
 
 > [!NOTE]
 > What is UAT?
@@ -42,7 +42,7 @@ The main goal of UAT is to validate that the software works as intended in real-
 
 ### How It Works
 UAT is typically performed in a dedicated environment that closely mimics the live production environment. A small group of actual end-users or stakeholders, who are familiar with the business processes, are given a set of predefined test scenarios to execute. They perform tasks and validate the software's functionality, then provide feedback, which is used to make any necessary final adjustments before the system is officially signed off for release.
-</td></tr></table>
+---
 
 > [!NOTE]
 > what's the difference between QAT, CERT and PROD?
@@ -63,4 +63,4 @@ The **CERT** environment, also known as **staging** or **pre-production**, is th
 
 ### PROD (Production)
 The **PROD** environment is the **live, public-facing environment** where the software is used by its intended end-users. This is the final and most critical environment. It's where real-world transactions occur and where the software's performance and security are paramount. Any issues that appear in this environment are considered major and must be addressed immediately, as they directly impact users and the business. All previous environments (QAT, CERT) are designed to prevent bugs from ever reaching PROD.
-</td></tr></table>
+---

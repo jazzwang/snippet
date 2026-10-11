@@ -54,8 +54,7 @@ Please upload your CSV file, and I can:
 
 Would you like to go ahead with that?
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 If I have 50 quiz questions in plain text, what is the recommended way to create a Microsoft Form Quiz?
 
 If you have **50 quiz questions in plain text**, the most efficient way to create a **Microsoft Form Quiz** depends on how much automation you're comfortable with. Here's a breakdown of the **recommended approaches**:
@@ -102,8 +101,7 @@ If you share your quiz questions (in plain text or CSV), I can:
 
 Would you like to upload your quiz file so I can assist with automation?
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 Could you give me a step-by-step instruction to create Microsoft Form Quiz based on given Excel file stored on OneDrive?
 
 Here’s a **step-by-step guide** to create a **Microsoft Form Quiz** from an Excel file stored on **OneDrive**:
@@ -182,8 +180,7 @@ If you upload your Excel file, I can:
 
 Would you like to upload the file now so I can assist further?
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 Could you give me a step-by-step instruction to create Microsoft Form Quiz based on given Excel file stored on OneDrive using Power Automate?
 
 Here’s a **step-by-step guide** to create a **Microsoft Form Quiz** from an Excel file stored on **OneDrive**, using **Power Automate**. While Microsoft Forms doesn't have a direct connector to create questions, you can use a combination of Excel + Power Automate + Microsoft Graph API to automate the process.
@@ -285,8 +282,7 @@ If you upload your Excel file, I can:
 
 Would you like to upload your Excel file now so I can assist with the automation part?
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 I don't have Graph API access. What is the best way to create Microsoft Form?
 
 Thanks for clarifying! Since you **don’t have access to Microsoft Graph API**, the best way to create a **Microsoft Form Quiz** from an Excel file stored on OneDrive is to use a **semi-manual method** that balances efficiency and ease of use.
@@ -348,9 +344,7 @@ If you upload your Excel file here, I can:
 - Provide a copy-paste-ready version for quick entry into Microsoft Forms
 
 Would you like to upload your Excel file so I can help streamline the process?
-</td></tr>
-</table>
-
+---
 ## 2025-11-05
 
 - Goal: migrate MS Forms from one tenant to another tenants

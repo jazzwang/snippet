@@ -75,7 +75,7 @@ Notes:
 - If you need a workaround without plugins, you might need to manually tag or label issues for easier filtering.
 
 Let me know if you need further clarification! 😊
-</td></tr></table>
+---
 
 > [!NOTE]
 > "issueFunction" site:atlassian.com
@@ -160,4 +160,4 @@ Learn more:
 - [1 -support.atlassian.com](https://www.bing.com/ck/a?!&&p=1885ee14dad20c7af1eb5047db362203070ab332bbfa152a52fdcdc47e69861bJmltdHM9MTc1NjUxMjAwMA&ptn=3&ver=2&hsh=4&fclid=0a592b39-b9e4-62d4-30f0-3d75b83f6368&u=a1aHR0cHM6Ly9zdXBwb3J0LmF0bGFzc2lhbi5jb20vamlyYS1zb2Z0d2FyZS1jbG91ZC9kb2NzL2pxbC1mdW5jdGlvbnMv&ntb=1)
 - [2 -community.atlassian.com](https://www.bing.com/ck/a?!&&p=3884da28c5ec3c52d26ebc58648d1674325d009913b8f474c8414dcee065083aJmltdHM9MTc1NjUxMjAwMA&ptn=3&ver=2&hsh=4&fclid=0a592b39-b9e4-62d4-30f0-3d75b83f6368&u=a1aHR0cHM6Ly9jb21tdW5pdHkuYXRsYXNzaWFuLmNvbS9mb3J1bXMvSmlyYS1xdWVzdGlvbnMvSG93LXRvLXdyaXRlLWEtSlFMLXVzaW5nLUlzc3VlRnVuY3Rpb24tdG8tc2hvdy1hbGwtU3ViLXRhc2tzLW9mL3FhcS1wLzcwNTQwOQ&ntb=1)
 - [3 -confluence.atlassian.com](https://www.bing.com/ck/a?!&&p=b0fceff8429333d7e4aee6207c07cf6481a5f107125bef74480ae07a9e61add8JmltdHM9MTc1NjUxMjAwMA&ptn=3&ver=2&hsh=4&fclid=0a592b39-b9e4-62d4-30f0-3d75b83f6368&u=a1aHR0cHM6Ly9jb25mbHVlbmNlLmF0bGFzc2lhbi5jb20vc2VydmljZW1hbmFnZW1lbnRzZXJ2ZXIxMDMvYXNzZXRzLWpxbC1mdW5jdGlvbnMtMTQ4ODU5NjQzMS5odG1s&ntb=1)
-</td></tr></table>
+---

@@ -253,8 +253,7 @@ finally:
 
 This approach gives you programmatic access to all the file attributes, allowing you to format the output exactly as you need, similar to `ls -al`.
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 can paramiko support listing SFTP file timestamp like `ls -al *_20250603*`?
 
 You're hitting an important distinction between SFTP and a typical shell command like `ls`.
@@ -338,8 +337,7 @@ finally:
 
 This approach ensures you get the desired filtered listing with timestamps, even though SFTP itself doesn't handle the wildcard directly.
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 are paramiko similiar to winexpect or wexpect?
 
 While both Paramiko and `winexpect` (or `wexpect`, which is the Windows variant of `pexpect`) are Python libraries used for automation, they operate at very different levels and are designed for distinct purposes.
@@ -397,7 +395,7 @@ Here's a breakdown of their similarities and differences:
     * The program you're automating is not specifically an SSH/SFTP client, or you prefer to use the system's native `ssh` client for some reason (though this is less common for robust automation).
 
 In essence, Paramiko is like a sophisticated SSH *library*, while `pexpect`/`wexpect` is more of a generic *process automation* tool for command-line interfaces. For modern SSH automation, Paramiko is generally preferred because it's more robust, direct, and doesn't rely on spawning external shell processes, which can be less reliable. However, for automating other interactive console applications, `pexpect`/`wexpect` is invaluable.
-</td></tr></table>
+---
 
 ## 2025-09-30
 
@@ -463,6 +461,6 @@ If the build fails during `cffi` installation, you may need to install:
 ---
 
 Would you like help setting up a virtual environment or switching to `conda`?
-</td></tr></table>
+---
 
 - 後來我是直接 `pip uninstall paramiko` 重裝 `pip install paramiko` 來解決這個問題。不過後來想想，該不會我在不同的環境底下執行程式碼？（e.g. Windows 11 下正常，但 WSL2 裡面就找不到對應的 Python package 了？ 暫時無法追查了，後來沒遇到這個狀況。也可能某個套件版本不相容之類的。）

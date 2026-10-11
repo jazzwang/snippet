@@ -106,4 +106,3 @@ echo "The empty string's length is: $empty_string_length"
   * **`echo "Its length is: $string_length"`**: This prints the calculated length to the console.
 
 This method is efficient and is the standard way to determine string length directly within Bash scripts without needing external commands like `wc -c` or `awk`.
-</td></tr></table>

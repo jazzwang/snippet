@@ -5,45 +5,42 @@
 
 ## 2026-08-27
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-幫我搜尋 motif-3 LLM 模型的相關評比與熱門 YouTube 影片
-</td></tr><tr><td>A:</td><td>
+- Tool: Google Search - AI Mode
+> [!NOTE]
+> Q: 幫我搜尋 motif-3 LLM 模型的相關評比與熱門 YouTube 影片
+A:
+Motif-3 是由韓國人工智慧初創公司 [Motif Technologies](https://www.mk.co.kr/cn/it/12103386) 開發的最新頂尖大型語言模型 (LLM)。它在 2026 年 8 月釋出了正式的[技術報告（Technical Report）](https://arxiv.org/abs/2608.09119)。該模型作為韓國政府支援的獨立 AI 基礎模型（Sovereign LLM）核心項目之一，展現出追平國際一線大廠的實力。 [1, 2, 3]
 
-Motif-3 是由韓國人工智慧初創公司 [Motif Technologies](https://www.mk.co.kr/cn/it/12103386) 開發的最新頂尖大型語言模型 (LLM)。它在 2026 年 8 月釋出了正式的[技術報告（Technical Report）](https://arxiv.org/abs/2608.09119)。該模型作為韓國政府支援的獨立 AI 基礎模型（Sovereign LLM）核心項目之一，展現出追平國際一線大廠的實力。 [1, 2, 3] 
-
-由於 Motif-3 屬於前沿的專業級開源/研究模型，目前在 YouTube 上的相關影片多集中於專業 AI 論文解讀、開源 LLM 架構分析以及各國自主 Sovereign AI 的趨勢探討，較少大眾化的消費級開箱。 [1, 4] 
+由於 Motif-3 屬於前沿的專業級開源/研究模型，目前在 YouTube 上的相關影片多集中於專業 AI 論文解讀、開源 LLM 架構分析以及各國自主 Sovereign AI 的趨勢探討，較少大眾化的消費級開箱。 [1, 4]
 
 以下為您整理 Motif-3 的核心評比數據與技術亮點：
 
 ### 📊 Motif-3 LLM 核心性能與評比摘要
 
-根據全球知名 AI 獨立評測機構 [Artificial Analysis](https://artificialanalysis.ai/models/motif-3) (AAII) 的綜合智能指數顯示，Motif-3 的表現相當驚人： [5, 6] 
+根據全球知名 AI 獨立評測機構 [Artificial Analysis](https://artificialanalysis.ai/models/motif-3) (AAII) 的綜合智能指數顯示，Motif-3 的表現相當驚人： [5, 6]
 
 * 🏆 國際排名與評分：
 * Motif-3 在 AAII 綜合智能指數中獲得 47 分，性能直接追平阿里巴巴的 Qwen 3.7 Max。
    * 在美國與中國之外所開發的 AI 模型中，Motif-3 位居全球第一（高於韓國同鄉 Upstage 的 37 分與 LG 的 31 分）。
-   * 在全球所有公佈的開源權重模型（Open-weight models）中，智能表現僅次於 Kimi K3 和 GLM-5.2，位居全球前列。 [2, 3, 4, 5, 7] 
+   * 在全球所有公佈的開源權重模型（Open-weight models）中，智能表現僅次於 Kimi K3 和 GLM-5.2，位居全球前列。 [2, 3, 4, 5, 7]
 * 🧠 超龐大架構與稀疏計算 (MoE)：
 * 擁有 3140 億 (314B) 總參數規模，採用進階的專家混合（Mixture-of-Experts, MoE）結構。
-   * 每次進行 Token 推理時，僅需激活 132 億 (13.2B) 參數（每層 384 個路由專家，僅挑選 8 個激活），在維持強大模型容量的同時，大幅降低運算成本。 [2, 8] 
+   * 每次進行 Token 推理時，僅需激活 132 億 (13.2B) 參數（每層 384 個路由專家，僅挑選 8 個激活），在維持強大模型容量的同時，大幅降低運算成本。 [2, 8]
 * 🌐 海量訓練與長文本支援：
 * 基於高達 12.5 兆兆 (12.5 Trillion) Tokens 的多語言、程式碼、數學與 STEM 領域數據預訓練而成。
-   * 上下文窗口高達 256K tokens，且在長文本 Agent 任務、程式碼生成（Coding）與防幻覺（Hallucination-sensitive）評測中表現優異。 [1, 9] 
+   * 上下文窗口高達 256K tokens，且在長文本 Agent 任務、程式碼生成（Coding）與防幻覺（Hallucination-sensitive）評測中表現優異。 [1, 9]
 * ⚠️ 當前限制與授權：
-* 目前在 Hugging Face 釋出的 Motif-3 Beta 權重採用非商業研究授權（相較於 Motif-2 的 Apache 2.0 有所收緊），現階段僅適合用於研究與評測，無法直接部署於商用產品中。 [4] 
+* 目前在 Hugging Face 釋出的 Motif-3 Beta 權重採用非商業研究授權（相較於 Motif-2 的 Apache 2.0 有所收緊），現階段僅適合用於研究與評測，無法直接部署於商用產品中。 [4]
 
 ### 🎥 熱門 YouTube 影片搜尋方向建議
 
 由於 LLM 技術更迭迅速，想要在 YouTube 上獲取關於 Motif-3 的深度分析，建議使用以下關鍵字組合進行搜尋：
 
    1. 🔍 搜尋「Motif 3 LLM Technical Report」或「Motif 3 paper review」：
-   * 可找到專注於 AI 論文導讀的 YouTuber（如 Yannic Kilcher 或國內的 AI 技術播客），他們會剖析 Motif-3 所使用的「Grouped Differential Latent Attention (GDLA)」架構與記憶體優化核心。 [1, 8] 
+   * 可找到專注於 AI 論文導讀的 YouTuber（如 Yannic Kilcher 或國內的 AI 技術播客），他們會剖析 Motif-3 所使用的「Grouped Differential Latent Attention (GDLA)」架構與記憶體優化核心。 [1, 8]
    2. 🔍 搜尋「Korea Sovereign AI LLM」或「Artificial Analysis LLM leaderboard」：
-   * 可找到探討 2026 年各國「主權 AI（Sovereign AI）」發展戰略的科技趨勢影片，深入了解 Motif-3 如何利用輝達 B200 GPU 叢集追平中美一線模型的幕後故事。 [3, 5] 
-   
+   * 可找到探討 2026 年各國「主權 AI（Sovereign AI）」發展戰略的科技趨勢影片，深入了解 Motif-3 如何利用輝達 B200 GPU 叢集追平中美一線模型的幕後故事。 [3, 5]
+
 如果您有特定的應用場景，想了解 Motif-3 與 Llama 3 或是 GLM 系列模型的細部對比，或是想知道如何在本地部署 MoE 模型，請告訴我，我可以為您提供更深入的架構分析！
 
 [1] [https://arxiv.org](https://arxiv.org/abs/2608.09119)
@@ -56,11 +53,9 @@ Motif-3 是由韓國人工智慧初創公司 [Motif Technologies](https://www.mk
 [8] [https://arxiv.org](https://arxiv.org/html/2608.09119)
 [9] [https://llm-explorer.com](https://llm-explorer.com/model/Motif-Technologies%2FMotif-3-Beta,4dHC6E4SLXONX9MztRHzze)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-如何在本地部署 MoE 模型
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 如何在本地部署 MoE 模型
+A:
 要在本地（Local）部署像 Motif-3、Mixtral 8x7B 等 專家混合（MoE, Mixture-of-Experts）模型，核心挑戰在於 「大顯存需求，但低計算代價」。雖然 MoE 模型的總參數高達數百億甚至數千億，但每次推理（Inference）只會激活其中一小部分專家，因此只要顯存裝得下，推理速度會非常快。
 
 以下是目前最主流、高效的本地部署全攻略：
@@ -154,5 +149,4 @@ python3 -m vllm.entrypoints.openai.api_server\
 3.  動態併行（Tensor Parallelism）：如果使用多張 GPU，請確保使用 vLLM 或 DeepSpeed，並確保 GPU 之間的連接頻寬（如 NVLink 或 PCIe 4.0 x16），否則多卡間的專家資料交換會成為嚴重效能瓶頸。
 
 若您已決定要部署特定模型，可以告訴我您的作業系統與顯示卡型號（或 Mac 記憶體大小），我能為您規劃最精準的一鍵部署腳本！
-</td></tr>
-</table>
+---

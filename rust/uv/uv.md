@@ -195,7 +195,7 @@ Hello from the local tool!
 * `uv` read the `[project.scripts]` section of `pyproject.toml` and created an executable script named `hello` that, when run, will execute the `main` function in your `hello_tool.py` file.
 
 So, yes, installing local packages as tools with `uv` is definitely possible and quite useful for developing and testing your command-line utilities!
-</td></tr></table>
+---
 
 - ( 2025-03-26 18:34:46 )
 - 看起來用 `requirements.txt` 會比較麻煩。
@@ -283,7 +283,7 @@ The `requirements.txt` approach with `-e .` is more about making the local packa
 
 If your goal is solely to install the local package so its modules can be imported and used by other Python code, then `uv pip install -e ./hello_tool_req` (using `requirements.txt` to define the local package) works perfectly. However, for directly creating and installing command-line tools, the `pyproject.toml` method is generally preferred with `uv tool install`.
 
-</td></tr></table>
+---
 
 ## 2025-05-08
 

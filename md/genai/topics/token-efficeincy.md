@@ -10,12 +10,9 @@
 - 查證：
   - 是否有其他研究結果也存在類似的結論呢？
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-are there study on token effeciency of different AI Code Agent CLI, such as Claude Code, Github Copilot, OpenClaw, Hermus Agent, Pi Agent, OpenCode?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: are there study on token effeciency of different AI Code Agent CLI, such as Claude Code, Github Copilot, OpenClaw, Hermus Agent, Pi Agent, OpenCode?
+A:
 Yes, multiple comparative studies, academic benchmarks, and community tests track the token efficiency of these AI command-line interfaces (CLIs). [1, 2]
 
 A foundational study from the [Stanford Digital Economy Lab](https://digitaleconomy.stanford.edu/publication/how-do-ai-agents-spend-your-money-analyzing-and-predicting-token-consumption-in-agentic-coding-tasks/) highlighted that autonomous code agents consume up to 1,000x more tokens than simple code autocomplete tools. This massive burn rate is driven by input context (swapping files, checking errors, and re-reading codebases) rather than output code generation. [3, 4, 5]
@@ -86,9 +83,7 @@ Would you like details on how to set up context compression tools for a specific
 [25] [https://calvinfo.substack.com](https://calvinfo.substack.com/p/the-coding-agent-metagame)
 [26] [https://www.developersdigest.tech](https://www.developersdigest.tech/blog/code-cleanliness-affects-ai-coding-agents)
 
-</td></tr>
-</table>
-
+---
 ## 2026-07-13
 
 - 2026-07-12

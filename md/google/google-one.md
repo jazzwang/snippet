@@ -2,13 +2,10 @@
 
 ## 2026-06-14
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Google ONE 如何設定家庭成員帳號共用
-</td></tr><tr><td>A:</td><td>
-
-### Google ONE 家庭群組 
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: Google ONE 如何設定家庭成員帳號共用
+A:
+### Google ONE 家庭群組
 
 要設定 Google One 家庭成員帳號共用，你需要完成建立家庭群組與開啟 Google One 分享功能兩個主要步驟。家庭群組最多可容納 6 位成員（包含管理員自己），且成員彼此之間的個人隱私檔案是完全獨立、無法互相查看的。 [1, 2, 3, 4]
 你可以選擇透過網頁瀏覽器或手機 App 來完成設定：
@@ -44,5 +41,4 @@ Google ONE 如何設定家庭成員帳號共用
 [10] [https://support.google.com](https://support.google.com/chromecast/answer/9155535?hl=zh-HK)
 [11] [https://support.google.com](https://support.google.com/googleone/answer/9004015?hl=zh-&co=GENIE.Platform%3DDesktop)
 [12] [https://support.google.com](https://support.google.com/googleone/answer/9003633?hl=zh-&co=GENIE.Platform%3DDesktop)
-</td></tr>
-</table>
+---

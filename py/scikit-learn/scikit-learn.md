@@ -151,4 +151,4 @@ plt.show()
 * **Consider subsampling:** If you have a very large number of embeddings, running t-SNE on the entire dataset can be computationally expensive. You might consider taking a representative subset of your data for visualization.
 
 This step-by-step guide should help you create a meaningful t-SNE visualization of the embeddings stored in your ChromaDB instance! Let me know if you encounter any issues or have further questions.
-</td></tr></table>
+---

@@ -24,8 +24,7 @@
 ## 2026-01-19
 
 <table>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 為何 windows 11 突然一直在讀取硬碟，根據 `Resource Monitor` 的查詢結果，判定主要是 `System (PID=4)` 跟 `SearchIndexer.exe` 兩個執行檔
 
 這是一個在 Windows 11 非常常見且令人煩躁的問題。這通常不是病毒，而是 Windows 的**維護機制失控**或**卡在某個檔案上**。
@@ -133,8 +132,7 @@
 
 如果是某個特定的檔案（例如 `outlook.ost` 或某個影片檔），**請告訴我那個檔名**，我可以教你如何針對那個檔案將它「排除在索引之外」，這樣就不用重建整個資料庫了。
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 看起來一直在讀取 `C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.db`
 
 
@@ -204,9 +202,7 @@ net start wsearch
 如果你的 `Windows.db` 讀取量極高，且你有在使用 Outlook，通常是因為 Windows 11 在嘗試索引你的 `.ost` 或 `.pst` 郵件檔。
 
 **你需要我幫你確認如何單獨優化 Outlook 的搜尋設定嗎？**
-</td></tr>
-</table>
-
+---
 - 參考：
   - https://zhuanlan.zhihu.com/p/507590692
 
@@ -373,12 +369,9 @@ Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Re
 - 查證：原來背後的原因還是底層程式邏輯。
 - 解法：雖然 PowerShell 也有對應的解法，但改用 `win32yank` 或 `utf8clip` 來當 `pbcopy` 或許比較簡單。
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-為何 windows 11 的 clip 指令複製 bash for windows 的輸出無法正常顯示 UTF-8 中文字元
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 為何 windows 11 的 clip 指令複製 bash for windows 的輸出無法正常顯示 UTF-8 中文字元
+A:
 ## Windows 11 的 clip.exe 無法正常接收 UTF-8 中文字元
 
 Windows 11 的 clip.exe 無法正常接收並複製 Bash (如 WSL 或 Git Bash) 的 UTF-8 中文字元，根本原因在於 clip.exe 這個 Windows 內建工具並不支援直接讀取標準輸入 (stdin) 的 UTF-8 編碼組合；==它會強制使用 Windows 系統預設的 OEM 程式碼頁 (Code Page)（例如台灣繁體中文環境的 CP950 / Big5）去解析傳入的資料位元組，導致編碼不一致而產生亂碼==。 [1, 2, 3]
@@ -444,9 +437,7 @@ echo "測試中文字元" | iconv -f UTF-8 -t BIG5 | clip.exe
 [5] [https://github.com](https://github.com/microsoft/WSL/issues/11047)
 [6] [https://stackoverflow.com](https://stackoverflow.com/questions/59984528/copy-the-contents-of-a-file-to-clipboard-from-wsl-to-windows)
 
-</td></tr>
-</table>
-
+---
 ```bash
 ~/git/snippet$ scoop info win32yank
 

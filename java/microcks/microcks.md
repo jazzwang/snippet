@@ -13,12 +13,9 @@
   - 從 Swagger (OpenAPI, `RESTful`) 到 AsyncAPI (`Event-driven`)，想知道有沒有簡單生成 petstore 的 Kafka 後端程式
   - 在與 Google Search AI Mode 對談時，有提到 Microcks
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-AsyncAPI 有類似 petstore 的範例嗎？
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: AsyncAPI 有類似 petstore 的範例嗎？
+A:
 ## AsyncAPI 對應的 PetStore 範例
 
 有的，AsyncAPI 官方與微服務社群（如 [Microcks.io](https://microcks.io/)）最常拿來當作標準教學與測試的範例，正是 AsyncAPI 版的 Petstore。 [1, 2]
@@ -59,9 +56,7 @@ servers:
 [7] [https://medium.com](https://medium.com/@jack43581996/asyncapi-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-122ae469b6b0)
 [8] [https://www.asyncapi.com](https://www.asyncapi.com/docs/tools/generator/asyncapi-document)
 
-</td></tr>
-</table>
-
+---
 > [!NOTE]
 > 從 [Your 1st AsyncAPI on Kafka mock](https://microcks.io/documentation/tutorials/first-asyncapi-mock/) 的說明文件內容，可以找到 PetStore 的範例 YAML [petstore-1.0.0-asyncapi.yaml](https://microcks.io/documentation/tutorials/petstore-1.0.0-asyncapi.yaml)
 

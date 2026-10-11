@@ -175,18 +175,13 @@ Examples:
 
 ## 2026-07-07
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-如果我需要 AI Code Agent (如 OpenCode)參考我的瀏覽器操作,看我如何執行 Jira JQL 查詢,並將結果下載成 Excel 檔案,並且開啟 Excel,將特定區域建立新的 Excel Table,再用該 Table 產生三個固定的 Pivot Table 樞紐分析。將這個程序生成 Python 自動化程式(例如結合 Playwright 跟 Python Excel library)。可以幫我規劃 step-by-step instruction 嗎?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 如果我需要 AI Code Agent (如 OpenCode)參考我的瀏覽器操作,看我如何執行 Jira JQL 查詢,並將結果下載成 Excel 檔案,並且開啟 Excel,將特定區域建立新的 Excel Table,再用該 Table 產生三個固定的 Pivot Table 樞紐分析。將這個程序生成 Python 自動化程式(例如結合 Playwright 跟 Python Excel library)。可以幫我規劃 step-by-step instruction 嗎?
+A:
 略 -- 詳 [browser-use.md](../browser-use/browser-use.md)
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-如何讓 OpenCode Agent 錄製 existing browser session 的操作?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 如何讓 OpenCode Agent 錄製 existing browser session 的操作?
+A:
 要讓 OpenCode Agent（或類似的 AI Code Agent、Playwright 腳本）直接接管或「錄製」你當前已經打開、登入好 Jira 的瀏覽器視窗（Existing Browser Session），最有效且能繞過 2FA 驗證的方法，就是利用 Chromium 的 遠端除錯連接埠（Remote Debugging Port）。
 這樣 AI 就不需要從頭模擬登入，而是直接在你已經開好的瀏覽器中「看著你操作」並自動生成 Playwright 程式碼。
 以下是具體的實作步驟：
@@ -246,12 +241,12 @@ def run():
         browser = p.chromium.connect_over_cdp("http://localhost:9222")
         default_context = browser.contexts[0]
         page = default_context.pages[0]
-        
+
         # 以下為 Playwright 自動錄製生成的點擊與下載代碼
         # page.locator("...").click()
         # with page.expect_download() as download_info:
         #     page.locator("text=Export").click()
-            
+
         print("錄製成功，已取得網頁操作邏輯！")
 
 run()
@@ -260,9 +255,7 @@ run()
 此時，你就可以叫 OpenCode 接續進行：*「請將這段錄製好的 Playwright 程式碼，與先前規劃的 pandas/openpyxl Excel 樞紐分析腳本結合成一個完整的自動化流程。」*
 
 你想先讓 OpenCode 嘗試連線到 `9222` 連接埠並測試能否成功控制網頁，還是直接開始撰寫後續整合 Excel 處理的程式碼呢？
-</td></tr>
-</table>
-
+---
 ## 2026-08-19
 
 - 實測：

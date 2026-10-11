@@ -68,7 +68,7 @@ Make sure your GitHub PAT has the correct scopes:
 ---
 
 Would you like a **sample Power Automate flow** or a **GitHub Actions workflow YAML** to go with this?
-</td></tr></table>
+---
 > [!NOTE]
 > Can Power Automate run a script to download file from Github Actions and save to OneDrive?
 
@@ -138,7 +138,7 @@ Make sure your GitHub **Personal Access Token (PAT)** has:
 ---
 
 Would you like a **ready-to-import Power Automate flow (in .zip format)** or a **step-by-step visual guide** for this setup?
-</td></tr></table>
+---
 > [!NOTE]
 > Send me the ready-to-import flow.
 
@@ -167,7 +167,7 @@ GitHubArtifactToOneDriveFlow.zip
    - Adjust the OneDrive path if needed.
 
 Would you like help customizing this flow for your specific GitHub repo and workflow?
-</td></tr></table>
+---
 > [!NOTE]
 > Can Power Automate trigger by Github Actions using Webhook?
 
@@ -211,7 +211,7 @@ You can also send dynamic data like artifact URLs, commit info, etc.
 ---
 
 Would you like a **sample GitHub Actions YAML** and a **Power Automate flow template** for this webhook setup?
-</td></tr></table>
+---
 > [!NOTE]
 > Can Github Actions save files to OneDrive?
 
@@ -253,7 +253,7 @@ You can use GitHub Actions to upload directly to OneDrive via the **Microsoft Gr
 Use **GitHub Actions → Power Automate (via webhook) → OneDrive**. It’s secure, low-code, and integrates well with Microsoft 365 environments.
 
 Would you like a **sample GitHub Actions workflow** that sends a file to Power Automate for OneDrive upload?
-</td></tr></table>
+---
 > [!NOTE]
 > Can a Power Automate webhook shared by a Group instead of owning by 1 user who create it?
 
@@ -302,7 +302,7 @@ Even if shared, **webhook URLs are public endpoints**. Always:
 ---
 
 Would you like help setting up a **shared environment** or creating a **secure webhook validation** in Power Automate?
-</td></tr></table>
+---
 > [!NOTE]
 > Will the Power Automate webhook be removed if the owner's Microsoft 365 account was deactive or removed?
 
@@ -338,7 +338,7 @@ To ensure continuity and shared ownership, consider these options:
 ---
 
 Would you like help setting up a **shared environment** or a **template for a service account strategy**?
-</td></tr></table>
+---
 > [!NOTE]
 > Is it possible to transfer ownership of Power Automate webhook?
 
@@ -380,7 +380,7 @@ If you’re using the webhook in production, always:
 ---
 
 Would you like help exporting and re-importing a flow, or setting up a shared environment for your team?
-</td></tr></table>
+---
 > [!NOTE]
 > How to create Microsoft 365 service account for Power Automate?
 
@@ -431,7 +431,7 @@ Creating a **Microsoft 365 service account** for Power Automate is a smart move 
 ---
 
 Would you like a **checklist template** or a **PowerShell script** to automate part of this setup?
-</td></tr></table>
+---
 
 ## 2025-12-19
 
@@ -658,4 +658,4 @@ If you want, I can:
 -   Compare this to **Power Fx / Dataverse vs code projects**
 
 Just tell me the scenario.
-</td></tr></table>
+---

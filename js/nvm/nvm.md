@@ -64,8 +64,7 @@ Certainly! Installing `nvm` (Node Version Manager) using Scoop is a straightforw
 
 That's it! You should now have `nvm` installed and ready to use on your system. If you encounter any issues or need further assistance, feel free to ask.
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 how can I find npm after installed nvm?
 
 
@@ -112,7 +111,7 @@ After installing `nvm`, you will also have `npm` (Node Package Manager) availabl
      ```
 
 If you encounter any issues or need further assistance with `npm`, feel free to ask!
-</td></tr></table>
+---
 
 ### 實測
 

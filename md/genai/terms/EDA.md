@@ -42,7 +42,7 @@ In essence, EDA is a crucial preliminary step to gain insights, identify pattern
 
 > 本質上，EDA 是深入研究更複雜的建模或實驗之前獲得洞察力、識別模式、發現異常和了解資料特徵的關鍵初步步驟，無論是使用原始文字還是使用 LLM 的輸入和輸出。
 
-</td></tr></table>
+---
 
 * `Lemmatization` is a process in Natural Language Processing (NLP) that reduces words to their base or dictionary form, known as a lemma. It aims to identify the root form of a word by considering its context and meaning, ensuring that the output is a valid and meaningful word. Unlike stemming, which may produce non-meaningful stems, lemmatization relies on dictionaries and morphological analysis to determine the correct lemma.
   - https://en.wikipedia.org/wiki/Lemmatization

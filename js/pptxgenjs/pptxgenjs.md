@@ -12,12 +12,9 @@
 - 緣起：因為 Anthropic 的 pptx skill 會使用 pptxgenjs 來生成投影片，所以想進一步理解一些細節。
 - https://share.google/aimode/q5ecXFBptc4otfp6k
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-pptxgenjs 可以自訂公司的 theme 跟 icon 嗎?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: pptxgenjs 可以自訂公司的 theme 跟 icon 嗎?
+A:
 可以，PptxGenJS 完全支援自訂公司的 Theme（主題顏色、字型、母片版型）與 Icon 圖示。
 雖然 PptxGenJS 是透過 JavaScript 程式碼動態生成簡報，不像 PowerPoint 軟體有可視化的自訂介面，但你可以透過定義全域變數、設定 Slide Master（母片）以及讀取圖片編碼來達到完全品牌化的效果。
 
@@ -55,11 +52,11 @@ pptx.defineSlideMaster({
     // 預設公司 Logo (可使用網路圖片 URL 或 Base64 格式)
     { image: { x: 0.5, y: 0.3, w: 1.5, h: 0.4, path: "https://yourcompany.com" } },
     // 預設頁尾版權宣告
-    { 
-      text: { 
-        text: "© 2026 Your Company All Rights Reserved.", 
-        options: { x: 0.5, y: 7.1, w: 5.0, h: 0.3, fontSize: 10, color: "999999", fontFace: COMPANY_THEME.fontFace } 
-      } 
+    {
+      text: {
+        text: "© 2026 Your Company All Rights Reserved.",
+        options: { x: 0.5, y: 7.1, w: 5.0, h: 0.3, fontSize: 10, color: "999999", fontFace: COMPANY_THEME.fontFace }
+      }
     },
     // 裝飾用條紋（品牌主色）
     { rect: { x: 0, y: 0, w: "100%", h: 0.1, fill: { color: COMPANY_THEME.colors.primary } } }
@@ -84,7 +81,7 @@ slide.addShape(pptx.ShapeType.custGeom, {
   fill: { color: COMPANY_THEME.colors.secondary }, // 動態變更 Icon 顏色
   points: [
     // 這裡放入 SVG 的 Path Data
-    { m: [0, 0], l: [100, 0], l: [100, 100], l: [0, 100], z: true } 
+    { m: [0, 0], l: [100, 0], l: [100, 100], l: [0, 100], z: true }
   ]
 });
 ```
@@ -96,12 +93,12 @@ slide.addShape(pptx.ShapeType.custGeom, {
 最直覺的方式，直接讀取公司內部伺服器或專案資料夾中的 Icon 圖檔：
 
 ```js
-slide.addImage({ 
-  path: "images/icons/user-icon.png", 
-  x: 2.0, 
-  y: 2.0, 
-  w: 0.4, 
-  h: 0.4 
+slide.addImage({
+  path: "images/icons/user-icon.png",
+  x: 2.0,
+  y: 2.0,
+  w: 0.4,
+  h: 0.4
 });
 ```
 
@@ -112,12 +109,12 @@ slide.addImage({
 ```js
 const ICON_USER = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...";
 
-slide.addImage({ 
-  data: ICON_USER, 
-  x: 3.0, 
-  y: 2.0, 
-  w: 0.4, 
-  h: 0.4 
+slide.addImage({
+  data: ICON_USER,
+  x: 3.0,
+  y: 2.0,
+  w: 0.4,
+  h: 0.4
 });
 ```
 
@@ -130,17 +127,15 @@ slide.addImage({
 const TITLE_STYLE = { fontFace: COMPANY_THEME.fontFace, fontSize: 24, color: COMPANY_THEME.colors.primary, bold: true };
 slide.addText("專案報告", { x: 0.5, y: 1.0, ...TITLE_STYLE });
 ```
-      
+
 若您想進一步了解特定的實作細節，可以告訴我：
 
 * 您打算在前端瀏覽器還是 Node.js 後端環境執行？
 * 是否需要幫您寫一份完整的自動化產生腳本範例？
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-預計用 Node.js 後段生成。可以給我一份自訂 Slide Master 的專案範例嗎?
-</td></tr><tr><td>A:</td><td>
-這裡為您準備一份在 Node.js 後端環境執行的完整專案範例。
+> [!NOTE]
+> Q: 預計用 Node.js 後段生成。可以給我一份自訂 Slide Master 的專案範例嗎?
+A: 這裡為您準備一份在 Node.js 後端環境執行的完整專案範例。
 這個範例會示範如何建立獨立的 theme.js 模組，並在主程式中建立一個具備公司標準母片（含 Logo、主色調線條、頁尾宣告、頁碼）的簡報，最後將檔案儲存至本地端。
 
 #### 1. 初始化專案與安裝套件
@@ -181,24 +176,24 @@ function registerCompanyMaster(pptx) {
     objects: [
       // 頂部品牌主色裝飾條
       { rect: { x: 0, y: 0, w: "100%", h: 0.15, fill: { color: COMPANY_THEME.colors.primary } } },
-      
+
       // 左上角公司 Logo
       { image: { x: 0.6, y: 0.4, w: 1.2, h: 0.4, data: COMPANY_THEME.logoBase64 } },
-      
+
       // 右上角裝飾小字 (如：部門名稱或機密層級)
-      { 
-        text: { 
-          text: "CONFIDENTIAL / INTERNAL USE ONLY", 
-          options: { x: 7.0, y: 0.4, w: 5.7, h: 0.3, align: "right", fontSize: 9, color: COMPANY_THEME.colors.textMuted, fontFace: COMPANY_THEME.fontFace } 
-        } 
+      {
+        text: {
+          text: "CONFIDENTIAL / INTERNAL USE ONLY",
+          options: { x: 7.0, y: 0.4, w: 5.7, h: 0.3, align: "right", fontSize: 9, color: COMPANY_THEME.colors.textMuted, fontFace: COMPANY_THEME.fontFace }
+        }
       },
-      
+
       // 底部中央：頁尾版權宣告
-      { 
-        text: { 
-          text: "© 2026 Your Company Name. All rights reserved.", 
-          options: { x: 1.0, y: 7.0, w: 11.3, h: 0.3, align: "center", fontSize: 9, color: COMPANY_THEME.colors.textMuted, fontFace: COMPANY_THEME.fontFace } 
-        } 
+      {
+        text: {
+          text: "© 2026 Your Company Name. All rights reserved.",
+          options: { x: 1.0, y: 7.0, w: 11.3, h: 0.3, align: "center", fontSize: 9, color: COMPANY_THEME.colors.textMuted, fontFace: COMPANY_THEME.fontFace }
+        }
       }
     ],
     // 右下角：自動頁碼設定
@@ -242,10 +237,10 @@ slide1.addText("報告人：研發部門主管", { x: 0.6, y: 2.7, w: 12.0, h: 0
 
 slide2.addText("核心季度目標", { x: 0.6, y: 1.5, w: 5.0, h: 0.5, ...TEXT_STYLES.title });
 // 建立一個帶有公司主色的數據卡片區塊 (Shape + Text)
-slide2.addShape(pptx.ShapeType.roundRect, { 
-  x: 0.6, y: 2.5, w: 3.5, h: 2.0, 
-  fill: { color: "FFFFFF" }, 
-  line: { color: COMPANY_THEME.colors.primary, width: 2 } 
+slide2.addShape(pptx.ShapeType.roundRect, {
+  x: 0.6, y: 2.5, w: 3.5, h: 2.0,
+  fill: { color: "FFFFFF" },
+  line: { color: COMPANY_THEME.colors.primary, width: 2 }
 });
 
 slide2.addText("營收成長率", { x: 0.8, y: 2.8, w: 3.1, h: 0.4, ...TEXT_STYLES.body, bold: true });
@@ -277,14 +272,12 @@ node index.js
 
 不曉得這套架構是否符合您的系統需求？如果接下來需要加入動態圖表 (Charts) 或 資料庫表格 (Tables)，我也可以提供對應的主題配色程式碼。
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-有辦法將 Figma Slide 的範本匯出成 pptxgenjs 的 theme.js 嗎?是否需要先轉換成 HTML?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 有辦法將 Figma Slide 的範本匯出成 pptxgenjs 的 theme.js 嗎?是否需要先轉換成 HTML?
+A:
 沒辦法直接一鍵匯出，而且「先轉換成 HTML」對產生 theme.js 沒有幫助。
 
-Figma 官方提供直接匯出成實體 .pptx 檔的功能，而許多社群外掛則專門用來轉換成「可編輯」的 PowerPoint 檔案。然而，PptxGenJS 本質上是一套「程式碼驅動」的渲染引擎，它需要的是明確的座標數字、HEX 顏色字串和文字大小配置，而不是圖形介面的設計檔或 HTML 標籤。 [1, 2, 3, 4] 
+Figma 官方提供直接匯出成實體 .pptx 檔的功能，而許多社群外掛則專門用來轉換成「可編輯」的 PowerPoint 檔案。然而，PptxGenJS 本質上是一套「程式碼驅動」的渲染引擎，它需要的是明確的座標數字、HEX 顏色字串和文字大小配置，而不是圖形介面的設計檔或 HTML 標籤。 [1, 2, 3, 4]
 
 如果希望自動化將 Figma 設計轉化為 PptxGenJS 代碼，以下是實務上的最佳解決方案：
 
@@ -294,7 +287,7 @@ Figma 官方提供直接匯出成實體 .pptx 檔的功能，而許多社群外�
 
 * 它只能粗糙地解析標準的 HTML `<table>` 表格。
 * 它完全無法解析複雜的 CSS 佈局（如 Flexbox, Grid, 圓角, 陰影等）。
-* 如果先將 Figma 轉成 HTML，再丟給 PptxGenJS，最終生成的簡報高機率會嚴重跑版、字型錯亂。 [1, 2, 5, 6, 7, 8] 
+* 如果先將 Figma 轉成 HTML，再丟給 PptxGenJS，最終生成的簡報高機率會嚴重跑版、字型錯亂。 [1, 2, 5, 6, 7, 8]
 
 ### 二、 正確的工程實作法：利用 Figma API 自動化生成
 
@@ -349,7 +342,7 @@ Figma 所有的設計元素都可以透過 API 取得 JSON 格式的樹狀結構
   }
 };
 // 輸出成可以被 theme.js 讀取的 JSON 或直接寫入 theme.js
-console.log("成功轉換為 PptxGenJS 參數：", pptxConfig);/* 
+console.log("成功轉換為 PptxGenJS 參數：", pptxConfig);/*
 輸出結果：
 {
   text: 'Slide Title',
@@ -360,14 +353,14 @@ console.log("成功轉換為 PptxGenJS 參數：", pptxConfig);/*
 
 ### 三、 懶人折衷法：圖層切圖匯出
 
-如果公司的母片（Master Slide）偏向視覺裝飾型（例如有很多複雜的網格、漸層背景、特殊向量幾何圖形），透過程式碼一行行繪製 Shape 會非常痛苦。 [5, 6] 
+如果公司的母片（Master Slide）偏向視覺裝飾型（例如有很多複雜的網格、漸層背景、特殊向量幾何圖形），透過程式碼一行行繪製 Shape 會非常痛苦。 [5, 6]
 
 這時建議採取半自動折衷作法：
 
 1\. 在 Figma 中，將沒有文字的純背景裝飾、特殊圖案直接 Export 成一張高解析度的 PNG 或 SVG。
 2\. 將該圖片封裝成 Base64 字串。
 3\. 在 PptxGenJS 的 defineSlideMaster 物件中，直接用一整張 image 鋪滿當作底圖。
-4\. 程式碼中只需要手動抓取 Figma 裡「動態文字區塊」的 x, y, w, h 位置即可。 [5, 9] 
+4\. 程式碼中只需要手動抓取 Figma 裡「動態文字區塊」的 x, y, w, h 位置即可。 [5, 9]
 
 您目前 Figma 上的設計稿，主要是文字、表格與簡單色塊居多，還是包含許多複雜的漸層、陰影或插圖呢？我可以根據您的設計複雜度給予具體的 API 欄位解析建議。
 
@@ -381,11 +374,9 @@ console.log("成功轉換為 PptxGenJS 參數：", pptxConfig);/*
 [8] [https://www.tpisoftware.com](https://www.tpisoftware.com/tpu/articleDetails/3347)
 [9] [https://deckary.com](https://deckary.com/blog/figma-to-powerpoint)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-如果有 PowerPoint 範本母片檔案,有什麼方式可以轉換成 pptxgenjs 的 theme.js 呢?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 如果有 PowerPoint 範本母片檔案,有什麼方式可以轉換成 pptxgenjs 的 theme.js 呢?
+A:
 如果是現有的 PowerPoint (.pptx) 範本檔案，同樣沒有官方一鍵轉換的工具，但相較於 Figma，從 PowerPoint 轉換成 PptxGenJS 代碼有更精準、更低成本的方法。
 因為 .pptx 檔案本質上是一個 ZIP 壓縮檔，裡面封裝了標準的 XML 結構（Office Open XML）。只要解析這些 XML，就能百分之百還原裡面所有物件的精確英吋座標、字型與顏色。
 
@@ -476,11 +467,9 @@ pptx.defineSlideMaster({
 
 您目前手邊的 PowerPoint 範本，視覺上是屬於偏向純色塊與表格的科技簡約風，還是有許多豐富轉折、漸層與複雜圖案的設計風呢？我可以進一步提供相關的轉換建議。
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-視覺上是屬於偏向純色塊與表格的科技簡約風
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 視覺上是屬於偏向純色塊與表格的科技簡約風
+A:
 ### 一、 支援不同情境的母片嗎？
 
 完全支援。 PptxGenJS 的 defineSlideMaster 可以讓你定義無限多個不同版型的母片。你只需要在 theme.js 中為每種情境命名（例如：TITLE_PAGE、AGENDA_PAGE），並在建立投影片時，指定要套用哪一個母片名稱即可。
@@ -493,7 +482,7 @@ const TECH_THEME = {
   colors: { darkBg: "0B192C", lightBg: "F9F9F9", primary: "1E3E62", textDark: "1E293B", textLight: "FFFFFF", muted: "94A3B8" }
 };
 function registerAllMasters(pptx) {
-  
+
   // 情境 1：標題頁 (深色大器背景，大標置中)
   pptx.defineSlideMaster({
     title: "MASTER_TITLE_PAGE",
@@ -538,7 +527,7 @@ function registerAllMasters(pptx) {
 }
 // 預設各版型的物件座標字典，方便主程式呼叫（確保排版整齊）const LAYOUT_SLOTS = {
   STANDARD: { titleX: 0.6, titleY: 0.5, contentX: 0.6, contentY: 1.5, contentW: 12.1, contentH: 5.0 },
-  TWO_COLUMN: { 
+  TWO_COLUMN: {
     titleX: 0.6, titleY: 0.5,
     col1X: 0.6, col1Y: 1.5, col1W: 5.5, col1H: 5.0,
     col2X: 7.2, col2Y: 1.5, col2W: 5.5, col2H: 5.0
@@ -620,7 +609,7 @@ function addIcon(slide, iconKey, customOptions = {}) {
     w: customOptions.w || icon.defaultW,
     h: customOptions.h || icon.defaultH,
     // PptxGenJS 支援設定替代文字，強化物件的語意化
-    desc: icon.description 
+    desc: icon.description
   };
 
   slide.addImage(finalOptions);

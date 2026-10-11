@@ -319,7 +319,7 @@ Wiki pages you might want to explore:
           modifications, see the
           [Checkpointing documentation](../cli/checkpointing.md).
 ```
-</td></tr></table>
+---
 > [!NOTE]
 > can gemini cli output to stdout?
 
@@ -497,7 +497,7 @@ The JSON output follows this high-level structure:
     `--output-format json` flag.
 ```
 
-</td></tr></table>
+---
 
 ## 2025-11-16
 
@@ -626,9 +626,8 @@ Configured MCP servers:
 
 ## 2026-02-11
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-where will Gemini CLI look for GEMINI_API_KEY? environment variable? .env file?
-</td></tr></table>
+<table><tr style="background-color:lightyellow;"><td>Q: where will Gemini CLI look for GEMINI_API_KEY? environment variable? .env file?
+---
 
 The **Gemini CLI** is designed to be highly flexible with where it looks for your `GEMINI_API_KEY`. It follows a specific "look-up" hierarchy, checking both standard environment variables and various `.env` file locations.
 
@@ -683,9 +682,8 @@ gemini --stats
 
 Would you like me to show you how to automate the loading of these keys for a specific terminal like Zsh or Bash?
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-is there a way to check which API key is gemini-cli currently using if I have multiple different GEMINI_API_KEY defined in .env of different folders?
-</td></tr></table>
+<table><tr style="background-color:lightyellow;"><td>Q: is there a way to check which API key is gemini-cli currently using if I have multiple different GEMINI_API_KEY defined in .env of different folders?
+---
 
 When you have nested `.env` files or multiple keys spread across your system, it can definitely feel like a game of "which key is it anyway?"
 
@@ -744,8 +742,7 @@ Since API keys are sensitive, the CLI won't usually print the whole string. Howe
 
 Would you like me to help you write a small shell script that prints the last 4 characters of the active key so you can identify it instantly?
 
-<table><tr style="background-color:lightyellow;"><td>實測</td><td>
-
+<table><tr style="background-color:lightyellow;"><td>實測
 1. `gemini --info` 不存在
 
 ```bash
@@ -818,16 +815,13 @@ Tips for getting started:
 
 4. 在 `gemini config list` 執行 `CLI Help Agent` 過程中，確認 `$GEMINI_API_KEY` 環境變數優先
 
-</td></tr></table>
+---
 
 ## 2026-06-23
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Gemini CLI 與 Antigravity CLI 的差異
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: Gemini CLI 與 Antigravity CLI 的差異
+A:
 ## Gemini CLI vs Antigravity CLI
 
 Antigravity CLI 是 Google 推出用來全面取代舊版 Gemini CLI 的新世代工具。 兩者最核心的本質差異在於，舊版 Gemini CLI 定位為「對話式的終端機 AI 助手」（偏向 Vibe Coding）；而新版 Antigravity CLI 則是「Agent（代理人）導向的開發平台」，專門為了多工編排、背景自動化與大型重構而設計。 [1, 2, 3, 4, 5]
@@ -881,9 +875,7 @@ Google 在 Google I/O 2026 正式推出 Antigravity 2.0，並宣布舊版的 Gem
 [10] [https://www.reddit.com](https://www.reddit.com/r/GeminiCLI/comments/1tuqr05/switched_to_antigravitycli_goodbye_geminicli/?tl=zh-hant)
 [11] [https://www.facebook.com](https://www.facebook.com/mukispace/posts/%E6%88%91%E5%AF%A6%E5%9C%A8%E6%90%9E%E4%B8%8D%E6%87%82-gemini-cli-%E5%92%8C-antigravity-cli-%E5%B7%AE%E5%9C%A8%E5%93%AA-/1430942695715476/)
 
-</td></tr>
-</table>
-
+---
 > [!NOTE]
 > 由於 Google 在 2026 年 5 月 19 日宣布全面淘汰個人版的 `gemini-cli`，並強制要求所有人在 **2026 年 6 月 18 日** 前全數遷移至 `agy` (Antigravity CLI)。                [[1](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)]
 > -   這意味著原先 Gemini CLI 的**數十萬名個人開發者與企業用戶**，已在這一個月內被迫全數轉換為 Antigravity CLI 的下載量。

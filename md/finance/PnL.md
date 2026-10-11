@@ -30,4 +30,4 @@ Here's a breakdown:
 
 -   **Structure:**
     PnL statements can be presented in various formats, but they generally show revenue, expenses, and the final profit or loss at the bottom.
-</td></tr></table>
+---

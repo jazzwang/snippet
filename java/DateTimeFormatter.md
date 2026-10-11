@@ -58,4 +58,4 @@ The difference between the two format patterns lies in the interpretation of the
       * **`DD`**: Represents the **day of the year**. The 11th of September is the **254th day** of a non-leap year. This pattern results in the string **"202509254"**.
 
 The `java.time` package, introduced in Java 8, is the modern API for handling dates and times. It provides robust and clear classes like `LocalDate` and `DateTimeFormatter`, which are generally preferred over the older `java.util.Date` and `java.text.SimpleDateFormat`.
-</td></tr></table>
+---

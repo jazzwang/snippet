@@ -110,7 +110,7 @@ Downloading a transcript from Microsoft Stream using Python or PowerShell requir
 -   The transcript is typically in `.vtt` (WebVTT) format.
 
 If you encounter issues, verify permissions and API endpoint availability. Let me know if you need further clarification!
-</td></tr></table>
+---
 
 ## from Perplexity
 
@@ -184,7 +184,7 @@ References: [[2]](https://techcommunity.microsoft.com/discussions/streamforum/do
 * * * *
 
 Answer from Perplexity: https://www.perplexity.ai/search/how-to-download-a-transcript-f-ENk5H5HOT7WrqucyUJ3YZg?utm\_source=copy\_output
-</td></tr></table>
+---
 
 ## from Gemini
 
@@ -511,4 +511,4 @@ This is the most challenging but potentially most robust method if you can ident
 4.  **Avoid direct API calls discovered through network inspection unless absolutely necessary** and you understand the authentication and potential for breaking changes. Microsoft might change these internal APIs without notice.
 
 Before attempting any automation, ensure you have the necessary permissions to access the Stream videos and their transcripts.
-</td></tr></table>
+---

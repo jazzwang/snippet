@@ -44,7 +44,7 @@ Set-CalendarProcessing -Identity "RoomName" -AutomateProcessing AutoAccept
 ---
 
 Would you like help setting this up for your account or for a shared mailbox/resource?
-</td></tr></table>
+---
 
 > [!NOTE]
 > how to disable auto-accept for meeting invitations?
@@ -87,16 +87,13 @@ This disables full auto-accept and switches to manual processing.
 ---
 
 Would you like help checking or changing this setting in your Outlook environment? I can guide you step-by-step based on your setup.
-</td></tr></table>
+---
 
 ## 2026-06-10
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-are there Microsoft Outlook MCP server which is not relied on Microsoft Graph API permission?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: are there Microsoft Outlook MCP server which is not relied on Microsoft Graph API permission?
+A:
 Yes, there are Microsoft Outlook Model Context Protocol (MCP) servers that do not rely on Microsoft Graph API cloud permissions. While the vast majority of community and official cloud integrations (like Microsoft's first-party Work IQ servers) interact directly via the Microsoft Graph REST API, you can bypass cloud API permissions entirely by using local OS-native APIs. [1, 2]
 
 ### 1. The Win32COM Local Outlook MCP Server [2]
@@ -137,11 +134,9 @@ If you want to look into setting up the Windows COM-based option, let me know if
 [10] [https://learn.microsoft.com](https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview?view=graph-rest-1.0)
 [11] [https://github.com](https://github.com/ryaker/outlook-mcp)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Does it means this Outlook MCP only support Windows? how about macOS?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: Does it means this Outlook MCP only support Windows? how about macOS?
+A:
 No, macOS is fully supported by alternative local Model Context Protocol (MCP) servers. [1, 2]
 While the specific Python server mentioned earlier relies on Windows COM APIs, the developer community has built equivalent local, zero-Graph-permission servers tailored specifically for macOS. Instead of using Windows COM automation, macOS implementations leverage AppleScript to talk directly to your locally running Outlook desktop app. [1, 3, 4, 5]
 ## Available Local macOS Outlook MCP Servers [6]
@@ -180,11 +175,9 @@ Which AI client (such as Claude Desktop or Cursor) are you trying to connect you
 [16] [https://www.youtube.com](https://www.youtube.com/watch?v=1oW6nmtiih0&t=448)
 [17] [https://theittrainingsurgery.com](https://theittrainingsurgery.com/outlook-365-for-mac/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-what technology is used by OpenClaw to login Microsoft Outlook?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: what technology is used by OpenClaw to login Microsoft Outlook?
+A:
 OpenClaw primarily relies on Microsoft Graph API and OAuth 2.0 authentication to log in and securely connect to Microsoft Outlook. [1, 2]
 The technical architecture used for authentication and login breaks down into the following specific components:
 ## 1. OAuth 2.0 Authentication Protocols
@@ -212,11 +205,9 @@ Are you attempting to set up a self-hosted local skill, or are you planning to u
 [9] [https://nedinthecloud.com](https://nedinthecloud.com/2026/05/01/how-to-set-up-an-exchange-online-mailbox-for-openclaw/)
 [10] [https://sfailabs.com](https://sfailabs.com/guides/connect-email-to-openclaw)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Outlook MCP
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: Outlook MCP
+A:
 Integrating an Outlook MCP (Model Context Protocol) server into OpenClaw allows your AI agents to seamlessly read, write, organize, and search your emails or calendars using standardized JSON-RPC 2.0 communication. [1, 2, 3]
 OpenClaw supports Outlook MCP integration through two main pathways, depending on how your MCP server connects to Microsoft's ecosystem: [4, 5]
 ## 1. Cloud-Based Gateway Integration (Microsoft Graph API) [3]

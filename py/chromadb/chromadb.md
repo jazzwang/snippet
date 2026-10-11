@@ -37,7 +37,7 @@ Despite this shift, the connection isn't entirely severed:
 * Tools might exist that facilitate data transfer or interaction between the two systems, though they aren't core to either project. For example, there's a record of "ClickPy" providing download analytics for ChromaDB within the ClickHouse ecosystem.
 
 **In essence, while ChromaDB initially had a dependency option for ClickHouse, it has since moved towards a more self-contained architecture. However, both are capable of handling vector data in different ways.** ChromaDB is built specifically as a vector database, while ClickHouse is a more general-purpose columnar database with added vector search functionality.
-</td></tr></table>
+---
 
 ### ChromeDB 與其他向量資料庫的比較表
 
@@ -73,7 +73,7 @@ Alright, let's get this updated comparison table whipped up for you, keeping in 
 * **Qdrant:** Balances ease of use and scalability with excellent filtering and the ability to store arbitrary JSON payloads alongside your vectors.
 
 Choosing the best one depends heavily on your project's specific requirements, scale, deployment needs, and your team's expertise.
-</td></tr></table>
+---
 
 ### ChromaDB 與 LlamaIndex 的整合範例
 
@@ -103,7 +103,7 @@ Here's how the integration works:
 * **Different ChromaDB Modes:** LlamaIndex supports various ChromaDB deployment modes, including in-memory, persistent local storage, and connecting to a remote ChromaDB server.
 
 **In short, ChromaDB is a first-class citizen in the LlamaIndex ecosystem, offering a robust and easy-to-use vector storage solution for your LLM-powered applications.** The integration simplifies the process of building retrieval-augmented generation (RAG) pipelines and other applications that rely on semantic search over your data.
-</td></tr></table>
+---
 
 - https://g.co/gemini/share/5708e3d5ae8e
 
@@ -409,7 +409,7 @@ print(f"Answer: {answer}")
 4.  Run the script from your terminal: `python git_rag.py`
 
 This will clone the LangChain repository, index its content in ChromaDB, and then answer the example questions based on the retrieved information. You can adapt the `repo_url`, file extensions, embedding model, and LLM according to your specific needs.
-</td></tr></table>
+---
 
 ### ChromaDB Local Storage
 
@@ -459,7 +459,7 @@ Within the `persist_directory` you specify, ChromaDB will create a structure con
 * Subdirectories for each collection (named with UUIDs): These directories contain the actual vector data (often in binary files like `header.bin`, `link_lists.bin`, `data_level0.bin` for the HNSW index) and metadata related to the vectors in that collection.
 
 So, to answer your question directly: **Yes, when configured with the `PersistentClient`, ChromaDB stores its data as local files within the directory you specify.** This makes it easy to have a local, persistent vector database for your applications.
-</td></tr></table>
+---
 
 ## 2025-04-15
 

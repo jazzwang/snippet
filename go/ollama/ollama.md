@@ -556,11 +556,9 @@ Long context: supports up to 128K tokens with yarn rope settings
 ## 2025-03-18
 
 -
-<table><tr><td>Q:</td><td>
-Is there a way to see API requests to ollama server? where can I find the log files?
+<table><tr><td>Q: Is there a way to see API requests to ollama server? where can I find the log files?
 </td></tr>
-<tr><td>A:</td><td>
-It's important to understand that "seeing API requests" can involve different levels of detail. You might want to see:
+<tr><td>A: It's important to understand that "seeing API requests" can involve different levels of detail. You might want to see:
 
 * **Basic server activity:** When the server receives requests, and any errors.
 * **Detailed request/response data:** The exact content of the API calls.
@@ -600,9 +598,7 @@ To get more detailed information, including more of the request/response data, y
 * The Ollama REST API documentation can be very useful for understanding the structure of the API requests and responses. The Postman documentation that is available online is a very useful resource.
 
 I hope this helps!
-</td></tr>
-</table>
-
+---
 ## 2025-03-22
 
 - 讀到 https://huggingface.co/spaces/ggml-org/gguf-my-repo 可以拿來把 HuggingFace 的模型轉成 GGUF 格式。

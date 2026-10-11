@@ -105,4 +105,4 @@ if __name__ == "__main__":
   * **API Token**: For private Confluence instances, you will need to set environment variables for your username, API token, and the instance URL for authentication. The library uses these to connect to the Atlassian API.
   * **HTML to Markdown**: The `confluence-markdown-exporter` package is an excellent choice as it uses the official Confluence API to get the page content, which is in a structured format (XHTML), and then converts it to Markdown. Other methods, like simply scraping the HTML from the public page and trying to convert it, are less reliable because they might miss complex formatting and macros.
   * **Output Structure**: The tool creates a directory structure that mirrors the Confluence space, e.g., `confluence_export/HADOOP/Roadmap.md`. You can access the converted Markdown content within that file.
-</td></tr></table>
+---

@@ -16,8 +16,7 @@
 
 <table>
 <tr><td>Q:</td><td><b>Are there tools to convert transcript vtt format file to json format?</b></td></tr>
-<tr><td>A:</td><td>
-Yes, there are several tools available online that can convert VTT (WebVTT) subtitle files to JSON format. Here are a couple of options:
+<tr><td>A: Yes, there are several tools available online that can convert VTT (WebVTT) subtitle files to JSON format. Here are a couple of options:
 
 1. **SubtitleGen**: This free online tool allows you to convert VTT files to JSON easily. You just need to upload your VTT file, select JSON as the output format, and click "Convert" [[1]](https://subtitlegen.com/tools/convert-vtt-to-json).
 
@@ -27,8 +26,7 @@ These tools should help you convert your VTT files to JSON format without any ha
 </td></tr>
 <tr><td colspan="2">考量不合適上傳到 Public Cloud Service，改問有沒有本地的命令列工具：</td></tr>
 <tr><td>Q:</td><td><b>Are there <mark>command line tools</mark> to convert transcript vtt format file to json format?</b></td></tr>
-<tr><td>A:</td><td>
-Yes, there are several command line tools available for converting VTT files to JSON format. Here are a couple of options:
+<tr><td>A: Yes, there are several command line tools available for converting VTT files to JSON format. Here are a couple of options:
 
 1. **vtt-json**: This tool can parse and serialize VTT files to JSON format. You can use it directly from the command line. Here's an example of how to use it:
    ```bash
@@ -44,9 +42,7 @@ Yes, there are several command line tools available for converting VTT files to 
    More information is available on its [npm page](https://www.npmjs.com/package/subsrt) [[2]](https://www.npmjs.com/package/subsrt).
 
 These tools should help you convert your VTT files to JSON format efficiently. If you need any further assistance, feel free to ask!
-</td></tr>
-</table>
-
+---
 ### Install 安裝
 
 - ( 2025-03-16 12:50:03 )

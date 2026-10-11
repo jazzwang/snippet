@@ -438,7 +438,7 @@ gh codespace create -r my-username/my-codespace-template -b main
 This will create a new codespace based on the `devcontainer.json` configuration and the files in your `my-codespace-template` repository. When a user creates a codespace from a template, the template repository's contents are cloned into their new codespace, and the link to the original template is severed. Users can then publish their work to a *new* repository under their own account.
 
 **In summary:** The `gh` CLI is excellent for interacting with existing codespaces and creating new ones from repositories (including template repositories), but the "template creation" itself involves setting up a standard GitHub repository with a `.devcontainer` configuration and marking it as a template through GitHub's web interface or the `gh repo create --template` command.
-</td></tr></table>
+---
 > [!NOTE]
 > could you give me a step-by-step command line instruction to create a github page?
 
@@ -650,7 +650,7 @@ This type of page uses an existing or new repository and typically serves conten
   * **Jekyll:** GitHub Pages has built-in support for Jekyll, a static site generator. If you plan to use Jekyll, your workflow will involve building your Jekyll site and pushing the output (usually to the `_site` directory) to your GitHub Pages source.
   * **Deployment Time:** GitHub Pages deployment can take a few minutes. If your page doesn't appear immediately, give it some time. You can often see the deployment status in your repository's "Actions" tab.
   * **Troubleshooting:** If your page isn't showing up, check the "Pages" section in your repository settings on GitHub.com for any error messages or build logs. Also, ensure your `index.html` file (or other entry point) is correctly named and located according to your chosen publishing source.
-</td></tr></table>
+---
 
 - ( 2025-07-06 08:07:26 )
 - 實測：
@@ -778,7 +778,7 @@ Replace `octocat` with the desired username.
 -----
 
 Would you like me to generate a complete shell script that automatically iterates through all pages of the Search API to get the full list of repositories contributed by a specific user?
-</td></tr></table>
+---
 
 - 上述結果看起來比較像是特定使用者曾經發過的 Pull Request 列表
 - 實測：用 Github 個人帳號
@@ -907,7 +907,7 @@ gh api graphql -f query='
   * **Note:** The GraphQL API also requires **pagination** (using the `after: $cursor` variables) to get a truly complete list of hundreds or thousands of contributed repositories. The script above only retrieves the first 100 results.
 
 Would you like me to show you how to construct a more complex script that handles the necessary **pagination** using the GraphQL API or the REST API search command for a full, comprehensive list?
-</td></tr></table>
+---
 
 - 實測：
 
@@ -1067,7 +1067,7 @@ curl -sS -G \
 The user in this scenario would be looking for the fastest, most effective way to track merge activity, which the `gh cli` provides in a single command. The included video shows how to use the `gh cli` for general PR management.
 
 You can learn more about managing pull requests from the command line by checking out [Create, View, and Merge GitHub PRs with the gh CLI](https://www.youtube.com/watch?v=EXlLKq4kuvQ).
-</td></tr></table>
+---
 
 ----
 
@@ -1143,7 +1143,7 @@ You can use the `pullRequestReviewContributionsByRepository` field within a user
 ```
 
 You would use the `gh api graphql` command to execute this, adding pagination logic to retrieve all results.
-</td></tr></table>
+---
 
 - 後記：
   - 後來把 Github CLI 的 Authentication 切換成 Github Enterprise 確實也可以得到團隊成員曾經 commit 過的 Git Repo
@@ -1153,12 +1153,9 @@ You would use the `gh api graphql` command to execute this, adding pagination lo
 
 ## 2026-07-07
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-can I trigger github action via gh CLI?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: can I trigger github action via gh CLI?
+A:
 ### Trigger Github Action via Github CLI
 
 Yes, you can absolutely trigger a GitHub Actions workflow using the GitHub CLI (`gh`). [1]
@@ -1234,5 +1231,4 @@ If you want to dive deeper, let me know if you need help setting up workflow inp
 [15] [https://cli.github.com](https://cli.github.com/manual/gh_run_watch)
 [16] [https://dev.to](https://dev.to/nadia/github-cli-working-with-github-workflow-from-terminal-1dd8)
 [17] [https://cli.github.com](https://cli.github.com/manual/gh_run_list)
-</td></tr>
-</table>
+---

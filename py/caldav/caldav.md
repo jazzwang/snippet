@@ -29,7 +29,7 @@ If you need to programmatically create calendar events in Confluence, your best 
 * **Exploring third-party add-ons:** Check the Atlassian Marketplace for Confluence add-ons that specifically offer a documented REST API for their calendar functionalities.
 
 Always refer to the official Atlassian Developer documentation for the most up-to-date and supported REST API information for your specific Confluence version (Cloud, Server, or Data Center).
-</td></tr></table>
+---
 
 > [!NOTE]
 > could you give me a python example to leveraging confluence CalDAV API to create a new event?
@@ -165,4 +165,4 @@ if __name__ == "__main__":
   * **Confluence Version:** While CalDAV support is a standard feature of Team Calendars, always check your specific Confluence version's documentation for any nuances or requirements.
 
 This example provides a solid foundation for programmatically creating events in Confluence Team Calendars via their CalDAV API.
-</td></tr></table>
+---

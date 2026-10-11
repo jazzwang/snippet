@@ -16,15 +16,12 @@
     - 看起來合適跟 Agent 整合在一起。
     - 本地模型 - 需要 2 GB 硬碟空間
 - 研究：
-  - 比較 QMD 與 Obsidian 
+  - 比較 QMD 與 Obsidian
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-QMD (https://github.com/tobi/qmd) 與 Obsidian (https://obsidian.md/) 的優缺點 side-by-side 比較表
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search AI Mode
-</td></tr><tr><td>A:</td><td>
-
-QMD (Query Markup Documents) 與 Obsidian 是兩款定位完全不同的工具：QMD 是一個專為 AI 與終端機設計的本地「智慧搜尋引擎」，而 Obsidian 則是一套面向人類用戶的「視覺化知識管理與筆記軟體」。 [1, 2, 3, 4, 5] 
+<table><tr style="background-color:lightyellow;"><td>Q: QMD (https://github.com/tobi/qmd) 與 Obsidian (https://obsidian.md/) 的優缺點 side-by-side 比較表
+</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Search AI Mode
+A:
+QMD (Query Markup Documents) 與 Obsidian 是兩款定位完全不同的工具：QMD 是一個專為 AI 與終端機設計的本地「智慧搜尋引擎」，而 Obsidian 則是一套面向人類用戶的「視覺化知識管理與筆記軟體」。 [1, 2, 3, 4, 5]
 
 以下為兩者的優缺點 Side-by-Side 橫向對比表：
 
@@ -40,11 +37,11 @@ QMD (Query Markup Documents) 與 Obsidian 是兩款定位完全不同的工具�
 
 ## 兩者如何做出選擇？
 
-* 選擇 QMD 的場景：如果您是一名開發者，或者正在構建基於 AI Agents 的本地工作流（例如 [Claude Code](https://github.com/tobi/qmd)），且擁有數千個 Markdown 檔案或技術文件，希望 AI 能在不翻遍整個資料夾的情況下精準撈出最相關的段落，QMD 是極佳的後端檢索側車。 [6, 7, 8] 
-* 選擇 Obsidian 的場景：如果您需要一個日常記錄想法、寫日記、管理專案進度、構建第二大腦的工具，且需要舒適的閱讀與動手編輯體驗，那麼擁有強大外掛生態與跨平台介面的 Obsidian 絕對是首選。 [5, 16] 
+* 選擇 QMD 的場景：如果您是一名開發者，或者正在構建基於 AI Agents 的本地工作流（例如 [Claude Code](https://github.com/tobi/qmd)），且擁有數千個 Markdown 檔案或技術文件，希望 AI 能在不翻遍整個資料夾的情況下精準撈出最相關的段落，QMD 是極佳的後端檢索側車。 [6, 7, 8]
+* 選擇 Obsidian 的場景：如果您需要一個日常記錄想法、寫日記、管理專案進度、構建第二大腦的工具，且需要舒適的閱讀與動手編輯體驗，那麼擁有強大外掛生態與跨平台介面的 Obsidian 絕對是首選。 [5, 16]
 
 > 💡 最佳實踐（強強聯手）：
-> 實際上這兩者完全不衝突。社群上許多科技愛好者的作法是：<mark>使用 Obsidian 作為前端</mark>來撰寫、儲存與視覺化管理所有的 Markdown 筆記（Vault），同時在後端<mark>利用 QMD 去索引 Obsidian 的資料夾</mark>。這樣一來，人類可以在 Obsidian 享受精美的圖形介面，而 AI 夥伴也可以透過 QMD 獲得極高效率的本地語意檢索能力！ [3, 5, 8, 13] 
+> 實際上這兩者完全不衝突。社群上許多科技愛好者的作法是：<mark>使用 Obsidian 作為前端</mark>來撰寫、儲存與視覺化管理所有的 Markdown 筆記（Vault），同時在後端<mark>利用 QMD 去索引 Obsidian 的資料夾</mark>。這樣一來，人類可以在 Obsidian 享受精美的圖形介面，而 AI 夥伴也可以透過 QMD 獲得極高效率的本地語意檢索能力！ [3, 5, 8, 13]
 
 如果您想嘗試這種組合，您可以告訴我您的操作系統（Mac/Windows）與日常使用的 AI 工具（如 Claude Code），我可以為您說明如何將 QMD 配置到您的 Obsidian 筆記庫中。
 
@@ -65,9 +62,7 @@ QMD (Query Markup Documents) 與 Obsidian 是兩款定位完全不同的工具�
 [15] [https://github.com](https://github.com/tobi/qmd?ref=jarsen.engineer)
 [16] [https://www.reddit.com](https://www.reddit.com/r/ObsidianMD/comments/z6hkzy/obsidian_vs_everything_else/?tl=zh-hant)
 
-</td></tr>
-</table>
-
+---
 - 根據比較結果，混合兩個工具反而是最好的作法：
   - Obsidian 給人寫筆記用
   - QMD 給 AI Agent 索引用

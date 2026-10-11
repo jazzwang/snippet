@@ -69,7 +69,7 @@
 * **Initialism** 是「不可拼讀」的首字母縮寫。
 
 因為 Initialism 和 Acronym **都**是用首字母構成的，所以在口語中，人們經常會將它們統稱為 **Acronym**（首字母縮略詞），但嚴格來說，發音方式是區分它們的關鍵。
-</td></tr></table>
+---
 
 > [!NOTE]
 > could you visualize the relationship between Terminology, Glossary, Abbreviation, Acronym, Initialism using plantuml syntax?
@@ -135,7 +135,7 @@ end legend
   * **Acronym** and **Initialism** are **two specific types** of Abbreviation, both created using the first letter of each word in a phrase.
       * **Acronym** is the type that is **pronounced as a single word** (e.g., NASA, NATO).
       * **Initialism** is the type that is **pronounced by spelling out each letter** (e.g., FBI, QAT).
-</td></tr></table>
+---
 
 ![](https://img.plantuml.biz/plantuml/svg/RLEnJiCm5DmZvH-UkhGCRVSCg0KALAeOQ9aGmslgfbOTEx8Tr0Znx_ZPJcCG6QBuxdJlV4zP68lQjhN8ipnhi3nZnM2qGLcrzBKIh6RIcX5yvHcuvtt7TCsb4ghgFW0Dq3bIJq8PWphW_X29vNwlsIT7ovNq904zLsebkph0xZl2QyajHy5DOEX82OaRGv81K1wW7molJFWXviIR82OfJAUtGGC5b4fQvDB0PDlk3RDmL1eG3gfiwQOtmvGqDJnpfb6Nfowmn7bRYknSkG4b6NdLe8v_D1J-7ytthyhlbInPOs5rmReHB6dyPRbT-X9MbwIWnxjr14Ct7dpGirvvRJY6ePmK9ZNnmG8uc5nZzoO-vnXYm1O5RBWy6rzSAL1pwqhnFSzcVH-jOMO0Om4138iOf6x7DeMZEC9v9bZ5t8urhqu-ORfZs7KDCmN1Bd116Vrovwvh1El8k0tdMy2Rcp_Va2zC_jp6hPs6X5bvjd1lzq_y0000)
 
@@ -248,7 +248,7 @@ Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍�
 [6] [https://www.gate.com](https://www.gate.com/zh-tw/learn/articles/what-is-distributed-ledger-technology-dlt/1)
 [7] [https://aws.amazon.com](https://aws.amazon.com/tw/web3/decentralization-in-blockchain/)
 [8] [https://www.kaspersky.com.tw](https://www.kaspersky.com.tw/resource-center/definitions/what-is-blockchain-security)
-</td></tr></table>
+---
 
 ## 2026-06-11
 

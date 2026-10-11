@@ -118,8 +118,7 @@ If you are not a developer and just want to use this feature as an end-user:
 
 **Would you like me to provide a complete Python script template that handles the full automation loop for you?**
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 yes, could you provide a complete Python script template?
 
 
@@ -263,4 +262,4 @@ if __name__ == "__main__":
 * **Sensitive Data:** Avoid letting the agent navigate to pages with saved credit cards or passwords unless you are monitoring it in "non-headless" mode.
 
 **Would you like me to show you how to add a "Human-in-the-loop" confirmation step so the AI asks for your permission before clicking "Buy" or "Send"?**
-</td></tr></table>
+---

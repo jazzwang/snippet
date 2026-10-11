@@ -8,7 +8,7 @@
   - 從 hashtag https://www.youtube.com/hashtag/ornith
   - 用 Ornith 9B Benchmarked vs Qwen 9B - Local 8GB GPU LLM options 生成以下摘要
     - https://www.youtube.com/watch?v=qLFNNRxwd5s
-<table><tr style="background-color:lightgreen;"><td>
+-
 Tool: Google NotebookLM
 </td></tr><tr><td>
 
@@ -97,9 +97,7 @@ Tool: Google NotebookLM
 
 若追求更強的長文本檢索能力，應考慮轉向 27B（如 Gemma）或 35B 以上級別的稠密模型（Dense Models），小型模型在目前的技術限制下，尚無法完美處理極大規模的上下文檢索。
 
-</td></tr>
-</table>
-
+---
 
 ## Ornith 1.0
 

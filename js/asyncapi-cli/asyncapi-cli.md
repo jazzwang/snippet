@@ -12,12 +12,9 @@
 - 緣起：想了解是否有 OpenAPI 生成 Event-Driven Kafka + Spring Boot Backend API 的工具
 - 發想：
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-給定 https://petstore.swagger.io/v2/swagger.json OpenAPI 規格，有辦法逆向生成 data model 嗎？
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 給定 https://petstore.swagger.io/v2/swagger.json OpenAPI 規格，有辦法逆向生成 data model 嗎？
+A:
 ## OpenAPI JSON to Data Model
 
 可以，完全沒問題。 透過該 OpenAPI 規格（Swagger JSON），你可以使用多種自動化工具，在幾秒鐘內逆向生成各個主流程式語言（如 TypeScript, Python, Java, Go 等）的 Data Model（資料模型/結構體）。
@@ -91,11 +88,9 @@ formodel_name, model_infoin models.items():
 透過 `https://petstore.swagger.io/v2/swagger.json` 逆向生成 Data Model 是完全可行且屬於業界標準實踐。你可以依據需求選擇 Quicktype 線上工具（適合單次快速生成）或 OpenAPI Generator CLI（適合專案自動化）。
 請問你目前專案主要使用的是哪一種程式語言（例如：TypeScript、Python、Go）？我可以為你提供該語言專屬的具體程式碼生成範例與指令。
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-有辦法生成資料庫的 ER Model 嗎？
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 有辦法生成資料庫的 ER Model 嗎？
+A:
 ## OpenAPI JSON to SQL ER Model
 
 可以，完全沒問題。
@@ -177,11 +172,9 @@ erDiagram
 1.  想要直接能看圖的 Mermaid 完整代碼（我可以幫你把該 Petstore 的完整關聯都寫出來）
 2.  想要直接能建立資料庫表的 SQL DDL 語法？
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-從 OpenAPI JSON 可以觀察或者推論 Microservice 的 DDD 該如何設計嗎？
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 從 OpenAPI JSON 可以觀察或者推論 Microservice 的 DDD 該如何設計嗎？
+A:
 ## OpenAPI to MicroService DDD
 
 可以，但僅限於「由外而內」的推論。
@@ -260,11 +253,9 @@ DDD 強調行為（Behavior）而非單純的 CRUD。我們可以從 API 的操�
 [5] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/1961098035212822222)
 [6] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/31130773)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Event-driven 的 Microservice 還會走 contract first 的設計嗎？
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: Event-driven 的 Microservice 還會走 contract first 的設計嗎？
+A:
 ## Event-driven Microservice - Contract First Design
 
 會，而且比同步（HTTP/REST）架構更需要 Contract First（契約優先）的設計。 [1]
@@ -337,11 +328,9 @@ asyncapi: 3.0.0info:
 [1] [https://medium.com](https://medium.com/peerone-technology-%E7%9A%AE%E5%81%B6%E7%8E%A9%E4%BA%92%E5%8B%95%E7%A7%91%E6%8A%80/%E5%9F%BA%E6%96%BC-event-driven-architecture-%E7%82%BA%E5%BE%AE%E6%9C%8D%E5%8B%99%E6%9E%B6%E6%A7%8B%E6%89%93%E9%80%A0-auth-service-a81aac364b21)
 [2] [https://cloud.tencent.com](https://cloud.tencent.com/developer/article/2099617)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Kafka + Avro 該如何搭配 AsyncAPI 來落地 Contract First 呢？有沒有 Hello World 等級的 Contract 範本？
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: Kafka + Avro 該如何搭配 AsyncAPI 來落地 Contract First 呢？有沒有 Hello World 等級的 Contract 範本？
+A:
 ## AsyncAPI - Contract First - Hello World Template
 
 在 Kafka + Avro 的生態系中，落地 Contract First 的核心秘密是：AsyncAPI 負責定義「通道（Topic）與通訊規則」，而 Avro Schema（`.avsc`）負責定義「精準的資料結構」。
@@ -442,11 +431,9 @@ npx @asyncapi/cli generate html asyncapi.yaml -o ./docs
 
 你目前正在架構的系統，預計會使用哪種程式語言來開發 Kafka 的 Consumer 或 Producer 呢？我可以提供該語言如何將 `.avsc` 自動轉成強型別 Model 的具體工具配置。
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-AsyncAPI 有類似 petstore 的範例嗎？
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: AsyncAPI 有類似 petstore 的範例嗎？
+A:
 ## AsyncAPI PetStore YAML Example
 
 有的，AsyncAPI 官方與微服務社群（如 [Microcks.io](https://microcks.io/)）最常拿來當作標準教學與測試的範例，正是 AsyncAPI 版的 Petstore。 [1, 2]
@@ -487,11 +474,9 @@ servers:
 [7] [https://medium.com](https://medium.com/@jack43581996/asyncapi-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-122ae469b6b0)
 [8] [https://www.asyncapi.com](https://www.asyncapi.com/docs/tools/generator/asyncapi-document)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-https://github.com/asyncapi/asyncapi-react/ 是拿來實作 AsyncAPI 的 React.js Frontend 用的嗎?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: https://github.com/asyncapi/asyncapi-react/ 是拿來實作 AsyncAPI 的 React.js Frontend 用的嗎?
+A:
 ## AsyncAPI React Web Component
 
 是的，完全正確。
@@ -538,11 +523,9 @@ functionApiDocsPage() {
 
 您可以將該套件整合至前端頁面中，透過 `<AsyncApiComponent schema={...} />` 載入 AsyncAPI 規格。建議您參閱 [官方 GitHub 範例與文件](https://github.com/asyncapi/asyncapi-react) 以了解詳細用法與樣式自訂，以及 [使用 VS Code 的 AsyncAPI 擴充套件](https://marketplace.visualstudio.com/items?itemName=asyncapi.asyncapi-preview) 進行本地快速預覽。
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-給定 AsyncAPI 的 YAML 可以對應生成 React.js 的 Mock UI 嗎？
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 給定 AsyncAPI 的 YAML 可以對應生成 React.js 的 Mock UI 嗎？
+A:
 ## AsyncAPI to React.js MOCK UI
 
 可以，但需要釐清「Mock UI」在非同步（Event-Driven）架構下的定義與實踐方式。
@@ -551,7 +534,7 @@ functionApiDocsPage() {
 
 ### 思路一：使用官方 asyncapi-react（純前端展示與範例模擬）
 
-前文提到的 @asyncapi/react-component 雖然主要功能是渲染文檔，但它其實內建了 Mock（模擬）的視覺化區塊。 [1] 
+前文提到的 @asyncapi/react-component 雖然主要功能是渲染文檔，但它其實內建了 Mock（模擬）的視覺化區塊。 [1]
 
 * 怎麼做：只要你的 AsyncAPI YAML 裡面有寫 examples（範例資料），這個 React 元件就會自動在 UI 上生成一個極為精美的 Message Payload Mock 區塊。
 * 效果：前端工程師或測試人員可以在 React 網頁上看到：「噢！如果未來 OrderPlaced 事件觸發了，在 Kafka 裡面流動的 JSON/Avro 實體就會長成像 UI 上模擬的這個樣子。」
@@ -565,20 +548,20 @@ functionApiDocsPage() {
 
 #### 1. 搭配 Microcks (最推薦的微服務 Mock 方案)
 
-[Microcks.io](https://microcks.io/) 是目前非同步 API 最強大的 Mock 引擎。 [2] 
+[Microcks.io](https://microcks.io/) 是目前非同步 API 最強大的 Mock 引擎。 [2]
 
-* 運作原理：你把 AsyncAPI YAML 丟給 Microcks，它會自動在後端幫你關聯一個「記憶體內的虛擬 Kafka Broker」，並依據規格書的範例定時或定量發送 Mock 事件。 [2, 3] 
+* 運作原理：你把 AsyncAPI YAML 丟給 Microcks，它會自動在後端幫你關聯一個「記憶體內的虛擬 Kafka Broker」，並依據規格書的範例定時或定量發送 Mock 事件。 [2, 3]
 * React 結合方式：你可以自己寫一個簡單的 React UI，透過 WebSocket 或 SSE（Server-Sent Events）連線到 Microcks。這樣一來，你的 React UI 就能即時跳出「Mock 事件已經發佈」的動態通知，達成完美的端到端 Mock 體驗。
 
 #### 2. 搭配 Mock-Server 的 AsyncAPI Broker Mocking
-[Mock-Server](https://www.mock-server.com/) 支援讀取 AsyncAPI 規格書。它會解析 YAML 中的 components.messages，並利用內建的 MessageExampleGenerator 依據你的資料型別（如 string, int）自動盲猜並生成極度逼真的 Mock 資料，並幫你真的 Publish 到指定的 Kafka Topic 上。 [4] 
+[Mock-Server](https://www.mock-server.com/) 支援讀取 AsyncAPI 規格書。它會解析 YAML 中的 components.messages，並利用內建的 MessageExampleGenerator 依據你的資料型別（如 string, int）自動盲猜並生成極度逼真的 Mock 資料，並幫你真的 Publish 到指定的 Kafka Topic 上。 [4]
 
 ### 🚀 如果你想動手做一個「React 事件產生器 UI」
 
 如果你想在 React 專案中寫一個內部的測試工具，讓開發者可以選取 Topic 並一鍵 Mock 發送，你可以利用 AsyncAPI 官方的 JavaScript SDK（或 Parser） 來逆向動態生成 UI 表單：
 
    1. 在 React 中引入 @asyncapi/parser。
-   2. 讀取你的 AsyncAPI YAML，利用 asyncapi.allMessages() 撈出所有的事件結構。 [5] 
+   2. 讀取你的 AsyncAPI YAML，利用 asyncapi.allMessages() 撈出所有的事件結構。 [5]
    3. 利用迴圈遍歷該結構的 properties（欄位與型別），在 React 畫面上動態渲染出對應的輸入表單（Input text, Number filter）。
    4. 當使用者在 React 畫面上填完假資料、點擊「送出」時，背後透過一個簡單的 Node.js/Python BFF（Backend For Frontend）當代理，把這筆資料封裝成 Avro/JSON 送進測試環境的 Kafka。
 
@@ -590,9 +573,7 @@ functionApiDocsPage() {
 [4] [https://www.mock-server.com](https://www.mock-server.com/mock_server/asyncapi_messaging.html)
 [5] [https://www.asyncapi.com](https://www.asyncapi.com/docs/tools/generator/asyncapi-document)
 
-</td></tr>
-</table>
-
+---
 - 安裝 AsyncAPI CLI
 - https://github.com/asyncapi/cli/blob/master/docs/installation.md
 ```bash

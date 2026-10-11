@@ -64,7 +64,7 @@ Ongoing development at Google Labs focuses on expanding file format support and 
 
 ---
 Answer from Perplexity: https://www.perplexity.ai/search/what-are-the-technical-compone-Dn.p5lESRVGABAfpDTppQQ?utm_source=copy_output
-</td></tr></table>
+---
 
 ### From Gemini
 
@@ -103,7 +103,7 @@ While there isn't a single, definitive research paper specifically detailing the
 It's important to note that Google often integrates its research advancements into its products without necessarily publishing a dedicated paper for each one, especially for experimental products like NotebookLM. However, the underlying technologies and concepts are well-established in the AI research community, with Google being a significant contributor.
 
 As NotebookLM evolves from an experimental phase to a more integrated part of Google Workspace, more specific technical details or even research publications might become available in the future. For now, understanding its features and the general landscape of AI research provides a good insight into its likely technical components.
-</td></tr></table>
+---
 
 ## 2025-05-01
 
@@ -162,7 +162,7 @@ Yes, there are ways to interact with Google NotebookLM programmatically, though 
 * For **personal or smaller-scale projects**, you might explore **community-driven Python libraries or unofficial APIs**, keeping in mind the potential stability and security considerations.
 
 If you're looking to build a robust application, investigating the official enterprise API or the underlying Google Cloud AI services that power NotebookLM would be the most reliable long-term solution.
-</td></tr></table>
+---
 
 - [Set up NotebookLM Enterprise  |  Google Agentspace  |  Google Cloud](https://cloud.google.com/agentspace/notebooklm-enterprise/docs/set-up-notebooklm#:~:text=Go%20to%20project%20selector,Enable%20the%20API)
 

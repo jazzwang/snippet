@@ -133,16 +133,13 @@ observer.observe(targetNode, config);
 
 ## 2026-05-28
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-how can I use JavaScript and Chrome DevTool to change heigh of div with data-tid="closed-caption-renderer-wrapper" to 50px?
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-
+<table><tr style="background-color:lightyellow;"><td>Q: how can I use JavaScript and Chrome DevTool to change heigh of div with data-tid="closed-caption-renderer-wrapper" to 50px?
+</td></tr><tr style="background-color:lightgreen;"><td>Tool:
 - May 28 at 9:41 PM
 - Google Gemini Apps
 - Gemini 3.5 Flash | Thinking Level: Standard
 
-</td></tr><tr><td>A:</td><td>
-You can do this easily using the browser Console inside Chrome DevTools. Here is the quickest way to find that specific `div` and change its height to 50px.
+A: You can do this easily using the browser Console inside Chrome DevTools. Here is the quickest way to find that specific `div` and change its height to 50px.
 
 ### Step-by-Step Guide
 
@@ -165,11 +162,9 @@ document.querySelector('div[data-tid="closed-caption-renderer-wrapper"]').style.
 document.querySelector('div[data-tid="closed-caption-renderer-wrapper"]').style.setProperty('height', '50px', 'important');
 ```
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-can I remove div with data-tid="app-layout-area--title-bar"?
-</td></tr><tr><td>A:</td><td>
-Yes, absolutely. You can completely remove that element from the webpage using a very similar approach in the Chrome DevTools Console.
+> [!NOTE]
+> Q: can I remove div with data-tid="app-layout-area--title-bar"?
+A: Yes, absolutely. You can completely remove that element from the webpage using a very similar approach in the Chrome DevTools Console.
 
 Here is the JavaScript line to delete it:
 
@@ -189,11 +184,9 @@ document.querySelector('div[data-tid="app-layout-area--title-bar"]').remove();
 * `.remove()` completely deletes the element from the current page's DOM (the HTML structure).
 
 > ⚠️ **Note:** This change is temporary. It only affects your local view of the page. If you refresh or navigate away, the title bar will come right back!
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-how can I make it invisible instead of remove it?
-</td></tr><tr><td>A:</td><td>
-If you want to hide the title bar without completely deleting it from the HTML structure, you have two great options. Making it invisible is often better because it keeps the page layout intact or allows you to bring it back easily later.
+> [!NOTE]
+> Q: how can I make it invisible instead of remove it?
+A: If you want to hide the title bar without completely deleting it from the HTML structure, you have two great options. Making it invisible is often better because it keeps the page layout intact or allows you to bring it back easily later.
 
 You can use either of these lines in your Chrome DevTools Console:
 
@@ -227,9 +220,7 @@ if (titleBar) {
     titleBar.style.display = titleBar.style.display === 'none' ? '' : 'none';
 }
 ```
-</td></tr>
-</table>
-
+---
 ## 2026-06-24
 
 - 在 DOM 中，有代表目前與會人數的區塊
@@ -238,11 +229,11 @@ if (titleBar) {
 ```
 - 在 DOM 中，結束會議的按鈕是
 ```html
-<button type="button" 
-        data-track-action-gesture="click" 
-        data-track="true" 
-        aria-keyshortcuts="Ctrl+Shift+H" 
-        aria-label="Leave" 
+<button type="button"
+        data-track-action-gesture="click"
+        data-track="true"
+        aria-keyshortcuts="Ctrl+Shift+H"
+        aria-label="Leave"
         id="hangup-button"
         >
 ```

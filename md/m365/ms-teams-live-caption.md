@@ -40,4 +40,4 @@ This is tedious and not ideal for long meetings.
 ---
 
 Would you like help setting up the Chrome extension or enabling Live Transcription in your Teams meetings?
-</td></tr></table>
+---

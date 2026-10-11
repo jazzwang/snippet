@@ -146,7 +146,7 @@ def count_words_simple(file_path):
 # word_count = count_words_simple('my_text_file.txt')
 # print(f"Simple word count: {word_count}")
 ```
-</td></tr></table>
+---
 - 初步從結果可以知道不同的 LLM 模型，可能因為 encoding 的方法不同，所以對於 token 的認定也不同，所以給出三種不同的實作（第四種用空白切 token 的方法不試用中日文語系）
   - Gemini - 用 `google-genai` 函式庫
   - OpenAI - 用 `tiktoken` 函式庫

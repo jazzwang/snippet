@@ -74,7 +74,7 @@ This query will return all issues that are due within the next 14 days.
     ```
 
 Let me know if you need further clarification or additional examples!
-</td></tr></table>
+---
 
 - 參考：
   - https://confluence.atlassian.com/jirasoftwareserver103/advanced-searching-1489806138.html

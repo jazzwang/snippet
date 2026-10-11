@@ -380,4 +380,4 @@ By following this comprehensive learning path, individuals can gain the expertis
 46. Databricks Certification, accessed June 5, 2025, [https://www.databricks.com/learn/training/certification](https://www.databricks.com/learn/training/certification)
 47. Databricks and streamlit and fast API combination, accessed June 5, 2025, [https://community.databricks.com/t5/get-started-discussions/databricks-and-streamlit-and-fast-api-combination/td-p/63992](https://community.databricks.com/t5/get-started-discussions/databricks-and-streamlit-and-fast-api-combination/td-p/63992)
 48. Databricks Apps \- Streamlit Performance Hangups, accessed June 5, 2025, [https://community.databricks.com/t5/data-engineering/databricks-apps-streamlit-performance-hangups/td-p/110264](https://community.databricks.com/t5/data-engineering/databricks-apps-streamlit-performance-hangups/td-p/110264)
-</td></tr></table>
+---

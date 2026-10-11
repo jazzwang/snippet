@@ -17,17 +17,14 @@
 
 ## 2026-06-01
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-
+<table><tr style="background-color:lightyellow;"><td>Q:
 could you compare 2 Agent Memory tool: GBrain (https://github.com/garrytan/gbrain) and Mempalace (https://mempalaceofficial.com)? try to create side-by-side comparison.
 
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-
+</td></tr><tr style="background-color:lightgreen;"><td>Tool:
 - Google Gemini App
 - Gemini 3.5 Flash (Thinking: Extend)
 
-</td></tr><tr><td>A:</td><td>
-
+A:
 Both **GBrain** and **MemPalace** represent cutting-edge approaches to **AI Agent Memory Systems**. While they solve the same core problem---giving AI agents long-term context and perfect recall---they lean on completely opposite engineering philosophies.
 
 **GBrain** is built around **practical minimalism**, leveraging local-first developer tools like Markdown and Git. **MemPalace** is inspired by the **cognitive Method of Loci**, relying on a rigid, highly structured spatial metaphor and literal "verbatim" data preservation to score record-breaking retrieval benchmarks.
@@ -75,17 +72,12 @@ MemPalace approaches the token limit problem through strict organization rather 
 
 -   **Choose MemPalace if:** You are building a complex, commercial multi-agent framework where agents play different roles (architect, reviewer, user), and you require industry-leading retrieval accuracy (96%+ benchmarks) without paying massive LLM-as-a-judge reranking fees.
 
-</td></tr>
-</table>
-
+---
 ## 2026-06-02
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Agent Memory alternatives to GBrain or Mempalace
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search AI Mode
-</td></tr><tr><td>A:</td><td>
-Several powerful agent memory alternatives can replace GBrain (known for its opinionated execution logic) or MemPalace (known for structured spatial archiving). The best choice depends on whether a plug-and-play memory layer, a graph-based reasoning system, or a completely local footprint is required. [1, 2, 3, 4]
+<table><tr style="background-color:lightyellow;"><td>Q: Agent Memory alternatives to GBrain or Mempalace
+</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Search AI Mode
+A: Several powerful agent memory alternatives can replace GBrain (known for its opinionated execution logic) or MemPalace (known for structured spatial archiving). The best choice depends on whether a plug-and-play memory layer, a graph-based reasoning system, or a completely local footprint is required. [1, 2, 3, 4]
 ------------------------------
 ## 1. The Best General Memory Layers (Plug-and-Play)
 These frameworks are highly flexible and serve as an external memory tier that can be bolted onto existing agent architectures. [4, 5, 6]
@@ -149,11 +141,9 @@ To narrow this down, please let me know what specific agent framework (e.g., Lan
 [28] [https://blog.gazzurelli.com](https://blog.gazzurelli.com/from-predictive-coding-to-digital-brain-the-technology-stack-and-architectural-patterns-part-2-9334d09d08a9)
 [29] [https://www.firecrawl.dev](https://www.firecrawl.dev/blog/best-open-source-agent-frameworks)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-which one is suitable for a researcher who might focus on multiple domain with linked data
-</td></tr><tr><td>A:</td><td>
-For a researcher working across multiple domains with heavily linked data, the clear standout choice is Cognee, closely followed by [Zep](https://www.getzep.com/) (powered by Graphiti) as the best alternative. [1, 2]
+> [!NOTE]
+> Q: which one is suitable for a researcher who might focus on multiple domain with linked data
+A: For a researcher working across multiple domains with heavily linked data, the clear standout choice is Cognee, closely followed by [Zep](https://www.getzep.com/) (powered by Graphiti) as the best alternative. [1, 2]
 Traditional vector-based memory layers (like Mem0) collapse complex cross-discipline data into "flat" semantic similarities, which causes cross-domain confusion. A researcher needs graph-driven structures that preserve strict semantic relationships, cross-references, and ontology rules. [2, 3, 4]
 ------------------------------
 ## 🥇 The Best Choice: Cognee

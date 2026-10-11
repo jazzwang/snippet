@@ -19,7 +19,7 @@ $ npx hint https://webhint.io
 ~/git/snippet/js/webhint$ npx hint https://webhint.io
 Need to install the following packages:
 hint@7.1.13
-Ok to proceed? (y) 
+Ok to proceed? (y)
 Using the built-in configuration.
 Visit https://webhint.io/docs/user-guide/ to learn how to create your own configuration.
 ✖ Finishing...
@@ -38,15 +38,12 @@ http-cache                 37 warnings  4 hints
   - 在 Edge DevTool 看到這個置頂通知
   - ![](edge-webhint-warning.png)
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-what is webhint experiment shown in DevTool?
-</td></tr><tr><td>A:</td><td>
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: what is webhint experiment shown in DevTool?
+A:
+The webhint experiment in browser Developer Tools (DevTools) is an integration of [webhint](https://webhint.io/), an open-source linting engine designed to help you improve your website's code quality and best practices. [1, 2, 3, 4, 5]
 
-The webhint experiment in browser Developer Tools (DevTools) is an integration of [webhint](https://webhint.io/), an open-source linting engine designed to help you improve your website's code quality and best practices. [1, 2, 3, 4, 5] 
-
-When you enable this experimental feature, DevTools automatically runs background checks on the site you are viewing. It then provides real-time, actionable feedback across several critical development areas. [3, 6] 
+When you enable this experimental feature, DevTools automatically runs background checks on the site you are viewing. It then provides real-time, actionable feedback across several critical development areas. [3, 6]
 
 ### What webhint Scans For
 
@@ -54,18 +51,18 @@ When you enable this experimental feature, DevTools automatically runs backgroun
 * Cross-Browser Compatibility: Flags modern CSS or JavaScript features that might fail to render properly on older or alternative browsers.
 * Performance: Catches oversized code bundles, missing image dimensions, or unoptimized assets slowing down the page.
 * Security: Highlights unsafe third-party links, missing HTTP headers, and vulnerabilities in your scripts.
-* PWA Readiness: Evaluates if your site meets Progressive Web App criteria, like proper manifest files and service workers. [6, 7, 8, 9, 10] 
+* PWA Readiness: Evaluates if your site meets Progressive Web App criteria, like proper manifest files and service workers. [6, 7, 8, 9, 10]
 
 ### How It Changes Your DevTools Interface
 
-Once enabled, the webhint experiment changes how issues are presented in your workspace: [11] 
+Once enabled, the webhint experiment changes how issues are presented in your workspace: [11]
 
-   1. The Issues Tab: Instead of digging through errors manually, categorized warnings and errors from webhint automatically populate your [DevTools Issues panel](https://learn.microsoft.com/en-us/microsoft-edge/devtools/whats-new/2020/06/devtools) along with documentation on how to fix them. [3, 6] 
-   2. Wavy Underlines in Elements: It adds visual text editors' behavior directly into the DOM tree. Wavy underlines will appear under specific lines of code in the Elements panel to highlight broken code chunks. You can shift-click them to read the warning. [3, 11] 
+   1. The Issues Tab: Instead of digging through errors manually, categorized warnings and errors from webhint automatically populate your [DevTools Issues panel](https://learn.microsoft.com/en-us/microsoft-edge/devtools/whats-new/2020/06/devtools) along with documentation on how to fix them. [3, 6]
+   2. Wavy Underlines in Elements: It adds visual text editors' behavior directly into the DOM tree. Wavy underlines will appear under specific lines of code in the Elements panel to highlight broken code chunks. You can shift-click them to read the warning. [3, 11]
 
 ### Availability
 
-While webhint is available as an individual extension for Google Chrome and Mozilla Firefox, it is natively baked into Microsoft Edge DevTools as a core built-in experiment. [3, 8, 12] 
+While webhint is available as an individual extension for Google Chrome and Mozilla Firefox, it is natively baked into Microsoft Edge DevTools as a core built-in experiment. [3, 8, 12]
 
 If you are trying to clean up your workspace or run a custom scan, let me know:
 
@@ -85,9 +82,7 @@ If you are trying to clean up your workspace or run a custom scan, let me know:
 [11] [https://github.com](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/DevTools/webhint/explainer.md)
 [12] [https://webhint.io](https://webhint.io/docs/user-guide/extensions/extension-browser/)
 
-</td></tr>
-</table>
-
+---
 - Webhint for Browser
   - Edge - 內建
   - Chrome or Firefox - 靠 Extension 來安裝

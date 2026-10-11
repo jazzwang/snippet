@@ -115,7 +115,7 @@ yt-dlp -U
 
 * **Replace `YOUR_VIDEO_ID`:** Always replace `"https://www.youtube.com/watch?v=YOUR_VIDEO_ID"` with the actual URL of the YouTube video you want to process.
 * **Check `yt-dlp --help`:** For a complete list of options and more advanced usage, refer to the `yt-dlp` help documentation: `yt-dlp --help`.
-</td></tr></table>
+---
 
 ## 2025-09-25
 
@@ -177,7 +177,7 @@ Here's a full example command to download the English transcript in SRT format f
 ```bash
 yt-dlp --skip-download --write-auto-subs --sub-lang en --sub-format srt "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ```
-</td></tr></table>
+---
 
 ## 2026-01-02
 

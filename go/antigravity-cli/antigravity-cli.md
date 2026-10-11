@@ -11,12 +11,9 @@
 
 ## 2026-06-23
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Gemini CLI 與 Antigravity CLI 的差異
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: Gemini CLI 與 Antigravity CLI 的差異
+A:
 ## Gemini CLI vs Antigravity CLI
 
 Antigravity CLI 是 Google 推出用來全面取代舊版 Gemini CLI 的新世代工具。 兩者最核心的本質差異在於，舊版 Gemini CLI 定位為「對話式的終端機 AI 助手」（偏向 Vibe Coding）；而新版 Antigravity CLI 則是「Agent（代理人）導向的開發平台」，專門為了多工編排、背景自動化與大型重構而設計。 [1, 2, 3, 4, 5]
@@ -65,37 +62,35 @@ Google 在 Google I/O 2026 正式推出 Antigravity 2.0，並宣布舊版的 Gem
 [10] [https://www.reddit.com](https://www.reddit.com/r/GeminiCLI/comments/1tuqr05/switched_to_antigravitycli_goodbye_geminicli/?tl=zh-hant)
 [11] [https://www.facebook.com](https://www.facebook.com/mukispace/posts/%E6%88%91%E5%AF%A6%E5%9C%A8%E6%90%9E%E4%B8%8D%E6%87%82-gemini-cli-%E5%92%8C-antigravity-cli-%E5%B7%AE%E5%9C%A8%E5%93%AA-/1430942695715476/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Antigravity CLI 是 open source 嗎?可以在哪裡找到原始碼?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: Antigravity CLI 是 open source 嗎?可以在哪裡找到原始碼?
+A:
 ## Antigravity CLI source code
 
-Antigravity CLI 本身並不是開源軟體（Open Source）。與過去由社群維護或部分開源的 gemini-cli 不同，Antigravity 是 Google 專門為其 AI Agent 生態系打造的專有軟體（Proprietary Software）。 [1, 2] 
-雖然它不是開源的，但 Google 有在 GitHub 上建立官方的 Repository 來作為問題追蹤、功能許願與提供官方文件的管道。 [3, 4] 
+Antigravity CLI 本身並不是開源軟體（Open Source）。與過去由社群維護或部分開源的 gemini-cli 不同，Antigravity 是 Google 專門為其 AI Agent 生態系打造的專有軟體（Proprietary Software）。 [1, 2]
+雖然它不是開源的，但 Google 有在 GitHub 上建立官方的 Repository 來作為問題追蹤、功能許願與提供官方文件的管道。 [3, 4]
 以下是與其原始碼、下載及相關資源對應的地點：
 
 ### 1. 官方 GitHub 專案頁面（非開源原始碼）
 
 雖然裡面沒有包含核心的 Go 語言編譯原始碼，但你可以透過這個 Repo 查看官方 README、回報 Bug，或參與討論：
 
-* 官方 GitHub 倉庫：[google-antigravity/antigravity-cli](https://github.com/google-antigravity/antigravity-cli) [5] 
+* 官方 GitHub 倉庫：[google-antigravity/antigravity-cli](https://github.com/google-antigravity/antigravity-cli) [5]
 
 ### 2. 官方安裝與下載管道
 
-因為它是閉源的二進位檔案（Go Binary），你需要透過 Google 的官方管道直接下載安裝腳本或安裝檔： [6, 7] 
+因為它是閉源的二進位檔案（Go Binary），你需要透過 Google 的官方管道直接下載安裝腳本或安裝檔： [6, 7]
 
 * 官方網站與文件：antigravity.google
 * 終端機一鍵安裝（Linux / macOS）：
 ```bash
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 ```
-[3, 6] 
+[3, 6]
 
 ### 3. 可以參考的「開源」週邊
 
-如果你想尋找與 Antigravity CLI 相關的開源程式碼來參考（例如怎麼寫它的擴充技能），可以在 GitHub 上尋找社群或開發者分享的 Skills 腳本或 MCP 伺服器設定（例如 [jacob-bd/antigravity-cli-skill](https://github.com/jacob-bd/antigravity-cli-skill)），這些周邊設定檔與擴充套件才是開源且供大家自由修改的。 [7] 
+如果你想尋找與 Antigravity CLI 相關的開源程式碼來參考（例如怎麼寫它的擴充技能），可以在 GitHub 上尋找社群或開發者分享的 Skills 腳本或 MCP 伺服器設定（例如 [jacob-bd/antigravity-cli-skill](https://github.com/jacob-bd/antigravity-cli-skill)），這些周邊設定檔與擴充套件才是開源且供大家自由修改的。 [7]
 
 想請問你原本是想修改 CLI 的核心功能，還是希望研究如何開發自訂的擴充工具（Skills / MCP） 來搭配它使用呢？
 
@@ -107,11 +102,9 @@ curl -fsSL https://antigravity.google/cli/install.sh | bash
 [6] [https://medium.com](https://medium.com/google-cloud/getting-started-with-antigravity-cli-3565d5db1e92)
 [7] [https://github.com](https://github.com/jacob-bd/antigravity-cli-skill)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-需要確認 Antigravity CLI 是否能通過 Enterprise Security Audit, Data Privacy Policy, License compliance 等
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 需要確認 Antigravity CLI 是否能通過 Enterprise Security Audit, Data Privacy Policy, License compliance 等
+A:
 ## Antigravity CLI - Enterprise Security Audit
 
 可以，但前提是必須將 Antigravity CLI 綁定至 Google Cloud (GCP) 企業架構下，並搭配 Gemini Code Assist Standard/Enterprise 或 Gemini Enterprise Agent Platform 授權。 [1, 2]
@@ -176,10 +169,8 @@ curl -fsSL https://antigravity.google/cli/install.sh | bash
 [13] [https://www.antigravityide.help](https://www.antigravityide.help/privacy)
 [14] [https://dev.to](https://dev.to/arindam_1729/antigravity-cli-a-hands-on-guide-to-googles-terminal-coding-agent-5bc7)
 
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Antigravity CLI 支援哪些 LLM model?
-</td></tr><tr><td>A:</td><td>
-
+<tr style="background-color:lightyellow;"><td>Q: Antigravity CLI 支援哪些 LLM model?
+A:
 ## Antigravity CLI - LLM support
 
 Antigravity CLI (`agy`) 打破了過去工具只能使用單一模型家族的限制，它採開放式的「多模型」架構。 [1]
@@ -235,11 +226,9 @@ Antigravity CLI (`agy`) 打破了過去工具只能使用單一模型家族的�
 [6] [https://pcrookie.com](https://pcrookie.com/google-antigravity-2-intro/)
 [7] [https://lzw.me](https://lzw.me/docs/opencodedocs/zh-tw/NoeFabris/opencode-antigravity-auth/platforms/available-models/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Antigravity CLI 與 OpenAI Codex CLI 的 side-by-side comparison
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: Antigravity CLI 與 OpenAI Codex CLI 的 side-by-side comparison
+A:
 ## Antigravity CLI vs OpenAI Codex CLI
 
 Google Antigravity CLI (`agy`) 與 OpenAI Codex CLI 兩者皆為 2026 年終端機 AI 代理人（AI Coding Agent）的主流競爭者。 雖然兩者都能讀取本地程式碼、寫入檔案並自動執行測試，但其核心架構、開發語言、沙盒安全性以及計費模式有著顯著的差異。 [1, 2, 3, 4, 5, 6, 7]
@@ -307,11 +296,9 @@ Google Antigravity CLI (`agy`) 與 OpenAI Codex CLI 兩者皆為 2026 年終端�
 [17] [https://www.openai-hub.com](https://www.openai-hub.com/news/742/)
 [18] [https://cloudmile.ai](https://cloudmile.ai/tw/resource_blog/gemini-code-assist-enterprise-deployment-google-antigravity-strategy)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-有辦法查到 Antigravity CLI 的歷史下載量嗎?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 有辦法查到 Antigravity CLI 的歷史下載量嗎?
+A:
 ## Antigravity CLI Download Trend
 
 無法直接查到精確的官方全平台歷史總下載量。 [1]
@@ -348,12 +335,10 @@ Google 有在 GitHub 上建立用來追蹤社群回報的專案頁面：[google-
 [7] [https://medium.com](https://medium.com/@simon3458/google-io-2026-antigravity-cli-cb19b42706a6)
 [8] [https://techcrunch.com](https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-想用下載量來像主管證明不同 AI Code Agent 的市場佔有率走勢,
+> [!NOTE]
+> Q: 想用下載量來像主管證明不同 AI Code Agent 的市場佔有率走勢,
 像 https://npmtrends.com/ 可以顯示 Claude Code CLI, OpenAI Codex CLI, Github Copilot CLI 與 OpenCode CLI 的下載量差異
-</td></tr><tr><td>A:</td><td>
-
+A:
 ## AI Code Agent Market Share Trends
 
 利用下載量走勢向主管證明 AI Coding Agent 的市場佔有率，確實是最具說服力的客觀數據。

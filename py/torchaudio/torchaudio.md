@@ -54,7 +54,7 @@ print(transcription["text"])
 - Whisper models support multiple languages. If your AAC file is in Mandarin or another language, you can specify `language="zh"` or similar in the pipeline config.
 
 Would you like me to adapt this for a specific language or help you run it on a sample file?
-</td></tr></table>
+---
 
 > [!NOTE]
 > are there recommended huggingface model for transcribe audio in English?
@@ -109,7 +109,7 @@ pipeline("automatic-speech-recognition", model="facebook/wav2vec2-large-960h")
 ```
 
 Would you like a side-by-side code comparison using Whisper and Wav2Vec2?
-</td></tr></table>
+---
 
 ## 2025-10-09
 

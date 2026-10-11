@@ -139,4 +139,4 @@ Major shareholders include MediaTek, Trend Micro, Singtel, AUO, Delta Electronic
 [68] https://www.skyquestt.com/report/automotive-over-the-air-updates-market
 [69] https://www.linkedin.com/pulse/automotive-ota-solution-market-analysis-2025-p1h6c
 [70] https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1342512/full
-</td></tr></table>
+---

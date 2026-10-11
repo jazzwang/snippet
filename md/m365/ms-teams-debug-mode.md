@@ -70,7 +70,7 @@ In the classic Teams client, there was a "secret" method:
   * Add breakpoints to JavaScript code for interactive debugging.
 
 Keep in mind that Microsoft might change these methods with updates to Teams. If you encounter issues, always check the official Microsoft Teams developer documentation for the most up-to-date instructions.
-</td></tr></table>
+---
 
 - 實測：
   - 啟用 `"core/devMenuEnabled": true`

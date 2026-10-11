@@ -74,7 +74,7 @@ Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for En
 ---
 
 Would you like a code comparison using both models on the same audio file? Or help choosing the best model for your specific use case (e.g., meetings, podcasts, noisy environments)?
-</td></tr></table>
+---
 
 > [!NOTE]
 > What's the difference between Whisper, WhisperX and FasterWhisper? could you give me comparison tables?
@@ -110,7 +110,7 @@ Here’s a clear comparison of **Whisper**, **WhisperX**, and **FasterWhisper**,
 ---
 
 Would you like a code example comparing Whisper and FasterWhisper on the same audio file? Or help setting up WhisperX for speaker diarization?
-</td></tr></table>
+---
 
 > [!NOTE]
 > could you do code example comparing Whisper and FasterWhisper on the same audio file?
@@ -175,7 +175,7 @@ for segment in segments:
 ---
 
 Would you like me to help you run this on a sample AAC file or add speaker diarization using WhisperX?
-</td></tr></table>
+---
 
 > [!NOTE]
 > Add speaker diarization with WhisperX
@@ -237,4 +237,4 @@ for word in final_result:
 ---
 
 Would you like help setting up the Hugging Face token or running this on a sample file?
-</td></tr></table>
+---

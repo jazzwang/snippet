@@ -2,12 +2,9 @@
 
 ## 2026-07-15
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Databricks Zero Ops
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: Databricks Zero Ops
+A:
 **Genie ZeroOps** is an autonomous, AI-powered background agent built directly into the [Databricks](https://www.databricks.com/blog/introducing-genie-zeroops) platform to **monitor, diagnose, and repair data and AI assets on autopilot**. Announced at the Data + AI Summit, it moves data engineering from reactive firefighting to a human-in-the-loop review system. It acts like an on-call engineer that never sleeps, targeting production pipelines, jobs, tables, and machine learning models. [1](https://www.databricks.com/blog/introducing-genie-zeroops), [2](https://www.infoworld.com/article/4186796/databricks-targets-ai-operations-bottlenecks-with-zeroops.html), [3](https://www.databricks.com/blog/introducing-genie-zeroops), [4](https://www.youtube.com/shorts/6eY-T6ePWDI), [5](https://kanerika.com/blogs/databricks-genie-zeroops/)
 
 ## Core Workflow: How it Works
@@ -33,11 +30,9 @@ The background agent automatically manages production issues through a continuou
 | **Governance & PII** | Detects unmonitored Personally Identifiable Information and flags risk. | Managed centrally through the [Governance Hub](https://www.databricks.com/dataaisummit/session/genie-zeroops-data-quality-and-compliance-scale). |
 | **ML Ops Automation** | Queries inference tables, debugs performance issues, and retrains models. | Tied directly to Databricks Model Serving. |
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-改說中文
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 改說中文
+A:
 Genie ZeroOps 是 Databricks 平台內建的自主 AI 背景代理（Agent），旨在以自動駕駛的方式監控、診斷並修復數據與 AI 資產。它將數據工程從「被動救火」轉變為「人類監督審查」的模式。它就像一個永不休息的在線運維工程師，專門解決生產環境中的管道（Pipelines）、任務（Jobs）、數據表和機器學習模型問題。
 ## 核心工作流程：它是如何運作的
 這個背景代理透過一個連續的四步循環，自動管理生產環境中的問題：
@@ -69,5 +64,4 @@ Genie ZeroOps 是 Databricks 平台內建的自主 AI 背景代理（Agent），
 
 我可以根據您的實際環境，為您提供更深入的技術架構細節或部署步驟。
 
-</td></tr>
-</table>
+---

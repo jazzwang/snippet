@@ -58,7 +58,7 @@ By combining external data integration, rigorous preprocessing, and adaptive val
 ---
 Answer from Perplexity: pplx.ai/share
 
-</td></tr></table>
+---
 
 > [!NOTE]
 >
@@ -214,4 +214,4 @@ Citations:
 ---
 Answer from Perplexity: https://www.perplexity.ai/search/811647e7-4cdd-4fd9-8149-e9ff9f7fa073?utm_source=copy_output
 
-</td></tr></table>
+---

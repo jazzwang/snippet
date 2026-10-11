@@ -2,12 +2,9 @@
 
 ## 2026-06-06
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Google Search AI Mode 是否有公開 API 可以使用？
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: Google Search AI Mode 是否有公開 API 可以使用？
+A:
 ## Google Search AI Mode API
 
 Google 官方並沒有為「Search AI Mode（AI 模式）」釋出直接對應的獨立原生 API。
@@ -57,11 +54,9 @@ Google 官方提供的作法並非提供搜尋按鈕的 API，而是讓你在調
 [11] [https://docs.scrapingdog.com](https://docs.scrapingdog.com/google-ai-mode-api-documentation)
 [12] [https://serpapi.com](https://serpapi.com/google-ai-mode-api)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-有辦法設定 Chrome 自動搜尋 使用 Google AI Mode 嗎？
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 有辦法設定 Chrome 自動搜尋 使用 Google AI Mode 嗎？
+A:
 ## Chrome User-defined Search Engine
 
 可以，你可以透過將 Google AI 模式的特殊參數網址新增至 Chrome 的「網站搜尋」設定中，並將其設為預設值，就能實現「網址列直接搜尋自動進入 AI 模式」的效果。 [1, 2]
@@ -98,14 +93,11 @@ Google 官方提供的作法並非提供搜尋按鈕的 API，而是讓你在調
 [2] [https://techtarian.com](https://techtarian.com/google/set-the-google-ai-mode-as-default/)
 
 </td></tr>
-<tr><td>A:</td><td>
-
+<tr><td>A:
 後來發現 Chrome 瀏覽器已經自動加了這個 `@aimode` 的搜尋引擎
 ![](img/20260607001635.png)
 
-</td></tr>
-</table>
-
+---
 - 備註：
   - 有人寫了 Google Search AI Mode 的 Skill 跟 MCP
     - https://github.com/PleasePrompto/google-ai-mode-skill

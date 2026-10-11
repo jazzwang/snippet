@@ -540,7 +540,7 @@ rsync error: syntax or usage error (code 1) at main.c(1767) [client=3.4.1]
 ```
 - 應該可以動了～再試試看 `rsync --avzr --progress` 指令是否可以正常運作
 
-## 
+##
 
 - 狀況：因為 `cpio` 不能解壓縮到 git-for-windows 的根目錄（在 Cloud PC 裡面沒有 admin 權限，不能下 sudo 指令建目錄）
 - Gemini 3 建議改用 `pax`
@@ -586,9 +586,8 @@ usr/share/man/man1/paxtar.1.gz
         KERNELBASE.dll => /c/WINDOWS/System32/KERNELBASE.dll (0x7ff8516d0000)
         msys-2.0.dll => /usr/bin/msys-2.0.dll (0x210040000)
 ```
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-can I extract cpz file with cpio and specify different output folder?
-</td></tr></table>
+<table><tr style="background-color:lightyellow;"><td>Q: can I extract cpz file with cpio and specify different output folder?
+---
 The short answer is **no**; `cpio` does not have a built-in "output directory" flag (like `tar -C`) to specify a destination on the fly. By design, `cpio` extracts files into your **current working directory**.
 
 However, you can easily achieve this using a **subshell** or by chaining commands. Here is how to do it efficiently.
@@ -635,9 +634,8 @@ Depending on your industry, a `.cpz` file might not actually be a `cpio` archive
 ---
 
 **Would you like me to show you how to list the contents of the CPZ file first to make sure it's in the format you expect?**
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-but I don't have permission to create the path to destination. any suggestions?
-</td></tr></table>
+<table><tr style="background-color:lightyellow;"><td>Q: but I don't have permission to create the path to destination. any suggestions?
+---
 If you hit a "Permission Denied" error, it usually means the parent directory where you're trying to create your destination is restricted (like trying to create a folder in `/opt` or `/var` without being an admin).
 
 Here are three ways to handle this, depending on what kind of access you actually have:
@@ -697,9 +695,8 @@ ls -ld .
 > Look for the first few letters. If you don't see a `w` in the first triplet (e.g., `drwxr-xr-x`), you don't have permission to create folders there.
 
 **Would you like me to help you check the permissions of a specific directory to see if we can find a workaround?**
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-where can I find pax command?
-</td></tr></table>
+<table><tr style="background-color:lightyellow;"><td>Q: where can I find pax command?
+---
 The `pax` (Portable Archive Interchange) command is a bit of a "hidden gem"—it’s a POSIX standard, but many modern Linux distributions don't include it in the default "minimal" install.
 
 Here is how to find it or get it onto your system:

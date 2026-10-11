@@ -116,4 +116,4 @@ python html_to_md.py https://www.example.com -o example_output.md
 | :--- | :--- |
 | `https://www.example.com` | The URL you want to scrape and convert. |
 | `-o example_output.md` | The file where the resulting Markdown content will be saved. |
-</td></tr></table>
+---

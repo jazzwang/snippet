@@ -76,7 +76,7 @@ python opensearch_info.py -s https://your-opensearch-domain.com -c storage_state
 ```
 
 Would you like me to help you test this with a mock OpenSearch server or generate a sample `storage_state.json` file?
-</td></tr></table>
+---
 
 - By Microsoft Bing Copilot
 > [!NOTE]
@@ -199,7 +199,7 @@ Here's an example of a REST API call to OpenSearch using `curl`:
 * * * *
 
 If you need help setting up Swagger or working with OpenSearch APIs, let me know!
-</td></tr></table>
+---
 
 ## Cluster API
 

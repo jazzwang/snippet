@@ -107,7 +107,7 @@ sequenceDiagram
     ARC-->>SVA: Confirms payment processing
     SVA-->>PB: Releases vehicle
 ```
-</td></tr></table>
+---
 
 ## Perplexity
 
@@ -193,4 +193,4 @@ This sequence diagram provides a comprehensive overview of the multi-departmenta
 [^9]: https://devsquad.com/blog/user-journey-mapping
 [^10]: https://www.nice.com/info/mastering-the-user-journey-map-best-practices-and-examples
 
-</td></tr></table>
+---

@@ -46,7 +46,7 @@
   ```
 
   This will list all of the power source information on your system, including your battery health status in Linux.
-  
+
 - You can also use acpi command to print battery information in Linux. For example:
 
   ```bash
@@ -71,9 +71,8 @@ Battery:
 
 - 緣起：想確認 Windows WSL 的 Linux Kernel 參數設定
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-can I find current Linux kernel (runtime) config within `/proc`?
-</td></tr></table>
+<table><tr style="background-color:lightyellow;"><td>Q: can I find current Linux kernel (runtime) config within `/proc`?
+---
 
 Yes, you absolutely can, though there is a small "if" involved regarding how your specific kernel was compiled.
 
@@ -115,10 +114,9 @@ The version in `/proc` is the "source of truth." It represents exactly what the 
 
 Are you trying to troubleshoot a specific module issue, or just poking around the kernel internals?
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-I'm trying to figure out why self-compile kernel for WSL2 is different from official WSL2. 
+<table><tr style="background-color:lightyellow;"><td>Q: I'm trying to figure out why self-compile kernel for WSL2 is different from official WSL2.
 I only add config to support HFSplus and it breaks the support of docker within WSL2
-</td></tr></table>
+---
 
 It sounds like your custom kernel is missing the specific **cgroups** or **namespace** configurations that Docker requires to function. When you compile a kernel for WSL2, you can't just use a "blank slate" or a generic Linux config—you must use Microsoft's official base configuration as your starting point.
 

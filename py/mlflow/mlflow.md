@@ -144,7 +144,7 @@ sequenceDiagram
     L-->>M: Log response, token usage & metrics (end trace)
     L-->>P: Return final response object
 ```
-</td></tr></table>
+---
 
 ```mermaid
 sequenceDiagram

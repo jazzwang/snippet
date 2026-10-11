@@ -9,12 +9,9 @@
 
 ## 2026-06-04
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-does A2UI protocol support different LLM other than Gemini?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: does A2UI protocol support different LLM other than Gemini?
+A:
 Yes, the A2UI (Agent-to-User Interface) protocol explicitly supports Large Language Models (LLMs) other than Gemini. While it was introduced by Google and is deeply integrated into Google ecosystems like Gemini Enterprise, A2UI is designed as an open, model-agnostic industry standard. [1, 2, 3, 4, 5]
 The protocol operates on fundamental architectural rules that allow any capable AI model to utilize it:
 ## Why Any LLM Works with A2UI
@@ -42,11 +39,9 @@ If you are actively developing an application, what frontend framework (e.g., Fl
 [14] [https://www.brandonseppa.com](https://www.brandonseppa.com/chatbots-were-always-a-stopgap-a2ui-will-change-everything/)
 [15] [https://docs.ag2.ai](https://docs.ag2.ai/latest/docs/user-guide/reference-agents/a2uiagent/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-are there alternatives of A2UI?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: are there alternatives of A2UI?
+A:
 Yes, there are several active alternatives to Google’s A2UI protocol. The "Generative UI" (GenUI) space is rapidly evolving into a battle over protocols, balancing structural control against token efficiency and open-ended generation. [1, 2, 3]
 The main alternatives to A2UI are categorized below by their architectural philosophies: [4]
 ### 1. Protocols & Specifications (Direct Competitors)
@@ -87,8 +82,6 @@ Are you looking for an alternative because you want to lower your token costs (l
 [11] [https://github.com](https://github.com/CopilotKit/generative-ui)
 [12] [https://github.com](https://github.com/CopilotKit/OpenGenerativeUI)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-</td></tr>
+> [!NOTE]
+> Q: A: </td></tr>
 </table>

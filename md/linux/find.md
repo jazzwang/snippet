@@ -82,7 +82,7 @@ ls -s | grep '^0 '
 * `grep '^0 '`: Filters for lines that start with "0 " (meaning 0 blocks).
 
 **In summary, for finding empty files, `find . -type f -empty` is the most robust and recommended approach.**
-</td></tr></table>
+---
 
 ## 2025-07-24
 
@@ -117,4 +117,4 @@ By combining these two conditions, you effectively select files that have a modi
 * **Alternative for Creation Time (if available and needed):** While `find` doesn't directly use creation time, some newer filesystems (like ext4 with the `CONFIG_EXT4_ENCRYPT` option enabled, or Btrfs, XFS) *do* store a creation timestamp (often called "birth time" or "btime"). If you absolutely need creation time, you might need to use a tool like `stat` in conjunction with `find` or use a more specialized utility if your system and filesystem support it. However, for most common scenarios, modification time is what's used.
 
 For your request, assuming "created on" refers to the modification date, the command provided above is the standard and most effective way to achieve it with `find`.
-</td></tr></table>
+---

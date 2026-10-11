@@ -1,11 +1,8 @@
 # AI Agent Maturity Model
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-AI Agent 成熟度模型
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: AI Agent 成熟度模型
+A:
 ## AI Agent 成熟度模型
 
 AI Agent 成熟度模型（AI Agent Maturity Model）是一個結構化的評估框架，用以衡量企業或系統在導入「具備自主規劃與執行能力之 AI 代理人」時的演進歷程與核心能力。 [1, 2]
@@ -92,11 +89,9 @@ AI Agent 成熟度模型（AI Agent Maturity Model）是一個結構化的評估
 [13] [https://www.pcschool.com.tw](https://www.pcschool.com.tw/blog/trend/generative-ai-guide)
 [14] [https://www.lndata.com](https://www.lndata.com/explore/news/article/data-analyst-in-lndata-2)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-企業導入的具體檢核表（Checklist）
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 企業導入的具體檢核表（Checklist）
+A:
 ## 成熟度檢核表
 
 為了協助企業在評估、開發到上線 AI Agent 的過程中降低風險，以下為您整理一份企業導入 AI Agent 具體檢核表（Checklist）。此檢核表依據專案生命週期分為五大階段，您可以直接作為專案推進的評估工具：
@@ -149,8 +144,5 @@ AI Agent 成熟度模型（AI Agent Maturity Model）是一個結構化的評估
 建議您可以先召集 IT 團隊、資安主管（CISO）與業務需求單位（BU），針對這份檢核表共同進行一次 1~2 小時的 「Premortem（事前驗屍）會議」，假設專案失敗了，最可能卡在上述的哪一個勾選框？這能幫團隊提早抓出潛在的系統盲點。
 
 如果您想針對其中某個特定階段（例如：階段三的安全性防護牆，或是階段四的評估指標）深入規劃，我們可以針對該部分產出更細緻的執行指南。您希望先深入探討哪一個部分呢？
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-</td></tr>
-</table>
+> [!NOTE]
+> Q: A: ---

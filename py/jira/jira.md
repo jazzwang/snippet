@@ -92,4 +92,4 @@ jira issue view ISSUE-123 --plain --comments > issue.txt
 If you just need to fetch this once or for a script, use **Method 1 (cURL)**. It guarantees you get the full data structure including comments without installing extra software.
 
 **Would you like me to generate a `jq` command to help you filter just the comments from that JSON file?**
-</td></tr></table>
+---

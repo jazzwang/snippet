@@ -14,12 +14,9 @@ https://graylark.io/
 - 從 Raven 與 GeoSpy 的宣告中，導向了 Garylark
 - 有趣的是這不是第一次看到 Garylark 這個頁面
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-help me to plan a company deep research of https://graylark.io/, https://geospy.ai/ and https://www.withraven.ai/. what are the products? what's their core competency? who are their target audience/customer/user? SWOT analysis.
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Gemini App - Gemini 3
-</td></tr><tr><td>A:</td><td>
-
+<table><tr style="background-color:lightyellow;"><td>Q: help me to plan a company deep research of https://graylark.io/, https://geospy.ai/ and https://www.withraven.ai/. what are the products? what's their core competency? who are their target audience/customer/user? SWOT analysis.
+</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Gemini App - Gemini 3
+A:
 To conduct a deep research analysis of these entities, it is critical first to understand that **Graylark, GeoSpy, and Raven are part of a single organizational evolution**.
 
 * **Graylark (Graylark Technologies):** The parent company, a developer of AI-powered frontline visual intelligence systems.
@@ -72,5 +69,4 @@ Graylark positions its tools for professional, high-stakes environments where ra
 
 When presenting this research, you should treat the transition from **GeoSpy to Raven** as a sign of the company's growth toward a more robust, enterprise-ready "intelligence suite" rather than a simple consumer tool. The company is clearly positioning itself to be a critical partner for agencies that need to convert the massive influx of daily visual data (from cameras and social media) into rapid, actionable intelligence.
 
-</td></tr>
-</table>
+---

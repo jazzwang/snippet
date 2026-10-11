@@ -6,17 +6,14 @@
 - 2026-08-13
   - Smart Routing in Unity AI Gateway: Match frontier quality with 30%+ lower cost per task
   - https://www.databricks.com/blog/smart-routing-unity-ai-gateway-match-frontier-quality-30-lower-cost-task
-> Databricks 推出 Unity AI Gateway「智慧路由（Smart Routing）」測試版功能，能根據編碼任務複雜度自動選擇適用模型，在保持頂尖模型品質的同時，顯著降低 30% 以上成本。該技術結合「任務感知路由」與 Omnigent 框架，將簡單任務交由快速低成本模型，有效提升每美元的 AI 生產力。深入了解該功能請造訪 [Databricks 官方部落格](https://www.databricks.com/blog/smart-routing-unity-ai-gateway-match-frontier-quality-30-lower-cost-task)。 [1, 2] 
+> Databricks 推出 Unity AI Gateway「智慧路由（Smart Routing）」測試版功能，能根據編碼任務複雜度自動選擇適用模型，在保持頂尖模型品質的同時，顯著降低 30% 以上成本。該技術結合「任務感知路由」與 Omnigent 框架，將簡單任務交由快速低成本模型，有效提升每美元的 AI 生產力。深入了解該功能請造訪 [Databricks 官方部落格](https://www.databricks.com/blog/smart-routing-unity-ai-gateway-match-frontier-quality-30-lower-cost-task)。 [1, 2]
 >
 > [1] [https://www.databricks.com](https://www.databricks.com/blog/smart-routing-unity-ai-gateway-match-frontier-quality-30-lower-cost-task)
 > [2] [https://www.databricks.com](https://www.databricks.com/blog/smart-routing-unity-ai-gateway-match-frontier-quality-30-lower-cost-task)
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-
-[Databricks](https://www.databricks.com/blog/smart-routing-unity-ai-gateway-match-frontier-quality-30-lower-cost-task) 推出 Unity AI Gateway「智慧路由（Smart Routing）」功能，透過任務感知與 Omnigent 元框架整合，在編碼任務中動態媒合最經濟模型。此機制能在維持前沿模型品質的同時，實現高達 56% 的成本節約，並優化生產力。 [1, 2, 3] 
+- Tool: Google Search AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: A:
+[Databricks](https://www.databricks.com/blog/smart-routing-unity-ai-gateway-match-frontier-quality-30-lower-cost-task) 推出 Unity AI Gateway「智慧路由（Smart Routing）」功能，透過任務感知與 Omnigent 元框架整合，在編碼任務中動態媒合最經濟模型。此機制能在維持前沿模型品質的同時，實現高達 56% 的成本節約，並優化生產力。 [1, 2, 3]
 
 ```markmap.js
 # Databricks 智慧路由 (Smart Routing)

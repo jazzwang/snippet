@@ -54,7 +54,7 @@ date -d "2023-10-27T10:00:00+05:30" +%s
 ```
 
 This converts the local time `10:00` in the `+05:30` timezone to the equivalent UTC time, which is `04:30` on the same day. The epoch timestamp is then calculated from that UTC time.
-</td></tr></table>
+---
 
 ## 2025-12-18
 
@@ -124,4 +124,4 @@ date -d "+8 weeks" +%Y-%m-%d
 ```
 
 **Would you like me to show you how to save this date into a variable for use in a script?**
-</td></tr></table>
+---

@@ -7,13 +7,10 @@
   - [WIP] Benchmarking Local LLMs Against Coding Agent Harnesses
   - https://neuralnoise.com/2026/harness-bench-wip/
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-https://neuralnoise.com/2026/harness-bench-wip/ 幫我用 markmap.js syntax 整理一份中文的心智圖，並附上中文摘要
-</td></tr><tr><td>A:</td><td>
-
-Harness-Bench 是一個針對 LLM Agent 系統外殼（Harness）配置效果的診斷性基準測試，包含 106 個沙盒化離線任務，旨在評估真實開發場景下「模型 + 外殼」的組合效能。此基準測試強調將外殼管理視為獨立維度，透過相同的任務環境與資源約束，診斷系統的魯棒性與高效率執行能力。詳情請參閱 [arXiv 論文](https://arxiv.org/abs/2605.27922)。 [1, 2, 3] 
+- Tool: Google Search AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: https://neuralnoise.com/2026/harness-bench-wip/ 幫我用 markmap.js syntax 整理一份中文的心智圖，並附上中文摘要
+A:
+Harness-Bench 是一個針對 LLM Agent 系統外殼（Harness）配置效果的診斷性基準測試，包含 106 個沙盒化離線任務，旨在評估真實開發場景下「模型 + 外殼」的組合效能。此基準測試強調將外殼管理視為獨立維度，透過相同的任務環境與資源約束，診斷系統的魯棒性與高效率執行能力。詳情請參閱 [arXiv 論文](https://arxiv.org/abs/2605.27922)。 [1, 2, 3]
 
 ### 🚀 Harness-Bench 核心架構與評估機制
 

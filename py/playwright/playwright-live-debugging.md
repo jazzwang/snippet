@@ -155,7 +155,7 @@ When you start debugging:
       * Adding `page.pause()` explicitly forces the Inspector to appear.
 
 By following these steps, you can effectively live debug your Playwright Python tests within VS Code, significantly speeding up your test development and troubleshooting process.
-</td></tr></table>
+---
 
 ## 2025-07-19
 

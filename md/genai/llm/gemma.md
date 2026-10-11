@@ -10,14 +10,11 @@
 
 ### 2026-6-18
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-為什麼 Google 沒有研發針對 Coding Agent 使用的 LLM (e.g. Qwen Coder 系列)
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 為什麼 Google 沒有研發針對 Coding Agent 使用的 LLM (e.g. Qwen Coder 系列)
 
 https://share.google/aimode/B737Imu3XGn9FRh1N
-</td></tr><tr><td>A:</td><td>
-
+A:
 這是一個非常切中 AI 產業發展核心的問題。事實上，Google 並非沒有研發，而是其「技術路線、產品策略、商業利益」與阿里雲（Qwen Coder 團隊）截然不同。 [1]
 
 在 AI 領域中，Google 的執行長（CEO）皮查伊（Sundar Pichai）曾公開承認，Google 在新一代「Coding Agent」的產品競速上確實有些落後，目前市場由 Anthropic 的 Claude Code 等工具領跑。 [2, 3]
@@ -66,9 +63,7 @@ Qwen Coder 走的是開源（Open-source）路線，目的是為了吸引廣大�
 [10] [https://ai.google.dev](https://ai.google.dev/gemma/docs/codegemma?hl=zh-tw)
 [11] [https://www.ithome.com.tw](https://www.ithome.com.tw/news/162234)
 
-</td></tr>
-</table>
-
+---
 ## Gemma 2
 
 ### 2025-01-14
@@ -811,7 +806,7 @@ Gemma 3n is a generative AI model from Google, specifically designed for efficie
 * **Benchmarks:** Gemma 3n performs well across a variety of benchmarks. The instruction-tuned (IT) models, such as E2B IT and E4B IT, show strong results on multilingual tasks, reasoning, and coding. On the LMSYS Chatbot Arena, the Gemma 3 27B IT model achieved a notable Elo score, surpassing several larger models.
 * **Dataset:** Gemma 3n models were trained on a diverse dataset that includes a wide variety of sources, totaling approximately 11 trillion tokens. This includes content in over 140 languages. The training data also includes mathematical text and a wide range of images, enabling its multimodal capabilities.
 * **Knowledge Cutoff:** The training data for Gemma 3n has a knowledge cutoff date of **August 2024**. This means the model does not have knowledge of events or information that occurred after that date.
-</td></tr></table>
+---
 
 Here is a table summarizing the key aspects of Gemma 3n.
 

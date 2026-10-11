@@ -43,7 +43,7 @@ Python libraries are often used to build **honeypots**, specialized SSH frontend
 ---
 
 Would you like to know more about the **capabilities** or see a **simple code example** for implementing an SSH server in one of these languages?
-</td></tr></table>
+---
 > [!NOTE]
 > can I run a SSH server implemented by golang on Windows without System Admin permission?
 
@@ -70,7 +70,7 @@ The ability to run a network server without administrative privileges on any ope
 
 Instead of using `ssh.Listen("0.0.0.0:22", config)`, you would use:
 `ssh.Listen("0.0.0.0:2222", config)`
-</td></tr></table>
+---
 > [!NOTE]
 > could you give me a golang example running SSH server on Windows 11?
 
@@ -184,7 +184,7 @@ Connection to localhost closed.
 ```
 2025/11/13 13:21:19 New connection from 127.0.0.1:xxxxx
 ```
-</td></tr></table>
+---
 
 - 本來有個疑問，用 Golang 寫的 SSH Server 可以支援 port forward 嗎？
 - 結果在範例程式中找到實作：

@@ -95,7 +95,7 @@ Not necessarily for a basic implementation. You could certainly build a tool tha
 
 Building such a tool is a multi-step process that combines traditional NLP techniques with the power of modern language models and retrieval strategies. RAG offers a compelling approach to handle the length and complexity of a 3-hour WebVTT file and extract meaningful insights.
 
-</td></tr></table>
+---
 
 - https://g.co/gemini/share/30ef5a8464dc
 
@@ -275,4 +275,4 @@ print(f"\nFinal Response: {response}")
 * **Performance Optimization:** For very long transcripts, consider optimizing your ChromaDB setup and retrieval strategies.
 
 This step-by-step guide provides a solid foundation for building your RAG system. Remember to adapt and experiment with different parameters and techniques to achieve the best results for your specific 3-hour JSON transcript. Good luck!
-</td></tr></table>
+---

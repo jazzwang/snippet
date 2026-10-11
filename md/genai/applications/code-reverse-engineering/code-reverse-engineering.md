@@ -59,7 +59,7 @@ Here's a more detailed breakdown:
         * **Dependencies**: Information about which functions call which other functions.
         * **Git information**: The commit history, author, and date of the last change.
     * This metadata can be used to create more sophisticated queries and to provide a more comprehensive answer. For example, if a user asks about a function, the chatbot could also retrieve the functions that call it or are called by it, providing a more complete picture of its role in the codebase.
-</td></tr></table>
+---
 
 > [!NOTE]
 > how can DSPy help in reverse engineering chatbot?
@@ -95,7 +95,7 @@ DSPy is an excellent framework for building a reverse engineering chatbot becaus
 3.  **Compile and Optimize**: This is where you leverage DSPy's optimizers. You'd feed the program a few example questions and ideal answers. DSPy's compiler will then automatically generate and refine the prompts for each step of your pipeline, ensuring that the model is performing at its best for the reverse engineering task. This process makes your chatbot more robust against prompt-based failures and reduces the likelihood of hallucinations.
 
 In essence, DSPy allows you to treat your chatbot's logic like a software program, with well-defined components that can be debugged, evaluated, and optimized. This is a significant improvement over manually managing brittle and hard-to-maintain prompts.
-</td></tr></table>
+---
 
 - Gemini 2.5 Pro
 
@@ -166,7 +166,7 @@ To enable semantic search, generate **vector embeddings** for each code chunk. E
 The code chunks, their metadata, and their corresponding vector embeddings are then stored in a specialized **vector database**. This type of database is optimized for efficient similarity searches. When a user asks a question, their query is also converted into a vector embedding, and the database is searched for the code chunks with the most similar embeddings. Popular vector databases include Pinecone, Weaviate, and Chroma.
 
 By following these steps, you can create a powerful and insightful source code reverse engineering chatbot that can significantly accelerate the process of understanding and navigating complex software systems. This tool can serve as an invaluable assistant for developers, security researchers, and anyone tasked with delving into the intricacies of existing codebases.
-</td></tr></table>
+---
 
 > [!NOTE]
 > given a git repo with Perl, Bash scripts and Makefile, how can I build source code index especially leveraging tree-sitter-language-pack using Python and store the index into SQLite as vectore database?
@@ -202,7 +202,7 @@ This script clones a specified Git repository, identifies Perl, Bash, and Makefi
 After the indexing is complete, an example query demonstrates how you can search the codebase using natural language to find the most relevant code snippets.
 
 To get started, you'll need to install the dependencies listed in the `requirements.txt` file and ensure you have a C compiler (like GCC, Clang, or MSVC) available for `tree-sitter` to build its language parsers.
-</td></tr></table>
+---
 
 ```python
 # main_indexer.py

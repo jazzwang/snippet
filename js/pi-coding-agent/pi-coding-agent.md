@@ -22,13 +22,10 @@
 
 - 目標：想要讓 Pi Coding Agent 支援使用 OpenCode Zen (Free) 的 LLM Model
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-pi code agent 可以使用 opencode zen 的模型嗎?若可以,該如何設定?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+> [!NOTE]
+> Q: pi code agent 可以使用 opencode zen 的模型嗎?若可以,該如何設定?
+A:
 是的，Pi Code Agent 可以完全支援 OpenCode Zen 的模型。 [1]
 
 Pi Agent（pi-ai）的核心優勢之一是擁有一個統一的接口，支援包括 OpenCode 在內超過 20 家供應商的模型。設定的核心邏輯在於配置 OpenCode Zen 的 API Key，並使用 OpenAI 兼容的 API 端點（Base URL） 來進行對接。 [2, 3]
@@ -89,11 +86,9 @@ pi --model glm/5.2
 [5] [https://laplusda.com](https://laplusda.com/posts/openclaw-opencode-go-setup/)
 [6] [https://lzw.me](https://lzw.me/docs/opencodedocs/zh-tw/code-yeongyu/oh-my-opencode/platforms/provider-setup/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-可以設定在 pi code agent 的設定檔中嗎?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 可以設定在 pi code agent 的設定檔中嗎?
+A:
 可以，Pi Code Agent 完全支援將模型供應商與憑證直接寫在設定檔中。這樣您就不用每次開啟終端機都重新輸入環境變數。 [1]
 
 在 Pi Agent 中，這些自訂供應商的資訊可以透過編輯 ~/.pi/agent/ 目錄下的兩個關鍵檔案來設定：models.json（配置供應商與模型列表）與 auth.json（放置 API 金鑰）。 [2, 3]
@@ -166,17 +161,12 @@ pi --model glm/5.2
 [6] [https://pi.dev](https://pi.dev/docs/latest/settings)
 [7] [https://pi.dev](https://pi.dev/docs/latest/settings)
 
-</td></tr>
-</table>
-- 以上實測失敗，改試以下步驟：
+---- 以上實測失敗，改試以下步驟：
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-pi agent 怎麼下指令直接使用 opencode zen 的模型？
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+> [!NOTE]
+> Q: pi agent 怎麼下指令直接使用 opencode zen 的模型？
+A:
 在 Pi Agent (pi-coding-agent) 中，最直接、最優雅的指令下法是利用 Pi 的擴充套件系統 (Pi Packages) 或內建的交互式斜線指令 (Slash Commands)。 [1, 2]
 以下是三種最推薦的直接操作指令：
 
@@ -257,9 +247,7 @@ Pi 社群有專門為 OpenCode Zen 封裝好的套件，完全不需要手動填
 [7] [https://aiidelist.com](https://aiidelist.com/pi-coding-agent-cheatsheet)
 [8] [https://m.runoob.com](https://m.runoob.com/pi-agent/pi-agent-appendix-cli.html)
 [9] [https://www.reddit.com](https://www.reddit.com/r/PiCodingAgent/comments/1vltdm9/how_to_use_deepseekv4flashfree_model_from/)
-</td></tr>
-</table>
-
+---
 - 後來用 `/login` 比較容易解決。選擇 `Open Code Zen (Free)` 然後選輸入 `API Key`
 
 ## 2026-09-04

@@ -72,7 +72,7 @@ Therefore, `openpyxl` is well-suited for tasks that require generating Excel fil
 * Data organization
 * Creating dashboards
 
-</td></tr></table>
+---
 
 -https://g.co/gemini/share/87a167649555
 
@@ -133,4 +133,4 @@ print("Excel file with multiple sheets created successfully!")
 
 This approach provides a clean and efficient way to write multiple DataFrames to separate worksheets in an Excel file using Pandas and `openpyxl`.
 
-</td></tr></table>
+---

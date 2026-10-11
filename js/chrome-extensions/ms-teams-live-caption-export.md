@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 * **Performance monitoring:** Tracking when elements are added or removed for performance analysis.
 
 This `MutationObserver` API is the recommended and most performant way to detect and react to DOM subtree additions.
-</td></tr></table>
+---
 
 - 想法：根據 [ms-teams-live-caption-saver.md](./ms-teams-live-caption-saver.md) 的逆向工程，其實可以把邏輯做一些修改：
   1. 觀察新 append 的 DOM

@@ -232,7 +232,7 @@ Once the status is "Running", your Chainlit app will be live on your Hugging Fac
   * **Dependencies:** Double-check your `requirements.txt` to ensure all necessary Python packages are listed.
   * **Authentication:** If `git push` fails, ensure you have correctly authenticated with Hugging Face, either via the CLI (`huggingface-cli login`) or by providing your username and a write-access token when prompted.
   * **Chainlit `-h` flag:** For production environments like Hugging Face Spaces, always include the `-h` (headless) flag in your `chainlit run` command within the `Dockerfile`'s `CMD` instruction to prevent a browser window from opening server-side.
-</td></tr></table>
+---
 > [!NOTE]
 > could you give me a step-by-step command line instruction to create a Python Chainlit Copilot app?
 
@@ -527,7 +527,7 @@ Now, let's create a simple HTML file that will host your Chainlit Copilot widget
     A utility function to programmatically open or close the Copilot widget.
 
 This setup provides a robust foundation for building interactive AI copilots that seamlessly integrate with your existing web applications. Remember to adjust the CORS settings and server URLs for your production environment.
-</td></tr></table>
+---
 
 - 需求：
   - 實驗過程中，遇到幾個狀況

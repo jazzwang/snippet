@@ -176,7 +176,7 @@ Expected: Returns `405`.
 ---
 
 Would you like me to generate a `README.md`, a Postman collection, or a Swagger annotation for this controller?
-</td></tr></table>
+---
 > [!NOTE]
 > could you fix the step to use `gradlew` instead of `mvnw`?
 
@@ -325,4 +325,4 @@ Expected: Returns `405`.
 ---
 
 Would you like me to generate a `README.md`, add Swagger annotations, or help you containerize this with Docker for deployment?
-</td></tr></table>
+---

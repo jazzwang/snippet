@@ -7,12 +7,9 @@
 
 - Learn from https://github.com/mathruffian-dot/claude-code-lazy-packs
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-在安裝特定 PyPI 套件前,可以在哪裡找到 Security 的建議?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 在安裝特定 PyPI 套件前,可以在哪裡找到 Security 的建議?
+A:
 ### PyPI Security Advisory
 
 安裝特定 PyPI 套件前，建議在 [PyPI 官方網站](https://pypi.org/) 檢查專案頁面與發布資訊，並搭配漏洞資料庫查詢，確認是否有已知的安全風險。 [1, 2, 3, 4]
@@ -43,11 +40,9 @@ Google Search - AI Mode
 [8] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/m/articles/10378349)
 [9] [https://fourdollars.blogspot.com](https://fourdollars.blogspot.com/2017/11/python-safety.html)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-notebooklm-mcp-cli
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: notebooklm-mcp-cli
+A:
 要評估 [notebooklm-mcp-cli](https://pypi.org/project/notebooklm-mcp-cli/) 套件的安全建議，我們可以從其專案特性、驗證管道與運行機制來全面檢視。 [1]
 這是整合 Google NotebookLM 與 Model Context Protocol (MCP) 的社群熱門開源套件，能讓 Claude Desktop、Claude Code 等 AI 代理直接調用 NotebookLM 的功能。 [2, 3, 4]
 
@@ -91,9 +86,7 @@ notebooklm-mcp-cli
 [12] [https://github.com](https://github.com/jacob-bd/notebooklm-mcp-cli/blob/main/CONTRIBUTING.md)
 [13] [https://www.xda-developers.com](https://www.xda-developers.com/notebooklm-connects-to-claude-through-mcp/)
 
-</td></tr>
-</table>
-
+---
 ## 2026-06-14
 
 - 安裝

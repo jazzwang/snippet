@@ -297,4 +297,4 @@ Now, let's create a simple HTML file that will host your Chainlit Copilot widget
     A utility function to programmatically open or close the Copilot widget.
 
 This setup provides a robust foundation for building interactive AI copilots that seamlessly integrate with your existing web applications. Remember to adjust the CORS settings and server URLs for your production environment.
-</td></tr></table>
+---

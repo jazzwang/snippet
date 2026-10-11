@@ -2,21 +2,18 @@
 
 ## 2026-07-15
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-what's the relationship between Outsell (Impel) and impel.ai in automotive industry
-</td></tr><tr><td>A:</td><td>
-
-The relationship between Outsell and impel.ai is a parent-subsidiary corporate relationship resulting from a major merger and acquisition. [1, 2] 
-In July 2024, Impel acquired Outsell in a cash and equity transaction valued at over $100 million. The two entities have merged their operations to create the automotive retail industry's first end-to-end AI sales and marketing automation platform. [1, 2, 3] 
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: what's the relationship between Outsell (Impel) and impel.ai in automotive industry
+A:
+The relationship between Outsell and impel.ai is a parent-subsidiary corporate relationship resulting from a major merger and acquisition. [1, 2]
+In July 2024, Impel acquired Outsell in a cash and equity transaction valued at over $100 million. The two entities have merged their operations to create the automotive retail industry's first end-to-end AI sales and marketing automation platform. [1, 2, 3]
 
 ## Key Details of the Relationship
 
-* The Transaction: Impel (operating via impel.ai) fully absorbed Outsell. Outsell's founder and CEO, Mike Wethington, subsequently joined Impel’s board of directors. [2, 4, 5, 6] 
-* Functional Integration: Impel AI acts as the conversational and generative AI layer (handling lead conversion and interactive customer chat), while [Outsell](https://impel.ai/outsell/) serves as the customer data platform and automated outreach layer (handling demand generation and target messaging). [5, 7, 8] 
-* Data Synthesis: The acquisition allowed Impel to inject Outsell's 20 years of first-party automotive consumer data into its own large language models (LLMs) to enhance machine learning and hyper-personalize consumer communication. [7, 8, 9] 
-* Market Scale: The combination unified their customer bases, allowing the combined company to serve more than 8,000 dealerships across 51 countries. [1, 3] 
+* The Transaction: Impel (operating via impel.ai) fully absorbed Outsell. Outsell's founder and CEO, Mike Wethington, subsequently joined Impel’s board of directors. [2, 4, 5, 6]
+* Functional Integration: Impel AI acts as the conversational and generative AI layer (handling lead conversion and interactive customer chat), while [Outsell](https://impel.ai/outsell/) serves as the customer data platform and automated outreach layer (handling demand generation and target messaging). [5, 7, 8]
+* Data Synthesis: The acquisition allowed Impel to inject Outsell's 20 years of first-party automotive consumer data into its own large language models (LLMs) to enhance machine learning and hyper-personalize consumer communication. [7, 8, 9]
+* Market Scale: The combination unified their customer bases, allowing the combined company to serve more than 8,000 dealerships across 51 countries. [1, 3]
 
 Would you like to explore how their software platforms integrate for car dealerships, or do you want more details on Impel's other recent acquisitions?
 
@@ -30,11 +27,9 @@ Would you like to explore how their software platforms integrate for car dealers
 - [8] [https://www.youtube.com](https://www.youtube.com/watch?v=BoILe6G-XSQ&t=75)
 - [9] [https://www.autosuccessonline.com](https://www.autosuccessonline.com/impel-acquires-outsell/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-請講中文
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 請講中文
+A:
 Outsell（由 Impel 收購）與 impel.ai 的關係是母公司與子公司的企業併購關係。
 在 2024 年 7 月，Impel 以超過 1 億美元的現金與股權交易，全面收購了 Outsell。這次合併創造了汽車零售業第一個端到端的 AI 銷售與行銷自動化平台。
 
@@ -47,5 +42,4 @@ Outsell（由 Impel 收購）與 impel.ai 的關係是母公司與子公司的�
 
 您想進一步了解這兩個軟體平台如何為汽車經銷商進行系統整合，還是想看更多關於 Impel 近期的其他收購案例？
 
-</td></tr>
-</table>
+---

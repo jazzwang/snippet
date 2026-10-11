@@ -71,7 +71,7 @@ usbipd detach --busid <busid>
 ```
 
 By following these steps, you can successfully mount and access a USB drive in WSL, enabling you to perform various tasks such as flashing an Arduino or accessing a smartcard reader
-</td></tr></table>
+---
 
 - 2025-05-01:
   - https://blog.tian.it/mount-access-physical-disks-and-usb-devices-into-wsl2/
@@ -293,7 +293,7 @@ dmesg | tail
 ```
 
 This output might reveal if the disk is corrupted or if there is another specific permission issue.
-</td></tr></table>
+---
 
 - Gemini 2.5 Flash
 
@@ -346,7 +346,7 @@ If you are running a recent version of **WSL 2**, you can attempt to access the 
 **Conclusion:** While you can install the `hfsprogs` utilities, **the default WSL 2 kernel lacks HFS+ support**, which is the critical component for mounting the filesystem. You must either use a custom-compiled kernel or rely on the `wsl --mount` command in conjunction with the user-space utilities for a chance at limited access.
 
 Would you like me to find instructions for compiling a custom WSL 2 kernel with HFS+ support?
-</td></tr></table>
+---
 
 - 這一段描述看起來神奇了，居然可以客製化 WSL2 Kernal？
   > This is an advanced process involving fetching the WSL kernel source, modifying the configuration (specifically enabling `CONFIG_HFSPLUS_FS`), compiling, and then telling WSL 2 to use your new kernel via the `.wslconfig` file.
@@ -532,7 +532,7 @@ If the `grep` command returns `hfsplus`, the module is enabled, and you can now 
 
 The video below explains the general process of building and booting a custom kernel in WSL 2, which covers the overall framework for this task.
 [Building from source and booting your own WSL2 kernel](https://www.youtube.com/watch?v=6lqMeg_n7l4)
-</td></tr></table>
+---
 
 - 實測：
 ```bash

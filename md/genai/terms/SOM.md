@@ -74,4 +74,4 @@ SOMs are versatile and have been applied in various fields:
 * **Sensitivity to Parameters**: The performance of a SOM can be sensitive to the choice of learning rate, neighborhood function, and initial weights.
 * **Difficulty with Categorical Data**: SOMs are primarily designed for numerical data, and handling purely categorical or mixed data often requires special encoding.
 * **Lack of Interpretability of Individual Neurons**: While the overall map provides insights, the meaning of individual neurons (beyond representing a cluster of similar data points) can sometimes be hard to interpret.
-</td></tr></table>
+---

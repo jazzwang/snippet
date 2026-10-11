@@ -2,18 +2,15 @@
 
 ## 2026-08-17
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-有 awk 或 sed 指令可以在現存的文字檔第一行前面插入一行新的字串?
-</td></tr><tr><td>A:</td><td>
-
-有的，sed 和 awk 都可以非常輕鬆地達成這個需求。 [1, 2] 
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 有 awk 或 sed 指令可以在現存的文字檔第一行前面插入一行新的字串?
+A:
+有的，sed 和 awk 都可以非常輕鬆地達成這個需求。 [1, 2]
 以下為您整理這兩種工具的指令寫法。
 
 ## 1. 使用 sed 指令（最推薦，最精簡）
 
-sed 提供了 i（Insert）動作，可以直接指定在第 1 行前面插入字串。 [2, 3] 
+sed 提供了 i（Insert）動作，可以直接指定在第 1 行前面插入字串。 [2, 3]
 
 * 僅預覽結果（不更動原檔案）：
 
@@ -27,11 +24,11 @@ sed '1i 新的字串內容' filename.txt
 sed -i '1i 新的字串內容' filename.txt
 ```
 
-(註：如果您使用的是 macOS，-i 後面必須多加一個空字串，寫法為 sed -i '' '1i 新的字串內容' filename.txt) [4] 
+(註：如果您使用的是 macOS，-i 後面必須多加一個空字串，寫法為 sed -i '' '1i 新的字串內容' filename.txt) [4]
 
 ## 2. 使用 awk 指令
 
-awk 的邏輯是在處理第一行（NR==1，意即 Number of Record 為 1）之前，先印出你想加入的新字串，隨後再依序印出原本的每一行內容。 [1, 5] 
+awk 的邏輯是在處理第一行（NR==1，意即 Number of Record 為 1）之前，先印出你想加入的新字串，隨後再依序印出原本的每一行內容。 [1, 5]
 
 * 輸出新結果到新檔案：
 

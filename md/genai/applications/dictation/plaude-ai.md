@@ -2,12 +2,9 @@
 
 ## 2026-08-06
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-plaud ai alternatives
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: plaud ai alternatives
+A:
 The best Plaud AI alternative depends on whether you want a different physical hardware recorder, an open-source wearable, or a software-only app that uses the phone or computer you already own. [1, 2]
 
 The market has expanded significantly with options that tackle Plaud’s primary drawbacks: subscription costs and locked-down software ecosystems. [3, 4, 5]
@@ -102,39 +99,37 @@ To help point you toward the right tool, could you tell me:
 - [18] [https://www.flowtica.ai](https://www.flowtica.ai/blogs/news/best-ai-meeting-tool-in-person)
 - [19] [https://www.slammedialab.com](https://www.slammedialab.com/post/workflow-automation-tools)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-open source alternatives of https://www.plaud.ai/
-</td></tr><tr><td>A:</td><td>
+> [!NOTE]
+> Q: open source alternatives of https://www.plaud.ai/
+A:
+The open-source landscape offers alternative solutions if you want to replace Plaud AI to avoid recurring subscription costs ($100–$240/year), bypass closed ecosystems, or ensure complete data privacy. [1, 2]
 
-The open-source landscape offers alternative solutions if you want to replace Plaud AI to avoid recurring subscription costs ($100–$240/year), bypass closed ecosystems, or ensure complete data privacy. [1, 2] 
-
-Because Plaud consists of both physical hardware and a software summarization suite, open-source alternatives are split between software applications and DIY hardware projects. [3] 
+Because Plaud consists of both physical hardware and a software summarization suite, open-source alternatives are split between software applications and DIY hardware projects. [3]
 
 ### 1. Full-Stack Open-Source Software (Self-Hosted)
 
-These software suites replicate Plaud's automated transcription and AI summarization on your own machine. They replace Plaud’s cloud with local AI execution tools like Ollama or Whisper. [1, 4] 
+These software suites replicate Plaud's automated transcription and AI summarization on your own machine. They replace Plaud’s cloud with local AI execution tools like Ollama or Whisper. [1, 4]
 
-* [Meetily](https://meetily.ai/): Built using Tauri, Next.js, and Whisper.cpp, this application serves as a complete open-source meeting assistant. It captures audio directly from your system, generates real-time transcripts, and allows you to swap between local AI models (running completely offline) and custom API keys. [4, 5, 6] 
-* [Applaud](https://github.com/landoncrabtree/applaud): Specifically designed as a self-hosted alternative to the Plaud web portal. It handles bulk audio uploads, manages your meeting history, and provides templates for flashcards, Q&As, and structured summaries using your local Ollama instance. [1] 
-* [Anarlog](https://anarlog.so/blog/plaud-ai-alternatives/): A local-first, open-source AI notebook. It sits on your machine, listens to system audio (without a bot joining your call), and updates your personal SQLite database. You can export notes directly to portable Markdown files. [2] 
+* [Meetily](https://meetily.ai/): Built using Tauri, Next.js, and Whisper.cpp, this application serves as a complete open-source meeting assistant. It captures audio directly from your system, generates real-time transcripts, and allows you to swap between local AI models (running completely offline) and custom API keys. [4, 5, 6]
+* [Applaud](https://github.com/landoncrabtree/applaud): Specifically designed as a self-hosted alternative to the Plaud web portal. It handles bulk audio uploads, manages your meeting history, and provides templates for flashcards, Q&As, and structured summaries using your local Ollama instance. [1]
+* [Anarlog](https://anarlog.so/blog/plaud-ai-alternatives/): A local-first, open-source AI notebook. It sits on your machine, listens to system audio (without a bot joining your call), and updates your personal SQLite database. You can export notes directly to portable Markdown files. [2]
 
 
 ### 2. Hardware & Wearable Alternatives
 
-If you want an open-source physical device to replace the Plaud Note or NotePin, the DIY and hardware community provides active firmware repositories: [3, 7] 
+If you want an open-source physical device to replace the Plaud Note or NotePin, the DIY and hardware community provides active firmware repositories: [3, 7]
 
-* [BUDDIE AI](https://github.com/Buddie-AI/Buddie): A comprehensive, full-stack open-source AI voice companion solution. The repository includes everything from custom PCB hardware layouts to embedded firmware and open-source companion apps. It is designed for continuous, personalized ambient voice capture. [8] 
-* [Owl AI Project](https://github.com/owlaiproject/owl): An open-source, wearable personal AI system designed to run locally. Instead of buying specialized recording hardware, the framework lets you convert accessible micro-hardware—such as an Apple Watch, an XIAO ESP32S3 Sense board, or a Sony Spresense—into an ambient audio recorder that links to your own local AI server. [9] 
-* DIY ESP32 Systems: Many developers bypass commercial hardware by flashing custom Python code onto cheap ESP32-S3 or Raspberry Pi Zero microcontrollers equipped with an external microphone. These route recorded audio over local Wi-Fi or Bluetooth directly to private transcription servers. [7] 
+* [BUDDIE AI](https://github.com/Buddie-AI/Buddie): A comprehensive, full-stack open-source AI voice companion solution. The repository includes everything from custom PCB hardware layouts to embedded firmware and open-source companion apps. It is designed for continuous, personalized ambient voice capture. [8]
+* [Owl AI Project](https://github.com/owlaiproject/owl): An open-source, wearable personal AI system designed to run locally. Instead of buying specialized recording hardware, the framework lets you convert accessible micro-hardware—such as an Apple Watch, an XIAO ESP32S3 Sense board, or a Sony Spresense—into an ambient audio recorder that links to your own local AI server. [9]
+* DIY ESP32 Systems: Many developers bypass commercial hardware by flashing custom Python code onto cheap ESP32-S3 or Raspberry Pi Zero microcontrollers equipped with an external microphone. These route recorded audio over local Wi-Fi or Bluetooth directly to private transcription servers. [7]
 
 ### 3. Local Desktop Dictation & Transcription Tools
 
-If you do not need an entire portal architecture and just want to transcribe recorded audio files locally, these open-source utilities use OpenAI's Whisper model on your device: [10] 
+If you do not need an entire portal architecture and just want to transcribe recorded audio files locally, these open-source utilities use OpenAI's Whisper model on your device: [10]
 
 * [Voicebox](https://github.com/jamiepine/voicebox): A local-first AI voice workspace. It serves as an open-source input/output engine that lets you dictate into any text field and run an offline LLM to polish and structure your audio summaries.
 * [NotelyVoice](https://github.com/Notely-Voice/NotelyVoice): A 100% private, cross-platform transcription and note-taking app. It is available as a free open-source project on F-Droid, making it ideal for mobile phone recording without cloud telemetry.
-* [TalkTrack](https://github.com/topics/voice-recording): An open-source utility designed to record and transcribe virtual meetings locally with offline speaker identification, replacing cloud assistants without requiring internet connectivity. [11, 12, 13] 
+* [TalkTrack](https://github.com/topics/voice-recording): An open-source utility designed to record and transcribe virtual meetings locally with offline speaker identification, replacing cloud assistants without requiring internet connectivity. [11, 12, 13]
 
 ### Comparing Plaud vs. Open Source
 
@@ -165,13 +160,11 @@ To help you choose the right path, let me know:
 - [12] [https://github.com](https://github.com/Notely-Voice/NotelyVoice)
 - [13] [https://github.com](https://github.com/topics/voice-recording)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Are there popular note taking AI agent skills which can read from screen and use ffmpeg + VLM to understand the conversation (or transcript) better?
-</td></tr><tr><td>A:</td><td>
-
-Yes, there are popular open-source AI note-taking frameworks and desktop agents that combine screen capture, FFmpeg audio extraction, and Vision-Language Models (VLMs) or multimodal Large Language Models (LLMs) to understand context. [1, 2] 
-Instead of just parsing text transcripts, these systems capture visual context (like slides, code blocks, or spreadsheet UI) directly from your screen while simultaneously processing the audio conversation. [3, 4, 5, 6] 
+> [!NOTE]
+> Q: Are there popular note taking AI agent skills which can read from screen and use ffmpeg + VLM to understand the conversation (or transcript) better?
+A:
+Yes, there are popular open-source AI note-taking frameworks and desktop agents that combine screen capture, FFmpeg audio extraction, and Vision-Language Models (VLMs) or multimodal Large Language Models (LLMs) to understand context. [1, 2]
+Instead of just parsing text transcripts, these systems capture visual context (like slides, code blocks, or spreadsheet UI) directly from your screen while simultaneously processing the audio conversation. [3, 4, 5, 6]
 
 ### Popular Screen-Aware AI Frameworks & Agents
 
@@ -201,17 +194,17 @@ Instead of just parsing text transcripts, these systems capture visual context (
 
 ### How the FFmpeg + VLM Architectural Stack Works
 
-Most developers choose to stitch these open-source tools together because a single "all-in-one" packaged application can be heavy to run locally. The standard pipeline follows these automated steps: [7] 
+Most developers choose to stitch these open-source tools together because a single "all-in-one" packaged application can be heavy to run locally. The standard pipeline follows these automated steps: [7]
 
 ```
 [Screen/Audio Feed] ──> [FFmpeg Stream Splitter] ──┬──> [Whisper / Audio Transcription] ──┐
                                                    └──> [Keyframe Extraction / Screen]  ──┴──> [VLM Processing (e.g., LLaVA/GPT-4o)] ──> [Contextual Note Summary]
 ```
 
-   1. Stream Capture (FFmpeg): FFmpeg captures live screen and system audio simultaneously. It extracts high-resolution screen frames at regular intervals (e.g., 1 frame every 5 seconds) while routing the audio track to a secondary stream. [8, 9] 
-   2. Audio Processing: The audio stream is piped directly into a transcription engine like Whisper.cpp to generate raw text logs with precise timestamps. [10, 11, 12, 13] 
-   3. Keyframe Filtration: To prevent overloading the AI model, a script evaluates the structural similarity of consecutive screenshots. Frames are only kept if a significant visual shift occurs (e.g., a slide transition or a new application window opening). [14] 
-   4. VLM Interleaving: The timestamped screenshots and the corresponding audio transcript segments are paired together. They are sent to a VLM (such as Ollama running LLaVA locally, or an API wrapper for Claude 3.5 Sonnet). [15] 
+   1. Stream Capture (FFmpeg): FFmpeg captures live screen and system audio simultaneously. It extracts high-resolution screen frames at regular intervals (e.g., 1 frame every 5 seconds) while routing the audio track to a secondary stream. [8, 9]
+   2. Audio Processing: The audio stream is piped directly into a transcription engine like Whisper.cpp to generate raw text logs with precise timestamps. [10, 11, 12, 13]
+   3. Keyframe Filtration: To prevent overloading the AI model, a script evaluates the structural similarity of consecutive screenshots. Frames are only kept if a significant visual shift occurs (e.g., a slide transition or a new application window opening). [14]
+   4. VLM Interleaving: The timestamped screenshots and the corresponding audio transcript segments are paired together. They are sent to a VLM (such as Ollama running LLaVA locally, or an API wrapper for Claude 3.5 Sonnet). [15]
    5. Contextual Execution: The VLM analyzes the pairing. For example, if a presenter says "Look at this chart spike," the VLM looks at the screenshot captured at that exact timestamp, identifies the specific data point on the chart, and adds a detailed visual description directly into your automated meeting notes.
 
 ### How to Build a Simple Local Prototype
@@ -219,18 +212,18 @@ Most developers choose to stitch these open-source tools together because a sing
 If you want to orchestrate this behavior yourself without a complex enterprise suite, you can build a script using these specific open-source blocks:
 
    1. Capture with FFmpeg: Run a background command to record your screen and audio into structured, time-stamped outputs:
-   
+
    ```bash
    ffmpeg -f avfoundation -i "1:0" -r 0.2 -f image2 image-%04d.jpg -f wav output.wav
    ```
-   
-   (Note: This extracts 1 frame every 5 seconds -r 0.2 and records system audio simultaneously). [16] 
-   2. Transcribe: Feed output.wav through an open-source tool like Whisper to get a .srt or .vtt file containing text timestamps. [17, 18] 
+
+   (Note: This extracts 1 frame every 5 seconds -r 0.2 and records system audio simultaneously). [16]
+   2. Transcribe: Feed output.wav through an open-source tool like Whisper to get a .srt or .vtt file containing text timestamps. [17, 18]
    3. Map and Prompt: Use a Python script to cross-reference the image generation times with the Whisper transcript blocks. Package the paired data and pass it to your VLM with a system prompt like:
    ```
    "Review this transcription segment alongside the accompanying screenshot. Generate a comprehensive note that incorporates both the spoken conversation and any relevant code blocks, diagrams, or visual data displayed on the screen."
    ```
-   [19, 20, 21, 22] 
+   [19, 20, 21, 22]
 
 To help you find or build the perfect configuration, tell me:
 

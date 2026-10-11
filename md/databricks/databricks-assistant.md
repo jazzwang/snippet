@@ -23,7 +23,7 @@ Be sure to save the copied token in a secure location. Do not share your copied 
 If you are not able to create or use tokens in your workspace, this might be because your workspace administrator has disabled tokens or has not given you permission to create or use tokens [[1]](https://docs.databricks.com/aws/en/dev-tools/auth/pat).
 
 - [1] [Databricks personal access token authentication](https://docs.databricks.com/aws/en/dev-tools/auth/pat)
-</td></tr></table>
+---
 
 - 術語：PAT = `Personal Access Token`
 
@@ -69,19 +69,19 @@ This process will add the configuration profile to your `.databrickscfg` file,
 
 - [1] [Databricks personal access token authentication](https://docs.databricks.com/aws/en/dev-tools/auth/pat)
 - [2] [Authentication for the Databricks CLI](https://docs.databricks.com/aws/en/dev-tools/cli/authentication)
-</td></tr></table>
+---
 
 ## Databricks CLI
 
 > [!NOTE]
 >
-</td></tr></table>
+---
 > [!NOTE]
 >
-</td></tr></table>
+---
 
 ## Databricks Tutorials
 
 > [!NOTE]
 >
-</td></tr></table>
+---

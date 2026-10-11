@@ -72,7 +72,7 @@ except requests.exceptions.RequestException as e:
     print(f"An error occurred during the request: {e}")
 
 ```
-</td></tr></table>
+---
 > [!NOTE]
 > modify the python program and read from input file, each line contains a url. use urllib to decode the url and use the basename of url as output_filename
 
@@ -184,4 +184,4 @@ except Exception as e:
 3.  **File Reading:**
 
       * The main script now opens the specified `urls.txt` file and iterates through each line, calling the `download_file` function for every valid URL.
-</td></tr></table>
+---

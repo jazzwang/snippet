@@ -7,15 +7,12 @@
 
 - 緣起：同事們提到使用 Github Copilot 然後讓它分別扮演不同的角色協作，好奇 Copilot 是否支援 subagent 的設計。
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-github copilot 有 sub-agent 的概念嗎？
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: github copilot 有 sub-agent 的概念嗎？
 可以讓 Github Copilot 分別扮演不同的角色進行團隊合作嗎？
 例如 Product Manager, Scrum Master, UX Designer, Frontend Developer,
  Backend Developer, Database Developer
-</td></tr><tr><td>A:</td><td>
-
+A:
 ## Github Copilot Sub-agent
 
 是的，[GitHub Copilot](https://github.com/orgs/community/discussions/192232) 完全具備 Sub-agent（子代理）與 Multi-agent（多代理）的架構與概念。 [1, 2]
@@ -118,16 +115,11 @@ description: 資料庫工程師，精通 SQL 與資料庫正規化。
 [15] [https://code.visualstudio.com](https://code.visualstudio.com/blogs/2026/02/05/multi-agent-development)
 [16] [https://ucomedu.blogspot.com](https://ucomedu.blogspot.com/2025/11/github-copilot-2.html)
 
-</td></tr>
-</table>
-
+---
 ## 2026-06-13
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-can I define Agent Skills only for specific SubAgent in Github Copilot?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: </td></tr><tr style="background-color:lightyellow;"><td>Q: can I define Agent Skills only for specific SubAgent in Github Copilot?
+A:
 ## Sub-agent with specific Agent Skills
 
 Yes, you can define Agent Skills specifically for a target custom agent or subagent. By default, subagents are completely opt-in and do not inherit any global or parent-level skills automatically. This architectural isolation ensures you can target exactly which skills load into a specific subagent's execution environment. [1, 2]
@@ -183,11 +175,9 @@ Would you like help formatting the YAML frontmatter for a specific `SKILL.md` fi
 [14] [https://github.com](https://github.com/orgs/community/discussions/183962)
 [15] [https://docs.github.com](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-可以給我一個實作範例嗎？例如有 Product Manager 跟 Full Stack Developer 兩個 Sub-agent
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 可以給我一個實作範例嗎？例如有 Product Manager 跟 Full Stack Developer 兩個 Sub-agent
+A:
 ## Example: Sub-agent with independent Skills
 
 這裡提供一個使用 GitHub Copilot 擴充功能架構（Copilot Extensions / Custom Agents）的實作範例。
@@ -331,12 +321,10 @@ exportasyncfunction orchestratorHandler(req, res) {
 
 [1] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/1903376889793455465)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-本地端專案. <br/>
+> [!NOTE]
+> Q: 本地端專案. <br/>
 問題：為何這是放在 .github/workflows？
-</td></tr><tr><td>A:</td><td>
-
+A:
 ## Sub-agent Project Structure
 
 抱歉，前一個回答讓您產生了混淆！這是我的疏忽，程式碼與技能定義在本地專案中，絕對不是放在 `.github/workflows` 裡。

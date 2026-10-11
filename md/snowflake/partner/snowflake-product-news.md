@@ -6,12 +6,9 @@
   - Snowflake Launches Cortex AI Gateway and Advanced AI Security at Black Hat 2026
   - https://www.snowflake.com/en/blog/enterprise-ai-security-agentic-mcp-governance/
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Gemini Chat
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-請幫我撰寫中文摘要
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Gemini Chat
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 請幫我撰寫中文摘要
+A:
 Snowflake 在 Black Hat 2026 大會上發布了 **Cortex AI Gateway** 及一系列生產級 AI 安全防護功能，旨在將安全與治理機制直接建構於資料與 AI 基礎設施核心，協助企業安全擴展自主 Agent 的應用。
 
 **背景與市場痛點**

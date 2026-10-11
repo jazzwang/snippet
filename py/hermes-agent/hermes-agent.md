@@ -16,9 +16,8 @@
 - 花了一些時間研究 Nous Research 的官網，感覺是個蠻有趣的營利組織
   - https://nousresearch.com/
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-who own Nous Research?
-</td></tr></table>
+<table><tr style="background-color:lightyellow;"><td>Q: who own Nous Research?
+---
 
 As a private entity, **Nous Research** is not owned by a single individual or parent company. Instead, it is owned by its **founders**, **employees**, and a group of **venture capital investors**.
 

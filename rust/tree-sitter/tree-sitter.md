@@ -194,4 +194,4 @@ If no Perl grammar exists, you may need to create one, which requires defining t
 Community grammars may not cover all edge cases of Perl, so testing is essential.
 
 This approach allows you to leverage Tree-sitter's capabilities for Perl code analysis in Python. Let me know if you'd like further clarification!
-</td></tr></table>
+---

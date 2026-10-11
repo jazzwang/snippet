@@ -116,4 +116,4 @@ else:
 3.  **Create a `RequestsCookieJar`:** This is a special `requests` object designed to manage cookies. It's more robust than a simple dictionary for setting cookies, as it handles attributes like `domain` and `path`.
 4.  **Set cookies in the jar:** The code iterates through each cookie dictionary from the JSON file and uses the `jar.set()` method to add it to the `RequestsCookieJar`.
 5.  **Load the cookies into a `requests.Session`:** Finally, `session.cookies.update(cookie_jar)` merges the cookies from the jar into your `requests` session, so all subsequent requests made with this session will automatically include them.
-</td></tr></table>
+---

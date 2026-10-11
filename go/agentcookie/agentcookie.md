@@ -11,12 +11,9 @@
   - 看了一下 README.md 看到 [cmux](https://github.com/manaflow-ai/cmux)
   - 有點遲疑，因為似乎只支援 macOS
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-does https://github.com/mvanhorn/agentcookie only support macOS?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: does https://github.com/mvanhorn/agentcookie only support macOS?
+A:
 Yes, agentcookie currently only supports macOS on both the source and sink ends.
 According to the repository documentation, it relies heavily on system-specific features and architectures that restrict it to Apple machines:
 
@@ -28,33 +25,31 @@ If you would like to look into alternatives or see if they plan to change this, 
 * Find cross-platform alternatives that handle session syncing for AI agents.
 * Search the repository issues or roadmap for any future Linux or Windows support plans.
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-Find cross-platform alternatives that handle session syncing for AI agents.
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: Find cross-platform alternatives that handle session syncing for AI agents.
+A:
 ## Agentcookie Alternatives
 
 While agentcookie remains uniquely integrated with macOS security APIs, several excellent cross-platform alternatives let AI agents securely capture, sync, and persist browser sessions across Linux, Windows, and macOS.
-These alternatives are categorized below by how they handle the infrastructure. [1] 
+These alternatives are categorized below by how they handle the infrastructure. [1]
 
-### 1. Unified Agent Integration Frameworks (Open-Source) [2, 3, 4] 
+### 1. Unified Agent Integration Frameworks (Open-Source) [2, 3, 4]
 If you want to orchestrate cross-platform AI web agents that natively sync and preserve browser states (cookies, localStorage, and sessionStorage) between runs without OS lock-in:
 
-* [browser-use](https://github.com/browser-use/browser-use): A widely popular open-source Python framework designed for AI agent web browsing. It features cross-platform storage_state handling that allows your agent to dump its entire authenticated browser session into a portable JSON state file and reload it instantly on any OS. It also supports direct context hijacking using your real, local Chrome browser profiles. [5, 6, 7, 8, 9] 
-* [BrowserAct](https://www.youtube.com/watch?v=WvEILN3NPDY): A free, cross-platform CLI tool built explicitly for AI agents. It circumvents strict OS keychain limitations by using stealth Chromium environments to reuse existing browser sessions and inherit live logins from applications like Google, LinkedIn, or Shopify. [10, 11] 
+* [browser-use](https://github.com/browser-use/browser-use): A widely popular open-source Python framework designed for AI agent web browsing. It features cross-platform storage_state handling that allows your agent to dump its entire authenticated browser session into a portable JSON state file and reload it instantly on any OS. It also supports direct context hijacking using your real, local Chrome browser profiles. [5, 6, 7, 8, 9]
+* [BrowserAct](https://www.youtube.com/watch?v=WvEILN3NPDY): A free, cross-platform CLI tool built explicitly for AI agents. It circumvents strict OS keychain limitations by using stealth Chromium environments to reuse existing browser sessions and inherit live logins from applications like Google, LinkedIn, or Shopify. [10, 11]
 
 ### 2. Managed & Headless Cloud Browsing APIs
-For production deployments where you want your agents running entirely headless in the cloud (often on Linux servers) while perfectly syncing desktop authenticated environments: [12, 13] 
+For production deployments where you want your agents running entirely headless in the cloud (often on Linux servers) while perfectly syncing desktop authenticated environments: [12, 13]
 
-* [Browserbase](https://www.firecrawl.dev/blog/best-browser-agents): A platform purpose-built for AI agents that handles end-to-end persistent browser sessions. It handles cookie and session syncing seamlessly across agent runs, entirely abstracted away from the local host OS, and works as a drop-in replacement for standard automation tools. [1, 14, 15] 
-* [Steel](https://fast.io/resources/best-web-browsing-tools-ai-agents/): An open-source browser API focused on enterprise data sovereignty. You can self-host Steel inside your own isolated virtual private cloud (Linux/Docker) to persist session cookies and maintain internal app interactions without leaking auth keys to vendor platforms. [16] 
+* [Browserbase](https://www.firecrawl.dev/blog/best-browser-agents): A platform purpose-built for AI agents that handles end-to-end persistent browser sessions. It handles cookie and session syncing seamlessly across agent runs, entirely abstracted away from the local host OS, and works as a drop-in replacement for standard automation tools. [1, 14, 15]
+* [Steel](https://fast.io/resources/best-web-browsing-tools-ai-agents/): An open-source browser API focused on enterprise data sovereignty. You can self-host Steel inside your own isolated virtual private cloud (Linux/Docker) to persist session cookies and maintain internal app interactions without leaking auth keys to vendor platforms. [16]
 
 ### 3. Core Multi-Platform Libraries (DIY Engineering)
-If you prefer building a custom sync utility like agentcookie but need it to run natively across Linux, Windows, and macOS: [17, 18] 
+If you prefer building a custom sync utility like agentcookie but need it to run natively across Linux, Windows, and macOS: [17, 18]
 
-* [Playwright (Browser Contexts)](https://dev.to/stevengonsalvez/browser-tools-for-ai-agents-part-1-playwright-puppeteer-and-why-your-agent-picked-playwright-k71): The modern standard for AI agent automation. Using standard Python or Node.js scripts, you can pull active cookies using context.cookies() and save them to a platform-agnostic file. Agents running on any other machine can spin up an isolated browser.new_context(storage_state="state.json") to inherit those exact credentials instantly. [19, 20, 21] 
-* [Selenium (Netscape Cookie Exporters)](https://gist.github.com/ivansaul/40ad4f23ee375b38654be02631902041): A traditional cross-platform framework that can be combined with simple cookie exporter code (like saving driver.get_cookies() to a Netscape-formatted cookies.txt file) to import authenticated parameters into your AI scripts regardless of the OS. [20, 22] 
+* [Playwright (Browser Contexts)](https://dev.to/stevengonsalvez/browser-tools-for-ai-agents-part-1-playwright-puppeteer-and-why-your-agent-picked-playwright-k71): The modern standard for AI agent automation. Using standard Python or Node.js scripts, you can pull active cookies using context.cookies() and save them to a platform-agnostic file. Agents running on any other machine can spin up an isolated browser.new_context(storage_state="state.json") to inherit those exact credentials instantly. [19, 20, 21]
+* [Selenium (Netscape Cookie Exporters)](https://gist.github.com/ivansaul/40ad4f23ee375b38654be02631902041): A traditional cross-platform framework that can be combined with simple cookie exporter code (like saving driver.get_cookies() to a Netscape-formatted cookies.txt file) to import authenticated parameters into your AI scripts regardless of the OS. [20, 22]
 
 ### Structural Comparison
 
@@ -91,8 +86,6 @@ Would you like to see a script example demonstrating how to capture and load por
 [22] [https://thunderbit.com](https://thunderbit.com/blog/top-browser-automation-tools)
 [23] [https://appsumo.com](https://appsumo.com/products/browseract/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-</td></tr>
+> [!NOTE]
+> Q: A: </td></tr>
 </table>

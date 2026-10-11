@@ -1,30 +1,27 @@
 # Databricks - What is DBX? What is DAB?
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-what is DBX? what is DAB? if the context is related to Databricks
-</td></tr><tr><td>A:</td><td>
-
-In the context of Databricks, DBX and DAB are both developer tools used to automate, package, and deploy data engineering and data science workloads. [1, 2, 3, 4, 5] 
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: what is DBX? what is DAB? if the context is related to Databricks
+A:
+In the context of Databricks, DBX and DAB are both developer tools used to automate, package, and deploy data engineering and data science workloads. [1, 2, 3, 4, 5]
 Here is the breakdown of what each tool is and how they differ:
 
 ## 1. DBX (Databricks Labs Extensions)
 
 * What it is: A legacy command-line tool developed by Databricks Labs to help developers manage deployment lifecycles.
 * Primary use: It allowed developers to pack local code (like Python wheels) and deploy them as Databricks Jobs using a CLI.
-* Current status: Deprecated. It has been officially replaced by Databricks Asset Bundles (DABs). [6, 7, 8, 9, 10] 
+* Current status: Deprecated. It has been officially replaced by Databricks Asset Bundles (DABs). [6, 7, 8, 9, 10]
 
 ## 2. DAB (Databricks Asset Bundles)
 
-* What it is: The modern, official Databricks feature for implementing Infrastructure as Code (IaC) and CI/CD pipelines. [11, 12, 13] 
-* Primary use: It uses a single YAML configuration file to define, package, and deploy entire Databricks projects. [14, 15, 16] 
+* What it is: The modern, official Databricks feature for implementing Infrastructure as Code (IaC) and CI/CD pipelines. [11, 12, 13]
+* Primary use: It uses a single YAML configuration file to define, package, and deploy entire Databricks projects. [14, 15, 16]
 * Key components managed:
 * Source code
    * Notebooks
    * Delta Live Tables (DLT)
    * Databricks Workflows/Jobs
-   * Unity Catalog schemas [17, 18] 
+   * Unity Catalog schemas [17, 18]
 
 ## Key Differences
 
@@ -35,7 +32,7 @@ Here is the breakdown of what each tool is and how they differ:
 | Integration | Requires separate CLI installation | Built directly into the standard Databricks CLI |
 | Scope | Mainly focused on code and jobs | Manages code, pipelines, dashboards, and security |
 
-If you are starting a new project on Databricks, you should always use DABs (Databricks Asset Bundles) instead of DBX. [24, 25] 
+If you are starting a new project on Databricks, you should always use DABs (Databricks Asset Bundles) instead of DBX. [24, 25]
 To help you get started, let me know:
 
 * Are you looking to set up a CI/CD pipeline (like GitHub Actions)?
@@ -68,5 +65,4 @@ To help you get started, let me know:
 [24] [https://medium.com](https://medium.com/totalenergies-digital-factory/databricks-assets-bundles-dabs-deploy-and-managing-data-ai-assets-a4e29bdb15a7)
 [25] [https://dataengineeringcentral.substack.com](https://dataengineeringcentral.substack.com/p/simplifying-cicd-with-databricks)
 
-</td></tr>
-</table>
+---

@@ -105,7 +105,7 @@ echo "And kubectl with: kubectl version --client"
 *   **Restart or `newgrp docker`**: After the script finishes, you'll need to either close and reopen your WSL terminal or run `newgrp docker` for the changes to your user's group membership to take effect. This allows you to run Docker commands without `sudo`.
 *   **WSL2 Requirement**: Minikube with the Docker driver works best on WSL2. If you are on WSL1, you might encounter issues or need to switch to a different driver (like `none`, which requires Docker Desktop running on Windows).
 *   **Windows Docker Desktop**: While this script installs Docker *within* your WSL instance, if you prefer to use Docker Desktop running on Windows, you would typically configure your WSL instance to connect to that. However, for a self-contained WSL environment, installing Docker directly in WSL is often simpler.
-</td></tr></table>
+---
 
 ### 在 Github Codespace 安裝 `minikube`
 

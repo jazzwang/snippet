@@ -89,7 +89,7 @@ If you want, I can provide a runnable Python script for this example or help you
 [8](https://www.youtube.com/watch?v=BrvVheleOqc)
 [9](https://www.dbreunig.com/2024/12/12/pipelines-prompt-optimization-with-dspy.html)
 [10](https://www.digitalocean.com/community/tutorials/prompting-with-dspy)
-</td></tr></table>
+---
 
 > [!NOTE]
 > Can you show me an example of using DSPy to tune a prompt with few-shot examples
@@ -187,7 +187,7 @@ This is a concise and practical demonstration of tuning few-shot prompts using D
 [7](https://www.dbreunig.com/2024/12/12/pipelines-prompt-optimization-with-dspy.html)
 [8](https://towardsdatascience.com/automating-prompt-engineering-with-dspy-and-haystack-926a637a3f43/)
 [9](https://dspy.ai)
-</td></tr></table>
+---
 
 > [!NOTE]
 > could you provide a full runnable script of DSPy prompt-tuning?
@@ -250,4 +250,4 @@ print(response)
 This script covers the full lifecycle: configuring DSPy with GPT-4, defining your task, providing few-shot examples, tuning the prompt with an optimizer, and executing the improved prompt on new data.
 
 If there are any questions about customizing the script or extending it, just ask!
-</td></tr></table>
+---

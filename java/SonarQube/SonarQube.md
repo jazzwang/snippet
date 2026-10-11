@@ -58,7 +58,7 @@ sonar.sourceEncoding=UTF-8
 ### Alternatives and Additional Configurations
 
 While `sonar-project.properties` is the standard for standalone projects, if you're using a build tool like **Maven** or **Gradle**, the SonarQube properties are often configured directly in the build file (`pom.xml` for Maven or `build.gradle` for Gradle) or passed as command-line arguments during the build process. This is common in automated CI/CD pipelines, as it keeps the repository cleaner and allows for dynamic configuration.
-</td></tr></table>
+---
 
 - 2025-09-11 13:40 PM
 - By Google Gemini
@@ -148,4 +148,4 @@ mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
   * **`-Dsonar.login=YOUR_SONARQUBE_TOKEN`**: This provides your authentication token, which you must get from your SonarQube instance. **Never commit this token to your repository.** It should be handled as a secret, especially in CI/CD pipelines.
 
 Once the command completes, you'll see a link in the terminal output to your project's dashboard on the SonarQube server, where you can view the analysis results, including the code coverage.
-</td></tr></table>
+---

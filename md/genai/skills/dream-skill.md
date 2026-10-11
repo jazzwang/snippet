@@ -9,10 +9,8 @@
 
 - Source: https://www.youtube.com/watch?v=jI4ZVB_MPhU
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM - Report
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM - Report
+A:
 ### Andrej Karpathy 的 AI「夢境」概念與 Claude Code 記憶優化簡報
 
 本文件旨在深入分析 Andrej Karpathy 提出的 AI「夢境 (Dreaming)」概念，探討 Anthropic 如何將此機制整合至 Claude Code 中，以解決當前大語言模型（LLM）在記憶與自我學習方面的核心缺陷。
@@ -72,5 +70,4 @@ Anthropic 的合作夥伴（如 Harvey 和 Rakuten）是最早獲准使用官方
 2.  **實施「人機協作」審核：** 雖然 AI 可以自動執行微小修正，但對於涉及業務邏輯或事實更新的變更，應透過「夢境報告」進行人工審核，以確保記憶的準確性。
 3.  **跨會話模式監控：** 使用夢境功能來識別重複發生的問題或偏好。例如，若 AI 多次發現使用者詢問特定的 iCloud 路徑，夢境機制會將其轉化為永久記憶，減少未來重複溝通的成本。
 4.  **清理冗餘資訊：** 定期利用夢境機制識別並刪除「過時」的記憶文件（如文中提到的 105 天未更新的無效文件），以維持模型的反應速度與精準度。
-</td></tr>
-</table>
+---

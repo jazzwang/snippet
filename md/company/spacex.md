@@ -2,12 +2,9 @@
 
 ## 2026-06-15
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-SpaceX 在太空建立資料中心,從物理熱力學的角度,在近乎真空的太空中 GPU 真的可以靠輻射散熱嗎?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: SpaceX 在太空建立資料中心,從物理熱力學的角度,在近乎真空的太空中 GPU 真的可以靠輻射散熱嗎?
+A:
 ## SpaceX 太空資料中心 - 散熱設計
 
 是的，在太空中 GPU 絕對可以、也只能完全依靠「熱輻射」來將熱能最終排入宇宙。然而，雖然這在物理熱力學上完全可行，但它的散熱效率極低，是阻礙太空資料中心規模化的最大物理瓶頸。 [1, 2, 3, 4]
@@ -22,14 +19,14 @@ SpaceX 在太空建立資料中心,從物理熱力學的角度,在近乎真空�
 
 ### 二、 決定散熱效率的物理公式
 
-根據熱力學的史蒂芬-波茲曼定律（Stefan-Boltzmann law），一個物體透過輻射散發的熱功率（$P$）公式為： [12, 13] 
+根據熱力學的史蒂芬-波茲曼定律（Stefan-Boltzmann law），一個物體透過輻射散發的熱功率（$P$）公式為： [12, 13]
 
 $P = \epsilon \cdot \sigma \cdot A \cdot T^4$
 
 * $\epsilon$：表面輻射率（介於 0 到 1 之間）。
 * $\sigma$：史蒂芬-波茲曼常數（固定值）。
 * $A$：輻射板的表面積。
-* $T$：輻射板的絕對溫度（Kelvin）。 [3, 12, 14, 15] 
+* $T$：輻射板的絕對溫度（Kelvin）。 [3, 12, 14, 15]
 
 #### 關鍵致命點：$T^4$ 的限制
 
@@ -44,7 +41,7 @@ $P = \epsilon \cdot \sigma \cdot A \cdot T^4$
 為了克服這個物理壁壘，SpaceX 最近公開的 AI1 資料中心衛星（功耗達 120kW-150kW，相當於一個 NVIDIA GB300 機櫃）採用了極致的熱管理架構： [16, 17]
 
 ```txt
-[ GPU 晶片熱點 ] ──(物理傳導：金剛石)──> [ 內部封閉液冷迴路 ] 
+[ GPU 晶片熱點 ] ──(物理傳導：金剛石)──> [ 內部封閉液冷迴路 ]
 ──(熱管輸送)──> [ 衛星外部巨型輻射板 ] ──(紅外線輻射)──> 宇宙深空
 ```
 

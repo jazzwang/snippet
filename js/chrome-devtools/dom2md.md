@@ -303,15 +303,12 @@ dom2md.js
 
 ## 2026-06-01
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Is it possible to create a function domToMarkdown() in Chrome DevTool snippet and add a widget bookmark to trigger the function?
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-
+<table><tr style="background-color:lightyellow;"><td>Q: Is it possible to create a function domToMarkdown() in Chrome DevTool snippet and add a widget bookmark to trigger the function?
+</td></tr><tr style="background-color:lightgreen;"><td>Tool:
 - Google Gemini App
 - Gemini 3.5 Flash (Thinking: Standard)
 
-</td></tr><tr><td>A:</td><td>
-
+A:
 Yes, it is absolutely possible! You can achieve this by combining a **Chrome DevTools Snippet** (where your main `domToMarkdown()` logic lives) with a **Bookmarklet** (a bookmark containing JavaScript) that acts as the "widget trigger."
 
 Because of browser security policies, a standard bookmarklet cannot directly "reach inside" DevTools to run a saved snippet. However, you can make them work together beautifully by having your bookmarklet inject a script that executes the logic on the current page.
@@ -425,16 +422,13 @@ javascript:(function(){function domToMarkdown(e=document.body){let t="";function
 2. Click your newly created bookmark.
 3. Open any text editor and press **Paste (Ctrl+V)**. Your webpage is now basic Markdown!
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-請將 Step3 的 bookmarklet 改良成可以將相對網址轉成絕對網址
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-
+> [!NOTE]
+> Q: 請將 Step3 的 bookmarklet 改良成可以將相對網址轉成絕對網址
+</td></tr><tr style="background-color:lightgreen;"><td>Tool:
 - Google Gemini App
 - Gemini 3.5 Flash (Thinking: Standard)
 
-</td></tr><tr><td>A:</td><td>
-
+A:
 這是一個非常棒的改良想法！在處理網頁 DOM 時，許多連結（`<a>` 標籤）使用的是相對路徑（例如 `/about` 或 `../contact`）。如果直接複製到 Markdown 中，在其他地方點擊時會因為缺少主網域而失效。
 
 在 JavaScript 中，最優雅且準確的解決方法是使用內建的 `new URL(relative, base)` 構造函數。它可以自動幫我們將相對路徑與當前網頁的網址（`window.location.href`）結合，轉化為絕對網址。

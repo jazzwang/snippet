@@ -68,7 +68,7 @@ Citations:
 
 ---
 Answer from Perplexity: pplx.ai/share
-</td></tr></table>
+---
 
 - https://g.co/gemini/share/54529c88d0d0
 > [!NOTE]
@@ -114,4 +114,4 @@ HNSW indexes are widely used in various applications that rely on efficient simi
 * **Multi-modal Data Retrieval:** Searching across different data types (text, images, audio) based on their embeddings.
 
 In short, the HNSW index is a powerful and versatile tool for efficiently finding similar data points in large, complex datasets, making it a cornerstone of many modern AI applications.
-</td></tr></table>
+---

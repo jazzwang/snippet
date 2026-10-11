@@ -49,7 +49,7 @@ Here are best practices for a data scientist research team to run Scrum/Agile wi
 * **Data Quality and Availability:** Often, data scientists are blocked by data availability or quality issues. Address these as high-priority impediments and involve data engineering/IT teams as needed.
 
 While challenges exist, adapting Scrum with these best practices can help data scientist research teams become more efficient, collaborative, and deliver more impactful results within a structured, iterative framework.
-</td></tr></table>
+---
 
 - https://www.perplexity.ai/search/are-there-best-practices-for-d-TdkE3o.7TpeXP_FFeH4r1Q?0=d
 
@@ -201,4 +201,4 @@ Implementing these adaptations keeps the spirit of Scrum—transparency, inspect
 [50] https://www.youtube.com/watch?v=efHs9oG6waA
 [51] https://towardsdatascience.com/sprint-plan-for-the-busy-interviewee-16fd0893623d/
 [52] https://www.csolsinc.com/resources/using-agile-scrum-to-implement-a-life-science-informatics-system
-</td></tr></table>
+---

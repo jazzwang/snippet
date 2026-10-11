@@ -1,13 +1,10 @@
 # Databricks - Batch Inference vs Streaming Inference
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-databricks batch inference streaming inference
-</td></tr><tr><td>A:</td><td>
-
-In Databricks, batch inference and streaming inference represent two different strategies for executing machine learning or large language model (LLM) predictions depending on your data latency and throughput needs. [1, 2, 3] 
-Databricks unifies both paradigms, allowing you to use identical code logic (such as SQL AI functions) for both batch and streaming pipelines. [4, 5, 6, 7, 8] 
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: databricks batch inference streaming inference
+A:
+In Databricks, batch inference and streaming inference represent two different strategies for executing machine learning or large language model (LLM) predictions depending on your data latency and throughput needs. [1, 2, 3]
+Databricks unifies both paradigms, allowing you to use identical code logic (such as SQL AI functions) for both batch and streaming pipelines. [4, 5, 6, 7, 8]
 
 ### Comparison Overview
 
@@ -19,44 +16,44 @@ Databricks unifies both paradigms, allowing you to use identical code logic (suc
 | Primary Tooling | ai_query, Apache Spark, Ray Data | Structured Streaming[](https://docs.databricks.com/aws/en/structured-streaming/tutorial), Delta Live Tables |
 
 ### 1. Batch Inference (Offline / Bulk Processing)
-Batch inference processes large datasets collected over time all at once. It maximizes hardware utilization to lower costs and is ideal when you do not need immediate real-time answers. [1, 3, 13] 
+Batch inference processes large datasets collected over time all at once. It maximizes hardware utilization to lower costs and is ideal when you do not need immediate real-time answers. [1, 3, 13]
 
 #### Common Use Cases
 
 * Nightly sentiment analysis on thousands of customer reviews.
 * Weekly catalog text embeddings generation.
-* Bulk content generation or structured data extraction. [9, 14, 19] 
+* Bulk content generation or structured data extraction. [9, 14, 19]
 
 #### Recommended Implementations
 
-* Mosaic AI & ai_query (Best for LLMs): Databricks allows you to execute batch LLM inference directly inside your [Delta Lake](https://docs.databricks.com/aws/en/machine-learning/train-model/dl-best-practices) using SQL. The underlying serverless engine automatically handles scaling and retries. [9, 18, 20, 21] 
-* Spark UDFs with MLflow: For traditional ML models (e.g., scikit-learn, XGBoost), you load the model from the [MLflow Model Registry](https://community.databricks.com/t5/machine-learning/how-to-speed-up-inference/td-p/135900) and wrap it inside a Spark User Defined Function (UDF) to scale horizontally. [2, 10, 22] 
-* Ray Data + vLLM: Used for hyper-scale open-source LLM inference workloads using raw cluster GPUs. [16, 23] 
+* Mosaic AI & ai_query (Best for LLMs): Databricks allows you to execute batch LLM inference directly inside your [Delta Lake](https://docs.databricks.com/aws/en/machine-learning/train-model/dl-best-practices) using SQL. The underlying serverless engine automatically handles scaling and retries. [9, 18, 20, 21]
+* Spark UDFs with MLflow: For traditional ML models (e.g., scikit-learn, XGBoost), you load the model from the [MLflow Model Registry](https://community.databricks.com/t5/machine-learning/how-to-speed-up-inference/td-p/135900) and wrap it inside a Spark User Defined Function (UDF) to scale horizontally. [2, 10, 22]
+* Ray Data + vLLM: Used for hyper-scale open-source LLM inference workloads using raw cluster GPUs. [16, 23]
 
 #### Code Example (SQL Batch Inference)
 
 ```sql
-SELECT 
-  review_id, 
-  ai_query('databricks-llama-3-70b-instruct', CONCAT('Analyze sentiment: ', review_text)) AS sentimentFROM 
+SELECT
+  review_id,
+  ai_query('databricks-llama-3-70b-instruct', CONCAT('Analyze sentiment: ', review_text)) AS sentimentFROM
   hive_metastore.default.customer_reviews;
 ``
 
 ### 2. Streaming Inference (Near Real-Time Processing)
 
-Streaming inference processes data incrementally as it arrives. It treats data as an unbounded table, computing predictions continuously or on small micro-batches. [4, 11] 
+Streaming inference processes data incrementally as it arrives. It treats data as an unbounded table, computing predictions continuously or on small micro-batches. [4, 11]
 
 #### Common Use Cases
 
 * Real-time fraud detection on financial transactions.
 * Live sensor/IoT data anomaly detection.
-* Immediate chatbot orchestration or routing pipelines. [24, 25] 
+* Immediate chatbot orchestration or routing pipelines. [24, 25]
 
 #### Recommended Implementations
 
 * Structured Streaming with ai_query: You can seamlessly plug the same AI query functions into a live Spark streaming pipeline.
 * Delta Live Tables (DLT): Declarative framework that simplifies building and monitoring streaming inference pipelines.
-* Auto Loader: Efficiently pulls incoming files from cloud storage (S3/ADLS) into your streaming engine. [5, 12, 15, 18, 26] 
+* Auto Loader: Efficiently pulls incoming files from cloud storage (S3/ADLS) into your streaming engine. [5, 12, 15, 18, 26]
 
 #### Code Example (Python Streaming Inference)
 
@@ -75,9 +72,9 @@ Streaming inference processes data incrementally as it arrives. It treats data a
 
 ### Key Decision Factors
 
-   1. How fast do you need predictions? If minutes or hours are acceptable, use Batch. If you need answers within seconds of data generation, use Streaming. [11, 13, 27, 28, 29] 
-   2. What is your cost budget? Batch allows Databricks to scale down infrastructure to zero when done. Streaming requires continuously running or frequently triggered resources, which increases compute costs. [1, 9, 13, 30, 31] 
-   3. What is the data arrival pattern? Scattered files dropping into cloud bucket storage benefit from Streaming via Auto Loader, while a database partition refreshed once a day requires Batch. [12, 32] 
+   1. How fast do you need predictions? If minutes or hours are acceptable, use Batch. If you need answers within seconds of data generation, use Streaming. [11, 13, 27, 28, 29]
+   2. What is your cost budget? Batch allows Databricks to scale down infrastructure to zero when done. Streaming requires continuously running or frequently triggered resources, which increases compute costs. [1, 9, 13, 30, 31]
+   3. What is the data arrival pattern? Scattered files dropping into cloud bucket storage benefit from Streaming via Auto Loader, while a database partition refreshed once a day requires Batch. [12, 32]
 
 If you are setting up a pipeline, please let me know:
 
@@ -120,5 +117,4 @@ I can provide the specific syntax and cluster optimization settings for your cas
 [31] [https://medium.com](https://medium.com/@blakelassiter/streaming-vs-batch-what-i-learned-the-hard-way-8a8d4921a896)
 [32] [https://docs.databricks.com](https://docs.databricks.com/aws/en/data-engineering/batch-vs-streaming)
 
-</td></tr>
-</table>
+---

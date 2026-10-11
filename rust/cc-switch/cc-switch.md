@@ -21,12 +21,9 @@
 
 ## 2026-05-24
 
-<table><tr><td>Q:</td><td>
-what's the difference between https://github.com/farion1231/cc-switch and https://github.com/BerriAI/litellm
-</td></tr><tr><td>Tool & Model</td><td>
-Google Search AI Mode | Gemini 3
-</td></tr><tr><td>A:</td><td>
-While both tools are designed to simplify how developers manage and switch between different Large Language Model (LLM) API providers, they operate at completely different layers of the software stack. **The main difference is that `cc-switch` is a desktop application for configuring local terminal-based coding tools, whereas `litellm` is a backend code library and proxy server used to connect applications to multiple LLM APIs.**
+<table><tr><td>Q: what's the difference between https://github.com/farion1231/cc-switch and https://github.com/BerriAI/litellm
+</td></tr><tr><td>Tool & Model Google Search AI Mode | Gemini 3
+A: While both tools are designed to simplify how developers manage and switch between different Large Language Model (LLM) API providers, they operate at completely different layers of the software stack. **The main difference is that `cc-switch` is a desktop application for configuring local terminal-based coding tools, whereas `litellm` is a backend code library and proxy server used to connect applications to multiple LLM APIs.**
 
 A detailed breakdown of their unique purposes, targets, and operations includes:
 
@@ -64,4 +61,4 @@ A detailed breakdown of their unique purposes, targets, and operations includes:
 -   Use **`litellm`** if you are writing a piece of software (like a web app or web bot) and you want your software to seamlessly call multiple LLM providers using a single unified coding framework.
 
 To help me give you more relevant details, are you looking to **configure your own local development environment**, or are you **building a software application** that needs to connect to different AI models?
-</td></tr></table>
+---

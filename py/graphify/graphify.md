@@ -18,12 +18,9 @@
 
 ## 2026-06-23
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-could you describe the technical stack of graphify https://graphifylabs.ai/? how does graphify store Knowledge Graph? in SQLite? or Neo4j?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: could you describe the technical stack of graphify https://graphifylabs.ai/? how does graphify store Knowledge Graph? in SQLite? or Neo4j?
+A:
 By default, Graphify does not store its core knowledge graph in a standalone database like SQLite or Neo4j. Instead, it uses NetworkX to construct the graph entirely in-memory and outputs serialized data as portable JSON (`graph.json`) and HTML files (`graph.html`) directly into your project's local directory. [1, 2]
 However, Graphify is a highly extensible tool that supports push/sync integrations to external graph platforms like Neo4j and FalkorDB for advanced querying and RAG workloads. [2, 3]
 
@@ -78,26 +75,19 @@ If you would like to explore setting this up for your project, let me know:
 [12] [https://dev.to](https://dev.to/mir_mursalin_ankur/graphify-code-review-graph-build-a-self-updating-knowledge-graph-for-claude-code-and-other-ai-j1m)
 [13] [https://github.com](https://github.com/safishamsi/graphify/blob/v8/docs/docker-mcp-sqlite.md)
 
-</td></tr>
-</table>
-
+---
 ## 2026-06-24
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-alternatives of https://github.com/safishamsi/graphify
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: alternatives of https://github.com/safishamsi/graphify
+A:
 Alternatives to safishamsi/graphify for AI-driven code context include <mark>code-review-graph</mark> for structural AST mapping and <mark>GitNexus</mark> for live agent indexing and MCP tools. <mark>TrueCourse</mark> provides architectural dependency analysis, while graphify-dotnet offers a tailored solution for the .NET ecosystem. For detailed comparisons of these tools, visit [Reddit](https://www.reddit.com/r/ClaudeCode/comments/1sme1zw/graphify_vs_codereviewgraph_which_is_better_for/). [1, 2, 3]
 
 [1] [https://www.reddit.com](https://www.reddit.com/r/ClaudeCode/comments/1sme1zw/graphify_vs_codereviewgraph_which_is_better_for/)
 [2] [https://ai-chain.tw](https://ai-chain.tw/en/blog/gitnexus-graphify-ai-coding-workflow-guide/)
 [3] [https://github.com](https://github.com/elbruno/graphify-dotnet)
 
-</td></tr>
-</table>
-
+---
 ### code-review-graph
 
 - https://github.com/tirth8205/code-review-graph

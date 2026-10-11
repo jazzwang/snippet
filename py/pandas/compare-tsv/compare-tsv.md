@@ -142,7 +142,7 @@ if __name__ == "__main__":
 4.  Run the script from your terminal: `python compare_tsv.py`
 
 The output will show you the differences found in the headers, the unique values in each common column, and the rows that are present in one file but not the other.
-</td></tr></table>
+---
 
 - https://g.co/gemini/share/9310474f3a34
 > [!NOTE]
@@ -357,7 +357,7 @@ if __name__ == "__main__":
 
 The output will now provide insights into the differences in your TSV files while considering the order of the rows, either strictly by position or based on the matching values in your specified key columns.
 
-</td></tr></table>
+---
 
 - 2025-04-10 23:40 PM
 - https://g.co/gemini/share/88a2af0291b4
@@ -544,4 +544,4 @@ if __name__ == "__main__":
 ```
 
 **In summary, using SQLite with pandas offers a significant advantage for comparing larger TSV files due to its memory efficiency and powerful querying capabilities. For ordered row differences, especially when key columns are involved, SQL joins can be very effective. If strict positional order without key columns is the primary concern, you might still need to combine SQLite for loading and initial filtering with pandas for sequential row comparison.**
-</td></tr></table>
+---

@@ -11,9 +11,8 @@
 
 - 緣起：想試試看能否用 ttyd 搭配 ngrok 把遠端的 Terminal 分享出來
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-is it possible to integrate ngrok and any SSH server or web shell server on Windows 11 which provides remote access?
-</td></tr></table>
+<table><tr style="background-color:lightyellow;"><td>Q: is it possible to integrate ngrok and any SSH server or web shell server on Windows 11 which provides remote access?
+---
 
 It is absolutely possible. While ngrok is famous for HTTP traffic, it is a versatile "tunneling" tool that can handle **TCP** traffic as well, which is exactly what SSH requires.
 

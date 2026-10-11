@@ -303,12 +303,9 @@ OpenCode免費用法實操：現場示範如何下載與設定開源Harness桌�
 
 ## 2026-06-11
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-opencode 支援排程執行工作嗎
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: opencode 支援排程執行工作嗎
+A:
 是的，OpenCode 支援排程執行工作。 它身為一個靈活的開源 AI 編碼代理，除了傳統在終端機與開發者即時協作（TUI 模式）外，也能透過多種官方或社群擴充方式來進行週期性與自動化的排程任務。 [1, 2, 3, 4, 5]
 以下是 OpenCode 實現排程執行的三種主要方式：
 
@@ -335,17 +332,12 @@ OpenCode 整合了 GitHub 自動化工作流程。你可以在專案中建立 .g
 [6] [https://opencode.ai](https://opencode.ai/docs/zh-tw/github/)
 [7] [https://www.runoob.com](https://www.runoob.com/opencode/opencode-cli.html)
 
-</td></tr>
-</table>
-
+---
 ## 2026-08-18
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-which LLM model behind Big Pickle OpenCode Zen?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: which LLM model behind Big Pickle OpenCode Zen?
+A:
 The Big Pickle model behind OpenCode Zen is officially classified as a "stealth model" with rotating underlying capabilities, but it is primarily based on Zhipu AI's GLM-4.6 architecture. [1, 2]
 
 Because it is a curated cloud gateway model, its exact technical identity features a mix of official specifications and community findings: [1, 3]
@@ -364,11 +356,9 @@ If you are trying to configure your coding environment, what specific editor or 
 [6] [https://custom.typingmind.com](https://custom.typingmind.com/tools/estimate-llm-usage-costs/opencode/big-pickle)
 [7] [https://www.youtube.com](https://www.youtube.com/watch?v=F_eMaWlxAtU)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-改用中文回答
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 改用中文回答
+A:
 OpenCode Zen 平台上的 Big Pickle 是一款官方定位為「隱身模型」（Stealth Model）的服務，其背後的核心架構主要是基於智譜 AI 的 GLM-4.6 模型。
 以下是關於這款模型的關鍵技術細節與背景：
 

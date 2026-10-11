@@ -1,6 +1,5 @@
 <table>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 如何在 reveal.js 簡報中加入一頁「引言 Quote」？
 
 
@@ -118,8 +117,7 @@
 **您希望我為您提供一段自定義的 CSS 代碼，讓您的引言擁有特殊的字型或邊框樣式嗎？**
 
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 提供一段自定義的 CSS 代碼，讓引言擁有特殊的字型或邊框樣式
 
 
@@ -247,8 +245,7 @@
 
 **您希望我幫您整合一段完整的 HTML 模板，包含這些 CSS 與字體設定，讓您直接複製就能運行嗎？**
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 整合一段完整的 HTML 模板，包含這些 CSS 與字體設定
 
 

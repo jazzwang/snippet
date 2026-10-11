@@ -1,37 +1,34 @@
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-What is BERTscore?
-</td></tr><tr><td>A:</td><td>
-
-BERTScore 是在 AI/ML（特別是自然語言處理 NLP 與大型語言模型 LLM）領域中，用來評估「文字生成品質」的一種現代化語義相似度指標。 [1, 2] 
-與 FID 用於評估「影像」不同，BERTScore 專門用於評估「文字」（如機器翻譯、文本摘要、RAG 問答系統及對話生成）。它不再依賴字面上的死板匹配，而是比較文字背後的「語義」。 [1, 2, 3, 4] 
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: What is BERTscore?
+A:
+BERTScore 是在 AI/ML（特別是自然語言處理 NLP 與大型語言模型 LLM）領域中，用來評估「文字生成品質」的一種現代化語義相似度指標。 [1, 2]
+與 FID 用於評估「影像」不同，BERTScore 專門用於評估「文字」（如機器翻譯、文本摘要、RAG 問答系統及對話生成）。它不再依賴字面上的死板匹配，而是比較文字背後的「語義」。 [1, 2, 3, 4]
 
 ## 1. 為什麼需要 BERTScore？（對比傳統指標）
 
-在傳統 NLP 中，我們常用 BLEU 或 ROUGE 來評估生成文字與標準答案（Reference）的接近程度： [1, 4] 
+在傳統 NLP 中，我們常用 BLEU 或 ROUGE 來評估生成文字與標準答案（Reference）的接近程度： [1, 4]
 
-* 傳統指標的缺點：只看字面上的單字重疊（n-gram Overlap）。 [1, 5] 
+* 傳統指標的缺點：只看字面上的單字重疊（n-gram Overlap）。 [1, 5]
 * 例子：
 * 標準答案："這隻貓在墊子上休息"
    * 模型生成："那隻小貓在毯子上睡眠"
-   * 如果用 BLEU 或 ROUGE，因為「貓/小貓」、「墊子/毯子」、「休息/睡眠」字面不同，分數會非常低。 [4, 6] 
-* BERTScore 的優勢：它能夠辨識出這兩句話的意思幾乎一樣，並給出極高的語義相似度分數。 [1, 4] 
+   * 如果用 BLEU 或 ROUGE，因為「貓/小貓」、「墊子/毯子」、「休息/睡眠」字面不同，分數會非常低。 [4, 6]
+* BERTScore 的優勢：它能夠辨識出這兩句話的意思幾乎一樣，並給出極高的語義相似度分數。 [1, 4]
 
 ## 2. BERTScore 的運作原理
 
-BERTScore 利用了預訓練 Transformer 模型（如 BERT、RoBERTa）所產生的上下文特徵向量（Contextual Embeddings）： [1, 7] 
+BERTScore 利用了預訓練 Transformer 模型（如 BERT、RoBERTa）所產生的上下文特徵向量（Contextual Embeddings）： [1, 7]
 
-   1. 向量化（Embedding）：將「標準答案（Reference）」和「模型生成文字（Candidate）」的每個單字（Token），各自轉換為包含上下文語義的高維度向量。 [3, 7] 
-   2. 計算相似度矩陣：計算標準答案中的每一個字，與生成文字中的每一個字之間的 餘弦相似度（Cosine Similarity），組合成一個矩陣。 [7, 8] 
+   1. 向量化（Embedding）：將「標準答案（Reference）」和「模型生成文字（Candidate）」的每個單字（Token），各自轉換為包含上下文語義的高維度向量。 [3, 7]
+   2. 計算相似度矩陣：計算標準答案中的每一個字，與生成文字中的每一個字之間的 餘弦相似度（Cosine Similarity），組合成一個矩陣。 [7, 8]
    3. 貪婪匹配（Greedy Matching）：
    * 對於生成文字的每個字，去標準答案中找一個**最相似（分數最高）**的字配對。
-      * 反之，對於標準答案的每個字，也去生成文字中找最相似的字配對。 [8] 
-   4. 輸出三大指標：最後整合計算出 Precision（精準率）、Recall（召回率） 和 F1-Score。 [2, 7] 
+      * 反之，對於標準答案的每個字，也去生成文字中找最相似的字配對。 [8]
+   4. 輸出三大指標：最後整合計算出 Precision（精準率）、Recall（召回率） 和 F1-Score。 [2, 7]
 
 ## 3. 數學核心公式
 
-給定標準答案句子 x（長度為 |x|）與模型生成句子 x̂（長度為 |x̂|），兩者單字向量分別為 $v_x$ 與 $v_{\hat{x}}$，其指標計算如下： [8] 
+給定標準答案句子 x（長度為 |x|）與模型生成句子 x̂（長度為 |x̂|），兩者單字向量分別為 $v_x$ 與 $v_{\hat{x}}$，其指標計算如下： [8]
 
 ## 精準率 (Precision)
 
@@ -72,7 +69,7 @@ A["$$F_{\text{BERT}} = 2 \cdot \frac{P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\
 
 ## ✅ 總結
 
-BERTScore 是一種基於深度學習特徵向量（Embedding-based）的文字語義相似度指標。它突破了傳統字面比對的限制，是現代 LLM 時代（如評估 GPT-4、Claude、RAG 檢索系統品質）非常重要且通用的自動化評測工具。 [2, 3, 5] 
+BERTScore 是一種基於深度學習特徵向量（Embedding-based）的文字語義相似度指標。它突破了傳統字面比對的限制，是現代 LLM 時代（如評估 GPT-4、Claude、RAG 檢索系統品質）非常重要且通用的自動化評測工具。 [2, 3, 5]
 如果您想知道如何在 Python 中使用 pip install bert-score 來快速實作評估，或者想了解它在 RAG（檢索增強生成） 中的具體應用，歡迎隨時詢問！
 
 - [1] [https://galileo.ai](https://galileo.ai/blog/bert-score-explained-guide)
@@ -83,10 +80,8 @@ BERTScore 是一種基於深度學習特徵向量（Embedding-based）的文字�
 - [6] [https://www.youtube.com](https://www.youtube.com/watch?v=RTaZqGflrJ8&vl=en&t=215)
 - [7] [https://zhanghaolin66.medium.com](https://zhanghaolin66.medium.com/bertscore-explained-embeddings-and-semantic-evaluation-b0d80b9de8d5)
 - [8] [https://www.youtube.com](https://www.youtube.com/watch?v=-MjMjVJlSpI&t=2)
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-BLEU
-</td></tr><tr><td>A:</td><td>
-BLEU（Bilingual Evaluation Understudy，雙語評估輔助工具）是 AI/ML（特別是自然語言處理 NLP）領域中，最經典、最普及的自動文本評估指標。
+<tr style="background-color:lightyellow;"><td>Q: BLEU
+A: BLEU（Bilingual Evaluation Understudy，雙語評估輔助工具）是 AI/ML（特別是自然語言處理 NLP）領域中，最經典、最普及的自動文本評估指標。
 它最初在 2002 年由 IBM 團隊提出，主要用於**機器翻譯（Machine Translation）**的品質評估，後來也被廣泛應用於影像描述生成（Image Captioning）等任務。
 
 ## 1. 核心核心概念：字面重疊度
@@ -144,40 +139,38 @@ A["$$\text{BLEU} = \text{BP} \cdot \exp\left( \sum_{n=1}^{N} w_n \log p_n \right
 BLEU 是一個基於字面 n-gram 精準率與短句懲罰的快速評估指標。雖然它無法理解語義，且對同義詞、換句話說的表達非常不友善，但因為它計算速度極快、結果客觀、不需依賴大型模型，至今依然是機器翻譯與文本生成領域不可或缺的基準（Baseline）指標。
 如果您想了解如何使用 Python nltk 庫在 3 行程式碼內計算 BLEU，或者想知道它在特定任務（如程式碼生成 Code Generation）上的變體 CodeBLEU，歡迎隨時告訴我！
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-ROUGE
-</td></tr><tr><td>A:</td><td>
-
-ROUGE（Recall-Oriented Understudy for Gisting Evaluation，面向召回率的摘要評估輔助工具）是 AI/ML 領域中，最常用於評估 **自動文本摘要（Text Summarization）與問答系統（QA）** 的經典自動化指標。 [1, 2, 3] 
+> [!NOTE]
+> Q: ROUGE
+A:
+ROUGE（Recall-Oriented Understudy for Gisting Evaluation，面向召回率的摘要評估輔助工具）是 AI/ML 領域中，最常用於評估 **自動文本摘要（Text Summarization）與問答系統（QA）** 的經典自動化指標。 [1, 2, 3]
 它在 2004 年被提出，核心邏輯與 BLEU 非常相似，但有一個最大的核心差異：BLEU 偏重「精準率（Precision）」[1]，而 ROUGE 偏重「召回率（Recall）」。
 
 ## 1. 核心核心概念：它想捕捉什麼？
 
 * BLEU（精準率）問的是：「機器生成的字，有多少比例是正確的？」
-* ROUGE（召回率）問的是：「標準答案（Reference）裡的重點，機器成功捕捉到了多少？」 [4, 5] 
+* ROUGE（召回率）問的是：「標準答案（Reference）裡的重點，機器成功捕捉到了多少？」 [4, 5]
 
 在文本摘要任務中，我們最怕模型遺漏關鍵資訊，因此「標準答案裡的字有沒有被涵蓋進去（召回率）」變得至關重要。
 
 ## 2. 常見的 ROUGE 變體
 
-ROUGE 並不是單一指標，而是一組指標家族，最常在機器學習論文中看到的有以下三種： [6, 7, 8] 
+ROUGE 並不是單一指標，而是一組指標家族，最常在機器學習論文中看到的有以下三種： [6, 7, 8]
 
 ## ① ROUGE-N（基於 n-gram）
 
 計算機器生成文本與標準答案之間，連續 n 個字的重疊比例。
 
 * ROUGE-1：評估**單字（1-gram）**的重疊度，主要看「核心單字」有沒有抓到。
-* ROUGE-2：評估**連續兩個字（2-gram）**的重疊度，主要看「片語和流暢度」好不好。 [9] 
+* ROUGE-2：評估**連續兩個字（2-gram）**的重疊度，主要看「片語和流暢度」好不好。 [9]
 
-## ② ROUGE-L（基於最長公共子序列 Longest Common Subsequence） [10] 
+## ② ROUGE-L（基於最長公共子序列 Longest Common Subsequence） [10]
 
 找出兩句話中最長且順序相同的共同子序列（不需要連續）。
 
 * 優點：它會自動辨識句子結構的相似度。如果最長公共子序列越長，代表兩句話的語法結構和敘述順序越接近。
 
-## ③ ROUGE-S（基於跳字組合 Skip-Bigram） [11, 12] 
-計算任意兩個字組成的字對（Bigram）在兩句話中出現的頻率，這兩個字之間可以插入其他字。 [13] 
+## ③ ROUGE-S（基於跳字組合 Skip-Bigram） [11, 12]
+計算任意兩個字組成的字對（Bigram）在兩句話中出現的頻率，這兩個字之間可以插入其他字。 [13]
 
 * 例如：在 "貓 坐在 墊子上" 中，("貓", "墊子上") 也是一個有效的 Skip-Bigram。這允許句子在加入形容詞時依然能被偵測到關聯。
 
@@ -195,7 +188,7 @@ ROUGE 並不是單一指標，而是一組指標家族，最常在機器學習�
    2. Precision（精準率） = 重疊詞數 / 生成文本總詞數 = 3 / 5 = 0.6（生成文本混入了其他贅字）
    3. F1-Score（綜合分數） = 2 * (P * R) / (P + R) = 2 * 0.6 / 1.6 = 0.75
 
-(註：雖然 ROUGE 名稱叫 Recall-Oriented，但現代機器學習評測中，大家通常都直接看兩者結合的 F1-Score) [14, 15] 
+(註：雖然 ROUGE 名稱叫 Recall-Oriented，但現代機器學習評測中，大家通常都直接看兩者結合的 F1-Score) [14, 15]
 
 ## 4. 四大指標終極大考驗 (FID vs BERTScore vs BLEU vs ROUGE)
 
@@ -211,7 +204,7 @@ ROUGE 並不是單一指標，而是一組指標家族，最常在機器學習�
 
 ## ✅ 總結
 
-ROUGE 是一個以召回率為核心、基於字面重疊度的文本評估工具。它與 BLEU 是一對孿生兄弟，一個看守摘要的「完整性」（ROUGE），一個把關翻譯的「精準度」（BLEU）。 [16, 17] 
+ROUGE 是一個以召回率為核心、基於字面重疊度的文本評估工具。它與 BLEU 是一對孿生兄弟，一個看守摘要的「完整性」（ROUGE），一個把關翻譯的「精準度」（BLEU）。 [16, 17]
 如果您想了解如何使用 Python 官方套件 rouge-score 來跑實驗，或者想知道更先進的 LLM 評估框架（如 Ragas 或 LLM-as-a-judge），請隨時告訴我！
 
 - [1] [https://wandb.ai](https://wandb.ai/byyoung3/Generative-AI/reports/AI-scorers-Evaluating-AI-generated-text-with-ROUGE--VmlldzoxMDc0Mzc5OA)

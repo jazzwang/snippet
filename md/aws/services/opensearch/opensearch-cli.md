@@ -30,7 +30,7 @@ Yes, OpenSearch provides several command-line interface (CLI) tools for managing
 **In summary, if you're looking for a general-purpose tool to manage your OpenSearch cluster and interact with its APIs and plugins, `opensearch-cli` is the way to go. If your primary need is to run SQL and PPL queries from the command line, then the `opensearchsql` CLI is what you're after. And for automating report generation, the `reporting-cli` is available.**
 
 OpenSearch aims to provide a unified command-line interface in the future to integrate these different CLIs into a single tool, making the user experience even smoother.
-</td></tr></table>
+---
 
 ## OpenSearch CLI
 

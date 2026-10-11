@@ -4,12 +4,9 @@
 
 ## 2026-06-15
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-are there tool to read Figma flow and convert the UI Mock design to data model and API?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: are there tool to read Figma flow and convert the UI Mock design to data model and API?
+A:
 ## Figma to Data Model and API
 
 Yes, there are several specialized AI tools and workflow approaches designed exactly for this. While traditional tools focus strictly on converting Figma into frontend code (like React or HTML), modern AI-driven tools can read UI components, form inputs, and repetition logic to auto-generate data models, backend JSON schemas, and API contracts. [1, 2, 3, 4, 5]
@@ -65,17 +62,12 @@ To help tailor this, what backend stack or database (e.g., Node.js, Python, Post
 [22] [https://www.emergentmind.com](https://www.emergentmind.com/topics/figma-api-data-extraction)
 [23] [https://www.youtube.com](https://www.youtube.com/watch?v=X-aX1TuGP0s)
 
-</td></tr>
-</table>
-
+---
 ## 2026-06-18
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Figma 要使用 MCP Server 有 License 限制嗎?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: Figma 要使用 MCP Server 有 License 限制嗎?
+A:
 ## Figma License limitation when using MCP Server
 
 是的，Figma 的官方 MCP Server 在帳號授權（License）與方案上有非常嚴格的限制。 [1, 2]
@@ -126,11 +118,9 @@ Figma 將 MCP 的讀取呼叫綁定了其平台的 AI 點數： [4]
 [12] [https://frankknow.com](https://frankknow.com/figma-ai/)
 [13] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/1994153192506819522)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-乘上,Figma 的 Role 會影響 MCP Server 嗎? view, collaboration, dev 等
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 乘上,Figma 的 Role 會影響 MCP Server 嗎? view, collaboration, dev 等
+A:
 ## Figma Seat Type and MCP Quota
 
 是的，Figma 的帳號角色（Role/Seat）會非常直接且嚴重地影響 MCP Server 的使用權限與呼叫額度。 [1]
@@ -181,5 +171,4 @@ Figma 官方針對 MCP Server 的限制，核心邏輯是將其綁定在 「Dev 
 [9] [https://www.sina.cn](https://www.sina.cn/news/detail/5176299561157163.html)
 [10] [https://www.youtube.com](https://www.youtube.com/watch?v=qdV1lRZjRc4)
 
-</td></tr>
-</table>
+---

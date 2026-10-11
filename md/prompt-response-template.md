@@ -1,16 +1,7 @@
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-</td></tr><tr><td>A:</td><td>
-</td></tr>
-</table>
-
+- Tool: > [!NOTE]
+> Q: A: > [!NOTE]
+> Q: A: > [!NOTE]
+> Q: A: ---
 備忘：
 
 * Google Deep Research 結果

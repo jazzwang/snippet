@@ -34,8 +34,7 @@ Here's a general outline of the steps you would follow to achieve your goal:
 4.  **Create the Chart:** Use Plotly or Altair to create a chart based on your calculated data.
 5.  **Export to HTML:** Save the final chart as an interactive HTML file.
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 could you give me an Altair example to generate interactive charts like Velocity Chart?
 
 
@@ -103,8 +102,7 @@ print("Velocity chart saved as velocity_chart.html")
 ```
 
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 can it be 2 bar per sprint? e.g. 1 bar for committed points, 1 bar for completed and line chart for say/do ratio (i.e. completed divided by committed )
 
 
@@ -181,8 +179,7 @@ final_chart.save('velocity_say_do_chart_hconcat.html')
 ```
 
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 could you give me a Plotly example to generate interactive charts like Velocity Chart?
 
 

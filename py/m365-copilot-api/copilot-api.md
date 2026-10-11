@@ -7,12 +7,9 @@
 
 ## 2026-07-07
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Microsoft 365 Copilot - GPT-5
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-Are there python library to interact with M365 Copilot via websocket?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Microsoft 365 Copilot - GPT-5
+</td></tr><tr style="background-color:lightyellow;"><td>Q: Are there python library to interact with M365 Copilot via websocket?
+A:
 ## Python Library to interact with M365 Copilot via `websocket`
 
 Short answer: **No official Python library currently exposes Microsoft 365 Copilot through a WebSocket chat interface.** Instead, Microsoft provides **REST-based Microsoft 365 Copilot APIs** and Python SDKs for them. [learn.microsoft.com](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/sdks/api-libraries), [learn.microsoft.com](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/copilot-apis-overview)
@@ -71,5 +68,4 @@ For production and enterprise use:
 -   Implement WebSocket only in your own application layer if real-time browser communication is required. [learn.microsoft.com](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/sdks/api-libraries), [github.com](https://github.com/microsoft/Agents-M365Copilot/blob/main/python/README.md)
 
 If your goal is specifically **"chat with M365 Copilot and receive tokens incrementally like OpenAI/Realtime APIs"**, I can show the current SDK pattern and whether the latest Copilot APIs expose streaming responses.
-</td></tr>
-</table>
+---

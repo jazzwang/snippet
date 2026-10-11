@@ -358,7 +358,6 @@ PS. I tried to leverage <font color="lightgreen">local GPT4All-J LLM</font> inst
 │   └── titanic.py
 ```
 
-</td><td>
 
 ```bash
 └── LangChain-OpenAI                    ## Today's demo
@@ -378,7 +377,7 @@ PS. I tried to leverage <font color="lightgreen">local GPT4All-J LLM</font> inst
 
 5 directories, 19 files
 ```
-</td></tr></table>
+---
 
 Source Code: https://github.com/jazzwang/hpt-chat
 
@@ -600,7 +599,7 @@ The core idea of agents is to <u>use an *LLM* to **choose a sequence of actions*
 
 <hr/>
 
-> Chainlit is an open-source Python package 
+> Chainlit is an open-source Python package
 > to *build production ready Conversational AI*.
 
 ### Key features
@@ -667,7 +666,7 @@ https://docs.chainlit.io/integrations/langchain
 
 ### Lesson #1: Prompt Observability
 
-> with Chainlit, you can see the `prompt` created by *LangChain* 
+> with Chainlit, you can see the `prompt` created by *LangChain*
 > and the `response` from *OpenAI GPT-3.5/4 LLM*
 
 <img src='https://i.imgur.com/JXPERcZ.jpeg' height='640'>
@@ -768,18 +767,18 @@ Source: [How to Create a FREE Custom Domain Name for Your Lambda URL - A Step by
 
 <img src='https://i.imgur.com/epDCuMm.jpeg' height='640'>
 
-Source: [RAG Cheatsheet V2.0 🚀](https://www.linkedin.com/feed/update/urn:li:activity:7164902842330275840/), Steve Nouri, 2024-02-18 
+Source: [RAG Cheatsheet V2.0 🚀](https://www.linkedin.com/feed/update/urn:li:activity:7164902842330275840/), Steve Nouri, 2024-02-18
 
 <!-- slide vertical=true -->
 
 ### [Future] Interacting with APIs with LangChain
 
-<hr/> 
+<hr/>
 
-- <font color='hotpink'>Common Enterprise Software InfoSec Pratice</font>: 
+- <font color='hotpink'>Common Enterprise Software InfoSec Pratice</font>:
 Application (backend API) subnet is different from database subnet.
 (*Data Security*)
-- You can share **OpenAPI (Swagger contract)** with LangChain. 
+- You can share **OpenAPI (Swagger contract)** with LangChain.
 It helps to reduce internal data leaking. (*Data Privacy*)
 > sharing `Interface` instead of `Data`
 
@@ -855,7 +854,7 @@ Domain Name: hadoop.tw
    Record created on 2023-10-16 18:52:26 (UTC+8)
    Domain servers in listed order:
       ns1.alidns.com     （阿里雲）
-      ns2.alidns.com     
+      ns2.alidns.com
 Registration Service Provider: Dynadot LLC
 Registration Service URL: https://www.dynadot.com/
 </pre>

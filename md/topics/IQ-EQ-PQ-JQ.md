@@ -74,8 +74,7 @@ Lee 強調，沒有人在這四個面向都很強。「我尋找的是各有所�
   - 根據描述，可否生成面試的問句，進一步可以量化人選的 IQ, EQ, PQ, JQ？
 * 產出：
 <table>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 可以根據以下 EQ, IQ, PQ, JQ 的描述，每一個維度各設計三個面試的題目，讓面試官可以針對每一個維度的三個問題，個別評分 1-5 (低到高），以利繪製雷達圖。
 
 ```
@@ -172,8 +171,7 @@ JQ 低的人，則可能做出一連串看似合理、實則偏離方向的決�
 
 請問您是否需要我協助提供一份**評分表單範例**，或是想針對特定維度進一步**優化問題**？
 </td></tr>
-<tr><td>Q:</td><td>
-<!-- add your Prompt bellow-->
+<tr><td>Q: <!-- add your Prompt bellow-->
 could you help me to translate it into English and create a google forms?
 
 好的，我很樂意為您將這些面試題目翻譯成英文，並為您設計一個 Google Forms 的架構，讓您能直接應用於面試評分。

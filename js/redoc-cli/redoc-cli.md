@@ -58,4 +58,4 @@ To generate HTML documentation from an OpenAPI YAML file, you can use tools like
 * * * *
 
 These methods allow you to create visually appealing and interactive documentation for your OpenAPI YAML file. Let me know if you need further assistance! 😊
-</td></tr></table>
+---

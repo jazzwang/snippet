@@ -21,4 +21,4 @@ Here's a breakdown:
 Example:
 
 If an employee's annual CTC is NT$600,000, the monthly CTC would be NT$50,000 (600,000 / 12). However, the in-hand salary would be lower due to deductions.
-</td></tr></table>
+---

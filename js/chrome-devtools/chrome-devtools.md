@@ -179,4 +179,4 @@ Snippets act like a personal library of macros. Here is why they are more effici
 > **Pro Tip:** If you find yourself writing a snippet that is more than 50 lines long, consider if it should be a **Chrome Extension**. Snippets are best for quick, manual execution, while extensions are better for automated background tasks.
 
 Would you like me to write a specific JavaScript snippet for a task you perform often, such as clearing local storage or extracting table data?
-</td></tr></table>
+---

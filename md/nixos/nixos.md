@@ -7,29 +7,26 @@
 
 ## 2026-06-02
 
-<table><tr style="background-color:lightyellow;"><td>Q:</td><td>
-what is Nix? NixOS?
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr><td>A:</td><td>
-
-Nix is a functional package manager, while NixOS is an entire Linux operating system built on top of that package manager. Together, they represent a radically different approach to computing that focuses on being declarative, reproducible, and immutable. [1, 2, 3] 
-Instead of installing software imperatively (e.g., running sudo apt install or brew install), you write a text file that lists exactly what your environment or system should look like, and the software builds it cleanly from that blueprint. [4, 5] 
+<table><tr style="background-color:lightyellow;"><td>Q: what is Nix? NixOS?
+</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Search - AI Mode
+A:
+Nix is a functional package manager, while NixOS is an entire Linux operating system built on top of that package manager. Together, they represent a radically different approach to computing that focuses on being declarative, reproducible, and immutable. [1, 2, 3]
+Instead of installing software imperatively (e.g., running sudo apt install or brew install), you write a text file that lists exactly what your environment or system should look like, and the software builds it cleanly from that blueprint. [4, 5]
 
 ## 📦 1. What is Nix?
 
-[Nix](https://nixos.org/) is an open-source tool that handles package management and build configurations. You can install it on top of normal operating systems like Ubuntu, Fedora, or macOS. [1, 2, 6, 7, 8] 
+[Nix](https://nixos.org/) is an open-source tool that handles package management and build configurations. You can install it on top of normal operating systems like Ubuntu, Fedora, or macOS. [1, 2, 6, 7, 8]
 
-* The Nix Store (/nix/store): Nix does not install binaries into global, shared folders like /usr/bin or /lib. Instead, every package lives in its own isolated directory inside /nix/store, named with a unique cryptographic hash. This hash represents every single dependency and compiler configuration used to build that program. [6, 9, 10] 
-* No More "Dependency Hell": Because packages are strictly isolated, you can simultaneously install and run multiple versions of the exact same software (e.g., Python 3.8 and Python 3.12) without them breaking each other. [1, 6, 11, 12, 13] 
-* The Nix Language: Packages are defined using a custom, pure functional programming language also called Nix. [2, 14] 
+* The Nix Store (/nix/store): Nix does not install binaries into global, shared folders like /usr/bin or /lib. Instead, every package lives in its own isolated directory inside /nix/store, named with a unique cryptographic hash. This hash represents every single dependency and compiler configuration used to build that program. [6, 9, 10]
+* No More "Dependency Hell": Because packages are strictly isolated, you can simultaneously install and run multiple versions of the exact same software (e.g., Python 3.8 and Python 3.12) without them breaking each other. [1, 6, 11, 12, 13]
+* The Nix Language: Packages are defined using a custom, pure functional programming language also called Nix. [2, 14]
 
 ## 🖥️ 2. What is NixOS?
-[NixOS](https://wiki.nixos.org/wiki/NixOS) is an entire Linux distribution where the operating system itself—including the kernel, drivers, system services, system users, and desktop environments—is built entirely by the Nix package manager. [15] 
+[NixOS](https://wiki.nixos.org/wiki/NixOS) is an entire Linux distribution where the operating system itself—including the kernel, drivers, system services, system users, and desktop environments—is built entirely by the Nix package manager. [15]
 
-* The Single Source of Truth: Your complete OS layout is defined in a text file (usually called configuration.nix). If you want to enable an SSH server, configure a firewall, or install a desktop setup, you simply type a few lines into this file and run nixos-rebuild switch. [3, 16, 17, 18, 19] 
-* Atomic Upgrades: When you update the configuration, NixOS does not overwrite your existing system files. It builds a brand new, isolated layer (called a generation) and seamlessly swaps the system pointer to it. If the power cuts mid-update, your system remains perfectly intact. [3] 
-* Flawless Bootloader Rollbacks: If a software update completely breaks your desktop environment or breaks a graphics driver, you don't need to reinstall the OS. You can just reboot your machine and select an older, working system "generation" straight from the boot menu to undo the changes instantly. [3, 20] 
+* The Single Source of Truth: Your complete OS layout is defined in a text file (usually called configuration.nix). If you want to enable an SSH server, configure a firewall, or install a desktop setup, you simply type a few lines into this file and run nixos-rebuild switch. [3, 16, 17, 18, 19]
+* Atomic Upgrades: When you update the configuration, NixOS does not overwrite your existing system files. It builds a brand new, isolated layer (called a generation) and seamlessly swaps the system pointer to it. If the power cuts mid-update, your system remains perfectly intact. [3]
+* Flawless Bootloader Rollbacks: If a software update completely breaks your desktop environment or breaks a graphics driver, you don't need to reinstall the OS. You can just reboot your machine and select an older, working system "generation" straight from the boot menu to undo the changes instantly. [3, 20]
 
 ## 📊 Key Differences at a Glance
 
@@ -41,7 +38,7 @@ Instead of installing software imperatively (e.g., running sudo apt install or b
 | Primary Use Case | Sharing predictable dev environments with teammates so everyone has the exact same software toolchain. | Building immutable, stable servers or bulletproof personal desktop setups. |
 
 ## 🛠️ Why Researchers and Developers Use It
-For an advanced user, Nix solves the "it works on my machine" problem. You can write a tiny configuration file for a data science experiment or an AI agent repository, check it into GitHub, and any colleague anywhere can spin up the exact same operating environment down to the exact library sub-dependencies. [1, 4, 22] 
+For an advanced user, Nix solves the "it works on my machine" problem. You can write a tiny configuration file for a data science experiment or an AI agent repository, check it into GitHub, and any colleague anywhere can spin up the exact same operating environment down to the exact library sub-dependencies. [1, 4, 22]
 If you are interested in exploring further, would you like to see a simple Nix development shell layout to see how it can isolate software tools for a specific research project?
 
 [1] https://nixos.org
@@ -67,11 +64,9 @@ If you are interested in exploring further, would you like to see a simple Nix d
 [21] https://nixos.org
 [22] [https://numtide.com](https://numtide.com/blog/nix-docker-or-both/)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-NixOS 跟 Debian / CentOS 的關聯性
-</td></tr><tr><td>A:</td><td>
-NixOS 與 Debian 或 CentOS（現主要為 Stream 體系）之間沒有任何直接的血緣關係。它們代表了 Linux 世界中截軟不同的設計哲學 [1, 2]。
+> [!NOTE]
+> Q: NixOS 跟 Debian / CentOS 的關聯性
+A: NixOS 與 Debian 或 CentOS（現主要為 Stream 體系）之間沒有任何直接的血緣關係。它們代表了 Linux 世界中截軟不同的設計哲學 [1, 2]。
 簡單來說，Debian 與 CentOS 是「傳統命令式（Imperative）」作業系統的代表 [1, 3]；而 NixOS 則是「現代宣告式（Declarative）」與「不可變（Immutable）」作業系統的革命者 [1, 2]。
 以下為您拆解它們之間的本質關聯與核心差異：
 
@@ -133,23 +128,21 @@ services.nginx.enable = true;
    3. NixOS：適合追求「環境絕對可重現」的研究員與開發者 [1, 2]。如果你常常因為「在我的電腦上會動，在別人的電腦上就不動」而崩潰，或者需要頻繁切換複雜的實驗環境（如跨領域的 Linked Data 處理工具鏈），NixOS（或單獨在 Debian 上安裝 Nix 核心）能提供地表最強的環境控制力 [1, 2]。
 
 如果您打算將研究環境轉移到這種「可重現」的體系，您會希望將它部署在個人工作站（筆電/桌機）還是遠端的學術伺服器上呢？這會影響到設定的複雜度。
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-NixOS 最開始的起源是為了什麼目的？跟容器技術有關嗎？
-</td></tr><tr><td>A:</td><td>
-NixOS 最開始的起源完全是為了解決學術研究上的「軟體部署（Software Deployment）」與「環境可重現性（Reproducible）」問題。 [1, 2] 
-它在 2003 年誕生時，跟當時的容器技術沒有任何關係。事實上，Nix（2003年）比 Docker（2013年）早誕生了整整 10 年。 [2, 3] 
-不過，NixOS 的底層邏輯與現代容器技術在「為了解決的問題」上殊途同歸，且現在 Nix 已經成為建構「最完美、最輕量 Docker 鏡像」的地表最強工具之一。 [4, 5] 
+> [!NOTE]
+> Q: NixOS 最開始的起源是為了什麼目的？跟容器技術有關嗎？
+A: NixOS 最開始的起源完全是為了解決學術研究上的「軟體部署（Software Deployment）」與「環境可重現性（Reproducible）」問題。 [1, 2]
+它在 2003 年誕生時，跟當時的容器技術沒有任何關係。事實上，Nix（2003年）比 Docker（2013年）早誕生了整整 10 年。 [2, 3]
+不過，NixOS 的底層邏輯與現代容器技術在「為了解決的問題」上殊途同歸，且現在 Nix 已經成為建構「最完美、最輕量 Docker 鏡像」的地表最強工具之一。 [4, 5]
 
 ## 1. NixOS 的起源與最初目的
 
-Nix 誕生於荷蘭烏特勒支大學（Utrecht University），最初是 Eelco Dolstra 的博士論文研究項目（2006年發表論文：《純函數式軟體部署模型》）。 [1, 2] 
-當時 Eelco 及其團隊在開發軟體時，深受傳統 Linux「相依性地獄（Dependency Hell）」所苦。每當更新一個系統套件，其他軟體就可能因為共用函式庫版本改變而崩潰。他的研究目的非常純粹： [1] 
+Nix 誕生於荷蘭烏特勒支大學（Utrecht University），最初是 Eelco Dolstra 的博士論文研究項目（2006年發表論文：《純函數式軟體部署模型》）。 [1, 2]
+當時 Eelco 及其團隊在開發軟體時，深受傳統 Linux「相依性地獄（Dependency Hell）」所苦。每當更新一個系統套件，其他軟體就可能因為共用函式庫版本改變而崩潰。他的研究目的非常純粹： [1]
 
-* 數學般的封閉性：將軟體安裝視為純函數（Pure Function），相同的輸入（原始碼、編譯參數）必須永遠得到相同的輸出（二進位檔案）。 [6] 
-* 絕對的環境重現：讓科學研究、軟體開發的環境可以 100% 複製到另一台電腦上，不會因為「我的電腦上會動，你的不會」而導致研究無法被驗證。 [1, 3] 
+* 數學般的封閉性：將軟體安裝視為純函數（Pure Function），相同的輸入（原始碼、編譯參數）必須永遠得到相同的輸出（二進位檔案）。 [6]
+* 絕對的環境重現：讓科學研究、軟體開發的環境可以 100% 複製到另一台電腦上，不會因為「我的電腦上會動，你的不會」而導致研究無法被驗證。 [1, 3]
 
-後來在 2006 年，另一位學者 Armijn Hemel 的碩士論文將這個 Nix 套件管理器擴展到了整個 Linux 系統，正式寫出了 NixOS 的原型。 [2] 
+後來在 2006 年，另一位學者 Armijn Hemel 的碩士論文將這個 Nix 套件管理器擴展到了整個 Linux 系統，正式寫出了 NixOS 的原型。 [2]
 
 ## 2. Nix 與容器技術（Docker）的恩怨情仇
 
@@ -157,34 +150,34 @@ Nix 誕生於荷蘭烏特勒支大學（Utrecht University），最初是 Eelco 
 
 ### 💡 兩者解決問題的手段不同：
 
-* Docker 的邏輯（破壞後重建）：「既然各系統的 準標準環境 (FHS) 這麼髒亂，那我就用 Linux 核心的 Namespace/Cgroups 隔出一個虛擬的小世界（貨櫃），在裡面把所需的髒亂環境包起來，假裝它是乾淨的。」 [7, 8] 
-* Nix 的邏輯（從根本消除髒亂）：「我們不要大費周章去隔絕世界。我們直接打破傳統 Linux 目錄架構，改用加密雜湊值（Cryptographic Hash）把所有套件徹底孤立存放。這樣同一個系統內本來就可以並存幾百種不同版本的軟體，根本不需要容器來做硬隔離。」 [3, 6, 9, 10] 
+* Docker 的邏輯（破壞後重建）：「既然各系統的 準標準環境 (FHS) 這麼髒亂，那我就用 Linux 核心的 Namespace/Cgroups 隔出一個虛擬的小世界（貨櫃），在裡面把所需的髒亂環境包起來，假裝它是乾淨的。」 [7, 8]
+* Nix 的邏輯（從根本消除髒亂）：「我們不要大費周章去隔絕世界。我們直接打破傳統 Linux 目錄架構，改用加密雜湊值（Cryptographic Hash）把所有套件徹底孤立存放。這樣同一個系統內本來就可以並存幾百種不同版本的軟體，根本不需要容器來做硬隔離。」 [3, 6, 9, 10]
 
 ### ⚠️ Docker 容器的致命缺點，正是 Nix 的強項：
 
-在傳統的 Docker（使用 Dockerfile 搭配 apt-get update && apt-get install）中，建構出來的鏡像是不可重現的。如果你今天跑一次 docker build，半年後再跑一次，因為 Ubuntu 遠端伺服器的套件庫更新了，你兩次編譯出來的鏡像內容會完全不同，這在嚴謹的科學研究或高安全要求的企業中是個隱患。 [4] 
+在傳統的 Docker（使用 Dockerfile 搭配 apt-get update && apt-get install）中，建構出來的鏡像是不可重現的。如果你今天跑一次 docker build，半年後再跑一次，因為 Ubuntu 遠端伺服器的套件庫更新了，你兩次編譯出來的鏡像內容會完全不同，這在嚴謹的科學研究或高安全要求的企業中是個隱患。 [4]
 
 ## 3. 現今 NixOS 與容器技術的完美結合
 
 在現代雲原生（Cloud Native）架構中，NixOS 和 Nix 已經跟容器技術產生了深度的融合：
 
    1. 地表最安全的「無基底鏡像」（Distroless Images）：
-   工程師現在極度喜歡用 Nix 來建構 Docker 鏡像（利用 pkgs.dockerTools）。傳統 Docker 鏡像必須塞入一個輕量的作業系統（如 Alpine 或 Ubuntu），但 Nix 可以精準計算出你的軟體「只」需要哪幾個 /.nix/store 裡面的檔案，並且只把這些檔案打包進 Docker。建構出來的 Docker 鏡像既沒有 /bin/sh，也沒有 apt，體積小到只有幾 MB，且完全沒有多餘套件的漏洞風險。 [11, 12] 
+   工程師現在極度喜歡用 Nix 來建構 Docker 鏡像（利用 pkgs.dockerTools）。傳統 Docker 鏡像必須塞入一個輕量的作業系統（如 Alpine 或 Ubuntu），但 Nix 可以精準計算出你的軟體「只」需要哪幾個 /.nix/store 裡面的檔案，並且只把這些檔案打包進 Docker。建構出來的 Docker 鏡像既沒有 /bin/sh，也沒有 apt，體積小到只有幾 MB，且完全沒有多餘套件的漏洞風險。 [11, 12]
    2. NixOS 內建的宣告式容器（NixOS Containers）：
    NixOS 系統本身自帶一種類似 Docker 的輕量化虛擬化技術（基於 systemd-nspawn）。你甚至可以直接在 configuration.nix 設定檔裡直接宣告好幾個內嵌的容器：
-   
+
    containers.my-web-server = {
      autoStart = true;
      config = { pkgs, ... }: {
        services.httpd.enable = true;
      };
    };
-   
-   執行一個指令，作業系統跟它裡面的所有微服務容器就會同時同步建構完成。 [7, 8] 
+
+   執行一個指令，作業系統跟它裡面的所有微服務容器就會同時同步建構完成。 [7, 8]
 
 ## 總結
 
-NixOS 誕生自解決軟體學術部署與相依性問題的博士論文。它不因容器技術而生，但因為其極致的「可重現性」與「函數式架構」，在當今容器滿天飛的雲端時代，反而成為了精準控制、優化容器環境的頂級開發神兵。 [1, 2, 3, 4, 5, 6] 
+NixOS 誕生自解決軟體學術部署與相依性問題的博士論文。它不因容器技術而生，但因為其極致的「可重現性」與「函數式架構」，在當今容器滿天飛的雲端時代，反而成為了精準控制、優化容器環境的頂級開發神兵。 [1, 2, 3, 4, 5, 6]
 您會想了解 NixOS 是如何用來建構 Docker 鏡像，還是對它如何取代您現有的 Docker 開發流程比較有興趣呢？
 
 [1] [https://www.youtube.com](https://www.youtube.com/watch?v=Caao69qWK0A)
@@ -200,11 +193,9 @@ NixOS 誕生自解決軟體學術部署與相依性問題的博士論文。它�
 [11] [https://www.youtube.com](https://www.youtube.com/watch?v=t6goF1dM3ag&t=112)
 [12] [https://nixos.wiki](https://nixos.wiki/wiki/NixOS_modules)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-NixOS 與 microkernel 的關聯
-</td></tr><tr><td>A:</td><td>
-NixOS 與 微核心（Microkernel）（例如 L4 微核心系列、seL4 或 GNU Hurd）之間沒有直接的作業系統架構血緣關係。
+> [!NOTE]
+> Q: NixOS 與 microkernel 的關聯
+A: NixOS 與 微核心（Microkernel）（例如 L4 微核心系列、seL4 或 GNU Hurd）之間沒有直接的作業系統架構血緣關係。
 NixOS 本質上使用的是一個標準的、龐大的 Linux 單體核心（Monolithic Kernel）。然而，它們在「設計哲學」與「系統隔離邏輯」上，有著極高程度的靈魂共鳴。
 簡單來說，微核心是在「執行時期（Runtime）的硬體與處理器層級」實施隔離；而 NixOS 則是透過 Nix 在「編譯與軟體相依性層級（Build/Dependency level）」實施相同的隔離哲學。
 以下是它們深層的關聯與哲學對比：
@@ -247,5 +238,4 @@ NixOS 本質上使用的是一個標準的、龐大的 Linux 單體核心（Mono
 NixOS 不是微核心，它是一個披著單體核心外衣，卻實踐了微核心「極致隔離、互不干擾、組件模組化」精神的作業系統。它用軟體工程和純函數的方式，在 Linux 龐大的架構上蓋出了一座結構嚴謹、如同微核心般精準運行的摩天大樓。
 您之所以會聯想到微核心，是因為在關注系統的安全性、高可靠度，還是單純對作業系統的底層架構感興趣呢？如果您想進一步了解，我們可以聊聊 NixOS 如何在 Linux 核心之上建立起這種高可靠性的機制。
 
-</td></tr>
-</table>
+---

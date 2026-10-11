@@ -82,7 +82,7 @@ for component in cal.walk():
 ```
 
 This example demonstrates how to extract various details, including the `DESCRIPTION` field, which contains the detailed invitation description. Remember to install the library first using `pip install icalendar`.
-</td></tr></table>
+---
 
 - 複製範例程式到 `icalendar-example.py` 並安裝 `pip install icalendar`
 - 實測：

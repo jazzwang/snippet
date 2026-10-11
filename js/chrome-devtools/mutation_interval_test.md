@@ -88,4 +88,4 @@ Here's the HTML and JavaScript code for your project:
     -   You can refresh the page (`F5` or `Cmd + R`) to reset everything and start over.
 
 This exercise provides a hands-on way to see how `MutationObserver` and `setInterval` work, how they interact, and how you can control them both programmatically and directly from the Chrome DevTools console.
-</td></tr></table>
+---

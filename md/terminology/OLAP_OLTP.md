@@ -44,4 +44,4 @@ OLAP systems are used by analysts and executives to spot trends and make long-te
 * **OLAP:** A month later, an Amazon analyst uses an OLAP system to see which products were most popular in New York versus Los Angeles during the holiday season to plan next year's warehouse stock.
 
 Would you like me to explain the **ETL process** that moves data from one to the other, or dive deeper into **row vs. columnar storage**?
-</td></tr></table>
+---

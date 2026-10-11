@@ -45,10 +45,8 @@
 
 - Source: https://www.youtube.com/watch?v=jP_NTND4EKs
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-NotebookLM
-</td></tr><tr><td>A:</td><td>
-
+- Tool: NotebookLM
+A:
 ### GLM 5.2 開源旗艦模型技術簡報
 
 本簡報旨在分析最新發布的 GLM 5.2 旗艦大模型。該模型作為全球首個在特定測試中突破 80% 成績的開放權重模型，標誌著開源模型在 Agent 编程與長文本處理能力上已進入全球頂尖梯隊，甚至在多項指標上超越了傳統的閉源模型。

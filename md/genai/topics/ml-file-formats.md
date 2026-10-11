@@ -86,7 +86,7 @@ These formats cater to various frameworks and use cases, from deployment on mobi
 3.  <https://www.simplilearn.com/10-algorithms-machine-learning-engineers-need-to-know-article>
 4.  <https://builtin.com/machine-learning/machine-learning-models-explained>
 5.  <https://stackoverflow.com/questions/61116190/what-are-all-the-formats-to-save-machine-learning-model-in-scikit-learn-keras>
-</td></tr></table>
+---
 
 ## 2025-06-10
 

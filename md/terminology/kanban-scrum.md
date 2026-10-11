@@ -44,4 +44,4 @@ While they might look similar at a glance (sticky notes moving across columns), 
 
 Would you like me to help you design a custom board layout for a specific project you're working on?
 
-</td></tr></table>
+---

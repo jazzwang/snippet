@@ -60,4 +60,4 @@ If you have other `apt-key` warnings for third-party repositories, you'll need t
 4.  Remove the old key from `/etc/apt/trusted.gpg` or `/etc/apt/trusted.gpg.d/` using `sudo apt-key del <KEY_ID>`.
 
 For the specific `ubuntu-keyring-2012-cdimage.gpg` file, simply correcting the permissions should be sufficient to resolve the warning, as it's an official Ubuntu key.
-</td></tr></table>
+---

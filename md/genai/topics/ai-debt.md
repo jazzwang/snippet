@@ -4,22 +4,19 @@
 
 ## 2026-06-18
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-目前 NVIDIA 的投資者共舉債多少美金?
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 目前 NVIDIA 的投資者共舉債多少美金?
+A:
 ## 輝達債券
 
-目前 NVIDIA（輝達）公司本身最新發行的債務規模高達 250 億美元。 [1] 
-需要先釐清的是，在公開資本市場中，通常是「公司（NVIDIA）」向「投資者（債券購買者）」借錢（發行公司債），而不是投資者為了 NVIDIA 去舉債。 [1, 2] 
+目前 NVIDIA（輝達）公司本身最新發行的債務規模高達 250 億美元。 [1]
+需要先釐清的是，在公開資本市場中，通常是「公司（NVIDIA）」向「投資者（債券購買者）」借錢（發行公司債），而不是投資者為了 NVIDIA 去舉債。 [1, 2]
 
 ### NVIDIA 最新債務與財務概況
 
-* 史上最大發債案：NVIDIA 於 2026 年 6 月 15 日重返債券市場，成功募集了 250 億美元的公司債。這筆交易最初的目標是 200 億美元，但因為市場反應極度熱烈，吸引了高達 850 億美元的超額認購資金爭奪，最終將發行規模提高至 250 億美元。 [1] 
-* 既有債務：在本次發債之前，截至 2026 年第一季（4 月底），NVIDIA 帳上的長期債務（Long-Term Debt）約為 74.7 億美元。 [3, 4] 
-* 發債目的：NVIDIA 本身並不缺錢（最新單季自由現金流達 486 億美元，且手握豐厚現金），此次大舉舉債主要是為了在利率環境有利時鎖定長期低成本資金，用來償還/再融資既有債務，並為未來的 AI 基礎建設擴張保留高度的財務靈活性。 [1, 5, 6] 
+* 史上最大發債案：NVIDIA 於 2026 年 6 月 15 日重返債券市場，成功募集了 250 億美元的公司債。這筆交易最初的目標是 200 億美元，但因為市場反應極度熱烈，吸引了高達 850 億美元的超額認購資金爭奪，最終將發行規模提高至 250 億美元。 [1]
+* 既有債務：在本次發債之前，截至 2026 年第一季（4 月底），NVIDIA 帳上的長期債務（Long-Term Debt）約為 74.7 億美元。 [3, 4]
+* 發債目的：NVIDIA 本身並不缺錢（最新單季自由現金流達 486 億美元，且手握豐厚現金），此次大舉舉債主要是為了在利率環境有利時鎖定長期低成本資金，用來償還/再融資既有債務，並為未來的 AI 基礎建設擴張保留高度的財務靈活性。 [1, 5, 6]
 
 如果您指的「投資者舉債」是指一般投資人或機構「融資（Leverage）槓桿買進 NVIDIA 股票」的融資餘額總額，由於各大券商、影子銀行及全球融資管道的散戶與機構數據並不會集中公開披露，因此全市場投資人單獨針對 NVIDIA 股票舉債的精確美金總額是無法直接統計的。
 如果您對 NVIDIA 的最新財務指標有興趣，我們可以進一步探討它的現金流狀況、信用評等，或是這次發行債券的利差與到期日結構。
@@ -46,11 +43,9 @@ Specific data on the total dollar amount investors have borrowed via margin to p
 
 If you would like to explore further, we can break down the yield and maturity structure of the new 2026 bonds on Let's Data Science, or examine NVIDIA's free cash flow and credit ratings on Why Nvidia Borrowed $25 Billion.
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-全球雲端機房為了增加算力,各舉債了多少美金?
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 全球雲端機房為了增加算力,各舉債了多少美金?
+A:
 ## 五大超級雲端機房舉債
 
 全球五大超級雲端機房巨頭（微軟、亞馬遜、Google、Meta、甲骨文）在 2025 年為了 AI 算力建設已集體發行了高達 1,080 億美元的債券。隨著 2026 年算力軍備競賽進入白熱化，分析師預估這五大巨頭在 2026 年的新增發債規模將進一步上看 1,420 億至 1,750 億美元，甚至在未來幾年內，因蓋數據中心、買晶片與牽引電力的累積舉債融資需求將直逼 1.5 兆美元。 [1, 2, 3]
@@ -113,11 +108,9 @@ If you would like to explore further, we can break down the yield and maturity s
 [24] [https://tw.stock.yahoo.com](https://tw.stock.yahoo.com/news/ai%E7%87%92%E9%8C%A2%E6%BD%AE%E6%94%B9%E5%AF%AB%E5%82%B5%E5%B8%82%E7%89%88%E5%9C%96-%E7%A7%91%E6%8A%80%E5%B7%A8%E9%A0%AD%E6%B5%B7%E5%A4%96%E7%99%BC%E5%82%B5%E6%8E%80%E6%96%B0%E7%B4%80%E9%8C%84-014347944.html)
 [25] [https://www.cmoney.tw](https://www.cmoney.tw/notes/note-detail.aspx?nid=1218270)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-目前算力投資的投資回報率 (ROI) 是否符合華爾街預期
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 目前算力投資的投資回報率 (ROI) 是否符合華爾街預期
+A:
 截至 2026 年中，全球雲端巨頭的算力投資回報率 (ROI) 呈現「企業基本面強勁兌現，但仍未達到華爾街『完美預期』」的拉鋸狀態。 [1, 2]
 雖然微軟、亞馬遜、Google 的雲端營收與 AI 創收皆以 40% 至 63% 的驚人增速超預期成長，但因五大巨頭 2026 年資本支出（CapEx）已被上調至將近 7,000 億美元的歷史新高，華爾街正在進入嚴格的「ROI 審判與驗證時刻」。部分分析師甚至警告，大廠出現了「靠互相投資新創（如 Anthropic）來虛增帳面投資收益」的隱憂。 [2, 3, 4, 5, 6, 7]
 華爾街對目前 AI 算力 ROI 的評估與分歧，主要集中在以下三個核心維度：
@@ -173,24 +166,20 @@ If you would like to explore further, we can break down the yield and maturity s
 [12] [https://readmo.cmoney.tw](https://readmo.cmoney.tw/article/a5248116-e215-4bad-a5f4-ea13d671e92e)
 [13] [https://cmnews.com.tw](https://cmnews.com.tw/article/cmoneyairesearcher-d3b43762-6060-11f1-a5ce-1a32ae91d6e8)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-摩根士丹利警告的 「AI 版次貸危機」與表外隱藏負債 風險細節
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 摩根士丹利警告的 「AI 版次貸危機」與表外隱藏負債 風險細節
+A:
 ## AI 版次貸危機
 
-摩根士丹利警告，雲端巨頭為AI投資透過特殊目的載體（SPV）隱匿高達1.8兆美元的表外負債，風險類似2008年次貸危機。該隱性負債包含巨額採購合約、未生效租賃及延長供應商付款天數，加上高槓桿的循環交易，預計將大幅增加未來折舊壓力並轉嫁流動性風險給上游供應鏈。詳細分析可參考 [Moomoo](https://www.moomoo.com/hant/news/post/71514170/ai-version-of-the-subprime-mortgage-crisis-under-the-craze)。 [1, 2, 3] 
+摩根士丹利警告，雲端巨頭為AI投資透過特殊目的載體（SPV）隱匿高達1.8兆美元的表外負債，風險類似2008年次貸危機。該隱性負債包含巨額採購合約、未生效租賃及延長供應商付款天數，加上高槓桿的循環交易，預計將大幅增加未來折舊壓力並轉嫁流動性風險給上游供應鏈。詳細分析可參考 [Moomoo](https://www.moomoo.com/hant/news/post/71514170/ai-version-of-the-subprime-mortgage-crisis-under-the-craze)。 [1, 2, 3]
 
 [1] [https://news.futunn.com](https://news.futunn.com/en/post/74582299/an-ai-driven-subprime-crisis-amid-the-frenzy-rmb-1)
 [2] [https://www.moomoo.com](https://www.moomoo.com/hant/news/post/71514170/ai-version-of-the-subprime-mortgage-crisis-under-the-craze)
 [3] [https://www.gvm.com.tw](https://www.gvm.com.tw/article/130938)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-AI 永動機
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: AI 永動機
+A:
 ## AI 永動機
 
 「AI 永動機」（AI Perpetual Motion Machine / AI Flywheel）是目前科技界與華爾街用來形容 「AI 自己賺錢買更多 AI，形成無止境自我膨脹」 的商業狂想，但同時也是經濟學家眼中的 「龐氏泡沫」 危機。
@@ -241,5 +230,4 @@ AI 永動機
 [1] [https://www.aminext.blog](https://www.aminext.blog/post/ai-power-revolution-supply-chain-deep-dive)
 [2] [https://www.woshipm.com](https://www.woshipm.com/ai/886530.html)
 
-</td></tr>
-</table>
+---

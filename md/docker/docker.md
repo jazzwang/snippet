@@ -2,12 +2,9 @@
 
 ## 2026-06-12
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-'docker model run hf.co/unsloth/diffusiongemma-26B-A4B-it-GGUF:Q4_K_M' 這個指令需要用到特定版本的 docker 嗎？
-</td></tr><tr><td>A:</td><td>
-
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: 'docker model run hf.co/unsloth/diffusiongemma-26B-A4B-it-GGUF:Q4_K_M' 這個指令需要用到特定版本的 docker 嗎？
+A:
 ## docker model
 
 是的，這個指令需要用到特定版本（或外掛模組）的 Docker。
@@ -56,35 +53,33 @@ docker model version
 [11] [https://unsloth.ai](https://unsloth.ai/docs/models/gemma-4)
 [12] [https://huggingface.co](https://huggingface.co/unsloth/diffusiongemma-26B-A4B-it-GGUF)
 [13] [https://huggingface.co](https://huggingface.co/unsloth)
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-如何在 Linux 上配置 NVIDIA GPU 加速，安裝 `NVIDIA Container Toolkit`？
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 如何在 Linux 上配置 NVIDIA GPU 加速，安裝 `NVIDIA Container Toolkit`？
+A:
 ## NVIDIA Container Toolkit
 
-在 Linux 上配置 NVIDIA GPU 加速並安裝 NVIDIA Container Toolkit，可以讓 Docker 容器直接存取宿主機的 GPU 資源。這樣在執行 docker model run 部署大型 AI 模型時，才能順利調用顯卡進行硬體加速。 [1, 2] 
+在 Linux 上配置 NVIDIA GPU 加速並安裝 NVIDIA Container Toolkit，可以讓 Docker 容器直接存取宿主機的 GPU 資源。這樣在執行 docker model run 部署大型 AI 模型時，才能順利調用顯卡進行硬體加速。 [1, 2]
 
 以下以最常見的 Ubuntu / Debian 系統為例，說明完整的配置步驟（若為 CentOS/RHEL，主要差異在於套件管理器指令改為 dnf 或 yum）：
 
-### 前提條件：檢查 NVIDIA 驅動程式 [3] 
+### 前提條件：檢查 NVIDIA 驅動程式 [3]
 
-在開始之前，Linux 宿主機必須已安裝 NVIDIA 顯卡驅動程式（但不需要在宿主機安裝 CUDA Toolkit，因為 Container Toolkit 會處理容器與驅動之間的橋樑）。 [4, 5] 
+在開始之前，Linux 宿主機必須已安裝 NVIDIA 顯卡驅動程式（但不需要在宿主機安裝 CUDA Toolkit，因為 Container Toolkit 會處理容器與驅動之間的橋樑）。 [4, 5]
 請在終端機輸入：
 ```bash
 nvidia-smi
 ```
 * 成功： 如果有正確顯示您的顯卡型號、VRAM 使用量以及驅動版本（例如 Driver Version: 550.xx），請繼續進行下一步。
-* 失敗： 如果顯示 command not found，請先透過 Ubuntu 的「附加驅動」或是指令 `sudo apt install nvidia-driver-xxx` 安裝驅動程式並重啟電腦。 [1, 3] 
+* 失敗： 如果顯示 command not found，請先透過 Ubuntu 的「附加驅動」或是指令 `sudo apt install nvidia-driver-xxx` 安裝驅動程式並重啟電腦。 [1, 3]
 
 ### 第一步：新增 NVIDIA 官方套件儲存庫（Repository）
 
-我們需要將 NVIDIA 的官方金鑰與軟體源加入系統，以便透過 apt 安裝最新的 Toolkit。 [6] 
-配置步驟可參考 NVIDIA 官方文件 [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) 以獲取最新指令，一般包含設定 GPG 金鑰及新增軟體源。 [7, 8] 
+我們需要將 NVIDIA 的官方金鑰與軟體源加入系統，以便透過 apt 安裝最新的 Toolkit。 [6]
+配置步驟可參考 NVIDIA 官方文件 [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) 以獲取最新指令，一般包含設定 GPG 金鑰及新增軟體源。 [7, 8]
 
 ### 第二步：安裝與配置 Docker 執行階段 (Runtime)
 
-安裝套件並設定 Docker 以啟用 GPU 支援： [8, 9, 10] 
+安裝套件並設定 Docker 以啟用 GPU 支援： [8, 9, 10]
 
 #### 1. 安裝並配置 toolkit
 
@@ -96,7 +91,7 @@ sudo systemctl restart docker
 
 ### 第三步：驗證 GPU 加速與啟動模型
 
-執行測試容器確認 GPU 可用： [8] 
+執行測試容器確認 GPU 可用： [8]
 
 ```bash
 docker run --rm --gpus all nvidia/cuda:12.2.2-base-ubuntu22.04 nvidia-smi
@@ -121,5 +116,4 @@ docker model run hf.co/unsloth/diffusiongemma-26B-A4B-it-GGUF:Q4_K_M
 [9] [https://docs.nvidia.com](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.17.5/install-guide.html)
 [10] [https://erhwenkuo.github.io](https://erhwenkuo.github.io/kubernetes/01-getting-started/learning-env/nvidia/nvidia-container-toolkit/)
 
-</td></tr>
-</table>
+---

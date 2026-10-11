@@ -2,14 +2,11 @@
 
 ## 2026-08-17
 
-<table><tr style="background-color:lightgreen;"><td>Tool:</td><td>
-Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q:</td><td>
-groq lpu
-</td></tr><tr><td>A:</td><td>
-
-The Groq LPU (Language Processing Unit) is a specialized AI hardware architecture explicitly engineered for ultra-low latency AI inference. Unlike standard GPUs that excel at handling dense, parallel math workloads for model training, the LPU is purpose-built to solve the sequential "token-by-token" bottleneck that slows down generative Large Language Models (LLMs). [1, 2, 3, 4] 
-In a massive industry shakeup in December 2025, NVIDIA acquired Groq's core technology and engineering team for $20 billion. This architecture has now been integrated directly into NVIDIA's roadmap, culminating in the official launch of the Groq 3 LPU at GTC 2026. [5, 6] 
+- Tool: Google Search - AI Mode
+</td></tr><tr style="background-color:lightyellow;"><td>Q: groq lpu
+A:
+The Groq LPU (Language Processing Unit) is a specialized AI hardware architecture explicitly engineered for ultra-low latency AI inference. Unlike standard GPUs that excel at handling dense, parallel math workloads for model training, the LPU is purpose-built to solve the sequential "token-by-token" bottleneck that slows down generative Large Language Models (LLMs). [1, 2, 3, 4]
+In a massive industry shakeup in December 2025, NVIDIA acquired Groq's core technology and engineering team for $20 billion. This architecture has now been integrated directly into NVIDIA's roadmap, culminating in the official launch of the Groq 3 LPU at GTC 2026. [5, 6]
 
 ## Core Architectural Differences: GPU vs. LPU
 
@@ -22,23 +19,23 @@ In a massive industry shakeup in December 2025, NVIDIA acquired Groq's core tech
 
 ## Key Architectural Pillars
 
-* SRAM Over HBM: Traditional GPUs use heavy, external High Bandwidth Memory (HBM). While HBM offers massive storage capacity, fetching data from external pools creates a memory-bandwidth bottleneck. Groq utilizes an all-SRAM memory design woven directly onto the silicon fabric next to the compute logic. This eliminates off-chip traffic and allows data to process at blistering speeds. [2, 3, 5, 7, 8] 
-* Software-Defined Determinism: Groq strips out complex, unpredictable hardware schedulers and dynamic caches. Instead, a static compiler maps out every single data movement and computation down to the clock cycle before the model even executes. This creates a predictable "programmable assembly line" with virtually zero latency variance. [2, 3] 
-* Disaggregated Inference Execution: Because SRAM takes up massive amounts of physical chip space, storing giant models on a single LPU is difficult. The ecosystem handles this by separating operations: calculation-heavy tasks (prefill) run on traditional GPUs, while bandwidth-heavy token generation (decode) runs on networked LPU clusters. [3, 5] 
+* SRAM Over HBM: Traditional GPUs use heavy, external High Bandwidth Memory (HBM). While HBM offers massive storage capacity, fetching data from external pools creates a memory-bandwidth bottleneck. Groq utilizes an all-SRAM memory design woven directly onto the silicon fabric next to the compute logic. This eliminates off-chip traffic and allows data to process at blistering speeds. [2, 3, 5, 7, 8]
+* Software-Defined Determinism: Groq strips out complex, unpredictable hardware schedulers and dynamic caches. Instead, a static compiler maps out every single data movement and computation down to the clock cycle before the model even executes. This creates a predictable "programmable assembly line" with virtually zero latency variance. [2, 3]
+* Disaggregated Inference Execution: Because SRAM takes up massive amounts of physical chip space, storing giant models on a single LPU is difficult. The ecosystem handles this by separating operations: calculation-heavy tasks (prefill) run on traditional GPUs, while bandwidth-heavy token generation (decode) runs on networked LPU clusters. [3, 5]
 
 ## The NVIDIA Integration: Groq 3 LPU (2026)
 
-Following its historic transaction to bypass antitrust issues through a team "acquihire" and IP licensing model, NVIDIA moved the architecture from an independent startup to an industry-standard component: [6, 8] 
+Following its historic transaction to bypass antitrust issues through a team "acquihire" and IP licensing model, NVIDIA moved the architecture from an independent startup to an industry-standard component: [6, 8]
 
-* The Groq 3 LPU Chip: Manufactured via Samsung’s advanced logic process, each chip features 500MB of embedded SRAM (eSRAM) delivering a phenomenal 150 TB/s of bandwidth. [5] 
-* The LPX Rack System: NVIDIA packs 256 of these LPUs into a liquid-cooled LPX Rack System. Operating alongside traditional Vera Rubin NVL72 GPU racks under a unified orchestration engine, it results in up to a 35x performance-per-watt increase for token generation. [5] 
-* Long-Term Roadmap: NVIDIA CEO Jensen Huang confirmed that LPU blocks are now a permanent fixture in future designs, with plans already underway to integrate a next-generation LPU (LP40) alongside Rosa CPUs in the 2028 "Feynman" hardware architecture. [5] 
+* The Groq 3 LPU Chip: Manufactured via Samsung’s advanced logic process, each chip features 500MB of embedded SRAM (eSRAM) delivering a phenomenal 150 TB/s of bandwidth. [5]
+* The LPX Rack System: NVIDIA packs 256 of these LPUs into a liquid-cooled LPX Rack System. Operating alongside traditional Vera Rubin NVL72 GPU racks under a unified orchestration engine, it results in up to a 35x performance-per-watt increase for token generation. [5]
+* Long-Term Roadmap: NVIDIA CEO Jensen Huang confirmed that LPU blocks are now a permanent fixture in future designs, with plans already underway to integrate a next-generation LPU (LP40) alongside Rosa CPUs in the 2028 "Feynman" hardware architecture. [5]
 
 If you'd like to dig deeper, tell me if you want to explore:
 
 * How Groq's compiler maps framework code like PyTorch to deterministic hardware.
 * The financial or stock impact on global SRAM supply chain manufacturers.
-* A deeper look into how it stacks up against other ASIC inference rivals like Cerebras or SambaNova. [5, 6, 7, 9] 
+* A deeper look into how it stacks up against other ASIC inference rivals like Cerebras or SambaNova. [5, 6, 7, 9]
 
 [1] [https://groq.com](https://groq.com/blog/the-groq-lpu-explained)
 [2] [https://www.youtube.com](https://www.youtube.com/watch?v=TKw8kICxJus&t=44)
@@ -50,11 +47,9 @@ If you'd like to dig deeper, tell me if you want to explore:
 [8] [https://www.pocket.tw](https://www.pocket.tw/school/report/SB/6881/)
 [9] [https://www.cerebras.ai](https://www.cerebras.ai/blog/cerebras-cs-3-vs-groq-lpu)
 
-</td></tr>
-<tr style="background-color:lightyellow;"><td>Q:</td><td>
-改以中文回答
-</td></tr><tr><td>A:</td><td>
-
+> [!NOTE]
+> Q: 改以中文回答
+A:
 Groq LPU（Language Processing Unit，語言處理單元） 是一種專為 超低延遲 AI 推理（Inference） 設計的專用硬體架構。
 與擅長處理大批次、高平行數學運算（AI 訓練）的傳統 GPU 不同，LPU 是為了突破生成式大型語言模型（LLM）逐字生成（Token-by-Token）的效能瓶頸而誕生。
 在 2025 年 12 月的重大產業異動中，NVIDIA（輝達）以 200 億美元收購了 Groq 的核心技術與工程團隊。這項架構現已全面融入 NVIDIA 的產品路線圖，並在 GTC 2026 大會上正式發表了 Groq 3 LPU。

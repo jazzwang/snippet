@@ -149,4 +149,4 @@ python goodtape_cli.py your_audio_file.mp3 --api_key YOUR_OPENAI_API_KEY
 
 這個基本的 CLI 工具提供了一個起點，您可以根據自己的需求進行擴展和改進。記得查看 OpenAI Whisper API 的官方文件以了解更多進階功能和限制。
 
-</td></tr></table>
+---
