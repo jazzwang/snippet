@@ -1,7 +1,8 @@
 # Semtech Corporation
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: Semtech
+> [!NOTE]
+> Q: Semtech
 A:
 Semtech Corporation is a leading global supplier of high-performance analog and mixed-signal semiconductors, advanced algorithms, and cloud connectivity services. The company is widely known for pioneering LoRa wireless technology and powering critical hardware infrastructure for AI data centers and the Internet of Things (IoT). [1, 2, 3, 4]
 

@@ -900,7 +900,8 @@ deactivate tryRegisterSetting
 ## 2026-06-12
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 有可能從 Chrome DevTool 查詢 Network 中符合特定字串的 request 嗎?
+> [!NOTE]
+> Q: 有可能從 Chrome DevTool 查詢 Network 中符合特定字串的 request 嗎?
 A:
 ### DevTools - Network - Search
 
@@ -988,7 +989,8 @@ matches.forEach(req => console.log(req.name));
 請問您之所以想用 JavaScript 查詢，是為了要自動化提取資料，還是因為特定請求數量太多、用內建篩選器看不完呢？
 
 </td></tr>
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 為了自動化提取特定的 fetch() 呼叫紀錄
+> [!NOTE]
+> Q: 為了自動化提取特定的 fetch() 呼叫紀錄
 A:
 ### 3 Solutions to list history of fetch() requests
 
@@ -1074,7 +1076,8 @@ const { chromium } = require('playwright');
 -   還是希望在現有的網頁畫面上，透過 Console 提取完直接下載成 JSON 檔呢？
 
 </td></tr>
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 希望在現有的網頁畫面上,透過 Console 提取完直接下載成 JSON 檔
+> [!NOTE]
+> Q: 希望在現有的網頁畫面上,透過 Console 提取完直接下載成 JSON 檔
 A:
 ### DevTools - Console - 複寫 `windows.fetch()`
 
@@ -1163,7 +1166,8 @@ A:
 
 如果您的網站除了 `fetch` 以外，還有使用舊式的 `XMLHttpRequest` (Axios 常見的底層) 導致漏抓，我可以幫您把 XHR 的攔截與 Response 讀取邏輯也整合進這個按鈕中。
 請問目前這個純 `fetch` 的版本，有成功幫您抓到目標資料嗎？
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 使用 performance.getEntriesByType,可以找到 fetch() 的歷史網址嗎?
+> [!NOTE]
+> Q: 使用 performance.getEntriesByType,可以找到 fetch() 的歷史網址嗎?
 A:
 ### DevTools - Console - 用 `performance.getEntriesByType("resource")`
 

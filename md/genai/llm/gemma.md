@@ -11,7 +11,8 @@
 ### 2026-6-18
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 為什麼 Google 沒有研發針對 Coding Agent 使用的 LLM (e.g. Qwen Coder 系列)
+> [!NOTE]
+> Q: 為什麼 Google 沒有研發針對 Coding Agent 使用的 LLM (e.g. Qwen Coder 系列)
 
 https://share.google/aimode/B737Imu3XGn9FRh1N
 A:

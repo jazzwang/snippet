@@ -427,7 +427,8 @@ A:
 - https://share.google/aimode/kAVAdPUMcd9MVNVck
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 為何大家搶 GFX906
+> [!NOTE]
+> Q: 為何大家搶 GFX906
 A:
 大家瘋搶 GFX906（主要指 AMD Radeon VII、Instinct MI50、MI60 等使用該架構的舊款繪圖晶片），核心原因在於它是目前性價比極高、專門用來跑本地 AI 大語言模型（LLM）的「神級洋垃圾」。 [1]
 隨著 DeepSeek、Qwen 等大模型爆火，大眾對大容量顯示記憶體（VRAM）的需求暴增，而 GFX906 晶片正好踩中了這個痛點。以下是它被瘋搶的四大核心關鍵： [2, 3]

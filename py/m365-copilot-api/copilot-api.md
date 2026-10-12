@@ -8,7 +8,8 @@
 ## 2026-07-07
 
 - Tool: Microsoft 365 Copilot - GPT-5
-</td></tr><tr style="background-color:lightyellow;"><td>Q: Are there python library to interact with M365 Copilot via websocket?
+> [!NOTE]
+> Q: Are there python library to interact with M365 Copilot via websocket?
 A:
 ## Python Library to interact with M365 Copilot via `websocket`
 

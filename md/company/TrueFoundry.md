@@ -3,7 +3,8 @@
 ## 2026-07-09
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: what is TrueFoundry? the context might related to IAM
+> [!NOTE]
+> Q: what is TrueFoundry? the context might related to IAM
 A:
 TrueFoundry is an enterprise-grade AI Gateway and MLOps platform designed to securely connect, govern, and observe access to Large Language Models (LLMs), AI agents, and underlying data sources. [1]
 In the context of Identity and Access Management (IAM), TrueFoundry serves as a centralized control plane. It bridges traditional enterprise corporate identities (like those managed via Okta, Microsoft Entra ID, or AWS IAM) with the complex authorization requirements of AI workloads and agentic tool executions. [2, 3, 4, 5, 6]

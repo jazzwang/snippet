@@ -1,7 +1,8 @@
 # AI Agent Maturity Model
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: AI Agent 成熟度模型
+> [!NOTE]
+> Q: AI Agent 成熟度模型
 A:
 ## AI Agent 成熟度模型
 

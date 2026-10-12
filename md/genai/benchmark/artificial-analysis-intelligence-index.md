@@ -7,7 +7,8 @@
   - https://artificialanalysis.ai/methodology/intelligence-benchmarking
 
 - Tool: Google Gemini Live Chat
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 幫我生成中文摘要 https://artificialanalysis.ai/methodology/intelligence-benchmarking#artificial-analysis-intelligence-index
+> [!NOTE]
+> Q: 幫我生成中文摘要 https://artificialanalysis.ai/methodology/intelligence-benchmarking#artificial-analysis-intelligence-index
 A:
 [Artificial Analysis Intelligence Index v4.1.1](https://artificialanalysis.ai/methodology/intelligence-benchmarking#artificial-analysis-intelligence-index) 是由 Artificial Analysis 建立的語言模型智力評測框架，結合 9 項基準測試來評估 AI 在推理、知識、數學與程式設計等面向的綜合能力，重點偏重於 Agent（代理人）任務。
 

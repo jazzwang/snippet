@@ -36,7 +36,8 @@
 ## 2026-06-14
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 為什麼 YouTube Music 網頁版會把播放紀錄同步到 YouTube，而 YouTube Music Mobile App 卻不會？
+> [!NOTE]
+> Q: 為什麼 YouTube Music 網頁版會把播放紀錄同步到 YouTube，而 YouTube Music Mobile App 卻不會？
 A:
 ### YouTube Music - 歷史紀錄 - 網頁版與行動版行為不同
 

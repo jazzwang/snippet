@@ -10,7 +10,8 @@
 ## 2026-06-04
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: does A2UI protocol support different LLM other than Gemini?
+> [!NOTE]
+> Q: does A2UI protocol support different LLM other than Gemini?
 A:
 Yes, the A2UI (Agent-to-User Interface) protocol explicitly supports Large Language Models (LLMs) other than Gemini. While it was introduced by Google and is deeply integrated into Google ecosystems like Gemini Enterprise, A2UI is designed as an open, model-agnostic industry standard. [1, 2, 3, 4, 5]
 The protocol operates on fundamental architectural rules that allow any capable AI model to utilize it:

@@ -1154,7 +1154,8 @@ You would use the `gh api graphql` command to execute this, adding pagination lo
 ## 2026-07-07
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: can I trigger github action via gh CLI?
+> [!NOTE]
+> Q: can I trigger github action via gh CLI?
 A:
 ### Trigger Github Action via Github CLI
 

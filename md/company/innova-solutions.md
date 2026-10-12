@@ -1,7 +1,8 @@
 ## 2026-06-06
 
 - Tool: Google Search AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 查詢 ACS Group 收購 Innova Solution 的金額是多少
+> [!NOTE]
+> Q: 查詢 ACS Group 收購 Innova Solution 的金額是多少
 A:
 ## ACS 收購
 

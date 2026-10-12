@@ -92,7 +92,8 @@ Would you like help checking or changing this setting in your Outlook environmen
 ## 2026-06-10
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: are there Microsoft Outlook MCP server which is not relied on Microsoft Graph API permission?
+> [!NOTE]
+> Q: are there Microsoft Outlook MCP server which is not relied on Microsoft Graph API permission?
 A:
 Yes, there are Microsoft Outlook Model Context Protocol (MCP) servers that do not rely on Microsoft Graph API cloud permissions. While the vast majority of community and official cloud integrations (like Microsoft's first-party Work IQ servers) interact directly via the Microsoft Graph REST API, you can bypass cloud API permissions entirely by using local OS-native APIs. [1, 2]
 

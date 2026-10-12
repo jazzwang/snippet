@@ -14,7 +14,8 @@
   - 在與 Google Search AI Mode 對談時，有提到 Microcks
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: AsyncAPI 有類似 petstore 的範例嗎？
+> [!NOTE]
+> Q: AsyncAPI 有類似 petstore 的範例嗎？
 A:
 ## AsyncAPI 對應的 PetStore 範例
 

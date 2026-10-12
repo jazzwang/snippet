@@ -3,7 +3,8 @@
 ## 2026-06-14
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: Google ONE 如何設定家庭成員帳號共用
+> [!NOTE]
+> Q: Google ONE 如何設定家庭成員帳號共用
 A:
 ### Google ONE 家庭群組
 

@@ -5,7 +5,8 @@
 ## 2026-06-18
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 目前 NVIDIA 的投資者共舉債多少美金?
+> [!NOTE]
+> Q: 目前 NVIDIA 的投資者共舉債多少美金?
 A:
 ## 輝達債券
 

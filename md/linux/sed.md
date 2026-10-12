@@ -3,7 +3,8 @@
 ## 2026-08-17
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 有 awk 或 sed 指令可以在現存的文字檔第一行前面插入一行新的字串?
+> [!NOTE]
+> Q: 有 awk 或 sed 指令可以在現存的文字檔第一行前面插入一行新的字串?
 A:
 有的，sed 和 awk 都可以非常輕鬆地達成這個需求。 [1, 2]
 以下為您整理這兩種工具的指令寫法。

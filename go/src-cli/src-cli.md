@@ -8,7 +8,8 @@
 - https://share.google/aimode/NxjQ9iGoz7Z3l8SPp
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: sourcegraph 的產品定位與主要功能是什麼?為什麼會需要 sourcegraph CLI https://github.com/sourcegraph/src-cli
+> [!NOTE]
+> Q: sourcegraph 的產品定位與主要功能是什麼?為什麼會需要 sourcegraph CLI https://github.com/sourcegraph/src-cli
 A:
 Sourcegraph 是一款專為大型程式碼庫設計的全民程式碼搜尋與 AI 導航平台 (Code Intelligence Platform)。它為開發團隊解決在海量、跨專案、跨代管平台（如 GitHub、GitLab）的程式碼中，難以快速搜尋、閱讀、理解與維護原始碼的痛點。
 

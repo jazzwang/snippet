@@ -370,7 +370,8 @@ Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Re
 - 解法：雖然 PowerShell 也有對應的解法，但改用 `win32yank` 或 `utf8clip` 來當 `pbcopy` 或許比較簡單。
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 為何 windows 11 的 clip 指令複製 bash for windows 的輸出無法正常顯示 UTF-8 中文字元
+> [!NOTE]
+> Q: 為何 windows 11 的 clip 指令複製 bash for windows 的輸出無法正常顯示 UTF-8 中文字元
 A:
 ## Windows 11 的 clip.exe 無法正常接收 UTF-8 中文字元
 

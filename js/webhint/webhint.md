@@ -39,7 +39,8 @@ http-cache                 37 warnings  4 hints
   - ![](edge-webhint-warning.png)
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: what is webhint experiment shown in DevTool?
+> [!NOTE]
+> Q: what is webhint experiment shown in DevTool?
 A:
 The webhint experiment in browser Developer Tools (DevTools) is an integration of [webhint](https://webhint.io/), an open-source linting engine designed to help you improve your website's code quality and best practices. [1, 2, 3, 4, 5]
 

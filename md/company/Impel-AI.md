@@ -3,7 +3,8 @@
 ## 2026-07-15
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: what's the relationship between Outsell (Impel) and impel.ai in automotive industry
+> [!NOTE]
+> Q: what's the relationship between Outsell (Impel) and impel.ai in automotive industry
 A:
 The relationship between Outsell and impel.ai is a parent-subsidiary corporate relationship resulting from a major merger and acquisition. [1, 2]
 In July 2024, Impel acquired Outsell in a cash and equity transaction valued at over $100 million. The two entities have merged their operations to create the automotive retail industry's first end-to-end AI sales and marketing automation platform. [1, 2, 3]

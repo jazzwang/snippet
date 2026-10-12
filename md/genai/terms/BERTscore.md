@@ -1,5 +1,6 @@
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: What is BERTscore?
+> [!NOTE]
+> Q: What is BERTscore?
 A:
 BERTScore 是在 AI/ML（特別是自然語言處理 NLP 與大型語言模型 LLM）領域中，用來評估「文字生成品質」的一種現代化語義相似度指標。 [1, 2]
 與 FID 用於評估「影像」不同，BERTScore 專門用於評估「文字」（如機器翻譯、文本摘要、RAG 問答系統及對話生成）。它不再依賴字面上的死板匹配，而是比較文字背後的「語義」。 [1, 2, 3, 4]

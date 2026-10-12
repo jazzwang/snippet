@@ -176,7 +176,8 @@ Examples:
 ## 2026-07-07
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 如果我需要 AI Code Agent (如 OpenCode)參考我的瀏覽器操作,看我如何執行 Jira JQL 查詢,並將結果下載成 Excel 檔案,並且開啟 Excel,將特定區域建立新的 Excel Table,再用該 Table 產生三個固定的 Pivot Table 樞紐分析。將這個程序生成 Python 自動化程式(例如結合 Playwright 跟 Python Excel library)。可以幫我規劃 step-by-step instruction 嗎?
+> [!NOTE]
+> Q: 如果我需要 AI Code Agent (如 OpenCode)參考我的瀏覽器操作,看我如何執行 Jira JQL 查詢,並將結果下載成 Excel 檔案,並且開啟 Excel,將特定區域建立新的 Excel Table,再用該 Table 產生三個固定的 Pivot Table 樞紐分析。將這個程序生成 Python 自動化程式(例如結合 Playwright 跟 Python Excel library)。可以幫我規劃 step-by-step instruction 嗎?
 A:
 略 -- 詳 [browser-use.md](../browser-use/browser-use.md)
 > [!NOTE]

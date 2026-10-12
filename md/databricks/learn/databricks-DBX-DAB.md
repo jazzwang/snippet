@@ -1,7 +1,8 @@
 # Databricks - What is DBX? What is DAB?
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: what is DBX? what is DAB? if the context is related to Databricks
+> [!NOTE]
+> Q: what is DBX? what is DAB? if the context is related to Databricks
 A:
 In the context of Databricks, DBX and DAB are both developer tools used to automate, package, and deploy data engineering and data science workloads. [1, 2, 3, 4, 5]
 Here is the breakdown of what each tool is and how they differ:

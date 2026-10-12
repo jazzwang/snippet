@@ -12,7 +12,8 @@
   - 有點遲疑，因為似乎只支援 macOS
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: does https://github.com/mvanhorn/agentcookie only support macOS?
+> [!NOTE]
+> Q: does https://github.com/mvanhorn/agentcookie only support macOS?
 A:
 Yes, agentcookie currently only supports macOS on both the source and sink ends.
 According to the repository documentation, it relies heavily on system-specific features and architectures that restrict it to Apple machines:

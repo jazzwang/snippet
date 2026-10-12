@@ -5,7 +5,8 @@
 - https://huggingface.co/spaces/nyunai/edge-llm-leaderboard
 
 - Tool: Google Search - AI mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: are there leaderboard of Edge LLM models?
+> [!NOTE]
+> Q: are there leaderboard of Edge LLM models?
 A:
 ## Edge LLM Leaderboard
 

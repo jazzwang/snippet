@@ -820,7 +820,8 @@ Tips for getting started:
 ## 2026-06-23
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: Gemini CLI 與 Antigravity CLI 的差異
+> [!NOTE]
+> Q: Gemini CLI 與 Antigravity CLI 的差異
 A:
 ## Gemini CLI vs Antigravity CLI
 

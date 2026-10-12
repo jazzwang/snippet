@@ -1,7 +1,8 @@
 # Databricks - Batch Inference vs Streaming Inference
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: databricks batch inference streaming inference
+> [!NOTE]
+> Q: databricks batch inference streaming inference
 A:
 In Databricks, batch inference and streaming inference represent two different strategies for executing machine learning or large language model (LLM) predictions depending on your data latency and throughput needs. [1, 2, 3]
 Databricks unifies both paradigms, allowing you to use identical code logic (such as SQL AI functions) for both batch and streaming pipelines. [4, 5, 6, 7, 8]

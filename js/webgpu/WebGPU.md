@@ -8,7 +8,8 @@
 - 研究
 
 - Tool: Google Search AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: WebGPU
+> [!NOTE]
+> Q: WebGPU
 A:
 [WebGPU API - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)
 [WebGPU | Chrome for Developers](https://developer.chrome.com/docs/web-platform/webgpu)

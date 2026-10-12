@@ -3,7 +3,8 @@
 ## 2026-06-06
 
 - Tool: Google Search AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: Google Search AI Mode 是否有公開 API 可以使用？
+> [!NOTE]
+> Q: Google Search AI Mode 是否有公開 API 可以使用？
 A:
 ## Google Search AI Mode API
 

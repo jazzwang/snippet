@@ -13,7 +13,8 @@
 - https://share.google/aimode/q5ecXFBptc4otfp6k
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: pptxgenjs 可以自訂公司的 theme 跟 icon 嗎?
+> [!NOTE]
+> Q: pptxgenjs 可以自訂公司的 theme 跟 icon 嗎?
 A:
 可以，PptxGenJS 完全支援自訂公司的 Theme（主題顏色、字型、母片版型）與 Icon 圖示。
 雖然 PptxGenJS 是透過 JavaScript 程式碼動態生成簡報，不像 PowerPoint 軟體有可視化的自訂介面，但你可以透過定義全域變數、設定 Slide Master（母片）以及讀取圖片編碼來達到完全品牌化的效果。

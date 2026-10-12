@@ -8,7 +8,8 @@
 - Learn from https://github.com/mathruffian-dot/claude-code-lazy-packs
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 在安裝特定 PyPI 套件前,可以在哪裡找到 Security 的建議?
+> [!NOTE]
+> Q: 在安裝特定 PyPI 套件前,可以在哪裡找到 Security 的建議?
 A:
 ### PyPI Security Advisory
 

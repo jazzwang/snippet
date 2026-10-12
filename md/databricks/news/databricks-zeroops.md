@@ -3,7 +3,8 @@
 ## 2026-07-15
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: Databricks Zero Ops
+> [!NOTE]
+> Q: Databricks Zero Ops
 A:
 **Genie ZeroOps** is an autonomous, AI-powered background agent built directly into the [Databricks](https://www.databricks.com/blog/introducing-genie-zeroops) platform to **monitor, diagnose, and repair data and AI assets on autopilot**. Announced at the Data + AI Summit, it moves data engineering from reactive firefighting to a human-in-the-loop review system. It acts like an on-call engineer that never sleeps, targeting production pipelines, jobs, tables, and machine learning models. [1](https://www.databricks.com/blog/introducing-genie-zeroops), [2](https://www.infoworld.com/article/4186796/databricks-targets-ai-operations-bottlenecks-with-zeroops.html), [3](https://www.databricks.com/blog/introducing-genie-zeroops), [4](https://www.youtube.com/shorts/6eY-T6ePWDI), [5](https://kanerika.com/blogs/databricks-genie-zeroops/)
 

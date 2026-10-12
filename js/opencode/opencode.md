@@ -304,7 +304,8 @@ OpenCode免費用法實操：現場示範如何下載與設定開源Harness桌�
 ## 2026-06-11
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: opencode 支援排程執行工作嗎
+> [!NOTE]
+> Q: opencode 支援排程執行工作嗎
 A:
 是的，OpenCode 支援排程執行工作。 它身為一個靈活的開源 AI 編碼代理，除了傳統在終端機與開發者即時協作（TUI 模式）外，也能透過多種官方或社群擴充方式來進行週期性與自動化的排程任務。 [1, 2, 3, 4, 5]
 以下是 OpenCode 實現排程執行的三種主要方式：
@@ -336,7 +337,8 @@ OpenCode 整合了 GitHub 自動化工作流程。你可以在專案中建立 .g
 ## 2026-08-18
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: which LLM model behind Big Pickle OpenCode Zen?
+> [!NOTE]
+> Q: which LLM model behind Big Pickle OpenCode Zen?
 A:
 The Big Pickle model behind OpenCode Zen is officially classified as a "stealth model" with rotating underlying capabilities, but it is primarily based on Zhipu AI's GLM-4.6 architecture. [1, 2]
 

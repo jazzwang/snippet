@@ -11,7 +11,8 @@
   - 是否有其他研究結果也存在類似的結論呢？
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: are there study on token effeciency of different AI Code Agent CLI, such as Claude Code, Github Copilot, OpenClaw, Hermus Agent, Pi Agent, OpenCode?
+> [!NOTE]
+> Q: are there study on token effeciency of different AI Code Agent CLI, such as Claude Code, Github Copilot, OpenClaw, Hermus Agent, Pi Agent, OpenCode?
 A:
 Yes, multiple comparative studies, academic benchmarks, and community tests track the token efficiency of these AI command-line interfaces (CLIs). [1, 2]
 

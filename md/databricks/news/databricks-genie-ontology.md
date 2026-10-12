@@ -7,7 +7,8 @@
 ## 2026-07-15
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: Databricks Genie Ontology
+> [!NOTE]
+> Q: Databricks Genie Ontology
 A:
 Genie Ontology 是 [Databricks](https://www.databricks.com/blog/introducing-genie-one-genie-ontology-and-genie-agents) 推出的一款自動化、自我完善的企業語境層（Context Layer）。它本質上是一個動態知識圖譜（Knowledge Graph），旨在作為 AI 代理的「大腦」，讓生成式 AI 真正理解你公司的業務術語、指標定義以及數據之間的關聯性。 [1, 2, 3]
 在傳統的「與數據聊天（Chat with Data）」或 RAG（檢索增強生成）架構中，AI 常因缺乏業務背景而給出看似合理卻錯誤的答案（例如分不清財務部和銷售部對「營收」的不同定義）。Genie Ontology 就是為了解決這個信任痛點而誕生。 [4, 5]

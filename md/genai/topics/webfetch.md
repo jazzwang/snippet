@@ -3,7 +3,8 @@
 ## 2026-06-06
 
 - Tool: Google Search AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: AI Agent 的 WebFetch 跟 Web Search 有何不同？WebFetch 有特定的程式實作或函式庫嗎？
+> [!NOTE]
+> Q: AI Agent 的 WebFetch 跟 Web Search 有何不同？WebFetch 有特定的程式實作或函式庫嗎？
 A:
 WebFetch 與 Web Search 的核心差異在於「直接獲取特定網頁的原始內容」與「透過搜尋引擎搜尋關鍵字並篩選網頁」。 WebFetch 專注於下載指定 URL 的 HTML、JSON 或文字資料，而 Web Search 則是利用搜尋引擎（如 Google、Bing）找出與關鍵字相關的一系列連結與摘要。
 在 AI Agent（人工智慧代理）的架構中，這兩個工具通常是相輔相成的。

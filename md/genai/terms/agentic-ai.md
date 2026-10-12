@@ -5,7 +5,8 @@
 ## 2026-06-13
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: AI Agent 的組成
+> [!NOTE]
+> Q: AI Agent 的組成
 A:
 ## AI Agent
 

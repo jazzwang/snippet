@@ -3,7 +3,8 @@
 ## 2026-08-17
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: groq lpu
+> [!NOTE]
+> Q: groq lpu
 A:
 The Groq LPU (Language Processing Unit) is a specialized AI hardware architecture explicitly engineered for ultra-low latency AI inference. Unlike standard GPUs that excel at handling dense, parallel math workloads for model training, the LPU is purpose-built to solve the sequential "token-by-token" bottleneck that slows down generative Large Language Models (LLMs). [1, 2, 3, 4]
 In a massive industry shakeup in December 2025, NVIDIA acquired Groq's core technology and engineering team for $20 billion. This architecture has now been integrated directly into NVIDIA's roadmap, culminating in the official launch of the Groq 3 LPU at GTC 2026. [5, 6]

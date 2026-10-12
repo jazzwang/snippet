@@ -5,7 +5,8 @@
 ## 2026-06-15
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: are there tool to read Figma flow and convert the UI Mock design to data model and API?
+> [!NOTE]
+> Q: are there tool to read Figma flow and convert the UI Mock design to data model and API?
 A:
 ## Figma to Data Model and API
 
@@ -66,7 +67,8 @@ To help tailor this, what backend stack or database (e.g., Node.js, Python, Post
 ## 2026-06-18
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: Figma 要使用 MCP Server 有 License 限制嗎?
+> [!NOTE]
+> Q: Figma 要使用 MCP Server 有 License 限制嗎?
 A:
 ## Figma License limitation when using MCP Server
 

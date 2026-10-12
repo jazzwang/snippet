@@ -3,7 +3,8 @@
 ## 2026-06-15
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: SpaceX 在太空建立資料中心,從物理熱力學的角度,在近乎真空的太空中 GPU 真的可以靠輻射散熱嗎?
+> [!NOTE]
+> Q: SpaceX 在太空建立資料中心,從物理熱力學的角度,在近乎真空的太空中 GPU 真的可以靠輻射散熱嗎?
 A:
 ## SpaceX 太空資料中心 - 散熱設計
 

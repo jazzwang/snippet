@@ -3,7 +3,8 @@
 ## 2026-06-12
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 'docker model run hf.co/unsloth/diffusiongemma-26B-A4B-it-GGUF:Q4_K_M' 這個指令需要用到特定版本的 docker 嗎？
+> [!NOTE]
+> Q: 'docker model run hf.co/unsloth/diffusiongemma-26B-A4B-it-GGUF:Q4_K_M' 這個指令需要用到特定版本的 docker 嗎？
 A:
 ## docker model
 

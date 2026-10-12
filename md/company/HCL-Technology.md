@@ -8,7 +8,8 @@
   - https://www.ithome.com.tw/pr/145191
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: HCL professional service
+> [!NOTE]
+> Q: HCL professional service
 A:
 HCL 專業服務 (Professional Services) 是由全球科技巨頭 [HCLTech](https://www.hcltech.com/financial-services/professional-services) 與其軟體部門 [HCLSoftware](https://www.hcl-software.com/unica/services) 所提供的全方位企業級技術與諮詢服務。其核心目的在於協助全球及台灣企業加速數位轉型、優化架構並極大化科技投資報酬率。 [1]
 

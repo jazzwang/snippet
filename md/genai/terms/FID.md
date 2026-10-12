@@ -1,5 +1,6 @@
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: FID 在 AI/ML 領域是什麼 distance?
+> [!NOTE]
+> Q: FID 在 AI/ML 領域是什麼 distance?
 A: 在 AI/ML（人工智慧與機器學習）領域中，FID 指的是 Fréchet Inception Distance（弗雷歇開端距離）。
 它是一種用來評估生成模型（特別是 GANs 和擴散模型等圖像生成 AI）品質的核心指標。FID 分數越低，代表生成出來的圖片越逼真、越接近真實世界的水準。
 

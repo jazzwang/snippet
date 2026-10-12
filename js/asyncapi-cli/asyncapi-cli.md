@@ -13,7 +13,8 @@
 - 發想：
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: 給定 https://petstore.swagger.io/v2/swagger.json OpenAPI 規格，有辦法逆向生成 data model 嗎？
+> [!NOTE]
+> Q: 給定 https://petstore.swagger.io/v2/swagger.json OpenAPI 規格，有辦法逆向生成 data model 嗎？
 A:
 ## OpenAPI JSON to Data Model
 

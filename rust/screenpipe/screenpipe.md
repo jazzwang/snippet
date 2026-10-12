@@ -17,7 +17,8 @@
 > 24/7 全天候把畫面錄起來給 AI Agent 用
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: could you give me more information about Screenpipe? does it support Windows and can use VLM locally?
+> [!NOTE]
+> Q: could you give me more information about Screenpipe? does it support Windows and can use VLM locally?
 A:
 Yes, Screenpipe completely supports Windows and fully supports running Vision-Language Models (VLMs) locally. [1, 2]
 

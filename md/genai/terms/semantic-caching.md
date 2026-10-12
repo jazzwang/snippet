@@ -1,7 +1,8 @@
 # Semantic Caching
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: what is semantic cache strategy?
+> [!NOTE]
+> Q: what is semantic cache strategy?
 A:
 ## What is "Semantic Cache" strategy?
 

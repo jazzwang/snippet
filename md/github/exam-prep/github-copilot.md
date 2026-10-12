@@ -8,7 +8,8 @@
 - 緣起：同事們提到使用 Github Copilot 然後讓它分別扮演不同的角色協作，好奇 Copilot 是否支援 subagent 的設計。
 
 - Tool: Google Search - AI Mode
-</td></tr><tr style="background-color:lightyellow;"><td>Q: github copilot 有 sub-agent 的概念嗎？
+> [!NOTE]
+> Q: github copilot 有 sub-agent 的概念嗎？
 可以讓 Github Copilot 分別扮演不同的角色進行團隊合作嗎？
 例如 Product Manager, Scrum Master, UX Designer, Frontend Developer,
  Backend Developer, Database Developer
@@ -118,7 +119,8 @@ description: 資料庫工程師，精通 SQL 與資料庫正規化。
 ---
 ## 2026-06-13
 
-- Tool: </td></tr><tr style="background-color:lightyellow;"><td>Q: can I define Agent Skills only for specific SubAgent in Github Copilot?
+- Tool: > [!NOTE]
+> Q: can I define Agent Skills only for specific SubAgent in Github Copilot?
 A:
 ## Sub-agent with specific Agent Skills
 
