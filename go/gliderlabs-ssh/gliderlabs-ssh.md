@@ -18,8 +18,6 @@
 
 Yes, there are SSH server implementations and libraries available in both **Go** and **Python**.
 
----
-
 ## 💻 Go (Golang) SSH Server Libraries
 
 Go is very well-suited for network programming due to its strong standard library and excellent concurrency model, making it a natural choice for building performant network services like an SSH server.
@@ -29,8 +27,6 @@ Go is very well-suited for network programming due to its strong standard librar
 
 Many specialized tools and services written in Go (like `Teleport` or SSH bastions) embed a custom SSH server built using these libraries.
 
----
-
 ## 🐍 Python SSH Server Libraries
 
 While Python is not as commonly used as Go or C for production-grade, standalone SSH servers like OpenSSH, it does have powerful libraries for creating custom SSH server functionality.
@@ -39,8 +35,6 @@ While Python is not as commonly used as Go or C for production-grade, standalone
 * **PyserSSH:** This is a scriptable Python SSH server library that builds on top of Paramiko, offering a simpler and more flexible API for creating customized SSH terminal environments.
 
 Python libraries are often used to build **honeypots**, specialized SSH frontends, or simple testing/scripting servers.
-
----
 
 Would you like to know more about the **capabilities** or see a **simple code example** for implementing an SSH server in one of these languages?
 ---
@@ -57,8 +51,6 @@ The ability to run a network server without administrative privileges on any ope
     * **Action:** Change the default SSH port from **22** to something like **2222** in your Go server's configuration.
 
 * **Admin Required Port (The Caveat):** If you try to run the Go SSH server on the standard default port, **port 22**, it will fail immediately with a "permission denied" error because only processes running as an Administrator or the built-in Windows `System` account can bind to privileged ports on Windows.
-
----
 
 ## 🔒 Summary of Go SSH on Windows
 

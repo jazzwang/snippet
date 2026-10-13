@@ -75,10 +75,10 @@ Open `shared/api_spec.md` and paste this "Source of Truth":
 
 Now, you bring them together.
 
-1. In the **Backend Tab**, tell the agent: 
+1. In the **Backend Tab**, tell the agent:
 > "Run the server."
-2. In the **Frontend Tab**, tell the agent: 
-> "Open the `index.html` file in a way I can view it." 
+2. In the **Frontend Tab**, tell the agent:
+> "Open the `index.html` file in a way I can view it."
 
 (Usually, it will suggest a simple python server like `python3 -m http.server 3000`).
 
@@ -135,7 +135,7 @@ Success Response: {"status": "success", "id": 1}
 
 ### Phase 3: Launching the Backend Agent
 
-1. 開啟一個新的終端機分頁，並切換到 
+1. 開啟一個新的終端機分頁，並切換到
 ```bash
 ~$ cd /tmp/day8-lab/backend
 /tmp/day8-lab/backend$
@@ -150,7 +150,7 @@ Success Response: {"status": "success", "id": 1}
 
 ### Phase 4: Launching the Frontend Agent (Simultaneously!)
 
-1. 開啟一個新的終端機分頁，並切換到 
+1. 開啟一個新的終端機分頁，並切換到
 ```bash
 ~$ cd /tmp/day8-lab/frontend
 /tmp/day8-lab/frontend$
@@ -546,13 +546,9 @@ INFO:     127.0.0.1:61857 - "OPTIONS /tasks HTTP/1.1" 405 Method Not Allowed
 **Created:** 2/20/2026, 12:18:22 AM
 **Updated:** 2/20/2026, 12:20:35 AM
 
----
-
 #### User
 
 could you help me to resolve the CORS error?
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 4.9s)
 
@@ -580,8 +576,6 @@ C:\Users\jazzw\AppData\Local\Temp\day8-lab\backend\requirements.txt
 C:\Users\jazzw\AppData\Local\Temp\day8-lab\backend\main.py
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 4.5s)
 
 _Thinking:_
@@ -603,35 +597,33 @@ This looks like a Python backend. Let me read the main.py file to see how the se
 <type>file</type>
 <content>1: from fastapi import FastAPI
 2: from pydantic import BaseModel
-3: 
+3:
 4: app = FastAPI()
-5: 
-6: 
+5:
+6:
 7: class TaskCreate(BaseModel):
 8:     title: str
 9:     priority: int
-10: 
-11: 
+10:
+11:
 12: class TaskResponse(BaseModel):
 13:     status: str
 14:     id: int
-15: 
-16: 
+15:
+16:
 17: task_id_counter = 0
-18: 
-19: 
+18:
+19:
 20: @app.post("/tasks", response_model=TaskResponse)
 21: def create_task(task: TaskCreate):
 22:     global task_id_counter
 23:     task_id_counter += 1
 24:     return TaskResponse(status="success", id=task_id_counter)
-25: 
+25:
 
 (End of file - total 25 lines)
 </content>
 ```
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 21.0s)
 

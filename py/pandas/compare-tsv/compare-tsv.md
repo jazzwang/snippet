@@ -357,8 +357,6 @@ if __name__ == "__main__":
 
 The output will now provide insights into the differences in your TSV files while considering the order of the rows, either strictly by position or based on the matching values in your specified key columns.
 
----
-
 - 2025-04-10 23:40 PM
 - https://g.co/gemini/share/88a2af0291b4
 

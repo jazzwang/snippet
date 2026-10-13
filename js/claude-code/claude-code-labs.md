@@ -13,8 +13,6 @@ Here is a comprehensive, 15-day hands-on lab curriculum designed to maximize you
 
 This plan is structured in three phases: **Fundamentals**, **Intermediate Application**, and **Advanced Mastery/Capstone**. The goal is not just to *ask* Claude for code, but to *collaborate* with it to build robust, production-ready applications.
 
----
-
 ## 🚀 15-Day Claude Coding Lab Curriculum
 
 ### Phase 1: Fundamentals & Prompt Engineering (Days 1–5)
@@ -28,8 +26,6 @@ This plan is structured in three phases: **Fundamentals**, **Intermediate Applic
 | **4** | **Code Refactoring & Style** | Take a piece of working but messy code. Ask Claude to refactor it to adhere to PEP 8 (Python) or Airbnb style guides (JS). | **Style Enforcement:** Prompt Claude to adopt a specific persona (e.g., "Act as a Senior Software Engineer who prioritizes clean, idiomatic code.") |
 | **5** | **Algorithm Implementation** | Implement a classic algorithm (e.g., Binary Search, Fibonacci Sequence, Merge Sort) in a language of your choice. | **Constraint Satisfaction:** Define strict constraints (e.g., "Must run in O(n) time and use recursion") and have Claude meet them. |
 
----
-
 ### Phase 2: Intermediate Application & Ecosystems (Days 6–10)
 **Goal:** Move beyond single scripts to integrate Claude into larger projects, learn about APIs, and understand testing.
 
@@ -41,8 +37,6 @@ This plan is structured in three phases: **Fundamentals**, **Intermediate Applic
 | **9** | **Unit Testing** | Write unit tests for the functions you created on Day 8 (CRUD operations). Use a framework like `pytest` or `jest`. | **Test Case Generation:** Give Claude a function and ask it to generate a comprehensive suite of edge-case unit tests. |
 | **10** | **Frontend Integration (Basic)** | Build a minimal HTML/JavaScript page. Use JavaScript to call the API endpoint you built on Day 7 and display the data on the webpage. | **Bridging Gaps:** Ask Claude how the backend output needs to be structured to be easily consumed by a specific frontend framework/library. |
 
----
-
 ### Phase 3: Advanced Mastery & Capstone (Days 11–15)
 **Goal:** Tackle complex, multi-component projects, explore advanced architectural patterns, and deploy a functional application.
 
@@ -53,8 +47,6 @@ This plan is structured in three phases: **Fundamentals**, **Intermediate Applic
 | **13** | **Asynchronous Programming** | Refactor a long-running task (like fetching 20 API records) to run asynchronously to prevent the application from freezing. | **Concurrency Modeling:** Ask Claude to explain the difference between concurrency and parallelism in the context of your chosen language and provide the optimized async implementation. |
 | **14** | **Deployment Preparation** | Write a `Dockerfile` and a basic `requirements.txt` (or equivalent). Ask Claude to review both files for optimization and best practices. | **DevOps Guidance:** Ask Claude to generate a basic deployment script or configuration file for a specific cloud provider (e.g., Docker Compose setup). |
 | **15** | **Capstone Project Integration** | **FINAL PROJECT:** Integrate all components (API calls, DB storage, frontend display, robust error handling) into one cohesive application. Document the entire process using Claude. | **Full Lifecycle Management:** Use Claude from ideation through deployment documentation. Treat it as your entire team. |
-
----
 
 ## 💡 Tips for Maximizing Your Learning
 

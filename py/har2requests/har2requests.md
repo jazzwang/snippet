@@ -86,8 +86,6 @@ While you can write a script from scratch to perform this conversion, several to
   * **`curl-converter`:** Although primarily used for converting `cURL` commands, some versions and online tools based on this library can also handle HAR files and generate Python code.
   * **Custom Scripts:** For more control or specific use cases, writing a simple Python script to parse the HAR file and generate the code is a common approach.
 
----
-
 ## 2025-11-12
 
 - 補測試紀錄

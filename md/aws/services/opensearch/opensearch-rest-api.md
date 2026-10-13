@@ -25,8 +25,6 @@ Here's a Python CLI example using `argparse` to read the OpenSearch server URL a
 2. `-c` or `--cookie`: Cookie file path (default: `storage_state.json`)
 3. Uses `requests` to make the API call with cookies
 
----
-
 ### 🐍 Python Code Example
 
 ```python
@@ -66,8 +64,6 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-
----
 
 ### 🧪 Example Usage
 

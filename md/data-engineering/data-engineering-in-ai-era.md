@@ -334,8 +334,6 @@ The comprehensive mind map above provides a structured overview of all 20 major 
 [59](https://github.com/GokuMohandas/monitoring-ml)
 [60](https://aws.amazon.com/what-is/retrieval-augmented-generation/)
 
----
-
 ## 2025-11-18
 
 - 2025-10-14:

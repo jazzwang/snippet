@@ -271,5 +271,4 @@ fig.write_html("plotly_velocity_chart.html")
 print("Plotly chart saved as plotly_velocity_chart.html")
 ```
 
-</td></tr>
-</table>
+---

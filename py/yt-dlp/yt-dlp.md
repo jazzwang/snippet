@@ -138,8 +138,6 @@ yt-dlp --skip-download --write-subs --sub-lang <language_code> "<video_url>"
 * `--write-subs`: This command instructs yt-dlp to download the subtitles created by the uploader.
 * `--sub-lang <language_code>`: This option specifies the language of the transcript you want to download. Replace `<language_code>` with the two-letter ISO 639-1 code for the language (e.g., **`en`** for English, **`es`** for Spanish, **`fr`** for French).
 
----
-
 ### Additional Options
 
 You can combine the base command with other options to get the exact transcript you need.
@@ -247,8 +245,6 @@ To specify a time range, use the following format:
 * **The Asterisk (`*`):** This is required to tell yt-dlp you are providing a timestamp rather than a chapter name.
 * **Time Format:** You can use seconds (e.g., `90`) or `HH:MM:SS` (e.g., `01:30:05`).
 
----
-
 ### Practical Examples
 
 #### 1. Basic Start and End Timestamp
@@ -273,8 +269,6 @@ Video files are often cut at "keyframes." If you want the cut to be exactly at y
 ```bash
 yt-dlp --download-sections "*01:00-02:00" --force-keyframes-at-cuts "VIDEO_URL"
 ```
-
----
 
 ### Important Requirements
 * **FFmpeg:** You **must** have FFmpeg installed and accessible in your system's PATH for this feature to work, as yt-dlp uses it to handle the partial downloading and clipping.

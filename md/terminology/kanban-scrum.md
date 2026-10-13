@@ -9,8 +9,6 @@
 
 While they might look similar at a glance (sticky notes moving across columns), the logic behind how they function is quite different. The fundamental split is between **continuous flow** and **fixed intervals**.
 
----
-
 ### At a Glance: Key Differences
 
 | Feature | Scrum Board | Kanban Board |
@@ -20,8 +18,6 @@ While they might look similar at a glance (sticky notes moving across columns), 
 | **WIP Limits** | Indirect (limited by the team's capacity for the sprint). | Direct (limits are set on specific columns, e.g., "Max 3 tasks in Testing"). |
 | **Task Ownership** | Usually owned by the team; everyone commits to the sprint goal. | Tasks are often "pulled" by individuals as capacity opens up. |
 | **Change Policy** | Discouraged once a sprint starts to prevent "scope creep." | Changes can be made at any time; new tasks are added to the backlog. |
-
----
 
 ### 1. The Concept of Time
 
@@ -37,8 +33,6 @@ While they might look similar at a glance (sticky notes moving across columns), 
 
 * **Scrum** is more disciplined. If your boss asks for a new feature on Tuesday but the Sprint started Monday, they usually have to wait until the next Sprint.
 * **Kanban** is more reactive. If a high-priority "fire" comes in, you can drop it into the "To Do" column immediately, and it will be the next thing the team picks up.
-
----
 
 > **The Verdict:** Use **Scrum** if you are building a product and need a structured roadmap. Use **Kanban** if you are in a high-demand environment with changing priorities, like IT support or content creation.
 

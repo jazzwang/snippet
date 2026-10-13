@@ -89,7 +89,7 @@ To prove we are private, let’s simulate an air-gapped environment.
 
 ### Phase 4: Performance Benchmarking
 
-1. **Observe the speed:** Local models depend on your GPU (VRAM). 
+1. **Observe the speed:** Local models depend on your GPU (VRAM).
    If it feels slow, check if WSL is using your NVIDIA/AMD GPU.
 2. **The Quality Check:** Ask a complex logic question:
 
@@ -203,7 +203,7 @@ ollama launch opencode --config
     ```
 - 先使用 `qwen3:8b`
 - 輸入提示詞
-  
+
   > Analyze @.env. Create a Python script that masks this SECRET_KEY and logs only the first and last three characters. Do this 100% locally.
 
 ### Phase 4: Performance Benchmarking
@@ -222,13 +222,9 @@ ollama launch opencode --config
 **Created:** 3/3/2026, 8:30:18 AM
 **Updated:** 3/3/2026, 8:35:55 AM
 
----
-
 ##### User
 
 Analyze @.env. Create a Python script that masks this SECRET_KEY and logs only the first and last three characters. Do this 100% locally.
-
----
 
 ##### Assistant (Build · qwen3:8b · 127.4s)
 
@@ -375,8 +371,6 @@ To fulfill your request, the Python script below will accomplish the following:
 
 This script does **not** rely on any external packages and works entirely within the Python standard library.
 
----
-
 ##### ✅ Python Script for Masking `SECRET_KEY`
 
 ```python
@@ -409,15 +403,11 @@ if __name__ == "__main__":
     main()
 ```
 
----
-
 ###### 📌 Notes
 
 - The script reads only the first matching line starting with `SECRET_KEY=`.
 - It gracefully handles cases where the secret is **shorter than 6 characters** (shows the full value).
 - The masked output is printed directly to the console, which is ideal for logging the masked value **without exposing sensitive data**.
-
----
 
 ###### 🧪 Example
 
@@ -435,13 +425,9 @@ Masked SECRET_KEY: abc***fgh
 
 Let me know if you’d like this to be written to a file or integrated with a larger program structure!
 
----
-
 ##### User
 
 Explain the Big O complexity of a recursive Fibonacci function and suggest an optimized iterative version.
-
----
 
 ##### Assistant (Build · qwen3:8b · 40.1s)
 
@@ -480,19 +466,19 @@ So, the answer should start by explaining the recursive Fibonacci's Big O, then 
 </think>
 ```
 
-The recursive Fibonacci function has a time complexity of **O(2ⁿ)** due to its exponential branching structure. Each call branches into two recursive calls, leading to redundant calculations and inefficiency. The space complexity is **O(n)** due to the call stack depth.  
+The recursive Fibonacci function has a time complexity of **O(2ⁿ)** due to its exponential branching structure. Each call branches into two recursive calls, leading to redundant calculations and inefficiency. The space complexity is **O(n)** due to the call stack depth.
 
-###### Optimized Iterative Version  
+###### Optimized Iterative Version
 
-An iterative approach avoids redundant calculations by using a loop and storing only the last two values. Here's how it works:  
-1. Initialize variables `a = 0`, `b = 1` (representing Fib(0) and Fib(1)).  
-2. Iterate from `2` to `n`, updating `a` and `b` as `a = b` and `b = a + b`.  
-3. Return `b` as the result.  
+An iterative approach avoids redundant calculations by using a loop and storing only the last two values. Here's how it works:
+1. Initialize variables `a = 0`, `b = 1` (representing Fib(0) and Fib(1)).
+2. Iterate from `2` to `n`, updating `a` and `b` as `a = b` and `b = a + b`.
+3. Return `b` as the result.
 
-**Time Complexity**: **O(n)** (linear)  
-**Space Complexity**: **O(1)** (constant)  
+**Time Complexity**: **O(n)** (linear)
+**Space Complexity**: **O(1)** (constant)
 
-This method is far more efficient for large inputs. Example in Python:  
+This method is far more efficient for large inputs. Example in Python:
 ```python
 def fib_iterative(n):
     if n <= 1:
@@ -501,11 +487,9 @@ def fib_iterative(n):
     for _ in range(2, n + 1):
         a, b = b, a + b
     return b
-```  
+```
 
 **Key Takeaway**: The iterative version reduces time and space complexity significantly compared to the recursive approach.
-
----
 
 ### 備註
 
@@ -514,8 +498,6 @@ def fib_iterative(n):
 ##### User
 
 Analyze @.env. Create a Python script that masks this SECRET_KEY and logs only the first and last three characters. Do this 100% locally.
-
----
 
 ##### Assistant (Build · qwen25-coder:7b · 14.9s)
 

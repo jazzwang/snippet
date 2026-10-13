@@ -147,5 +147,4 @@ Coding Agent 具備「執行終端機指令（Bash/Tool Call）」的能力。�
 [9] [https://www.decodingai.com](https://www.decodingai.com/p/building-a-coding-agent-from-scratch-system-design)
 [10] [https://aimultiple.com](https://aimultiple.com/ai-coding-benchmark)
 
-</td></tr>
-</table>
+---

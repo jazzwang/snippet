@@ -71,7 +71,8 @@ Battery:
 
 - 緣起：想確認 Windows WSL 的 Linux Kernel 參數設定
 
-<table><tr style="background-color:lightyellow;"><td>Q: can I find current Linux kernel (runtime) config within `/proc`?
+> [!NOTE]
+> Q: can I find current Linux kernel (runtime) config within `/proc`?
 ---
 
 Yes, you absolutely can, though there is a small "if" involved regarding how your specific kernel was compiled.
@@ -91,16 +92,12 @@ If you are looking for a specific setting (for example, regarding Intel virtuali
 zcat /proc/config.gz | grep CONFIG_INTEL_IOMMU
 ```
 
----
-
 ### The "Catch": `CONFIG_IKCONFIG_PROC`
 The `/proc/config.gz` file only exists if your kernel was built with the following options enabled:
 1.  **`CONFIG_IKCONFIG`**: This embeds the configuration file directly into the kernel binary.
 2.  **`CONFIG_IKCONFIG_PROC`**: This surfaces that embedded config through the `/proc` filesystem.
 
 Most major distributions (Ubuntu, Fedora, Arch, etc.) enable this by default because it is incredibly helpful for debugging. However, if you are on a hardened system or a custom minimal build, it might be missing.
-
----
 
 ### Alternatives if `/proc/config.gz` is Missing
 If you don't see that file, don't panic. There are two other standard places to find your runtime configuration:
@@ -114,7 +111,8 @@ The version in `/proc` is the "source of truth." It represents exactly what the 
 
 Are you trying to troubleshoot a specific module issue, or just poking around the kernel internals?
 
-<table><tr style="background-color:lightyellow;"><td>Q: I'm trying to figure out why self-compile kernel for WSL2 is different from official WSL2.
+> [!NOTE]
+> Q: I'm trying to figure out why self-compile kernel for WSL2 is different from official WSL2.
 I only add config to support HFSplus and it breaks the support of docker within WSL2
 ---
 
@@ -146,8 +144,6 @@ To ensure Docker works, you must base your custom kernel on the official Microso
     * Compile: `make -j$(nproc)`.
     * Copy the resulting `arch/x86/boot/bzImage` to your Windows host.
     * Update your `%USERPROFILE%\.wslconfig` to point to the new image.
-
----
 
 ### Verifying the Difference
 If you want to see exactly what is missing that broke Docker, you can compare your "broken" config with the official one:

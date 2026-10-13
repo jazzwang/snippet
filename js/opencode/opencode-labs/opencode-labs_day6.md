@@ -2,8 +2,6 @@ Yesterday was surgery; today is a full organ transplant. Welcome to **Day 6: Mul
 
 In professional software development, a single feature change rarely stays inside one file. If you change a database schema, you have to update the models, the API serializers, and the frontend types. Today, we’ll teach OpenCode how to coordinate these "ripples" across your codebase.
 
----
-
 ## Day 6: Coordinating Cross-File Changes
 
 ### 1\. The Multi-File Context Strategy
@@ -19,8 +17,6 @@ When OpenCode refactors, it usually presents a sequence of diffs.
 1. **File 1 (The Source):** It modifies the original logic.
 2. **File 2 (The Consumer):** It updates the code that calls that logic.
 3. **New Files:** It creates any necessary supporting modules.
-
----
 
 ## Day 6 Lab: "The Great Decoupling"
 
@@ -81,8 +77,6 @@ opencode .
 
 2. **Apply All:** Click "Apply" for each file.
 
----
-
 ### Phase 4: Validation & Testing
 
 Now, verify the agent didn't break the imports (a common AI mistake in WSL).
@@ -94,11 +88,9 @@ python3 app.py
 ```
 
 2. **The Error Hunt:** If you get an `ImportError`, don't fix it manually!
-* **Prompt the agent:** 
+* **Prompt the agent:**
 
     > "I got an `ImportError`. Look at `@terminal` and fix the import paths in `@app.py` or `@services.py`."
-
----
 
 ## Day 6 Summary Checklist
 
@@ -108,8 +100,6 @@ python3 app.py
 | Successfully managed cross-file imports using the AI | ☐ |
 | Verified that the logic remains identical after the split | ☐ |
 | Used **`@`** to reference multiple files in one prompt | ☐ |
-
----
 
 ### Pro-Tip: The "Dry Run" Check
 
@@ -156,13 +146,9 @@ Before applying a multi-file refactor, I always ask: *"Before you edit, list the
 **Created:** 2/17/2026, 9:39:20 PM
 **Updated:** 2/17/2026, 9:42:03 PM
 
----
-
 #### User
 
 I want to clean this up. Move the `save_to_db` function into a new file called `database.py`.  Move the `process_user_data` logic into `services.py`. Update `app.py` to import these functions and keep the main execution logic there. Ensure all files are correctly linked.
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 4.9s)
 
@@ -189,8 +175,6 @@ First, I need to see what files exist and understand the current structure. Let 
 C:\Users\jazzw\AppData\Local\Temp\day6-lab\app.py
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 3.8s)
 
 _Thinking:_
@@ -212,20 +196,20 @@ Let me read the app.py file to understand its structure.
 <type>file</type>
 <content>1: # A messy monolith that does everything
 2: import json
-3: 
+3:
 4: def save_to_db(data):
 5:     print(f"Connecting to database... Saving: {data}")
-6: 
+6:
 7: def process_user_data(name, age):
 8:     if age < 18:
 9:         status = "minor"
 10:     else:
 11:         status = "adult"
-12: 
+12:
 13:     user_record = {"name": name, "age": age, "status": status}
 14:     save_to_db(user_record)
 15:     return user_record
-16: 
+16:
 17: # Main execution
 18: user = process_user_data("Alice", 30)
 19: print(f"Processed: {user}")
@@ -233,8 +217,6 @@ Let me read the app.py file to understand its structure.
 (End of file - total 19 lines)
 </content>
 ```
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 6.6s)
 
@@ -292,8 +274,6 @@ Wrote file successfully.
 Wrote file successfully.
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 2.8s)
 
 _Thinking:_
@@ -317,8 +297,6 @@ Processed: {'name': 'Alice', 'age': 30, 'status': 'adult'}
 
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 2.5s)
 
 _Thinking:_
@@ -332,11 +310,7 @@ Done. Created:
 
 Verified it runs correctly.
 
----
-
 #### User
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 49.6s)
 
@@ -380,11 +354,7 @@ Would you like me to suggest fixes for any of these?
 </task_result>
 ```
 
----
-
 #### User
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 14.4s)
 
@@ -399,7 +369,7 @@ The user wants me to summarize the code review output and continue with my task.
 
 Since the user said "continue with your task", I think they want me to address the issues found in the review. Let me ask which issues they want me to fix, or I could just fix the most important ones.
 
-Actually, re-reading the context - the original task was to refactor the code into separate files, which I completed. The code review was a separate tool execution. The user now wants me to summarize and continue. 
+Actually, re-reading the context - the original task was to refactor the code into separate files, which I completed. The code review was a separate tool execution. The user now wants me to summarize and continue.
 
 I should summarize the findings briefly and ask if they want me to fix these issues.
 
@@ -413,6 +383,4 @@ The code review found 4 issues:
 Items 1 and 2 are medium severity (runtime crashes possible). Items 3 and 4 are low severity.
 
 Would you like me to fix any of these issues?
-
----
 

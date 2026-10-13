@@ -85,5 +85,4 @@ NVIDIA 透過「人才收購（Acqui-hire）」與智慧財產權授權模式避
 * 此架構對全球 SRAM 供應鍊廠商帶來的財務與股價影響。
 * 它與 Cerebras 或 SambaNova 等其他 AI 推理晶片（ASIC）對手的競爭分析。
 
-</td></tr>
-</table>
+---

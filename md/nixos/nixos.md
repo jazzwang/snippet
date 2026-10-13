@@ -7,8 +7,9 @@
 
 ## 2026-06-02
 
-<table><tr style="background-color:lightyellow;"><td>Q: what is Nix? NixOS?
-</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Search - AI Mode
+> [!NOTE]
+> Q: what is Nix? NixOS?
+- Tool:  Google Search - AI Mode
 A:
 Nix is a functional package manager, while NixOS is an entire Linux operating system built on top of that package manager. Together, they represent a radically different approach to computing that focuses on being declarative, reproducible, and immutable. [1, 2, 3]
 Instead of installing software imperatively (e.g., running sudo apt install or brew install), you write a text file that lists exactly what your environment or system should look like, and the software builds it cleanly from that blueprint. [4, 5]

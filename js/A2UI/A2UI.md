@@ -84,5 +84,4 @@ Are you looking for an alternative because you want to lower your token costs (l
 [12] [https://github.com](https://github.com/CopilotKit/OpenGenerativeUI)
 
 > [!NOTE]
-> Q: A: </td></tr>
-</table>
+> Q: A: ---

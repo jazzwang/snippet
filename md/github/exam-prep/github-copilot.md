@@ -400,5 +400,4 @@ main-agent: false            # 禁用全域的 @copilot 主代理人agents:
 [4] [https://www.youtube.com](https://www.youtube.com/watch?v=fabAI1OKKww&t=83)
 [5] [https://pcion123.github.io](https://pcion123.github.io/2026/03/31/vscode-skill-intro/)
 
-</td></tr>
-</table>
+---

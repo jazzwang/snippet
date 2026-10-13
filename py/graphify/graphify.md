@@ -130,8 +130,6 @@ Alternatives to safishamsi/graphify for AI-driven code context include <mark>cod
 >
 > 透過圖譜，AI 代理不再需要盲目讀取 20 個檔案來追蹤呼叫鏈，只需一次查詢即可獲取完整的「衝擊範圍」（Blast Radius）與路徑分析。
 
----
-
 ### 3. 三大選手登場：Graphify、GitNexus 與 CodeGraph
 
 針對此領域，目前市面上有三個具備代表性的工具，其定位與技術棧各具特色：
@@ -142,8 +140,6 @@ Alternatives to safishamsi/graphify for AI-driven code context include <mark>cod
     *   支援 **14 種語言**，專注於深度架構分析、跨儲存庫（Cross-repo）與微服務依賴追蹤。
 *   **CodeGraph：零維護加速器** (Standalone Binary, MIT 授權)
     *   支援 **20+ 種語言**，強調極速同步與對動態程式碼流（Dynamic Flow）的深度理解。
-
----
 
 ### 4. 六大維度深度評測 (Head-to-Head Comparison)
 
@@ -160,8 +156,6 @@ Alternatives to safishamsi/graphify for AI-driven code context include <mark>cod
 *   **動態合成哲學：** CodeGraph 的優勢在於其「動態語意合成」層，僅在能閉合完整路徑時才建立邊緣，避免 AI 陷入無效的檔案讀取。
 *   **AI 心理學：** 實測顯示，當 AI 代理看到 17 個專用工具時，往往會因為選項過多而選擇忽略。CodeGraph 採用的「單一工具、全量回答」策略，在 Agent 基準測試中表現出更高的調用成功率。
 
----
-
 ### 5. 底層共通點：AI 軟體架構的六大趨勢
 
 這三款工具雖然在應用層有所不同，但底層設計皆遵循現代 AI 開發工具的核心模式：
@@ -173,8 +167,6 @@ Alternatives to safishamsi/graphify for AI-driven code context include <mark>cod
 5.  **一次索引，多次查詢：** 將昂貴的解析開銷留在構建期。GitNexus 使用 **Ladybug DB**，CodeGraph 則採用 **SQLite 與 WAL (Write Ahead Logging)** 技術以確保讀寫效能。
 6.  **尊重 `.gitignore`：** 自動排除專案噪音（如 `node_modules`），保持圖譜純淨度。
 
----
-
 ### 6. 不可忽視的局限性
 
 > [!WARNING] **架構師的警告：**
@@ -185,15 +177,11 @@ Alternatives to safishamsi/graphify for AI-driven code context include <mark>cod
 > *   **初始建置開銷：** 大型專案首次索引需 1 至 5 分鐘。
 > *   **靜態分析天花板：** 對於高度動態的反射 (Reflection)、Eval 或動態計算的檔案路徑，目前仍是技術盲點。
 
----
-
 ### 7. 決策指南：你該選擇哪一個？
 
 *   [ ] **需要整合非代碼知識（如設計文件、研究論文、影片）：** 選擇 **Graphify**。它是唯一能將 Google Workspace、YouTube 內容與代碼串聯的 MIT 工具。
 *   [ ] **處理微服務架構或跨儲存庫（Multi-repo）分析：** 選擇 **GitNexus**。其合約註冊表與跨服務路徑追蹤是企業級環境的首選。
 *   [ ] **追求極速、零維護與深度動態追蹤：** 選擇 **CodeGraph**。適合單一大型專案開發，其自動同步機制能緊跟每一行代碼變動。
-
----
 
 ### 8. 結論與實踐建議
 

@@ -35,8 +35,6 @@ C:\Users\jazzw\git\snippet\js\openspec\lab-day{1..15}\
 
 Hard cap per day: 75 min. If you blow past that, stop and split the work across two days.
 
----
-
 ## Phase 1 — Foundations (Days 1-5)
 
 ### Day 1 — Env + Agentic Infrastructure
@@ -181,8 +179,6 @@ the `openspec-plan` mode in pink, and the initial commit is on disk.
 - Fission-AI/OpenSpec getting-started: <https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md>
 - openspec.dev: <https://openspec.dev/>
 
----
-
 ### Day 2 — Proposal + Delta Specs
 
 **Goal:** Run `/opsx:propose` against a fresh change-id, inspect the generated
@@ -300,8 +296,6 @@ both an `## ADDED Requirements` and a `## MODIFIED Requirements` section.
 - thedocs Quick Start: <https://thedocs.io/openspec/quick_start/>
 - OpenSpec spec format conventions: <https://github.com/Fission-AI/OpenSpec/blob/main/openspec/specs/openspec-conventions/spec.md>
 
----
-
 ### Day 3 — Design + Tasks (Expanded Profile)
 
 **Goal:** Use the Expanded workflow profile to author `design.md` and `tasks.md` by
@@ -406,8 +400,6 @@ Day 4's job).
 
 - OpenSpec Expanded workflow: <https://github.com/Fission-AI/OpenSpec/blob/main/docs/opsx.md>
 
----
-
 ### Day 4 — Apply (Build Mode + Subagents)
 
 **Goal:** Run `/opsx:apply` to implement the change from Day 3, practice toggling
@@ -500,8 +492,6 @@ you have at least one log line from `@explore` and one from `@code-reviewer`.
 - OpenCode subagents: <https://opencode.ai/docs/agents/>
 - OpenCode tools: <https://opencode.ai/docs/tools/>
 
----
-
 ### Day 5 — Verify + Archive + Customization Primer
 
 **Goal:** Run `/opsx:verify` and `/opsx:archive` on the change from Day 4, then
@@ -593,8 +583,6 @@ schemas and skills will live (Days 11 & 12).
 #### References
 
 - OpenSpec CLI reference (`archive`): <https://github.com/Fission-AI/OpenSpec/blob/main/docs/commands.md>
-
----
 
 ## Phase 2 — Compact Python Labs (Days 6-10)
 
@@ -717,8 +705,6 @@ contains the five CRUD requirements, and the test suite is green.
 - GIGAZINE walkthrough (kitchen-timer pattern): <https://gigazine.net/gsc_news/en/20251026-openspec/>
 - QubitTool SDD tutorial: <https://qubittool.com/blog/openspec-sdd-tutorial>
 
----
-
 ### Day 7 — Delta Spec: Pagination + `?status=` Filter (MODIFIED)
 
 **Goal:** Practice `## MODIFIED Requirements` by adding pagination and a status
@@ -826,8 +812,6 @@ is green.
 
 - thedocs Quick Start: <https://thedocs.io/openspec/quick_start/>
 - Recca dark-mode delta walkthrough: <https://recca0120.github.io/en/2026/03/08/openspec-sdd>
-
----
 
 ### Day 8 — OAuth2 Password Flow + JWT
 
@@ -949,8 +933,6 @@ without a token, and the auth scenarios in `specs/auth/spec.md` are all green.
 - FastAPI security tutorial: <https://fastapi.tiangolo.com/tutorial/security/>
 - jmysu SaaS hands-on: <https://jmysu.com/en/docs/prompt-to-product/16-openspec-practice>
 
----
-
 ### Day 9 — Budget Tracker API (SQLModel + `/summary` Aggregation)
 
 **Goal:** Add a second domain — `Category` and `Expense` — to the lab-day6 service.
@@ -1068,8 +1050,6 @@ is green.
 
 - Khaled Ahmed budget-tracker walkthrough: <https://khaledea.substack.com/p/ai-driven-development-with-openspec>
 
----
-
 ### Day 10 — Brownfield on Your Snippet (Explore Mode First)
 
 **Goal:** Take one of your existing repos under `C:\Users\jazzw\git\snippet` and
@@ -1156,8 +1136,6 @@ OpenSpec spec for it is in `openspec/specs/`, and the change is archived.
 #### References
 
 - Dan Clarke "explore mode is brilliant": <https://www.danclarke.com/openspec>
-
----
 
 ## Phase 3 — Advanced (Days 11-15)
 
@@ -1278,8 +1256,6 @@ populated file.
 - OpenSpec customization docs: <https://github.com/Fission-AI/OpenSpec/blob/main/docs/customization.md>
 - intent-driven.dev schemas overview: <https://intent-driven.dev/knowledge/openspec>
 
----
-
 ### Day 12 — ADR Schema (`spec-driven-with-adr`)
 
 **Goal:** Adopt the `spec-driven-with-adr` schema and write a real Architectural
@@ -1379,8 +1355,6 @@ project is running under `spec-driven-with-adr`.
 #### References
 
 - intent-driven.dev ADR section: <https://intent-driven.dev/knowledge/openspec>
-
----
 
 ### Day 13 — Git Worktrees + SubAgents in Parallel
 
@@ -1493,8 +1467,6 @@ removed.
 - intent-driven.dev "Git Worktrees" section: <https://intent-driven.dev/knowledge/openspec>
 - OpenCode agents doc: <https://opencode.ai/docs/agents/>
 
----
-
 ### Day 14 — OpenCode TUI Mastery
 
 **Goal:** Go deep on OpenCode itself: define a custom subagent in `opencode.json`,
@@ -1587,8 +1559,6 @@ session re-loads a prior context.
 
 - OpenCode server: <https://opencode.ai/docs/server/>
 - OpenCode CLI: <https://opencode.ai/docs/cli/>
-
----
 
 ### Day 15 — Capstone: Dogfood on Fission-AI/OpenSpec (Local Fork)
 
@@ -1696,8 +1666,6 @@ under `openspec/changes/archive/2026-06-04-clarify-removed-requirements-archival
 
 - Fission-AI/OpenSpec CONTRIBUTING: <https://github.com/Fission-AI/OpenSpec/blob/main/CONTRIBUTING.md>
 - openspec-conventions spec: <https://github.com/Fission-AI/OpenSpec/blob/main/openspec/specs/openspec-conventions/spec.md>
-
----
 
 ## Appendix A — Historical Reference
 
@@ -1958,8 +1926,6 @@ Through the diligent application of the five-day curriculum, professional develo
 - OpenSpec: Make AI Coding Assistants Follow a Spec, Not Just Guess - Recca: <https://recca0120.github.io/en/2026/03/08/openspec-sdd>
 - OpenSpec - a lightweight AI-driven spec framework - Dan Clarke: <https://www.danclarke.com/openspec>
 
----
-
 ## Appendix B — Slash-Command Cheat Sheet
 
 | Command | Where it runs | What it does |
@@ -1981,8 +1947,6 @@ Through the diligent application of the five-day curriculum, professional develo
 | `openspec config profile` | CLI | Switch between Core and Expanded profiles. |
 | `openspec update` | CLI | Refreshes AI guidance after a CLI upgrade. |
 | `openspec archive <id> --yes` | CLI | Non-interactive archive. |
-
----
 
 ## Appendix C — Troubleshooting Quick-Reference
 
@@ -2025,8 +1989,6 @@ Through the diligent application of the five-day curriculum, professional develo
 - Fix: every requirement ID referenced by another requirement must exist in
   the same change folder, or already be in `openspec/specs/`.
 
----
-
 ## Appendix D — Source URL Index (grouped by day)
 
 ### Days 1-5 (Foundations)
@@ -2058,8 +2020,6 @@ Through the diligent application of the five-day curriculum, professional develo
 - OpenCode CLI — <https://opencode.ai/docs/cli/>
 - Fission-AI/OpenSpec CONTRIBUTING — <https://github.com/Fission-AI/OpenSpec/blob/main/CONTRIBUTING.md>
 - openspec-conventions spec — <https://github.com/Fission-AI/OpenSpec/blob/main/openspec/specs/openspec-conventions/spec.md>
-
----
 
 ## Appendix E — Glossary
 

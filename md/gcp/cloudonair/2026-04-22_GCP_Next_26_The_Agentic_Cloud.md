@@ -38,17 +38,11 @@ A new threat highlighted was "shadow AI" – unauthorized models and agents oper
 
 > "The meantime to exploit a vulnerability has dropped to minus7 days. Meaning that today exploits routinely occur before a patch is released and the handoff time between initial access and handover to a secondary threat group has dropped from 8 hours to 22 seconds."
 
----
-
 ### The Agentic Future is Already Here
 
 Google Cloud Next painted a vivid picture of an agentic future that isn't some distant sci-fi dream, but a rapidly unfolding reality. From AI generating the majority of internal code to autonomous agents orchestrating complex workflows, redefining compute as an entire data center, liberating data from cloud silos, and defending against threats at machine speed, the foundational shifts are profound. These aren't just technical upgrades; they represent a fundamental reimagining of how businesses operate, innovate, and secure their future. The question is no longer *if* AI will transform your organization, but rather, *how quickly will you embrace the agentic era?*
 
----
-
 Here is the report based on the provided transcript, presented in Markdown syntax.
-
----
 
 ## (A) Mindmap (markmap.js syntax)
 

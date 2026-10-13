@@ -136,8 +136,6 @@ The biggest difference between **OpenRouter** and **LiteLLM** lies in their **de
 
 In short: **OpenRouter is a fully managed, unified API gateway (SaaS),** while **LiteLLM is a self-hosted, open-source proxy/router.**
 
----
-
 ## 🛠️ Key Differences: Managed vs. Self-Hosted
 
 | Feature | OpenRouter | LiteLLM |
@@ -149,8 +147,6 @@ In short: **OpenRouter is a fully managed, unified API gateway (SaaS),** while *
 | **Setup & Maintenance** | **Instant setup**; no maintenance required. | Requires **installation, configuration, and ongoing maintenance**. |
 | **Core Function** | Unified **access** and **smart routing** across hundreds of models/providers. | Unified **interface (abstraction)**, with powerful features like custom routing, budget enforcement, and robust logging. |
 | **Cost Model** | Pay-as-you-go credits for usage, plus a platform fee/markup. | Infrastructure costs + your direct provider rates. |
-
----
 
 ## 💡 When to Choose Which
 

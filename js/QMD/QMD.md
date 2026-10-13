@@ -18,8 +18,9 @@
 - 研究：
   - 比較 QMD 與 Obsidian
 
-<table><tr style="background-color:lightyellow;"><td>Q: QMD (https://github.com/tobi/qmd) 與 Obsidian (https://obsidian.md/) 的優缺點 side-by-side 比較表
-</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Search AI Mode
+> [!NOTE]
+> Q: QMD (https://github.com/tobi/qmd) 與 Obsidian (https://obsidian.md/) 的優缺點 side-by-side 比較表
+- Tool:  Google Search AI Mode
 A:
 QMD (Query Markup Documents) 與 Obsidian 是兩款定位完全不同的工具：QMD 是一個專為 AI 與終端機設計的本地「智慧搜尋引擎」，而 Obsidian 則是一套面向人類用戶的「視覺化知識管理與筆記軟體」。 [1, 2, 3, 4, 5]
 

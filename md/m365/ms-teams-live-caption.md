@@ -6,8 +6,6 @@
 
 Microsoft Teams **does not natively allow saving Live Captions** as a file during a meeting. However, there are a few workarounds depending on your needs:
 
----
-
 ### ✅ **Option 1: Use Live Transcription (Built-in)**
 If you're the **organizer or have permission**, you can enable **Live Transcription**, which:
 - Captures spoken content in real-time.
@@ -15,8 +13,6 @@ If you're the **organizer or have permission**, you can enable **Live Transcript
 - Stores it in the meeting chat or in OneDrive/SharePoint (if the meeting is recorded).
 
 🔗 How to use Live Transcription in Teams
-
----
 
 ### 🧩 **Option 2: Use a Chrome Extension**
 A developer created a Chrome extension called **MS Teams Live Captions Saver** that:
@@ -28,16 +24,12 @@ A developer created a Chrome extension called **MS Teams Live Captions Saver** t
 2. Join your Teams meeting via teams.microsoft.com in Chrome or Edge.
 3. The extension will capture and save captions automatically.
 
----
-
 ### 📝 **Option 3: Manual Copy-Paste**
 If you're using Live Captions (not Transcription), you can:
 - Manually copy the captions during the meeting.
 - Paste them into a Word or Notepad file.
 
 This is tedious and not ideal for long meetings.
-
----
 
 Would you like help setting up the Chrome extension or enabling Live Transcription in your Teams meetings?
 ---

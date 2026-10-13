@@ -497,8 +497,6 @@ The JSON output follows this high-level structure:
     `--output-format json` flag.
 ```
 
----
-
 ## 2025-11-16
 
 - 2025-10-22
@@ -626,7 +624,8 @@ Configured MCP servers:
 
 ## 2026-02-11
 
-<table><tr style="background-color:lightyellow;"><td>Q: where will Gemini CLI look for GEMINI_API_KEY? environment variable? .env file?
+> [!NOTE]
+> Q: where will Gemini CLI look for GEMINI_API_KEY? environment variable? .env file?
 ---
 
 The **Gemini CLI** is designed to be highly flexible with where it looks for your `GEMINI_API_KEY`. It follows a specific "look-up" hierarchy, checking both standard environment variables and various `.env` file locations.
@@ -651,8 +650,6 @@ If the variable isn't found in your shell session, the CLI automatically scans f
 
 
 
----
-
 ### Configuration Hierarchy (Precedence)
 
 If you have keys in multiple places, the CLI follows this order of importance (highest to lowest):
@@ -664,8 +661,6 @@ If you have keys in multiple places, the CLI follows this order of importance (h
 | **3** | **Project Settings** (`.gemini/settings.json`) | Project-specific configurations. |
 | **4** | **Project `.env` file** | Local development secrets. |
 | **5 (Lowest)** | **User Settings** (`~/.gemini/settings.json`) | Global defaults and themes. |
-
----
 
 ### Pro-Tips for Setup
 
@@ -682,7 +677,8 @@ gemini --stats
 
 Would you like me to show you how to automate the loading of these keys for a specific terminal like Zsh or Bash?
 
-<table><tr style="background-color:lightyellow;"><td>Q: is there a way to check which API key is gemini-cli currently using if I have multiple different GEMINI_API_KEY defined in .env of different folders?
+> [!NOTE]
+> Q: is there a way to check which API key is gemini-cli currently using if I have multiple different GEMINI_API_KEY defined in .env of different folders?
 ---
 
 When you have nested `.env` files or multiple keys spread across your system, it can definitely feel like a game of "which key is it anyway?"
@@ -711,8 +707,6 @@ Since the CLI usually prioritizes your shell's environment variables over `.env`
 
 **If this returns a value**, the CLI is likely using this key regardless of what is in your `.env` files.
 
----
-
 ### 3. Debugging the Path Hierarchy
 
 If you want to visualize which `.env` file is being snatched up, you can use the `findup` logic manually to see which one is closest:
@@ -731,8 +725,6 @@ If you are worried about the wrong key being used, you can force the CLI to use 
 GEMINI_API_KEY="your_specific_key" gemini "How's the weather?"
 
 ```
-
----
 
 ### Quick Tip: Identifying the Key
 
@@ -814,8 +806,6 @@ Tips for getting started:
 ```
 
 4. 在 `gemini config list` 執行 `CLI Help Agent` 過程中，確認 `$GEMINI_API_KEY` 環境變數優先
-
----
 
 ## 2026-06-23
 

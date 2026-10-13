@@ -106,8 +106,6 @@ In essence, DSPy allows you to treat your chatbot's logic like a software progra
 
 Revolutionizing the intricate process of source code reverse engineering, Large Language Models (LLMs) can now power intelligent chatbots capable of dissecting and explaining complex codebases. This guide outlines the essential steps to construct such a chatbot and delves into the critical process of building a comprehensive source code index, the backbone of this powerful tool.
 
----
-
 ### Building the Brain: Key Steps to Creating a Reverse Engineering Chatbot
 
 The construction of a source code reverse engineering chatbot involves a systematic process that leverages the power of LLMs to understand and articulate the nuances of software.
@@ -135,8 +133,6 @@ The user interface (UI) should be intuitive, allowing developers to easily ask q
 #### 6. Testing, Evaluation, and Iterative Improvement
 
 Thorough testing is essential to ensure the chatbot's accuracy and usefulness. Develop a comprehensive test suite with a variety of questions covering different aspects of the codebase. Evaluate the responses for correctness, completeness, and clarity. Based on the evaluation, iteratively refine the indexing process, the LLM fine-tuning, and the overall system architecture.
-
----
 
 ### The Blueprint of Understanding: How to Build a Source Code Index
 

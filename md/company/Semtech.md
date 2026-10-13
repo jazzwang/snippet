@@ -124,5 +124,4 @@ Semtech 採取「直接銷售」與「全球大型經銷商（Distributors）」
 - [10] [https://www.gurufocus.com](https://www.gurufocus.com/news/8737078/decoding-semtech-corp-smtc-a-strategic-swot-insight?mobile=true%3Fmobile%3Dtrue)
 - [11] [https://businessmodelcanvastemplate.com](https://businessmodelcanvastemplate.com/blogs/competitors/semtech-competitive-landscape)
 
-</td></tr>
-</table>
+---

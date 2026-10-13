@@ -393,8 +393,6 @@ However, this might lead to data loss if `\u200c` has a meaningful purpose in th
 
 Start by trying **Method A: Set the `PYTHONIOENCODING` Environment Variable to `utf-8`**. This is the most common and effective solution for this type of `UnicodeEncodeError` when dealing with console output from Python scripts, especially when using tools that generate content with diverse characters.
 
----
-
 ## 2025-08-07
 
 - 實際測試，強迫用 UTF-8 的 Encoding，就沒有遇到 Error 了～可能跟我有刻意設定 Local 是 `en_US.UTF-8` 有點關係。

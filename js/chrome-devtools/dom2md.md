@@ -303,10 +303,11 @@ dom2md.js
 
 ## 2026-06-01
 
-<table><tr style="background-color:lightyellow;"><td>Q: Is it possible to create a function domToMarkdown() in Chrome DevTool snippet and add a widget bookmark to trigger the function?
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:
-- Google Gemini App
-- Gemini 3.5 Flash (Thinking: Standard)
+> [!NOTE]
+> Q: Is it possible to create a function domToMarkdown() in Chrome DevTool snippet and add a widget bookmark to trigger the function?
+- Tool:
+  - Google Gemini App
+  - Gemini 3.5 Flash (Thinking: Standard)
 
 A:
 Yes, it is absolutely possible! You can achieve this by combining a **Chrome DevTools Snippet** (where your main `domToMarkdown()` logic lives) with a **Bookmarklet** (a bookmark containing JavaScript) that acts as the "widget trigger."
@@ -314,8 +315,6 @@ Yes, it is absolutely possible! You can achieve this by combining a **Chrome Dev
 Because of browser security policies, a standard bookmarklet cannot directly "reach inside" DevTools to run a saved snippet. However, you can make them work together beautifully by having your bookmarklet inject a script that executes the logic on the current page.
 
 Here is how to set up the entire workflow.
-
----
 
 ## Step 1: Write the `domToMarkdown` Logic (The Snippet)
 
@@ -375,8 +374,6 @@ console.log("domToMarkdown() is loaded and ready!");
 
 *Click **Ctrl+S** (or **Cmd+S**) to save, and right-click -> **Run** to initialize it globally on your current tab.*
 
----
-
 ## Step 2: Create the Bookmarklet "Widget Trigger"
 
 Since you want a bookmark button to trigger this, you need a **Bookmarklet**. This is a standard browser bookmark, but instead of a URL (`https://...`), it contains a `javascript:` URL scheme.
@@ -403,8 +400,6 @@ javascript:(function(){
 
 ```
 
----
-
 ## Step 3: The Ultimate Workaround (Skip DevTools Entirely)
 
 If your ultimate goal is to click a bookmark and *instantly* get the Markdown without opening DevTools to run the snippet first, you can minify the entire script and put it **directly into the bookmark**.
@@ -424,7 +419,7 @@ javascript:(function(){function domToMarkdown(e=document.body){let t="";function
 
 > [!NOTE]
 > Q: 請將 Step3 的 bookmarklet 改良成可以將相對網址轉成絕對網址
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:
+- Tool:
 - Google Gemini App
 - Gemini 3.5 Flash (Thinking: Standard)
 
@@ -495,8 +490,6 @@ function domToMarkdown(element = document.body) {
 
 ```
 
----
-
 ### 複製這段：壓縮後的 Bookmarklet (書籤網址)
 
 請複製下方這整段程式碼，並貼到你瀏覽器書籤的 **「網址」 (或 URL)** 欄位中：
@@ -512,5 +505,4 @@ javascript:(function(){function domToMarkdown(e=document.body){let t="",r=window
 3. **排除 JavaScript 偽協議**：如果按鈕是 `javascript:void(0)`，也會保持原樣，避免轉換出錯誤的網址。
 4. **錯誤安全防護 (Try-Catch)**：如果網頁上有寫錯的惡意格式網址，程式會自動跳過該節點，不會導致整個複製功能卡死。
 
-</td></tr>
-</table>
+---

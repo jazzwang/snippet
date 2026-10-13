@@ -46,7 +46,8 @@ Here is a 15-day hands-on curriculum designed to take you from "What is this ter
 > **Watch the Context:** AI agents can "hallucinate" more when the context window is cluttered. Use `/init` regularly after major changes to keep the `AGENTS.md` file (and the agent's memory) fresh.
 
 **Would you like me to provide a specific "Starter Project" idea to use for the Day 15 Vibe Coding lab?**
-<table><tr style="background-color:lightyellow;"><td>Q: Let's plan step by step. Could you give me step-by-step instruction for Day 1? Target environment: Ubuntu WSL over Windows 11
+> [!NOTE]
+> Q: Let's plan step by step. Could you give me step-by-step instruction for Day 1? Target environment: Ubuntu WSL over Windows 11
 ---
 
 ## Day 1: The Foundation & The "Hello World"
@@ -139,7 +140,8 @@ opencode .
 > **Permission Denied?** If you get a "Permission Denied" error when the agent tries to run a command, it’s usually because Docker needs `sudo`. You can fix this by adding your user to the docker group: `sudo usermod -aG docker $USER` (then restart WSL).
 
 **How did the "sys_info.py" test go? If it worked, would you like to move on to Day 2 and learn how to navigate the interface like a power user?**
-<table><tr style="background-color:lightyellow;"><td>Q: great! let's follow the same practice and create step-by-step instruction for Day 2.
+> [!NOTE]
+> Q: great! let's follow the same practice and create step-by-step instruction for Day 2.
 ---
 
 Since you’ve got the engine running, Day 2 is all about mastering the **User Interface (UI)** and the **Workflow Philosophy**.
@@ -213,7 +215,8 @@ To move fast in the OpenCode TUI, memorize these three:
 * [ ] You understood why the agent recommended a specific file without it editing your code.
 
 **How did the "Discovery" exercise go? Did the agent accurately find the entry point of that repo? If you're ready, Day 3 is where we start "Vibe Coding" our first multi-file feature!**
-<table><tr style="background-color:lightyellow;"><td>Q:  create an exercise lab for Day 2
+> [!NOTE]
+> Q:  create an exercise lab for Day 2
 ---
 
 For **Day 2**, we are moving from "Can I run this?" to "How do I control this?" This lab, titled **"Operation: Code Scout,"** focuses on using OpenCode as a high-level architect before you ever let it touch your source code.
@@ -299,7 +302,8 @@ Before finishing, ask the agent to **plan** a change without **executing** it.
 
 **How did OpenCode handle the "Phone Number" plan? Did it feel like it "understood" the full stack, or did it miss a spot?** When you're ready, we can move to **Day 3: The Project Brain**, where we learn how to configure `AGENTS.md` to make the AI follow your specific rules!
 
-<table><tr style="background-color:lightyellow;"><td>Q:  Let's move on to Day 3. Could you give me step-by-step instruction for Day 3? Create an exercise lab for Day 3, too. Thanks
+> [!NOTE]
+> Q:  Let's move on to Day 3. Could you give me step-by-step instruction for Day 3? Create an exercise lab for Day 3, too. Thanks
 ---
 
 
@@ -406,7 +410,8 @@ If the agent starts getting confused or "forgetting" your `AGENTS.md` rules, use
 
 **How did the "Strict Architect" handle your rules? Did it try to sneak a `print()` statement in there, or was it perfectly compliant?** When you're ready, **Day 4** is where we master **The Researcher**, focusing on how to use the agent to explore massive, unfamiliar codebases without getting lost!
 
-<table><tr style="background-color:lightyellow;"><td>Q: Let's move on to Day 4. Could you give me step-by-step instruction for Day 4? Create an exercise lab for Day 4, too. Thanks
+> [!NOTE]
+> Q: Let's move on to Day 4. Could you give me step-by-step instruction for Day 4? Create an exercise lab for Day 4, too. Thanks
 ---
 
 Welcome to **Day 4: The Researcher**.
@@ -498,7 +503,8 @@ When researching large repos, the agent might try to read *too many* files and h
 
 **How did the Flask trace go? Did the Mermaid flowchart help you visualize the "magic" of the framework?** If you're feeling like a code detective now, **Day 5** is where we finally put the "Researcher" cap away and start **Single-File Surgery**—learning how to make precise, surgical code edits in Build Mode! Would you like to proceed?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Let's move on to Day 5. Could you give me step-by-step instruction and create an exercise lab for Day 5?
+> [!NOTE]
+> Q: Let's move on to Day 5. Could you give me step-by-step instruction and create an exercise lab for Day 5?
 ---
 
 Welcome to **Day 5: Single-File Surgery**.
@@ -618,7 +624,8 @@ Sometimes AI agents get lazy and try to delete a 100-line file and replace it wi
 
 **How did the "Bug Hunter" lab go? Did the agent make a clean cut, or did it try to rewrite your whole script?** When you're ready, **Day 6** is the "level up" where we perform **Multi-File Refactoring**—making changes that span across different files at once!
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 6?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 6?
 ---
 
 Yesterday was surgery; today is a full organ transplant. Welcome to **Day 6: Multi-File Refactoring**.
@@ -728,7 +735,8 @@ Before applying a multi-file refactor, I always ask: *"Before you edit, list the
 
 **How did the "Great Decoupling" go? Did the agent remember to add the `import` statements, or did you have to nudge it?** When you're ready, **Day 7** is all about **The Auditor**, where we use the agent to find security holes and performance bottlenecks in the code we just wrote!
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 7?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 7?
 ---
 
 Welcome to **Day 7: The Auditor**.
@@ -830,7 +838,8 @@ If the agent suggests a fix you don't understand, ask: *"Why is this fix safer t
 
 **How did your audit go? Did OpenCode find all three vulnerabilities, or did it miss the performance bottleneck?** When you're ready, we'll wrap up the week with **Day 8: Session Isolation**, where we learn how to run multiple "sub-agents" to handle different parts of a project at the same time! Would you like to proceed?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 8?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 8?
 ---
 
 Welcome to **Day 8: Session Isolation**.
@@ -921,7 +930,8 @@ If an agent starts asking about files in the other folder, remind it: *"You are 
 
 When you're ready, **Day 9** is where we get truly custom. We'll learn how to write **Custom Commands** so you can automate your own specific workflows with a single slash! Ready to move on?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 9?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 9?
 ---
 
 Welcome to **Day 9: Custom Commands**.
@@ -1021,7 +1031,8 @@ If you don't want to create a permanent command, you can use the **Shell Skill**
 
 **How did your `/audit-ui` command work? Did it feel like you just gave your agent a specialized tool?** When you're ready, **Day 10** is all about **The Skill System**, where we explore how to let the agent use external tools like web browsers or database clients! Would you like to proceed?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 10?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 10?
 ---
 
 Welcome to **Day 10: The Skill System**.
@@ -1106,7 +1117,8 @@ When the agent uses the Web Skill, it often brings back a *lot* of text. If the 
 
 When you're ready, **Day 11** is where we go "Meta." We’ll learn how to build **Custom Skills**—actually writing Python scripts that the agent can call as if they were built-in features! Would you like me to prepare the Day 11 instructions?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 11?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 11?
 ---
 
 Welcome to **Day 11: Building Custom Skills**.
@@ -1215,7 +1227,8 @@ If you have a tool on your **Windows 11** side (like a specific `.exe`) that you
 
 **Did the agent correctly identify your CPU usage? It’s a bit of a rush the first time you see the AI "decide" to use a tool you just built.** When you're ready, **Day 12** is a major pivot: **Privacy & Local Models**. We’ll take the agent completely offline using Ollama! Ready to cut the cord?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 12?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 12?
 ---
 
 Welcome to **Day 12: Privacy & Local Models**.
@@ -1331,7 +1344,8 @@ If your local model is extremely slow or "hallucinates" gibberish, your GPU migh
 
 When you're ready, **Day 13** is where we move back to the "World" by integrating OpenCode into **CI/CD and GitHub Actions**. We’ll learn how to make the agent part of your team's automated workflow! Ready?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 13?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 13?
 ---
 
 Welcome to **Day 13: CI/CD & GitHub Actions**.
@@ -1451,7 +1465,8 @@ Advanced users set the Action to **Auto-Commit**. If OpenCode finds a trivial bu
 
 When you're ready, **Day 14** is the **Real-World Lab**. We’ll find an actual "Good First Issue" on a public repo and use OpenCode to draft a professional contribution! Ready to go public?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 14?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 14?
 ---
 
 Welcome to **Day 14: The Real-World Contributor**.
@@ -1532,7 +1547,8 @@ Before you ever submit a PR in the real world, run your custom `/audit` command 
 
 **How did the PR description turn out? Did the agent manage to capture the "vibe" of the repo?** Tomorrow is **Day 15: The Grand Finale**. We are going to do a **"Vibe Coding" session** where you build an entire application from scratch using only high-level conversation. Would you like to move to the final day?
 
-<table><tr style="background-color:lightyellow;"><td>Q: Could you give me step-by-step instruction and create an exercise lab for Day 15?
+> [!NOTE]
+> Q: Could you give me step-by-step instruction and create an exercise lab for Day 15?
 ---
 
 Welcome to **Day 15: The Grand Finale — Vibe Coding**.

@@ -10,8 +10,6 @@ The project is licensed under the **Apache License 2.0** and maintained by a Tec
 **Website:** <https://videojs.com>
 **Docs:** <https://docs.videojs.com>
 
----
-
 ## Architecture at a Glance
 
 Video.js is organized around a **component-based architecture**. The core modules include:
@@ -29,8 +27,6 @@ Video.js is organized around a **component-based architecture**. The core module
 | `utils/` | Shared utilities (DOM manipulation, events, formatting, logging, etc.) |
 
 The player is assembled by composing components into a tree — the `ControlBar` contains the `PlayToggle`, `ProgressControl`, `VolumePanel`, `FullscreenToggle`, and others, all inheriting from `Component`.
-
----
 
 ## Feature Highlights
 
@@ -88,8 +84,6 @@ The player is assembled by composing components into a tree — the `ControlBar`
 - Comprehensive test suite with Karma.
 - Cross-browser compatibility testing via **BrowserStack**.
 - Active community on **Slack**, GitHub Discussions, and a detailed contributing guide.
-
----
 
 ## Quick Start
 

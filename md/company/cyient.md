@@ -213,7 +213,7 @@ Cyient 的上游供應商與合作夥伴主要涵蓋以下關鍵要素 ：   
 <table><tr style="background-color:lightyellow;"><td>Q:
 可以幫我根據網路論壇，臉書，推特，LinkedIn 等發文，針對 Cyient (https://www.cyient.com) 分析主要客戶，上下游供應鍊，市場 SWOT 分析與波特五力分析
 
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:
+- Tool:
 - Google Gemini App
 - Deep Research
 - Gemini 3.5 Flash

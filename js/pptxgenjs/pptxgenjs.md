@@ -646,5 +646,4 @@ pptx.writeFile({ fileName: "Cloud_Report.pptx" });
 
 請問在您的簡報生成系統中，這些 Icon（例如 AWS、RDS）之間是否需要繪製架構連接線（例如箭頭指引）？如果需要，我也可以補充如何在 PptxGenJS 中動態畫出帶箭頭的連接線。
 
-</td></tr>
-</table>
+---

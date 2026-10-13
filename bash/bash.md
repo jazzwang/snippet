@@ -217,8 +217,6 @@ Choose the method that best fits your comfort level and the overall context of y
 
 Stopping a script when an error occurs is a best practice for "fail-fast" development. While you can manually check every command, Bash provides built-in flags and the `trap` command to handle this more elegantly.
 
----
-
 ## 1. The Quickest Way: `set -e`
 
 The most common way to stop a script on error is adding `set -e` (also known as `errexit`) at the beginning of your script.
@@ -235,8 +233,6 @@ echo "This will run"
 false # This command fails
 echo "This will never be reached"
 ```
-
----
 
 ## 2. Using `trap` for Cleanup
 
@@ -264,8 +260,6 @@ ls /folder/that/does/not/exist
 echo "This will not print"
 ```
 
----
-
 ## 3. Comparing Methods
 
 | Method | Best For... | Pros | Cons |
@@ -286,8 +280,6 @@ set -euo pipefail
 * `-e`: Exit on error.
 * `-u`: Exit if you try to use an uninitialized variable (prevents typos).
 * `-o pipefail`: Prevents errors in pipelines from being masked.
-
----
 
 **Would you like me to help you write a custom cleanup function for a specific script you're working on?**
 
@@ -335,8 +327,6 @@ index=$(( epoch % array_length ))
 # 4. Access the key
 echo "Selected: ${myKey[$index]}"
 ```
-
----
 
 ### How it works
 

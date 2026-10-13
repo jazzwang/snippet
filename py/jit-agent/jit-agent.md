@@ -18,8 +18,6 @@ Key ideas:
 - **Test‑time improvement:** as traces and feedback arrive, the generated harness is revised and stored in an archive. The generator itself stays frozen, so the system *learns at runtime*.
 - **Orthogonal to base‑model scaling:** the harness‑generation axis provides a new lever for agent intelligence.
 
----
-
 ## 2. Architecture
 
 ```
@@ -51,8 +49,6 @@ Key ideas:
 
 Each harness produced by JIT‑Agent is a **Python package** that implements these interfaces, allowing the execution model to run it uniformly regardless of the underlying LLM.
 
----
-
 ## 3. Workflow
 
 1. **Input** – User provides a task description, protocol (e.g., “web search → plan → act”), and a registry of available skills/tools.
@@ -61,8 +57,6 @@ Each harness produced by JIT‑Agent is a **Python package** that implements the
 4. **Execution** – The *execution model* (configurable via `--exec-model`) runs the generated harness on the benchmark data. Trajectories, tool calls, and outputs are captured.
 5. **Feedback & Archive** – After execution, the system records success/failure metrics and appends the harness (or its components) to the archive for future retrieval.
 6. **Iteration** – On subsequent runs, retrieved prior harnesses are fed back into the generator, enabling **progressive improvement** at test time.
-
----
 
 ## 4. Repository Layout (high‑level)
 
@@ -75,8 +69,6 @@ dataset/             # benchmark data
 ```
 
 Each sub‑directory contains its own README with detailed instructions.
-
----
 
 ## 5. Quick Setup
 
@@ -108,8 +100,6 @@ cp .env.example .env   # edit with your API keys
 python scripts/check_datasets.py          # check presence per benchmark
 bash scripts/fetch_datasets.sh travel     # download a benchmark (~1 GB)
 ```
-
----
 
 ## 6. Usage Scenarios
 
@@ -154,15 +144,11 @@ execute/            # harness that actually ran, its trajectory, performance num
 
 Re‑running the same command **resumes** completed work; `--skip-generate` / `--skip-select` reuse earlier phases.
 
----
-
 ## 7. Results (high‑level)
 
 - **JIT‑Agent‑27B** (the checkpoint released on Hugging Face) lifts a wide range of backbone agents across *deep research, daily‑work, planning, and workspace* benchmarks.
 - The paper’s core finding: *“Building the scaffold turns out to be a trainable, transferable axis of agent intelligence — orthogonal to scaling the base model.”*
 - Improvements are observed across all supported benchmarks, with the most significant gains on tasks that benefit from **dynamic harness adaptation** (e.g., multi‑step planning, tool‑rich workflows).
-
----
 
 ## 8. References
 

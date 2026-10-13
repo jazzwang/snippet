@@ -154,8 +154,6 @@ Using Snippets in Chrome DevTools is a powerful way to manage "mini-scripts" tha
 5. **Name & Code:** Give it a name (e.g., `ClearCookies.js`) and type your JavaScript in the center editor pane.
 6. **Run:** Press `Ctrl + Enter` (Windows) or `Cmd + Enter` (Mac), or click the **Play** icon at the bottom right of the editor.
 
----
-
 ### How Snippets Save You Time
 
 Snippets act like a personal library of macros. Here is why they are more efficient than the standard Console:
@@ -164,8 +162,6 @@ Snippets act like a personal library of macros. Here is why they are more effici
 * **Multi-line Editing:** Writing complex logic in the Console is frustrating because pressing `Enter` usually executes the code. Snippets provide a full-featured text editor.
 * **Context Independence:** You can run the same snippet on *any* website. For example, a snippet that extracts all image URLs can be used on a blog today and an e-commerce site tomorrow with one click.
 * **Quick Search:** You can run snippets without even opening the Sources tab. Once created, press `Cmd + P` (Mac) or `Ctrl + P` (Windows), type `!` followed by your snippet name, and hit Enter.
-
----
 
 ### Common Use Cases
 

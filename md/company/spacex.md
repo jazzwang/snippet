@@ -91,5 +91,4 @@ SpaceX 預計最快在 2027 年底開始進行這類 AI 運算衛星的試飛演
 [26] [https://www.usatoday.com](https://www.usatoday.com/story/news/nation/2026/06/12/elon-musk-spacex-orbital-data-center-ai-satellites/90520416007/)
 [27] [https://tspasemiconductor.substack.com](https://tspasemiconductor.substack.com/p/spacex-ipo-building-the-space-economy)
 [28] [https://www.hkepc.com](https://www.hkepc.com/25143/%E7%82%BA%E4%BD%95%E5%9C%A8%E5%A4%AA%E7%A9%BA%E6%95%A3%E7%86%B1%E8%AE%8A%E5%BE%97%E6%A5%B5%E5%85%B6%E5%9B%B0%E9%9B%A3_%E8%A6%81%E8%A7%A3%E6%B1%BA%E5%BE%AE%E5%B0%8F%E7%9A%84%E7%86%B1%E9%87%8F__%E5%B0%B1%E9%9C%80%E8%A6%81%E5%B7%A8%E5%9E%8B%E6%95%A3%E7%86%B1%E6%9D%BF)
-</td></tr>
-</table>
+---

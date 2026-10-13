@@ -48,5 +48,4 @@ Harness-Bench 是一個針對 LLM Agent 系統外殼（Harness）配置效果的
 [2] [https://cobusgreyling.medium.com](https://cobusgreyling.medium.com/agent-model-harness-0d018f3d5014)
 [3] [https://arxiv.org](https://arxiv.org/html/2605.27922v1)
 
-</td></tr>
-</table>
+---

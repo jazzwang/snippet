@@ -300,5 +300,4 @@ For each dimension, you will ask the interviewer to score the three questions in
 This structure ensures that the collected data can be easily exported to a spreadsheet (Google Sheets) for calculation (Averaging the three scores for each dimension: EQ Avg = $(\text{EQ-1} + \text{EQ-2} + \text{EQ-3}) / 3$, etc.) and subsequent radar chart visualization.
 
 Would you like me to draft a more detailed script for creating the Google Form, or is the structure sufficient?
-</td></tr>
-</table>
+---

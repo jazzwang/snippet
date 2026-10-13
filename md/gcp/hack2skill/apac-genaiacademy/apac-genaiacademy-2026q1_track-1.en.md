@@ -156,8 +156,6 @@ This workshop, part of the Google Cloud GenAI Academy 2026 Track 1, focuses on t
 
 Here is a report based on the provided transcript, formatted in Markdown syntax as requested:
 
----
-
 # Workshop Report: Agentic AI from Design to Deployment
 
 ## (A) Overview and Chapters

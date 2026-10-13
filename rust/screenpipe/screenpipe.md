@@ -94,5 +94,4 @@ If you plan to set this up, let me know what graphics card (GPU) your Windows ma
 
 > [!NOTE]
 > Q: A: > [!NOTE]
-> Q: A: </td></tr>
-</table>
+> Q: A: ---

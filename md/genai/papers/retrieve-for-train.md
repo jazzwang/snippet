@@ -71,8 +71,6 @@ Retrieve-for-Train 建立了一個高度可擴展、資料效率的集合檢索�
 
 更多細節請參閱原始論文：Efficient, Property-Aligned Fan-Out Retrieval via RL-Compiled Diffusion（ICML 2026）
 
----
-
 *本文摘錄自 Google Research Blog 發表之研究論文*
 
 - Source: https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/

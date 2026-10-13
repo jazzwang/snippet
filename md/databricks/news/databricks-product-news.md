@@ -71,5 +71,4 @@
 [2] [https://www.startuphub.ai](https://www.startuphub.ai/ai-news/artificial-intelligence/2026/databricks-cuts-ai-costs-with-smart-routing)
 [3] [https://www.databricks.com](https://www.databricks.com/blog/smart-routing-unity-ai-gateway-match-frontier-quality-30-lower-cost-task)
 
-</td></tr>
-</table>
+---

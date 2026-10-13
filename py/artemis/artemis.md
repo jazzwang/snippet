@@ -259,8 +259,6 @@ uv run artemis run "Open YouTube, search for and play a Coldplay song"
 - [Artemis GitHub](https://github.com/google/artemis)
 - [MCP 官方文件](https://modelcontextprotocol.io/)
 
----
-
 *最後更新：2025 年*
 
 > 提示：在 Windows PowerShell 中執行 `start.bat` 時請使用 `.\\start.bat`（無尾端反斜線）。在 Command Prompt 中則直接使用 `start.bat`。

@@ -72,8 +72,6 @@ Therefore, `openpyxl` is well-suited for tasks that require generating Excel fil
 * Data organization
 * Creating dashboards
 
----
-
 -https://g.co/gemini/share/87a167649555
 
 > [!NOTE]

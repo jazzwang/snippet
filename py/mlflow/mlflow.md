@@ -40,8 +40,6 @@ MLflow is organized into four primary components:
 * **MLflow Model Registry**: A centralized model store, set of APIs, and UI to collaboratively manage the full lifecycle of an MLflow Model. It provides model lineage, versioning, and stage transitions (e.g., from "Staging" to "Production").
 * **MLflow Tracing**: Specifically designed for Large Language Models (LLMs), this component helps you understand and debug the execution of your LLM applications by capturing detailed traces of your prompts, chains, and interactions with various LLM providers.
 
----
-
 ### 2. Integrating MLflow with `ollama` and `litellm`
 
 **Yes, you can absolutely integrate MLflow with `litellm` and `ollama`** to track a user's prompt all the way to a locally-run model like Qwen 2.5.
@@ -118,8 +116,6 @@ print("To view the UI, run 'mlflow ui' in your terminal.")
 After running this script, you can launch the MLflow UI by executing `mlflow ui` in your terminal. Navigate to the "Qwen 2.5 Chat Tracking" experiment to see a detailed trace of your request, including the prompt, the model's response, token usage, and execution time.
 
 
-
----
 
 ### 3. Mermaid.js Sequence Diagram
 

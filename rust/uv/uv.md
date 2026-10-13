@@ -283,8 +283,6 @@ The `requirements.txt` approach with `-e .` is more about making the local packa
 
 If your goal is solely to install the local package so its modules can be imported and used by other Python code, then `uv pip install -e ./hello_tool_req` (using `requirements.txt` to define the local package) works perfectly. However, for directly creating and installing command-line tools, the `pyproject.toml` method is generally preferred with `uv tool install`.
 
----
-
 ## 2025-05-08
 
 - 緣起：

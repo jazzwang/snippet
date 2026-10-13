@@ -95,8 +95,6 @@ Not necessarily for a basic implementation. You could certainly build a tool tha
 
 Building such a tool is a multi-step process that combines traditional NLP techniques with the power of modern language models and retrieval strategies. RAG offers a compelling approach to handle the length and complexity of a 3-hour WebVTT file and extract meaningful insights.
 
----
-
 - https://g.co/gemini/share/30ef5a8464dc
 
 > [!NOTE]

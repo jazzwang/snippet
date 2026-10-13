@@ -34,5 +34,4 @@ Snowflake 在 Black Hat 2026 大會上發布了 **Cortex AI Gateway** 及一系�
 * **主動式安全姿態管理（GA）**：整合至 [Snowflake Trust Center](https://www.snowflake.com/en/blog/enterprise-ai-security-agentic-mcp-governance/)，提供儀表板主動掃描 AI 配置風險、評估合規性並進行自動化修復。
 * **零信任資料外洩防護 (DXP)**：預防 Agent 攔截敏感資料或未授權的資料傳輸；提供用戶端 CLI VM 沙盒（macOS）確保開發環境隔離。
 * **多方批准防勒索軟體 (MPA，GA)**：進行破壞性系統變更時需由兩人以上授權，消除單一高階憑證被挾持即遭勒索抹除資料的風險。
-</td></tr>
-</table>
+---

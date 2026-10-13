@@ -3,11 +3,7 @@
 - Close Source
 - Github Repo is only for bug tracking
 
----
-
 [TOC]
-
----
 
 ## 2026-06-23
 
@@ -406,5 +402,4 @@ A:
 [9] [https://www.morphllm.com](https://www.morphllm.com/ai-coding-agent)
 [10] [https://xn--uy0a.tw](https://xn--uy0a.tw/AI/ai-cli-coding-tool-pricing-comparison-2026/)
 
-</td></tr>
-</table>
+---

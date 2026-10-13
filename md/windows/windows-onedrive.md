@@ -105,5 +105,4 @@ I can give you the exact step-by-step commands to get it configured!
 
 > [!NOTE]
 > Q: A: > [!NOTE]
-> Q: A: </td></tr>
-</table>
+> Q: A: ---

@@ -458,8 +458,6 @@ If the build fails during `cffi` installation, you may need to install:
   conda activate edp-env
   ```
 
----
-
 Would you like help setting up a virtual environment or switching to `conda`?
 ---
 

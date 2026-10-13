@@ -169,7 +169,7 @@ openspec/
 ### 1.3 Configuring Specialized Agent Profiles and Plugins
 
 - 原 Gemini 生成的步驟是幫 OpenCode 安裝 `opencode-plugin-openspec`
-- 這裡參考 https://github.com/Octane0411/opencode-plugin-openspec 的 `README.md` 
+- 這裡參考 https://github.com/Octane0411/opencode-plugin-openspec 的 `README.md`
 - 法一：
   - 執行 opencode
   ```bash
@@ -233,14 +233,10 @@ openspec/
 **Created:** 3/24/2026, 7:18:57 PM
 **Updated:** 3/24/2026, 7:20:17 PM
 
----
-
 ##### User
 
 Install opencode-plugin-openspec by following the instructions here:
-https://raw.githubusercontent.com/Octane0411/opencode-plugin-openspec/main/README.md 
-
----
+https://raw.githubusercontent.com/Octane0411/opencode-plugin-openspec/main/README.md
 
 ### Assistant (Build · minimax-m2.5-free · 13.4s)
 
@@ -291,8 +287,6 @@ Let me first check if there's a `.opencode/opencode.json` in the current workspa
 No files found
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 3.7s)
 
 _Thinking:_
@@ -315,8 +309,6 @@ The system cannot find the path specified.
 "Directory does not exist"
 
 ```
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 6.3s)
 
@@ -345,8 +337,6 @@ The directory doesn't exist. Let me check for the config file in another common 
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 8.7s)
 
 _Thinking:_
@@ -362,8 +352,6 @@ The directory doesn't exist yet. I'll need to create it. Let me create the direc
   "description": "Create OpenCode config directory"
 }
 ```
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 41.6s)
 
@@ -391,8 +379,6 @@ The user rejected permission to use this specific tool call.
 ### User
 
 /opsx:propose "create a python CLI program to read resume PDF files from input folder, evaluate each PDF file with Gemini 3.1 model and given scorecard file, then output a JSON file with JSON schema specified."
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 6.5s)
 
@@ -422,8 +408,6 @@ I'll create a change with artifacts:
 - tasks.md (implementation steps)
 
 When ready to implement, run /opsx-apply
-
----
 
 **Input**: The user's request should include a change name (kebab-case) OR a description of what they want to build.
 
@@ -524,8 +508,6 @@ Note: file list is sampled.
 </skill_content>
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 12.2s)
 
 _Thinking:_
@@ -558,8 +540,6 @@ Let me proceed with creating the change.
 ✔ Created change 'resume-evaluator-cli' at openspec/changes/resume-evaluator-cli/ (schema: spec-driven)
 
 ```
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 4.7s)
 
@@ -623,8 +603,6 @@ Now I need to get the artifact build order and create the artifacts. Let me get 
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 5.0s)
 
 _Thinking:_
@@ -668,8 +646,6 @@ Let me start by getting instructions for the proposal artifact.
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 10.6s)
 
 _Thinking:_
@@ -690,8 +666,6 @@ Now I need to create the proposal.md file based on the user's request. Let me cr
 ```
 Wrote file successfully.
 ```
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 5.1s)
 
@@ -749,8 +723,6 @@ Now I need to get the status again and then create the design.md.
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 4.6s)
 
 _Thinking:_
@@ -794,8 +766,6 @@ Now I need to create design.md. Let me get the instructions.
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 12.4s)
 
 _Thinking:_
@@ -816,8 +786,6 @@ Now I'll create the design.md document.
 ```
 Wrote file successfully.
 ```
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 4.9s)
 
@@ -874,8 +842,6 @@ Now I need to create the specs. Let me get the status and then create the specs.
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 4.7s)
 
 _Thinking:_
@@ -919,8 +885,6 @@ Now I need to create the specs. Let me get instructions for the specs artifact.
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 4.8s)
 
 _Thinking:_
@@ -943,8 +907,6 @@ I'll create a spec folder structure and create spec files for each capability.
 }
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 9.3s)
 
 _Thinking:_
@@ -965,8 +927,6 @@ Now let me create the spec files for each capability.
 ```
 Wrote file successfully.
 ```
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 10.4s)
 
@@ -989,8 +949,6 @@ Now let me create the gemini-evaluation spec.
 Wrote file successfully.
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 10.0s)
 
 _Thinking:_
@@ -1012,8 +970,6 @@ Now let me create the scorecard-parser spec.
 Wrote file successfully.
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 8.9s)
 
 _Thinking:_
@@ -1034,8 +990,6 @@ Now let me create the json-output spec.
 ```
 Wrote file successfully.
 ```
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 6.3s)
 
@@ -1089,8 +1043,6 @@ Now I need to get the status and then create the tasks.md file.
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 5.3s)
 
 _Thinking:_
@@ -1138,8 +1090,6 @@ Now let me get the tasks instructions and create the tasks.md file.
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 13.5s)
 
 _Thinking:_
@@ -1160,8 +1110,6 @@ Now I'll create the tasks.md file with detailed implementation tasks.
 ```
 Wrote file successfully.
 ```
-
----
 
 ### Assistant (Build · minimax-m2.5-free · 4.8s)
 
@@ -1195,8 +1143,6 @@ All artifacts complete!
 
 ```
 
----
-
 ### Assistant (Build · minimax-m2.5-free · 5.5s)
 
 _Thinking:_
@@ -1218,6 +1164,4 @@ Created change **resume-evaluator-cli** at `openspec/changes/resume-evaluator-cl
 All artifacts created! Ready for implementation.
 
 Run `/opsx-apply` or ask me to implement to start working on the tasks.
-
----
 

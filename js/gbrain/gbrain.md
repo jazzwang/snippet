@@ -20,7 +20,7 @@
 <table><tr style="background-color:lightyellow;"><td>Q:
 could you compare 2 Agent Memory tool: GBrain (https://github.com/garrytan/gbrain) and Mempalace (https://mempalaceofficial.com)? try to create side-by-side comparison.
 
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:
+- Tool:
 - Google Gemini App
 - Gemini 3.5 Flash (Thinking: Extend)
 
@@ -75,8 +75,9 @@ MemPalace approaches the token limit problem through strict organization rather 
 ---
 ## 2026-06-02
 
-<table><tr style="background-color:lightyellow;"><td>Q: Agent Memory alternatives to GBrain or Mempalace
-</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Search AI Mode
+> [!NOTE]
+> Q: Agent Memory alternatives to GBrain or Mempalace
+- Tool:  Google Search AI Mode
 A: Several powerful agent memory alternatives can replace GBrain (known for its opinionated execution logic) or MemPalace (known for structured spatial archiving). The best choice depends on whether a plug-and-play memory layer, a graph-based reasoning system, or a completely local footprint is required. [1, 2, 3, 4]
 ------------------------------
 ## 1. The Best General Memory Layers (Plug-and-Play)
@@ -192,5 +193,4 @@ To help you get set up, what kinds of documents or data types (e.g., markdown fi
 [12] [https://medium.com](https://medium.com/@whynesspower/complete-guide-to-knowledge-context-graphs-via-zep-graphiti-c6da7ce8b13b)
 [13] [https://www.cognee.ai](https://www.cognee.ai/blog/fundamentals/building-blocks-of-knowledge-graphs)
 
-</td></tr>
-</table>
+---

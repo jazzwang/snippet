@@ -7,8 +7,6 @@
 
 比特小鹿 (Bitdeer Technologies Group, 股票代號：BTDR) 是一家在新加坡註冊、於納斯達克上市的高性能計算與比特幣 mining 技術公司。公司由吳忌寒 (Jihan Wu) 於 2013 年創立，2021 年從比特大陸 (Bitmain) 分拆獨立，2023 年透過 SPAC 合併完成上市。
 
----
-
 ### (A) 資金來源 Analysis
 
 #### 融資歷程
@@ -27,8 +25,6 @@
 - **累計融資額**: 約 $1.5B+ (2024-2026 年間可轉換債券)
 - **主要資金來源**: Tether 為最大單一投資者
 - **資本結構**: 混合股權與債務融資
-
----
 
 ### (B) 現有債務 Analysis
 
@@ -55,12 +51,10 @@
 - **2025 年 9 月 30 日**: 仍有 $672.5M 衍生負債
 
 #### 財務健康評估
-⚠️ **風險警示**: 
+⚠️ **風險警示**:
 - 債務規模顯著增加，負債率上升
 - 營運活動現金流出，顯示現金燃燒
 - 高度依賴加密貨幣價格波動和 mining 收入
-
----
 
 ### (C) 競爭對手 Analysis
 
@@ -111,8 +105,6 @@ quadrantChart
     CoreWeave: [0.1, 0.9]
 ```
 
----
-
 ### (D) 核心市場競爭力 Analysis
 
 #### 關鍵競爭優勢
@@ -124,14 +116,14 @@ flowchart LR
     A["IC 設計<br>(自主晶片設計)"] --> B["硬體製造<br>(SEALMINER 自製礦機)"]
     B --> C["數據中心<br>(全球自主建設)"]
     C --> D["AI 雲端 & HPC<br>(NVIDIA 首選合作夥伴)"]
-    
+
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#bbf,stroke:#333,stroke-width:2px
     style C fill:#fbf,stroke:#333,stroke-width:2px
     style D fill:#9f9,stroke:#333,stroke-width:2px
 ```
 
-**優勢分析**: 
+**優勢分析**:
 - ✅ 減少供應鏈依賴
 - ✅ 成本控制能力
 - ✅ 快速產品迭代
@@ -169,8 +161,6 @@ flowchart LR
 - 電力供應依賴性
 - 法規風險 (加密貨幣相關)
 - 供應鏈限制 (GPU 和 mining rig)
-
----
 
 ### (E) 主要產品佈局
 
@@ -247,8 +237,6 @@ flowchart LR
     B --> C["Mining 服務<br>(自營、託管、算力共享)"]
 ```
 
----
-
 ### (F) 關鍵利害關係人
 
 #### 組織架構圖
@@ -259,7 +247,7 @@ graph TD
     Wu --> Kong["Matt Kong<br>商業官 (CBO)"]
     Wu --> CFO["財務長 (CFO)"]
     Wu --> COO["營運長 (COO)"]
-    
+
     style Wu fill:#f96,stroke:#333,stroke-width:2px
     style Kong fill:#9cf,stroke:#333,stroke-width:1px
     style CFO fill:#9cf,stroke:#333,stroke-width:1px
@@ -309,8 +297,6 @@ graph TD
 - **物流夥伴**: 設備運輸
 - **金融機構**: 融資合作
 
----
-
 ### 綜合評估
 
 #### 優勢 (Strengths)
@@ -338,8 +324,6 @@ graph TD
 3. ⚠️ **競爭加劇**: 大型雲服務商進入
 4. ⚠️ **技術迭代**: ASIC 技術快速變革
 
----
-
 ### 結論
 
 比特小鹿是一家具有技術自主性和垂直整合能力的市場領導者，成功從 mining 公司轉型為涵蓋 AI 雲端的多元化技術企業。然而，公司面臨債務增加、法規不確定和競爭加劇等挑戰。
@@ -352,8 +336,6 @@ graph TD
 - 債務償還進度
 - 法規變化影響
 
----
-
 ### 資料來源
 
 1. Bitdeer 官網 (https://www.bitdeer.com/)
@@ -361,8 +343,6 @@ graph TD
 3. 納斯達克公告 (https://www.nasdaq.com/)
 4. 美國 SEC 文件 (https://www.sec.gov/)
 5. 業界分析報告與新聞
-
----
 
 *報告生成日期：2026 年 1 月*
 *資料時點：截至 2025 年 12 月 31 日*

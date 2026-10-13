@@ -121,5 +121,4 @@ OpenCode 是基於 Bun（一個極快的 JavaScript/TypeScript 執行環境）�
 [8] [https://www.runoob.com](https://www.runoob.com/ai-agent/opencode-coding-agent.html)
 [9] [https://www.youtube.com](https://www.youtube.com/watch?v=dZ71lfwqxj4)
 
-</td></tr>
-</table>
+---

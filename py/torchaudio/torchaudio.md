@@ -93,8 +93,6 @@ For transcribing English audio, Hugging Face offers several high-quality models.
   - Good for downstream tasks like speaker diarization.
 - **Use case**: Transcription in noisy environments.
 
----
-
 ### ✅ Recommendation
 If you're working with **English audio** and want **high accuracy**, go with:
 

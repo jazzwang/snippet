@@ -2,8 +2,6 @@ Welcome to **Day 5: Single-File Surgery**.
 
 Today, we transition from being an observer to being an operator. In "Build Mode," OpenCode doesn't just suggest ideas—it picks up the scalpel and modifies your source code. The goal today is to master **surgical precision**: making the smallest possible change to achieve a specific result while minimizing "code drift."
 
----
-
 ## Day 5: The Build Mode & The Art of the Diff
 
 ### 1\. Entering Build Mode
@@ -27,13 +25,9 @@ When OpenCode proposes a change, it will show you a **Diff** (Differential).
 3. **Review:** You look for hallucinations or syntax errors.
 4. **Action:** You choose to **Apply** (Save to disk), **Undo**, or **Iterate** (Ask for a fix to the fix).
 
----
-
 ## Day 4 Recap vs. Day 5 Goal
 
 While Day 4 was about **mapping 50 files**, Day 5 is about **perfecting one**.
-
----
 
 ## Day 5 Lab: "The Bug Hunter"
 
@@ -95,8 +89,6 @@ opencode validator.py
 
 2. **The Audit:** Did it import the `re` module if it needed it for the number check? Did it maintain your existing variable names?
 
----
-
 ### Phase 4: The Terminal Feedback Loop
 
 1. **The Execution Prompt:**
@@ -108,8 +100,6 @@ opencode validator.py
 
     > "The terminal output was `True`. Re-examine the `check_password_strength` logic and try again."
 
----
-
 ## Day 5 Summary Checklist
 
 | Task | Completed |
@@ -118,8 +108,6 @@ opencode validator.py
 | Reviewed a **Diff** and identified a specific change | ☐ |
 | Applied a fix to a single function without touching the rest of the file | ☐ |
 | Used the agent to execute the file and verify the fix | ☐ |
-
----
 
 ### Pro-Tip: Avoid "The Rewrite"
 
@@ -180,13 +168,9 @@ Sometimes AI agents get lazy and try to delete a 100-line file and replace it wi
 **Created:** 2/16/2026, 9:59:10 PM
 **Updated:** 2/16/2026, 10:03:42 PM
 
----
-
 #### User
 
 Look at the `validate_email` function in `@validator.py`. The regex is failing because it doesn't require a dot in the domain. Fix ONLY the regex string.
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 5.2s)
 
@@ -208,8 +192,6 @@ The user wants me to look at a file called `@validator.py` (which seems like an 
 C:\Users\jazzw\AppData\Local\Temp\day5-lab\validator.py
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 5.6s)
 
 _Thinking:_
@@ -230,29 +212,27 @@ Let me read the validator.py file to find the validate_email function.
 <path>C:\Users\jazzw\AppData\Local\Temp\day5-lab\validator.py</path>
 <type>file</type>
 <content>1: import re
-2: 
+2:
 3: def validate_email(email):
 4:     # Bug: This regex is way too simple and misses the domain dot
 5:     regex = r'^[a-z0-9]+@[a-z0-9]+$'
 6:     if re.match(regex, email):
 7:         return True
 8:     return False
-9: 
+9:
 10: def check_password_strength(password):
 11:     # Bug: This returns True even if the password is empty
 12:     if len(password) > 8:
 13:         return True
 14:     else:
 15:         return True
-16: 
+16:
 17: print(validate_email("test@example")) # Should be False
 18: print(check_password_strength(""))    # Should be False
 
 (End of file - total 18 lines)
 </content>
 ```
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 3.2s)
 
@@ -278,8 +258,6 @@ Let me fix just the regex string.
 Edit applied successfully.
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 2.1s)
 
 _Thinking:_
@@ -288,13 +266,9 @@ I've added the dot requirement to the domain part of the regex. The pattern `[a-
 
 Fixed. The regex now requires a dot in the domain: `r'^[a-z0-9]+@[a-z0-9]+\.[a-z0-9]+$'`
 
----
-
 #### User
 
 The `check_password_strength` function always returns True. Fix the logic so it returns True only if the password is longer than 8 characters and contains at least one number.
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 4.0s)
 
@@ -334,8 +308,6 @@ Let me edit this function.
 Edit applied successfully.
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 2.0s)
 
 _Thinking:_
@@ -344,13 +316,9 @@ Done. The function now returns True only if the password is longer than 8 charac
 
 Fixed. The function now returns True only when the password is longer than 8 characters **and** contains at least one digit.
 
----
-
 #### User
 
 Run this script in the terminal and tell me if the output matches what we expect (False, False).
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 2.6s)
 
@@ -374,8 +342,6 @@ False
 False
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 1.6s)
 
 _Thinking:_
@@ -383,6 +349,4 @@ _Thinking:_
 The output is False, False which matches what the user expected. Let me confirm this to them.
 
 Yes, the output is `False, False` - matching the expected result.
-
----
 

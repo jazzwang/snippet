@@ -14,16 +14,15 @@ https://graylark.io/
 - 從 Raven 與 GeoSpy 的宣告中，導向了 Garylark
 - 有趣的是這不是第一次看到 Garylark 這個頁面
 
-<table><tr style="background-color:lightyellow;"><td>Q: help me to plan a company deep research of https://graylark.io/, https://geospy.ai/ and https://www.withraven.ai/. what are the products? what's their core competency? who are their target audience/customer/user? SWOT analysis.
-</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Gemini App - Gemini 3
+> [!NOTE]
+> Q: help me to plan a company deep research of https://graylark.io/, https://geospy.ai/ and https://www.withraven.ai/. what are the products? what's their core competency? who are their target audience/customer/user? SWOT analysis.
+- Tool:  Google Gemini App - Gemini 3
 A:
 To conduct a deep research analysis of these entities, it is critical first to understand that **Graylark, GeoSpy, and Raven are part of a single organizational evolution**.
 
 * **Graylark (Graylark Technologies):** The parent company, a developer of AI-powered frontline visual intelligence systems.
 * **GeoSpy:** The company's original flagship AI platform, which specialized in geolocation using pixel data.
 * **Raven (withraven.ai):** The successor and expanded platform that replaces GeoSpy, offering a comprehensive suite of visual intelligence tools.
-
----
 
 ### 1. Products & Core Competency
 
@@ -37,8 +36,6 @@ The company focuses on **Frontline Visual Intelligence**. Their core competency 
 
 
 
----
-
 ### 2. Target Audience / Customer / User
 
 Graylark positions its tools for professional, high-stakes environments where rapid, accurate intelligence is required.
@@ -47,8 +44,6 @@ Graylark positions its tools for professional, high-stakes environments where ra
 * **Government & Intelligence Agencies:** Organizations requiring rapid geolocation and environment analysis for national security.
 * **Corporate Security & Fraud Teams:** Teams verifying claims, investigating fraud, or managing global security operations.
 * **OSINT Professionals:** Investigators who specialize in Open Source Intelligence (OSINT).
-
----
 
 ### 3. SWOT Analysis
 
@@ -62,8 +57,6 @@ Graylark positions its tools for professional, high-stakes environments where ra
 | --- | --- |
 | **Market Expansion:** Increasing demand for AI-driven visual analysis in corporate fraud and insurance verification. | **Regulatory/Legal Scrutiny:** Growing global regulation on AI surveillance tools and data privacy. |
 | **Platform Integration:** Potential for API expansion to integrate with existing case management software. | **Competition:** Rapid pace of AI development may lead to open-source or free alternatives that challenge proprietary tools. |
-
----
 
 ### Research Summary for Your Project
 

@@ -65,5 +65,4 @@ sed -i '1i 你的字串' filename.txt
 [4] [https://myapollo.com.tw](https://myapollo.com.tw/blog/sed-insert-a-line-to-a-specific-position/)
 [5] [https://www.cs.nccu.edu.tw](https://www.cs.nccu.edu.tw/~lien/UNIX/AWK/hardcopy.htm)
 
-</td></tr>
-</table>
+---

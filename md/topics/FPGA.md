@@ -13,8 +13,6 @@ FPGA 的開發主要使用兩種硬體描述語言（Hardware Description Langua
 
 除了這兩種主要的 HDL，現在也有越來越多高階綜合（High-Level Synthesis, HLS）語言被應用在 FPGA 開發上，例如 **SystemVerilog** 和 **C/C++**。這些高階語言讓開發者可以用更接近軟體的方式來描述硬體功能，從而提高開發效率。
 
----
-
 FPGA 的開發流程通常可以分為以下幾個主要階段：
 
 ### 1. 規格定義與架構設計

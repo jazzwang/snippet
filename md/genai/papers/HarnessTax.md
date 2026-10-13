@@ -97,6 +97,4 @@
 - [Hacker News 討論](https://news.ycombinator.com/item?id=49733726)
 - [Gigazine 摘要報告](https://gigazine.net/gsc_news/en/20260917-harnesstax-ai-coding-agents/)
 
----
-
 *註：本研究結果顯示，在選擇 AI 編碼代理時，harness 的選擇對成本效益的影響遠大於對任務成功率的影響。開發者應根據實際需求，靈活選擇最適合的 harness 配置。

@@ -996,7 +996,7 @@ In this course, you will explore real-world use cases in artificial intelligence
 
 #### Video transcript  視訊文字記錄
 
-Artificial Intelligence (AI). Let’s dive into real-world use cases and applications. 
+Artificial Intelligence (AI). Let’s dive into real-world use cases and applications.
 
 > 人工智慧（AI）。讓我們深入了解現實世界的用例和應用程式。
 
@@ -1035,7 +1035,7 @@ To review the terms and definitions, choose each of the markers.
 
 #### AI  人工智慧
 
-AI is a broad field that encompasses the development of intelligent systems capable of performing tasks that typically require human intelligence, such as perception, reasoning, learning, problem-solving, and decision-making. AI serves as an umbrella term for various techniques and approaches, including machine learning, deep learning, and generative AI. 
+AI is a broad field that encompasses the development of intelligent systems capable of performing tasks that typically require human intelligence, such as perception, reasoning, learning, problem-solving, and decision-making. AI serves as an umbrella term for various techniques and approaches, including machine learning, deep learning, and generative AI.
 
 > 人工智慧是一個廣泛的領域，涵蓋智慧系統的開發，這些系統能夠執行通常需要人類智慧的任務，例如感知、推理、學習、解決問題和決策。人工智慧是各種技術和方法的總稱，包括機器學習、深度學習和產生人工智慧。
 
@@ -1053,7 +1053,7 @@ Deep learning uses the concept of neurons and synapses similar to how our brain 
 
 #### Generative AI  生成式人工智慧
 
-Generative AI is a subset of deep learning because it can adapt models built using deep learning, but without retraining or fine tuning. 
+Generative AI is a subset of deep learning because it can adapt models built using deep learning, but without retraining or fine tuning.
 
 > 生成式人工智慧是深度學習的子集，因為它可以適應使用深度學習建立的模型，但無需重新訓練或微調。
 
@@ -1073,7 +1073,7 @@ Now that you understand the relationship between AI, ML, DL, and generative AI, 
 
 ### Examples of Real-World Use Cases 實際用例範例
 
-Many industries are using the power of AI to enhance creativity, elevate customer experience, and streamline business operations. Here are a few real-world examples of AI use cases and applications across various sectors. As technology continues to advance, we can expect this list to expand, which will drive innovation and transform society. 
+Many industries are using the power of AI to enhance creativity, elevate customer experience, and streamline business operations. Here are a few real-world examples of AI use cases and applications across various sectors. As technology continues to advance, we can expect this list to expand, which will drive innovation and transform society.
 
 > 許多行業正在利用人工智慧的力量來增強創造力、提升客戶體驗並簡化業務運作。以下是人工智慧在各個領域的用例和應用的一些真實範例。隨著技術的不斷進步，我們預計這個清單將不斷擴大，這將推動創新和社會變革。
 
@@ -1225,7 +1225,7 @@ Using computer vision in healthcare can improve the accuracy and speed of medica
 
 ##### Public Safety and Home Security 公共安全與居家安全
 
-Computer vision image and facial recognition can swiftly identify unlawful entries or persons of interest, which fosters safer communities and works as a crime deterrent. 
+Computer vision image and facial recognition can swiftly identify unlawful entries or persons of interest, which fosters safer communities and works as a crime deterrent.
 
 > 電腦視覺圖像和臉部辨識可以快速識別非法進入或感興趣的人，從而促進更安全的社區並起到威懾犯罪的作用。
 
@@ -1272,7 +1272,7 @@ IDP is an application that extracts and classifies information from **unstructur
 IDP is used by but limited to the following industries.
 
 > IDP 由但僅限於以下行業使用。
- 
+
 ##### Financial Services or lending 金融服務或貸款
 
 Financial services use IDP to extract important information from mortgage applications to accelerate customer response time. It also helps with the underwriting process by identifying incomplete loan packages, tax forms, pay stubs, and other missing data.
@@ -1295,7 +1295,7 @@ IDP, along with other applications such as optical character recognition (OCR) a
 
 ##### Healthcare 醫療保健
 
-Using IDP in healthcare can help expedite business quickly and accurately by processing various document types, such as claims and doctor’s notes. 
+Using IDP in healthcare can help expedite business quickly and accurately by processing various document types, such as claims and doctor’s notes.
 
 > 在醫療保健領域使用 IDP 可以透過處理各種文件類型（例如索賠和醫生證明）來幫助快速、準確地加快業務速度。
 
@@ -1360,11 +1360,11 @@ You have learned how AI contributes to various industries and the different appl
 
 ### Machine Learning  機器學習
 
-Remember, ML is a subset of AI that focuses on developing algorithms and statistical models so that computer systems can learn from data and make predictions or decisions without being explicitly programmed. ML models learn patterns and relationships from data rather than relying on hard-coded rules for instructions. These models are trained on large datasets, and their accuracy and performance improve over time as they process more data. 
+Remember, ML is a subset of AI that focuses on developing algorithms and statistical models so that computer systems can learn from data and make predictions or decisions without being explicitly programmed. ML models learn patterns and relationships from data rather than relying on hard-coded rules for instructions. These models are trained on large datasets, and their accuracy and performance improve over time as they process more data.
 
 > 請記住，機器學習是人工智慧的一個子集，專注於開發演算法和統計模型，以便電腦系統可以從資料中學習並做出預測或決策，而無需明確程式設計。機器學習模型從資料中學習模式和關係，而不是依賴硬編碼的指令規則。這些模型在大型數據集上進行訓練，隨著處理更多數據，它們的準確性和性能會隨著時間的推移而提高。
 
-In this section, you will learn about when ML is an appropriate solution and the techniques used for specific use cases. 
+In this section, you will learn about when ML is an appropriate solution and the techniques used for specific use cases.
 
 > 在本節中，您將了解 ML 何時是合適的解決方案以及用於特定用例的技術。
 
@@ -1387,11 +1387,11 @@ To determine the appropriate AI solution, you must understand when to use AI to 
 
 #### Alternative approach to AI and ML  人工智慧和機器學習的替代方法
 
-Notice in the previous section that AI can solve many problems. However, there might be situations where alternative approaches would be more suitable. Consider all approaches and select the most appropriate one based on the task’s specific requirements and constraints. 
+Notice in the previous section that AI can solve many problems. However, there might be situations where alternative approaches would be more suitable. Consider all approaches and select the most appropriate one based on the task’s specific requirements and constraints.
 
 > 請注意，在上一節中，人工智慧可以解決許多問題。然而，在某些情況下，替代方法可能更合適。考慮所有方法並根據任務的特定要求和約束選擇最合適的一種。
 
-For example, you do not need ML if you can determine a target value using simple rules, computations, or predetermined steps. You can program the steps without needing any data-driven learning. 
+For example, you do not need ML if you can determine a target value using simple rules, computations, or predetermined steps. You can program the steps without needing any data-driven learning.
 
 > 例如，如果您可以使用簡單的規則、計算或預定步驟來確定目標值，則不需要 ML。您可以對這些步驟進行編程，而無需任何數據驅動的學習。
 
@@ -1405,7 +1405,7 @@ You have learned when AI and ML are appropriate and when an alternative solution
 
 ### Machine Learning Techniques and Use Cases  機器學習技術和用例
 
-When choosing an ML solution, it’s not just about the technology, but also about understanding the appropriate ML techniques for specific use cases. ML learning techniques represent the backbone of modern AI and empower systems to learn from data and make intelligent decisions without explicit programming. These techniques include supervised learning, unsupervised learning, and reinforcement learning, which each serve a distinct purpose. 
+When choosing an ML solution, it’s not just about the technology, but also about understanding the appropriate ML techniques for specific use cases. ML learning techniques represent the backbone of modern AI and empower systems to learn from data and make intelligent decisions without explicit programming. These techniques include supervised learning, unsupervised learning, and reinforcement learning, which each serve a distinct purpose.
 
 > 選擇 ML 解決方案時，不僅涉及技術，還涉及了解針對特定用例的適當 ML 技術。機器學習學習技術代表了現代人工智慧的支柱，使系統能夠從數據中學習並做出智慧決策，而無需明確程式設計。這些技巧包括監督學習、非監督式學習和強化學習，每種技術都有不同的目的。
 
@@ -1423,7 +1423,7 @@ In supervised learning, the algorithms are trained on labeled data. The goal is 
 
 ##### Unsupervised learning  非監督式學習
 
-Unsupervised learning refers to algorithms that learn from unlabeled data. The goal is to discover inherent patterns, structures, or relationships within the input data. 
+Unsupervised learning refers to algorithms that learn from unlabeled data. The goal is to discover inherent patterns, structures, or relationships within the input data.
 
 > 非監督式學習是指從未標記資料中學習的演算法。目標是發現輸入資料中的固有模式、結構或關係。
 
@@ -1445,7 +1445,7 @@ The model learns by identifying patterns in data that's already labeled.
 
 ##### Types of supervised ML  監督機器學習的類型
 
-Supervised learning has two subcategories—classification and regression. 
+Supervised learning has two subcategories—classification and regression.
 
 > 監督學習有兩個子類別—分類和回歸。
 
@@ -1495,7 +1495,7 @@ In unsupervised learning, labels are not provided—you don't know all the varia
 
 ##### Types of unsupervised ML  無監督機器學習的類型
 
-Unsupervised learning encompasses various techniques and algorithms. Two main subcategories of unsupervised learning are clustering and dimensionality reduction. 
+Unsupervised learning encompasses various techniques and algorithms. Two main subcategories of unsupervised learning are clustering and dimensionality reduction.
 
 > 非監督式學習包含各種技術和演算法。非監督式學習的兩個主要子類別是聚類和降維。
 
@@ -1565,11 +1565,11 @@ Lesson 8 of 17  第 8 課（共 17 課）
 
 ### Generative AI  生成式人工智慧
 
-Generative AI is a subset of deep learning. It can adapt models that are built using deep learning without needing to retrain or fine-tune them. Generative AI is capable of generating new data based on the patterns and structures learned from training data. Generative AI can create new content, including conversations, stories, images, videos, music, and code. 
+Generative AI is a subset of deep learning. It can adapt models that are built using deep learning without needing to retrain or fine-tune them. Generative AI is capable of generating new data based on the patterns and structures learned from training data. Generative AI can create new content, including conversations, stories, images, videos, music, and code.
 
 > 生成式人工智慧是深度學習的一個子集。它可以適應使用深度學習建立的模型，而無需重新訓練或微調它們。生成式人工智慧能夠根據從訓練資料中學到的模式和結構產生新資料。生成式人工智慧可以創造新內容，包括對話、故事、圖像、影片、音樂和程式碼。
 
-In this section, you will learn about the capabilities and challenges of AI, the factors to consider when selecting a generative AI model, and the business metrics for generative AI applications. 
+In this section, you will learn about the capabilities and challenges of AI, the factors to consider when selecting a generative AI model, and the business metrics for generative AI applications.
 
 > 在本節中，您將了解人工智慧的功能和挑戰、選擇生成式人工智慧模型時要考慮的因素以及生成式人工智慧應用程式的業務指標。
 
@@ -1689,7 +1689,7 @@ The information shared with your model can include personal information and can 
 
 To protect sensitive data, implement cybersecurity measures, such as encryption and firewalls.
 
-> 為了保護敏感數據，請實施網路安全措施，例如加密和防火牆。 
+> 為了保護敏感數據，請實施網路安全措施，例如加密和防火牆。
 
 #### Toxicity
 
@@ -1733,7 +1733,7 @@ Users might misinterpret the model’s output, which could lead to incorrect con
 
 ##### Mitigation  減輕
 
-Use specific domain knowledge for model development and performance by providing key information for data model inputs. 
+Use specific domain knowledge for model development and performance by providing key information for data model inputs.
 
 > 透過提供資料模型輸入的關鍵訊息，使用特定領域知識進行模型開發和性能。
 
@@ -1741,7 +1741,7 @@ Use specific domain knowledge for model development and performance by providing
 
 ##### Risk  風險
 
-The model might generate different outputs for the same input, which can cause problems in applications where reliability is key.  
+The model might generate different outputs for the same input, which can cause problems in applications where reliability is key.
 
 > 該模型可能會為相同的輸入產生不同的輸出，這可能會在可靠性至關重要的應用程式中引起問題。
 
@@ -1876,13 +1876,13 @@ For additional information about these models and other models, review the websi
 
 #### Performance requirements  性能要求
 
-Performance requirements are another factor to consider when selecting a generative AI model. These requirements include accuracy, reliability of the output, and others. Assess the overall performance of the model to evaluate its suitability for a particular task. You should also test the model against different datasets to ensure reliability. Finally, monitor its performance over time to ensure it remains consistent. 
+Performance requirements are another factor to consider when selecting a generative AI model. These requirements include accuracy, reliability of the output, and others. Assess the overall performance of the model to evaluate its suitability for a particular task. You should also test the model against different datasets to ensure reliability. Finally, monitor its performance over time to ensure it remains consistent.
 
 > 性能要求是選擇生成式人工智慧模型時要考慮的另一個因素。這些要求包括輸出的準確性、可靠性等。評估模型的整體性能，以評估其對特定任務的適用性。您還應該針對不同的資料集測試模型以確保可靠性。最後，隨著時間的推移監控其效能以確保其保持一致。
 
 ##### Constraints  約束條件
 
-Consider the constraints of a model such as the following: 
+Consider the constraints of a model such as the following:
 > 考慮模型的約束，如下所示：
 
 - Computational resources (for example, available GPU power, CPU power, or memory)  運算資源（例如，可用的 GPU 功率、CPU 功率或記憶體）
@@ -1946,7 +1946,7 @@ User satisfaction gathers user feedback to assess their satisfaction with the AI
 
 > 使用者滿意度收集使用者回饋來評估他們對人工智慧產生的內容或建議的滿意度。
 
-Use case: Measuring and improving user satisfaction for an e-commerce website 
+Use case: Measuring and improving user satisfaction for an e-commerce website
 
 > 用例：衡量並提高電子商務網站的使用者滿意度
 
@@ -1960,7 +1960,7 @@ Average revenue per user (ARPU) calculates the average revenue generated per use
 
 > 每位使用者平均收入 (ARPU) 計算每位使用者或客戶歸因於生成式 AI 應用程式產生的平均收入。
 
-Use case: Analyzing and optimizing revenue generation per user 
+Use case: Analyzing and optimizing revenue generation per user
 
 > 使用案例：分析和優化每個用戶的收入產生
 
@@ -1974,7 +1974,7 @@ Cross-domain performance measures the generative AI model's ability to perform e
 
 > 跨領域效能衡量生成式人工智慧模型跨不同領域或產業有效執行的能力。
 
-Use case: Monitoring and optimizing a multidomain ecommerce platform 
+Use case: Monitoring and optimizing a multidomain ecommerce platform
 
 > 使用案例：監控和優化多域電子商務平台
 
@@ -1988,7 +1988,7 @@ Conversion rate monitors the conversion rate to generate content or recommend de
 
 > 轉換率監控產生內容或推薦所需結果（例如購買、註冊或參與度指標）的轉換率。
 
-Use case: Optimizing an ecommerce website for higher conversion rates 
+Use case: Optimizing an ecommerce website for higher conversion rates
 
 >使用案例：優化電子商務網站以獲得更高的轉換率
 
@@ -2002,7 +2002,7 @@ The efficiency metric evaluates the generative AI model's efficiency in resource
 
 > 效率指標評估生成式人工智慧模型在資源利用、運算時間和可擴展性方面的效率。
 
-Use case: Improving production line efficiency 
+Use case: Improving production line efficiency
 
 > 使用案例：提高生產線效率
 
@@ -2062,17 +2062,17 @@ For additional references and resources, continue to the next lesson.
 ### Resources  資源
 
 - What is Artificial Intelligence (AI)?  什麼是人工智慧（AI）？
-  - To learn more about AI and its capabilities, choose the following button. 
+  - To learn more about AI and its capabilities, choose the following button.
     要了解有關 AI 及其功能的更多信息，請選擇以下按鈕。
   - https://aws.amazon.com/what-is/artificial-intelligence/
 
 - What is Generative AI?   什麼是生成式人工智慧？
-  - To learn more about generative AI and its capabilities, choose the following button. 
+  - To learn more about generative AI and its capabilities, choose the following button.
     要了解有關生成式 AI 及其功能的更多信息，請選擇以下按鈕。
   - https://aws.amazon.com/what-is/generative-ai/
 
 - What is Machine Learning?  什麼是機器學習？
-  - To learn more about machine learning and its capabilities, choose the following button.  
+  - To learn more about machine learning and its capabilities, choose the following button.
     要了解有關機器學習及其功能的更多信息，請選擇以下按鈕。
   - https://aws.amazon.com/what-is/machine-learning/
 
@@ -2082,7 +2082,7 @@ For additional references and resources, continue to the next lesson.
   - https://aws.amazon.com/solutions/
 
 - Solutions for Machine Learning (AI/ML)  機器學習 (AI/ML) 解決方案
-  - To review a curated list of common use cases for machine learning, choose the following button.  
+  - To review a curated list of common use cases for machine learning, choose the following button.
     若要查看機器學習常見用例的精選列表，請選擇以下按鈕。
   - https://aws.amazon.com/solutions/ai-ml/
 
@@ -2094,7 +2094,7 @@ For additional references and resources, continue to the next lesson.
 
 ### 3.1 Introduction  介紹
 
-In this course, you will learn about responsible artificial intelligence (AI) practices. 
+In this course, you will learn about responsible artificial intelligence (AI) practices.
 
 > 在本課程中，您將了解負責任的人工智慧 (AI) 實踐。
 
@@ -2110,11 +2110,9 @@ Finally, in the last section of the course, you learn about transparent and expl
 
 > 最後，在課程的最後一部分，您將了解透明且可解釋的模型。您將了解模型透明和可解釋意味著什麼。您還將了解人工智慧模型的安全性和透明度之間需要考慮的權衡，以及可解釋人工智慧的**以人為本的設計原則**。
 
-Each section will conclude with five knowledge check questions that will test what you have learned. 
+Each section will conclude with five knowledge check questions that will test what you have learned.
 
 > 每個部分將以五個知識檢查問題結束，這些問題將測試您所學的內容。
-
----
 
 - Lesson 3 of 16  第 3 課
 
@@ -2157,17 +2155,17 @@ Choose each topic to learn the basic differences between traditional AI and gene
 
 ##### Traditional AI  傳統式 AI
 
-Traditional machine learning models perform tasks based on the data you provide. They can make predictions such as ranking, sentiment analysis, image classification, and more. However, each model can perform only one task. And to successfully do it, the model needs to be carefully trained on the data. As they train, they analyze the data and look for patterns. Then these models make a prediction based on these patterns. 
+Traditional machine learning models perform tasks based on the data you provide. They can make predictions such as ranking, sentiment analysis, image classification, and more. However, each model can perform only one task. And to successfully do it, the model needs to be carefully trained on the data. As they train, they analyze the data and look for patterns. Then these models make a prediction based on these patterns.
 
 > 傳統的機器學習模型根據您提供的數據執行任務。他們可以做出排名，情感分析，圖像分類等的預測。但是，每個模型只能執行一個任務。為了成功做到這一點，需要對數據仔細培訓該模型。當他們訓練時，他們分析數據並尋找模式。然後這些模型基於這些模式進行預測。
 
-Some examples of traditional AI include recommendation engines, gaming, and voice assistance. 
+Some examples of traditional AI include recommendation engines, gaming, and voice assistance.
 
 > 傳統 AI 的一些範例包括：推薦引擎，遊戲和語音幫助。
 
 ##### Generative AI  生成式 AI
 
-Generative artificial intelligence (generative AI) runs on foundation models (FMs). These models are pre-trained on massive amounts of general domain data that is beyond your own data. They can perform multiple tasks. Based on user input, usually in the form of text called a prompt, the model actually generates content. This content comes from learning patterns and relationships that empower the model to predict the desired outcome. 
+Generative artificial intelligence (generative AI) runs on foundation models (FMs). These models are pre-trained on massive amounts of general domain data that is beyond your own data. They can perform multiple tasks. Based on user input, usually in the form of text called a prompt, the model actually generates content. This content comes from learning patterns and relationships that empower the model to predict the desired outcome.
 
 > 生成人工智能（生成AI）在基礎模型（FMS）上運行。這些模型已對超出您自己數據的大量通用域數據進行了預訓練。他們可以執行多個任務。基於用戶輸入，通常以稱為提示的文本形式，該模型實際生成內容。這些內容來自學習模式和關係，使模型能夠預測所需的結果。
 
@@ -2177,7 +2175,7 @@ Some examples of generative AI include chatbots, code generation, and text and i
 
 #### 3.2.3 Generative AI offers business value  生成式 AI 提供業務價值
 
-The potential of FMs is incredibly exciting. There are several FMs available, each with unique strengths and characteristics. 
+The potential of FMs is incredibly exciting. There are several FMs available, each with unique strengths and characteristics.
 
 > FM 的潛力非常令人興奮。有多種可用的 FM，每種都有獨特的優點和功能。
 
@@ -2213,11 +2211,11 @@ The number one problem that developers face in AI applications is **accuracy**. 
 
 ###### Bias 偏差
 
-Bias is one of the biggest challenges a developer faces in AI systems. Bias in a model means that the model is missing important features of the datasets. This means that the data is too basic. Bias is measured by the difference between the expected predictions of the model and the true values we are trying to predict. If the difference is narrow, then the model has low bias. If the difference is wide, then the model has a high bias. 
+Bias is one of the biggest challenges a developer faces in AI systems. Bias in a model means that the model is missing important features of the datasets. This means that the data is too basic. Bias is measured by the difference between the expected predictions of the model and the true values we are trying to predict. If the difference is narrow, then the model has low bias. If the difference is wide, then the model has a high bias.
 
 > 偏差是開發者在 AI 系統中面臨的最大挑戰之一。模型中的偏差意味著模型遺漏了數據集的重要特徵。這意味著數據過於基礎。偏差的衡量方法是模型預期預測值與我們試圖預測的真實值之間的差異。如果差異很小，則模型偏差低。如果差異很大，則模型偏差高。
 
-When a model has a high bias, it is underfitted. Underfitted means that the model is not capturing enough difference in the features of the data, and therefore, the model performs poorly on the training data. 
+When a model has a high bias, it is underfitted. Underfitted means that the model is not capturing enough difference in the features of the data, and therefore, the model performs poorly on the training data.
 
 > 當模型具有高偏差時，它便是「乏適(underfitted, 擬合不足)」。「乏適」意味著模型沒有捕捉到數據特徵的足夠差異，因此模型在訓練數據上的表現不佳。
 
@@ -2233,7 +2231,7 @@ However, when you introduce new data to the model, the model's accuracy drops. T
 
 ##### Bias-variance trade-off  偏差方差權衡
 
-Bias-variance tradeoff is when you optimize your model with the right balance between bias and variance. This means that you need to optimize your model so that it is not underfitted or overfitted. The goal is to achieve a trained model with the lowest bias and lowest variance tradeoff for a given data set. 
+Bias-variance tradeoff is when you optimize your model with the right balance between bias and variance. This means that you need to optimize your model so that it is not underfitted or overfitted. The goal is to achieve a trained model with the lowest bias and lowest variance tradeoff for a given data set.
 
 > 偏差方差權衡是指以偏差和方差之間的正確平衡來優化模型。這意味著您需要優化模型，使其既不過度擬合也不欠擬合。目標是針對給定的數據集，獲得具有最低偏差和最低方差權衡的訓練模型。
 
@@ -2261,7 +2259,7 @@ To help overcome bias and variance errors, you can use the following:
 
 ###### Cross validation  交叉驗證
 
-Cross-validation is a technique for evaluating ML models by training several ML models on subsets of the available input data and evaluating them on the complementary subset of the data. Cross-validation should be used to detect overfitting. 
+Cross-validation is a technique for evaluating ML models by training several ML models on subsets of the available input data and evaluating them on the complementary subset of the data. Cross-validation should be used to detect overfitting.
 
 > 交叉驗證是一種評估機器學習模型的技術，它通過使用可用輸入數據的子集訓練多個機器學習模型，並在數據的互補子集上評估它們。交叉驗證應該用於檢測過擬合。
 
@@ -2274,13 +2272,13 @@ Add more data samples to increase the learning scope of the model.
 
 ###### Regularization  正規化
 
-Use regularization. Regularization is a method that penalizes extreme weight values to help prevent linear models from overfitting training data examples. 
+Use regularization. Regularization is a method that penalizes extreme weight values to help prevent linear models from overfitting training data examples.
 
 > 使用正規化。正規化是一種懲罰極端權重值以幫助防止線性模型過度擬合訓練數據示例的方法。
 
 ###### Simpler models  較簡單的模型
 
-Use simpler model architectures to help with overfitting. If the model is underfitting, the model might be too simple.  
+Use simpler model architectures to help with overfitting. If the model is underfitting, the model might be too simple.
 
 > 使用較簡單的模型架構來避免過擬合。如果模型出現欠擬合，則模型可能過於簡單。
 
@@ -2302,17 +2300,17 @@ Just as generative AI has its unique set of benefits, it also has a unique set o
 
 > 生成式 AI 固然有其獨特的優點，但也存在著獨特的挑戰。這些挑戰包括毒性、幻覺、智慧財產權、剽竊和作弊。
 
-Review each topic to learn more. 
+Review each topic to learn more.
 
 > 檢閱每個主題以了解更多資訊。
 
 ##### Toxicity  毒性
 
-Toxicity is the possibility of generating content (whether it be text, images, or other modalities) that is offensive, disturbing, or otherwise inappropriate. This is a primary concern with generative AI. It is hard to even define and scope toxicity. The subjectivity involved in determining what constitutes toxic content is an additional challenge, and the boundary between restricting toxic content and censorship can be murky and dependent on context and culture. 
+Toxicity is the possibility of generating content (whether it be text, images, or other modalities) that is offensive, disturbing, or otherwise inappropriate. This is a primary concern with generative AI. It is hard to even define and scope toxicity. The subjectivity involved in determining what constitutes toxic content is an additional challenge, and the boundary between restricting toxic content and censorship can be murky and dependent on context and culture.
 
 > 毒性是指生成具有冒犯性、令人不安或其他不當內容（無論是文字、圖像還是其他形式）的可能性。這是生成式 AI 的主要問題。甚至難以定義和界定毒性。判斷哪些內容構成毒性內容的主觀性是一個額外的挑戰，限制毒性內容與審查之間的界限可能模糊不清，並且取決於語境和文化。
 
-For example, should quotations that would be considered offensive out of context be suppressed if they are clearly labeled as quotations? What about opinions that might be offensive to some users but are clearly labeled as opinions? 
+For example, should quotations that would be considered offensive out of context be suppressed if they are clearly labeled as quotations? What about opinions that might be offensive to some users but are clearly labeled as opinions?
 
 > 例如，如果引言清楚標示為引言，那麼在脫離語境下可能被認為具有冒犯性的引言是否應該被壓制？對於某些使用者可能具有冒犯性但清楚標示為意見的意見又該如何處理？
 
@@ -2322,7 +2320,7 @@ Technical challenges include offensive content that might be worded in a very su
 
 ##### Hallucinations  幻覺
 
-Hallucinations are assertions or claims that sound plausible but are verifiably incorrect. Considering the next-word distribution sampling employed by large language models (LLMs), it is perhaps not surprising that in more objective or factual use cases, LLMs are susceptible to hallucinations. 
+Hallucinations are assertions or claims that sound plausible but are verifiably incorrect. Considering the next-word distribution sampling employed by large language models (LLMs), it is perhaps not surprising that in more objective or factual use cases, LLMs are susceptible to hallucinations.
 
 > 幻覺是指聽起來合理但實際上可驗證為錯誤的斷言或聲明。考慮到大型語言模型 (LLM) 採用的是下一個詞的分布採樣，或許在更客觀或事實性的用例中，LLM 容易產生幻覺也就不足為奇了。
 
@@ -2342,7 +2340,7 @@ Consider this prompt for a generative image model, “Create a painting of a ska
 
 ##### Plagiarism and cheating  剽竊和作弊
 
-The creative capabilities of generative AI give rise to worries that it will be used to write college essays, writing samples for job applications, and other forms of cheating or illicit copying. Debates on this topic are happening at universities and many other institutions, and attitudes vary widely. 
+The creative capabilities of generative AI give rise to worries that it will be used to write college essays, writing samples for job applications, and other forms of cheating or illicit copying. Debates on this topic are happening at universities and many other institutions, and attitudes vary widely.
 
 > 生成式 AI 的創作能力引發了人們的擔憂，擔心它會被用來撰寫大學論文、求職寫作樣本以及其他形式的作弊或非法抄襲。大學及許多其他機構都在就此議題進行辯論，觀點也大相逕庭。
 
@@ -2352,7 +2350,7 @@ Some are in favor of explicitly forbidding any use of generative AI in settings 
 
 ##### Disruption of the nature of work  工作型態的改變
 
-The proficiency with which generative AI is able to create compelling text and images, perform well on standardized tests, write entire articles on given topics, and successfully summarize or improve the grammar of provided articles has created some anxiety. There is a concern that some professions might be replaced or seriously disrupted by the technology. 
+The proficiency with which generative AI is able to create compelling text and images, perform well on standardized tests, write entire articles on given topics, and successfully summarize or improve the grammar of provided articles has created some anxiety. There is a concern that some professions might be replaced or seriously disrupted by the technology.
 
 > 生成式 AI 能以熟練的技巧創作引人入勝的文字和圖像、在標準化測試中表現良好、撰寫關於特定主題的完整文章，以及成功地總結或改進所提供文章的文法，這引發了一些焦慮。人們擔心某些職業可能會被這項技術取代或嚴重衝擊。
 
@@ -2360,15 +2358,13 @@ Although this might be premature, it does seem that generative AI will have a tr
 
 > 儘管這可能為時尚早，但生成式 AI 似乎確實會對許多工作方面產生變革性的影響。許多以前無法自動化的任務，都有可能委託給機器。
 
----
-
 - Lesson 5 of 16  第 5 課 (共 16 課)
 
 ### 3.4 Core Dimensions of Responsible AI  負責任 AI 的核心維度
 
 #### 3.4.1 Core dimensions of responsible AI  負責任 AI 的核心維度
 
-The core dimensions of responsible AI include fairness, explainability, privacy and security, robustness, governance, transparency, safety, and controllability. No one dimension is a standalone goal for responsible AI. In fact, each topic should be considered as a required part for a complete implementation of responsible AI. 
+The core dimensions of responsible AI include fairness, explainability, privacy and security, robustness, governance, transparency, safety, and controllability. No one dimension is a standalone goal for responsible AI. In fact, each topic should be considered as a required part for a complete implementation of responsible AI.
 
 > 負責任 AI 的核心面向包括公平性、可解釋性、隱私與安全、穩健性、治理、透明度、安全性和可控性。沒有任何一個面向是負責任 AI 的獨立目標。事實上，每個主題都應被視為負責任 AI 完整實施的必要組成部分。
 
@@ -2378,7 +2374,7 @@ You will find that there is considerable overlap between many of these topics. F
 
 ##### Fairness  公平
 
-Fairness is crucial for developing responsible AI systems. With fairness, AI systems promote inclusion, prevent discrimination, uphold responsible values and legal norms, and build trust with society. 
+Fairness is crucial for developing responsible AI systems. With fairness, AI systems promote inclusion, prevent discrimination, uphold responsible values and legal norms, and build trust with society.
 
 > 公平性對於開發負責任的 AI 系統至關重要。憑藉公平性，AI 系統可以促進包容性，防止歧視，維護負責任的價值觀和法律規範，並建立與社會的信任。
 
@@ -2388,7 +2384,7 @@ You should consider fairness in your AI applications to create systems suitable 
 
 ##### Explainability  可解釋性
 
-Explainability refers to the ability of an AI model to clearly explain or provide justification for its internal mechanisms and decisions so that it is understandable to humans. 
+Explainability refers to the ability of an AI model to clearly explain or provide justification for its internal mechanisms and decisions so that it is understandable to humans.
 
 > 可解釋性是指 AI 模型能夠清楚地解釋或提供其內部機制和決策的理由，使其易於人類理解。
 
@@ -2402,7 +2398,7 @@ Privacy and security in responsible AI refers to data that is protected from the
 
 > 負責任 AI 中的隱私和安全是指保護數據免遭竊取和洩露。更具體地說，在隱私層面上，個人控制何時以及是否可以使用其數據。在安全層面上，它驗證沒有未經授權的系統或未經授權的用戶可以訪問個人的數據。
 
-When this is properly implemented and deployed in an AI system, users can trust that their data is not going to be compromised and used without their authorization. 
+When this is properly implemented and deployed in an AI system, users can trust that their data is not going to be compromised and used without their authorization.
 
 > 當此系統妥善建置並部署於 AI 系統中，使用者可以信任其數據不會被損害或未經授權使用。
 
@@ -2412,21 +2408,21 @@ Transparency communicates information about an AI system so stakeholders can mak
 
 > 透明度是指傳達有關 AI 系統的資訊，讓利害關係者能夠就其使用該系統做出明智的選擇。部分資訊包括開發流程、系統功能和限制。
 
-It provides individuals, organizations, and stakeholders access to assess the fairness, robustness, and explainability of AI systems. They can identify and mitigate potential biases, reinforce responsible standards, and foster trust in the technology. 
+It provides individuals, organizations, and stakeholders access to assess the fairness, robustness, and explainability of AI systems. They can identify and mitigate potential biases, reinforce responsible standards, and foster trust in the technology.
 
 > 它讓個人、組織和利益相關者得以評估 AI 系統的公平性、穩健性和可解釋性。他們可以識別和減輕潛在偏見，強化負責任的標準，並增進對該項技術的信任。
 
 ##### Veracity and robustness  真實性和穩健性
 
-Veracity and robustness in AI refers to the mechanisms to ensure an AI system operates reliably, even with unexpected situations, uncertainty, and errors. 
+Veracity and robustness in AI refers to the mechanisms to ensure an AI system operates reliably, even with unexpected situations, uncertainty, and errors.
 
 > AI 系統的真實性和穩健性是指確保 AI 系統即使在意外情況、不確定性和錯誤下也能可靠運作的機制。
 
-The goal of veracity and robustness in responsible AI is to develop AI models that are resilient to changes in input parameters, data distributions, and external circumstances. 
+The goal of veracity and robustness in responsible AI is to develop AI models that are resilient to changes in input parameters, data distributions, and external circumstances.
 
 > 負責任 AI 中真實性和穩健性的目標是開發出能夠抵禦輸入參數、數據分佈和外部環境變化影響的 AI 模型。
 
-This means that the AI model should retain reliability, accuracy, and safety in uncertain environments. 
+This means that the AI model should retain reliability, accuracy, and safety in uncertain environments.
 
 > 這意味著 AI 模型應在不確定的環境中保持可靠性、準確性和安全性。
 
@@ -2436,7 +2432,7 @@ Governance is a set of processes that are used to define, implement, and enforce
 
 > 治理是一套用於在組織內定義、實施和執行負責任 AI 慣例的流程。
 
-Governance addresses various responsible, legal, or societal problems that generative AI might invite. 
+Governance addresses various responsible, legal, or societal problems that generative AI might invite.
 
 > 治理解決生成式 AI 可能引發的各種責任、法律或社會問題。
 
@@ -2446,7 +2442,7 @@ For example, governance policies can help to protect the rights of individuals t
 
 ##### Safety  安全
 
-Safety in responsible AI refers to the development of algorithms, models, and systems in such a way that they are responsible, safe, and beneficial for individuals and society as a whole. 
+Safety in responsible AI refers to the development of algorithms, models, and systems in such a way that they are responsible, safe, and beneficial for individuals and society as a whole.
 
 > 負責任的 AI 安全是指以負責任、安全且有益於個人和整個社會的方式開發演算法、模型和系統。
 
@@ -2456,10 +2452,10 @@ This means that AI systems should be carefully designed and tested to avoid caus
 
 ##### Controllability  可控性
 
-Controllability in responsible AI refers to the ability to monitor and guide an AI system's behavior to align with human values and intent. It involves developing architectures that are controllable, so that any unintended issues can be managed and addressed.  
+Controllability in responsible AI refers to the ability to monitor and guide an AI system's behavior to align with human values and intent. It involves developing architectures that are controllable, so that any unintended issues can be managed and addressed.
 負責任 AI 中的可控性是指監控和引導 AI 系統行為以符合人類價值觀和意圖的能力。這涉及開發可控的架構，以便能夠管理和解決任何意外問題。
 
-By ensuring controllability, responsible AI can help mitigate risks, promote fairness and transparency, and ensure that AI systems benefit society as a whole. 
+By ensuring controllability, responsible AI can help mitigate risks, promote fairness and transparency, and ensure that AI systems benefit society as a whole.
 透過確保可控性，負責任的 AI 可以幫助減輕風險，促進公平與透明，並確保 AI 系統使整個社會受益。
 
 #### 3.4.2 Business benefits of responsible AI  負責任 AI 的商業利益
@@ -2470,7 +2466,7 @@ Responsible AI offers key business benefits in the development and deployment of
 
 ##### Increased trust and reputation  提升信任和聲譽
 
-Customers are more likely to interact with AI applications, if they believe the system is fair and safe. This enhances their reputation and brand value. 
+Customers are more likely to interact with AI applications, if they believe the system is fair and safe. This enhances their reputation and brand value.
 
 > 客戶若相信系統公平且安全，便更有可能與 AI 應用程式互動。這能提升其聲譽和品牌價值。
 
@@ -2508,13 +2504,9 @@ Next, you will test what you have learned in this section with a knowledge check
 
 > 接下來，您將透過知識檢測來測試在本節中學到的內容。
 
----
-
 - Lesson 6 of 16  課程 6 / 16
 
 ### Knowledge Check  知識檢查
-
----
 
 - Lesson 7 of 16
 
@@ -2536,11 +2528,11 @@ With SageMaker, you can store and share your data without having to build and ma
 
 #### Amazon Bedrock  亞馬遜基岩
 
-Amazon Bedrock is a fully managed service that makes available high-performing FMs from leading AI startups and Amazon for your use through a unified API. You can choose from a wide range of FMs to find the model that is best suited for your use case. 
+Amazon Bedrock is a fully managed service that makes available high-performing FMs from leading AI startups and Amazon for your use through a unified API. You can choose from a wide range of FMs to find the model that is best suited for your use case.
 
 > Amazon Bedrock 是一項完全託管的服務，可透過統一的 API 為您提供來自領先 AI 新創公司和 Amazon 的高效能 FM。您可以從多種 FM 中進行選擇，找到最適合您的使用案例的型號。
 
-Amazon Bedrock also offers a broad set of capabilities to build generative AI applications with security, privacy, and responsible AI. 
+Amazon Bedrock also offers a broad set of capabilities to build generative AI applications with security, privacy, and responsible AI.
 
 > 亞馬遜 Bedrock 還提供了廣泛的功能，可以構建具有安全性，隱私和負責任 AI 的生成式 AI 應用程序。
 
@@ -2555,17 +2547,17 @@ Next, you will look at Amazon service tools that can help you with different are
 
 ##### Foundation model evaluation  基礎模型評估
 
-You should always evaluate a FM to determine if it will it is suited for your specific use case. To help you do this, Amazon offers model evaluation on Amazon Bedrock and Amazon SageMaker Clarify. 
+You should always evaluate a FM to determine if it will it is suited for your specific use case. To help you do this, Amazon offers model evaluation on Amazon Bedrock and Amazon SageMaker Clarify.
 
 > 您應該始終評估 FM 以確定它是否適合您的特定用例。為了幫助您做到這一點，Amazon 在 Amazon Bedrock 和 Amazon SageMaker Clarify 上提供模型評估。
 
 ###### Model Evaluation on Amazon Bedrock  亞馬遜 Bedrock 上的模型評估
 
-With Model evaluation on Amazon Bedrock, you can evaluate, compare, and select the best foundation model for your use case in just a few clicks. Amazon Bedrock offers a choice of automatic evaluation and human evaluation. 
+With Model evaluation on Amazon Bedrock, you can evaluate, compare, and select the best foundation model for your use case in just a few clicks. Amazon Bedrock offers a choice of automatic evaluation and human evaluation.
 
 > 透過Amazon Bedrock 上的模型評估，您只需點擊幾下即可評估、比較並選擇適合您的用例的最佳基礎模型。 Amazon Bedrock 提供自動評估和手動評估兩種選擇。
 
-Automatic evaluation offers predefined metrics such as accuracy, robustness, and toxicity. 
+Automatic evaluation offers predefined metrics such as accuracy, robustness, and toxicity.
 
 > 自動評估提供預先定義的指標，例如準確性、穩健性和毒性。
 
@@ -2579,7 +2571,7 @@ Now that you have learned about model evaluation on Amazon Bedrock, move on to t
 
 ###### Amazon SageMaker Clarify   亞馬遜 SageMaker Clarify
 
-SageMaker Clarify supports FM evaluation. You can automatically evaluate FMs for your generative AI use case with metrics such as accuracy, robustness, and toxicity to support your responsible AI initiative. 
+SageMaker Clarify supports FM evaluation. You can automatically evaluate FMs for your generative AI use case with metrics such as accuracy, robustness, and toxicity to support your responsible AI initiative.
 
 > Sagemaker Clarify 支持基礎模型評估。您可以自動評估具有準確性，魯棒性和毒性等指標的生成 AI 用例，以支持您負責任的 AI 計劃。
 
@@ -2619,7 +2611,7 @@ Amazon Bedrock Guardrails helps you detect PII in user inputs and FM responses. 
 
 ##### Bias detection  偏置檢測
 
-SageMaker Clarify helps identify potential bias in machine learning models and datasets without the need for extensive coding. You specify input features, such as gender or age, and SageMaker Clarify runs an analysis job to detect potential bias in those features. SageMaker Clarify then provides a visual report with a description of the metrics and measurements of potential bias so that you can identify steps to remediate the bias. 
+SageMaker Clarify helps identify potential bias in machine learning models and datasets without the need for extensive coding. You specify input features, such as gender or age, and SageMaker Clarify runs an analysis job to detect potential bias in those features. SageMaker Clarify then provides a visual report with a description of the metrics and measurements of potential bias so that you can identify steps to remediate the bias.
 
 > SageMaker Clarify有助於識別機器學習模型和資料集中的潛在偏差，而無需進行大量編碼。您指定輸入特徵，例如性別或年齡，SageMaker Clarify 會執行分析作業來偵測這些特徵中的潛在偏差。然後，SageMaker Clarify 提供一份視覺化報告，其中包含潛在偏差指標和測量的描述，以便您可以確定糾正偏差的步驟。
 

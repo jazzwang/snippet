@@ -251,8 +251,6 @@ Dealing with a `UnicodeDecodeError` in Python usually means your file contains a
 
 Here is how you can use `vi` (or `vim`) to find and fix that specific byte.
 
----
-
 ### 1. Highlight Non-ASCII Characters
 
 The easiest way to find the "invisible" culprit is to tell `vi` to highlight any character that isn't part of the standard ASCII set.
@@ -268,8 +266,6 @@ The easiest way to find the "invisible" culprit is to tell `vi` to highlight any
 
 *This tells `vi` to search for any character **not** in the range of hex 00 to 7F.*
 
----
-
 ### 2. Locate the Exact Position
 
 Since your error message gave you a specific location (position 193), you can jump to that approximate area.
@@ -281,8 +277,6 @@ Since your error message gave you a specific location (position 193), you can ju
 
 
 
----
-
 ### 3. Use "List" Mode to See Hidden Characters
 
 You can force `vi` to show characters that are usually invisible (like trailing spaces or non-breaking spaces).
@@ -290,8 +284,6 @@ You can force `vi` to show characters that are usually invisible (like trailing 
 1. Type `:set list`
 2. Non-breaking spaces often show up as `~` or a highlighted space depending on your colorscheme.
 3. To turn it off later, type `:set nolist`.
-
----
 
 ### 4. Search and Destroy (The Fix)
 
@@ -306,8 +298,6 @@ If you want to find that specific `0xa0` byte and replace it with a standard spa
 * `\%u00a0`: This is the Vim syntax for the Unicode character `U+00A0` (the byte `0xa0`).
 * `/ /g`: Replace it with a regular space globally.
 
----
-
 ### Summary of Useful `vi` Commands
 
 | Command | Action |
@@ -316,8 +306,6 @@ If you want to find that specific `0xa0` byte and replace it with a standard spa
 | `:set list` | Show hidden/special characters visually. |
 | `/[^\x00-\x7f]` | Search for the next non-ASCII character. |
 | `:%s/[^\x00-\x7f]//g` | **Extreme measure:** Delete every non-ASCII character in the file. |
-
----
 
 **Would you like me to show you how to configure your `.vimrc` so that these "bad" characters are always highlighted in red whenever you open a file?**
 
@@ -332,8 +320,6 @@ UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f917' in posit
 This error is the opposite of your previous one. While a `DecodeError` happens when **reading** a file, a `UnicodeEncodeError` happens when Python tries to **write or print** a character that the destination (your terminal, a file, or a Windows pipe) doesn't understand.
 
 The character `\U0001f917` is the **"Hugging Face" emoji (🤗)**. The `'charmap'` codec error usually occurs on Windows because the default system encoding (often `cp1252`) cannot handle emojis.
-
----
 
 ### Solution 1: Force UTF-8 Encoding in Code
 
@@ -353,8 +339,6 @@ with open('output.txt', 'w', encoding='utf-8') as f:
     f.write(my_string)
 ```
 
----
-
 ### Solution 2: Fix the Terminal Environment
 
 If the error happens when you `print()`, your terminal environment isn't identifying itself as UTF-8 compatible. You can override this by setting an environment variable in your shell **before** running your script.
@@ -373,8 +357,6 @@ set PYTHONIOENCODING=utf8
 python your_script.py
 ```
 
----
-
 ### Solution 3: The "Ignore" or "Replace" Strategy
 
 If you don't actually care about the emoji and just want the script to stop crashing, you can tell Python how to handle characters it can't encode.
@@ -387,8 +369,6 @@ print(clean_string)
 # Or replace them with a placeholder like '?'
 print(my_string.encode('cp1252', errors='replace').decode('cp1252'))
 ```
-
----
 
 ### How to find this in `vi`
 
@@ -403,13 +383,10 @@ If that emoji is hard-coded in your Python script and you want to find it using 
 
 3. Once found, you can delete it or replace it with a text-based version like `":hugging_face:"`.
 
----
-
 ### Why this happens (The Logic)
 
 Python 3 uses Unicode for all strings internally. However, when those strings leave the Python environment (to a disk or a screen), they must be converted into **bytes**. If the "map" (codec) chosen for that conversion doesn't have a slot for a specific emoji, it panics and throws this error.
 
 **Would you like me to show you how to update your Python environment globally so you don't have to set these variables every time?**
 
-</td></tr>
-</table>
+---

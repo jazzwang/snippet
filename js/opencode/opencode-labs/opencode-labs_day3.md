@@ -35,8 +35,6 @@ Inside that file, you'll see sections like:
 
 You can manually edit this file to change how the AI behaves. If you add a line saying: *"Always use Arrow Functions in TypeScript,"* the agent will follow that rule for every subsequent prompt without you having to remind it.
 
----
-
 ## Day 3 Lab: "The Strict Architect"
 
 In this lab, you will force OpenCode to adhere to a specific, strict set of rules for a new project.
@@ -81,19 +79,15 @@ Now, let's see if the agent "remembers" its training.
 * Did it add the `# Created for Day 3 Lab` comment?
 * Did it avoid using `print()`?
 
----
-
 ### Phase 4: Dynamic Task Tracking
 
 The "Brain" isn't just for rules; it's for status.
 
-1. **Ask the agent:** 
+1. **Ask the agent:**
 
 > "Update the project documentation to show that the `fetcher.py` module is completed, and suggest the next three logical steps for this microservice."
 
 2. **Check the file:** Open your `AGENTS.md` again. You should see the agent has physically updated the "Active Tasks" or "Status" section of the file.
-
----
 
 ## Day 3 Summary Checklist
 
@@ -103,8 +97,6 @@ The "Brain" isn't just for rules; it's for status.
 | Manually edited the **Guidelines** to enforce a style | ☐ |
 | Verified the agent followed the "No Print" and "Type Hint" rules | ☐ |
 | Observed the agent updating its own **Status** in the file | ☐ |
-
----
 
 ### Pro-Tip: The "Reset"
 
@@ -247,8 +239,6 @@ I will create a generic `AGENTS.md` file with common best practices for agentic 
 Wrote file successfully.
 ```
 
----
-
 #### Assistant (Build · gemini-2.5-flash · 6.9s)
 
 _Thinking:_
@@ -355,19 +345,19 @@ The file is at `/tmp/day3-lab/fetcher.py`
 <path>/tmp/day3-lab/fetcher.py</path>
 <type>file</type>
 <content>1: # Created for Day 3 Lab
-2: 
-3: 
+2:
+3:
 4: def get_temperature(city: str) -> float:
 5:     """Get the current temperature for a city.
-6: 
+6:
 7:     Args:
 8:         city: The name of the city to get temperature for.
-9: 
+9:
 10:     Returns:
 11:         The current temperature in Celsius.
 12:     """
 13:     return 25.0
-14: 
+14:
 
 (End of file - total 14 lines)
 </content>
@@ -407,7 +397,7 @@ It's already marked as completed with [x]. Maybe the user wants me to verify thi
 
 But maybe they want me to confirm this is the state, or perhaps they want me to update it differently. Let me think about this...
 
-Actually, looking more carefully at the README, it seems like the documentation is already accurate - fetcher.py is marked as completed and there are already 3 next steps listed. 
+Actually, looking more carefully at the README, it seems like the documentation is already accurate - fetcher.py is marked as completed and there are already 3 next steps listed.
 
 Perhaps the user wants me to:
 1. Verify the current state

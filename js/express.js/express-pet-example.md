@@ -32,8 +32,6 @@
 
 Here's a **Bash script** that sets up a minimal Express.js server to meet your requirements. It includes logic to handle a POST request to `/pet`, validate the `id` field, and respond accordingly.
 
----
-
 ### 🛠️ **Step-by-Step Strategy**
 1. **Initialize a Node.js project**.
 2. **Install Express.js**.
@@ -44,8 +42,6 @@ Here's a **Bash script** that sets up a minimal Express.js server to meet your r
    - Responds with:
      - `200` and a random 10-digit `id` if `id === 0`.
      - `405` if `id` is missing or not zero.
-
----
 
 ### 📜 **Bash Script: `setup_pet_api.sh`**
 
@@ -93,8 +89,6 @@ echo "Starting server..."
 node index.js
 ```
 
----
-
 ### ✅ **Test Cases (using curl)**
 
 ```bash
@@ -113,8 +107,6 @@ curl -X POST http://localhost:3000/pet \
   -H "Content-Type: application/json" \
   -d '{"name":"Fluffy","status":"available"}'
 ```
-
----
 
 Would you like me to package this into a downloadable `.zip` file or help you run it in a Docker container for easier testing?
 ---

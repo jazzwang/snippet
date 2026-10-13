@@ -220,8 +220,6 @@ The main goal of this script is to **integrate Tactiq's transcription and meetin
 
 Here's the logic, step-by-step:
 
----
-
 ### Core Setup and Initialization
 
 1.  **Global State & Utilities:**
@@ -246,8 +244,6 @@ Here's the logic, step-by-step:
     *   It adds a `<meta>` tag to the document head, indicating the script's presence and version.
     *   It immediately starts the "Call Detection" process (`R()`).
     *   If the Teams version is "LightMeetings", it also calls the WebRTC/WebSocket interception setup (`o()`).
-
----
 
 ### Call Detection and Transcription (`R()`, `C()`)
 
@@ -280,8 +276,6 @@ Here's the logic, step-by-step:
         *   `d()` is a debounced function that, every 500ms, takes all accumulated captions from the `t` array and dispatches them as a single `speech` custom browser event. This prevents flooding the browser with too many events.
     *   **Meeting End Detection:** After the call setup, `C()` sets up another polling loop to detect when the active call ends (e.g., `getActiveCall()` returns null, or call state changes). When the call ends, it cleans up listeners, resets internal state, dispatches a `meeting-id` event with `undefined` (to signal no active meeting), and calls `R()` again to wait for the next call.
 
----
-
 ### Chat Message Sending (`_()`)
 
 1.  **Purpose:** To programmatically send a message into the Teams chat.
@@ -293,16 +287,12 @@ Here's the logic, step-by-step:
     *   Finally, it simulates pressing `Ctrl+Enter` (or `Cmd+Enter` on Mac) using a `KeyboardEvent` to send the message.
     *   After sending, it clicks the chat button again to close the chat panel.
 
----
-
 ### External Communication (`document.documentElement.addEventListener("tactiq-rtc", ...)`)
 
 *   This is the mechanism for other parts of the extension to send commands to `msteams.inline.js`.
 *   It listens for `CustomEvent`s with the name "tactiq-rtc".
 *   The `detail` property of the event contains an object with a `type` (e.g., "debug", "setMSTeamsLanguage", "sendMSTeamsChatMessage") and other relevant data.
 *   Based on the `type`, it calls the corresponding internal function (e.g., `_()` for sending chat messages, `x?.setClosedCaptionsLanguage()` for changing language).
-
----
 
 ### Summary of Logic Flow:
 
@@ -489,4 +479,4 @@ sequenceDiagram
   - 加入會議：`data-tid="calling-prejoin-screen"`
   - 會議中：`div aria-label="Calling indicators"`
   - 會議結束：`data-tid="calling-quality-feedback-screen"`
-- 接著來看步驟 10 `Trigger C() function (handle active call)` 
+- 接著來看步驟 10 `Trigger C() function (handle active call)`

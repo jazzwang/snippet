@@ -9,8 +9,6 @@
 
 Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for English audio transcription, based on current benchmarks and usage scenarios:
 
----
-
 ### 🧠 **Model Overview**
 
 | Feature | **OpenAI Whisper** | **Microsoft SpeechT5** |
@@ -20,8 +18,6 @@ Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for En
 | **Multilingual Support** | Yes (100+ languages) | No (English only) |
 | **Open Source** | Yes | Yes |
 | **Pretrained Models on HF** | `openai/whisper-large-v3`, etc. | `microsoft/speecht5-asr` |
-
----
 
 ### 🎯 **Accuracy & Performance**
 
@@ -33,8 +29,6 @@ Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for En
 | **Timestamp Alignment** | Yes | No |
 | **Language Detection** | Yes | No |
 
----
-
 ### ⚙️ **Use Case Suitability**
 
 | Use Case | **Whisper** | **SpeechT5** |
@@ -44,8 +38,6 @@ Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for En
 | **Noisy environments** | ✅ Robust | ⚠️ Less robust |
 | **Real-time transcription** | ❌ Not ideal (batch only) | ⚠️ Possible with optimization |
 | **Speaker separation** | ✅ With WhisperX | ❌ Not supported |
-
----
 
 ### 🧪 **Developer Experience**
 
@@ -59,8 +51,6 @@ Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for En
   - Requires more manual setup for audio preprocessing.
   - Less community tooling compared to Whisper.
 
----
-
 ### 🏁 Summary
 
 | Criteria | Winner |
@@ -71,8 +61,6 @@ Here's a comparison between **OpenAI Whisper** and **Microsoft SpeechT5** for En
 | **Real-time Potential** | SpeechT5 (with optimization) |
 | **Ease of Use** | Whisper |
 
----
-
 Would you like a code comparison using both models on the same audio file? Or help choosing the best model for your specific use case (e.g., meetings, podcasts, noisy environments)?
 ---
 
@@ -80,8 +68,6 @@ Would you like a code comparison using both models on the same audio file? Or he
 > What's the difference between Whisper, WhisperX and FasterWhisper? could you give me comparison tables?
 
 Here’s a clear comparison of **Whisper**, **WhisperX**, and **FasterWhisper**, three popular tools for automatic speech recognition (ASR) based on OpenAI’s Whisper model:
-
----
 
 ### 🧠 **Model Comparison Table**
 
@@ -99,15 +85,11 @@ Here’s a clear comparison of **Whisper**, **WhisperX**, and **FasterWhisper**,
 | **Installation Complexity** | Easy | Moderate (requires extra tools) | Easy |
 | **Use Case** | General transcription | Detailed transcripts with speaker info | Fast transcription for production use |
 
----
-
 ### 📌 Summary
 
 - **Whisper**: Best for general transcription tasks with high accuracy and multilingual support.
 - **WhisperX**: Ideal for **precise word-level timestamps** and **speaker diarization**—great for interviews, podcasts, and multi-speaker recordings.
 - **FasterWhisper**: Optimized for **speed and efficiency**, especially on CPU or in real-time applications.
-
----
 
 Would you like a code example comparing Whisper and FasterWhisper on the same audio file? Or help setting up WhisperX for speaker diarization?
 ---
@@ -117,8 +99,6 @@ Would you like a code example comparing Whisper and FasterWhisper on the same au
 
 Here’s a side-by-side code example comparing **OpenAI Whisper** and **FasterWhisper** on the same audio file. This will help you evaluate differences in speed and output quality.
 
----
-
 ### 🧰 Prerequisites
 
 Install the required libraries:
@@ -126,8 +106,6 @@ Install the required libraries:
 ```bash
 pip install transformers torchaudio faster-whisper
 ```
-
----
 
 ### 📄 Code Example
 
@@ -165,14 +143,10 @@ for segment in segments:
     print(f"[{segment.start:.2f}s - {segment.end:.2f}s] {segment.text}")
 ```
 
----
-
 ### 🧪 Key Differences in Output
 
 - **Whisper (Hugging Face)** returns a single transcript string.
 - **FasterWhisper** returns segmented transcripts with timestamps (more useful for subtitle generation or diarization).
-
----
 
 Would you like me to help you run this on a sample AAC file or add speaker diarization using WhisperX?
 ---
@@ -181,8 +155,6 @@ Would you like me to help you run this on a sample AAC file or add speaker diari
 > Add speaker diarization with WhisperX
 
 To add **speaker diarization** using **WhisperX**, you'll need to combine Whisper transcription with speaker segmentation from `pyannote-audio`. Here's a complete example:
-
----
 
 ### 🧰 Prerequisites
 
@@ -194,8 +166,6 @@ pip install pyannote.audio
 ```
 
 You’ll also need a **Hugging Face token** to use `pyannote-audio` for speaker diarization. You can get one from https://huggingface.co/settings/tokens.
-
----
 
 ### 📄 Code Example with WhisperX + Speaker Diarization
 
@@ -226,15 +196,11 @@ for word in final_result:
     print(f"[{word['start']:.2f}s - {word['end']:.2f}s] Speaker {word['speaker']}: {word['word']}")
 ```
 
----
-
 ### 🔍 What You Get
 
 - **Word-level timestamps**
 - **Speaker labels** (e.g., Speaker 1, Speaker 2)
 - **High accuracy transcription**
-
----
 
 Would you like help setting up the Hugging Face token or running this on a sample file?
 ---

@@ -11,14 +11,13 @@
 
 - 緣起：想試試看能否用 ttyd 搭配 ngrok 把遠端的 Terminal 分享出來
 
-<table><tr style="background-color:lightyellow;"><td>Q: is it possible to integrate ngrok and any SSH server or web shell server on Windows 11 which provides remote access?
+> [!NOTE]
+> Q: is it possible to integrate ngrok and any SSH server or web shell server on Windows 11 which provides remote access?
 ---
 
 It is absolutely possible. While ngrok is famous for HTTP traffic, it is a versatile "tunneling" tool that can handle **TCP** traffic as well, which is exactly what SSH requires.
 
 On Windows 11, you have two main paths: the robust, "pro" way using the built-in OpenSSH server, or the quick-and-dirty way using a Web Shell.
-
----
 
 ### Option 1: Remote Access via SSH (Recommended)
 
@@ -50,8 +49,6 @@ ngrok will provide a URL like `tcp://0.tcp.ngrok.io:12345`. To connect from anot
 ssh username@0.tcp.ngrok.io -p 12345
 ```
 
----
-
 ### Option 2: Remote Access via Web Shell
 
 If you prefer using a browser instead of an SSH client, you can use a **Web Shell** (like `ttyd` or `gotty`). This converts your terminal into a web page, which you then forward via ngrok's HTTP tunnel.
@@ -70,8 +67,6 @@ ngrok http 8080
 
 *Now, hitting the ngrok URL in any browser will give you a live Windows command prompt.*
 
----
-
 ### Comparison: SSH vs. Web Shell
 
 | Feature | SSH (Port 22) | Web Shell (HTTP) |
@@ -80,8 +75,6 @@ ngrok http 8080
 | **Interface** | Terminal Client (PuTTY, Termius) | Any Web Browser |
 | **Ease of Use** | Best for file transfers & dev work | Best for quick access on public PCs |
 | **ngrok Protocol** | `tcp` | `http` |
-
----
 
 ### ⚠️ A Note on Security
 

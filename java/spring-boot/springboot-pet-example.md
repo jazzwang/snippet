@@ -32,8 +32,6 @@
 
 Here’s a **step-by-step command line guide** to quickly build and test a minimal **Java Spring Boot** API in **GitHub Codespaces** that meets your requirements. This setup is optimized for a **20–30 minute time-box**.
 
----
-
 ## ✅ Step 1: Create a GitHub Repository
 
 ```bash
@@ -41,13 +39,9 @@ gh repo create pet-api-springboot --public --clone
 cd pet-api-springboot
 ```
 
----
-
 ## ✅ Step 2: Open in GitHub Codespaces
 
 From the GitHub repo page, click **Code > Codespaces > Create codespace on main**.
-
----
 
 ## ✅ Step 3: Initialize Spring Boot Project
 
@@ -63,8 +57,6 @@ curl https://start.spring.io/starter.zip \
 unzip pet-api.zip
 cd pet-api
 ```
-
----
 
 ## ✅ Step 4: Create Pet Model
 
@@ -88,8 +80,6 @@ public class Pet {
     public void setStatus(String status) { this.status = status; }
 }
 ```
-
----
 
 ## ✅ Step 5: Create Controller
 
@@ -121,8 +111,6 @@ public class PetController {
 }
 ```
 
----
-
 ## ✅ Step 6: Run the App
 
 ```bash
@@ -134,8 +122,6 @@ App will be available at:
 ```
 http://localhost:8080/pet
 ```
-
----
 
 ## ✅ Step 7: Test with `curl`
 
@@ -149,8 +135,6 @@ curl -X POST http://localhost:8080/pet \
 
 Expected: Returns `200` with a 10-digit random `id`.
 
----
-
 ### ❌ Test Case 2: Invalid ID ≠ 0
 
 ```bash
@@ -160,8 +144,6 @@ curl -X POST http://localhost:8080/pet \
 ```
 
 Expected: Returns `405`.
-
----
 
 ### ❌ Test Case 3: Missing ID
 
@@ -173,16 +155,12 @@ curl -X POST http://localhost:8080/pet \
 
 Expected: Returns `405`.
 
----
-
 Would you like me to generate a `README.md`, a Postman collection, or a Swagger annotation for this controller?
 ---
 > [!NOTE]
 > could you fix the step to use `gradlew` instead of `mvnw`?
 
 Absolutely! Here's the **updated step-by-step guide using `gradlew` (Gradle Wrapper)** instead of `mvnw` for your **Java Spring Boot** API setup in GitHub Codespaces.
-
----
 
 ## ✅ Step 1: Create a GitHub Repository
 
@@ -191,13 +169,9 @@ gh repo create pet-api-springboot --public --clone
 cd pet-api-springboot
 ```
 
----
-
 ## ✅ Step 2: Open in GitHub Codespaces
 
 From the GitHub repo page, click **Code > Codespaces > Create codespace on main**.
-
----
 
 ## ✅ Step 3: Initialize Spring Boot Project with Gradle
 
@@ -214,8 +188,6 @@ curl https://start.spring.io/starter.zip \
 unzip pet-api.zip
 cd pet-api
 ```
-
----
 
 ## ✅ Step 4: Create Pet Model
 
@@ -239,8 +211,6 @@ public class Pet {
     public void setStatus(String status) { this.status = status; }
 }
 ```
-
----
 
 ## ✅ Step 5: Create Controller
 
@@ -270,8 +240,6 @@ public class PetController {
 }
 ```
 
----
-
 ## ✅ Step 6: Run the App with Gradle
 
 ```bash
@@ -283,8 +251,6 @@ App will be available at:
 ```
 http://localhost:8080/pet
 ```
-
----
 
 ## ✅ Step 7: Test with `curl`
 
@@ -298,8 +264,6 @@ curl -X POST http://localhost:8080/pet \
 
 Expected: Returns `200` with a 10-digit random `id`.
 
----
-
 ### ❌ Test Case 2: Invalid ID ≠ 0
 
 ```bash
@@ -310,8 +274,6 @@ curl -X POST http://localhost:8080/pet \
 
 Expected: Returns `405`.
 
----
-
 ### ❌ Test Case 3: Missing ID
 
 ```bash
@@ -321,8 +283,6 @@ curl -X POST http://localhost:8080/pet \
 ```
 
 Expected: Returns `405`.
-
----
 
 Would you like me to generate a `README.md`, add Swagger annotations, or help you containerize this with Docker for deployment?
 ---

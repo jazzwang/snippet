@@ -255,5 +255,4 @@ To help you find or build the perfect configuration, tell me:
 - [21] [https://hovernotes.io](https://hovernotes.io/en/blog/luna-notes-alternative-that-works-everywhere)
 - [22] [https://www.xda-developers.com](https://www.xda-developers.com/replaced-notebooklm-with-gistr/)
 
-</td></tr>
-</table>
+---

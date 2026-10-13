@@ -555,10 +555,10 @@ Long context: supports up to 128K tokens with yarn rope settings
 
 ## 2025-03-18
 
--
-<table><tr><td>Q: Is there a way to see API requests to ollama server? where can I find the log files?
-</td></tr>
-<tr><td>A: It's important to understand that "seeing API requests" can involve different levels of detail. You might want to see:
+> [!NOTE]
+> Q: Is there a way to see API requests to ollama server? where can I find the log files?
+
+A: It's important to understand that "seeing API requests" can involve different levels of detail. You might want to see:
 
 * **Basic server activity:** When the server receives requests, and any errors.
 * **Detailed request/response data:** The exact content of the API calls.

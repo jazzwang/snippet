@@ -117,8 +117,6 @@ This intelligent filtering prevents the agent from getting overwhelmed or distra
 
 This approach is counter-intuitive to the "more data is always better" mindset often prevalent in AI. Instead, it champions a lean, just-in-time information delivery system. It suggests that a more deliberate and structured interaction with information, guided by skills, can lead to more accurate, efficient, and ultimately, more "thoughtful" AI responses.
 
----
-
 The advent of agent skills marks a significant step forward in making AI agents not just powerful, but also practical and extensible. By embracing open standards, dynamic specialization, and intelligent context management, we're moving beyond simple prompts to building truly intelligent, adaptive systems. As these capabilities become more widespread, how will they reshape the way we design and interact with AI in our daily lives and work?
 
 ## 2026-01-29

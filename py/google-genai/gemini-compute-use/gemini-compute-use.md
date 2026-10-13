@@ -10,8 +10,6 @@ Gemini's **Computer Use** (officially part of the Gemini 2.5/3 series) is a spec
 
 As of early 2026, this feature is primarily available to developers via the **Gemini API** and **Vertex AI**. Below are the step-by-step instructions to set it up.
 
----
-
 ## 1. Prerequisites & Setup
 
 Before you can run the model, you need a developer environment and an API key.
@@ -27,8 +25,6 @@ playwright install chromium
 
 3. **Model Selection:** Currently, you must use the specialized preview model: `gemini-2.5-computer-use-preview-10-2025` (or the latest Gemini 3 equivalent if specified in your dashboard).
 
----
-
 ## 2. Understanding the "Agentic Loop"
 
 Unlike a standard chatbot, Computer Use requires a **loop**. The model cannot "click" a button directly; instead, it tells *your code* where to click, and your code reports back the result.
@@ -38,8 +34,6 @@ Unlike a standard chatbot, Computer Use requires a **loop**. The model cannot "c
 3. **Action:** Your local script (using Playwright) executes that click.
 4. **Feedback:** Your script takes a *new* screenshot and sends it back to the model.
 5. **Repeat:** This continues until the task is finished.
-
----
 
 ## 3. Implementation Steps (Python)
 
@@ -88,8 +82,6 @@ print(response.candidates[0].content.parts[0].function_call)
 
 ```
 
----
-
 ## 4. Key Actions Supported
 
 The model uses a specific coordinate system (0-1000 scale for x and y) to interact with the screen. Common commands include:
@@ -101,8 +93,6 @@ The model uses a specific coordinate system (0-1000 scale for x and y) to intera
 | `type_text_at` | Types a string into a field at a specific coordinate. |
 | `scroll_document` | Scrolls the page up or down. |
 | `drag_and_drop` | Moves an element from one coordinate to another. |
-
----
 
 ## 5. Using the Consumer "Gemini Agent"
 
@@ -133,8 +123,6 @@ pip install -U google-genai playwright
 playwright install chromium
 
 ```
-
----
 
 ### 2. The Complete Python Script
 
@@ -246,15 +234,11 @@ if __name__ == "__main__":
 
 ```
 
----
-
 ### 3. Critical Implementation Details
 
 * **Coordinate Scaling:** Gemini doesn't know your screen resolution. It operates on a **normalized 0-1000 scale**. You must multiply its output by your actual window width/height (as shown in the `execute_tool` function).
 * **Token Usage:** Every step sends a full screenshot back to the model. This can consume many tokens quickly. It is best to use **Gemini 2.0 Flash** for this to keep costs low and speed high.
 * **The "Wait" Factor:** After clicking or navigating, a real browser takes time to load. In a production script, you should add `await page.wait_for_load_state("networkidle")` after actions to ensure the next screenshot isn't of a blank loading screen.
-
----
 
 ### 4. Safety & Limitations
 

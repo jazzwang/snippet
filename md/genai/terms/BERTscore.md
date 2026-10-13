@@ -226,5 +226,4 @@ ROUGE 是一個以召回率為核心、基於字面重疊度的文本評估工�
 - [16] [https://medium.com](https://medium.com/@prabhatzade/rouge-score-a-complete-tutorial-for-evaluating-text-summarization-models-a3a146417118)
 - [17] [https://fastgpt.io](https://fastgpt.io/en/faq/What-are-the-differences-between)
 
-</td></tr>
-</table>
+---

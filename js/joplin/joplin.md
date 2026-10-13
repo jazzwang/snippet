@@ -18,8 +18,9 @@
     - https://github.com/hugobatista/joplin-to-obsidian
     - https://forum.obsidian.md/t/importing-from-joplin/41483
   - AI Mode
-<table><tr style="background-color:lightyellow;"><td>Q: joplin to obsidian
-</td></tr><tr style="background-color:lightgreen;"><td>Tool: Google Search AI Mode
+> [!NOTE]
+> Q: joplin to obsidian
+- Tool:  Google Search AI Mode
 A:
 Migrating your notes from Joplin to Obsidian is a straightforward process. Because Joplin natively supports exporting to plain text, you can move your data over without losing your organizational structure. [1, 2]
 ## How to Migrate in 3 Steps

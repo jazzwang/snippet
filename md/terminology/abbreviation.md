@@ -8,8 +8,6 @@
 
 這三個術語都與縮短詞語有關，但在用法和發音上有細微的區別：
 
----
-
 ## 1. Abbreviation (縮寫)
 
 **Abbreviation** 是最廣泛的通用術語，泛指任何將一個詞或短語縮短的表示方式。
@@ -22,8 +20,6 @@
     * **Jan.** (January, 一月)
     * **Mr.** (Mister, 先生)
 
----
-
 ## 2. Acronym (首字母縮略詞 - 可拼讀)
 
 **Acronym** 是由一個短語中每個單詞的**首字母**組成的，但它的關鍵特點是它可以**像一個新單詞一樣被拼讀出來**。
@@ -35,8 +31,6 @@
     * **NATO** (North Atlantic Treaty Organization) - 讀作 /'neɪtoʊ/
     * **RADAR** (Radio Detection and Ranging) - 讀作 /'reɪdɑːr/
     * **UAT** (User Acceptance Testing) - 許多人會將其讀作 /juːæt/
-
----
 
 ## 3. Initialism (首字母縮略詞 - 逐字母發音)
 

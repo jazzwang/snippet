@@ -10,8 +10,6 @@ Always launch OpenCode from the root of a project. This gives the agent the corr
 2. Navigate to your lab folder: `cd ~/opencode-lab`
 3. Launch the interface: `opencode`
 
----
-
 ### 2. The Power of "Plan Mode" vs. "Build Mode"
 
 In the TUI, you will see a toggle (usually at the top or switched via `Tab`).
@@ -21,8 +19,6 @@ In the TUI, you will see a toggle (usually at the top or switched via `Tab`).
 
 **The Golden Rule:** Never start in Build Mode. Always ask for a plan first to save your API tokens and prevent unwanted code changes.
 
----
-
 ### 3. Mastering the "@" Mentions
 
 Just like on Discord or Slack, OpenCode uses the `@` symbol to focus the AI's "eyes" on specific things. Try these in the chat box:
@@ -31,8 +27,6 @@ Just like on Discord or Slack, OpenCode uses the `@` symbol to focus the AI's "e
 * **`@folder`**: Attach an entire directory for context.
 * **`@terminal`**: Sends the recent output of your terminal to the AI (great for debugging errors).
 * **`@web`**: (If enabled) tells the agent to search the internet for documentation.
-
----
 
 ### 4. Hands-on Lab: The "Discovery" Exercise
 
@@ -56,8 +50,6 @@ opencode .
 
 > "Looking at `@src/lib/server/api.ts` (or whatever file it found), what environment variables do I need to set up to make this work?"
 
----
-
 ### 5. Essential Keyboard Shortcuts
 
 To move fast in the OpenCode TUI, memorize these three:
@@ -68,8 +60,6 @@ To move fast in the OpenCode TUI, memorize these three:
 | `Ctrl + C` | Cancel a running agent process (if it starts looping) |
 | `Ctrl + L` | Clear the chat history to refresh the context window |
 | `/` | Open the command menu (Connect, Settings, Clear) |
-
----
 
 ## Day 2 Success Checklist
 
@@ -140,8 +130,6 @@ The priority order is:
 <div style="background-color:lightyellow;">
 For **Day 2**, we are moving from "Can I run this?" to "How do I control this?" This lab, titled **"Operation: Code Scout,"** focuses on using OpenCode as a high-level architect before you ever let it touch your source code.
 
----
-
 ## Day 2 Lab: Operation "Code Scout"
 
 In this lab, you will explore a "mystery" codebase, map its dependencies, and simulate a debugging session using context mentions.
@@ -177,8 +165,6 @@ Your goal is to understand the project without writing a single line of code.
 
 3. **Verify the Context:** Note how OpenCode reads the `pyproject.toml` or `requirements.txt` to answer the database question.
 
----
-
 ### Phase 3: Surgical Context with `@`
 
 Now, let’s test how well OpenCode can "see" specific files you point at.
@@ -191,8 +177,6 @@ Now, let’s test how well OpenCode can "see" specific files you point at.
 3. **The Multi-File Prompt:** Ask it to compare two files:
 
 > "Compare `@app/schemas/user.py` and `@app/models/user.py`. Why do we have two different files for the same 'User' entity?"
-
----
 
 ### Phase 4: The Detective (Terminal Integration)
 
@@ -208,8 +192,6 @@ python3 -m app.main
 
 > "I just tried to run the app and got an error. Look at `@terminal` and tell me which library I am missing and how to install it in this WSL environment."
 
----
-
 ### Phase 5: The "Dry Run" Challenge
 
 Before finishing, ask the agent to **plan** a change without **executing** it.
@@ -220,8 +202,6 @@ Before finishing, ask the agent to **plan** a change without **executing** it.
 
 2. **The Review:** Read the plan. Does it make sense? Did it miss the migration file? This is where you develop your "AI Oversight" skills.
 
----
-
 ### Day 2 Summary Checklist
 
 | Task | Completed |
@@ -230,8 +210,6 @@ Before finishing, ask the agent to **plan** a change without **executing** it.
 | Used **`@file`** to analyze a specific script | ☐ |
 | Used **`@terminal`** to diagnose a shell error | ☐ |
 | Received a multi-step plan without any files being edited | ☐ |
-
----
 
 **How did OpenCode handle the "Phone Number" plan? Did it feel like it "understood" the full stack, or did it miss a spot?** When you're ready, we can move to **Day 3: The Project Brain**, where we learn how to configure `AGENTS.md` to make the AI follow your specific rules!
 

@@ -7,8 +7,6 @@
 
 The simplest way to think about the difference is: **OLTP runs your business**, while **OLAP helps you understand it.**
 
----
-
 ### At a Glance: Key Differences
 
 | Feature | OLTP (Online Transaction Processing) | OLAP (Online Analytical Processing) |
@@ -19,8 +17,6 @@ The simplest way to think about the difference is: **OLTP runs your business**, 
 | **Query Type** | Simple (e.g., "Add $50 to account A") | Complex (e.g., "What were sales by region?") |
 | **Response Time** | Milliseconds | Seconds to Hours |
 | **Storage** | Row-based (optimized for single records) | Columnar or Cubes (optimized for aggregates) |
-
----
 
 ### 1. OLTP: The "Doer"
 
@@ -35,8 +31,6 @@ OLAP systems are used by analysts and executives to spot trends and make long-te
 
 * **Big Picture:** Instead of looking at one customer's order, OLAP looks at millions of rows to calculate "Total Revenue for Q3."
 * **The "Cube":** OLAP often uses a **multidimensional cube** structure. This allows users to "slice and dice" data—for example, looking at Sales by **Time**, then by **Product**, then by **Geography**.
-
----
 
 ### Real-World Example: Amazon
 

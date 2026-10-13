@@ -133,8 +133,9 @@ observer.observe(targetNode, config);
 
 ## 2026-05-28
 
-<table><tr style="background-color:lightyellow;"><td>Q: how can I use JavaScript and Chrome DevTool to change heigh of div with data-tid="closed-caption-renderer-wrapper" to 50px?
-</td></tr><tr style="background-color:lightgreen;"><td>Tool:
+> [!NOTE]
+> Q: how can I use JavaScript and Chrome DevTool to change heigh of div with data-tid="closed-caption-renderer-wrapper" to 50px?
+- Tool:
 - May 28 at 9:41 PM
 - Google Gemini Apps
 - Gemini 3.5 Flash | Thinking Level: Standard

@@ -6,8 +6,6 @@
 
 They offer a fully integrated AI system combining **hardware + NurOS™ software** — making sophisticated on-premise AI deployment effortless, cost-effective, and completely controlled.
 
----
-
 ## Products & Solutions
 
 | Product/Solution | Description |
@@ -17,8 +15,6 @@ They offer a fully integrated AI system combining **hardware + NurOS™ software
 | **NuroTab™** | AI-powered IDE for hardware design (FPGA/ASIC) — supports Verilog, SystemVerilog, firmware development |
 | **Industry Solutions** | Healthcare, Defense, Finance, Enterprise AI |
 
----
-
 ## Target Audiences
 
 - **Healthcare organizations** — needing data sovereignty for patient records
@@ -26,8 +22,6 @@ They offer a fully integrated AI system combining **hardware + NurOS™ software
 - **Financial services** — with strict regulatory/compliance needs
 - **Enterprises** — seeking control over AI infrastructure vs. cloud-only solutions
 - **Hardware engineers** — specifically FPGA/ASIC designers (NuroTab™)
-
----
 
 ## Competitors
 
@@ -40,8 +34,6 @@ They offer a fully integrated AI system combining **hardware + NurOS™ software
 | **Cortexa (Ademero)** | On-premises enterprise AI infrastructure |
 | **BIZLAI** | On-premise AI for business (Canada) |
 | **Kompact AI** | High-performance AI on CPUs |
-
----
 
 ## SWOT Analysis
 
@@ -59,8 +51,6 @@ They offer a fully integrated AI system combining **hardware + NurOS™ software
 | Demand for AI sovereignty in Europe/Asia | Rapidly evolving AI hardware market |
 | Edge AI growth (IoT, autonomous systems) | Price competition from established players |
 
----
-
 ## Porter's Five Forces Analysis
 
 | Force | Analysis |
@@ -71,16 +61,12 @@ They offer a fully integrated AI system combining **hardware + NurOS™ software
 | **Threat of Substitutes** | **High** — Cloud AI (AWS, Azure, GCP), open-source models, and hybrid solutions are strong alternatives. |
 | **Competitive Rivalry** | **Medium-High** — Fragmented market with specialized players; differentiation via integration and security is key. |
 
----
-
 ## Key Takeaways
 
 - **Nurol** positions itself as the "easy button" for on-premise AI — not just for tech giants, but for organizations of all sizes.
 - Their **NuroTab™** is a differentiator — niche but high-value for hardware design teams.
 - Main value prop: **Data sovereignty + simplicity** — critical for healthcare, defense, and regulated industries.
 - Biggest challenge: Competing against cloud convenience and major players' on-prem pushes.
-
----
 
 ## References
 

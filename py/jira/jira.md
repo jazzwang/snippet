@@ -50,8 +50,6 @@ curl -u "email@example.com:YOUR_API_TOKEN" \
 3. **Comments:** By default, this endpoint **includes** comments in the JSON under `fields.comment`.
 4. **Rendered HTML:** If you want the comments as HTML instead of Jira's internal wiki-markup, add `?expand=renderedFields` to the URL.
 
----
-
 ### Method 2: Dedicated CLI Tools
 
 If you prefer a binary tool over raw `curl` commands, there are two popular open-source CLI tools.

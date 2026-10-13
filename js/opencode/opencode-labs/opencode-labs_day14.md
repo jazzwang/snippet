@@ -134,13 +134,9 @@ Resolving deltas: 100% (40842/40842), done.
 **Created:** 3/10/2026, 11:30:26 AM
 **Updated:** 3/10/2026, 12:10:30 PM
 
----
-
 #### User
 
-I want to contribute to this repo. Here is an issue description: 'The current README is missing a section on how to run tests in a WSL environment. Users are getting confused about Docker integration.' Based on the files in @., where should this information go, and what are the specific steps a WSL user needs to take? 
-
----
+I want to contribute to this repo. Here is an issue description: 'The current README is missing a section on how to run tests in a WSL environment. Users are getting confused about Docker integration.' Based on the files in @., where should this information go, and what are the specific steps a WSL user needs to take?
 
 #### Assistant (Plan · minimax-m2.5-free · 13.8s)
 
@@ -265,8 +261,6 @@ C:\Users\jazzw\AppData\Local\Temp\day14-oss\.github\CODE_OF_CONDUCT.md
 (Results are truncated: showing first 100 results. Consider using a more specific path or pattern.)
 ```
 
----
-
 #### Assistant (Plan · minimax-m2.5-free · 11.3s)
 
 _Thinking:_
@@ -289,7 +283,7 @@ The glob results show there are many markdown files. Let me look at the main REA
 <content>1: [![Open Source Love](https://firstcontributions.github.io/open-source-badges/badges/open-source-v1/open-source.svg)](https://github.com/firstcontributions/open-source-badges)
 2: [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 3: [![Open Source Helpers](https://www.codetriage.com/roshanjossey/first-contributions/badges/users.svg)](https://www.codetriage.com/roshanjossey/first-contributions)
-4: 
+4:
 5: #### _Read this in [other languages](docs/translations/Translations.md)._
 6: <kbd>[<img title="Shqip" alt="Shqip" src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/al.svg" width="22">](docs/translations/README.al.md)</kbd>
 7: <kbd>[<img title="Armenian" alt="Armenian" src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/am.svg" width="22">](docs/translations/README.arm.md)</kbd>
@@ -376,159 +370,159 @@ The glob results show there are many markdown files. Let me look at the main REA
 88: <kbd>[<img title="Mongolian" alt="Mongolian" src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/mn.svg" width="22">](docs/translations/README.mn.md)</kbd>
 89: <kbd>[<img title="Tounsi" alt="Tounsi" src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/tn.svg" width="22">](docs/translations/README.tn.md)</kbd>
 90: <kbd>[<img title="Lingala" alt="Lingala" src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/cd.svg" width="22">](docs/translations/README.ln.md)</kbd>
-91: 
+91:
 92: # First Contributions
-93: 
+93:
 94: This project aims to simplify and guide the way beginners make their first contribution. If you are looking to make your first contribution, follow the steps below.
-95: 
+95:
 96: _If you're not comfortable with command line, [here are tutorials using GUI tools.](#tutorials-using-other-tools)_
-97: 
+97:
 98: <img align="right" width="300" src="https://firstcontributions.github.io/assets/Readme/fork.png" alt="fork the repository" />
-99: 
+99:
 100: #### If you don't have git on your machine, [install it](https://docs.github.com/en/get-started/quickstart/set-up-git).
-101: 
+101:
 102: ## Fork this repository
-103: 
+103:
 104: Fork this repository by clicking on the fork button on the top of this page.
 105: This will create a copy of this repository in your account.
-106: 
+106:
 107: ## Clone the repository
-108: 
+108:
 109: <img align="right" width="300" src="https://firstcontributions.github.io/assets/Readme/clone.png" alt="clone the repository" />
-110: 
+110:
 111: Now clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the code button, then on SSH tab and then click the _copy url to clipboard_ icon.
-112: 
+112:
 113: Open a terminal and run the following git command:
-114: 
+114:
 115: ```bash
 116: git clone "url you just copied"
 117: ```
-118: 
+118:
 119: where "url you just copied" (without the quotation marks) is the url to this repository (your fork of this project). See the previous steps to obtain the url.
-120: 
+120:
 121: <img align="right" width="300" src="https://firstcontributions.github.io/assets/Readme/copy-to-clipboard.png" alt="copy URL to clipboard" />
-122: 
+122:
 123: For example:
-124: 
+124:
 125: ```bash
 126: git clone git@github.com:this-is-you/first-contributions.git
 127: ```
-128: 
+128:
 129: where `this-is-you` is your GitHub username. Here you're copying the contents of the first-contributions repository on GitHub to your computer.
-130: 
+130:
 131: ## Create a branch
-132: 
+132:
 133: Change to the repository directory on your computer (if you are not already there):
-134: 
+134:
 135: ```bash
 136: cd first-contributions
 137: ```
-138: 
+138:
 139: Now create a branch using the `git switch` command:
-140: 
+140:
 141: ```bash
 142: git switch -c your-new-branch-name
 143: ```
-144: 
+144:
 145: For example:
-146: 
+146:
 147: ```bash
 148: git switch -c add-alonzo-church
 149: ```
-150: 
+150:
 151: <details>
 152: <summary> <strong>If you get any errors using git switch, click here:</strong> </summary>
-153: 
+153:
 154: If the error message "Git: `switch` is not a git command. See `git –help`" appears, it's likely because you're using an older version of git.
-155: 
+155:
 156: In this case, try to use `git checkout` instead:
-157: 
+157:
 158: ```bash
 159: git checkout -b your-new-branch-name
 160: ```
-161: 
+161:
 162: </details>
-163: 
+163:
 164: ## Make necessary changes and commit those changes
-165: 
+165:
 166: Now open `Contributors.md` file in a text editor, add your name to it. Don't add it at the beginning or end of the file. Put it anywhere in between. Now, save the file.
-167: 
+167:
 168: <img align="right" width="450" src="https://firstcontributions.github.io/assets/Readme/git-status.png" alt="git status" />
-169: 
+169:
 170: If you go to the project directory and execute the command `git status`, you'll see there are changes.
-171: 
+171:
 172: Add those changes to the branch you just created using the `git add` command:
-173: 
+173:
 174: ```bash
 175: git add Contributors.md
 176: ```
-177: 
+177:
 178: Now commit those changes using the `git commit` command:
-179: 
+179:
 180: ```bash
 181: git commit -m "Add your-name to Contributors list"
 182: ```
-183: 
+183:
 184: replacing `your-name` with your name.
-185: 
+185:
 186: ## Push changes to GitHub
-187: 
+187:
 188: Push your changes using the command `git push`:
-189: 
+189:
 190: ```bash
 191: git push -u origin your-branch-name
 192: ```
-193: 
+193:
 194: replacing `your-branch-name` with the name of the branch you created earlier.
-195: 
+195:
 196: <details>
 197: <summary> <strong>If you get any errors while pushing, click here:</strong> </summary>
-198: 
+198:
 199: - ### Authentication Error
 200:      <pre>remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
 201:   remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
 202:   fatal: Authentication failed for 'https://github.com/&lt;your-username&gt;/first-contributions.git/'</pre>
 203:   Go to [GitHub's tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) on generating and configuring an SSH key to your account.
-204: 
+204:
 205:   Also, you might want to run 'git remote -v' to check your remote address.
-206:   
+206:
 207:   If it looks anything like this:
 208:   <pre>origin	https://github.com/your-username/your_repo.git (fetch)
 209:   origin	https://github.com/your-username/your_repo.git (push)</pre>
-210:   
+210:
 211:   change it using this command:
 212:   ```bash
 213:   git remote set-url origin git@github.com:your-username/your_repo.git
 214:   ```
 215:   Otherwise you'll still get prompted for username and password and get authentication error.
 216: </details>
-217: 
+217:
 218: ## Submit your changes for review
-219: 
+219:
 220: If you go to your repository on GitHub, you'll see a `Compare & pull request` button. Click on that button.
-221: 
+221:
 222: <img style="float: right;" src="https://firstcontributions.github.io/assets/Readme/compare-and-pull.png" alt="compare and create pull request" />
-223: 
+223:
 224: Now submit the pull request.
-225: 
+225:
 226: <img style="float: right;" src="https://firstcontributions.github.io/assets/Readme/submit-pull-request.png" alt="submit pull request" />
-227: 
+227:
 228: Soon I'll be merging all your changes into the main branch of this project. You will get a notification email once the changes have been merged.
-229: 
+229:
 230: ## Where to go from here?
-231: 
+231:
 232: Congrats! You just completed the standard _fork -> clone -> edit -> pull request_ workflow that you'll often encounter as a contributor!
-233: 
+233:
 234: Celebrate your contribution and share it with your friends and followers by going to [web app](https://firstcontributions.github.io/#social-share).
-235: 
+235:
 236: If you'd like more practice, checkout [code contributions](https://github.com/roshanjossey/code-contributions).
-237: 
+237:
 238: Now let's get you started with contributing to other projects. We've compiled a list of projects with easy issues you can get started on. Check out [the list of projects in the web app](https://firstcontributions.github.io/#project-list).
-239: 
+239:
 240: ### [Additional material](docs/additional-material/git_workflow_scenarios/additional-material.md)
-241: 
+241:
 242: ## Tutorials Using Other Tools
-243: 
+243:
 244: | <a href="docs/gui-tool-tutorials/github-desktop-tutorial.md"><img alt="GitHub Desktop" src="https://desktop.github.com/images/desktop-icon.svg" width="100"></a> | <a href="docs/gui-tool-tutorials/github-windows-vs2017-tutorial.md"><img alt="Visual Studio 2017" src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Visual_Studio_2017_Logo.svg" width="100"></a> | <a href="docs/gui-tool-tutorials/gitkraken-tutorial.md"><img alt="GitKraken" src="https://firstcontributions.github.io/assets/gui-tool-tutorials/gitkraken-tutorial/gk-icon.png" width="100"></a> | <a href="docs/gui-tool-tutorials/github-windows-vs-code-tutorial.md"><img alt="VS Code" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Visual_Studio_Code_1.35_icon.png" width=100></a> | <a href="docs/gui-tool-tutorials/sourcetree-macos-tutorial.md"><img alt="Sourcetree App" src="https://wac-cdn.atlassian.com/dam/jcr:81b15cde-be2e-4f4a-8af7-9436f4a1b431/Sourcetree-icon-blue.svg" width=100></a> | <a href="docs/gui-tool-tutorials/github-windows-intellij-tutorial.md"><img alt="IntelliJ IDEA" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IntelliJ_IDEA_Icon.svg/512px-IntelliJ_IDEA_Icon.svg.png" width=100></a> |
 245: | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 246: | [GitHub Desktop](docs/gui-tool-tutorials/github-desktop-tutorial.md)                                                                                             | [Visual Studio 2017](docs/gui-tool-tutorials/github-windows-vs2017-tutorial.md)                                                                                                                          | [GitKraken](docs/gui-tool-tutorials/gitkraken-tutorial.md)                                                                                                                                        | [Visual Studio Code](docs/gui-tool-tutorials/github-windows-vs-code-tutorial.md)                                                                                                                  | [Atlassian Sourcetree](docs/gui-tool-tutorials/sourcetree-macos-tutorial.md)                                                                                                                                      | [IntelliJ IDEA](docs/gui-tool-tutorials/github-windows-intellij-tutorial.md)                                                                                                                                                          |
@@ -536,8 +530,6 @@ The glob results show there are many markdown files. Let me look at the main REA
 (End of file - total 246 lines)
 </content>
 ```
-
----
 
 #### Assistant (Plan · minimax-m2.5-free · 9.7s)
 
@@ -559,15 +551,15 @@ The README doesn't seem to have any Docker or testing instructions. Let me check
 <path>C:\Users\jazzw\AppData\Local\Temp\day14-oss\.github\CONTRIBUTING.md</path>
 <type>file</type>
 <content>1: # Contribution guide
-2: 
+2:
 3: We appreciate your thought to contribute to open source. :heart:
-4: 
+4:
 5: If you'd like to suggest a change in the tutorials or the workflow, please [raise an issue](https://github.com/firstcontributions/first-contributions/issues/new). We can have a discussion to better understand the problem, get more people involved and make a collective decision.
-6: 
+6:
 7: If you're making changes to a translation, please request a review from our previous contributors who has translated to the respective translation. Our goal is for all translations to have the same content as the English one (`Readme.md`) (Except for links to other translations. We realised that it doesn't add much value)
-8: 
+8:
 9: ### Our reviewers :sparkles:
-10: 
+10:
 11: | Language Name | Name in English | Reviewers|
 12: |---|---|---|
 13: | Afrikaans | [Afrikaans](https://github.com/firstcontributions/first-contributions/blob/main/docs/translations/README.afk.md) | [<img width="100" src="https://avatars.githubusercontent.com/u/36197725?v=4" alt="@zecollokaris" />](https://github.com/zecollokaris) |
@@ -650,8 +642,6 @@ The README doesn't seem to have any Docker or testing instructions. Let me check
 </content>
 ```
 
----
-
 #### Assistant (Plan · minimax-m2.5-free · 13.2s)
 
 _Thinking:_
@@ -672,8 +662,6 @@ The CONTRIBUTING.md file also doesn't have any Docker or testing instructions. L
 No files found
 ```
 
----
-
 #### Assistant (Plan · minimax-m2.5-free · 5.6s)
 
 _Thinking:_
@@ -693,8 +681,6 @@ No Dockerfile found. Let me also check for docker-compose files, and look for an
 ```
 No files found
 ```
-
----
 
 #### Assistant (Plan · minimax-m2.5-free · 6.8s)
 
@@ -728,8 +714,6 @@ drwxr-xr-x 1 jazzw 197609     0 Mar 10 11:29 docs
 -rw-r--r-- 1 jazzw 197609 26226 Mar 10 11:29 README.md
 
 ```
-
----
 
 #### Assistant (Plan · minimax-m2.5-free · 19.9s)
 
@@ -787,13 +771,9 @@ Would you like me to:
 - **Option B**: Look for another repository that might have the actual Docker testing setup?
 - **Option C**: Something else?
 
----
-
 #### User
 
-Update the `README.md` to include a 'WSL Setup' section. Use the instructions we verified on Day 1 of this course. Ensure the formatting matches the existing style of the document. 
-
----
+Update the `README.md` to include a 'WSL Setup' section. Use the instructions we verified on Day 1 of this course. Ensure the formatting matches the existing style of the document.
 
 #### Assistant (Build · qwen25-coder:7b · 11.3s)
 
@@ -804,13 +784,9 @@ Update the `README.md` to include a 'WSL Setup' section. Use the instructions we
   </arguments>
 </response>
 
----
-
 #### User
 
-Update the `README.md` to include a 'WSL Setup' section. 
-
----
+Update the `README.md` to include a 'WSL Setup' section.
 
 #### Assistant (Build · minimax-m2.5-free · 8.5s)
 
@@ -958,8 +934,6 @@ C:\Users\jazzw\AppData\Local\Temp\day14-oss\docs\translations\README.tn.md:
 (Results truncated: showing 100 of 2381 matches (2281 hidden). Consider using a more specific path or pattern.)
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 14.0s)
 
 _Thinking:_
@@ -1001,42 +975,40 @@ Let me create a WSL Setup section with appropriate content based on typical WSL 
 ```
 <path>C:\Users\jazzw\AppData\Local\Temp\day14-oss\README.md</path>
 <type>file</type>
-<content>95: 
+<content>95:
 96: _If you're not comfortable with command line, [here are tutorials using GUI tools.](#tutorials-using-other-tools)_
-97: 
+97:
 98: <img align="right" width="300" src="https://firstcontributions.github.io/assets/Readme/fork.png" alt="fork the repository" />
-99: 
+99:
 100: #### If you don't have git on your machine, [install it](https://docs.github.com/en/get-started/quickstart/set-up-git).
-101: 
+101:
 102: ## Fork this repository
-103: 
+103:
 104: Fork this repository by clicking on the fork button on the top of this page.
 105: This will create a copy of this repository in your account.
-106: 
+106:
 107: ## Clone the repository
-108: 
+108:
 109: <img align="right" width="300" src="https://firstcontributions.github.io/assets/Readme/clone.png" alt="clone the repository" />
-110: 
+110:
 111: Now clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the code button, then on SSH tab and then click the _copy url to clipboard_ icon.
-112: 
+112:
 113: Open a terminal and run the following git command:
-114: 
+114:
 115: ```bash
 116: git clone "url you just copied"
 117: ```
-118: 
+118:
 119: where "url you just copied" (without the quotation marks) is the url to this repository (your fork of this project). See the previous steps to obtain the url.
-120: 
+120:
 121: <img align="right" width="300" src="https://firstcontributions.github.io/assets/Readme/copy-to-clipboard.png" alt="copy URL to clipboard" />
-122: 
+122:
 123: For example:
-124: 
+124:
 
 (Showing lines 95-124 of 246. Use offset=125 to continue.)
 </content>
 ```
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 12.6s)
 
@@ -1060,8 +1032,6 @@ I'll add a WSL Setup section after line 100 (after the git installation instruct
 Edit applied successfully.
 ```
 
----
-
 #### Assistant (Build · minimax-m2.5-free · 4.8s)
 
 _Thinking:_
@@ -1083,62 +1053,60 @@ The edit was applied successfully. Let me verify the change by reading the updat
 ```
 <path>C:\Users\jazzw\AppData\Local\Temp\day14-oss\README.md</path>
 <type>file</type>
-<content>95: 
+<content>95:
 96: _If you're not comfortable with command line, [here are tutorials using GUI tools.](#tutorials-using-other-tools)_
-97: 
+97:
 98: <img align="right" width="300" src="https://firstcontributions.github.io/assets/Readme/fork.png" alt="fork the repository" />
-99: 
+99:
 100: #### If you don't have git on your machine, [install it](https://docs.github.com/en/get-started/quickstart/set-up-git).
-101: 
+101:
 102: ## WSL Setup
-103: 
+103:
 104: If you are using Windows Subsystem for Linux (WSL), follow these steps to set up your environment:
-105: 
+105:
 106: 1. Enable WSL on your Windows machine by running the following command in PowerShell or Command Prompt as Administrator:
 107:    ```bash
 108:    wsl --install
 109:    ```
-110: 
+110:
 111: 2. After the installation is complete, restart your computer and open your WSL distribution (e.g., Ubuntu) from the Start menu.
-112: 
+112:
 113: 3. Update your package manager:
 114:    ```bash
 115:    sudo apt update && sudo apt upgrade
 116:    ```
-117: 
+117:
 118: 4. Install git if it's not already installed:
 119:    ```bash
 120:    sudo apt install git
 121:    ```
-122: 
+122:
 123: 5. Configure your git username and email:
 124:    ```bash
 125:    git config --global user.name "Your Name"
 126:    git config --global user.email "your.email@example.com"
 127:    ```
-128: 
+128:
 129: 6. Clone your forked repository to your WSL home directory:
 130:    ```bash
 131:    cd ~
 132:    git clone https://github.com/YOUR_USERNAME/first-contributions.git
 133:    ```
-134: 
+134:
 135: Now you can continue with the rest of the tutorial using your WSL terminal.
-136: 
+136:
 137: ## Fork this repository
-138: 
+138:
 139: Fork this repository by clicking on the fork button on the top of this page.
 140: This will create a copy of this repository in your account.
-141: 
+141:
 142: ## Clone the repository
-143: 
+143:
 144: <img align="right" width="300" src="https://firstcontributions.github.io/assets/Readme/clone.png" alt="clone the repository" />
 
 (Showing lines 95-144 of 281. Use offset=145 to continue.)
 </content>
 ```
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 13.6s)
 
@@ -1164,17 +1132,13 @@ Done. I've added a "WSL Setup" section to the README.md after the git installati
 
 The formatting matches the existing document style with `##` headings, numbered lists, and bash code blocks.
 
----
-
 #### User
 
 "I have completed the fix. Now, write a professional GitHub Pull Request description. Include:
 
 A summary of the change.
 Why this change is necessary (reference the 'WSL confusion' issue).
-A checklist of what was tested. 
-
----
+A checklist of what was tested.
 
 #### Assistant (Build · minimax-m2.5-free · 9.7s)
 
@@ -1202,11 +1166,7 @@ Users have been confused about how to run the project in a WSL environment, part
 - [x] Placed section in logical location (after git installation, before Fork section)
 - [x] Verified no existing Docker/test infrastructure exists in the repository
 
----
-
 #### User
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 20.7s)
 
@@ -1233,17 +1193,13 @@ No bugs, security issues, or code structure concerns to flag. This is plain docu
 </task_result>
 ```
 
----
-
 #### User
-
----
 
 #### Assistant (Build · minimax-m2.5-free · 26.5s)
 
 _Thinking:_
 
-The user is asking me to summarize the task tool output. Based on the output, the review was completed and it shows that this is a documentation-only change with no bugs, security issues, or code structure concerns to flag. 
+The user is asking me to summarize the task tool output. Based on the output, the review was completed and it shows that this is a documentation-only change with no bugs, security issues, or code structure concerns to flag.
 
 Now I need to "continue with your task" - but looking back at the conversation, the task was already completed. The user asked me to write a professional GitHub Pull Request description, which I did. Then they asked for a code review, which was performed by the task agent.
 
@@ -1264,6 +1220,4 @@ The code review task was completed successfully. Here's what was found:
 The change adds step-by-step WSL setup instructions for users, which addresses the issue of user confusion about running the project in a WSL environment.
 
 **Current Status:** The task is complete. The README.md has been updated with the WSL Setup section, and the code review has confirmed there are no issues with the change.
-
----
 

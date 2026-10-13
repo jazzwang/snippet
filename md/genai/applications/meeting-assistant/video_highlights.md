@@ -1,8 +1,6 @@
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
 
-# 
-
----
+#
 
 # 如果有一個 mp4 影片，內容有投影片跟軟體界面操作，怎麼用 Python 程式搭配本地 ollama 多模態模型，摘要重要的截圖，並存成圖片呢？
 
@@ -33,14 +31,14 @@ frame_idx = 0
 
 while cap.isOpened():
     ret, frame = cap.read()
-    
+
     if not ret:
         break
-    
+
     # 每隔幾幀截一次圖
     if frame_idx % 30 == 0:  # 每秒截一次圖
         cv2.imwrite(f'frame_{frame_idx}.jpg', frame)
-    
+
     frame_idx += 1
 
 cap.release()
@@ -69,7 +67,7 @@ def analyze_image(image_path):
             }
         ]
     )
-    
+
     # 根據分析結果判斷重要性
     if '重要' in res['message']['content']:
         return True
@@ -115,18 +113,18 @@ def extract_frames(video_path):
     cap = cv2.VideoCapture(video_path)
     fps = cap.get(cv2.CAP_PROP_FPS)
     frame_idx = 0
-    
+
     while cap.isOpened():
         ret, frame = cap.read()
-        
+
         if not ret:
             break
-        
+
         if frame_idx % 30 == 0:
             cv2.imwrite(f'frame_{frame_idx}.jpg', frame)
-        
+
         frame_idx += 1
-    
+
     cap.release()
 
 # 步驟2：多模態模型應用
@@ -142,7 +140,7 @@ def analyze_image(image_path):
             }
         ]
     )
-    
+
     if '重要' in res['message']['content']:
         return True
     else:
@@ -152,12 +150,12 @@ def analyze_image(image_path):
 def save_important_frames(frames_dir, output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-    
+
     important_frames = []
     for frame in os.listdir(frames_dir):
         if analyze_image(os.path.join(frames_dir, frame)):
             important_frames.append(frame)
-    
+
     for frame in important_frames:
         shutil.copy(os.path.join(frames_dir, frame), output_dir)
 
@@ -165,7 +163,7 @@ if __name__ == "__main__":
     video_path = 'input.mp4'
     frames_dir = 'frames'
     output_dir = 'important_frames'
-    
+
     extract_frames(video_path)
     save_important_frames(frames_dir, output_dir)
 ```

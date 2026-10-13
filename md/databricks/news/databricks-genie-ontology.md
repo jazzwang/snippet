@@ -54,5 +54,4 @@ Genie Ontology 不需要數據工程師手動、費時地去定義複雜的語�
 - [13] [https://www.heise.de](https://www.heise.de/en/news/Databricks-Genie-One-AI-agent-to-derive-answers-from-company-data-11337020.html)
 - [14] [https://www.reddit.com](https://www.reddit.com/r/AI_Agents/comments/1utgab3/the_engineering_behind_genie_ontology_makes_data/)
 
-</td></tr>
-</table>
+---

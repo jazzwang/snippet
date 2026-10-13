@@ -10,14 +10,10 @@ What are the common data preparation strategy if we don't have clean internal da
 
 When preparing data for a RAG application without clean internal datasets or ground truth, focus on leveraging external resources, strategic preprocessing, and adaptive validation methods. Here’s a structured approach:
 
----
-
 ### **1. Data Sourcing and Curation**
 - **Use external datasets**: Platforms like Kaggle or industry-specific repositories provide structured data that can supplement sparse internal resources [^2] [^4].
 - **Synthetic data generation**: Create representative queries and answers from existing documents using LLMs (e.g., GPT-4, Claude) to simulate real-world use cases [^6].
 - **Manual curation**: Involve domain experts to annotate and segment documents into topics or semantic groups, improving retrieval relevance [^2] [^6].
-
----
 
 ### **2. Preprocessing Strategies**
 - **Format standardization**: Convert all data (text, tables, images) into a unified format (e.g., plain text, JSON) using Python scripts or tools like Pandas for scalability [^1] [^4].
@@ -27,8 +23,6 @@ When preparing data for a RAG application without clean internal datasets or gro
   - Remove duplicates and incomplete entries.
   - Impute missing values using statistical methods (mean/median) or predictive models [^4].
 
----
-
 ### **3. Validation Without Ground Truth**
 - **Cross-LLM evaluation**: Compare outputs from multiple LLMs (e.g., GPT-4 vs. Gemini) to assess response coherence and relevance [^2].
 - **Vector similarity thresholds**: Use cosine similarity scores from embeddings to gauge alignment between queries and retrieved content [^2] [^5].
@@ -36,13 +30,9 @@ When preparing data for a RAG application without clean internal datasets or gro
   - Define evaluation criteria (relevance, fluency).
   - Collect expert ratings and average scores to minimize bias [^2] [^4].
 
----
-
 ### **4. Iterative Improvement**
 - **Incremental updates**: Regularly refresh external data sources and retrain embedding models to reflect new information [^3] [^7].
 - **Dynamic testing**: Segment documents into topic-specific datasets to evaluate retrieval performance across domains [^2] [^6].
-
----
 
 By combining external data integration, rigorous preprocessing, and adaptive validation, organizations can build robust RAG systems even with limited initial resources. Focus on modular, scalable workflows to accommodate evolving data needs [^1] [^3] [^4].
 
@@ -58,8 +48,6 @@ By combining external data integration, rigorous preprocessing, and adaptive val
 ---
 Answer from Perplexity: pplx.ai/share
 
----
-
 > [!NOTE]
 >
 - How can I ensure data accuracy if I don't have a reference ground truth?
@@ -71,8 +59,6 @@ Answer from Perplexity: pplx.ai/share
 
 
 When dealing with imperfect datasets and lacking ground truth for RAG systems, implement these strategies across key preparation phases:
-
----
 
 ### **Ensuring Data Accuracy Without Ground Truth**
 1. **LLM-generated synthetic benchmarks**
@@ -88,8 +74,6 @@ When dealing with imperfect datasets and lacking ground truth for RAG systems, i
    - Define criteria: relevance (0-5 scale), fluency, completeness
    - Use averaged expert ratings with Pearson correlation to minimize individual bias[2].
 
----
-
 ### **Chunking Strategies for Unstructured Data**
 | Method | Implementation | Use Case |
 |--------|----------------|----------|
@@ -101,8 +85,6 @@ When dealing with imperfect datasets and lacking ground truth for RAG systems, i
 **Key considerations**:
 - Preserve logical boundaries (e.g., section headers in PDFs)
 - Balance chunk size (200-800 tokens) with retrieval latency[3][4]
-
----
 
 ### **Metadata Optimization Techniques**
 **Essential metadata fields**:
@@ -118,8 +100,6 @@ When dealing with imperfect datasets and lacking ground truth for RAG systems, i
 - **Filtering**: Exclude documents with low confidence scores (<0.7)[5]
 - **Boost mechanisms**: Prioritize recent (timestamp) and authoritative (peer-reviewed) sources in retrieval[5]
 - **Context enrichment**: Append section headers to chunk text during embedding[5]
-
----
 
 ### **Automation Tools**
 1. **Data formatting**
@@ -139,8 +119,6 @@ When dealing with imperfect datasets and lacking ground truth for RAG systems, i
    chunk_embeddings = model.encode(chunks)
    ```
    Use models optimized for retrieval (e.g., `BAAI/bge-large-en-v1.5`) with dynamic quantization for efficiency[6].
-
----
 
 ### **Embedding Best Practices**
 1. **Domain adaptation**

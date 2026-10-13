@@ -20,8 +20,6 @@ date -d "ISO_STRING" +%s
 * `-d "ISO_STRING"`: The `--date` option tells the `date` command to process a specific date string instead of the current time. You must enclose the ISO string in quotes.
 * `+%s`: This is the format specifier that tells `date` to output the number of **seconds since the Unix Epoch** (January 1, 1970 UTC).
 
----
-
 ### Examples
 
 #### Basic ISO 8601 String
@@ -63,8 +61,6 @@ This converts the local time `10:00` in the `+05:30` timezone to the equivalent 
 
 To get the date 8 weeks from now, the command depends on which operating system you are using, as **Linux (GNU)** and **macOS/BSD** use different versions of the `date` command.
 
----
-
 ### 1. For Linux (GNU Date)
 
 Most Linux distributions use GNU Coreutils, which allows for very natural, human-readable strings using the `-d` (or `--date`) flag.
@@ -87,8 +83,6 @@ date -d "2024-01-01 +8 weeks"
 * `date -d "next 8 weeks"`
 * `date -d "now + 56 days"` (8 weeks  7 days)
 
----
-
 ### 2. For macOS / BSD Date
 
 macOS uses the BSD version of `date`, which uses the `-v` flag for "adjusting" the value.
@@ -105,8 +99,6 @@ To do this on macOS, you must use `-j` (to not set the system clock) and `-f` (t
 ```bash
 date -j -f "%Y-%m-%d" "2024-01-01" -v+8w
 ```
-
----
 
 ### 3. Summary of Flags
 

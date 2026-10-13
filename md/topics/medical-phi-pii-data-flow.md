@@ -15,8 +15,6 @@
 | [Clinical Data Reuse or Secondary Use (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC6239225/) | 2018 | 臨床資料二次利用的完整分類 |
 | [Dr. Deborah Peel — Patient Privacy Rights](https://patientprivacyrights.org/) | 2004+ | 病患隱私倡議，揭露資料流向問題 |
 
----
-
 ## Mermaid.js 資料流向圖
 
 ```mermaid
@@ -183,8 +181,6 @@ graph TB
     class ED1,ED2,ED3 edu
 ```
 
----
-
 ## 各領域使用 PHI/PII 的詳細說明
 
 ### 1. 🩺 臨床治療 (Clinical Care) — HIPAA §164.506 TPO
@@ -253,8 +249,6 @@ graph TB
 - **醫學教育**: 教學案例（通常去識別化）
 - **住院醫師**: 臨床實作訓練中接觸 PHI
 
----
-
 ## Dr. Latanya Sweeney 的 theDataMap 重要發現
 
 > **「HIPAA 隱私規則實施後，接收個人健康資料的實體類別數量增加了一倍以上。」**
@@ -263,8 +257,6 @@ graph TB
 - 2001 年 California HealthCare Foundation 版本
 - 2010 年 Dr. Sweeney 的版本顯示資料接收者大幅增加
 - 網址: https://thedatamap.org/maps.html （可能已離線，可透過 Wayback Machine 存取）
-
----
 
 ## 另見
 

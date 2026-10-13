@@ -59,8 +59,6 @@ If I have 50 quiz questions in plain text, what is the recommended way to create
 
 If you have **50 quiz questions in plain text**, the most efficient way to create a **Microsoft Form Quiz** depends on how much automation you're comfortable with. Here's a breakdown of the **recommended approaches**:
 
----
-
 #### ✅ **Recommended Method: Use Microsoft Forms + Scripted Automation (via Graph API)**
 
 If you're comfortable with a bit of scripting or have access to IT support, this is the best way to automate quiz creation:
@@ -74,13 +72,9 @@ If you're comfortable with a bit of scripting or have access to IT support, this
 
 > This method avoids manual entry and is scalable for large quizzes.
 
----
-
 #### 🧰 **Alternative: Use Power Automate (No Code Required)**
 - You can use **Power Automate** to read from a SharePoint list or Excel file and create Forms.
 - This is more user-friendly but may require some setup.
-
----
 
 #### 📝 **Manual Method (if automation isn't an option)**
 If you prefer manual entry or don't have access to automation tools:
@@ -90,8 +84,6 @@ If you prefer manual entry or don't have access to automation tools:
 - Open your questions in a split-screen view (e.g., Word or Notepad on one side, Forms on the other).
 - Use **keyboard shortcuts** and copy-paste to speed up entry.
 - Consider using **voice dictation** if you're comfortable with it.
-
----
 
 #### 🧪 Want Help Automating?
 If you share your quiz questions (in plain text or CSV), I can:
@@ -106,8 +98,6 @@ Could you give me a step-by-step instruction to create Microsoft Form Quiz based
 
 Here’s a **step-by-step guide** to create a **Microsoft Form Quiz** from an Excel file stored on **OneDrive**:
 
----
-
 ## ✅ **Step-by-Step Instructions**
 
 #### **Step 1: Prepare Your Excel File**
@@ -121,12 +111,8 @@ Ensure your Excel file has the following columns:
 
 Save this file to your **OneDrive**.
 
----
-
 #### **Step 2: Open Power Automate**
 Go to Power Automate and sign in with your Microsoft 365 account.
-
----
 
 #### **Step 3: Create a New Flow**
 1. Click **Create** > **Automated cloud flow**.
@@ -134,22 +120,16 @@ Go to Power Automate and sign in with your Microsoft 365 account.
 3. Choose a trigger:
    - Use **“When a file is created or modified in OneDrive”** or manually trigger it.
 
----
-
 #### **Step 4: Add Excel Connector**
 1. Add a new step: **“List rows present in a table”**.
 2. Choose your OneDrive Excel file.
 3. Make sure your Excel file has a **table** defined (Insert > Table in Excel).
-
----
 
 #### **Step 5: Add Microsoft Forms Connector**
 Unfortunately, **Microsoft Forms does not have a direct connector in Power Automate** to create questions. So you’ll need to use:
 
 - **Microsoft Graph API** (advanced)
 - Or manually create the Form and use Power Automate to send responses to Excel (reverse flow)
-
----
 
 #### ✅ **Alternative: Use Microsoft Graph API**
 If you're comfortable with scripting, you can:
@@ -163,14 +143,10 @@ You’ll need:
 - Access token
 - API calls to `https://graph.microsoft.com/v1.0/users/{user-id}/forms`
 
----
-
 #### 🔄 **Workaround: Use Excel to Google Forms, then Recreate in Microsoft Forms**
 1. Use Google Forms add-on like **Form Builder** to import from Excel.
 2. Export the form structure.
 3. Manually recreate it in Microsoft Forms.
-
----
 
 #### 🧠 Want Help Automating This?
 If you upload your Excel file, I can:
@@ -185,15 +161,11 @@ Could you give me a step-by-step instruction to create Microsoft Form Quiz based
 
 Here’s a **step-by-step guide** to create a **Microsoft Form Quiz** from an Excel file stored on **OneDrive**, using **Power Automate**. While Microsoft Forms doesn't have a direct connector to create questions, you can use a combination of Excel + Power Automate + Microsoft Graph API to automate the process.
 
----
-
 ## 🧭 **Overview**
 You’ll need:
 - Excel file stored in OneDrive (with a table)
 - Power Automate
 - Microsoft Graph API (for creating Forms and adding questions)
-
----
 
 ## ✅ **Step-by-Step Instructions**
 
@@ -210,8 +182,6 @@ You’ll need:
 
 > 📌 Tip: Use Excel’s “Insert > Table” to define the table.
 
----
-
 #### **Step 2: Register an App in Azure AD (for Graph API Access)**
 1. Go to Azure Portal.
 2. Navigate to **Azure Active Directory > App registrations**.
@@ -222,8 +192,6 @@ You’ll need:
    - **Application (client) ID**
    - **Directory (tenant) ID**
 
----
-
 #### **Step 3: Grant API Permissions**
 1. In your registered app, go to **API permissions**.
 2. Click **Add a permission** > **Microsoft Graph** > **Delegated permissions**.
@@ -232,21 +200,15 @@ You’ll need:
    - `User.Read`
 4. Click **Grant admin consent**.
 
----
-
 #### **Step 4: Create a Flow in Power Automate**
 1. Go to Power Automate.
 2. Click **Create > Instant cloud flow**.
 3. Choose **Manually trigger a flow**.
 
----
-
 #### **Step 5: Add Excel Connector**
 1. Add action: **List rows present in a table**.
 2. Choose **OneDrive for Business**.
 3. Select your Excel file and table.
-
----
 
 #### **Step 6: Add HTTP Connector to Call Microsoft Graph API**
 1. Add action: **HTTP**.
@@ -266,13 +228,9 @@ You’ll need:
 
 > ⚠️ You’ll need to loop through each row and format the question payload.
 
----
-
 #### **Step 7: Test Your Flow**
 1. Save and run the flow.
 2. Check Microsoft Forms to see if the quiz is created.
-
----
 
 ## 🧠 Need Help with the Script or Flow?
 If you upload your Excel file, I can:
@@ -287,16 +245,12 @@ I don't have Graph API access. What is the best way to create Microsoft Form?
 
 Thanks for clarifying! Since you **don’t have access to Microsoft Graph API**, the best way to create a **Microsoft Form Quiz** from an Excel file stored on OneDrive is to use a **semi-manual method** that balances efficiency and ease of use.
 
----
-
 ## ✅ Recommended Method: Manual Creation with Copy-Paste Support
 
 #### 🧾 What You’ll Need:
 - Your Excel file stored in OneDrive
 - Microsoft Forms (https://forms.office.com)
 - A browser with split-screen or dual-monitor setup (optional but helpful)
-
----
 
 ## 🪜 Step-by-Step Instructions
 
@@ -309,14 +263,10 @@ Thanks for clarifying! Since you **don’t have access to Microsoft Graph API**,
 |----------|----------|----------|----------|----------|--------|
 | What is 2+2? | 3 | 4 | 5 | 6 | 4 |
 
----
-
 #### **Step 2: Open Microsoft Forms**
 1. Go to Microsoft Forms.
 2. Click **New Quiz**.
 3. Give your quiz a title (e.g., “Math Quiz”).
-
----
 
 #### **Step 3: Add Questions Manually**
 For each row in Excel:
@@ -328,13 +278,9 @@ For each row in Excel:
 
 > 💡 Tip: Use keyboard shortcuts (Ctrl+C / Ctrl+V) and keep Excel and Forms side-by-side to speed up the process.
 
----
-
 #### **Step 4: Preview and Share**
 1. Click **Preview** to test your quiz.
 2. Click **Share** to distribute it via link, email, or QR code.
-
----
 
 ## 🧠 Want to Speed This Up Further?
 
