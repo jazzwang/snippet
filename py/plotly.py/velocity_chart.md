@@ -33,9 +33,9 @@ Here's a general outline of the steps you would follow to achieve your goal:
 3.  **Calculate Velocity Metrics:** Group the `DataFrame` by sprint to calculate committed and completed story points for each.
 4.  **Create the Chart:** Use Plotly or Altair to create a chart based on your calculated data.
 5.  **Export to HTML:** Save the final chart as an interactive HTML file.
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-could you give me an Altair example to generate interactive charts like Velocity Chart?
+> [!NOTE]
+> Q:
+> could you give me an Altair example to generate interactive charts like Velocity Chart?
 
 
 Yes, here is a complete Python code example that uses the **Altair** library to generate an interactive Velocity Chart. The code creates a layered chart with bars for committed and completed story points and a line for the completed points, which represents velocity.
@@ -101,9 +101,9 @@ chart.save('velocity_chart.html')
 print("Velocity chart saved as velocity_chart.html")
 ```
 
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-can it be 2 bar per sprint? e.g. 1 bar for committed points, 1 bar for completed and line chart for say/do ratio (i.e. completed divided by committed )
+> [!NOTE]
+> Q:
+> can it be 2 bar per sprint? e.g. 1 bar for committed points, 1 bar for completed and line chart for say/do ratio (i.e. completed divided by committed )
 
 
 Yes, you can create a chart with two bars per sprint and a line chart for the Say/Do ratio. This requires creating three separate charts and then combining them.
@@ -178,9 +178,9 @@ final_chart = alt.hconcat(
 final_chart.save('velocity_say_do_chart_hconcat.html')
 ```
 
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-could you give me a Plotly example to generate interactive charts like Velocity Chart?
+> [!NOTE]
+> Q:
+> could you give me a Plotly example to generate interactive charts like Velocity Chart?
 
 
 Yes, **Plotly** is an excellent choice for creating interactive Velocity Charts. Unlike Altair, which is best for declarative charts, Plotly uses an imperative approach that gives you more control over complex layouts, like charts with multiple Y-axes. This makes it perfect for displaying story points and a ratio on the same graph.

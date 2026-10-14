@@ -309,9 +309,9 @@ If you want to find that specific `0xa0` byte and replace it with a standard spa
 
 **Would you like me to show you how to configure your `.vimrc` so that these "bad" characters are always highlighted in red whenever you open a file?**
 
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-help me to resolve this error:
+> [!NOTE]
+> Q:
+> help me to resolve this error:
 ```
 UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f917' in position 27: character maps to <undefined>
 ```

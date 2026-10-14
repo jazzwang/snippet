@@ -353,9 +353,9 @@ If you're willing to do a *little* initial setup, you could potentially create a
 **In summary:**
 
 For a truly "easy way" with a web UI and no coding, your best bet is to explore reputable **third-party web-based text-to-speech converters** that integrate with Google Cloud TTS. These services abstract away the API complexities and provide a user-friendly experience for generating audio from long texts. Just be sure to check their pricing, features, and terms of service.
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-could you give me reference url links of Third-Party Web UIs/Tools that Integrate with Google Cloud TTS?
+> [!NOTE]
+> Q:
+> could you give me reference url links of Third-Party Web UIs/Tools that Integrate with Google Cloud TTS?
 
 You're looking for third-party web UIs that specifically integrate with Google Cloud Text-to-Speech (TTS) for converting long texts, without needing to write code.
 
@@ -433,9 +433,9 @@ These links point to platforms and tools that facilitate or demonstrate integrat
 [8] https://cloud.google.com/text-to-speech/docs/reference/rest
 [9] https://cloud.google.com/translate
 [10] https://stackoverflow.com/questions/35002003/how-to-use-google-translate-tts-with-the-new-v2-api
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-is there a easy way to put a long text and create speech using Google Cloud text-to-speech? any Web UI that I don't need to write code and use API?
+> [!NOTE]
+> Q:
+> is there a easy way to put a long text and create speech using Google Cloud text-to-speech? any Web UI that I don't need to write code and use API?
 
 **Easy Ways to Use Google Cloud Text-to-Speech Without Coding**
 

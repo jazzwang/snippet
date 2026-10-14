@@ -107,9 +107,9 @@ If you are not a developer and just want to use this feature as an end-user:
 > **Safety First:** For sensitive actions (like "Buy Now" or "Send Email"), the model is designed to pause and ask for your manual confirmation before proceeding.
 
 **Would you like me to provide a complete Python script template that handles the full automation loop for you?**
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-yes, could you provide a complete Python script template?
+> [!NOTE]
+> Q:
+> yes, could you provide a complete Python script template?
 
 
 This script provides a foundational "Agentic Loop." It uses **Playwright** to control a browser and the **Google Gen AI SDK** to process screenshots and decide on actions.

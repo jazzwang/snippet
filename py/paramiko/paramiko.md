@@ -252,9 +252,9 @@ finally:
 * **`.strftime()`:** Formats the `datetime` object into a desired string representation.
 
 This approach gives you programmatic access to all the file attributes, allowing you to format the output exactly as you need, similar to `ls -al`.
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-can paramiko support listing SFTP file timestamp like `ls -al *_20250603*`?
+> [!NOTE]
+> Q:
+> can paramiko support listing SFTP file timestamp like `ls -al *_20250603*`?
 
 You're hitting an important distinction between SFTP and a typical shell command like `ls`.
 
@@ -336,9 +336,9 @@ finally:
 3.  **`if fnmatch.fnmatch(attr.filename, wildcard_pattern):`**: This is the crucial part. For each `SFTPAttributes` object (`attr`) in the list, we check if its `filename` matches your `wildcard_pattern` using `fnmatch.fnmatch()`. Only if it matches, do we then proceed to print its details.
 
 This approach ensures you get the desired filtered listing with timestamps, even though SFTP itself doesn't handle the wildcard directly.
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-are paramiko similiar to winexpect or wexpect?
+> [!NOTE]
+> Q:
+> are paramiko similiar to winexpect or wexpect?
 
 While both Paramiko and `winexpect` (or `wexpect`, which is the Windows variant of `pexpect`) are Python libraries used for automation, they operate at very different levels and are designed for distinct purposes.
 

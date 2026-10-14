@@ -63,9 +63,9 @@ Certainly! Installing `nvm` (Node Version Manager) using Scoop is a straightforw
      ```
 
 That's it! You should now have `nvm` installed and ready to use on your system. If you encounter any issues or need further assistance, feel free to ask.
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-how can I find npm after installed nvm?
+> [!NOTE]
+> Q:
+> how can I find npm after installed nvm?
 
 
 After installing `nvm`, you will also have `npm` (Node Package Manager) available because it comes bundled with Node.js. Here’s how you can verify that `npm` is installed and check its version:

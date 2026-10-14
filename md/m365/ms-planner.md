@@ -76,9 +76,9 @@ You can automate this using:
 -   **Node.js** or other backend frameworks
 
 Would you like a sample Python script to create tasks from a JSON template? Or are you using Power Automate or another platform for automation?
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-If we don't have access to Graph API and don't have client_id and client_secret, are there alternatives?
+> [!NOTE]
+> Q:
+> If we don't have access to Graph API and don't have client_id and client_secret, are there alternatives?
 
 If you don't have access to the Microsoft Graph API (i.e., no `client_id`, `client_secret`, or app registration), there are still a few alternative approaches you can consider to create multiple Planner tasks programmatically or semi-automatically:
 
@@ -130,9 +130,9 @@ Some third-party automation platforms (like Zapier or Make.com) offer Planner in
 * * * *
 
 Would you like help setting up a Power Automate flow using Excel or SharePoint as the source of your task templates? I can walk you through the steps or generate a sample template for you.
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-Yes, guide me through Power Automate setup.
+> [!NOTE]
+> Q:
+> Yes, guide me through Power Automate setup.
 A: <!-- add Chatbot Response bellow-->Great! Let's walk through how to set up a **Power Automate flow** that reads task templates from an Excel file and creates Planner tasks automatically.
 
 * * * *
@@ -210,9 +210,9 @@ To assign users, you may need to use **"Get user profile (V2)"** (Microsoft 365 
 
 Would you like a sample Excel template or a visual diagram of the flow? I can also help you build the flow step-by-step if you tell me which trigger you'd prefer (manual, scheduled, or file-based).
 
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-help me build the flow step-by-step trigger by file-based
+> [!NOTE]
+> Q:
+> help me build the flow step-by-step trigger by file-based
 
 Perfect! Let's build a **Power Automate flow** that triggers when an Excel file is updated in **OneDrive for Business** or **SharePoint**, and then creates tasks in **Microsoft Planner** based on the rows in that file.
 

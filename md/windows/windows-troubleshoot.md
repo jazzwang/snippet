@@ -121,9 +121,9 @@
 你剛剛在「資源監視器」裡，看到 `SearchIndexer` 或 `System` 具體是在讀取**哪個檔案名稱**嗎？
 
 如果是某個特定的檔案（例如 `outlook.ost` 或某個影片檔），**請告訴我那個檔名**，我可以教你如何針對那個檔案將它「排除在索引之外」，這樣就不用重建整個資料庫了。
-</td></tr>
-<tr><td>Q: <!-- add your Prompt bellow-->
-看起來一直在讀取 `C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.db`
+> [!NOTE]
+> Q:
+> 看起來一直在讀取 `C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.db`
 
 
 這是一個非常經典的 Windows 11 效能問題。`Windows.db` 是 Windows 搜尋索引的**核心資料庫檔案**。
