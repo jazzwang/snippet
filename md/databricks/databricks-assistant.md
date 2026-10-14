@@ -73,15 +73,4 @@ This process will add the configuration profile to your `.databrickscfg` file,
 
 ## Databricks CLI
 
-> [!NOTE]
->
----
-> [!NOTE]
->
----
-
 ## Databricks Tutorials
-
-> [!NOTE]
->
----

@@ -73,7 +73,6 @@ Battery:
 
 > [!NOTE]
 > Q: can I find current Linux kernel (runtime) config within `/proc`?
----
 
 Yes, you absolutely can, though there is a small "if" involved regarding how your specific kernel was compiled.
 
@@ -113,8 +112,7 @@ Are you trying to troubleshoot a specific module issue, or just poking around th
 
 > [!NOTE]
 > Q: I'm trying to figure out why self-compile kernel for WSL2 is different from official WSL2.
-I only add config to support HFSplus and it breaks the support of docker within WSL2
----
+> I only add config to support HFSplus and it breaks the support of docker within WSL2
 
 It sounds like your custom kernel is missing the specific **cgroups** or **namespace** configurations that Docker requires to function. When you compile a kernel for WSL2, you can't just use a "blank slate" or a generic Linux config—you must use Microsoft's official base configuration as your starting point.
 

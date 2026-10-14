@@ -119,7 +119,8 @@ description: 資料庫工程師，精通 SQL 與資料庫正規化。
 ---
 ## 2026-06-13
 
-- Tool: > [!NOTE]
+- Tool: Google Search - AI Mode
+> [!NOTE]
 > Q: can I define Agent Skills only for specific SubAgent in Github Copilot?
 A:
 ## Sub-agent with specific Agent Skills
@@ -324,8 +325,8 @@ exportasyncfunction orchestratorHandler(req, res) {
 [1] [https://zhuanlan.zhihu.com](https://zhuanlan.zhihu.com/p/1903376889793455465)
 
 > [!NOTE]
-> Q: 本地端專案. <br/>
-問題：為何這是放在 .github/workflows？
+> Q: 本地端專案.
+> 問題：為何這是放在 .github/workflows？
 A:
 ## Sub-agent Project Structure
 

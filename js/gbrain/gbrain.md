@@ -17,12 +17,13 @@
 
 ## 2026-06-01
 
-<table><tr style="background-color:lightyellow;"><td>Q:
-could you compare 2 Agent Memory tool: GBrain (https://github.com/garrytan/gbrain) and Mempalace (https://mempalaceofficial.com)? try to create side-by-side comparison.
+> [!NOTE]
+> Q:
+> could you compare 2 Agent Memory tool: GBrain (https://github.com/garrytan/gbrain) and Mempalace (https://mempalaceofficial.com)? try to create side-by-side comparison.
 
 - Tool:
-- Google Gemini App
-- Gemini 3.5 Flash (Thinking: Extend)
+  - Google Gemini App
+  - Gemini 3.5 Flash (Thinking: Extend)
 
 A:
 Both **GBrain** and **MemPalace** represent cutting-edge approaches to **AI Agent Memory Systems**. While they solve the same core problem---giving AI agents long-term context and perfect recall---they lean on completely opposite engineering philosophies.

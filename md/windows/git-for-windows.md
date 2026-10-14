@@ -588,7 +588,7 @@ usr/share/man/man1/paxtar.1.gz
 ```
 > [!NOTE]
 > Q: can I extract cpz file with cpio and specify different output folder?
----
+
 The short answer is **no**; `cpio` does not have a built-in "output directory" flag (like `tar -C`) to specify a destination on the fly. By design, `cpio` extracts files into your **current working directory**.
 
 However, you can easily achieve this using a **subshell** or by chaining commands. Here is how to do it efficiently.
@@ -629,7 +629,7 @@ Depending on your industry, a `.cpz` file might not actually be a `cpio` archive
 **Would you like me to show you how to list the contents of the CPZ file first to make sure it's in the format you expect?**
 > [!NOTE]
 > Q: but I don't have permission to create the path to destination. any suggestions?
----
+
 If you hit a "Permission Denied" error, it usually means the parent directory where you're trying to create your destination is restricted (like trying to create a folder in `/opt` or `/var` without being an admin).
 
 Here are three ways to handle this, depending on what kind of access you actually have:
@@ -685,7 +685,7 @@ ls -ld .
 **Would you like me to help you check the permissions of a specific directory to see if we can find a workaround?**
 > [!NOTE]
 > Q: where can I find pax command?
----
+
 The `pax` (Portable Archive Interchange) command is a bit of a "hidden gem"—it’s a POSIX standard, but many modern Linux distributions don't include it in the default "minimal" install.
 
 Here is how to find it or get it onto your system:

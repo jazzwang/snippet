@@ -1,7 +1,9 @@
-- Tool: > [!NOTE]
-> Q: A: > [!NOTE]
-> Q: A: > [!NOTE]
-> Q: A: ---
+- Tool:
+> [!NOTE]
+> Q:
+
+A:
+
 備忘：
 
 * Google Deep Research 結果

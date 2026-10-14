@@ -22,7 +22,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> base64.b64encode("abc")
 'YWJj'
 >>> exit()
------------------------------------------------------------
+
+   ~~~~~ ~~~~~
+
 Python 3.7.3 (default, Apr 24 2020, 18:51:23)
 [Clang 11.0.3 (clang-1103.0.32.62)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.

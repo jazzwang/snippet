@@ -18,7 +18,6 @@
 
 > [!NOTE]
 > Q: who own Nous Research?
----
 
 As a private entity, **Nous Research** is not owned by a single individual or parent company. Instead, it is owned by its **founders**, **employees**, and a group of **venture capital investors**.
 

@@ -266,6 +266,7 @@ flowchart TD
 │   └── titanic.py
 ```
 
+</td><td>
 
 ```bash
 └── LangChain-OpenAI                    ## Today's demo
@@ -285,7 +286,7 @@ flowchart TD
 
 5 directories, 19 files
 ```
----
+</td></tr></table>
 
 <!-- slide -->
 

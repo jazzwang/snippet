@@ -300,24 +300,22 @@ UnicodeEncodeError: 'charmap' codec can't encode character '\u200c' in position 
 ```
 > [!NOTE]
 > could you help me to resolve this error message?
-
-```python
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "C:\Users\jazzw\.local\bin\cloudskillsboost-dump.exe\__main__.py", line 10, in <module>
-    sys.exit(main())
-             ~~~~^^
-  File "C:\Users\jazzw\AppData\Roaming\uv\tools\cloudskillsboost-dump\Lib\site-packages\dump_transcript.py", line 190, in main
-    print(f"{transcript}\n")
-    ~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\jazzw\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeEncodeError: 'charmap' codec can't encode character '\u200c' in position 6242: character maps to <undefined>
-```
-
-
+>
+> ```python
+> Traceback (most recent call last):
+>   File "<frozen runpy>", line 198, in _run_module_as_main
+>   File "<frozen runpy>", line 88, in _run_code
+>   File "C:\Users\jazzw\.local\bin\cloudskillsboost-dump.exe\__main__.py", line 10, in <module>
+>     sys.exit(main())
+>              ~~~~^^
+>   File "C:\Users\jazzw\AppData\Roaming\uv\tools\cloudskillsboost-dump\Lib\site-packages\dump_transcript.py", line 190, in main
+>     print(f"{transcript}\n")
+>     ~~~~~^^^^^^^^^^^^^^^^^^^
+>   File "C:\Users\jazzw\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+>     return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+>            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> UnicodeEncodeError: 'charmap' codec can't encode character '\u200c' in position 6242: character maps to <undefined>
+> ```
 
 This `UnicodeEncodeError` happens when your program tries to print a character that your system's default encoding (likely **CP1252**) can't display. Specifically, the character `\u200c` (which is a **Zero Width Non-Joiner**) is causing the problem.
 

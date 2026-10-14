@@ -42,7 +42,3 @@ HCL 透過獨家的「首選專業服務協議」或核心原廠資源，為多�
 - [7] [https://www.hcl-software.com](https://www.hcl-software.com/bigfix/services)
 - [8] [https://www.hcl-software.com](https://www.hcl-software.com/unica/services)
 - [9] [https://www.hcl-software.com](https://www.hcl-software.com/workload-automation/professional-services)
-
-> [!NOTE]
-> Q: A: > [!NOTE]
-> Q: A: ---

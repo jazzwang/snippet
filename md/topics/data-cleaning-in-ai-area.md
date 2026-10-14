@@ -310,10 +310,9 @@ If you want to find that specific `0xa0` byte and replace it with a standard spa
 > [!NOTE]
 > Q:
 > help me to resolve this error:
-```
-UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f917' in position 27: character maps to <undefined>
-```
-
+> ```
+> UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f917' in position 27: character maps to <undefined>
+> ```
 
 This error is the opposite of your previous one. While a `DecodeError` happens when **reading** a file, a `UnicodeEncodeError` happens when Python tries to **write or print** a character that the destination (your terminal, a file, or a Windows pipe) doesn't understand.
 

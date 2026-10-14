@@ -16,12 +16,9 @@
 - https://g.co/gemini/share/25434a5296ba
 
 > [!NOTE]
->
-Can Python openpyxl create multiple worksheets?
+> Q: Can Python openpyxl create multiple worksheets?
 
-
-
-Yes, the Python `openpyxl` library is fully capable of creating and managing multiple worksheets within an Excel (.xlsx) file. Here's a breakdown of how it works:
+A: Yes, the Python `openpyxl` library is fully capable of creating and managing multiple worksheets within an Excel (.xlsx) file. Here's a breakdown of how it works:
 
 **Key Functionality:**
 

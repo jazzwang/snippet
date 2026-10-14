@@ -3,10 +3,7 @@
 - https://www.perplexity.ai/search/what-are-the-common-data-prepa-gRZH50zdT9mBSen_n3.gcw#0
 
 > [!NOTE]
->
-What are the common data preparation strategy if we don't have clean internal dataset and don't have reference ground truth for AI RAG application?
-
-
+> Q: What are the common data preparation strategy if we don't have clean internal dataset and don't have reference ground truth for AI RAG application?
 
 When preparing data for a RAG application without clean internal datasets or ground truth, focus on leveraging external resources, strategic preprocessing, and adaptive validation methods. Here’s a structured approach:
 
@@ -49,14 +46,12 @@ By combining external data integration, rigorous preprocessing, and adaptive val
 Answer from Perplexity: pplx.ai/share
 
 > [!NOTE]
->
-- How can I ensure data accuracy if I don't have a reference ground truth?
-- What are the best practices for chunking data without a clean dataset?
-- How can I use metadata to improve data preparation for RAG systems?
-- What tools can help automate data formatting for RAG systems?
-- How do embedding techniques work in data preparation for RAG systems?
-
-
+> Q:
+> - How can I ensure data accuracy if I don't have a reference ground truth?
+> - What are the best practices for chunking data without a clean dataset?
+> - How can I use metadata to improve data preparation for RAG systems?
+> - What tools can help automate data formatting for RAG systems?
+> - How do embedding techniques work in data preparation for RAG systems?
 
 When dealing with imperfect datasets and lacking ground truth for RAG systems, implement these strategies across key preparation phases:
 

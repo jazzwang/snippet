@@ -1,16 +1,16 @@
 > [!NOTE]
 > convert the following curl command to python requests program:
-```
-curl 'https://storage.googleapis.com/listen-jen-pin-com-tw/mlgy-hhye-abrs/01-01-%E9%96%8B%E5%A0%B4.mp3' \
-    -H 'sec-ch-ua-platform: "Windows"' \
-    -H 'Referer: https://listen.jen-pin.com.tw/' \
-    -H 'sec-ch-ua: "Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'   \
-    -H 'sec-ch-ua-mobile: ?0'   \
-    -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36'   \
-    -H 'DNT: 1'   \
-    -H 'Range: bytes=131072-' \
-    --output 01-01-開場.mp3
-```
+> ```bash
+> curl 'https://storage.googleapis.com/listen-jen-pin-com-tw/mlgy-hhye-abrs/01-01-%E9%96%8B%E5%A0%B4.mp3' \
+>     -H 'sec-ch-ua-platform: "Windows"' \
+>     -H 'Referer: https://listen.jen-pin.com.tw/' \
+>     -H 'sec-ch-ua: "Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'   \
+>     -H 'sec-ch-ua-mobile: ?0'   \
+>     -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36'   \
+>     -H 'DNT: 1'   \
+>     -H 'Range: bytes=131072-' \
+>     --output 01-01-開場.mp3
+> ```
 
 Converting that `curl` command to a Python `requests` program involves setting the **URL**, defining the **headers**, and then making a **GET** request. Since the `curl` command uses the `--output` flag and a `Range` header, the Python code should also handle saving the received content to a file, potentially continuing a download.
 

@@ -81,7 +81,10 @@ BERTScore 是一種基於深度學習特徵向量（Embedding-based）的文字�
 - [6] [https://www.youtube.com](https://www.youtube.com/watch?v=RTaZqGflrJ8&vl=en&t=215)
 - [7] [https://zhanghaolin66.medium.com](https://zhanghaolin66.medium.com/bertscore-explained-embeddings-and-semantic-evaluation-b0d80b9de8d5)
 - [8] [https://www.youtube.com](https://www.youtube.com/watch?v=-MjMjVJlSpI&t=2)
-<tr style="background-color:lightyellow;"><td>Q: BLEU
+
+> [!NOTE]
+> Q: BLEU
+
 A: BLEU（Bilingual Evaluation Understudy，雙語評估輔助工具）是 AI/ML（特別是自然語言處理 NLP）領域中，最經典、最普及的自動文本評估指標。
 它最初在 2002 年由 IBM 團隊提出，主要用於**機器翻譯（Machine Translation）**的品質評估，後來也被廣泛應用於影像描述生成（Image Captioning）等任務。
 

@@ -12,11 +12,10 @@
 - By Microsoft 365 Copilot
 > [!NOTE]
 > could you give me a Python CLI example with the following functionality?
-
-1. read OpenSearch Server URL from option `-s`
-2. read AWS Cognito authentication tokens from cookie file (default: storage_state.json) from option `-c`
-3. call OpenSearch API and show Server Information as response
-
+>
+> 1. read OpenSearch Server URL from option `-s`
+> 2. read AWS Cognito authentication tokens from cookie file (default: storage_state.json) from option `-c`
+> 3. call OpenSearch API and show Server Information as response
 
 Here's a Python CLI example using `argparse` to read the OpenSearch server URL and AWS Cognito authentication tokens from a cookie file, then call the OpenSearch API to retrieve and display server information.
 

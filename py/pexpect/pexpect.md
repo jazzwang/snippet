@@ -3,7 +3,7 @@
 - PyPI
   - https://pypi.org/project/pexpect/
 - Document
-  -
+  - https://pexpect.readthedocs.io/en/stable/
 - Git Repo
   - https://github.com/pexpect/pexpect
 

@@ -6,29 +6,29 @@
 
 > [!NOTE]
 > could you give me step-by-step command line instruction using Java SpringBoot to meet the following requirements?
-
-- Given a Swagger document
-  - https://petstore.swagger.io/#/pet/addPet
-- Limitations:
-  - this will be time-boxed (usually **20 minutes**, at most 30 minutes)
-    - think about your strategy before coding
-- keep in mind:
-  - you don't need to deal with the database (e.g. store request JSON data to the database.)
-  - to keep it simple, you can simplify the request JSON to include "id", "name", and "status" only (ignore the nested fields).
-  - try to write part of the code and validate it:
-    - can listen on `http://localhost:PORT`
-    - can handle POST request to `/pet`
-    - can return `200` if the request `id` is zero
-    - can generate a 10-digit random number as response `id`
-    - can return `405` if the request `id` is not zero or does not exist
-- Describe the expected business logic:
-  - if the request ID is 0,
-    replace the ID with a 10-digit random number,
-    and return HTTP Status Code `200` and the updated JSON object as a response.
-  - if the request ID is not zero or does not exist, then return HTTP Status Code `405`.
-- Test Cases:
-  - there will be 3 test cases based on expected business logic
-  - you can use `curl` or `postman` to validate your API endpoint
+>
+> - Given a Swagger document
+>   - https://petstore.swagger.io/#/pet/addPet
+> - Limitations:
+>   - this will be time-boxed (usually **20 minutes**, at most 30 minutes)
+>     - think about your strategy before coding
+> - keep in mind:
+>   - you don't need to deal with the database (e.g. store request JSON data to the database.)
+>   - to keep it simple, you can simplify the request JSON to include "id", "name", and "status" only (ignore the nested fields).
+>   - try to write part of the code and validate it:
+>     - can listen on `http://localhost:PORT`
+>     - can handle POST request to `/pet`
+>     - can return `200` if the request `id` is zero
+>     - can generate a 10-digit random number as response `id`
+>     - can return `405` if the request `id` is not zero or does not exist
+> - Describe the expected business logic:
+>   - if the request ID is 0,
+>     replace the ID with a 10-digit random number,
+>     and return HTTP Status Code `200` and the updated JSON object as a response.
+>   - if the request ID is not zero or does not exist, then return HTTP Status Code `405`.
+> - Test Cases:
+>   - there will be 3 test cases based on expected business logic
+>   - you can use `curl` or `postman` to validate your API endpoint
 
 Here’s a **step-by-step command line guide** to quickly build and test a minimal **Java Spring Boot** API in **GitHub Codespaces** that meets your requirements. This setup is optimized for a **20–30 minute time-box**.
 

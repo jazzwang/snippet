@@ -166,8 +166,11 @@ A:
 [13] [https://www.antigravityide.help](https://www.antigravityide.help/privacy)
 [14] [https://dev.to](https://dev.to/arindam_1729/antigravity-cli-a-hands-on-guide-to-googles-terminal-coding-agent-5bc7)
 
-<tr style="background-color:lightyellow;"><td>Q: Antigravity CLI 支援哪些 LLM model?
+> [!NOTE]
+> Q: Antigravity CLI 支援哪些 LLM model?
+
 A:
+
 ## Antigravity CLI - LLM support
 
 Antigravity CLI (`agy`) 打破了過去工具只能使用單一模型家族的限制，它採開放式的「多模型」架構。 [1]
@@ -334,7 +337,8 @@ Google 有在 GitHub 上建立用來追蹤社群回報的專案頁面：[google-
 
 > [!NOTE]
 > Q: 想用下載量來像主管證明不同 AI Code Agent 的市場佔有率走勢,
-像 https://npmtrends.com/ 可以顯示 Claude Code CLI, OpenAI Codex CLI, Github Copilot CLI 與 OpenCode CLI 的下載量差異
+> 像 https://npmtrends.com/ 可以顯示 Claude Code CLI, OpenAI Codex CLI, Github Copilot CLI 與 OpenCode CLI 的下載量差異
+
 A:
 ## AI Code Agent Market Share Trends
 

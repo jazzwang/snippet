@@ -406,8 +406,11 @@ llama server listening at http://127.0.0.1:8080
 
 ## 2026-08-31
 
-- Tool: Google Search - AI Mode> [!NOTE]
+- Tool: Google Search - AI Mode
+
+> [!NOTE]
 > Q: 有技術可以把 GGUF 變成單檔可執行檔? 類似 llamafile
+
 A:
 得知您會在 Windows 與 Linux 之間切換使用，這正是 llamafile 這項技術發揮最大價值的場景！因為它使用了 APE（Actually Portable Executable）技術，您打包出來的同一個單檔，在兩個系統上都能直接執行。
 以下為您整理在跨系統切換時，最完美的打包步驟、執行方式與注意事項：
@@ -482,6 +485,7 @@ chmod +x my-assistant.llamafile
 
 > [!NOTE]
 > Q: pi coding agent 可以搭配 llamafile 的模型嗎?
+
 A:
 可以，Pi Coding Agent 完全可以搭配 llamafile 運作！ [1]
 

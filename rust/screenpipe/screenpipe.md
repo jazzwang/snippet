@@ -91,7 +91,3 @@ If you plan to set this up, let me know what graphics card (GPU) your Windows ma
 - [22] [https://skywork.ai](https://skywork.ai/skypage/en/screenpipe-ai-digital-memory/1976832071869067264)
 - [23] [https://collabnix.com](https://collabnix.com/running-ollama-on-windows-a-comprehensive-guide/)
 - [24] [https://www.youtube.com](https://www.youtube.com/watch?v=46sTA8pUTxk)
-
-> [!NOTE]
-> Q: A: > [!NOTE]
-> Q: A: ---

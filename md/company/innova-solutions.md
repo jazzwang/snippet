@@ -74,6 +74,3 @@ Innova Solutions 側重於企業級 IT 數位轉型與雲端人力解決方案�
 [6] https://www.cyient.com
 [7] [https://www.ambitionbox.com](https://www.ambitionbox.com/overview/cyient-overview)
 [8] [https://app.dealroom.co](https://app.dealroom.co/news/feed/cyient-proposes-85m-buyback-as-q4-revenue-dips-1-5-yoy-amid-geopolitical-headwinds)
-
-> [!NOTE]
-> Q: A: ---

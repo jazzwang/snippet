@@ -1,6 +1,6 @@
-<table width="100%"><tr style="background-color:lightyellow;"><td>Q: could you plan 15 days learning how to use opencode based on popular hands-on labs?
----
 
+> [!NOTE]
+> Q: could you plan 15 days learning how to use opencode based on popular hands-on labs?
 
 OpenCode has exploded in popularity as the go-to **open-source AI coding agent** (currently sitting at over 95,000 GitHub stars). Think of it as a fully transparent, model-agnostic version of Claude Code or GitHub Copilot that you can run in your terminal, IDE, or as a standalone desktop app.
 
@@ -48,7 +48,6 @@ Here is a 15-day hands-on curriculum designed to take you from "What is this ter
 **Would you like me to provide a specific "Starter Project" idea to use for the Day 15 Vibe Coding lab?**
 > [!NOTE]
 > Q: Let's plan step by step. Could you give me step-by-step instruction for Day 1? Target environment: Ubuntu WSL over Windows 11
----
 
 ## Day 1: The Foundation & The "Hello World"
 
@@ -142,7 +141,6 @@ opencode .
 **How did the "sys_info.py" test go? If it worked, would you like to move on to Day 2 and learn how to navigate the interface like a power user?**
 > [!NOTE]
 > Q: great! let's follow the same practice and create step-by-step instruction for Day 2.
----
 
 Since you’ve got the engine running, Day 2 is all about mastering the **User Interface (UI)** and the **Workflow Philosophy**.
 
@@ -217,7 +215,6 @@ To move fast in the OpenCode TUI, memorize these three:
 **How did the "Discovery" exercise go? Did the agent accurately find the entry point of that repo? If you're ready, Day 3 is where we start "Vibe Coding" our first multi-file feature!**
 > [!NOTE]
 > Q:  create an exercise lab for Day 2
----
 
 For **Day 2**, we are moving from "Can I run this?" to "How do I control this?" This lab, titled **"Operation: Code Scout,"** focuses on using OpenCode as a high-level architect before you ever let it touch your source code.
 
@@ -304,7 +301,6 @@ Before finishing, ask the agent to **plan** a change without **executing** it.
 
 > [!NOTE]
 > Q:  Let's move on to Day 3. Could you give me step-by-step instruction for Day 3? Create an exercise lab for Day 3, too. Thanks
----
 
 
 Welcome to **Day 3**. Today, we transition from being a "user" of the agent to being its "manager."
@@ -412,7 +408,6 @@ If the agent starts getting confused or "forgetting" your `AGENTS.md` rules, use
 
 > [!NOTE]
 > Q: Let's move on to Day 4. Could you give me step-by-step instruction for Day 4? Create an exercise lab for Day 4, too. Thanks
----
 
 Welcome to **Day 4: The Researcher**.
 
@@ -505,7 +500,6 @@ When researching large repos, the agent might try to read *too many* files and h
 
 > [!NOTE]
 > Q: Let's move on to Day 5. Could you give me step-by-step instruction and create an exercise lab for Day 5?
----
 
 Welcome to **Day 5: Single-File Surgery**.
 
@@ -626,7 +620,6 @@ Sometimes AI agents get lazy and try to delete a 100-line file and replace it wi
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 6?
----
 
 Yesterday was surgery; today is a full organ transplant. Welcome to **Day 6: Multi-File Refactoring**.
 
@@ -737,7 +730,6 @@ Before applying a multi-file refactor, I always ask: *"Before you edit, list the
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 7?
----
 
 Welcome to **Day 7: The Auditor**.
 
@@ -840,7 +832,6 @@ If the agent suggests a fix you don't understand, ask: *"Why is this fix safer t
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 8?
----
 
 Welcome to **Day 8: Session Isolation**.
 
@@ -932,7 +923,6 @@ When you're ready, **Day 9** is where we get truly custom. We'll learn how to wr
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 9?
----
 
 Welcome to **Day 9: Custom Commands**.
 
@@ -1033,7 +1023,6 @@ If you don't want to create a permanent command, you can use the **Shell Skill**
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 10?
----
 
 Welcome to **Day 10: The Skill System**.
 
@@ -1119,7 +1108,6 @@ When you're ready, **Day 11** is where we go "Meta." We’ll learn how to build 
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 11?
----
 
 Welcome to **Day 11: Building Custom Skills**.
 
@@ -1229,7 +1217,6 @@ If you have a tool on your **Windows 11** side (like a specific `.exe`) that you
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 12?
----
 
 Welcome to **Day 12: Privacy & Local Models**.
 
@@ -1346,7 +1333,6 @@ When you're ready, **Day 13** is where we move back to the "World" by integratin
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 13?
----
 
 Welcome to **Day 13: CI/CD & GitHub Actions**.
 
@@ -1467,7 +1453,6 @@ When you're ready, **Day 14** is the **Real-World Lab**. We’ll find an actual 
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 14?
----
 
 Welcome to **Day 14: The Real-World Contributor**.
 
@@ -1549,7 +1534,6 @@ Before you ever submit a PR in the real world, run your custom `/audit` command 
 
 > [!NOTE]
 > Q: Could you give me step-by-step instruction and create an exercise lab for Day 15?
----
 
 Welcome to **Day 15: The Grand Finale — Vibe Coding**.
 

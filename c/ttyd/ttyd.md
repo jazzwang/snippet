@@ -13,7 +13,6 @@
 
 > [!NOTE]
 > Q: is it possible to integrate ngrok and any SSH server or web shell server on Windows 11 which provides remote access?
----
 
 It is absolutely possible. While ngrok is famous for HTTP traffic, it is a versatile "tunneling" tool that can handle **TCP** traffic as well, which is exactly what SSH requires.
 

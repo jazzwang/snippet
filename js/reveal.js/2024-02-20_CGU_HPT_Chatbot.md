@@ -348,6 +348,7 @@ PS. I tried to leverage <font color="lightgreen">local GPT4All-J LLM</font> inst
 │   └── titanic.py
 ```
 
+</td><td>
 
 ```bash
 └── LangChain-OpenAI                    ## Today's demo
@@ -367,7 +368,7 @@ PS. I tried to leverage <font color="lightgreen">local GPT4All-J LLM</font> inst
 
 5 directories, 19 files
 ```
----
+</td></tr></table>
 
 <!-- slide -->
 

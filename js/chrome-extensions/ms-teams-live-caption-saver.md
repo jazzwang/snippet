@@ -403,10 +403,10 @@ The `transcripts` array will be transformed into:
 ---
 > [!NOTE]
 > Is setInterval() a built-in browser function? if yes, how can I disable the callback?
-
-```js
-setInterval(checkTranscripts, 10000);
-```
+>
+> ```js
+> setInterval(checkTranscripts, 10000);
+> ```
 
 Yes, `setInterval()` is a built-in browser function. It's part of the WindowTimers interface, which means it's available globally in web browsers (and in Node.js environments as well, though technically part of the `global` object there).
 

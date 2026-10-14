@@ -626,7 +626,6 @@ Configured MCP servers:
 
 > [!NOTE]
 > Q: where will Gemini CLI look for GEMINI_API_KEY? environment variable? .env file?
----
 
 The **Gemini CLI** is designed to be highly flexible with where it looks for your `GEMINI_API_KEY`. It follows a specific "look-up" hierarchy, checking both standard environment variables and various `.env` file locations.
 
@@ -679,7 +678,6 @@ Would you like me to show you how to automate the loading of these keys for a sp
 
 > [!NOTE]
 > Q: is there a way to check which API key is gemini-cli currently using if I have multiple different GEMINI_API_KEY defined in .env of different folders?
----
 
 When you have nested `.env` files or multiple keys spread across your system, it can definitely feel like a game of "which key is it anyway?"
 
@@ -734,7 +732,8 @@ Since API keys are sensitive, the CLI won't usually print the whole string. Howe
 
 Would you like me to help you write a small shell script that prints the last 4 characters of the active key so you can identify it instantly?
 
-<table><tr style="background-color:lightyellow;"><td>實測
+### 實測
+
 1. `gemini --info` 不存在
 
 ```bash

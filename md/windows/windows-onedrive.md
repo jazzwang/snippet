@@ -102,7 +102,3 @@ I can give you the exact step-by-step commands to get it configured!
 [3] [https://rclone.org](https://rclone.org/onedrive/)
 [4] [https://superuser.com](https://superuser.com/questions/981039/can-you-force-a-single-folder-file-to-sync-with-onedrive)
 [5] [https://www.stetson.edu](https://www.stetson.edu/law/offices/it/backup-onedrive-files.php)
-
-> [!NOTE]
-> Q: A: > [!NOTE]
-> Q: A: ---
