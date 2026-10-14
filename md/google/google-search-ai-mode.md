@@ -93,8 +93,8 @@ A:
 [1] [https://www.fetnet.net](https://www.fetnet.net/content/cbu/tw/lifecircle/tech/2025/12/googleai.html)
 [2] [https://techtarian.com](https://techtarian.com/google/set-the-google-ai-mode-as-default/)
 
-</td></tr>
-<tr><td>A:
+---
+A:
 後來發現 Chrome 瀏覽器已經自動加了這個 `@aimode` 的搜尋引擎
 ![](img/20260607001635.png)
 

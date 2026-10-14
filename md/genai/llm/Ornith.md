@@ -8,9 +8,7 @@
   - 從 hashtag https://www.youtube.com/hashtag/ornith
   - 用 Ornith 9B Benchmarked vs Qwen 9B - Local 8GB GPU LLM options 生成以下摘要
     - https://www.youtube.com/watch?v=qLFNNRxwd5s
--
-Tool: Google NotebookLM
-</td></tr><tr><td>
+- Tool: Google NotebookLM
 
 ## Ornith 9B 與 Qwen 9B 效能評測簡報：本地 8GB GPU LLM 選擇指南
 

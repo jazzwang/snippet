@@ -23,9 +23,9 @@
 
 ## 2026-01-19
 
-<table>
-<tr><td>Q: <!-- add your Prompt bellow-->
-為何 windows 11 突然一直在讀取硬碟，根據 `Resource Monitor` 的查詢結果，判定主要是 `System (PID=4)` 跟 `SearchIndexer.exe` 兩個執行檔
+> [!NOTE]
+> Q:
+> 為何 windows 11 突然一直在讀取硬碟，根據 `Resource Monitor` 的查詢結果，判定主要是 `System (PID=4)` 跟 `SearchIndexer.exe` 兩個執行檔
 
 這是一個在 Windows 11 非常常見且令人煩躁的問題。這通常不是病毒，而是 Windows 的**維護機制失控**或**卡在某個檔案上**。
 

@@ -4,9 +4,9 @@
 
 - https://g.co/gemini/share/e7994aad7419
 
-<table><tr><td>Q:</td><td style='vertical-align: middle;'>
-<!-- add your Prompt bellow-->
-if I have a 3 hours long webvtt file, how can I build a tool to find key takeaway, topics and each attendee contribution? Do I need to use RAG?
+> [!NOTE]
+> Q:
+> if I have a 3 hours long webvtt file, how can I build a tool to find key takeaway, topics and each attendee contribution? Do I need to use RAG?
 
 That's a fascinating challenge! Turning a 3-hour WebVTT file into actionable insights about key takeaways, topics, and attendee contributions is definitely doable, and yes, a Retrieval-Augmented Generation (RAG) approach could be a powerful component of your tool.
 

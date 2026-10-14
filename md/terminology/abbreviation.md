@@ -213,8 +213,8 @@ end legend
 |--------------|-----------|------|-----------|--------|
 | DLT | Distributed Ledger Technology | 分散式帳本技術 | https://en.wikipedia.org/wiki/Distributed_ledger |  #Web3 #BlockChain |
 
-<table><tr><td>
-Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍稱為「分散式帳本技術」，在香港或中國大陸則常譯為「分布式分類帳技術」或「分布式账本技术」。 [1, 2, 3, 4]
+> [!NOTE]
+> Distributed Ledger Technology 的中文翻譯主要有兩種：在台灣普遍稱為「分散式帳本技術」，在香港或中國大陸則常譯為「分布式分類帳技術」或「分布式帳本技術」。 [1, 2, 3, 4]
 
 ### 💡 核心概念
 

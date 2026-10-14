@@ -210,16 +210,16 @@ Cyient 的上游供應商與合作夥伴主要涵蓋以下關鍵要素 ：   
 - [Anyone got update who completed cyient champAin Hiring Quality Engineer -v&v role interview? : r/dataengineersindia - Reddit](https://www.reddit.com/r/dataengineersindia/comments/1tifc7a/anyone_got_update_who_completed_cyient_champain/)
 - [How is work culture at Cyient? : r/IndianEngineers - Reddit](https://www.reddit.com/r/IndianEngineers/comments/1qngrpr/how_is_work_culture_at_cyient/)
 
-<table><tr style="background-color:lightyellow;"><td>Q:
-可以幫我根據網路論壇，臉書，推特，LinkedIn 等發文，針對 Cyient (https://www.cyient.com) 分析主要客戶，上下游供應鍊，市場 SWOT 分析與波特五力分析
+> [!NOTE]
+> Q:
+> 可以幫我根據網路論壇，臉書，推特，LinkedIn 等發文，針對 Cyient (https://www.cyient.com) 分析主要客戶，上下游供應鍊，市場 SWOT 分析與波特五力分析
 
 - Tool:
-- Google Gemini App
-- Deep Research
-- Gemini 3.5 Flash
-- Thinking level: Extended
+  - Google Gemini App
+  - Deep Research
+  - Gemini 3.5 Flash
+  - Thinking level: Extended
 
-</td></tr><tr><td>Think:
 ## Cyient 網路社群分析報告
 
 ### 啟動全面研究計畫

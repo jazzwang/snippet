@@ -4,7 +4,10 @@
 
 - 緣起：想確認無線網路密碼存在哪裡，是否可以從 regedit 查到。
 - 行動：[Is there a way to get saved wifi password from... | Try in Microsoft 365 Copilot](https://www.microsoft365.com/chat/entity1-d870f6cd-4aa5-4d42-9626-ab690c041429/eyJpZCI6IlZYTmxjbFl4ZkdoMGRIQnpPaTh2YzNWaWMzUnlZWFJsTFdsdWRDNXZabVpwWTJVdVkyOXRMM3hQU1VRNll6VXpObVl6TmpRdE1EYzRPUzAwTTJVMExXSTBaamN0WVdaak1qQXlNMlF6WTJRMGZHWTFNMk0yTUdReExXVXdNMll0TkRjeVppMWlPVEZtTFRNMVpqWm1aamcwT1RJM00zd3lNREkxTFRBekxUSTBWREF6T2pNNU9qSTBMakE0TXpjeU56TmEiLCJzY2VuYXJpbyI6InNoYXJlTGlua1ZpYVJpY2hDb3B5IiwicHJvcGVydGllcyI6eyJwcm9tcHRTb3VyY2UiOiJ1c2VyIiwiY2xpY2tUaW1lc3RhbXAiOiIyMDI1LTAzLTI0VDAzOjM5OjIzLjgxMVoifSwiY2hhdFR5cGUiOiJ3ZWIiLCJ2ZXJzaW9uIjoxLjF9)
-<table><tr><td>Q: Is there a way to get saved wifi password from regedit?
+
+> [!NOTE]
+> Q: Is there a way to get saved wifi password from regedit?
+
 A:
 The Wi-Fi passwords are not stored directly in the Windows Registry. Instead, they are encrypted in XML files located at `C:\ProgramData\Microsoft\Wlansvc\Profiles\Interfaces\[Interface Guid]` [[1]](https://community.spiceworks.com/t/how-to-extract-wireless-network-info-from-registry-with-passwords/966143).
 

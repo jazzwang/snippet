@@ -236,16 +236,14 @@ confirmation. Here's how it looks when rendered:
 -----
 
 以下是一些跟 Gemini 討論怎麼解決 Charmap 錯誤的紀錄：
-<table>
-<tr><td>Q: <!-- add your Prompt bellow-->
-how can I troubleshoot unicode decode error using `vi` ?
-here is the python error:
 
-```python
-UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa0 in position 193: invalid start byte
-```
-
-
+> [!NOTE]
+> how can I troubleshoot unicode decode error using `vi` ?
+> here is the python error:
+>
+> ```python
+> UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa0 in position 193: invalid start byte
+> ```
 
 Dealing with a `UnicodeDecodeError` in Python usually means your file contains a character that doesn't belong in the encoding Python is expecting (UTF-8). The byte `0xa0` is a classic culprit—it's often a **non-breaking space** from a copy-paste job.
 

@@ -21,8 +21,11 @@
 
 ## 2026-05-24
 
-<table><tr><td>Q: what's the difference between https://github.com/farion1231/cc-switch and https://github.com/BerriAI/litellm
-</td></tr><tr><td>Tool & Model Google Search AI Mode | Gemini 3
+> [!NOTE]
+> Q: what's the difference between https://github.com/farion1231/cc-switch and https://github.com/BerriAI/litellm
+
+- Tool & Model Google Search AI Mode | Gemini 3
+
 A: While both tools are designed to simplify how developers manage and switch between different Large Language Model (LLM) API providers, they operate at completely different layers of the software stack. **The main difference is that `cc-switch` is a desktop application for configuring local terminal-based coding tools, whereas `litellm` is a backend code library and proxy server used to connect applications to multiple LLM APIs.**
 
 A detailed breakdown of their unique purposes, targets, and operations includes:
