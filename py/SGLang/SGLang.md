@@ -284,3 +284,98 @@ SGLang 生態系統不斷成長，除了核心框架外，還整合了以下專�
 - **NVIDIA Dynamo**：後端支援
 
 *本文檔整理自 SGLang 官方文檔和 GitHub 倉庫，最後更新：2026 年*
+
+---
+
+## 與主流推理引擎比較
+
+### 三引擎技術路線圖對比
+
+| 特性 | llama.cpp | vLLM | SGLang |
+|------|-----------|------|--------|
+| **主要設計目標** | 單用戶高效能、便攜性 | 高吞吐量、多用戶服務 | 通用模型服務（LLM/VLM/Diffusion） |
+| **核心架構** | CPU/GPU 混合，離線優先 | PagedAttention + 持續批處理 | SGLang 解釋器 + 解耦 Prefill/Decode |
+| **記憶體管理** | 簡單連續記憶體 | 分頁注意力（PagedAttention） | 圖狀記憶體 + 猜測解碼優化 |
+| **硬體支援** | CPU/GPU 全平台（x86/ARM/NPU） | 主要 NVIDIA GPU | NVIDIA/AMD/TPU/Intel/Apple/華為昇騰 |
+| **適合場景** | 輕量部署、邊緣設備 | 高併發服務、大規模推論 | 複雜代理、多模態、RL 訓練 |
+
+### 效能比較（2026 年 Benchmark 摘要）
+
+#### 1. 吞吐量（Throughput）
+
+**vLLM 優勢領域**：
+- 高併發場景下吞吐量顯著較高（vLLM 在高併發時吞吐量可達 llama.cpp 的 2-3 倍）
+- 多用戶共享環境表現優異
+- PagedAttention 有效減少記憶體碎片
+
+**SGLang 優勢領域**：
+- 單請求 TTFT（Time To First Token）表現更優（多步優化下 TTFT 比 vLLM 快 3 倍）
+- ITL（Inter-Token Latency）穩定性更強
+- MoE 模型支援更好
+
+**llama.cpp**：
+- 單請求效率佳，但吞吐量成長受限
+- 適合單用戶或低併發場景
+
+#### 2. 特殊模型類型支援
+
+| 模型類型 | vLLM | SGLang | llama.cpp |
+|----------|------|--------|-----------|
+| **MoE 模型** | 良好 | ⭐ 優異 | 一般 |
+| **量化模型（4-bit）** | 良好 | ⭐ 優異 | ⭐ 極佳 |
+| **長上下文（>100K）** | 良好 | ⭐ 優異 | 一般 |
+| **多模態（VLM）** | 一般 | ⭐ 優異 | 無支援 |
+| **圖像生成（Diffusion）** | 無 | ⭐ 內建支援 | 無 |
+
+#### 3. 啟動與部署
+
+| 項目 | llama.cpp | vLLM | SGLang |
+|------|-----------|------|--------|
+| **安裝複雜度** | ⭐⭐⭐ 需編譯 | ⭐⭐ pip 安裝 | ⭐ pip/Docker 安裝 |
+| **啟動速度** | ⭐⭐ 中等 | ⭐⭐ 中等 | ⭐⭐⭐ 快速 |
+| **Docker 支援** | 需自建 | 有官方鏡像 | 有官方鏡像 |
+| **雲端部署** | 較複雜 | 成熟 | 成熟（SkyPilot 支援） |
+
+### 使用建議
+
+#### 選擇 llama.cpp 當：
+- ✅ 需要輕量級部署（<100MB 記憶體）
+- ✅ 邊緣設備或離線環境
+- ✅ 單用戶或低併發場景
+- ✅ 需要跨平台便攜性（Windows/Linux/macOS）
+- ✅ 大量量化模型部署（4-bit/5-bit）
+
+#### 選擇 vLLM 當：
+- ✅ 需要高吞吐量、高併發服務
+- ✅ 多用戶共享環境
+- ✅ 主要使用 NVIDIA GPU
+- ✅ 需要成熟生態系統和工具链
+- ✅ 企業級生產環境
+
+#### 選擇 SGLang 當：
+- ✅ 需要支援多模態、圖像生成
+- ✅ 複雜代理工作負載（Agentic Workloads）
+- ✅ RL 訓練或 RLHF 卷積
+- ✅ MoE 模型或長上下文應用
+- ✅ 需要跨平台硬體支援（AMD/TPU/昇騰）
+- ✅ 需要標準 OpenAI API 介面
+
+### 性能測試資源
+
+- **官方 Benchmark**：https://github.com/sgl-project/sglang/tree/main/benchmark
+- **ree2raz/inference-bench**：可重現的對決測試（vLLM vs SGLang vs llama.cpp）
+- **Sothill Strix Halo Benchmark**：2026 年最新硬體測試
+- **GPUwerk DGX Spark 指南**：GB10 平台部署建議
+
+### 參考資料
+
+1. [Performance Evaluation of LLM Inference Engines Thesis](https://hps.vi4io.org/_media/research/theses/yining_liu_performance_evaluation_of_llm_inference_engines.pdf)
+2. [SGLang vs vLLM: Strix Halo Benchmarks 2026](https://www.soothill.io/blog/2026/08/10/sglang-vllm-llamacpp-evox3/)
+3. [Inside the Serving Loop: vLLM vs SGLang Architecture](https://marcus-lau.com/writing/code/)
+4. [vLLM or llama.cpp: Choosing the Right Engine](https://developers.redhat.com/articles/2025/09/30/vllm-or-llamacpp-choosing-right-llm-inference-engine-your-use-case)
+5. [Benchmarking on Mixed Blackwell/Ada Cluster](https://pivotnews.ai/build/benchmarking-vllm-vs-sglang-vs-llama-cpp-on-a-mixed-blackwel)
+6. [GPUwerk: Choosing Inference Engine Guide](https://gpuwerk.com/dgx-spark/guides/choosing-inference-engine-llama-cpp-vllm-sglang/)
+
+---
+
+*本文檔最後更新：2026 年 10 月*
