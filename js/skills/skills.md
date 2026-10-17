@@ -30,6 +30,10 @@
 - https://skills.sh/anthropics/skills/xlsx 
 - https://skills.sh/claude-office-skills/skills/xlsx-manipulation
 
+## Docx
+
+- https://www.skills.sh/anthropics/skills/docx
+
 ## CSV
 
 - https://skills.sh/ailabs-393/ai-labs-claude-skills/csv-data-visualizer
