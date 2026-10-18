@@ -292,3 +292,22 @@ end legend
 
 [1] [https://moda.gov.tw](https://moda.gov.tw/press/background-information/3975)
 [2] [https://archive.tw](https://archive.tw/speaker/%E5%94%90%E9%B3%B3-3?page=179)
+
+## 2026-10-16
+
+| Abbreviation | Full Form | 中文 | Reference | Domain |
+|--------------|-----------|------|-----------|--------|
+| BOD | Board of Directors | 董事會 | 緣起 - [NAT|T](https://natt668.substack.com/about#§) | #企業治理 |
+| PE | Private Equity | 私募股權 | 緣起 - [NAT|T](https://natt668.substack.com/about#§) | #投資 #Finance |
+| VC | Venture Capital | 風險投資 | 緣起 - [NAT|T](https://natt668.substack.com/about#§) | #投資 #Finance |
+
+在企業治理中，董事會成員通常會關注：
+- 整體業務架構與策略
+- 高層管理層的表现
+- 長期成長與可持續性
+
+在投資領域中：
+- PE = Private Equity（私募股權基金）
+- VC = Venture Capital（風險投資）
+
+這兩者都是私募投資機構，會投資於未上市的公司或企業。
