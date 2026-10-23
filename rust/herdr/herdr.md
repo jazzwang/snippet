@@ -1,35 +1,41 @@
+# Herdr
+
+- Git Repo
+  - https://github.com/herdrdev/herdr
+- Website
+  - https://herdr.dev/
+
+> [!NOTE]
+> 請參考 https://github.com/herdrdev/herdr 與 https://herdr.dev/docs/quick-start/ 撰寫一篇繁體中文（台灣用語）的技術報告，包括 step-by-step 測試範例。若有額外參考的網址請務必忠實列舉。最後將結果存成 rust/herdr/herdr.md
+
 # Herdr 技術報告
 
-> Herdr: 專為 AI 程式碼智能體設計的終端機多工器
-> 
+> Herdr: 專為 AI 程式碼代理設計的終端機多工器
+>
 > 版本：0.9.5 (stable) | 更新時間：2026 年
-
----
 
 ## 一、概述
 
-**Herdr** 是一款專為 AI 程式碼智能體（AI Coding Agents）設計的終端機多工器（Terminal Multiplexer）。與傳統的 tmux 或 zellij 不同，Herdr 特別針對 AI 智能體的運行情境進行優化，提供：
+**Herdr** 是一款專為 AI 程式碼代理（AI Coding Agents）設計的終端機多工器（Terminal Multiplexer）。與傳統的 tmux 或 zellij 不同，Herdr 特別針對 AI 代理的運行情境進行優化，提供：
 
-- **背景持續運行**：即使關閉終端機或斷線，智能體繼續工作
-- **狀態感知**：自動偵測並顯示每個智能體的狀態（進行中/阻塞/閒置）
-- **跨機器協作**：透過 SSH 連接多台機器，在同一視窗管理所有智能體
-- **AI 原生設計**：CLI 與 Socket API 介面一致，支援智能體之間的互動與協調
+- **背景持續運行**：即使關閉終端機或斷線，代理繼續工作
+- **狀態感知**：自動偵測並顯示每個代理的狀態（進行中 working / 阻塞 blocked / 閒置 idle）
+- **跨機器協作**：透過 SSH 連接多台機器，在同一視窗管理所有代理
+- **AI 原生設計**：CLI 與 Socket API 介面一致，支援代理之間的互動與協調
 
 ### 核心特性
 
 | 特性 | 說明 |
 |------|------|
 | **Always Running** | 不保持開啟的應用程式，而是背景運行的伺服器，終端機在其中運行 |
-| **State Awareness** | 讀取每個終端機，標記智能體為 working、blocked 或 idle |
-| **Agent-Native** | CLI 與 Socket API 為同一介面，智能體可直接調用 |
-| **Runs What You Run** | 支援現有 AI 智能體的 CLI，不封裝或替換 |
+| **State Awareness** | 讀取每個終端機，標記代理為 working、blocked 或 idle |
+| **Agent-Native** | CLI 與 Socket API 為同一介面，代理可直接調用 |
+| **Runs What You Run** | 支援現有 AI 代理的 CLI，不封裝或替換 |
 | **All Machines** | 本機、遠端伺服器、租用的機器，一視同仁管理 |
-
----
 
 ## 二、安裝指南
 
-Herdr 提供 Linux、macOS 和 Windows 的稳定版二進制檔案。
+Herdr 提供 Linux、macOS 和 Windows 的穩定版二位元檔案。
 
 ### 2.1 官方安裝指令
 
@@ -43,12 +49,12 @@ curl -fsSL https://herdr.dev/install.sh | sh
 powershell -ExecutionPolicy Bypass -c "irm https://herdr.dev/install.ps1 | iex"
 ```
 
-如果端點安全軟體阻止無文件 PowerShell 指令，請使用：
+如果遇到資安設定而無法執行，請改用：
 ```cmd
 curl.exe -fsSLo install.cmd https://herdr.dev/install.cmd && install.cmd && del install.cmd
 ```
 
-### 2.2 使用包管理工具安裝
+### 2.2 套件管理工具安裝
 
 **Homebrew:**
 ```bash
@@ -104,9 +110,7 @@ herdr channel set preview  # 預覽版
 herdr channel set stable   # 穩定版
 ```
 
-**重要：** 僅使用 Herdr 安裝器管理的直接安裝執行 `herdr update`。Homebrew、mise 和 Nix 安裝應透過各自的包管理器更新。
-
----
+**重要：** 僅使用 Herdr 安裝器管理的直接安裝執行 `herdr update`。Homebrew、mise 和 Nix 安裝應透過各自的套件管理工具更新。
 
 ## 三、快速開始
 
@@ -118,19 +122,19 @@ herdr channel set stable   # 穩定版
 herdr
 ```
 
-Herdr 會啟動或連接到預設的背景會話。您不需管理 socket。即使中斷連線，智能體仍會繼續運行。
+Herdr 會啟動或連接到預設的背景會話。您不需管理 socket。即使中斷連線，代理仍會繼續運行。
 
-### 3.2 创建工作区
+### 3.2 創建工作區
 
-當會話沒有工作區時，Herdr 會自動打開一個。工作區是專案級別的容器，容納標籤頁（tabs）、窗格（panes）和智能體。
+當會話沒有工作區時，Herdr 會自動打開一個。工作區是專案級別的容器，容納標籤頁（tabs）、窗格（panes）和代理。
 
-**建議：** 給每個活躍專案一個獨立的工作區，讓側邊欄中的智能體狀態清晰可讀。
+**建議：** 給每個活躍專案一個獨立的工作區，讓側邊欄中的代理狀態清晰可讀。
 
 ### 3.3 使用滑鼠操作
 
-Herdr 是滑鼠原生的，操作從點擊開始：
+Herdr 原生是支援滑鼠的，操作從點擊開始：
 
-- **點擊** 窗格、標籤頁、工作區和智能體以聚焦
+- **點擊** 窗格、標籤頁、工作區和代理以聚焦
 - **拖曳分割邊框** 調整大小
 - **右鍵點擊** 打開上下文選單（包含分割窗格、建立標籤頁）
 - **拖曳選取文字** 複製到剪貼簿
@@ -138,17 +142,15 @@ Herdr 是滑鼠原生的，操作從點擊開始：
 
 **Ctrl+點擊** 打開窗格內的連結（OSC 8 超連結和 http/https URL）
 
----
+## 四、支援的 AI 程式碼代理
 
-## 四、支援的 AI 程式碼智能體
-
-Herdr 自動偵測和監控超過 20 個 AI 程式碼智能體和 CLI 工具。
+Herdr 自動偵測和監控超過 20 個 AI 程式碼代理和 CLI 工具。
 
 ### 4.1 完整整合支援
 
 透過 `herdr integration install <name>` 安裝，支援狀態追蹤、會話儲存和恢復：
 
-| 智能體 | CLI 指令 |
+| 代理 | CLI 指令 |
 |--------|----------|
 | Claude Code | `claude` |
 | Codex | `codex` |
@@ -179,17 +181,17 @@ Herdr 直接從畫面/程式輸出追蹤即時狀態，無需額外設定：
 - Gemini CLI
 - Cline
 
-### 4.3 智能體狀態
+### 4.3 代理狀態
 
-Herdr 讀取每個終端機，標記每個智能體為：
+Herdr 讀取每個終端機，標記每個代理為：
 
-- **working**：智能體正在執行程式碼、測試或指令
-- **blocked**：智能體已暫停，等待用戶輸入、提示批准或反饋
-- **idle**：智能體已完成任務，等待新指示
+- **working**：代理正在執行程式碼、測試或指令
+- **blocked**：代理已暫停，等待用戶輸入、提示批准或反饋
+- **idle**：代理已完成任務，等待新指示
 
-側邊欄會顯示每個工作區中智能體的狀態，讓您清楚知道哪個專案需要您。
+側邊欄會顯示每個工作區中代理的狀態，讓您清楚知道哪個專案需要您。
 
-### 4.4 安裝 Herdr 支援到智能體
+### 4.4 安裝 Herdr 支援到代理
 
 透過以下指令安裝 Herdr 技能：
 
@@ -197,14 +199,12 @@ Herdr 讀取每個終端機，標記每個智能體為：
 npx skills add herdrdev/herdr --skill herdr -g
 ```
 
-或在終端機窗格中設定環境變數 `HERDR_ENV=1`，智能體即可使用 Herdr CLI/Socket API：
+或在終端機窗格中設定環境變數 `HERDR_ENV=1`，代理即可使用 Herdr CLI/Socket API：
 
 - 檢查相鄰窗格
-- 啟動工作智能體
+- 啟動工作代理
 - 發送提示
-- 等待其他智能體完成任務
-
----
+- 等待其他代理完成任務
 
 ## 五、工作流程
 
@@ -216,7 +216,7 @@ npx skills add herdrdev/herdr --skill herdr -g
 herdr
 ```
 
-Herdr 會自動啟動或連接到本機背景會話。不需管理 socket。在窗格中照常運行 shell、伺服器、測試和智能體。
+Herdr 會自動啟動或連接到本機背景會話。不需管理 socket。在窗格中照常運行 shell、伺服器、測試和代理。
 
 **中斷連線：** 用 `ctrl+b q` 中斷連線。窗格會繼續運行。
 
@@ -239,7 +239,7 @@ ssh you@server
 herdr
 ```
 
-這與終端機多工器的用法相同。您的 shell 在遠端，Herdr 伺服器在遠端，智能體和窗格都在遠端機器上運行。
+這與終端機多工器的用法相同。您的 shell 在遠端，Herdr 伺服器在遠端，代理和窗格都在遠端機器上運行。
 
 **中斷連線：** 用 `ctrl+b q` 中斷並斷開連線，之後再 SSH 回來並運行 `herdr`。
 
@@ -283,8 +283,6 @@ herdr machine add <host> --label <label>
 ```
 
 詳細資訊請參閱 [Connecting Machines](https://herdr.dev/docs/connecting-machines/)。
-
----
 
 ## 六、配置設定
 
@@ -454,8 +452,6 @@ reload_config = "prefix+shift+r"
 channel = "stable"
 ```
 
----
-
 ## 七、按鍵快捷鍵參考
 
 Herdr 採用 tmux 風格的**前綴鍵（Prefix）**機制。預設前綴鍵為 `ctrl+b`，按下並釋放前綴鍵後，再按下對應的操作鍵。
@@ -505,11 +501,9 @@ Herdr 採用 tmux 風格的**前綴鍵（Prefix）**機制。預設前綴鍵為 
 
 | 快捷鍵 | 動作 |
 |--------|------|
-| `prefix + +` | 建立新智能體 |
-| `prefix + /` | 搜尋智能體 |
-| `prefix + .` | 中斷目前智能體 |
-
----
+| `prefix + +` | 建立新代理 |
+| `prefix + /` | 搜尋代理 |
+| `prefix + .` | 中斷目前代理 |
 
 ## 八、測試範例
 
@@ -530,24 +524,24 @@ herdr
 - 右鍵選單可用
 - 可執行任何 shell 指令
 
-#### 測試 2：啟動 AI 智能體
+#### 測試 2：啟動 AI 代理
 
 ```bash
 # 在 Herdr 窗格中執行：
 claude
 
-# 或在側邊欄點擊 AI 智能體圖示
+# 或在側邊欄點擊 AI 代理圖示
 ```
 
 **預期結果：**
-- 智能體在窗格中啟動
-- 側邊欄顯示智能體狀態為 `working`
-- 智能體開始執行其預設任務
+- 代理在窗格中啟動
+- 側邊欄顯示代理狀態為 `working`
+- 代理開始執行其預設任務
 
-#### 測試 3：智能體狀態偵測
+#### 測試 3：代理狀態偵測
 
 ```bash
-# 啟動多個智能體在不同窗格：
+# 啟動多個代理在不同窗格：
 claude        # 執行任務 A
 codex         # 執行任務 B
 pi            # 執行任務 C
@@ -556,18 +550,18 @@ pi            # 執行任務 C
 ```
 
 **預期結果：**
-- 每個智能體顯示正確狀態：
+- 每個代理顯示正確狀態：
   - `working`：正在執行
   - `blocked`：等待輸入/批准
   - `idle`：已完成任務
-- 狀態會隨智能體行為即時更新
+- 狀態會隨代理行為即時更新
 
 ### 8.2 中斷連線測試
 
 #### 測試 4：中斷連線並重新連線
 
 ```bash
-# 步驟 1：啟動 Herdr 並啟動智能體
+# 步驟 1：啟動 Herdr 並啟動代理
 herdr
 claude  # 執行長時間任務
 
@@ -578,17 +572,17 @@ herdr
 ```
 
 **預期結果：**
-- 智能體仍在運行，不會中斷
+- 代理仍在運行，不會中斷
 - 視窗佈局已恢復
-- 智能體從中斷處繼續執行
+- 代理從中斷處繼續執行
 
 #### 測試 5：結束會話
 
 ```bash
-# 步驟 1：確認所有智能體完成或可中斷
+# 步驟 1：確認所有代理完成或可中斷
 herdr
 
-# 步驟 2：中斷所有智能體
+# 步驟 2：中斷所有代理
 herdr pane input --all --ctrl+d
 
 # 步驟 3：結束會話
@@ -610,7 +604,7 @@ ssh you@server
 # 步驟 2：在遠端運行 Herdr
 herdr
 
-# 步驟 3：啟動智能體
+# 步驟 3：啟動代理
 claude
 
 # 步驟 4：中斷 SSH 連線（ctrl+d）
@@ -620,7 +614,7 @@ herdr
 ```
 
 **預期結果：**
-- 智能體在遠端持續運行
+- 代理在遠端持續運行
 - 重新連線後視窗狀態恢復
 
 #### 測試 7：herdr --remote 模式
@@ -635,7 +629,7 @@ Host workbox
 # 步驟 2：使用 --remote 模式
 herdr --remote workbox
 
-# 步驟 3：啟動智能體
+# 步驟 3：啟動代理
 claude
 
 # 步驟 4：中斷連線
@@ -645,7 +639,7 @@ herdr pane input --all --ctrl+d
 
 **預期結果：**
 - 本機 Herdr 客戶端顯示遠端會話
-- 遠端智能體持續運行
+- 遠端代理持續運行
 - 剪貼簿功能可用（圖片貼上等）
 
 ### 8.4 配置測試
@@ -707,9 +701,7 @@ herdr
 **預期結果：**
 - 側邊欄顯示所有機器狀態
 - 可切換到不同機器
-- 每台機器的智能體獨立運行
-
----
+- 每台機器的代理獨立運行
 
 ## 九、故障排除
 
@@ -728,16 +720,16 @@ herdr --version
 herdr --verbose
 ```
 
-#### 問題 2：智能體狀態顯示不正確
+#### 問題 2：代理狀態顯示不正確
 
 ```bash
 # 重新載入配置
 herdr server reload-config
 
-# 檢查智能體整合
+# 檢查代理整合
 herdr integration list
 
-# 重新安裝智能體
+# 重新安裝代理
 herdr integration install claude
 ```
 
@@ -773,8 +765,6 @@ herdr config reset-keys
 herdr config reset
 ```
 
----
-
 ## 十、參考資源
 
 ### 官方文件
@@ -784,7 +774,7 @@ herdr config reset
 - [使用方式](https://herdr.dev/docs/how-to-work/)
 - [配置參考](https://herdr.dev/docs/config-reference/)
 - [按鍵快捷鍵](https://herdr.dev/docs/keyboard/)
-- [智能體支援](https://herdr.dev/docs/agents/)
+- [代理支援](https://herdr.dev/docs/agents/)
 - [整合](https://herdr.dev/docs/integrations/)
 - [多台機器](https://herdr.dev/docs/connecting-machines/)
 - [會話狀態](https://herdr.dev/docs/session-state/)
@@ -799,22 +789,18 @@ herdr config reset
 - [Herdr 捷徑 Cheat Sheet](https://getmoshi.app/articles/herdr-cheatsheet)
 - [ithome Herdr 介紹](https://ithelp.ithome.com.tw/articles/10407114)
 
----
-
 ## 十一、總結
 
-Herdr 是一款為 AI 程式碼智能體量身打造的終端機多工器，具有以下優勢：
+Herdr 是一款為 AI 程式碼代理量身打造的終端機多工器，具有以下優勢：
 
-1. **無需中斷即可離線**：即使關閉終端機或斷線，智能體繼續工作
-2. **智能體狀態感知**：自動偵測並顯示每個智能體的狀態
-3. **跨機器協作**：在同一視窗管理多台機器的智能體
-4. **AI 原生設計**：支援超過 20 個主流 AI 智能體
+1. **無需中斷即可離線**：即使關閉終端機或斷線，代理繼續工作
+2. **代理狀態感知**：自動偵測並顯示每個代理的狀態
+3. **跨機器協作**：在同一視窗管理多台機器的代理
+4. **AI 原生設計**：支援超過 20 個主流 AI 代理
 5. **滑鼠優先操作**：降低學習曲線，提高使用效率
 6. **高度可配置**：支援自訂主題、快捷鍵和行為
 
 無論是在本機開發、遠端伺服器工作，還是透過手機 SSH 連線，Herdr 都能提供一致的使用體驗。
-
----
 
 **參考文獻：**
 1. [herdr.dev/docs/quick-start/](https://herdr.dev/docs/quick-start/)
@@ -828,7 +814,5 @@ Herdr 是一款為 AI 程式碼智能體量身打造的終端機多工器，具�
 9. [GitHub herdrdev/herdr](https://github.com/herdrdev/herdr)
 10. [herdr.dev/llms.txt](https://herdr.dev/llms.txt)
 
----
-
-*報告撰寫日期：2026 年*
+*報告撰寫日期：2026-10-23*
 *Herdr 版本：0.9.5 (stable)*
