@@ -6,14 +6,14 @@
       "api": "openai-completions",
       "models": [
         {
-          "id":   "unsloth/Qwen3.5-9B",
+          "id": "unsloth/Qwen3.5-9B",
           "name": "unsloth/Qwen3.5-9B",
-          "contextWindow": 38912
+          "contextWindow": 40960
         },
         {
-          "id":   "Ornith-1.5-9B",
+          "id": "Ornith-1.5-9B",
           "name": "Ornith-1.5-9B",
-          "contextWindow": 38912
+          "contextWindow": 40960
         }
       ]
     }
