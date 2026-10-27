@@ -1,0 +1,2 @@
+#!/bin/bash
+du -s * | sort -nr | head -n 10
