@@ -17,7 +17,7 @@ FILENAME=$3
 ###
 
 SRC_ID=$(nlm source add ${NOTEBOOK} -y ${URL} | grep 'Source ID' | awk '{ print $3 }')
-echo "Source ID: ${SRC_ID}"
+echo "Source ID: ${SRC_ID}" | tee -a ${FILENAME}.log
 
 ###
 # nlm report create $NOTEBOOK -y -f 'Blog Post' --language zh_TW -s ${SRC_ID} 的執行結果如下：
@@ -30,20 +30,31 @@ echo "Source ID: ${SRC_ID}"
 ###
 
 RPT_ID=$(nlm report create ${NOTEBOOK} -y -f 'Blog Post' --language zh_TW -s ${SRC_ID} | grep 'Artifact ID:' | awk '{ print $3 }')
-echo "Report ID: ${RPT_ID}"
+echo "Report ID: ${RPT_ID}" | tee -a ${FILENAME}.log
 
 TITLE=$(nlm source get -j ${SRC_ID} | jq '.title')
 
-echo "YouTube Title: ${TITLE}"
+echo "YouTube Title: ${TITLE}" | tee -a ${FILENAME}.log
 
 ###
 # wait for the report to be generated
 ###
 
-echo "⠴ Waiting 1 minute for report generation to complete ..."
-sleep 60
+echo "⠴ Waiting 90 seconds for report generation to complete ..."
+sleep 90
 
-nlm studio status ${NOTEBOOK} --artifact-id ${RPT_ID}
+echo "~~~~~~~~~~~~~"  | tee -a ${FILENAME}.log
+echo "nlm studio status ${NOTEBOOK} --artifact-id ${RPT_ID}" | tee -a ${FILENAME}.log
+echo "~~~~~~~~~~~~~" | tee -a ${FILENAME}.log
+
+RPT_STATUS=$(nlm studio status ${NOTEBOOK} --artifact-id ${RPT_ID} | jq '.[].status')
+if [ "$RPT_STATUS" == '"completed"' ]; then
+  nlm studio status ${NOTEBOOK} --artifact-id ${RPT_ID}
+else
+  echo "⠴ Waiting another 30 seconds for report generation to complete ..."
+  sleep 30
+  nlm studio status ${NOTEBOOK} --artifact-id ${RPT_ID}
+fi
 
 ### -------------
 ### 2026-08-27: use 3rd argument as filename to download report
@@ -55,10 +66,25 @@ nlm source get -j ${SRC_ID} > "${FILENAME}.json"
 
 TITLE=$(jq -r '.title' "${FILENAME}.json")
 
+echo "Printing metadata just in case download fails ..."  | tee -a ${FILENAME}.log
+echo "~~~~~~~~~~~~~"  | tee -a ${FILENAME}.log
+echo "---
+title: \"${TITLE}\"
+source: ${URL}
+created: $(date +"%Y-%m-%d")
+notebooklm: ${NOTEBOOK}
+source-id: ${SRC_ID}
+report-id: ${RPT_ID}
+---" | tee -a ${FILENAME}.log
+echo "~~~~~~~~~~~~~" | tee -a ${FILENAME}.log
+echo "nlm download report ${NOTEBOOK} --id ${RPT_ID} -o \"${FILENAME}.md\"" | tee -a ${FILENAME}.log
+echo "~~~~~~~~~~~~~" | tee -a ${FILENAME}.log
+
+echo "Downloading report to ${FILENAME}.md ..." | tee -a ${FILENAME}.log
 nlm download report ${NOTEBOOK} --id ${RPT_ID} -o "${FILENAME}.md"
 
 sed -i "1i ---\r\n\
-title: ${TITLE}\r\n\
+title: \"${TITLE}\"\r\n\
 source: ${URL}\r\n\
 created: $(date +"%Y-%m-%d")\r\n\
 notebooklm: ${NOTEBOOK}\r\n\

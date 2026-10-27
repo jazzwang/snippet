@@ -12,7 +12,7 @@ if [ $# -gt 1 ]; then
 fi
 aider --no-auto-commits \
       --no-gitignore \
-      --model gemini/gemini-3.6-flash \
+      --model gemini/gemini-3.5-flash-lite \
       -m "/ask could you generate report based on this transcript in markdown syntax? \
 	  in 3 sections: (A) Mindmap (in markmap.js syntax) (B) Help Needed (C) Potential Risk. Thanks." \
       --chat-history-file ${INPUT%.json}.md \
