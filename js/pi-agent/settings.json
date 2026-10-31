@@ -1,0 +1,30 @@
+{
+  "lastChangelogVersion": "1.4.0",
+  "defaultProvider": "llama.cpp",
+  "defaultModel": "unsloth/Qwen3.5-9B",
+  "defaultThinkingLevel": "medium",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "theme": "dark",
+  "treeFilterMode": "user-only",
+  "enableInstallTelemetry": false,
+  "hideThinkingBlock": true,
+  "packages": [
+    "npm:pi-web-access"
+  ],
+  "autocompleteMaxVisible": 10,
+  "followUpMode": "one-at-a-time",
+  "transport": "auto",
+  "cacheWarming": "streaming",
+  "collapseChangelog": true,
+  "doubleEscapeAction": "tree",
+  "warnings": {
+    "anthropicExtraUsage": true
+  },
+  "compaction": {
+    "enabled": true
+  },
+  "$schema": "https://pi.dev/schemas/keybindings.schema.json",
+  "app.interrupt": "ctrl+shift+escape"
+}
