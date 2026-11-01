@@ -1220,7 +1220,7 @@ ctx-size = 1048576
 
 當你啟動 llama-server 時，預設可能會自動配置 4 個 slots（由 -np 或 --parallel 參數控制）以支援多用戶同時對話。 [5, 6]
 
-* 記憶體乘數效應：在傳統的固定分配模式下，總 KV Cache 的 VRAM 開銷是 $Slots \times Context\ Size$。這意味著 4 個 slots 會將你設定的上下文記憶體開銷直接放大 4 倍。 [3]
+* 記憶體乘數效應：在傳統的固定分配模式下，總 KV Cache 的 VRAM 開銷是 $$Slots \times Context\ Size$$。這意味著 4 個 slots 會將你設定的上下文記憶體開銷直接放大 4 倍。 [3]
 * 釋放 VRAM 做法：如果你是單人使用，可以透過加入 -np 1（或配合 -kvu 啟用統一 KV 快取 --kv-unified）將 slot 限制為 1 個。這樣做能大幅砍掉原本預留給其他平行連線的 VRAM 空間。 [3, 7, 8]
 
 ### 2. Context Window 與 VRAM 的線性暴漲
@@ -1509,5 +1509,350 @@ Loaded Qwythos-9B-v2
 |-------------|-----|----------|------------|
 | Qwen3.5-9B  | 39.83 t/s | 2.45 t/s | 1.85 t/s |
 
-## 2026-10-29
+## 2026-10-13
+
+> [!NOTE]
+> llama.cpp "n_parallel" 意義
+
+在 `llama.cpp` 中，參數 **`n_parallel` 代表「併發槽位（Concurrent Slots）的數量」**，也就是**伺服器允許同時處理的獨立文本序列（或使用者請求）的最大數量**。 [[1](https://zhuanlan.zhihu.com/p/2025990417770901543)]
+當你將 `llama.cpp` 作為伺服器（`llama-server`）運行時，這個參數決定了系統的併發處理能力。 [[1](https://zhuanlan.zhihu.com/p/2025990417770901543)]
+
+### `n_parallel` 的核心意義與影響
+
+-   **預留硬體資源**：當設定 `n_parallel = 4` 時，伺服器會自動在記憶體或顯存中**預留 4 個獨立的 KV Cache（鍵值快取）空間**。即使當下只有 1 個使用者在發送請求，系統依然會佔用這 4 個槽位所需的資源。 [[1](https://zhuanlan.zhihu.com/p/2025990417770901543)]
+-   **多文本生成能力**：它允許模型同時進行多路處理。例如：
+        -   同時回應 4 位不同使用者的 API 請求。
+        -   在進行 **Beam Search（束搜尋）** 或同時生成多個解答（如一次生成 4 個結果供使用者選擇）時，提供硬體底層的支持。
+-   **顯存/記憶體消耗**：`n_parallel` 的數值越大，所需的顯存或記憶體就越多。總上下文視窗大小通常會變成 `n_parallel × 每個槽位的 context 限制`。如果顯存不足，調高此數值會導致 OOM（記憶體溢出）。 [[1](https://www.threads.com/@rainlagh/post/DBtvUPQTFUC)]
+
+### 特殊限制
+
+在 `llama.cpp` 近期引入的 **MTP（Multi-Token Prediction，多 Token 預測）** 推測解碼加速技術中（常見於 DeepSeek-V3/R1 或 Qwen3.6 等模型），由於技術架構限制，目前**強制要求 `n_parallel=1`**。如果設為大於 1 的數值，模型將無法正常載入並會報錯中斷。 [[1](https://ai-coding.wiselychen.com/llama-cpp-mtp-merged-local-llm-2x-speedup/), [2](https://www.reddit.com/r/LocalLLaMA/comments/1t57xuu/25x_faster_inference_with_qwen_36_27b_using_mtp/?tl=zh-hant)]
+
+請問您目前是打算將 `llama.cpp` 用於**多用戶部署**，還是為了**單人使用進行性能調優**呢？如果是後者，您正在使用的**模型名稱**（例如是否包含 MTP）是什麼？我可以為您提供更具體的參數配置建議。
+
+> [!NOTE]
+> `llama serve -hf` 指令會把 LLM model 下載到哪裡?
+
+使用 `llama serve -hf`（或 `llama-server -hf`）指令時，`llama.cpp` 會將從 Hugging Face 下載的 LLM 模型檔案存放在**本地的 Hugging Face 快取目錄（Hugging Face Cache）**中。 [[1](https://huggingface.co/docs/hub/gguf-llamacpp), [2](https://www.reddit.com/r/LocalLLaMA/comments/1samyno/llamacpp_automatically_migrated_models_to/)]
+具體的下載路徑取決於環境變數的設定與作業系統，系統會依序偵測以下位置： [[1](https://github.com/ggml-org/llama.cpp/discussions/27095)]
+
+### 1\. 預設下載路徑
+
+如果你沒有特別設定任何環境變數，模型會自動下載到系統預設的用戶快取目錄：
+
+-   **Linux / macOS:**
+    `~/.cache/huggingface/hub/`（即 `${HOME}/.cache/huggingface/hub/`）
+-   **Windows:**
+    `C:\Users\<你的用戶名>\.cache\huggingface\hub\`（即 `%USERPROFILE%\.cache\huggingface\hub\`） [[1](https://github.com/ggml-org/llama.cpp/discussions/27095)]
+
+### 2\. 快取路徑的權重順序
+
+`llama.cpp` 在決定存放目錄時，會依序檢查並採用最先被找到的環境變數路徑： [[1](https://github.com/ggml-org/llama.cpp/discussions/27095)]
+
+1.  **`LLAMA_CACHE`**（`llama.cpp` 的專屬快取環境變數）
+2.  **`HF_HUB_CACHE`**
+3.  **`HUGGINGFACE_HUB_CACHE`**
+4.  **`HF_HOME`** 旗下的 `/hub` 子目錄
+5.  **`XDG_CACHE_HOME`** 旗下的 `/huggingface/hub`
+6.  上述均未設定時，即採用預設的 **`~/.cache/huggingface/hub/`** [[1](https://huggingface.co/docs/hub/gguf-llamacpp), [2](https://github.com/ggml-org/llama.cpp/discussions/27095)]
+
+> 💡 **提示：** 如果你想把模型下載到自訂的硬碟位置（例如外部硬碟），可以在執行指令前，先在終端機設定環境變數，例如：`export LLAMA_CACHE="/path/to/your/large/drive"`。 [[1](https://huggingface.co/docs/hub/gguf-llamacpp), [2](https://github.com/ggml-org/llama.cpp/discussions/27095)]
+
+## 2026-10-27
+
+> [!NOTE]
+> llama.cpp 如何決定 n_ctx_seq? 預設值是多少?
+> ```
+> llama_context: n_ctx_seq (40960) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+> ```
+
+在 `llama.cpp` 中，**`n_ctx_seq`（每條序列的上下文長度）的計算方式取決於你設定的「總上下文大小（`n_ctx`）」以及「並行處理的序列數量（`n_parallel`，又稱 `n_seq_max` / slots）」**。
+
+系統日誌中出現的 `llama_context: n_ctx_seq (40960) < n_ctx_train (262144) -- the full capacity of the model will not be utilized` 提示，代表你目前分配給單一序列的上下文長度（40,960）小於該模型在訓練時所支援的最大長度（262,144），因此模型無法發揮其完整的長文本實力。
+
+以下為您詳細拆解 `llama.cpp` 決定 `n_ctx_seq` 的邏輯與預設值：
+
+### 1\. `n_ctx_seq` 的決定公式
+
+`llama.cpp` 的核心程式碼會根據是否啟用 `kv_unified`（整合式 KV 快取記憶體）來計算 `n_ctx_seq`： [[1](https://github.com/ggml-org/llama.cpp/issues/26654)]
+
+-   **情況 A：未啟用 `kv_unified`（預設常見於多 Slots 分離模式）**
+
+    ```mermaid
+    graph LR
+    A["$$\text{n\_ctx\_seq} = \frac{\text{n\_ctx}}{\text{n\_parallel}}$$"]
+    ```
+
+    **總上下文大小會被平均平分給所有並行的序列（Slots）**。
+
+    例如：如果你指定總上下文 `-c 40960`，且並行數 `--parallel 1`（單一序列），則 `n_ctx_seq` 就是 40960。但如果你開了多個並行，這個值就會被除下去。
+
+-   **情況 B：啟用了 `kv_unified`（動態/整合式快取模式）**
+
+    ```mermaid
+    graph LR
+    A["$$\text{n\_ctx\_seq}=\text{n\_ctx}$$"]
+    ```
+
+    在整合快取模式下，`n_ctx_seq` 不會被並行數除，單一序列可以直接動態借用高達總容量大小的上下文。 [[1](https://github.com/ggml-org/llama.cpp/issues/11681), [2](https://github.com/ggml-org/llama.cpp/issues/26654)]
+
+### 2\. 預設值是多少？
+
+-   **當你沒有手動指定 `-c` 或 `--ctx-size` 時：**
+
+    `llama.cpp` 的舊版本通常會固定預設為 **`512`** 或 **`4096`**。
+    而在較新版本中，如果使用者帶入 `-c 0`（自動），它會嘗試去讀取模型 GGUF 檔內的 `n_ctx_train` 作為預設總長度。
+
+-   **當你啟動 `llama-server` 且未指定 `--parallel`（並行數）時：**
+
+    預設通常會自動將 `n_parallel` 設為 `4`（部分模式下會伴隨 `kv_unified = true`）。 [[1](https://github.com/ggml-org/llama.cpp/issues/18376), [2](https://github.com/ggml-org/llama.cpp/issues/26654)]
+
+### 如何解決這個提示？
+
+如果你希望充分發揮模型 262,144 (262K) 的長文本實力，你需要加大啟動時的上下文參數。請注意，**這會顯著增加顯示卡 VRAM 的佔用量**。
+
+你可以透過以下方式調整命令列參數：
+
+1.  **如果你只需要服務單一使用者（讓單一對話吞滿 262K）：**
+
+    ```bash
+    # 將總上下文直接開到與 n_ctx_train 一致
+    ./llama-cli -m model.gguf -c 262144
+    ```
+
+2.  **如果是使用 `llama-server` 且需要處理多並行（例如 4 個並行 Slots）：**
+    如果你希望每個 Slot 都能用到 262K 的完整長度（在非統一快取下）：
+
+    ```bash
+    # 總上下文 = 262144 * 4 = 1048576 (注意：這通常需要極其龐大的 VRAM 快取空間)
+    ./llama-server -m model.gguf -c 1048576 --parallel 4
+    ```
+
+**建議：** 如果你的硬體 VRAM 有限，看到這個提示**並不代表程式出錯**，它只是一個效能警告。如果 40,960 已經足夠你的商用或日常對話場景，您可以放心地忽略此提示。
+
+為了幫您評估最適合的設定，請問：
+
+-   您目前使用的是 **`llama-cli`（單機終端）** 還是 **`llama-server`（API 伺服器）**？
+-   您的設備上有**多少 VRAM (顯示記憶體)** 可用？
+-   您預期單次對話最多會輸入/輸出**多長的 Token 數量**？
+
+> [!NOTE]
+> 1. llama-server2. 8GB VRAM
+
+在 **8GB VRAM** 的硬體限制下，運行 `llama-server` 遭遇 `n_ctx_seq (40960)` 的警告是完全正常的。因為 262K (262,144) 的全容量上下文，光是存放 KV Cache（鍵值快取）就會遠遠超過 8GB 的總記憶體，導致完全無法載入模型。
+為了在 8GB VRAM 中讓 `llama-server` 穩定運行，以下是調整 `n_ctx` 與平行度（Parallel）的實務建議與定量分析：
+
+### 1\. 為什麼 8GB VRAM 無法開滿 262K？
+
+以常見的 Llama 3 (8B) 模型為例，在不同量化精度下，**光是 1 個序列開滿 262K 上下文**所需的 KV Cache 記憶體估算如下（尚未包含模型本身的權重）：
+
+| 上下文長度 (n\_ctx) | Q4\_K\_M 快取大小 | Q8\_0 快取大小 | 8GB VRAM 可否容納 (單一序列) |
+| --- |  --- |  --- |  --- |
+| **8,192 (8K)** | ~450 MB | ~800 MB | ✅ 輕鬆運行（推薦） |
+| **32,768 (32K)** | ~1.8 GB | ~3.2 GB | ⚠️ 邊緣，需搭配高度量化模型 |
+| **40,960 (40K)** | ~2.2 GB | ~4.0 GB | ❌ 極度擁擠，容易 OOM (記憶體耗盡) |
+| **262,144 (262K)** | ~14.4 GB | ~25.6 GB | ❌ 絕對不可能 |
+
+*註：`llama-server` 預設會開啟 `--parallel 4`，意味著上述快取大小通常需要**乘以 4**。*
+
+### 2\. 8GB VRAM 的最佳優化參數推薦
+
+在 8GB 顯示卡上，建議主動限縮總上下文大小，並降低並行數（Slots），以挪出更多 VRAM 空間給模型權重本身（建議搭配 **Q4\_K\_M** 或 **Q3\_K\_M** 量化版模型）。
+請根據您的應用場景選擇以下指令：
+
+#### 方案 A：單人高長度模式（適合個人研發、長文本閱讀）
+
+將並行數降為 1，並把上下文控制在 16K ~ 32K 左右。
+
+```bash
+./llama-server -m model-Q4_K_M.gguf -c 32768 --parallel 1
+```
+
+-   **效果**：`n_ctx_seq` 會等於 32,768。雖然系統仍會提示小於 262K，但能確保單次對話有足夠長度，且不易崩潰。
+
+#### 方案 B：多人輕量並行模式（適合小型 API 服務、多人網頁測試）
+
+維持多工，但大幅壓縮每個人能用的長度，防範 VRAM 爆炸。
+
+```bash
+./llama-server -m model-Q4_K_M.gguf -c 16384 --parallel 4
+```
+
+-   **效果**：`n_ctx_seq` 會被平分為 `4096` (16384 / 4)。每個 API 請求最多處理 4K 長度，但在 8GB VRAM 上非常安全穩定。
+
+### 3\. 進階 VRAM 節省技巧（針對 llama.cpp）
+如果您發現啟動後依然遭逢 OOM (Out of Memory) 錯誤，可以在指令中加入以下參數：
+
+-   **`--flash-attn`**：務必開啟 Flash Attention。它可以大幅優化上下文的記憶體佔用與計算速度。
+-   **`-ngl 99` (或調整數字)**：如果模型太大（如 8B），8GB 無法完全放入，可以手動減少 offload 到 GPU 的層數（例如 `-ngl 24`），讓部分層留在 CPU/RAM 跑，雖然速度變慢，但能避免記憶體塞爆。
+-   **`--ctk-q q4_0` (或 `q8_0`)**：對 KV Cache 進行量化（快取量化）。這能直接讓上下文佔用的 VRAM 減半，非常適合 8GB 的環境。
+
+為了進一步幫您排除設定障礙，您可以告訴我：
+
+-   您目前載入的是**哪一個模型**（例如 Llama-3-8B、Gemma-2-9B 等）？
+-   該模型的 **GGUF 量化版本**是什麼（例如 Q4\_K\_M、Q8\_0、FP16）？
+-   啟動時是否有發生 **OOM (Out of Memory) 崩潰**，還是目前其實可以正常吞吐？
+
+> [!NOTE]
+> 當沒有特別指定 --ctk-q 時,預設值為何?若使用 Q4_K_M 量化的 GGUF 模型,需要刻意指定嗎?從 llama-server 的 log 可以看得出來 KV Cache 有無量化?
+
+在 `llama.cpp / llama-server ` 中，關於 KV Cache 量化的預設行為、必要性以及日誌判斷，詳細解答如下：
+
+### 1\. 當沒有特別指定 `--ctk-q ` 時，預設值為何？
+
+當你沒有手動輸入 `--ctk-q `（或是舊版參數 `--cache-type-k ` / `--cache-type-v `）時，**預設值是 `f16 `（16-bit 浮點數）**。
+這意味著無論你載入的 GGUF 模型本身量化得有多低（例如 Q4 或 Q3），系統預設都會使用**完全不壓縮的高精度 `f16 `** 來儲存 Key 和 Value 矩陣。這也是為什麼當上下文（`n_ctx `）開大時，VRAM 會消耗得極為劇烈。
+
+### 2\. 若使用 Q4\_K\_M 量化的 GGUF 模型，需要刻意指定嗎？
+
+**在 8GB VRAM 的環境下，強烈建議刻意指定！**
+
+模型本身是 Q4\_K\_M，只代表「模型的權重」被壓縮了，但「對話過程中產生的 KV Cache 記憶體」預設依然是巨大的 `f16 `。
+
+-   **不指定的後果**：當你把上下文開到 32K 或 40K 時，`f16 ` 的快取會直接吃掉 4GB ~ 8GB 的 VRAM，立刻引發 OOM 崩潰。
+-   **刻意指定的優勢**：加上 **`--ctk-q q4_0 `** （且建議同時加上 **`--ctv-q q4_0 `** 壓縮 Value 快取），可以將快取體積**直接縮減至原本的 1/4**！這樣你才能在 8GB VRAM 上安穩地享受中長文本。
+
+> [!TIP]
+> 💡 **最佳實務指令推薦（適合 8GB VRAM）：**
+>
+> ```bash
+> ./llama-server -m model-Q4_K_M.gguf -c 32768 --parallel 1 --ctk-q q4_0 --ctv-q q4_0 --flash-attn
+> ```
+
+### 3\. 從 `llama-server ` 的 log 可以看得出來 KV Cache 有無量化？
+
+**可以，非常明顯。**
+
+當 `llama-server ` 啟動並初始化上下文時，日誌中會列出矩陣乘法與記憶體分配的詳細資訊。請尋找包含 **`KV_init `** 、**`view_srcs `** 或 **`k ` / `v ` 數據類型**的行數。
+
+#### 📊 狀況 A：未使用量化（預設狀態）
+
+你會在 log 中看到快取的資料型態顯示為 **`f16 `** ：
+
+```text
+llama_kv_cache_init: kv_size = 32768, slots = 1
+llama_kv_cache_init: K type = f16, V type = f16
+```
+
+*(部分版本會直接在層級矩陣中顯示：`[f16] k_view ` 或 `[f16] v_view `)*
+
+#### 📊 狀況 B：成功啟用量化（指定 `q4_0 `）
+
+當你成功帶入參數後，log 中的型態會隨之改變：
+
+```text
+llama_kv_cache_init: kv_size = 32768, slots = 1
+llama_kv_cache_init: K type = q4_0, V type = q4_0
+```
+
+同時，你可以對比日誌後面顯示的 **`graph memory `** 或 **`kv cache memory footprint `** 總容量大小，啟用後的記憶體佔用量會顯著暴跌。
+
+如果您在啟動時方便的話，可以**複製並貼上您目前 `llama-server ` 啟動前 30 行的日誌 (log)**，我可以直接幫您檢視：
+
+-   目前 KV Cache 是否正以 **`f16 `** 肥大運行
+-   模型層級是否有**完整塞入 8GB VRAM**（`ggof_input_split ` / `offload ` 狀況）
+-   **`Flash Attention `** 是否有正常啟動
+
+> [!NOTE]
+> 目前 llama-server 版本是 9500,沒有 `--ctk-q` 這個參數。該如何解決
+> ```
+> ~$ llama-server --version
+> version: 9500 (3d1998634)
+> built with Clang 19.1.5 for Windows x86_64
+> ```
+
+在 `llama-server` 版本 9500 中，你找不到 `--ctk-q` 的原因，是因為 `llama.cpp` 開發團隊將 KV Cache 量化的參數名稱統一為了**更具描述性的全稱或縮寫**。 [[1](https://hussain-nazary.github.io/kv-cache-quantization.html)]
+在目前的版本中，**請改用以下參數來啟用 KV Cache 量化**：
+
+### 1\. 正確的替代參數
+
+你需要分別對 **Key (K)** 和 **Value (V)** 進行快取量化設定： [[1](https://bmdpat.com/blog/kv-cache-q4-vs-q8-in-llama-cpp-explained-2026), [2](https://sotaaz.com/post/llamacpp-kv-cache-quantization-guide-en)]
+
+-   **全稱形式（推薦，最不容易出錯）：**
+        -   `--cache-type-k <類型>`
+        -   `--cache-type-v <類型>` [[1](https://bmdpat.com/blog/kv-cache-q4-vs-q8-in-llama-cpp-explained-2026), [2](https://sotaaz.com/post/llamacpp-kv-cache-quantization-guide-en)]
+-   **簡寫形式：**
+        -   `-ctk <類型>`
+        -   `-ctv <類型>` [[1](https://github.com/ka8t/Hermes/issues/52), [2](https://sotaaz.com/post/llamacpp-kv-cache-quantization-guide-en)]
+
+而在部分極新版本中，也可以直接使用單一參數 `--cache-type <類型>` 同時套用到兩者。 [[1](https://hussain-nazary.github.io/kv-cache-quantization.html)]
+
+### 2\. 針對 8GB VRAM 的最佳啟動指令
+
+針對你手上的 **Q4\_K\_M 模型** 與 **8GB VRAM** 硬體環境，建議直接將 K 和 V 的快取類型都設為 **`q4_0`**（將快取體積壓縮至預設 f16 的 1/4）。 [[1](https://hussain-nazary.github.io/kv-cache-quantization.html), [2](https://bmdpat.com/blog/kv-cache-q4-vs-q8-in-llama-cpp-explained-2026)]
+請將你的 `llama-server` 啟動指令修改為如下：
+
+```bash
+# 全稱版
+llama-server -m model-Q4_K_M.gguf -c 32768 --parallel 1 --cache-type-k q4_0 --cache-type-v q4_0 --flash-attn
+
+# 簡寫版
+llama-server -m model-Q4_K_M.gguf -c 32768 --parallel 1 -ctk q4_0 -ctv q4_0 --flash-attn
+```
+
+*(註：如果追求更好的模型生成品質，也可以將快取類型設為 `q8_0`，但占用的 VRAM 會比 `q4_0` 多出一倍。)* [[1](https://hussain-nazary.github.io/kv-cache-quantization.html), [2](https://bmdpat.com/blog/kv-cache-q4-vs-q8-in-llama-cpp-explained-2026)]
+
+### 3\. 如何驗證是否成功？
+
+修改參數並重啟 `llama-server` 後，請留意終端機輸出的前幾行 Log，只要看到類似以下的字樣，就代表解決成功了： [[1](https://www.ssdnodes.com/learn/ollama-kv-cache-quantization)]
+
+
+```text
+llama_kv_cache_init: kv_size = 32768, slots = 1
+llama_kv_cache_init: K type = q4_0, V type = q4_0
+```
+
+改用 **`--cache-type-k q4_0 --cache-type-v q4_0`** 後，服務有順利啟動並省下 VRAM 嗎？如果在執行時有遇到其他像是 `unrecognized option` 的錯誤，可以把**錯誤訊息**貼上來，我們一起看看。
+
+> [!NOTE]
+> KV Cache 量化引數(--cache-type-k / -ctk)給 q4_0 跟 q4_1 有何差別?分別是什麼意思?
+
+在 `llama.cpp` 中，將 **KV Cache 量化參數（`--cache-type-k` 與 `--cache-type-v`）** 設定為 `q4_0` 或 `q4_1`，其背後的技術含意與對系統造成的效能影響有非常顯著的差別。
+
+簡單來說：**`q4_0` 速度極快且節省空間（強烈推薦）；而 `q4_1` 雖然理論精度稍高，但會嚴重拖慢 GPU 推理速度（極不推薦）。**
+
+以下為您詳細拆解兩者的具體意思與差別：
+
+### 1\. 技術含意：分別是什麼意思？
+
+當模型在與你對話時，每一輪對話產生的 Token 都需要轉化為 Key（鍵）與 Value（值）矩陣記錄在 VRAM 中（即 KV Cache）。預設的 `f16` 格式每個數字佔用 16-bit（2 位元組）。
+
+-   **`q4_0`（對稱 4-bit 量化）：**
+        -   **原理**：它將 KV Cache 的數據壓縮到只剩 4-bit。它採用**對稱量化**，在每一個資料區塊（Block，通常為 32 個數字）中，只儲存一個縮放係數（Scale），並假設資料是以 0 為中心對稱分佈。
+        -   **體積**：每個 Block 的平均大小約為 **4.5 bpw**（bits per weight/value）。
+-   **`q4_1`（非對稱 4-bit 量化）：**
+        -   **原理**：同樣將數據壓縮至 4-bit，但它採用**非對稱量化**。除了儲存縮放係數（Scale）外，還會額外紀錄一個**最小值（Minimum / Offset 偏移量）**。這樣做可以更精準地捕捉那些沒有對稱於 0 的數值分佈。
+        -   **體積**：因為每個 Block 多存了一個 Min 值，平均大小上升到約 **5.0 bpw**，佔用的 VRAM 會比 `q4_0` 稍微多一點。
+
+### 2\. 實務差別：GPU 速度與 VRAM 佔用
+
+當這兩個參數套用在 **8GB VRAM（GPU 加速）** 的環境下時，兩者的表現會出現巨大分水嶺：
+
+| 評比項目 | `--cache-type-k q4_0` | `--cache-type-k q4_1` | 說明 |
+| --- |  --- |  --- |  --- |
+| **VRAM 佔用量** | **極低** (約 fp16 的 28%) | **低** (約 fp16 的 31%) | `q4_0` 比 `q4_1` 更省一點顯存空間。 |
+| **GPU 推理速度** | 🚀 **極快 (有硬體加速)** | 🐌 **極慢 (無硬體加速)** | **關鍵差異！** `llama.cpp` 的 CUDA/Metal 核心只對 `q4_0` 有極致優化。 |
+| **模型精準度** | 基準 (有微幅精度損失) | 略高於 `q4_0` | `q4_1` 雖然數學上更準，但在日常對話中體感不明顯。 |
+
+#### 為什麼 `q4_1` 會讓速度暴跌？
+
+`llama.cpp` 的 GPU 矩陣乘法核心（Kernels）是專門為 `q4_0` 的 KV Cache 架構設計的。當你指定 `q4_0` 時，GPU 可以直接在顯示記憶體內進行快速的反量化與計算。
+相反地，如果你指定 `q4_1`，GPU 核心不支援這種帶有 Offset 的特殊非對稱解碼，系統通常必須把計算交給效率較低的通用矩陣公式，甚至可能引發大量的 CPU-GPU 資料交換，導致每秒輸出的 Token 數量（Token/s）出現斷崖式暴跌。
+
+### 💡 最終結論與設定建議
+
+在您的 8GB VRAM 環境下運行 `llama-server`，**請絕對不要使用 `q4_1` 作為 KV Cache 參數**。
+
+-   **唯一推薦**：使用 **`q4_0`**。
+-   **如果不滿意 `q4_0` 的精度**：請直接跳過 `q4_1`，改用 **`q8_0`**（8-bit 量化，精準度幾乎無損，且同樣享有完美的 GPU 硬體加速，只是 VRAM 佔用會比 `q4_0` 多一倍）。
+
+**最佳啟動指令複習：**
+
+
+```bash
+llama-server -m model-Q4_K_M.gguf -c 32768 --parallel 1 -ctk q4_0 -ctv q4_0 --flash-attn
+```
+
+您目前將參數切換到 **`q4_0`** 後，觀察到 `llama-server` 輸出的 **Token/s（生成速度）** 大約是多少呢？如果有遇到回應變得胡言亂語的狀況，我們可以考慮調整成 **`q8_0`** 來測試看看。
 
