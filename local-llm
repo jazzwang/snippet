@@ -1,3 +1,6 @@
 #!/bin/bash
 echo "starting local LLM -- $(date +"%y-%m-%d %H:%M:%s")" | tee -a ~/local-llm.log
-llama-server --cors-origins localhost --models-preset ~/.models/preset.ini | tee -a ~/local-llm.log
+llama-server \
+	--cors-origins 127.0.0.1 \
+	--port 8080 \
+	--models-preset ~/.models/preset.ini | tee -a ~/local-llm.log
