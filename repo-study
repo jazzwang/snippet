@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <URL> <output report filename>"
+  exit 1
+fi
+pi "!date" "根據 $1 內容撰寫一篇技術報告，採用繁體中文（台灣用詞）撰寫，包括 step-by-step 測試步驟，存成 $2"
