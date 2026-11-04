@@ -1,0 +1,2 @@
+#!/bin/bash
+pi update; nvm firewall trust module pi ; nvm reshim; pi update --extensions
