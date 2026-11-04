@@ -1,0 +1,14 @@
+#!/bin/bash
+# Script to update all packages listed in scoop status
+
+# Parse scoop status output and extract package names
+scoop update
+
+PKGS=$(scoop status 2>/dev/null | awk -F'\t' '
+    BEGIN { IGNORECASE=1 }
+    /^----/ || /^Scoop/ || /^Name/ { next }
+    /^$/ { next }
+    NF >= 1 { print $1 }
+' | awk '{ print $1 }')
+
+echo $PKGS
