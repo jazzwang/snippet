@@ -1,0 +1,53 @@
+#!/bin/bash
+
+if [[ $# -lt 1 ]]; then
+    echo "Usage: $0 input-filename [rename-file]" >&2
+    exit 1
+fi
+
+input_file=$1
+rename_file=${2-}
+input_dir=${input_file%/*}
+input_base=${input_file##*/}
+
+# A filename with a timestamp prefix is renamed to use HHMMSS instead of
+# HH-MM-SS.  Keep the original directory and extension.
+if [[ "$input_base" =~ ^([0-9]{4}-[0-9]{2}-[0-9]{2})_([0-9]{2})-([0-9]{2})-([0-9]{2})_(.*)$ ]]; then
+    if [[ -z "$input_dir" || "$input_dir" == "$input_file" ]]; then
+        input_dir=.
+    fi
+
+    timestamp="${BASH_REMATCH[1]}_${BASH_REMATCH[2]}${BASH_REMATCH[3]}${BASH_REMATCH[4]}_"
+
+    if [[ -n "$rename_file" ]]; then
+        if [[ "$input_base" == *.* ]]; then
+            extension=".${input_base##*.}"
+        else
+            extension=""
+        fi
+        new_base="${timestamp}${rename_file}${extension}"
+    else
+        new_base="${timestamp}${BASH_REMATCH[5]}"
+    fi
+
+    new_file="${input_dir}/${new_base}"
+    if [[ "$new_file" != "$input_file" ]]; then
+        if [[ -e "$new_file" ]]; then
+            echo "Error: destination already exists: $new_file" >&2
+            exit 1
+        fi
+        mv -- "$input_file" "$new_file" || exit 1
+        input_file=$new_file
+    fi
+fi
+
+meeting-summary "$input_file"
+#meeting-markmap "$input_file"
+#meeting-tone    "$input_file"
+
+input_file=$(basename "$input_file")
+
+if [ -d "${rename_file}" ]; then
+  echo "Moving ${input_file%%.*}.* to ${rename_file}/"
+  mv -b ${input_file%%.*}.* "${rename_file}/"
+fi
