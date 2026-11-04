@@ -546,3 +546,32 @@ Loaded Qwen3.5-9B.Q4_K_M
 [3] [https://altsol.tw](https://altsol.tw/pi-agent-extensions)
 [4] [https://ithelp.ithome.com.tw](https://ithelp.ithome.com.tw/articles/10408441)
 [5] [https://www.threads.com](https://www.threads.com/@t945935/post/DcbZUHWGLWd/%E9%81%A9%E5%90%88%E4%BD%BF%E7%94%A8-pi%E8%B3%87%E6%B7%B1%E5%B7%A5%E7%A8%8B%E5%B8%AB%E6%83%B3%E8%A6%81%E5%AE%8C%E5%85%A8%E6%8E%A7%E5%88%B6-agent-%E8%A1%8C%E7%82%BA%E5%B9%B3%E5%8F%B0%E5%B7%A5%E7%A8%8B%E5%B8%AB%E9%9C%80%E8%A6%81%E8%87%AA%E8%A8%82%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8Bai-%E5%B7%A5%E5%85%B7%E9%96%8B%E7%99%BC%E8%80%85%E9%9C%80%E8%A6%81%E5%8F%AF%E5%B5%8C%E5%85%A5%E7%9A%84-agent-runtime%E5%AE%89%E5%85%A8%E6%95%8F%E6%84%9F%E7%92%B0%E5%A2%83%E9%9C%80%E8%A6%81%E5%AE%B9%E5%99%A8%E5%8C%96%E9%9A%94/)
+
+## 2026-11-04
+
+- 在配合 llama.cpp 修改 KV Cache 進行量化後，VRAM 的壓力變小，llama-server 啟動後，Qwen 3.5 9B Q4_K_M 跟 Ornith 1.5 9B Q4_K_M 自動計算出來的 context window size 從原本的 40K 左右，變大成 54~56K 左右。
+```
+cache-type-k = q4_0          ## 對 KV Cache 進行量化（快取量化）。這能直接讓上下文佔用的 VRAM 減半
+cache-type-v = q4_0          ## 對 KV Cache 進行量化（快取量化）。這能直接讓上下文佔用的 VRAM 減半
+```
+- 為了避免 Pi Agent context window 自動設定(120K)太大，先前強制設定 40K 又浪費掉約 14~16K 左右，所以把 models.json 從 40K(40960) 改成 48K (49152) tokens.
+```
+ llama.cpp models
+ http://127.0.0.1:8080
+
+→ Ornith-1.5-9B                       loaded · 56k context
+  unsloth/Qwen3.5-9B
+  Download model…                     Hugging Face owner/repository[:quant]
+
+ enter load/unload/download • escape/ctrl+c close
+```
+```
+ llama.cpp models
+ http://127.0.0.1:8080
+
+→ unsloth/Qwen3.5-9B                  loaded · 54k context
+  Ornith-1.5-9B
+  Download model…                     Hugging Face owner/repository[:quant]
+
+ enter load/unload/download • escape/ctrl+c close
+```
