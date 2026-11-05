@@ -156,3 +156,202 @@ Linux 的時間屬性分為三種，如果你說的「異動」不是指檔案�
 • 想要直接將它們複製、移動或刪除？
 • 需要排除特定的子目錄或限制特定的擴充檔名？
 
+
+---
+
+## 2026-11-05
+
+- **主題**: find 指令查找最近七天有異動的檔案
+
+> [!NOTE]
+> 如何用 find 指令查最近七天有異動的檔案
+
+以下是常用的 **find 指令** 來查找最近七天有變動的檔案：
+
+### 方法 1：修改時間（mtime）
+
+```bash
+# 最近 7 天有修改的檔案
+find . -type f -mtime -7
+
+# 最近 7 天內修改過（包含今天）
+find . -type f -mtime -8
+
+# 最近 7 天內修改過（不含今天）
+find . -type f -mtime -7
+```
+
+**說明**：
+- `-mtime -7` = 修改時間小於 7*24 小時
+- `-7` 表示「小於 7」
+
+### 方法 2：加入大小限制
+
+```bash
+# 最近 7 天修改且大於 1KB
+find . -type f -mtime -7 -size +1k
+
+# 最近 7 天修改且小於 100KB
+find . -type f -mtime -7 -size -100k
+```
+
+### 方法 3：加入名稱限制
+
+```bash
+# 只查找 .md 檔案
+find . -type f -name "*.md" -mtime -7
+
+# 只查找 .txt 檔案
+find . -type f -name "*.txt" -mtime -7
+```
+
+### 方法 4：顯示詳細資訊
+
+```bash
+# 顯示修改時間和大小
+find . -type f -mtime -7 -ls
+
+# 或顯示時間、大小、名稱
+find . -type f -mtime -7 -ls | awk '{print $9, $6, $5}'
+```
+
+### 方法 5：統計檔案數
+
+```bash
+# 統計數量
+find . -type f -mtime -7 | wc -l
+
+# 統計並顯示
+find . -type f -mtime -7 | sort | uniq -c | sort -rn
+```
+
+### 方法 6：只顯示檔名
+
+```bash
+# 簡單顯示檔名
+find . -type f -mtime -7 -printf "%f\n"
+
+# 顯示完整路徑
+find . -type f -mtime -7
+
+# 只顯示檔案名（不含路徑）
+find . -type f -mtime -7 -exec basename {} \;
+```
+
+### 方法 7：排除特定目錄
+
+```bash
+# 排除 node_modules、vendor 等
+find . -type f -mtime -7 ! -path "*/node_modules/*" ! -path "*/vendor/*"
+
+# 或使用 -prune
+find . -type d -name "node_modules" -prune -o -type f -mtime -7
+```
+
+### 方法 8：批次處理最近修改的檔案
+
+```bash
+# 批次處理所有 .txt 檔案
+find . -name "*.txt" -exec vim -es ':%s/模式/取代/g | wq' {} +
+
+# 批次處理所有檔案
+find . -type f -exec vim -es ':%s/模式/取代/g | wq' {} +
+```
+
+### 方法 9：按時間排序
+
+```bash
+# 按修改時間排序（最近在前）
+find . -type f -mtime -7 -exec ls -lt {} \;
+```
+
+---
+
+## 常用參數對比
+
+| 參數 | 說明 | 範例 |
+|------|------|------|
+| `-mtime -7` | 7 天內修改 | `find . -mtime -7` |
+| `-mtime +7` | 超過 7 天修改 | `find . -mtime +7` |
+| `-mtime 7` | 約 7 天修改 | `find . -mtime 7` |
+| `-mmin -10080` | 10080 分鐘內（7 天） | `find . -mmin -10080` |
+| `-atime -7` | 7 天內存取過 | `find . -atime -7` |
+| `-ctime -7` | 7 天內狀態變更 | `find . -ctime -7` |
+
+---
+
+## 實際範例
+
+### 查找最近 7 天修改的所有檔案
+
+```bash
+find . -type f -mtime -7
+```
+
+### 查找最近 7 天修改的 markdown 檔案
+
+```bash
+find . -type f -name "*.md" -mtime -7
+```
+
+### 查看並統計數量
+
+```bash
+find . -type f -mtime -7 -name "*.md" -exec ls -lh {} \;
+```
+
+### 批次處理最近修改的檔案
+
+```bash
+# 批次處理最近 7 天修改的 .md 檔案
+find . -type f -name "*.md" -mtime -7 -exec sed -i 's/^\n^---\n//g' {} +
+```
+
+---
+
+## 快速捷徑
+
+```bash
+# 最近 7 天修改的檔案
+find . -type f -mtime -7
+
+# 最近 7 天修改的 md 檔案
+find . -type f -name "*.md" -mtime -7
+
+# 最近 7 天修改且大於 1KB 的檔案
+find . -type f -mtime -7 -size +1k
+
+# 批次處理最近 7 天修改的檔案
+find . -type f -mtime -7 -exec <command> {} +
+```
+
+---
+
+## 注意事項
+
+1. **mtime 是修改時間**，不是存取時間
+2. **`-7` 表示小於 7**，不是等於 7
+3. 如需精確到分鐘，可用 `-mmin`
+4. 使用 `-exec` 處理時，建議用 `+` 而非 `\;`（更有效率）
+
+---
+
+## 常用組合
+
+```bash
+# 最近 7 天修改的檔案
+find . -type f -mtime -7
+
+# 最近 7 天修改的 md 檔案
+find . -type f -name "*.md" -mtime -7
+
+# 最近 7 天修改且大於 1KB 的檔案
+find . -type f -mtime -7 -size +1k
+
+# 批次處理最近 7 天修改的檔案
+find . -type f -mtime -7 -exec <command> {} +
+```
+
+---
+
+*最後更新：2026-11-05*
