@@ -118,3 +118,41 @@ By combining these two conditions, you effectively select files that have a modi
 
 For your request, assuming "created on" refers to the modification date, the command provided above is the standard and most effective way to achieve it with `find`.
 ---
+
+## 2026-11-04
+
+- TOOL: Google Search - AI Mode
+
+> [!NOTE]
+> 如何用 find 指令找出最近 12 小時有異動的檔案
+
+要找出最近 12 小時內有異動（內容被修改）的檔案，最推薦且直覺的作法是使用 `-mmin` 參數（以分鐘為單位）。因為 12 小時等於 720 分鐘，所以在 `find` 指令中加入 `-mmin -720` 即可。 [1] (https://blog.longwin.com.tw/2017/08/linux-find-limit-date-time-file-2017/), [2] (https://random168.blogspot.com/2016/11/linux-find-02.html)
+以下是完整的指令與說明：
+```bash
+find /path/to/search -type f -mmin -720
+```
+
+### 📋 參數拆解說明
+
+• `/path/to/search`：你要搜尋的目標目錄路徑（例如：當前目錄可以用 .，系統日誌可以用 `/var/log`）。 [1] (https://www.ccc.tc/notes/18), [2] (https://ssorc.tw/939/find-command-finds-files-with-time-changes/)
+• `-type f`：指定只尋找「一般檔案」，排除資料夾。 [1] (https://wiki.freedomstu.com/books/linux-%E7%B3%BB%E7%B5%B1%E8%A8%98%E9%8C%84/page/linux-find), [2] (https://www.ccc.tc/notes/18)
+• `-mmin -720`：
+	• `mmin` 代表 modification time (以分鐘為單位)。
+	• `-720` 中的減號 - 代表「小於」，也就是 720 分鐘（12 小時）以內。 [1] (https://blog.longwin.com.tw/2017/08/linux-find-limit-date-time-file-2017/), [2] (https://random168.blogspot.com/2016/11/linux-find-02.html)
+
+### 💡 補充：如果是權限或狀態異動？
+
+Linux 的時間屬性分為三種，如果你說的「異動」不是指檔案內容，請依需求更換參數： [1] (https://ssorc.tw/939/find-command-finds-files-with-time-changes/)
+
+• 內容被修改（最常用）：使用 `-mmin -720`（Modification Time）
+• 權限、屬性、檔名被更改：使用 `-cmin -720`（Change Time）
+• 檔案被讀取、存取：使用 `-amin -720`（Access Time） [1] (https://blog.longwin.com.tw/2017/08/linux-find-limit-date-time-file-2017/), [2] (https://random168.blogspot.com/2016/11/linux-find-02.html)
+
+(註：部分 Linux 系統的 find 版本也支援以天為單位的 -mtime -0.5，但使用 -mmin 以分鐘計算在各平台最為通用且精準。) [1] (https://zhuanlan.zhihu.com/p/421825066), [2] (https://blog.longwin.com.tw/2017/08/linux-find-limit-date-time-file-2017/), [3] (https://random168.blogspot.com/2016/11/linux-find-02.html)
+
+請問你接下來需要對這些找到的檔案進行其他操作嗎？例如：
+
+• 想要列出詳細資訊（如修改時間、檔案大小）？
+• 想要直接將它們複製、移動或刪除？
+• 需要排除特定的子目錄或限制特定的擴充檔名？
+
