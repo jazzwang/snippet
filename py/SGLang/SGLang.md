@@ -379,3 +379,71 @@ SGLang 生態系統不斷成長，除了核心框架外，還整合了以下專�
 ---
 
 *本文檔最後更新：2026 年 10 月*
+
+## 2026-11-08
+
+- 緣起：
+  - 想要跑 google/translategemma-4b-it 模型
+- 實測：
+  - 照著 https://huggingface.co/google/translategemma-4b-it?local-app=sglang
+  - 認證 huggingface CLI [成功]
+  - 安裝 SGLang [失敗]
+```bash
+~$ hf auth login
+Hint: A new version of huggingface_hub (2.4.0) is available! You are using version 1.28.0.
+To update, run: hf update
+Hint: The `hf-cli` skill is not installed. Run `hf skills add -g --claude` to teach your AI agents how to use the `hf` CLI.
+? How would you like to log in? Log in with your browser
+
+    Open this URL in your browser:
+        https://hf.co/oauth/device
+
+    And enter the code: 78A2-REPO
+
+    Waiting for authorization...........
+Token is valid.
+The token `oauth-jazzwang-tw` has been saved to C:\Users\jazzw\.cache\huggingface\stored_tokens
+Your token has been saved to C:\Users\jazzw\.cache\huggingface\token
+Login successful.
+The current active token is: `oauth-jazzwang-tw`
+Note: This token will be refreshed automatically when it expires.
+~$ pip install sglang
+
+Collecting flashinfer_python==0.4.0 (from sglang)
+  Downloading flashinfer_python-0.4.0.tar.gz (4.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 1.8 MB/s  0:00:02
+  Installing build dependencies ... error
+  error: subprocess-exited-with-error
+
+  × installing build dependencies for flashinfer_python did not run successfully.
+  │ exit code: 1
+  ╰─> [7 lines of output]
+      Collecting setuptools>=77
+        Downloading setuptools-84.2.1-py3-none-any.whl.metadata (6.6 kB)
+      Collecting packaging>=24
+        Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+      ERROR: Ignored the following yanked versions: 0.1.8, 0.1.13, 0.1.13.post0, 0.1.13.post1, 0.1.14, 0.1.15, 0.1.15.post0
+      ERROR: Could not find a version that satisfies the requirement apache-tvm-ffi==0.1.0b15 (from versions: 0.1.0, 0.1.1, 0.1.2, 0.1.3, 0.1.4, 0.1.5, 0.1.6, 0.1.7, 0.1.8.post0, 0.1.8.post1, 0.1.8.post2, 0.1.9, 0.1.10, 0.1.11, 0.1.12, 0.1.13.post2, 0.1.13.post3, 0.1.14.post0, 0.1.14.post1, 0.1.15.post1, 0.1.15.post2, 0.1.16rc0, 0.1.16rc1, 0.1.16rc2, 0.1.16rc3)
+      ERROR: No matching distribution found for apache-tvm-ffi==0.1.0b15
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+
+[notice] A new release of pip is available: 26.2.2 -> 26.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+ERROR: Failed to build 'flashinfer_python' when installing build dependencies for flashinfer_python
+```
+- 改用 Docker
+```bash
+docker run --gpus all \
+    --shm-size 32g \
+    -p 30000:30000 \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    --env "HF_TOKEN=<secret>" \
+    --ipc=host \
+    lmsysorg/sglang:latest \
+    python3 -m sglang.launch_server \
+        --model-path "google/translategemma-4b-it" \
+        --host 0.0.0.0 \
+        --port 30000
+```
