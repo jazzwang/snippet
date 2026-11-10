@@ -1856,3 +1856,214 @@ llama-server -m model-Q4_K_M.gguf -c 32768 --parallel 1 -ctk q4_0 -ctv q4_0 --fl
 
 您目前將參數切換到 **`q4_0`** 後，觀察到 `llama-server` 輸出的 **Token/s（生成速度）** 大約是多少呢？如果有遇到回應變得胡言亂語的狀況，我們可以考慮調整成 **`q8_0`** 來測試看看。
 
+## 2026-11-09
+
+- 搭配 Pi Agent 測試 `translategemma-4b-it-GGUF:Q4_K_M`
+```
+[11/09 09:47:11] llama serve -hf bullerwins/translategemma-4b-it-GGUF:Q4_K_M
+[11/09 11:11:52] cd .models/
+[11/09 11:12:23] mv ~/.cache/huggingface/hub/models--bullerwins--translategemma-4b-it-GGUF/blobs/7f7357c14abd9da4eb200b38b05da502cd6e10d7e1d403fbc9f78c19f3209b72  translategemma-4b-it-Q4_K_M.gguf
+[11/09 11:16:59] vi preset.ini
+```
+```
+[TranslateGemma-4B]
+model = C:/Users/jazzw/.models/translategemma-4b-it-Q4_K_M.gguf
+```
+- 測試後錯誤訊息是
+```log
+[50966] 8.33.947.280 W srv operator(): got exception: {"error":{"code":400,"message":"[json.exception.type_error.302] type must be string, but is array","type":"invalid_request_error"}}
+```
+
+> [!NOTE]
+> 如何修正這個 llama_server warning?
+> ```
+> [50966] 0.00.003.231 I srv llama_server: initializing ...
+> [50966] 0.01.793.221 I cmn common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+> [50966] 0.01.803.780 I srv load_model: loading model 'C:/Users/jazzw/.models/translategemma-4b-it-Q4_K_M.gguf'
+> [50966] 0.02.555.671 W load: control-looking token: 212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+> [50966] 0.04.399.745 I cmn init: llama threadpool init, n_threads = 1
+> [50966] 0.05.756.914 I srv load_model: initializing, n_slots = 1, n_ctx_slot = 131072, kv_unified = 'false'
+> [50966] 0.05.769.326 W render_message_to_json: Neither string content nor typed content is supported by the template. This is unexpected and may lead to issues.
+> [50966] 0.05.769.385 W TranslateGemma: source_lang_code not set in chat_template_kwargs, defaulting to en-GB
+> [50966] 0.05.769.388 W TranslateGemma: target_lang_code not set in chat_template_kwargs, defaulting to en-GB
+> [50966] 0.05.772.733 I srv server_run_i: model loaded
+> [50966] 0.05.772.739 I srv server_on_li: listening on http://127.0.0.1:50966
+> [50966] 0.05.772.998 I srv operator(): child server monitoring thread started, waiting for EOF on stdin...
+> 0.27.299.992 I srv proxy_reques: proxying request to model TranslateGemma-4B on port 50966
+> 0.27.849.762 I srv proxy_reques: proxying request to model TranslateGemma-4B on port 50966
+> 0.54.005.230 I srv proxy_reques: proxying request to model TranslateGemma-4B on port 50966
+> [50966] 5.06.577.572 I que start_loop: entering sleeping state
+> [50966] 5.06.577.971 I srv handle_sleep: server is entering sleeping state
+> 8.52.793.152 I srv proxy_reques: proxying request to model TranslateGemma-4B on port 50966
+> [50966] 8.31.421.687 I que start_loop: exiting sleeping state
+> [50966] 8.31.421.694 I srv handle_sleep: server is exiting sleeping state
+> [50966] 8.31.421.725 I srv load_model: loading model 'C:/Users/jazzw/.models/translategemma-4b-it-Q4_K_M.gguf'
+> [50966] 8.31.817.476 W load: control-looking token: 212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+> [50966] 8.33.815.561 I cmn init: llama threadpool init, n_threads = 1
+> [50966] 8.33.941.039 I srv load_model: initializing, n_slots = 1, n_ctx_slot = 131072, kv_unified = 'false'
+> [50966] 8.33.944.662 W render_message_to_json: Neither string content nor typed content is supported by the template. This is unexpected and may lead to issues.
+> [50966] 8.33.947.280 W srv operator(): got exception: {"error":{"code":400,"message":"[json.exception.type_error.302] type must be string, but is array","type":"invalid_request_error"}}
+> ```
+
+這份 log 中的問題主要分為兩個部分：**啟動時的模板解析警告**，以及 **API 請求格式衝突導致的 400 錯誤**（`type must be string, but is array`）。 [[1](https://github.com/ggml-org/llama.cpp/issues/20305), [2](https://github.com/ggml-org/llama.cpp/issues/19212)]
+
+這是因為 **TranslateGemma 的原生 Jinja 聊天模板需要特殊結構**（包含來源與目標語言代碼），與標準 OpenAI API 的對話格式不相容所致。 [[1](https://iman.rastavibes.net/blog/?post=368-how-we-updated-our-fix-for-translategemma-bug-in-llamacpp), [2](https://github.com/ggml-org/llama.cpp/issues/20305)]
+
+1\. 為什麼會出現這些 Warning 與 400 Error？
+
+-   **語言代碼未設定 (`source_lang_code` / `target_lang_code`)**
+    TranslateGemma 在執行翻譯時需要知道來源與目標語言。如果啟動或請求時沒有帶入這兩個參數，系統會發出警告並預設為 `en-GB`。
+-   **模板格式衝突 (`Neither string content nor typed content is supported...` 與 `400 type must be string, but is array`)**
+    這是最核心的錯誤。TranslateGemma 的原生 Jinja 模板強制要求 `messages` 裡的 `content` 必須是一個包含語言代碼物件的「陣列（Array）」；但部分 `llama.cpp` 內部解析器（或是你的前端客戶端）預期 `content` 是「純字串（String）」，兩者預期相反導致拋出 `400 invalid_request_error`。
+-   **Token 類型覆寫 (`control-looking token: 212 '</s>' was not control-type`)**
+    這是轉換 GGUF 模型時的常見提示，`llama.cpp` 已經自動將其修正為控制符號，**可安全忽略**，不影響運作。 [[1](https://github.com/ggml-org/llama.cpp/issues/19212), [2](https://github.com/ggml-org/llama.cpp/issues/20305), [3](https://iman.rastavibes.net/blog/?post=368-how-we-updated-our-fix-for-translategemma-bug-in-llamacpp)]
+
+2\. 修正方式（依使用情境選擇）
+
+### 方法 A：啟動 `llama-server` 時預設語言代碼（消除語言警告）
+
+在啟動指令中加上 `--chat-template-kwargs`，先指定預設的翻譯語言（例如英文翻繁體中文 `zh-TW`）：
+
+-   **Linux / macOS (Bash)：**
+
+    ```bash
+    llama-server -m C:/Users/jazzw/.models/translategemma-4b-it-Q4_K_M.gguf\
+      --jinja\
+      --chat-template-kwargs '{"source_lang_code": "en", "target_lang_code": "zh-TW"}'
+    ```
+
+-   **Windows PowerShell（雙引號需跳脫）：** [[1](https://huggingface.co/Moore2877/Qwen-Fixed-Chat-Templates-llamacpp/commit/451b3c36452e011d46dfec9c6aa936b30e6e8185)]
+
+    ```powershell
+    llama-server -m C:/Users/jazzw/.models/translategemma-4b-it-Q4_K_M.gguf `
+      --jinja `
+      --chat-template-kwargs '{\"source_lang_code\": \"en\", \"target_lang_code\": \"zh-TW\"}'
+    ```
+
+### 方法 B：修正發送給 API 的 JSON 格式（解決 400 錯誤）
+
+如果是自己寫程式呼叫 `/v1/chat/completions`，`content` 必須依照 [GitHub Issue #19295](https://github.com/ggml-org/llama.cpp/issues/19295) 中驗證的格式，傳入包含語言代碼的陣列物件，或是透過 `chat_template_kwargs` 傳遞： [[1](https://github.com/ggml-org/llama.cpp/issues/19295)]
+
+```json
+{
+  "model": "TranslateGemma-4B",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello, how are you?"
+    }
+  ],
+  "chat_template_kwargs": {
+    "source_lang_code": "en",
+    "target_lang_code": "zh-TW"
+  }
+}
+```
+
+*(註：如果你使用的是舊版 `llama.cpp`，則需將 `content` 改為 `[{"type": "text", "text": "Hello", "source_lang_code": "en", "target_lang_code": "zh-TW"}]`。)* [[1](https://github.com/ggml-org/llama.cpp/issues/19295)]
+
+### 方法 C：使用自訂精簡版 Jinja 模板（徹底解決第三方軟體相容性）
+
+如果你是使用網頁介面（如 Open WebUI、LibreChat 或翻譯外掛）連線，通常無法更改它們發送的 JSON 結構。這時建議在啟動時加上 `--chat-template-file` 覆蓋掉模型內建的嚴格檢查模板： [[1](https://huggingface.co/google/translategemma-4b-it/discussions/15), [2](https://github.com/ggml-org/llama.cpp/issues/19212)]
+
+1.  建立一個名為 `translategemma.jinja` 的純文字檔，填入以下相容標準字串的模板：
+
+    ```jinja
+    {%- for message in messages -%}
+      {%- if message['role'] == 'user' -%}{{ '<start_of_turn>user\nYou are a professional translator. Translate the following text into Traditional Chinese (zh-TW):\n\n' + message['content'] + '<end_of_turn>\n' }}
+      {%- elif message['role'] == 'assistant' -%}{{ '<start_of_turn>model\n' + message['content'] + '<end_of_turn>\n' }}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if add_generation_prompt -%}{{ '<start_of_turn>model\n' }}
+    {%- endif -%}
+    ```
+
+2.  啟動 `llama-server` 時指定該檔案：
+
+    ```bash
+    llama-server -m C:/Users/jazzw/.models/translategemma-4b-it-Q4_K_M.gguf --jinja --chat-template-file translategemma.jinja
+    ```
+
+3\. 檢查 `llama.cpp` 版本
+
+在部分 `llama.cpp` 版本中，這屬於已知的 Jinja 模板解析器回歸錯誤（如 [GitHub Issue #20305](https://github.com/ggml-org/llama.cpp/issues/20305) 與 [ali0une 技術解析](https://iman.rastavibes.net/blog/?post=368-how-we-updated-our-fix-for-translategemma-bug-in-llamacpp) 所述）。如果上述參數調整後依然報錯，建議將 `llama.cpp` 更新至最新 release 版本即可修復專屬解析器問題。 [[1](https://github.com/ggml-org/llama.cpp/issues/20305), [2](https://iman.rastavibes.net/blog/?post=368-how-we-updated-our-fix-for-translategemma-bug-in-llamacpp)]
+
+為了幫你提供最精準的指令或設定檔，你可以告訴我：
+
+-   你是用**哪個客戶端或程式**來發送翻譯請求的（例如 WebUI、翻譯外掛，還是自己寫的 Python 腳本）？
+-   你目前使用的 **llama.cpp 版本**（執行 `llama-server --version` 可查看）？
+
+我可以針對你的環境直接幫你寫好對應的啟動指令或 API 請求範例。
+
+> [!TIP]
+> 實驗了"方法 A"，結果還是沒效。
+
+```diff
+  [TranslateGemma-4B]
+  model = C:/Users/jazzw/.models/translategemma-4b-it-Q4_K_M.gguf
++ chat-template-kwargs '{"source_lang_code": "en", "target_lang_code": "zh-TW"}'
+```
+
+## 2026-11-10
+
+- 搭配 Pi Agent 測試 PLaMo3-0.8B
+```bash
+~/.models$ wget -c https://huggingface.co/pfnet/plamo-3-translate-0.8b-GGUF/resolve/main/plamo-3-translate-0.8b-Q4_K_M.gguf
+```
+```diff
+--- preset.ini.old   2026-11-04 17:01:34.394738700 +0800
++++ preset.ini  2026-11-10 11:48:03.943647200 +0800
+@@ -9,7 +9,6 @@
+ sleep-idle-seconds = 300     ## 閒置五分鐘就釋放模型，降低 VRAM 壓力
+ stop-timeout = 300           ## 五分鐘後關閉模型所屬的後端獨立子進程（Subprocess）
+ cache-type-k = q4_0          ## 對 KV Cache 進行量化（快取量化）。這能直接讓上下文佔用的 VRAM 減半
++cache-type-v = q4_0          ## 對 KV Cache 進行量化（快取量化）。這能直接讓上下文佔用的 VRAM 減半
+
+ ## 模型 1：較小上下文的設定檔
+ [unsloth/Qwen3.5-9B]
+@@ -19,3 +18,6 @@
+ [Ornith-1.5-9B]
+ model = C:/Users/jazzw/.models/Ornith-1.5-9B-Q4_K_M.gguf
+ #ctx-size = 40960
++
++[PLaMo3-0.8B]
++model = C:/Users/jazzw/.models/plamo-3-translate-0.8b-Q4_K_M.gguf
+```
+- 在 Pi Agent 裡面用 `/llama` 然後選 `PLaMo3-0.8B` 看起來 context window 被認定是 `262k`
+```
+ llama.cpp models
+ http://127.0.0.1:8080
+
+→ PLaMo3-0.8B                         loaded · 262k context
+  Ornith-1.5-9B
+  unsloth/Qwen3.5-9B
+```
+- 實際測試：
+- Pi Agent 的錯誤訊息
+```
+Model: PLaMo3-0.8B
+
+> 請將 "2026-11-10/Introducing Arete-27B Qwen3.8-27B Post-Trained To Reinforce Western Values.md" 逐段翻譯成繁體中文(採台灣技術用語)，不要濃縮成摘要，避免簡體字，並將結果存成 2026-11-10/Introducing_Arete-27B.zh-TW.md
+
+ Error: 400: {"code":400,"message":"Unable to generate parser for this template. Automatic parser generation failed: \n------------\nWhile executing
+ CallExpression at line 195, column 24 in source:\n...or documents -%}↵    {{- raise_exception('Tool calls and documents are not suppo...\n
+ ^\nError: Jinja Exception: Tool calls and documents are not supported; use context for reference text.","type":"invalid_request_error"}
+ If this looks like a pi bug, /bug sends a report to the developers.
+```
+- llama-server 的錯誤訊息
+```
+[65114] 305.43.303.570 I que    start_loop: exiting sleeping state
+[65114] 305.43.303.590 I srv  handle_sleep: server is exiting sleeping state
+[65114] 305.43.303.644 I srv    load_model: loading model 'C:/Users/jazzw/.models/plamo-3-translate-0.8b-Q4_K_M.gguf'
+[65114] 305.46.061.864 W load: control-looking token:  48202 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+[65114] 305.46.074.325 W load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+[65114] 305.46.074.335 W load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+[65114] 305.46.074.336 W load: special_eom_id is not in special_eog_ids - the tokenizer config may be incorrect
+[65114] 305.46.074.342 W load: '</s>' is a normal token here, removing it from EOG list
+[65114] 305.47.271.524 I cmn          init: llama threadpool init, n_threads = 1
+[65114] 305.47.340.485 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 262144, kv_unified = 'false'
+[65114] 305.47.358.789 W srv    operator(): got exception: {"error":{"code":400,"message":"Unable to generate parser for this template. Automatic parser generation failed: \n------------\nWhile executing CallExpression at line 195, column 24 in source:\n...or documents -%}↵    {{- raise_exception('Tool calls and documents are not suppo...\n                                           ^\nError: Jinja Exception: Tool calls and documents are not supported; use context for reference text.","type":"invalid_request_error"}}
+```
+- 小結：
+  > [!NOTE]
+  > 最近測試幾個專攻翻譯的模型，都錯在 Jinja Template
