@@ -247,8 +247,32 @@ Pi 社群有專門為 OpenCode Zen 封裝好的套件，完全不需要手動填
 [7] [https://aiidelist.com](https://aiidelist.com/pi-coding-agent-cheatsheet)
 [8] [https://m.runoob.com](https://m.runoob.com/pi-agent/pi-agent-appendix-cli.html)
 [9] [https://www.reddit.com](https://www.reddit.com/r/PiCodingAgent/comments/1vltdm9/how_to_use_deepseekv4flashfree_model_from/)
----
+
 - 後來用 `/login` 比較容易解決。選擇 `Open Code Zen (Free)` 然後選輸入 `API Key`
+
+```
+ Select authentication method:
+   Sign in with an account
+ → Sign in with an API key
+   Sign in with Radius • not configured
+ ↑↓ navigate  enter select  escape/ctrl+c cancel
+```
+```
+ Select provider to configure:
+
+> opencode
+
+   OpenCode Go • not configured
+ → OpenCode Zen • not configured
+```
+```
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ Login to OpenCode Zen
+
+ Enter OpenCode API key
+>
+ (escape/ctrl+c to cancel, enter to submit)
+```
 
 ## 2026-09-04
 
@@ -574,4 +598,25 @@ cache-type-v = q4_0          ## 對 KV Cache 進行量化（快取量化）。�
   Download model…                     Hugging Face owner/repository[:quant]
 
  enter load/unload/download • escape/ctrl+c close
+```
+
+## 2026-11-10
+
+- 緣起：
+  - 2026 年 10 月 OpenCode 有遇到一些資安上的狀況，所以原本的 token 失效了。
+  - 為了重新綁定 Pi Agent 到 OpenCode Zen 模型，除了從 OpenCode 頁面上新增一把新的 API Key 外，看到 OpenCode Console UI 上有一個新的作法，輸入 `npx @opencode/console setup pi` 可以讓 Pi 連結上 OpenCode 帳號
+```bash
+~$ npx @opencode/console setup pi
+Need to install the following packages:
+@opencode/console@0.1.8
+Ok to proceed? (y)
+Open https://opencode.ai/console/device?user_code=CFGZ-DKVH&client_id=opencode-console-cli and confirm the code CFGZ-DKVH
+Signed in to Default as jazzwang.tw@gmail.com
+Pi now uses Default through OpenCode Console.
+
+  Models     44 models in /model; new sessions start on opencode/claude-sonnet-5-5
+  Policies   0 rules, checked before every tool call and !command
+  MCP        web_search
+
+Run pi to start.
 ```
