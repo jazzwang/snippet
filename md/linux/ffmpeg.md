@@ -85,3 +85,51 @@ ffmpeg -i input.mp4 -ss 00:01:30 -to 00:02:00 output.mp4
 ```bash
   [04/20 00:41:47] ~$ ffmpeg -ss 2:33:01 -t 315 -i source.webm -c copy target.webm
 ```
+
+## 2026-11-11
+
+> [!NOTE]
+>  如何使用 ffmpeg CLI 指令將 2026-11-05-functional-copilots.mp4 只保留聲音並存成 2026-11-05-functional-copilots.m4a
+>  將以上對話存成 ~/git/snippet/md/linux/ffmpeg.new.md
+
+## FFmpeg 提取音訊 - MP4 轉 M4A
+
+### 基本指令
+
+將 `.mp4` 檔案只保留聲音並存成 `.m4a`：
+
+```bash
+ffmpeg -i "2026-11-05-functional-copilots.mp4" -vn -c:a aac -b:a 128k "2026-11-05-functional-copilots.m4a"
+```
+
+### 參數說明
+
+| 參數 | 說明 |
+|------|------|
+| `-i` | 輸入檔案 |
+| `-vn` | 忽略視訊（video disable），只處理音訊 |
+| `-c:a aac` | 使用 AAC 編碼器（M4A 格式標準） |
+| `-b:a 128k` | 音訊比特率 128kbps |
+
+### 其他常見選項
+
+#### 高品質
+```bash
+ffmpeg -i "輸入.mp4" -vn -c:a aac -b:a 256k 輸出.m4a
+```
+
+#### 低碼率
+```bash
+ffmpeg -i "輸入.mp4" -vn -c:a aac -b:a 64k 輸出.m4a
+```
+
+#### 快速轉換（保留原始編碼）
+```bash
+ffmpeg -i "輸入.mp4" -vn -c:a copy 輸出.m4a
+```
+
+### 檢查 FFmpeg 版本
+
+```bash
+ffmpeg -version
+```
