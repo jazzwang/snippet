@@ -157,8 +157,6 @@ Linux 的時間屬性分為三種，如果你說的「異動」不是指檔案�
 • 需要排除特定的子目錄或限制特定的擴充檔名？
 
 
----
-
 ## 2026-11-05
 
 - **主題**: find 指令查找最近七天有異動的檔案
@@ -265,9 +263,7 @@ find . -type f -exec vim -es ':%s/模式/取代/g | wq' {} +
 find . -type f -mtime -7 -exec ls -lt {} \;
 ```
 
----
-
-## 常用參數對比
+### 常用參數對比
 
 | 參數 | 說明 | 範例 |
 |------|------|------|
@@ -278,80 +274,120 @@ find . -type f -mtime -7 -exec ls -lt {} \;
 | `-atime -7` | 7 天內存取過 | `find . -atime -7` |
 | `-ctime -7` | 7 天內狀態變更 | `find . -ctime -7` |
 
----
+### 實際範例
 
-## 實際範例
-
-### 查找最近 7 天修改的所有檔案
+#### 查找最近 7 天修改的所有檔案
 
 ```bash
 find . -type f -mtime -7
 ```
 
-### 查找最近 7 天修改的 markdown 檔案
+#### 查找最近 7 天修改的 markdown 檔案
 
 ```bash
 find . -type f -name "*.md" -mtime -7
 ```
 
-### 查看並統計數量
+#### 查看並統計數量
 
 ```bash
 find . -type f -mtime -7 -name "*.md" -exec ls -lh {} \;
 ```
 
-### 批次處理最近修改的檔案
+#### 批次處理最近修改的檔案
 
 ```bash
-# 批次處理最近 7 天修改的 .md 檔案
+## 批次處理最近 7 天修改的 .md 檔案
 find . -type f -name "*.md" -mtime -7 -exec sed -i 's/^\n^---\n//g' {} +
 ```
 
----
-
-## 快速捷徑
+### 快速捷徑
 
 ```bash
-# 最近 7 天修改的檔案
+## 最近 7 天修改的檔案
 find . -type f -mtime -7
 
-# 最近 7 天修改的 md 檔案
+## 最近 7 天修改的 md 檔案
 find . -type f -name "*.md" -mtime -7
 
-# 最近 7 天修改且大於 1KB 的檔案
+## 最近 7 天修改且大於 1KB 的檔案
 find . -type f -mtime -7 -size +1k
 
-# 批次處理最近 7 天修改的檔案
+## 批次處理最近 7 天修改的檔案
 find . -type f -mtime -7 -exec <command> {} +
 ```
 
----
-
-## 注意事項
+### 注意事項
 
 1. **mtime 是修改時間**，不是存取時間
 2. **`-7` 表示小於 7**，不是等於 7
 3. 如需精確到分鐘，可用 `-mmin`
 4. 使用 `-exec` 處理時，建議用 `+` 而非 `\;`（更有效率）
 
----
-
-## 常用組合
+### 常用組合
 
 ```bash
-# 最近 7 天修改的檔案
+## 最近 7 天修改的檔案
 find . -type f -mtime -7
 
-# 最近 7 天修改的 md 檔案
+## 最近 7 天修改的 md 檔案
 find . -type f -name "*.md" -mtime -7
 
-# 最近 7 天修改且大於 1KB 的檔案
+## 最近 7 天修改且大於 1KB 的檔案
 find . -type f -mtime -7 -size +1k
 
-# 批次處理最近 7 天修改的檔案
+## 批次處理最近 7 天修改的檔案
 find . -type f -mtime -7 -exec <command> {} +
 ```
 
----
-
 *最後更新：2026-11-05*
+
+## 2026-11-15
+
+- **主題**: find 指令結果可以要求根據 mtime 排序嗎？
+
+> [!NOTE]
+> find 指令結果可以要求根據 mtime 排序嗎？
+
+是的，`find` 指令可以根據 `mtime`（修改時間）排序。有幾種方法：
+
+### 方法 1：使用 `-printf` + `sort`（推薦）
+
+```bash
+find . -type f -printf '%T@ %p\n' | sort -n | cut -d' ' -f2-
+```
+
+- `%T@`：輸出秒級時間戳（數字可排序）
+- `sort -n`：數字排序
+- `cut`：移除時間戳，只保留路徑
+
+### 方法 2：使用 `-exec` 和 `ls -lt`
+
+```bash
+find . -type f -exec ls -lt {} +
+```
+
+- 會列出檔案並按修改時間排序（新的在前）
+
+### 方法 3：只顯示修改時間最近的 N 個檔案
+
+```bash
+find . -type f -printf '%T@ %p\n' | sort -n | tail -n 10 | cut -d' ' -f2-
+```
+
+### 按修改時間排序的常用選項：
+
+| 排序方式 | 命令 |
+|---------|------|
+| 最新的在前面 | `sort -n`（配合 `-printf '%T@'`） |
+| 最舊的在前面 | `sort -rn`（降序） |
+| 按年份 | `find . -type f -newermt "2024" ...` |
+
+### 範例：顯示最近修改的 5 個檔案
+
+```bash
+find . -type f -printf '%T@ %p\n' | sort -n | head -n 5 | cut -d' ' -f2-
+```
+
+**注意**：`find` 本身不直接支援 `-sort` 選項（GNU find 新版才支援），所以通常搭配外部 `sort` 命令使用。
+
