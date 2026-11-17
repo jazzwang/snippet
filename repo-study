@@ -3,4 +3,8 @@ if [ $# -lt 2 ]; then
   echo "Usage: $0 <URL> <output report filename>"
   exit 1
 fi
-pi "!date" "根據 $1 內容撰寫一篇技術報告，採用繁體中文（台灣用詞）撰寫，包括 step-by-step 測試步驟，存成 $2"
+
+IFILE=$1
+OFILE=$2
+
+pi "根據 \"${IFILE}\" 內容，用繁體中文（台灣技術用詞）撰寫一篇技術報告，含 step-by-step 安裝、測試、驗證步驟，存成 \"${OFILE}\" ."

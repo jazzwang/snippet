@@ -75,6 +75,8 @@ created: $(date +"%Y-%m-%d")
 notebooklm: ${NOTEBOOK}
 source-id: ${SRC_ID}
 report-id: ${RPT_ID}
+tags:
+  - NotebookLM
 ---" | tee -a ${FILENAME}.log
 echo "~~~~~~~~~~~~~" | tee -a ${FILENAME}.log
 echo "nlm download report ${NOTEBOOK} --id ${RPT_ID} -o \"${FILENAME}.md\"" | tee -a ${FILENAME}.log
@@ -90,5 +92,9 @@ created: $(date +"%Y-%m-%d")\r\n\
 notebooklm: ${NOTEBOOK}\r\n\
 source-id: ${SRC_ID}\r\n\
 report-id: ${RPT_ID}\r\n\
+tags:\r\n\
+  - NotebookLM\r\n\
 ---\r\n\
 " ${FILENAME}.md
+
+clean-markdown "${FILENAME}.md"

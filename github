@@ -1,4 +1,4 @@
 #!/bin/sh
 start https://github.com/jazzwang				## Daily Contribution
-start https://github.com/settings/billing/usage?period=5	## Github Codespace Usage
+start https://github.com/settings/billing/usage?period=3	## Github Codespace Usage
 start https://github.com/settings/copilot/features 		## Github Copilot Usage
