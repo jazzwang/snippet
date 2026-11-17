@@ -1,0 +1,2 @@
+#!/bin/bash -x
+vim -e -c ':%s/^\n^---\n//g' -c 'w' -c 'q' $1
