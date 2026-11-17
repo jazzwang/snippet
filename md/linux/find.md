@@ -340,8 +340,6 @@ find . -type f -mtime -7 -size +1k
 find . -type f -mtime -7 -exec <command> {} +
 ```
 
-*最後更新：2026-11-05*
-
 ## 2026-11-15
 
 - **主題**: find 指令結果可以要求根據 mtime 排序嗎？
@@ -391,3 +389,80 @@ find . -type f -printf '%T@ %p\n' | sort -n | head -n 5 | cut -d' ' -f2-
 
 **注意**：`find` 本身不直接支援 `-sort` 選項（GNU find 新版才支援），所以通常搭配外部 `sort` 命令使用。
 
+## 2026-11-16
+
+- **主題**: find 指令可以 ignore 某個子目錄嗎？
+
+> [!NOTE]
+> find 指令可以 ignore 某個子目錄嗎？
+
+是的，`find` 指令有幾種方式可以忽略特定子目錄：
+
+### 1. 使用 `-path` 搭配 `!` 否定式
+
+```bash
+# 忽略 .git 目錄
+find . -path '*/.git' -prune -o -print
+```
+
+或者更明確地排除：
+```bash
+# 排除 .git 目錄及其內容
+find . -path '*/.git' -prune -o -path '*/.git/*' -prune -o -print
+```
+
+### 2. 使用 `-name` 搭配 `-prune`
+
+```bash
+# 只列出非 .git 的內容
+find . -name '.git' -prune -o -name . -prune -o -print
+```
+
+### 3. 完整範例
+
+```bash
+# 排除 .git 目錄，列出其他檔案
+find . \
+  -path '*/.git' -prune \
+  -o -type f -print
+
+# 排除多個目錄
+find . \
+  -path '*/node_modules' -prune \
+  -o -path '*/.git' -prune \
+  -o -type f -print
+```
+
+### 關鍵參數說明
+
+| 參數 | 說明 |
+|------|------|
+| `-prune` | 剪斷搜尋，不再深入該目錄 |
+| `-path` | 匹配目錄路徑 |
+| `-o` | OR 邏輯 |
+| `-name` | 匹配檔案/目錄名稱 |
+
+**重要**：`-prune` 必須在 `-o` 之前，否則邏輯會出錯！
+
+### 實際範例
+
+- 原本只是列出最近一天有修改的檔案
+```
+~$ cat ~/bin/last-modified
+find . -type f -mtime -1 -exec ls -lt {} +
+```
+- 想要忽略 `.git` 底下的異動，改用底下的寫法：失敗
+```diff
+- find . -type f -mtime -1 -exec ls -lt {} +
++ find . -type f -path '.git' -prune -mtime -1 -exec ls -lt {} +
+```
+- 改用底下的寫法：失敗
+```diff
+- find . -type f -mtime -1 -exec ls -lt {} +
++ find . -type f -path '*/.git' -prune -mtime -1 -exec ls -lt {} +
+```
+- 原來關鍵是 `-o` (OR 條件) 因為需要把前面的忽略路徑條件跟後面 "列出檔案(-type)" AND "最近一天有修改(-mtime -1)" 的條件隔開。
+```diff
+- find . -type f -mtime -1 -exec ls -lt {} +
++ find . -path '*/.git' -prune -o -type f -mtime -1 -exec ls -lt {} +
+```
