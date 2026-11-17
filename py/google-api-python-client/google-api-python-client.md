@@ -9,6 +9,12 @@
 
 ## 2026-11-06
 
+- 緣起：
+  - 一直有點好奇「AI 懶人報」這一類『資訊再創作』的資料來源是如何取得的？
+  - 剛好看到 Kaggle 競賽的這個資料集 https://www.kaggle.com/datasets/datasnaek/youtube-new
+  - 因為很久了，所以資料集的說明中用到的連結(e.g. https://www.youtube.com/feed/trending)都失效了
+  - 所以借重 Gemini AI Search 來回答這個問題
+
 > [!NOTE]
 > 可以在哪裡找到新的 https://www.youtube.com/feed/trending ?
 > 有 API 可以取得熱門 YouTube 影片的 JSON 物件嗎
