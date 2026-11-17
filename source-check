@@ -1,0 +1,15 @@
+#!/bin/bash
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 <Input Filename> [Output Filename]"
+  exit 1
+fi
+
+IFILE=$1
+if [ "$2" == "" ]; then
+  OFILE="${IFILE%.md}_查證.md"
+else
+  OFILE=$2
+fi
+LFILE="${OFILE%.md}.pi-session.html"
+
+pi "請使用 source_check 與 web_search tool 幫我驗證 \"${IFILE}\" 的內容是否有佐證資料？請將查證結果與參考網址整理後，附加到 \"${OFILE}\" . 並提示可將 session 匯出到 ${LFILE} ."
