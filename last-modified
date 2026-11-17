@@ -1,0 +1,4 @@
+#!/bin/bash
+
+## find . -type f -mmin -720
+find . -path '*/.git' -prune -o -type f -mtime -1 -exec ls -lt {} +
