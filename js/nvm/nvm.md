@@ -254,3 +254,10 @@ Current Root: C:\Users\jazzw\scoop\persist\nvm\nodejs
 ~$ node --version
 v22.17.0
 ```
+
+## 2026-11-17
+
+- 在 Linux (WSL) 安裝的步驟：
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash
+```
