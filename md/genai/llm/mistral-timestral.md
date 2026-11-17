@@ -1,10 +1,22 @@
-# Mistral Timestral 時間序列基礎模型技術報告
+# Mistral Timestral 時間序列基礎模型
 
-## 概述
+- Git Repo
+  - https://github.com/mistralai/timestral 
+- News/Blog
+  - https://mistral.ai/news/timestral/
+- Paper
+  - https://arxiv.org/html/2610.37585v1
+
+> [!NOTE]
+> 根據 "https://github.com/mistralai/timestral https://mistral.ai/news/timestral/" 內容，用繁體中文（台灣技術用詞）撰寫一篇技術報告，含 step-by-step 安裝、測試、驗證步驟，存成 "md/genai/llm/mistral-timestral.md" .
+
+## Mistral Timestral 時間序列基礎模型技術報告
+
+### 概述
 
 **Timestral** 是 Mistral AI 推出的第一個時間序列基礎模型（Time-Series Foundation Model）系列，專為多變量機率預測設計。該模型系列支援過去變數（past-only covariates）和已知未來變數（known-future covariates）的條件化輸入，可在 CPU 或 GPU 上高效運行。
 
-### 主要特點
+#### 主要特點
 
 - **多變量聯合預測**：同一序列的各個變量（variates）共同預測，捕捉變量間的相依關係
 - **機率預測**：每個時間步輸出 21 個不交疊的分位數（quantiles）
@@ -12,7 +24,7 @@
 - **無需 GPU**：推論可在標準 CPU 伺服器上運行
 - **四大規模**：5M、28M、123M、209M 參數，均位於準確率與模型大小的 Pareto frontier 上
 
-### 基準測試表現
+#### 基準測試表現
 
 在三大公共預測基準測試中，Timestral-209M 在預訓練和零樣本（zero-shot）模型中均排名第一：
 
@@ -22,20 +34,16 @@
 | **TIME** | 98 個任務中排名第一 |
 | **fev-bench** | 100 個任務中排名第一 |
 
----
-
-## 系統要求
+### 系統要求
 
 - **Python**：>= 3.10
 - **PyTorch**：>= 2.4
 - **硬體**：CPU 或 GPU（推論無需 GPU）
 - **記憶體**：根據模型規模（5M: 21MB, 28M: 111MB, 123M: 490MB, 209M: 837MB）
 
----
+### Step-by-Step 安裝步驟
 
-## Step-by-Step 安裝步驟
-
-### 方法一：直接 pip 安裝
+#### 方法一：直接 pip 安裝
 
 ```bash
 pip install git+https://github.com/mistralai/timestral.git
@@ -43,17 +51,17 @@ pip install git+https://github.com/mistralai/timestral.git
 
 此方法會自動下載依賴套件，需要網路連線。
 
-### 方法二：使用 uv 安裝（推薦）
+#### 方法二：使用 uv 安裝（推薦）
 
 ```bash
-# 克隆儲存庫
+## 克隆儲存庫
 git clone https://github.com/mistralai/timestral.git
 cd timestral
 
-# 使用 uv 同步依賴（使用 uv.lock 中固定版本）
+## 使用 uv 同步依賴（使用 uv.lock 中固定版本）
 uv sync --frozen
 
-# 啟動虛擬環境
+## 啟動虛擬環境
 source .venv/bin/activate
 ```
 
@@ -62,11 +70,9 @@ source .venv/bin/activate
 - 安裝速度更快
 - 適合持續整合（CI）環境
 
----
+### 模型權重載入
 
-## 模型權重載入
-
-### 可用模型版本
+#### 可用模型版本
 
 | 模型 | Hugging Face 儲存庫 | 權重大小（fp32） |
 |------|-------------------|----------------|
@@ -77,37 +83,35 @@ source .venv/bin/activate
 
 權重以 `model.safetensors` 格式存在 Hugging Face Hub 上，`from_pretrained` 會自動下載 `config.json` 和 `model.safetensors` 至 Hub 快取目錄。
 
----
+### Step-by-Step 測試與驗證
 
-## Step-by-Step 測試與驗證
-
-### 1. 基本推論測試
+#### 1. 基本推論測試
 
 ```python
 import numpy as np
 from timestral import TimestralForecaster
 
-# 載入模型（預設使用 CPU，可指定 device="cuda" 使用 GPU）
+## 載入模型（預設使用 CPU，可指定 device="cuda" 使用 GPU）
 forecaster = TimestralForecaster.from_pretrained("mistralai/Timestral-209M")
 
-# 生成測試上下文：(序列數, 變量數, 時間步)
-# 使用累積和產生模擬時間序列，NaN 表示缺失值
+## 生成測試上下文：(序列數, 變量數, 時間步)
+## 使用累積和產生模擬時間序列，NaN 表示缺失值
 context = np.random.randn(2, 1, 2000).cumsum(-1)
 
-# 執行預測，prediction_length=96 表示預測未來 96 個時間步
+## 執行預測，prediction_length=96 表示預測未來 96 個時間步
 forecast = forecaster.forecast(context, prediction_length=96)
 
-# 驗證輸出形狀
+## 驗證輸出形狀
 assert forecast.quantiles.shape == (2, 1, 96, 21)  # (序列數, 變量數, 預測範圍, 分位數)
 
-# 驗證分位數水準
+## 驗證分位數水準
 expected_levels = [0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99]
 assert list(forecast.quantile_levels) == expected_levels
 
-# 驗證中位數輸出
+## 驗證中位數輸出
 assert forecast.median.shape == (2, 1, 96)  # 50% 分位數
 
-# 驗證特定分位數輸出
+## 驗證特定分位數輸出
 assert forecast.quantile(0.9).shape == (2, 1, 96)  # 90% 分位數
 ```
 
@@ -116,29 +120,27 @@ assert forecast.quantile(0.9).shape == (2, 1, 96)  # 90% 分位數
 - ✅ 分位數水準正確：13 個標準分位數
 - ✅ 中位數計算正確
 
----
-
-### 2. 包含過去變數（past covariates）的測試
+#### 2. 包含過去變數（past covariates）的測試
 
 ```python
 from timestral import TimestralForecaster
 
 forecaster = TimestralForecaster.from_pretrained("mistralai/Timestral-209M")
 
-# 生成上下文：(序列數, 變量數, 時間步)
+## 生成上下文：(序列數, 變量數, 時間步)
 context = np.random.randn(2, 1, 2000).cumsum(-1)
 
-# 生成過去變數：(序列數, 變量數, 時間步)，僅在上下文中已知
+## 生成過去變數：(序列數, 變量數, 時間步)，僅在上下文中已知
 past_covariates = np.random.randn(2, 1, 2000).cumsum(-1)
 
-# 執行預測
+## 執行預測
 forecast = forecaster.forecast(
     context=context,
     prediction_length=96,
     past_covariates=past_covariates
 )
 
-# 驗證
+## 驗證
 assert forecast.quantiles.shape == (2, 1, 96, 21)
 print(f"過去變數預測驗證通過，輸出形狀：{forecast.quantiles.shape}")
 ```
@@ -147,29 +149,27 @@ print(f"過去變數預測驗證通過，輸出形狀：{forecast.quantiles.shap
 - ✅ 過去變數僅在上下文中可用（不滲漏未來資訊）
 - ✅ 輸出形狀正確
 
----
-
-### 3. 包含已知未來變數（known-future covariates）的測試
+#### 3. 包含已知未來變數（known-future covariates）的測試
 
 ```python
 from timestral import TimestralForecaster
 
 forecaster = TimestralForecaster.from_pretrained("mistralai/Timestral-209M")
 
-# 生成上下文
+## 生成上下文
 context = np.random.randn(2, 1, 2000).cumsum(-1)
 
-# 生成已知未來變數：(序列數, 變量數, 上下文 + 預測範圍)
+## 生成已知未來變數：(序列數, 變量數, 上下文 + 預測範圍)
 known_covariates = np.random.randn(2, 1, 2000 + 96).cumsum(-1)
 
-# 執行預測
+## 執行預測
 forecast = forecaster.forecast(
     context=context,
     prediction_length=96,
     known_covariates=known_covariates
 )
 
-# 驗證
+## 驗證
 assert forecast.quantiles.shape == (2, 1, 96, 21)
 print(f"已知未來變數預測驗證通過，輸出形狀：{forecast.quantiles.shape}")
 ```
@@ -178,24 +178,22 @@ print(f"已知未來變數預測驗證通過，輸出形狀：{forecast.quantile
 - ✅ 已知未來變數在整個預測範圍內可用
 - ✅ 輸出形狀正確
 
----
-
-### 4. 包含分類變數（categorical covariates）的測試
+#### 4. 包含分類變數（categorical covariates）的測試
 
 ```python
 from timestral import TimestralForecaster
 
 forecaster = TimestralForecaster.from_pretrained("mistralai/Timestral-209M")
 
-# 生成上下文
+## 生成上下文
 context = np.random.randn(2, 1, 2000).cumsum(-1)
 
-# 生成分類變數代碼（例如：星期幾、機器狀態）
-# NaN 表示缺失值，填充位置使用 NaN
+## 生成分類變數代碼（例如：星期幾、機器狀態）
+## NaN 表示缺失值，填充位置使用 NaN
 categorical_past = np.random.choice([0, 1, 2, np.nan], size=(2, 1, 2000))
 categorical_known = np.random.choice([0, 1, 2, np.nan], size=(2, 1, 2000 + 96))
 
-# 執行預測
+## 執行預測
 forecast = forecaster.forecast(
     context=context,
     prediction_length=96,
@@ -203,7 +201,7 @@ forecast = forecaster.forecast(
     categorical_known_covariates=categorical_known
 )
 
-# 驗證
+## 驗證
 assert forecast.quantiles.shape == (2, 1, 96, 21)
 print(f"分類變數預測驗證通過，輸出形狀：{forecast.quantiles.shape}")
 ```
@@ -217,30 +215,28 @@ print(f"分類變數預測驗證通過，輸出形狀：{forecast.quantiles.shap
   - 上下文中未出現的類別映射為序列平均值
 - 多變量目標：直接使用原始代碼
 
----
-
-### 5. 缺失值處理測試
+#### 5. 缺失值處理測試
 
 ```python
 from timestral import TimestralForecaster
 
 forecaster = TimestralForecaster.from_pretrained("mistralai/Timestral-209M")
 
-# 生成上下文，NaN 表示缺失值
+## 生成上下文，NaN 表示缺失值
 context_with_missing = np.random.randn(2, 1, 2000).cumsum(-1)
 context_with_missing[0, 0, 500:600] = np.nan  # 引入缺失區間
 
-# 生成觀察掩碼（與上下文相同形狀，False = 缺失）
+## 生成觀察掩碼（與上下文相同形狀，False = 缺失）
 observation_mask = ~np.isnan(context_with_missing)
 
-# 執行預測
+## 執行預測
 forecast = forecaster.forecast(
     context=context_with_missing,
     observation_mask=observation_mask,
     prediction_length=96
 )
 
-# 驗證
+## 驗證
 assert forecast.quantiles.shape == (2, 1, 96, 21)
 print(f"缺失值處理測試通過，輸出形狀：{forecast.quantiles.shape}")
 ```
@@ -250,27 +246,25 @@ print(f"缺失值處理測試通過，輸出形狀：{forecast.quantiles.shape}"
 - ✅ 觀察掩碼正確處理
 - ✅ 輸出形狀正確
 
----
-
-### 6. 從本地目錄載入模型
+#### 6. 從本地目錄載入模型
 
 ```python
 from timestral import TimestralForecaster
 
-# 方法一：指定 Hugging Face 儲存庫 ID
+## 方法一：指定 Hugging Face 儲存庫 ID
 forecaster = TimestralForecaster.from_pretrained("mistralai/Timestral-209M")
 
-# 方法二：指定本地目錄（需包含 config.json 和 model.safetensors）
+## 方法二：指定本地目錄（需包含 config.json 和 model.safetensors）
 local_path = "/path/to/local/timestral/model"
 forecaster = TimestralForecaster.from_pretrained(local_path)
 
-# 方法三：使用 revision 指定分支、標籤或提交
+## 方法三：使用 revision 指定分支、標籤或提交
 forecaster = TimestralForecaster.from_pretrained(
     "mistralai/Timestral-209M",
     revision="main"  # 或指定 tag、commit hash
 )
 
-# 方法四：使用 offline 模式（需先下載到快取）
+## 方法四：使用 offline 模式（需先下載到快取）
 import os
 os.environ["HF_HUB_OFFLINE"] = "1"
 forecaster = TimestralForecaster.from_pretrained("mistralai/Timestral-209M", local_files_only=True)
@@ -282,9 +276,7 @@ forecaster = TimestralForecaster.from_pretrained("mistralai/Timestral-209M", loc
 - `token`：Hugging Face 認證令牌
 - `local_files_only=True`：僅使用快取中的檔案（不需網路）
 
----
-
-### 7. 完整整合測試腳本
+#### 7. 完整整合測試腳本
 
 ```python
 import numpy as np
@@ -363,9 +355,7 @@ if __name__ == "__main__":
     test_timestral()
 ```
 
----
-
-## 性能參考
+### 性能參考
 
 在標準伺服器 CPU（8 個線程）上，從三週（15 分鐘間隔）的歷史資料預測未來一天：
 
@@ -380,9 +370,7 @@ if __name__ == "__main__":
 - 28M 模型是 209M 模型的 3.6 倍速度
 - 123M 模型在 209M 模型的 75% 時間內達到 99.8% 的準確率
 
----
-
-## 技術架構概述
+### 技術架構概述
 
 Timestral 採用以下核心技術：
 
@@ -400,9 +388,7 @@ Timestral 採用以下核心技術：
 
 5. **量化輸出**：21 個分位數的 pinball loss 作為訓練目標（CRPS 的離散近似）
 
----
-
-## 參考資源
+### 參考資源
 
 - **官方儲存庫**：https://github.com/mistralai/timestral
 - **官方部落格**：https://mistral.ai/news/timestral/
@@ -413,14 +399,9 @@ Timestral 採用以下核心技術：
   - TIME：https://github.com/zqiao11/TIME
   - fev-bench：https://github.com/autogluon/fev
 
----
-
-## 授權說明
+### 授權說明
 
 - **程式碼**：Apache License 2.0
 - **模型權重**：Modified MIT License（每個模型儲存庫有獨立授權文件）
 
----
-
-*報告日期：2024 年*
 *作者：Mistral AI*
