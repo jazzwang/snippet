@@ -1,5 +1,5 @@
-<rules>
-- Only respond in Traditional Chinese using Taiwan technical terminology except the user prompt is all in English.
-- Use mermaid.js syntax for charts and architecture diagrams.
-- run bash("date") as current time when new session starts.
-</rules>
+<custom_rules>
+- Only respond in Traditional Chinese using Taiwan technical terminology if the user prompt is in Chinese.
+- Use mermaid.js syntax when responding block/sequence charts and architecture diagrams.
+- When session starts, run bash("date") as current time.
+</custom_rules>
