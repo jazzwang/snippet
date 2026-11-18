@@ -52,26 +52,26 @@ def blank_mp3(seconds: int):
     sf.write('blank_audio.mp3', audio_data, samplerate)
 
 def question(word: str):
-    text_to_mp3("en-US-Studio-O",f"{word}..{word}..{word}", f"_{word}")
+    text_to_mp3("en-US-Studio-O",f"{word}...", f"_{word}")
     combined_audio = AudioSegment.from_mp3(f"_{word}.mp3") + AudioSegment.from_mp3("blank_audio.mp3")
     combined_audio.export(f"Q_{word}.mp3", format="mp3")
 
 def main():
     # parsing CLI arguments
-    parser = argparse.ArgumentParser(description="Generate Spelling Bee .")
+    parser = argparse.ArgumentParser(description="Generate Spelling.")
     parser.add_argument("input_file", help="input file with words.")
-    parser.add_argument("--question", "-q", type=int, help="generate questions")
+    parser.add_argument("--seconds", "-s", type=int, help="Generate Questions: e.g. '-s 6' generates 6-seconds blank audio.")
     args = parser.parse_args()
 
     input_file = args.input_file
 
-    if (args.question):
-        blank_mp3(args.question)
+    if (args.seconds):
+        blank_mp3(args.seconds)
 
     with open(input_file, 'r') as f:
         words = f.readlines()
         for word in words:
-            if (args.question):
+            if (args.seconds):
                 question(word.strip())
             else:
                 spelling_bee(word.strip())
