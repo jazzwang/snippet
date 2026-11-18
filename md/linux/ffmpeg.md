@@ -133,3 +133,64 @@ ffmpeg -i "輸入.mp4" -vn -c:a copy 輸出.m4a
 ```bash
 ffmpeg -version
 ```
+
+## 2026-11-18 
+
+- 2026-11-18T14:36:50+08:00
+
+> [!NOTE]
+>  如何使用 ffmpeg CLI 指令將 `video.mp4` 和 `audio.m4a` 合併成一個新的檔案？
+
+### 基本指令
+
+```bash
+ffmpeg -i video.mp4 -i audio.m4a -c:v copy -c:a aac output.mp4
+```
+
+### 參數說明
+
+| 參數 | 說明 |
+|------|------|
+| `-i video.mp4` | 第一個輸入檔案（影片） |
+| `-i audio.m4a` | 第二個輸入檔案（音訊） |
+| `-c:v copy` | 視訊流直接複製，不需重新編碼（快速） |
+| `-c:a aac` | 音訊使用 AAC 編碼器（MP4 標準） |
+| `output.mp4` | 輸出檔案 |
+
+### 更精確的映射控制
+
+若要明確指定從哪個輸入檔案取得視訊和音訊：
+
+```bash
+ffmpeg -i video.mp4 -i audio.m4a -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac output.mp4
+```
+
+- **`-map 0:v:0`**：從第一個輸入檔案（video.mp4）取得第 0 個視訊流
+- **`-map 1:a:0`**：從第二個輸入檔案（audio.m4a）取得第 0 個音訊流
+
+### 只保留原音訊品質（不重新編碼）
+
+若想保留 audio.m4a 的原始音訊品質：
+
+```bash
+ffmpeg -i video.mp4 -i audio.m4a -map 0:v:0 -map 1:a:0 -c:v copy -c:a copy output.mp4
+```
+
+### 常見問題
+
+#### Q: 為什麼合併後沒有聲音？
+
+A: 檢查音訊流是否正確映射，或使用 `-i` 順序：
+
+```bash
+ffmpeg -i audio.m4a -i video.mp4 -map 1:v:0 -map 0:a:0 -c:v copy -c:a copy output.mp4
+```
+
+#### Q: 如何只合併最後幾秒的音訊？
+
+```bash
+ffmpeg -i video.mp4 -i audio.m4a -map 0:v:0 -map 1:a:0 -ss 00:00:10 -t 10 -c:v copy -c:a copy output.mp4
+```
+
+- `-ss 00:00:10`：從第 10 秒開始
+- `-t 10`：持續 10 秒
