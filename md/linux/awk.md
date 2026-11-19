@@ -24,8 +24,6 @@ wc -c filename.txt
 sed -n 'l' filename.txt
 ```
 
----
-
 ## 範例
 
 ```bash
@@ -36,8 +34,6 @@ echo -e "Hello World\nHello Linux" | awk '{print NR, length($0)}'
 1 11
 2 12
 ```
-
----
 
 ## 進階應用
 
@@ -70,8 +66,6 @@ awk '{sum += length($0); count++} END {print (count ? sum/count : 0)}' filename.
 ```bash
 grep -v '^$' filename.txt | awk '{print NR, length($0)}'
 ```
-
----
 
 ## 常見情境速查表
 
