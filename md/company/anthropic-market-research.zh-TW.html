@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市場研究報告：Anthropic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft JhengHei', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* 左側 TOC 面板 */
+        .toc-panel {
+            width: 280px;
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid #4a5568;
+        }
+        
+        .toc-panel h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4299e1;
+            color: #63b3ed;
+        }
+        
+        .toc-nav {
+            list-style: none;
+        }
+        
+        .toc-nav li {
+            margin-bottom: 8px;
+        }
+        
+        .toc-nav a {
+            display: block;
+            color: #cbd5e0;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .toc-nav a:hover {
+            background: #4a5568;
+            color: #fff;
+        }
+        
+        .toc-nav a.active {
+            background: #4299e1;
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .toc-section {
+            margin-top: 15px;
+        }
+        
+        .toc-section h3 {
+            font-size: 12px;
+            color: #a0aec0;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* 主內容區 */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px 60px;
+            max-width: 1400px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 60px;
+            margin: -40px -60px 30px -60px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            scroll-margin-top: 80px;
+        }
+        
+        .section h2 {
+            font-size: 24px;
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4299e1;
+        }
+        
+        .section h3 {
+            font-size: 18px;
+            color: #4a5568;
+            margin: 25px 0 15px;
+        }
+        
+        .section h4 {
+            font-size: 16px;
+            color: #2d3748;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #ebf4ff 0%, #e3f2fd 100%);
+            border-left: 4px solid #4299e1;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box strong {
+            color: #2b6cb0;
+        }
+        
+        /* 表格樣式 */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        table th {
+            background: #f7fafc;
+            color: #2d3748;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        table tr:hover {
+            background: #f7fafc;
+        }
+        
+        table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* 流程圖容器 */
+        .flowchart-container {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        /* 風險矩陣容器 */
+        .risk-matrix-container {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        /* 關鍵指標卡片 */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #fff 0%, #f7fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .metric-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #4299e1;
+            margin-bottom: 5px;
+        }
+        
+        .metric-card .label {
+            font-size: 13px;
+            color: #718096;
+        }
+        
+        /* 連結樣式 */
+        a {
+            color: #4299e1;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 1200px) {
+            .main-content {
+                margin-left: 0;
+                padding: 20px 20px;
+            }
+            
+            .toc-panel {
+                width: 100%;
+                position: relative;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #4a5568;
+            }
+            
+            .header {
+                margin: -20px -20px 20px -20px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+        
+        /* 標籤樣式 */
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 2px;
+        }
+        
+        .tag-blue { background: #e3f2fd; color: #1565c0; }
+        .tag-green { background: #e8f5e9; color: #2e7d32; }
+        .tag-orange { background: #fff3e0; color: #ef6c00; }
+        .tag-red { background: #ffebee; color: #c62828; }
+        
+        /* 列表樣式 */
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* 摘要框 */
+        .executive-summary {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+        }
+        
+        .executive-summary h2 {
+            color: white;
+            border-bottom: none;
+            margin-bottom: 15px;
+        }
+        
+        .executive-summary .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .key-point {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .key-point strong {
+            color: #60a5fa;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左側 TOC 面板 -->
+        <nav class="toc-panel">
+            <h2>📑 目錄索引</h2>
+            <ul class="toc-nav">
+                <li><a href="#executive-summary">📌 執行摘要</a></li>
+                <li><a href="#1-ipo">🚀 1. IPO 新聞</a></li>
+                <li><a href="#2-財務">💰 2. 財務狀況</a></li>
+                <li><a href="#3-資金">💼 3. 資金來源</a></li>
+                <li><a href="#4-債務">📋 4. 債務持有者</a></li>
+                <li><a href="#5-投資組合">🔄 5. 投資組合</a></li>
+                <li><a href="#6-系統">⚙️ 6. 系統思考</a></li>
+                <li><a href="#7-風險">⚠️ 7. 風險評估</a></li>
+                <li><a href="#8-飛輪">🔥 8. 策略性飛輪</a></li>
+                <li><a href="#9-指標">📊 9. 核心指標</a></li>
+                <li><a href="#10-來源">📚 10. 資料來源</a></li>
+            </ul>
+        </nav>
+
+        <!-- 主內容區 -->
+        <main class="main-content">
+            <!-- 標題區 -->
+            <header class="header">
+                <h1>🤖 市場研究報告：Anthropic</h1>
+                <p>AI 安全公司的 IPO、財務與投資組合分析 | 2026 年 11 月</p>
+            </header>
+
+            <!-- 執行摘要 -->
+            <section id="executive-summary" class="section">
+                <div class="executive-summary">
+                    <h2>📌 執行摘要</h2>
+                    <p>Anthropic，Claude 模型系列的 AI 安全公司，於 2026 年 11 月完成了歷史性的 IPO，籌資超過 810 億美元，成為史上最大規模的 IPO。公司從 2021 年的初創企業發展成估值高達 1.5 兆美元的 AI 巨擘，積極擴張計算基礎設施、企業採用率，以及 AI 生態系統。</p>
+                    
+                    <div class="key-points">
+                        <div class="key-point">
+                            <strong>📈 IPO 狀態</strong>
+                            2026 年 11 月在納斯達克上市（代號：ANT），每股 83 美元
+                        </div>
+                        <div class="key-point">
+                            <strong>💵 IPO 籌資金額</strong>
+                            共籌得 813 億美元，發行 9.8 億股
+                        </div>
+                        <div class="key-point">
+                            <strong>🎯 估值</strong>
+                            IPO 後估值達 1.5 兆美元
+                        </div>
+                        <div class="key-point">
+                            <strong>📊 2025 年收入</strong>
+                            45.8 億美元（2026 年第二季同增 1,368%）
+                        </div>
+                        <div class="key-point">
+                            <strong>💎 現金狀況</strong>
+                            現金 956 億 + 短期投資 363 億美元
+                        </div>
+                        <div class="key-point">
+                            <strong>⚠️ 總債務</strong>
+                            417.9 億美元（2025 年 12 月）+ 未來承諾約 9,000 億美元
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1. IPO 新聞 -->
+            <section id="1-ipo" class="section">
+                <h2>🚀 1. IPO 新聞（過去六個月）</h2>
+                
+                <h3>1.1 IPO 時間表</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>事件</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025 年 12 月 3 日</td>
+                                <td>金融時報報導 Anthropic 計劃 2026 年進行 IPO</td>
+                            </tr>
+                            <tr>
+                                <td>2026 年 11 月 10 日</td>
+                                <td>Anthropic 啟動 IPO 路演（發行 8.25 億股）</td>
+                            </tr>
+                            <tr>
+                                <td>2026 年 11 月 18 日</td>
+                                <td>定價每股 83 美元，估值達 1.5 兆美元</td>
+                            </tr>
+                            <tr>
+                                <td>2026 年 11 月 20 日</td>
+                                <td>於納斯達克開始交易，股票代號 ANT</td>
+                            </tr>
+                            <tr>
+                                <td>2026 年 11 月 19 日</td>
+                                <td><strong>今日</strong> - IPO 正式執行</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>1.2 IPO 詳細資訊</h3>
+                <div class="highlight-box">
+                    <h4>發行結構：</h4>
+                    <ul>
+                        <li><strong>發行股份數</strong>：8.25 億股（8.0135 億股由 Anthropic 出售，0.2364 億股由現有股東出售）</li>
+                        <li><strong>發行價格</strong>：每股 83 美元（高於預期範圍）</li>
+                        <li><strong>總籌資金額</strong>：813 億美元</li>
+                        <li><strong>公司估值</strong>：1.5 兆美元</li>
+                        <li><strong>交易所</strong>：納斯達克（代號：ANT）</li>
+                    </ul>
+                </div>
+                
+                <p><strong>比較分析：</strong>超越 SpaceX，成為史上最大規模的 IPO。儘管市場存在不確定性，AI 股票仍展現強勁投資興趣。</p>
+
+                <h3>1.3 IPO 申報書重點</h3>
+                <div class="highlight-box">
+                    <h4>來自 S-1/A-1 申報書（2026 年 11 月）：</h4>
+                    <ul>
+                        <li>總籌資金額：1,411 億美元</li>
+                        <li>現金及現金等價物：956 億美元</li>
+                        <li>短期投資：363 億美元</li>
+                        <li>營收成長：2026 年第二季同增 1,368%</li>
+                        <li>首次實現營運獲利：9.74 億美元（2026 年第二季）</li>
+                    </ul>
+                </div>
+                
+                <h4>未來承諾：</h4>
+                <ul>
+                    <li>約 9,000 億美元未來義務（伺服器、建築物、電力）</li>
+                    <li>約 960 億美元計算資源承諾</li>
+                    <li>約 363 億美元短期投資</li>
+                    <li>約 1,411 億美元已籌資金額</li>
+                    <li>約 150 億美元 A&R 信用貸款額度</li>
+                </ul>
+            </section>
+
+            <!-- 2. 財務狀況 -->
+            <section id="2-財務" class="section">
+                <h2>💰 2. 財務狀況：現金流與債務</h2>
+
+                <h3>2.1 損益表（年度）</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>項目</th>
+                                <th>2025 年 12 月</th>
+                                <th>2024 年 12 月</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>總營收</td>
+                                <td>45.8 億美元</td>
+                                <td>3.86 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>毛利率</td>
+                                <td>-27.4 億美元</td>
+                                <td>-21.4 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>營運利益</td>
+                                <td>-80.6 億美元</td>
+                                <td>-29.8 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>EBITDA</td>
+                                <td>-419.1 億美元</td>
+                                <td>-82.9 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>淨利</td>
+                                <td>-419.7 億美元</td>
+                                <td>-83.1 億美元</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>注意：</strong>淨損主要來自可轉換債券與衍生性負債的公允價值變動。</p>
+
+                <h3>2.2 資產負債表（年度）</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>項目</th>
+                                <th>2025 年 12 月</th>
+                                <th>2024 年 12 月</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>現金及短期投資</td>
+                                <td>202.8 億美元</td>
+                                <td>31.4 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>總資產</td>
+                                <td>246.6 億美元</td>
+                                <td>77.5 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>總債務</td>
+                                <td>417.9 億美元</td>
+                                <td>141.7 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>淨債務</td>
+                                <td>244.1 億美元</td>
+                                <td>110.3 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>總負債</td>
+                                <td>454.0 億美元</td>
+                                <td>147.0 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>股東權益</td>
+                                <td>-207.0 億美元</td>
+                                <td>-69.0 億美元</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2.3 現金流量表（年度）</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>項目</th>
+                                <th>2023 年</th>
+                                <th>2024 年</th>
+                                <th>2025 年</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>營運現金流</td>
+                                <td>-16 億美元</td>
+                                <td>-57 億美元</td>
+                                <td>-26 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>投資現金流</td>
+                                <td>-200 萬美元</td>
+                                <td>-2,200 萬美元</td>
+                                <td>-31 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>籌資現金流</td>
+                                <td>23 億美元</td>
+                                <td>72 億美元</td>
+                                <td>200 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>自由現金流</td>
+                                <td>-16 億美元</td>
+                                <td>-57 億美元</td>
+                                <td>-28 億美元</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2.4 營收成長軌跡</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>期間</th>
+                                <th>營收</th>
+                                <th>年增率</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2022 年</td>
+                                <td>1,000 萬美元</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>2023 年</td>
+                                <td>1 億美元</td>
+                                <td>10 倍</td>
+                            </tr>
+                            <tr>
+                                <td>2024 年 12 月</td>
+                                <td>1 億美元 ARR</td>
+                                <td>10 倍</td>
+                            </tr>
+                            <tr>
+                                <td>2025 年 7 月</td>
+                                <td>40 億美元 ARR</td>
+                                <td>4 倍</td>
+                            </tr>
+                            <tr>
+                                <td>2025 年全年</td>
+                                <td>45.8 億美元</td>
+                                <td>1,079%</td>
+                            </tr>
+                            <tr>
+                                <td>2026 年第二季</td>
+                                <td>116 億美元</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>2026 年第三季</td>
+                                <td>170 億美元</td>
+                                <td>1,127%</td>
+                            </tr>
+                            <tr>
+                                <td>2026 年 9 月前 3 季</td>
+                                <td>332.4 億美元</td>
+                                <td>1,200%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2.5 債務結構</h3>
+                <div class="highlight-box">
+                    <h4>現行債務：</h4>
+                    <ul>
+                        <li><strong>總債務</strong>：417.9 億美元（2025 年 12 月）</li>
+                        <li><strong>淨債務</strong>：244.1 億美元</li>
+                        <li><strong>信用貸款額度</strong>：25 億美元，5 年期循環信貸（2025 年 5 月）</li>
+                    </ul>
+                </div>
+                
+                <h4>未來債務承諾：</h4>
+                <ul>
+                    <li>約 9,000 億美元未來義務（表外負債）</li>
+                    <li>包含計算資源、基礎設施與擴張承諾</li>
+                </ul>
+            </section>
+
+            <!-- 3. 資金來源 -->
+            <section id="3-資金" class="section">
+                <h2>💼 3. 資金來源與投資者</h2>
+
+                <h3>3.1 策略性企業投資者</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>投資者</th>
+                                <th>投資金額</th>
+                                <th>類型</th>
+                                <th>角色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Amazon (AWS)</strong></td>
+                                <td>130 億美元+（承諾最高 200 億美元）</td>
+                                <td>策略合作 + 股權</td>
+                                <td>主要雲服務供應商，AWS Bedrock</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google (Alphabet)</strong></td>
+                                <td>承諾 400 億美元</td>
+                                <td>策略合作 + 股權</td>
+                                <td>Google Cloud、TPU 運算能力</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Blackstone</strong></td>
+                                <td>約 10 億美元（2026 年 2 月）</td>
+                                <td>股權投資</td>
+                                <td>私募股權巨擘，AI 企業服務合作夥伴</td>
+                            </tr>
+                            <tr>
+                                <td>Salesforce</td>
+                                <td>未公開</td>
+                                <td>股權</td>
+                                <td>企業整合</td>
+                            </tr>
+                            <tr>
+                                <td>Cisco</td>
+                                <td>未公開</td>
+                                <td>股權</td>
+                                <td>網路基礎設施</td>
+                            </tr>
+                            <tr>
+                                <td>Samsung</td>
+                                <td>未公開</td>
+                                <td>基礎設施</td>
+                                <td>HBM、記憶體供應</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3.2 風險投資機構</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>輪次</th>
+                                <th>金額</th>
+                                <th>日期</th>
+                                <th>領投機構</th>
+                                <th>估值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Series A</td>
+                                <td>1.24 億美元</td>
+                                <td>2021 年 5 月</td>
+                                <td>Spark Capital, Sequoia</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Series E</td>
+                                <td>35 億美元</td>
+                                <td>2025 年 3 月</td>
+                                <td>Lightspeed Venture Partners</td>
+                                <td>615 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>Series E</td>
+                                <td>35 億美元</td>
+                                <td>2025 年 3 月</td>
+                                <td>Lightspeed Venture Partners</td>
+                                <td>615 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>Series F</td>
+                                <td>130 億美元</td>
+                                <td>2025 年 9 月</td>
+                                <td>ICONIQ, Fidelity</td>
+                                <td>1,830 億美元</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Series G</strong></td>
+                                <td><strong>約 10 億美元</strong></td>
+                                <td><strong>2026 年 2 月</strong></td>
+                                <td><strong>Blackstone</strong></td>
+                                <td><strong>3,500 億美元</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>IPO</strong></td>
+                                <td><strong>813 億美元</strong></td>
+                                <td><strong>2026 年 11 月</strong></td>
+                                <td><strong>公開市場</strong></td>
+                                <td><strong>1.5 兆美元</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3.3 完整投資者名單（Series F + IPO）</h3>
+                
+                <h4>Series G 投資者（2026 年 2 月）：</h4>
+                <ul>
+                    <li><strong>Blackstone（貝萊德）</strong></li>
+                </ul>
+
+                <h4>Series F 投資者（2025 年 9 月）：</h4>
+                <ul>
+                    <li>ICONIQ</li>
+                    <li>Fidelity Management & Research Company</li>
+                    <li>Lightspeed Venture Partners</li>
+                </ul>
+
+                <h4>Series E 投資者（2025 年 3 月）：</h4>
+                <ul>
+                    <li>Lightspeed Venture Partners（領投）</li>
+                    <li>Bessemer Venture Partners</li>
+                    <li>Cisco Investments</li>
+                    <li>D1 Capital Partners</li>
+                    <li>Fidelity Management & Research Company</li>
+                    <li>General Catalyst</li>
+                    <li>Jane Street</li>
+                    <li>Menlo Ventures</li>
+                    <li>Salesforce Ventures</li>
+                </ul>
+
+                <h4>債務融資機構（2025 年 5 月）：</h4>
+                <ul>
+                    <li>Morgan Stanley</li>
+                    <li>Barclays</li>
+                    <li>Citibank N.A.</li>
+                    <li>Goldman Sachs</li>
+                    <li>JPMorgan Chase & Co.</li>
+                    <li>Royal Bank of Canada</li>
+                    <li>Mitsubishi UFJ Financial Group</li>
+                </ul>
+
+                <h3>3.4 風險投資協導機構</h3>
+                <ul>
+                    <li>Menlo Ventures</li>
+                    <li>Spark Capital</li>
+                    <li>Sequoia Capital</li>
+                    <li>Altimeter Capital</li>
+                    <li>Coatue</li>
+                    <li>General Catalyst</li>
+                    <li>Insight Partners</li>
+                </ul>
+            </section>
+
+            <!-- 4. 債務持有者 -->
+            <section id="4-債務" class="section">
+                <h2>📋 4. 債務持有者與債券投資者</h2>
+
+                <h3>4.1 信用貸款設施持有者與私募股權投資者</h3>
+                <p>25 億美元循環信用貸款額度（5 年期，2025 年 5 月）由以下機構持有：</p>
+                <ol>
+                    <li><strong>Morgan Stanley（摩根士丹利）</strong></li>
+                    <li><strong>Barclays PLC（巴克萊）</strong></li>
+                    <li><strong>Citibank N.A.（花旗銀行）</strong></li>
+                    <li><strong>Goldman Sachs Group, Inc.（高盛）</strong></li>
+                    <li><strong>JPMorgan Chase & Co.（摩根大通）</strong></li>
+                    <li><strong>Royal Bank of Canada（加拿大皇家銀行）</strong></li>
+                    <li><strong>Mitsubishi UFJ Financial Group（三菱 UFJ 金融集團）</strong></li>
+                </ol>
+
+                <h4>私募股權投資者（Blackstone）：</h4>
+                <ul>
+                    <li><strong>Blackstone（貝萊德）</strong>：2026 年 2 月增資約 10 億美元，成為 Series G 領投機構，估值達 3,500 億美元</li>
+                    <li><strong>角色</strong>：策略性投資者、AI 企業服務合作夥伴、AI 運算融資參與者</li>
+                    <li><strong>合作項目</strong>：成立 AI 企業服務公司、參與 630 億美元 AI 運算融資（2026 年 10 月）</li>
+                    <li><strong>Citibank N.A.（花旗銀行）</strong></li>
+                    <li><strong>Goldman Sachs Group, Inc.（高盛）</strong></li>
+                    <li><strong>JPMorgan Chase & Co.（摩根大通）</strong></li>
+                    <li><strong>Royal Bank of Canada（加拿大皇家銀行）</strong></li>
+                    <li><strong>Mitsubishi UFJ Financial Group（三菱 UFJ 金融集團）</strong></li>
+                </ol>
+
+                <h3>4.2 債券市場</h3>
+                <p>Anthropic 主要透過以下方式籌資：</p>
+                <ul>
+                    <li><strong>股權融資</strong>（VC 輪次 + IPO）</li>
+                    <li><strong>循環信用貸款</strong>（銀行借款）</li>
+                    <li><strong>策略性條款承諾</strong>（Amazon、Google）</li>
+                </ul>
+                <p>與傳統科技公司不同，Anthropic 未發行公開發行的公司債券或企業債務證券。所有債務均由機構金融機構持有。</p>
+
+                <h3>4.3 策略性債務安排與 AI 企業服務合作</h3>
+                
+                <h4>Amazon-AWS：</h4>
+                <ul>
+                    <li>10 年雲端服務承諾（超過 1,000 億美元）</li>
+                    <li>兼具投資者與基礎設施供應商角色</li>
+                </ul>
+
+                <h4>Google-Alphabet：</h4>
+                <ul>
+                    <li>10 年雲端服務承諾（約 400 億美元）</li>
+                    <li>TPU 運算能力承諾</li>
+                </ul>
+
+                <h4>Blackstone AI 企業服務合作：</h4>
+                <ul>
+                    <li><strong>2026 年 5 月</strong>：成立 AI 企業服務公司，提供企業 AI 解決方案</li>
+                    <li><strong>2026 年 10 月</strong>：參與 630 億美元 AI 運算融資，支持 Anthropic 基礎設施擴張</li>
+                    <li><strong>合作模式</strong>：私募股權投資 + 企業服務 + 基礎設施融資</li>
+
+                <h4>基礎設施合作夥伴：</h4>
+                <ul>
+                    <li><strong>Samsung Electronics（三星電子）</strong>：HBM、DDR5 記憶體</li>
+                    <li><strong>SK Hynix（SK 海力士）</strong>：高頻寬記憶體供應</li>
+                    <li><strong>Micron Technology（美光科技）</strong>：儲存解決方案</li>
+                </ul>
+            </section>
+
+            <!-- 5. 投資組合 -->
+            <section id="5-投資組合" class="section">
+                <h2>🔄 5. 投資組合</h2>
+
+                <h3>5.1 對 Anthropic 的投資（策略性資金流入）</h3>
+                
+                <h4>A. 運算基礎設施合作夥伴</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>合作夥伴</th>
+                                <th>承諾金額</th>
+                                <th>技術</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Amazon (AWS)</td>
+                                <td>200 億美元+</td>
+                                <td>Trainium、Trainium2、Trainium3</td>
+                            </tr>
+                            <tr>
+                                <td>Google (Alphabet)</td>
+                                <td>400 億美元+</td>
+                                <td>TPUs（100 萬晶片）、Google Cloud</td>
+                            <tr>
+                                <td><strong>Blackstone</strong></td>
+                                <td><strong>約 10 億美元</strong></td>
+                                <td><strong>AI 企業服務 + AI 運算融資</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Broadcom</td>
+                                <td>未公開</td>
+                                <td>次世代 TPU 運算能力</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>B. 硬體與基礎設施</h4>
+                <ul>
+                    <li><strong>Samsung Electronics（三星電子）</strong>：HBM、DDR5 記憶體</li>
+                    <li><strong>SK Hynix（SK 海力士）</strong>：高頻寬記憶體供應</li>
+                    <li><strong>Micron Technology（美光科技）</strong>：儲存解決方案</li>
+                </ul>
+
+                <h3>5.2 Anthropic 的投資（外流投資組合）</h3>
+                
+                <h4>A. Anthology 基金（1 億美元）</h4>
+                <p><strong>合作夥伴：</strong>Menlo Ventures</p>
+                
+                <p><strong>投資模式：</strong></p>
+                <ul>
+                    <li>Seed 到 Series A 新創公司</li>
+                    <li>每筆 10 萬美元投資 + 非稀釋計算資源額度（2.5 萬美元+）</li>
+                    <li>總承諾：1 億美元</li>
+                </ul>
+                
+                <p><strong>投資領域：</strong></p>
+                <ol>
+                    <li><strong>AI 安全與可解釋性</strong>
+                        <ul>
+                            <li>Goodfire（機械可解釋性研究）</li>
+                        </ul>
+                    </li>
+                    <li><strong>自主軟體工程</strong>
+                        <ul>
+                            <li>程式碼助手、程式碼審查工具</li>
+                        </ul>
+                    </li>
+                    <li><strong>企業流程自動化</strong>
+                        <ul>
+                            <li>法律、金融科技、徵才、網路安全</li>
+                        </ul>
+                    </li>
+                    <li><strong>垂直領域 AI</strong>
+                        <ul>
+                            <li>醫療保健（放射影像分析、病歷審查）</li>
+                            <li>科學研究</li>
+                            <li>複雜資料建模</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>B. Anthropic VC Partner Program</h4>
+                <ul>
+                    <li>與一線風險投資機構合作</li>
+                    <li>技術輔導</li>
+                    <li>投資組合公司早期 API 訪問權限</li>
+                </ul>
+
+                <h4>C. Claude Startup Program</h4>
+                <ul>
+                    <li>非稀釋資源額度（最高 10 萬美元）</li>
+                    <li>開發者優惠</li>
+                    <li>訪問尖端模型（Claude Sonnet、Opus、Claude Code）</li>
+                </ul>
+            </section>
+
+            <!-- 6. 系統思考 -->
+            <section id="6-系統" class="section">
+                <h2>⚙️ 6. 系統思考法：收入、支出與風險</h2>
+
+                <h3>6.1 收入來源</h3>
+                <div class="flowchart-container">
+                    <div style="font-size: 14px; line-height: 1.8;">
+                        <strong>主要收入來源：</strong>
+                        <ul style="margin-top: 10px;">
+                            <li><strong>Pay-for-Intelligence API</strong>：60-75% 第三方 API 整合</li>
+                            <li><strong>直接 API 客戶</strong>：10-25%</li>
+                            <li><strong>Chatbot 訂閱</strong>：5%</li>
+                            <li><strong>專業服務</strong>：2%</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>次要收入來源：</strong>企業訂閱、Claude Chat 免費 + 付費層級、企業部署、API 訪問額度</p>
+                        <p style="margin-top: 15px;"><strong>營收成長軌跡：</strong>2023: 1 億美元 → 2024: 3.86 億美元 → 2025: 45.8 億美元 → 2026 Q3: 170 億美元（年增率 1,127%）</p>
+                    </div>
+                </div>
+
+                <h3>6.2 支出結構</h3>
+                <div class="flowchart-container">
+                    <div style="font-size: 14px; line-height: 1.8;">
+                        <strong>主要支出：</strong>計算與基礎設施（40-50%）
+                        <ul>
+                            <li>AWS Trainium/Trainium2/Trainium3</li>
+                            <li>Google Cloud TPUs</li>
+                            <li>Samsung 記憶體 HBM/DDR5</li>
+                            <li>資料中心營運</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>次要支出：</strong>研發 R&D（20-25%）、銷售與行銷（10-15%）、營運開銷（10-15%）、策略性投資（5-10%）</p>
+                    </div>
+                </div>
+
+                <h3>6.3 成本效率指標</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="value">1,368%</div>
+                        <div class="label">營收成長</div>
+                        <div class="label">2026 年第二季同增</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">300%</div>
+                        <div class="label">計算支出成長</div>
+                        <div class="label">2026 年第二季同增</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">7,500 萬美元+</div>
+                        <div class="label">每員工營收</div>
+                        <div class="label">2026 年 TTM</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. 風險評估 -->
+            <section id="7-風險" class="section">
+                <h2>⚠️ 7. 風險評估矩陣</h2>
+                
+                <div class="risk-matrix-container">
+                    <div style="font-size: 14px; line-height: 1.8;">
+                        <strong>高影響•高機率風險：</strong>
+                        <ul>
+                            <li><strong>計算成本膨脹</strong>（9,000 億美元未來承諾，GPU/TPU 價格通膨，電力容量限制）</li>
+                            <li><strong>競爭加劇</strong>（OpenAI、Microsoft、Google 直接競爭，開源模型加速，價格戰）</li>
+                            <li><strong>監管壓力</strong>（AI 治理法規，反壟斷審查，出口管制）</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>高影響•中機率風險：</strong>技術斷層、客戶集中風險</p>
+                        <p style="margin-top: 10px;"><strong>中影響•高機率風險：</strong>現金燒耗、估值壓力</p>
+                        <p style="margin-top: 10px;"><strong>低影響•高機率風險：</strong>人才競爭、技術採用摩擦、IP 保護</p>
+                    </div>
+                </div>
+
+                <h3>7.1 高影響•高機率風險</h3>
+                
+                <h4>1. 計算成本膨脹</h4>
+                <ul>
+                    <li>9,000 億美元未來承諾</li>
+                    <li>GPU/TPU 價格通膨</li>
+                    <li>電力容量限制</li>
+                </ul>
+
+                <h4>2. 競爭加劇</h4>
+                <ul>
+                    <li>OpenAI、Microsoft、Google 直接競爭</li>
+                    <li>開源模型加速</li>
+                    <li>價格戰與商品化壓力</li>
+                </ul>
+
+                <h4>3. 監管壓力</h4>
+                <ul>
+                    <li>AI 治理法規</li>
+                    <li>反壟斷審查（Amazon、Google 持股）</li>
+                    <li>出口管制（晶片對中國）</li>
+                </ul>
+
+                <h3>7.2 高影響•中機率風險</h3>
+                
+                <h4>4. 技術斷層</h4>
+                <ul>
+                    <li>其他地方出現 AGI 突破</li>
+                    <li>新型模型架構</li>
+                    <li>次世代運算範式</li>
+                </ul>
+
+                <h4>5. 客戶集中風險</h4>
+                <ul>
+                    <li>過度依賴 AWS、Google 運算</li>
+                    <li>企業客戶流失</li>
+                    <li>定價模式可持續性</li>
+                </ul>
+
+                <h3>7.3 中影響•高機率風險</h3>
+                
+                <h4>6. 現金燒耗與流動性</h4>
+                <ul>
+                    <li>2025 年營運現金流出 26 億美元</li>
+                    <li>現金 956 億 + 短期投資 363 億</li>
+                    <li>需持續成長以支撐估值</li>
+                </ul>
+
+                <h4>7. 估值壓力</h4>
+                <ul>
+                    <li>IPO 後估值 1.5 兆美元（2025 年營收 193 倍）</li>
+                    <li>市場修正風險</li>
+                    <li>投資者期待 vs. 執行落差</li>
+                </ul>
+            </section>
+
+            <!-- 8. 策略性飛輪 -->
+            <section id="8-飛輪" class="section">
+                <h2>🔥 8. 策略性飛輪</h2>
+                
+                <div class="flowchart-container">
+                    <div style="font-size: 14px; line-height: 1.8;">
+                        <strong>策略性飛輪循環：</strong>
+                        <ul>
+                            <li><strong>策略性合作夥伴</strong>（Amazon、Google、Samsung、SK Hynix）→</li>
+                            <li><strong>尖端模型</strong>（Claude 3/4/5）→</li>
+                            <li><strong>企業採用</strong> + <strong>新創生態系統</strong>（Anthology 基金）→</li>
+                            <li><strong>API 使用量與營收成長</strong>→</li>
+                            <li><strong>再投資於運算與 R&D</strong>→</li>
+                            <li>回到<strong>策略性合作夥伴</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. 核心指標 -->
+            <section id="9-指標" class="section">
+                <h2>📊 9. 核心指標摘要</h2>
+
+                <h3>9.1 財務指標</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>指標</th>
+                                <th>數值</th>
+                                <th>時間點</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>市值</td>
+                                <td>1.5 兆美元</td>
+                                <td>2026 年 11 月</td>
+                            </tr>
+                            <tr>
+                                <td>營收（2025 年）</td>
+                                <td>45.8 億美元</td>
+                                <td>財年 2025</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Blackstone 持股價值</strong></td>
+                                <td><strong>約 290 億美元</strong></td>
+                                <td><strong>2026 年 11 月</strong></td>
+                            </tr>
+                            <tr>
+                                <td>營收（2026 年 Q3）</td>
+                                <td>170 億美元</td>
+                                <td>3 個月</td>
+                            </tr>
+                            <tr>
+                                <td>總籌資金額</td>
+                                <td>1,411 億美元</td>
+                                <td>截至 2026 年 9 月</td>
+                            </tr>
+                            <tr>
+                                <td>現金及等價物</td>
+                                <td>956 億美元</td>
+                                <td>2026 年 9 月</td>
+                            </tr>
+                            <tr>
+                                <td>短期投資</td>
+                                <td>363 億美元</td>
+                                <td>2026 年 9 月</td>
+                            </tr>
+                            <tr>
+                                <td>總債務</td>
+                                <td>417.9 億美元</td>
+                                <td>2025 年 12 月</td>
+                            </tr>
+                            <tr>
+                                <td>淨債務</td>
+                                <td>244.1 億美元</td>
+                                <td>2025 年 12 月</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>9.2 營運指標</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>指標</th>
+                                <th>數值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>員工數</td>
+                                <td>5,000+</td>
+                            </tr>
+                            <tr>
+                                <td>每員工營收</td>
+                                <td>7,500 萬美元+</td>
+                            </tr>
+                            <tr>
+                                <td>企業客戶</td>
+                                <td>10 萬+（AWS Bedrock）</td>
+                            </tr>
+                            <tr>
+                                <td>模型系列</td>
+                                <td>Claude 3/4/5（Haiku、Sonnet、Opus）</td>
+                            </tr>
+                            <tr>
+                                <td>上下文窗口</td>
+                                <td>20 萬 -100 萬 tokens</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>9.3 成長指標</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>指標</th>
+                                <th>2023 年</th>
+                                <th>2024 年</th>
+                                <th>2025 年</th>
+                                <th>2026 年 Q3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>營收</td>
+                                <td>1 億美元</td>
+                                <td>3.86 億美元</td>
+                                <td>45.8 億美元</td>
+                                <td>170 億美元</td>
+                            </tr>
+                            <tr>
+                                <td>年增率</td>
+                                <td>-</td>
+                                <td>286%</td>
+                                <td>1,079%</td>
+                                <td>1,127%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 10. 資料來源 -->
+            <section id="10-來源" class="section">
+                <h2>📚 10. 資料來源</h2>
+
+                <h3>10.1 主要來源</h3>
+                <ol>
+                    <li><strong>Anthropic IPO S-1/A-1 申報書</strong>
+                        <ul>
+                            <li>https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm</li>
+                            <li>發布日期：2026 年 11 月 2 日</li>
+                        </ul>
+                    </li>
+                    <li><strong>Anthropic 新聞室</strong>
+                        <ul>
+                            <li>https://www.anthropic.com/news/roadshow-launch</li>
+                            <li>https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation</li>
+                            <li>https://www.anthropic.com/news/amazon-amazon-compute</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>10.2 財務資料來源</h3>
+                <ol start="3">
+                    <li><strong>TipRanks</strong> - https://www.tipranks.com/stocks/ant/financials</li>
+                    <li><strong>ReadBiz</strong> - https://readbiz.app/report?ticker=ANT</li>
+                    <li><strong>StockAnalysis</strong> - https://stockanalysis.com/stocks/ant/financials/balance-sheet/</li>
+                </ol>
+
+                <h3>10.3 新聞來源</h3>
+                <ol start="6">
+                    <li><strong>Reuters</strong>
+                        <ul>
+                            <li>https://www.reuters.com/technology/anthropics-path-ai-startup-industry-defining-ipo-2026-09-28/</li>
+                            <li>https://www.reuters.com/technology/artificial-intelligence/anthropic-receives-4-billion-investment-amazon-makes-aws-official-cloud-provider-2024-11-22/</li>
+                            <li><strong>Blackstone AI 合作</strong> - https://www.reuters.com/technology/blackstone-anthropic-ai-enterprise-services-computation-funding-2026-10-15/</li>
+                        </ul>
+                    </li>
+                    <li><strong>AP News</strong> - https://apnews.com/article/anthropic-ipo-nasdaq-ai-b6a74b8949021207dc162fcc876c4649</li>
+                    <li><strong>CNBC</strong>
+                        <ul>
+                            <li>https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html</li>
+                            <li>https://www.cnbc.com/2025/05/16/anthropic-ai-credit-facility.html</li>
+                        </ul>
+                    </li>
+                    <li><strong>Investopedia</strong> - https://www.investopedia.com/anthropic-investors-aren-t-just-buying-a-chatbot-how-the-company-behind-claude-makes-money-ant-stock-ipo-12194852</li>
+                </ol>
+
+                <h3>10.4 研究來源</h3>
+                <ol start="10">
+                    <li><strong>TechCrunch</strong> - https://techcrunch.com/2024/12/18/menlo-ventures-and-anthropic-have-picked-the-first-18-startups-for-their-100m-fund/</li>
+                    <li><strong>Contrary Research</strong> - https://research.contrary.com/report/anthropic</li>
+                    <li><strong>Business Model Innovation Blog</strong> - https://blog.business-model-innovation.com/2026/10/anthropic-business-model-s1/</li>
+                </ol>
+
+                <div class="highlight-box" style="margin-top: 30px; background: #f0fdf4; border-left-color: #22c55e;">
+                    <p><strong>重新執行輸入：</strong></p>
+                    <pre style="margin: 10px 0; background: #f0f9ff; padding: 15px; border-radius: 6px; overflow-x: auto;">
+workflow: firecrawl-market-research
+query: Anthropic IPO 財務 債務 投資者 2024 2025 2026
+companies: [Anthropic]
+data_points: [所有，財務，指標，趨勢，債務，投資者，風險]
+output: markdown</pre>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 20px; background: #fff5f5; border-left-color: #ef4444;">
+                    <p><strong>免責聲明：</strong>本研究僅供資訊參考，不構成財務建議。所有數據均基於公開來源，截至研究日期（2026 年 11 月 19 日）。市場狀況與公司財務可能有所變動。</p>
+                    <p style="margin-top: 10px;"><strong>最後更新：</strong>2026 年 11 月 19 日<br>
+                    <strong>研究期間：</strong>過去六個月（2026 年 5 月 -2026 年 11 月）<br>
+                    <strong>資料新穎度：</strong>即時 IPO 數據、2024-2026 年財務報告</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // 平滑滾動 TOC 連結
+        document.querySelectorAll('.toc-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    updateActiveLink(this);
+                }
+            });
+        });
+
+        // 更新 Active 連結
+        function updateActiveLink(clickedLink) {
+            document.querySelectorAll('.toc-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            if (clickedLink) {
+                clickedLink.classList.add('active');
+            }
+        }
+
+        // 觀察滾動位置更新 Active 連結
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    const link = document.querySelector(`.toc-nav a[href="#${id}"]`);
+                    if (link) {
+                        document.querySelectorAll('.toc-nav a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        link.classList.add('active');
+                    }
+                }
+            });
+        }, {
+            rootMargin: '-100px 0px -60% 0px'
+        });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
