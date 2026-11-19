@@ -27,3 +27,8 @@
 | 8 | BS4 with html5lib |  3373.75  |   620.175x   |
 
 As you see, Scrapling is on par with Scrapy and slightly faster than Lxml which both libraries are built on top of
+
+## 2026-11-19
+
+- https://www.youtube.com/watch?v=ZNZtgpwtMPM
+  - 【EP46】🆕全新玩法！GitHub 10 萬星 Claude ＋ Scrapling 自動抓網頁，整個網站一鍵變成 AI 知識庫
