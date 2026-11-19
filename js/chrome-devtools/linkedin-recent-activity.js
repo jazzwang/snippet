@@ -17,7 +17,7 @@ for ( let i = 1; i < 100; i++ ) {
  * and triggers a click event on each element.
  */
 try {
-  const buttons = $$('button.see-more');
+  const buttons = $$('[data-testid="expandable-text-button"]');
 
   if (buttons.length > 0) {
     buttons.forEach((button, index) => {
