@@ -38,9 +38,9 @@ Both **GBrain** and **MemPalace** represent cutting-edge approaches to **AI Agen
 | **Core Philosophy** | **Practical Minimalism / "Second Brain"**Offload agent memory to lightweight, local-first developer files. | **Spatial Architecture / "Memory Palace"**Structure memory into distinct architectural metaphors to optimize semantic indexing. |
 | **Storage & Tech Stack** | **Markdown Files + Git Repositories** as the source of truth, backed by **Postgres** for semantic retrieval. | Hierarchical structure spanning **4 layers (L0-L3)**, utilizing Knowledge Graphs with vector search. |
 | **Memory Retention** | Commits structural truths to Git; updates are tracked cleanly via code repository history. | **Verbatim Storage (No Decay)**.Permanently keeps all raw text without discarding or fading. |
-| **Structural Hierarchy** | Flat or folder-based Markdown structures mapping to personal files. | **Wing $\\rightarrow$ Hall $\\rightarrow$ Room**- *Wing:* Complete multi-tenant/agent isolation.- *Hall:* 5 types (`facts`, `events`, `discoveries`, `preferences`, `advice`).- *Room:* Topic containers. |
+| **Structural Hierarchy** | Flat or folder-based Markdown structures mapping to personal files. | **Wing → Hall → Room** <br> - *Wing:* Complete multi-tenant/agent isolation.  <br> - *Hall:* 5 types (`facts`, `events`, `discoveries`, `preferences`, `advice`).  <br> - *Room:* Topic containers. |
 | **Key Innovation** | **"Dream Cycle" (夢循環)** background processing and Compiled Truth engine. | **AAAK Compression Dialect** & Temporal Validity Windows for non-destructive change tracking. |
-| **Performance / Benchmark** | Optimised for massive localized scale (flawless recall across 10,000+ personal markdown notes). | **LongMemEval:** 96.6% raw R@5 (100% with Haiku rerank).**ConvoMem:** 92.9% (doubling tools like Mem0). |
+| **Performance / Benchmark** | Optimised for massive localized scale (flawless recall across 10,000+ personal markdown notes). | **LongMemEval:** 96.6% raw R@5 (100% with Haiku rerank).  <br> **ConvoMem:** 92.9% (doubling tools like Mem0). |
 | **Best For** | Independent developers building local, highly private "mini-AGIs" or personal assistants (e.g., OpenClaw, Hermes). | Multi-agent networks, complex workflows requiring strict agent isolation, and enterprise token-budgeting systems. |
 
 ### In-Depth Architectural Breakdown
@@ -73,14 +73,14 @@ MemPalace approaches the token limit problem through strict organization rather 
 
 -   **Choose MemPalace if:** You are building a complex, commercial multi-agent framework where agents play different roles (architect, reviewer, user), and you require industry-leading retrieval accuracy (96%+ benchmarks) without paying massive LLM-as-a-judge reranking fees.
 
----
 ## 2026-06-02
 
 > [!NOTE]
 > Q: Agent Memory alternatives to GBrain or Mempalace
+
 - Tool:  Google Search AI Mode
 A: Several powerful agent memory alternatives can replace GBrain (known for its opinionated execution logic) or MemPalace (known for structured spatial archiving). The best choice depends on whether a plug-and-play memory layer, a graph-based reasoning system, or a completely local footprint is required. [1, 2, 3, 4]
-------------------------------
+
 ## 1. The Best General Memory Layers (Plug-and-Play)
 These frameworks are highly flexible and serve as an external memory tier that can be bolted onto existing agent architectures. [4, 5, 6]
 
@@ -100,7 +100,7 @@ If running local agents (such as Nous Research's Hermes or OpenClaw) without clo
 * Hindsight: An agent memory layer built to learn directly from agent execution logs and interaction feedback. Instead of endlessly gathering notes, it actively updates and overwrites outdated conclusions across execution loops. [2, 3, 21]
 * agentmemory: A persistent, fast memory utility designed specifically for AI coding agents that relies on a local vector store + Key-Value system. [2, 22, 23, 24, 25]
 
-------------------------------
+
 ## Strategic Comparison Table
 
 | Framework [2, 3, 4, 7, 8, 12, 15, 20, 26, 27, 28] | Primary Strength | Architecture Type | Best Fit For |
@@ -145,25 +145,27 @@ To narrow this down, please let me know what specific agent framework (e.g., Lan
 
 > [!NOTE]
 > Q: which one is suitable for a researcher who might focus on multiple domain with linked data
+
 A: For a researcher working across multiple domains with heavily linked data, the clear standout choice is Cognee, closely followed by [Zep](https://www.getzep.com/) (powered by Graphiti) as the best alternative. [1, 2]
 Traditional vector-based memory layers (like Mem0) collapse complex cross-discipline data into "flat" semantic similarities, which causes cross-domain confusion. A researcher needs graph-driven structures that preserve strict semantic relationships, cross-references, and ontology rules. [2, 3, 4]
-------------------------------
+
 ## 🥇 The Best Choice: Cognee
+
 Cognee is uniquely optimized for multi-domain research because it replaces standard vector retrieval with an ontology-guided Graph-Vector hybrid pipeline (called ECL: Extract, Cognify, Load). [3, 5]
 
 * Custom Domain Ontologies: You can define strict structural boundaries using Pydantic. If you study Virology in one domain and Machine Learning in another, Cognee validates data using explicit schemas so your agent does not cross-contaminate domain-specific facts. [3, 6]
-* Deterministic Multi-Hop Reasoning: Instead of relying on fuzzy text similarities, your agent can traverse explicit data paths (e.g., Protein X $\rightarrow$ Inhibits $\rightarrow$ Virus Y $\rightarrow$ Evaluated By $\rightarrow$ Research Paper Z). [7]
+* Deterministic Multi-Hop Reasoning: Instead of relying on fuzzy text similarities, your agent can traverse explicit data paths (e.g., Protein X → Inhibits → Virus Y → Evaluated By → Research Paper Z). [7]
 * Massive Document Integration: Cognee natively ingests and maps over 30+ disparate data sources, linking PDFs, audio transcripts, and tabular files into a unified knowledge graph. [6]
 * Local Graph Visualization: It includes built-in interactive notebooks so you can visually audit and query the exact relationships your agent has mapped out. [6]
 
 ## 🥈 The Alternative: Zep (Powered by Graphiti) [2, 8]
+
 If your multi-domain research is highly chronological (e.g., tracking historical events, evolving medical trials, or changing financial regulations over time), Zep is the superior tool. [9, 10]
 
 * Temporal Graphiti Engine: It treats time as a first-class dimension. Facts are assigned valid_at and invalid_at timestamps, preventing old data from conflicting with new discoveries. [9, 10]
 * Dynamic Custom Entity Types: You can programmatically inject custom nodes (e.g., ChemicalCompound, StatuteID) across multiple domains, making cross-referencing structured and business-grade fast. [8, 10]
 * Global Observations: Zep reads across the entire graph to surface hidden co-occurrences and structural patterns, looking past simple summaries to give you a true macro perspective. [11]
 
-------------------------------
 ## Strategic Comparison for Researchers
 
 | Feature Requirement [3, 6, 8, 9, 10, 12] | Cognee | Zep / Graphiti |
@@ -193,5 +195,3 @@ To help you get set up, what kinds of documents or data types (e.g., markdown fi
 [11] https://www.getzep.com
 [12] [https://medium.com](https://medium.com/@whynesspower/complete-guide-to-knowledge-context-graphs-via-zep-graphiti-c6da7ce8b13b)
 [13] [https://www.cognee.ai](https://www.cognee.ai/blog/fundamentals/building-blocks-of-knowledge-graphs)
-
----
