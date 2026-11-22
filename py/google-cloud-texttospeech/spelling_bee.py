@@ -52,7 +52,7 @@ def blank_mp3(seconds: int):
     sf.write('blank_audio.mp3', audio_data, samplerate)
 
 def question(word: str):
-    text_to_mp3("en-US-Studio-O",f"{word}...", f"_{word}")
+    text_to_mp3("en-US-Studio-O",f"{word} - {word}", f"_{word}")
     combined_audio = AudioSegment.from_mp3(f"_{word}.mp3") + AudioSegment.from_mp3("blank_audio.mp3")
     combined_audio.export(f"Q_{word}.mp3", format="mp3")
 
