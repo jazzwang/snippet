@@ -245,3 +245,7 @@ gradle-app.setting
 
 # pi coding agent
 *.html
+
+# ignore Agent Skills
+.agents
+skills-lock.json
