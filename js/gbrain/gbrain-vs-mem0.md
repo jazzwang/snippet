@@ -1,11 +1,12 @@
-# GBrain vs Mem0：AI 記憶系統深度比較
+> [!NOTE]
+> 比較 Mem0 與 GBrain 的差異。create side-by-side comparison table. output as js/gbrain/gbrain-vs-mem0.md
+
+## GBrain vs Mem0：AI 記憶系統深度比較
 
 > **本報告日期：** 2026-11-19  
 > **作者：** AI 技術分析
 
----
-
-## 📊 快速比較總覽
+### 📊 快速比較總覽
 
 | 特性 | **GBrain** | **Mem0** |
 |------|------------|----------|
@@ -21,11 +22,9 @@
 | **SDK 支援** | 主要 CLI + MCP | 多語言 SDK (Python, Node, Go) |
 | **開放原始碼** | MIT | 開放原始碼 + 商業平台 |
 
----
+### 🔍 核心差異分析
 
-## 🔍 核心差異分析
-
-### 1. 設計理念
+#### 1. 設計理念
 
 ```
 GBrain
@@ -41,7 +40,7 @@ Mem0
 └─ 使用者：AI 代理與使用者對話
 ```
 
-### 2. 記憶管理機制
+#### 2. 記憶管理機制
 
 | 機制 | GBrain | Mem0 |
 |------|--------|------|
@@ -51,7 +50,7 @@ Mem0
 | **記憶衰退** | 無 | 支援 (Temporal Reasoning) |
 | **衝突處理** | 人工仲裁 | 自動合併/修正 |
 
-### 3. 檢索能力
+#### 3. 檢索能力
 
 ```mermaid
 graph TD
@@ -72,9 +71,9 @@ graph TD
     end
 ```
 
-### 4. 使用場景對比
+#### 4. 使用場景對比
 
-#### GBrain 適合：
+##### GBrain 適合：
 - ✅ 需要長期保存的知識庫
 - ✅ 團隊共享的決策記錄
 - ✅ 文件問答式查詢
@@ -82,7 +81,7 @@ graph TD
 - ✅ 多 AI 代理共享同一知識庫
 - ✅ 需要人類審核和編輯的內容
 
-#### Mem0 適合：
+##### Mem0 適合：
 - ✅ 追蹤用戶偏好 (如「我喜歡深色模式」)
 - ✅ 記住對話中的事實 (如「我對蘋果過敏」)
 - ✅ 跨會話的上下文記憶
@@ -90,11 +89,9 @@ graph TD
 - ✅ 多語言、跨平台的 AI 應用
 - ✅ 自動從對話中提取記憶
 
----
+### 🛠️ 技術架構比較
 
-## 🛠️ 技術架構比較
-
-### GBrain 架構
+#### GBrain 架構
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -122,7 +119,7 @@ graph TD
 └─────────────────────────────────────────────┘
 ```
 
-### Mem0 架構
+#### Mem0 架構
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -150,9 +147,7 @@ graph TD
 └─────────────────────────────────────────────┘
 ```
 
----
-
-## 📈 性能與成本比較
+### 📈 性能與成本比較
 
 | 指標 | GBrain | Mem0 |
 |------|--------|------|
@@ -163,7 +158,7 @@ graph TD
 | **擴充性** | 高 (支援大規模知識庫) | 中高 (適合用戶層級) |
 | **部署複雜度** | 中 (需配置資料庫) | 低 (Managed API 一鍵部署) |
 
-### 成本估算 (每月 10K 查詢)
+#### 成本估算 (每月 10K 查詢)
 
 | 模式 | GBrain (Haiku) | Mem0 (標準) |
 |------|----------------|-------------|
@@ -171,57 +166,53 @@ graph TD
 | **LLM 提取** | 無 (手動匯入) | 內建自動提取 |
 | **向量嵌入** | 可選 (Voyage Key) | 內建服務 |
 
----
+### 🎯 使用範例
 
-## 🎯 使用範例
-
-### GBrain 範例
+#### GBrain 範例
 
 ```bash
-# 匯入公司決策記錄
+## 匯入公司決策記錄
 gbrain import ~/company-decisions/2026/tech-stack.md
 
-# 記住團隊決策
+## 記住團隊決策
 gbrain remember "我們決定採用 Vue 3" --entity "tech-decisions"
 
-# 語意查詢
+## 語意查詢
 gbrain query "前端框架選型" --json
 
-# 關鍵字搜尋
+## 關鍵字搜尋
 gbrain search "Vue 3 框架"
 ```
 
-### Mem0 範例
+#### Mem0 範例
 
 ```python
 from mem0 import Memory
 
 memory = Memory(provider="mem0")
 
-# 新增用戶偏好
+## 新增用戶偏好
 memory.add(
     data="用戶喜歡深色模式",
     metadata={"user_id": "user123", "type": "preference"}
 )
 
-# 新增對話中的事實
+## 新增對話中的事實
 memory.add(
     data="用戶對蘋果過敏",
     metadata={"user_id": "user123", "type": "allergy"}
 )
 
-# 檢索相關記憶
+## 檢索相關記憶
 memories = memory.search(
     query="用戶的偏好設定",
     user_id="user123"
 )
 ```
 
----
+### ⚖️ 優缺點總結
 
-## ⚖️ 優缺點總結
-
-### GBrain 優勢
+#### GBrain 優勢
 - ✅ **人類可讀**：Markdown 文件，人類隨時可編輯
 - ✅ **知識圖譜**：自動建立實體關係鏈接
 - ✅ **多代理支援**：通過 MCP 連接多個 AI
@@ -229,28 +220,26 @@ memories = memory.search(
 - ✅ **自托管完善**：Postgres/PGLite 完整支援
 - ✅ **時間軸追蹤**：自動記錄決策演變過程
 
-### GBrain 劣勢
+#### GBrain 劣勢
 - ❌ **動態更新弱**：需手動重新嵌入
 - ❌ **記憶遺忘無**：所有記憶權重平等
 - ❌ **對話提取無**：需手動匯入文件
 - ❌ **多語言 SDK 少**：主要 CLI + MCP
 
-### Mem0 優勢
+#### Mem0 優勢
 - ✅ **自動提取**：從對話自動提取事實
 - ✅ **動態更新**：自動覆蓋/修正記憶
 - ✅ **記憶遺忘**：時間感知，自動降低權重
 - ✅ **多語言支援**：Python, Node, Go SDK
 - ✅ **雲端服務完善**：Managed API 一鍵部署
 
-### Mem0 劣勢
+#### Mem0 劣勢
 - ❌ **人類可讀性差**：內部格式，不易人類編輯
 - ❌ **知識圖譜弱**：主要用戶/會話層級
 - ❌ **自托管不熟練**：自托管版本較不穩定
 - ❌ **雲端依賴**：最佳體驗在 Managed 版本
 
----
-
-## 🔄 整合可能性
+### 🔄 整合可能性
 
 根據搜尋結果，**GBrain 和 Mem0 可以整合使用**：
 
@@ -282,21 +271,19 @@ memories = memory.search(
 └─────────────────────────────────────────────────────┘
 ```
 
-### 整合建議
+#### 整合建議
 
 ```bash
-# GBrain 作為主知識庫
+## GBrain 作為主知識庫
 gbrain init --pglite
 
-# Mem0 作為動態記憶層
+## Mem0 作為動態記憶層
 pip install mem0ai
 ```
 
 參考文獻：https://lab.supersaiyan.dev/unified-agent-memory-gbrain-mem0
 
----
-
-## 📋 選擇建議
+### 📋 選擇建議
 
 | 您的需求 | 推薦選擇 |
 |----------|----------|
@@ -310,16 +297,12 @@ pip install mem0ai
 | 完全自托管控制 | **GBrain** |
 | 多 AI 代理共享 | **GBrain** |
 
----
-
-## 📚 參考資源
+### 📚 參考資源
 
 - [GBrain 官方文件](https://github.com/garrytan/gbrain)
 - [Mem0 官方文件](https://docs.mem0.ai)
 - [GBrain vs Mem0 比較](https://university.tenten.co/t/compare-garry-tans-gbrain-with-mem0/2255)
 - [GBrain vs Hindsight vs Mem0 vs Zep](https://vectorize.io/articles/gbrain-vs-hindsight-vs-mem0-vs-zep)
 - [GBrain 和 Mem0 整合筆記](https://lab.supersaiyan.dev/unified-agent-memory-gbrain-mem0)
-
----
 
 *報告完成時間：2026-11-19*
