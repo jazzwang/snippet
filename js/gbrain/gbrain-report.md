@@ -14,7 +14,7 @@ Cost:       0.000
 
 ## GBrain 技術報告
 
-> **GBrain** 是一個為 AI 代理（Agent）設計的統一知識庫，讓您的團隊所有 Agent 能共享同一個「大腦」。將您的筆記、公司文檔、決策記錄和會議轉錄集中管理，Claude Code、Codex 和其他 AI 代理在回答前都會先查閱這些知識，避免從零開始，而是基於您和團隊實際撰寫的內容進行工作。
+> **GBrain** 是一個為 AI 代理（Agent）設計的統一知識庫，讓您的團隊所有 Agent 能共享同一個「大腦」。將您的筆記、公司文檔、決策記錄和會議逐字稿集中管理，Claude Code、Codex 和其他 AI 代理在回答前都會先查閱這些知識，避免從零開始，而是基於您和團隊實際撰寫的內容進行工作。
 
 ### 一、專案概述
 
@@ -24,7 +24,7 @@ GBrain 採用 MIT 授權，支援自行架設，初始時無需 API Key（使用
 
 | 功能 | 說明 |
 |------|------|
-| 知識庫 | 集中管理個人筆記、公司文檔、決策記錄、會議轉錄 |
+| 知識庫 | 集中管理個人筆記、公司文檔、決策記錄、會議逐字稿 |
 | 記憶持久化 | Agent 的記憶和事實跨會話持久化，所有連接到知識庫的 Agent 都能存取 |
 | 語意搜尋 | 支援語意檢索、查詢擴充、自動事實擷取 |
 | 知識圖譜 | 可選的有向無環圖（DAG），支援關聯查詢 |
@@ -480,7 +480,7 @@ brain/
 ├── companies/       # 公司資料
 ├── concepts/        # 概念知識
 ├── decisions/       # 決策記錄
-├── meetings/        # 會議轉錄
+├── meetings/        # 會議逐字稿
 └── notes/           # 個人筆記
 ```
 
@@ -618,16 +618,16 @@ Welcome to Ubuntu 24.04.5 LTS (GNU/Linux 6.8.0-1070-azure x86_64)
  * Management:     https://landscape.canonical.com
  * Support:        https://ubuntu.com/pro
 Last login: Tue Nov 17 00:00:31 2026 from ::1
-@jazzwang ➜ /workspaces/codespaces-blank (main) $ 
+@jazzwang ➜ /workspaces/codespaces-blank (main) $
 @jazzwang ➜ /workspaces/codespaces-blank (main) $ curl -fsSL https://bun.com/install | bash
 ######################################################################## 100.0%
-bun was installed successfully to ~/.bun/bin/bun 
+bun was installed successfully to ~/.bun/bin/bun
 
-Added "~/.bun/bin" to $PATH in "~/.bashrc" 
+Added "~/.bun/bin" to $PATH in "~/.bashrc"
 
-To get started, run: 
+To get started, run:
 
-  source /home/codespace/.bashrc 
+  source /home/codespace/.bashrc
   bun --help
 ```
 
@@ -722,7 +722,7 @@ Per-knob tuning + recommendation engine ships at: gbrain search tune
 
   Recommended: conservative  (No chat key (Anthropic/OpenAI/Google) and no ready reranker — conservative keeps a tight 4K budget; balanced's reranker could not run.)
 
-Mode [conservative]: 
+Mode [conservative]:
 Search mode set to: conservative
 
 
@@ -763,11 +763,11 @@ Other harnesses (Codex, OpenClaw): docs/protocol/MEMORY_VERBS_v1.md
 If `claude` is not found: install Claude Code first, or use the per-harness blocks in that doc.
 
 More: bulk-load notes `gbrain import <dir> --no-embed` · scale up `gbrain migrate --to postgres --plan` · health `gbrain doctor`
-@jazzwang ➜ /workspaces/codespaces-blank (main) $ 
+@jazzwang ➜ /workspaces/codespaces-blank (main) $
 ```
 - 看起來有點小複雜，不過就我的理解，會需要用到 LLM 應該是為了生成 embedding 來做 vector search 才會需要花錢。
 ```bash
-@jazzwang ➜ /workspaces/codespaces-blank (main) $ 
+@jazzwang ➜ /workspaces/codespaces-blank (main) $
 @jazzwang ➜ /workspaces/codespaces-blank (main) $ gbrain doctor --json | jq . | tee gbrain-doctor.json
 ```
 ```json
@@ -5160,3 +5160,505 @@ More: bulk-load notes `gbrain import <dir> --no-embed` · scale up `gbrain migra
 ```
 - 針對「四、配置 API Key（可選）」，`『如果要啟用語意檢索、自動事實擷取等進階功能，需要配置 API Key。』` 這段描述跟我認知的類似，應該是為了生成 embedding
 - 針對「五、匯入和索引」，看起來需要一些測試用的 Markdown 檔案。
+
+## 2026-11-24
+
+- 在 Windows 11 實測
+- ( 2026-11-24 11:17:31 )
+```bash
+~/Documents$ mkdir jbrain
+```
+- 用 scoop 安裝 `bun` (1.4.5)
+```bash
+~/Documents$ scoop install bun
+Installing 'bun' (1.4.5) [64bit] from 'main' bucket
+```
+- 用 `bun` 安裝 `gbrain`
+```bash
+~/Documents$ bun install -g github:garrytan/gbrain#stable
+bun add v1.4.5 (a7733435c)
+
+installed gbrain@github:garrytan/gbrain#e585737 with binaries:
+ - gbrain
+
+185 packages installed [29.50s]
+
+warn: To run "gbrain", add the global bin folder to $PATH:
+
+C:\Users\jazzw\.bun\bin
+```
+- 將路徑加到 `~/.bashrc`
+```bash
+~$ cat >> ~/.bashrc << EOF
+## 2026-11-24
+PATH=\$PATH:~/.bun/bin
+EOF
+```
+- 開一個新的 Bash session，驗證 `gbrian` 執行檔是否找得到
+```bash
+~$ which gbrain
+/c/Users/jazzw/.bun/bin/gbrain
+~$ gbrain --version
+gbrain 0.60.765.0
+```
+- 初始化
+```bash
+~$ gbrain init --pglite --no-embedding | tee Documents/jbrain/gbrain-init.2026-11-24.log
+```
+- 檢查健康狀況
+```bash
+~$ gbrain doctor --json | jq . > Documents/jbrain/gbrain-doctor.2026-11-24.json
+```
+- 照 `gbrain init` 的建議，測試 `gbrain remember`
+```bash
+~$ gbrain remember "gbrain install check" --provenance install-check
+remembered as fact #1
+  note: no embedding provider — duplicate detection degraded
+  warning: NO_ENTITY
+  hint: Saved without an entity, so entity-scoped recall will not find it. To link it, remember the same claim again with `entity` (the person, company or project it is about): that replaces this copy, so there is nothing to forget. Do not forget it: a claim forgotten without an entity is withdrawn for every entity and cannot be saved again.
+Note [degraded_dedup]: No embedding provider is configured, so remember detects only exact duplicates; a near-duplicate phrasing of an existing fact inserts a second fact. Recall first when unsure whether a fact is already saved.
+```
+- 照 `gbrain init` 的建議，測試 `gbrain recall`
+```bash
+~$ gbrain recall --query "gbrain install check"
+[gbrain degraded: embed_unavailable] This result is partial or degraded: never report "no notes" or "not found" from it.
+Facts:
+  #1 [fact] gbrain install check — install-check
+Pages:
+  memory/unattributed [keyword_exact] Unattributed memory
+    ## Facts <!--- gbrain:facts:begin --> | # | claim | kind | confidence | visibility | notability | valid_from | valid_until | source | context | |---|-------|---
+note: search degraded (keyword_only_embedding_disabled)
+```
+### 實測「五、匯入和索引」
+
+- 用 `SIGOps` 的文章來驗證「五、匯入和索引」的流程
+
+#### 5.1 匯入 Markdown 檔案
+
+```bash
+~$ cd Documents/Obsidian/
+~/Documents/Obsidian$ gbrain import SIGOps/ --no-embed
+[gbrain phase] import.collect_files start dir=C:\Users\jazzw\Documents\Obsidian\SIGOps strategy=markdown
+[gbrain phase] import.collect_files done 53ms files=22
+Found 22 markdown files
+[import.files] start[gbrain] content-sanity flag (markup_heavy): 3-glia-a-human-inspired-ai-for-systems-design-and-optimization (ratio 0.97) — stays searchable, agent warned
+[import.files] 22/22 (100%) done
+
+Import complete (1.9s):
+  22 pages imported
+  0 pages skipped (0 unchanged, 0 errors, 0 malformed filenames)
+  485 chunks created
+```
+#### 5.2 建立知識圖譜（可選）
+```bash
+## 預覽
+~/Documents/Obsidian$ gbrain extract links --source db --dry-run | head -20
+[extract.links_db] 23/23 (100%) done
+Links: (dry run) would create 0 from 23 pages (db source)
+Skipped 236 candidate(s) whose target page doesn't exist (references to non-pages are never persisted).
+~/Documents/Obsidian$ gbrain extract links --source db
+[extract.links_db] 23/23 (100%) done
+Links: created 0 from 23 pages (db source)
+Skipped 236 candidate(s) whose target page doesn't exist (references to non-pages are never persisted).
+
+Done: 0 links, 0 timeline entries from 23 pages
+```
+```bash
+## 正式執行
+~/Documents/Obsidian$ gbrain extract timeline --source db
+[extract.timeline_db] 23/23 (100%) done
+Timeline: created 0 entries from 23 pages (db source)
+
+Done: 0 links, 0 timeline entries from 23 pages
+```
+```bash
+## 驗證
+~/Documents/Obsidian$ gbrain stats
+Pages:     23
+Chunks:    486
+Embedded:  0
+Links:     0
+Tags:      1
+Timeline:  0
+
+By type:
+  concept: 22
+  note: 1
+```
+#### 5.3 匯入公司知識庫
+
+- 看起來是為了匯入不同目錄的檔案到不同的 bucket，先忽略。
+
+### 實測「六、測試和驗證」
+
+#### 6.1 基本驗證
+
+```bash
+## 完整的安裝合約檢查
+~/Documents/Obsidian$ gbrain bootstrap verify
+gbrain bootstrap verify — FAIL (2026-11-24T04:28:42.245Z)
+  [ok  ] doctor_green: engine healthy (schema version 331)
+  [ok  ] facts_visibility: facts default visibility: world (set by bootstrap verify — was unset). Governs extraction-path writes only — `remember` defaults to world either way, except from a member-bound credential, whose saves stay private on its member page; pass `visibility` per call to keep a remembered fact private. Flip with `gbrain config set facts.default_visibility private` if less-trusted surfaces will read this brain.
+  [ok  ] token_sweep: no unresolved template tokens in rendered identity files
+  [FAIL] byte_floors: byte floors: SOUL.md missing; USER.md missing — floors catch skipped interviews, never pad; re-run the interview + render
+  [FAIL] writeback_contract: AGENTS.md is missing; render the bootstrap contract before wiring the agent. Fix: run `gbrain bootstrap contract --repair` from the workspace (or pass --workspace explicitly).
+  [ok  ] secret_scan: no secrets in 1 workspace file(s)
+  [ok  ] deny_globs: not a git repo yet — deny-glob backstop applies at push time
+  [ok  ] repo_privacy: local-only (no origin remote) — run `gbrain bootstrap repo` any time to add the private body
+  [ok  ] execution_env: local machine — full persistence surface available
+  [ok  ] mcp_json_hygiene: no .mcp.json in the workspace
+  [ok  ] hook_carrier_overlap: no event fires from more than one hook carrier
+  [ok  ] embedding_plane: keyless — no embedding provider configured; writes store no vectors (active column content_chunks.embedding: 1024d)
+  [FAIL] roundtrip: put_page wrote the DB but NO file appeared under brain/ (write-through: write-through reported nothing). The workspace source must be registered with its brain/ dir as local_path (gbrain sources add default --path C:\Users\jazzw\Documents\Obsidian\brain) or agent writes never reach the repo.
+  [ok  ] capability_report: keyless mode / keyword-only search
+  [ok  ] mcp_surface: mcp_surface: full (default) — full op surface for registrations
+  [ok  ] hooks_smoke: hooks not installed — smoke not applicable (Codex/pull-mode or declined consent)
+  [ok  ] push_probe: local-only mode — no push expected
+  [ok  ] inert_skills: no skills/ dir — scaffold not run (optional)
+  [ok  ] first_run_tour: tour withheld — prints on PASS
+
+gbrain capabilities: keyless mode
+  embeddings: not configured — search runs keyword-only (BM25)
+  extraction: not configured — memory comes from agent-authored ## Facts fences and write ops
+keyless mode: keyword search, agent-authored memory; one optional key upgrades capabilities — OpenAI: semantic search + auto-extraction; Voyage: semantic search; Anthropic: auto-extraction (see `gbrain providers list` for env-ready options).
+
+Fix the FAIL checks above and re-run — the first-run tour prints on PASS.
+```
+- 根據失敗的部份，應該主要有三樣： (1) 缺少 `SOUL.md` (2) 缺少 `USER.md` (3) 缺少 `AGENTS.md` (4) 找不到 `brain` 子目錄
+- 其次，照 `gbrain bootstrap verify` 的最後寫到 「see `gbrain providers list` for env-ready options 」，跑一次指令。
+```bash
+~/Documents/Obsidian$ gbrain providers list
+PROVIDER              TIER              EMBED   EXPAND  CHAT    RERANK  DECIDE  STATUS
+------------------------------------------------------------------------------------------------
+openai                native            yes     yes     yes     —       —       ✗ missing OPENAI_API_KEY
+google                native            yes     yes     yes     —       —       ✓ ready
+anthropic             native            —       yes     yes     —       —       ✗ missing ANTHROPIC_API_KEY
+claude-cli            native            —       yes     yes     —       —       ✓ ready
+ollama                openai-compat     yes     yes     yes     —       —       ✓ ready
+openrouter            openai-compat     yes     yes     yes     yes     —       ✗ missing OPENROUTER_API_KEY
+voyage                openai-compat     yes     —       —       yes     —       ✗ missing VOYAGE_API_KEY
+litellm               openai-compat     —       yes     —       —       —       ✓ ready
+deepseek              openai-compat     —       yes     yes     —       —       ✗ missing DEEPSEEK_API_KEY
+groq                  openai-compat     —       yes     yes     —       —       ✗ missing GROQ_API_KEY
+together              openai-compat     —       yes     yes     —       —       ✗ missing TOGETHER_API_KEY
+llama-server          openai-compat     —       —       —       —       —       ✓ ready
+llama-server-reranker openai-compat     —       —       —       yes     —       ✓ ready
+lmstudio              openai-compat     —       —       —       —       —       ✓ ready
+minimax               openai-compat     yes     —       yes     —       —       ✗ missing MINIMAX_API_KEY
+dashscope             openai-compat     yes     —       —       —       —       ✗ missing DASHSCOPE_API_KEY
+dashscope-rerank      openai-compat     —       —       —       yes     —       ✗ missing DASHSCOPE_API_KEY
+zhipu                 openai-compat     yes     —       yes     —       —       ✗ missing ZHIPUAI_API_KEY
+azure-openai          openai-compat     yes     —       —       —       —       ✗ missing AZURE_OPENAI_ENDPOINT
+nan                   openai-compat     —       —       —       yes     —       ✗ missing NAN_API_KEY
+moonshot              openai-compat     —       yes     yes     —       —       ✗ missing MOONSHOT_API_KEY
+mistral               openai-compat     yes     yes     yes     —       —       ✗ missing MISTRAL_API_KEY
+nvidia                openai-compat     yes     —       yes     —       —       ✗ missing NVIDIA_API_KEY
+perplexity            openai-compat     yes     —       —       —       —       ✗ missing PERPLEXITY_API_KEY
+particle              openai-compat     —       yes     yes     —       —       ✗ missing PARTICLE_API_KEY
+typesafe              openai-compat     —       —       —       yes     yes     ✗ missing TYPESAFE_API_KEY
+```
+- 看起來要用 OpenRouter 才能滿足 EMBED, EXPAND, CHAT, RERANK, DECIDE 的全部功能。（跟 Hermes Agent 一樣，用 LLM Gateway 會比較有彈性）
+- 檢查配置的模型
+```bash
+## 檢查配置的模型
+~/Documents/Obsidian$ gbrain models
+Tier routing:
+  tier.utility    anthropic:claude-haiku-4-5-20251001           [default] [newer haiku available: claude-haiku-5-5] (gbrain config set models.tier.utility anthropic:claude-haiku-5-5)
+  tier.reasoning  anthropic:claude-sonnet-4-6                   [default] [newer sonnet available: claude-sonnet-5-5] (gbrain config set models.tier.reasoning anthropic:claude-sonnet-5-5)
+  tier.deep       anthropic:claude-opus-4-7                     [default] [newer opus available: claude-opus-5-5] (gbrain config set models.tier.deep anthropic:claude-opus-5-5)
+  tier.subagent   anthropic:claude-sonnet-4-6                   [default] [newer sonnet available: claude-sonnet-5-5] (gbrain config set models.tier.subagent anthropic:claude-sonnet-5-5)
+
+Global default:
+  models.default  (unset)
+
+Per-task overrides:
+  models.dream.synthesize            → anthropic:claude-sonnet-4-6                   [tier.reasoning]
+  models.dream.synthesize_verdict    → anthropic:claude-haiku-4-5-20251001           [tier.utility]
+  models.dream.patterns              → anthropic:claude-sonnet-4-6                   [tier.reasoning]
+  models.dream.extract_atoms         → anthropic:claude-haiku-4-5-20251001           [tier.utility (caller-specific)]
+  models.drift                       → anthropic:claude-sonnet-4-6                   [tier.reasoning]
+  models.standing_questions          → anthropic:claude-opus-4-7                     [tier.deep]
+  models.think                       → anthropic:claude-opus-4-7                     [tier.deep]
+  models.fence_repair                → none                                          [measured default]
+  models.content_repair              → none                                          [measured default]
+  models.subagent                    → anthropic:claude-sonnet-4-6                   [tier.subagent]
+  facts.extraction_model             → anthropic:claude-haiku-5-5                    [measured default]
+  models.eval.longmemeval            → anthropic:claude-sonnet-4-6                   [tier.reasoning]
+  models.eval.contradictions_judge   → anthropic:claude-haiku-4-5-20251001           [tier.utility]
+  models.expansion                   → anthropic:claude-haiku-4-5-20251001           [tier.utility]
+  models.contextual_synopsis         → anthropic:claude-haiku-4-5-20251001           [tier.utility]
+  models.chat                        → anthropic:claude-sonnet-4-6                   [tier.reasoning]
+
+Nightly quality probe (autopilot.nightly_quality_probe):
+  reader (LongMemEval answers)       → anthropic:claude-sonnet-4-6                   [tier.reasoning]
+  extractor (trajectory claims)      → anthropic:claude-haiku-4-5-20251001           [tier.utility]
+  judge slot A                       → openai:gpt-5.2                                [panel default]
+  judge slot B                       → anthropic:claude-opus-4-7                     [panel default]
+  judge slot C                       → deepseek:deepseek-v4-pro                      [panel default]
+  Note: Slot availability, substitutes and key-aware defaults are judged from this process's environment; a provider key set only in C:\Users\jazzw\.gbrain\env (sourced by the autopilot daemon's launcher) reads here as unavailable.
+
+Aliases:
+  opus     → anthropic:claude-opus-4-7
+  sonnet   → anthropic:claude-sonnet-4-6
+  haiku    → anthropic:claude-haiku-4-5-20251001
+  gemini   → google:gemini-3.5-flash-lite
+  gpt      → openai:gpt-5.6
+
+Tip: probe reachability with `gbrain models doctor` (opt-in; spends a minimal request per configured chat/embed/rerank surface).
+```
+
+> [!NOTE]
+> 1. 越測越覺得 GBrain 要綁 Agent 會比較完整
+> 2. 這裡的 `dream` 跟 `autopilot.nightly_quality_probe` 不確定是不是其他 YouTube 影片或一些部落格文章中提到的「作夢模式」跟「在人類睡覺時，執行的工作」
+
+- 模型探針測試
+```bash
+## 模型探針測試
+~/Documents/Obsidian$ gbrain models doctor
+Error [unavailable]: This brain has no explicit embedding model. Its stored vectors must not be interpreted using a new default. Run gbrain migrate embeddings --status and preview an explicit migration with --dry-run.
+Fix: gbrain doctor --json --brain host
+Docs: https://github.com/garrytan/gbrain/blob/v0.60.765.0/docs/guides/error-codes.md#unavailable
+```
+
+#### 6.2 記憶測試
+- 測試 remember/recall 往返：
+```bash
+## 記住一個事實
+~/Documents/Obsidian$ gbrain remember "GBrain 是一個知識庫系統" --entity "gbrain" --content-origin user_said --provenance "測試"
+remembered as fact #3
+  entity: gbrain
+  note: the entity has no page, so this fact is stored in the database only
+  note: no embedding provider — duplicate detection degraded
+Note [degraded_dedup]: No embedding provider is configured, so remember detects only exact duplicates; a near-duplicate phrasing of an existing fact inserts a second fact. Recall first when unsure whether a fact is already saved.
+```
+- 查詢該事實
+```bash
+~/Documents/Obsidian$ gbrain recall "GBrain 是一個知識庫系統" --json
+[recall] no facts for entity 'GBrain 是一個知識庫系統'; matched 1 fact(s) by text — use --grep to force text matching.
+{
+  "facts": [
+    {
+      "id": 3,
+      "fact": "GBrain 是一個知識庫系統",
+      "kind": "fact",
+      "entity_slug": "gbrain",
+      "visibility": "world",
+      "notability": "medium",
+      "valid_from": "2026-11-24T05:14:05.669Z",
+      "valid_until": null,
+      "expired_at": null,
+      "superseded_by": null,
+      "consolidated_at": null,
+      "consolidated_into": null,
+      "source": "測試",
+      "source_session": null,
+      "confidence": 1,
+      "effective_confidence": 1,
+      "created_at": "2026-11-24T05:14:05.811Z"
+    }
+  ],
+  "total": 1
+}
+```
+- 先忽略「忘掉」事實這一項，因為後面的指令還會用到這一筆 fact
+
+> [!TIP]
+> ```bash
+> ## 遺忘該事實
+> gbrain forget_fact "GBrain 是一個知識庫系統"
+> ```
+
+- 關鍵字搜尋測試：
+```bash
+## 關鍵字搜尋
+~/Documents/Obsidian$ gbrain search "GBrain 知識庫" --json
+[gbrain] embeddings are off on this brain by choice (embedding_disabled), so search is keyword-only and no query text is sent to an embedding provider. If the user wants semantic search, `gbrain doctor --json` names the enable command; turning it on needs their consent.
+Saved facts (remember): about the entity this query names (newest first), then facts those point to, then matches for its words; recall returns more:
+- GBrain 是一個知識庫系統 [entity: gbrain; saved 2026-11-24; provenance: 測試]
+[
+  {
+    "slug": "the-next-horizon-of-system-intelligence_6.zh-tw",
+    "page_id": 6,
+    "title": "長線思考：具有記憶能力的 Agent 如何更快解決作業問題",
+    "type": "concept",
+    "chunk_text": "tes 上的微服務應用程式：服務間互動會產生突發的、部署特有的失敗模式，這些模式可以從過往知識中受益。\n\nSDO 將未部署和失敗中的應用程式都視為不健康狀態，並遵循相同的分階段工作流程，驅動每個應用程式朝向健康狀態（圖 1）。作業員不像保持單一長壽命 Agent 會議持續運作——這不可避免地會撞擊上下文視窗限制並強制有損濃縮——而是在每個階段轉換和 Agent 交接時啟動全新會議。延續性來自於共享知識庫（詳見下方的知識庫章節）：一個**持久檔案樹**，包含應用程式的架構摘要、整合所有先前事件的長期作業摘要，以及記錄症狀、根本原因和修復措施的每個事件事後檢討（post-mortem）。Agent 可以在會議期間隨時從知識庫讀取，並在解決問題時寫回。\n\n![](https://www.sigops.org/wp-content/uploads/2026/03/image-1600x649.jpeg)\n\n圖 1：SDO Agent 工作流程。相同的階段序列適用於初始部署和回退修復。\n\n### 工作流程",
+    "chunk_source": "compiled_truth",
+    "chunk_id": 73,
+    "chunk_index": 5,
+    "score": 1003,
+    "stale": false,
+    "source_id": "default",
+    "effective_date": "2026-03-17",
+    "effective_date_source": "published",
+    "keyword_hit": true,
+    "base_score": 1003,
+    "evidence": "keyword_exact",
+    "create_safety": "probable",
+    "id": "gbrain-page:v1:WyJkZWZhdWx0IiwidGhlLW5leHQtaG9yaXpvbi1vZi1zeXN0ZW0taW50ZWxsaWdlbmNlXzYuemgtdHciLHsiYyI6NzN9XQ",
+    "trust_tier": "operator_curated",
+    "origin": "managed_file_import"
+  },
+  {
+    "slug": "memory/unattributed",
+    "page_id": 1,
+    "title": "Unattributed memory",
+    "type": "note",
+    "chunk_text": "## Facts\n\n<!--- gbrain:facts:begin -->\n\n| # | claim | kind | confidence | visibility | notability | valid_from | valid_until | source | context |\n|---|-------|------|------------|------------|------------|------------|-------------|--------|---------|\n| 1 | gbrain install check | fact | 1.0 | world | medium | 2026-11-24T03:51:42Z |  | install-check |  |\n<!--- gbrain:facts:end -->",
+    "chunk_source": "compiled_truth",
+    "chunk_id": 1,
+    "chunk_index": 0,
+    "score": 1000,
+    "stale": false,
+    "source_id": "default",
+    "effective_date": "2026-11-24",
+    "effective_date_source": "fallback",
+    "keyword_hit": true,
+    "base_score": 1000,
+    "evidence": "keyword_exact",
+    "create_safety": "probable",
+    "id": "gbrain-page:v1:WyJkZWZhdWx0IiwibWVtb3J5L3VuYXR0cmlidXRlZCJd",
+    "trust_tier": "agent_written",
+    "origin": "cli:remember"
+  }
+]
+[gbrain degraded: embed_unavailable] This result is partial or degraded: never report "no notes" or "not found" from it.
+Note [degraded_recall]: Recall was degraded (embed_unavailable): semantic (vector) search did not run, so matches phrased differently from the query can be missing. Treat a thin or empty result as "not found with a degraded search", never as "the brain has nothing on this". This brain was set up keyword-only by the user's choice; mention it only if the user asks why something was not found. No query text was sent to an embedding provider. If the user wants semantic search, `gbrain doctor --json` names the enable command; turning it on needs their consent.
+```
+- 從結果看起來，當把 embedding 語意搜尋(semantic/vector search)關掉時，只能做 keyword 關鍵字搜尋。
+- 看起來是只有符合其中一個關鍵字，也就是有點像 SQL 的 `OR` 條件，都會被抓出來。
+- 在這個例子裡，只要有 `gbrain` 或 `知識庫` 的都會出現在搜尋結果中
+```bash
+## 語意查詢（需要 API Key）
+~/Documents/Obsidian$ gbrain query "GBrain 的主要功能是什麼？" --json
+[gbrain] embeddings are off on this brain by choice (embedding_disabled), so search is keyword-only and no query text is sent to an embedding provider. If the user wants semantic search, `gbrain doctor --json` names the enable command; turning it on needs their consent.
+[
+  {
+    "slug": "memory/unattributed",
+    "page_id": 1,
+    "title": "Unattributed memory",
+    "type": "note",
+    "chunk_text": "## Facts\n\n<!--- gbrain:facts:begin -->\n\n| # | claim | kind | confidence | visibility | notability | valid_from | valid_until | source | context |\n|---|-------|------|------------|------------|------------|------------|-------------|--------|---------|\n| 1 | gbrain install check | fact | 1.0 | world | medium | 2026-11-24T03:51:42Z |  | install-check |  |\n<!--- gbrain:facts:end -->",
+    "chunk_source": "compiled_truth",
+    "chunk_id": 1,
+    "chunk_index": 0,
+    "score": 1000,
+    "stale": false,
+    "source_id": "default",
+    "effective_date": "2026-11-24",
+    "effective_date_source": "fallback",
+    "keyword_hit": true,
+    "base_score": 1000,
+    "evidence": "keyword_exact",
+    "create_safety": "probable",
+    "id": "gbrain-page:v1:WyJkZWZhdWx0IiwibWVtb3J5L3VuYXR0cmlidXRlZCJd",
+    "trust_tier": "agent_written",
+    "origin": "cli:remember"
+  }
+]
+[gbrain degraded: embed_unavailable] This result is partial or degraded: never report "no notes" or "not found" from it.
+Note [degraded_recall]: Recall was degraded (embed_unavailable): semantic (vector) search did not run, so matches phrased differently from the query can be missing. Treat a thin or empty result as "not found with a degraded search", never as "the brain has nothing on this". This brain was set up keyword-only by the user's choice; mention it only if the user asks why something was not found. No query text was sent to an embedding provider. If the user wants semantic search, `gbrain doctor --json` names the enable command; turning it on needs their consent.
+```
+- 因為一開始初始化時用了 `--no-embedding` ，也沒有設定 API Key (雖然環境中有 GEMINI_API_KEY 被找到)，但這裡的結果還是用 keyword search 而已
+
+#### 6.3 完整性檢查
+
+- 檢查 Embedding 狀態
+```bash
+## 檢查嵌入狀態
+~/Documents/Obsidian$ gbrain embed --status
+Error [unknown_flag]: gbrain embed does not accept --status.
+Fix: gbrain embed --stale --dry-run --json --brain host
+Why: A single-page run (gbrain embed <slug>) takes only its own flags, and --status is not one of them, so the run stopped before it read a page or asked for spend approval.
+Docs: https://github.com/garrytan/gbrain/blob/v0.60.765.0/docs/guides/error-codes.md#unknown_flag
+```
+> [!WARNING]
+> 這裡有幻覺，`gbrain embed` 不支援 `--status` 這個參數
+
+- 檢查資料來源
+```bash
+## 檢查資料來源
+~/Documents/Obsidian$ gbrain sources list --json
+{
+  "sources": [
+    {
+      "id": "default",
+      "name": "default",
+      "local_path": "C:\\Users\\jazzw\\.gbrain\\content\\048f5c6d-2634-4ecc-ad8f-7336819ddba5\\default",
+      "federated": true,
+      "mirror_read_only": false,
+      "strategy": null,
+      "pull_strategy": "rebase",
+      "page_count": 23,
+      "last_sync_at": null,
+      "archived": false
+    }
+  ]
+}
+```
+- 檢查知識圖譜
+```bash
+## 檢查知識圖譜
+~/Documents/Obsidian$ gbrain graph-query "gbrain" --depth 2
+No edges found from gbrain.
+```
+- 查看統計資訊
+```bash
+## 查看統計資訊
+~/Documents/Obsidian$ gbrain stats --json
+{
+  "page_count": 23,
+  "chunk_count": 486,
+  "embedded_count": 0,
+  "link_count": 0,
+  "tag_count": 1,
+  "timeline_entry_count": 0,
+  "pages_by_type": {
+    "concept": 22,
+    "note": 1
+  }
+}
+```
+#### 6.4 上線檢查（Onboard）
+
+- 檢查知識庫健康狀況
+```bash
+/Documents/Obsidian$ gbrain onboard --check --json
+{
+  "schema_version": 1,
+  "recommendations": [
+    {
+      "step": 1,
+      "id": "extract.stale",
+      "job": "extract",
+      "params": {
+        "stale": true
+      },
+      "idempotency_key": "default:extract:e4d556df",
+      "severity": "medium",
+      "est_seconds": 30.23,
+      "est_usd_cost": 0,
+      "depends_on": [],
+      "rationale": "Materialize link + timeline edges for 23 stale database pages",
+      "status": "remediable",
+      "apply_policy": "auto_apply",
+      "prompt_text": "Materialize link + timeline edges for 23 stale database pages",
+      "migration_id": "extract.stale"
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "auto_eligible": 1,
+    "prompt_required": 0,
+    "manual_only": 0,
+    "est_total_usd": 0
+  }
+}
+```
+- 自動修復（需要設定 $MAX_USD 限制）
+```bash
+~/Documents/Obsidian$ gbrain onboard --auto --max-usd 5
+[onboard] target 90/100 unreachable; max autonomous = 50/100. Configure missing prereqs (run gbrain doctor --remediation-plan) or lower --target-score.
+```
+
+> [!TODO]
+> 待查：這裡的 `onboard` 跟 `MAX_USD` 代表什麼意思？
