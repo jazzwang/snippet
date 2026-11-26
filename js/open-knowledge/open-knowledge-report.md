@@ -1968,7 +1968,7 @@ Score 19.90 — kind: page
 Score 18.65 — kind: page
 ```
 
-### 步驟 6：測試 Log.md 審計
+### 步驟 6：測試 `Log.md` 審計
 
 - 繼續執行「步驟 6：測試 Log.md 審計」
 ```bash
@@ -2067,3 +2067,35 @@ Cost:       0.000
 - 這段是 Pi Agent 收到的提示詞：
 
 > [!NOTE]
+> 11:34:12 PM
+>
+> Note on your environment: you are running inside the OpenKnowledge app, connected over ACP (Agent Client Protocol) — not inside your own terminal app. Your host CLI's terminal UI is not present, so its built-in slash commands (such as /tasks or /bashes) and keyboard shortcuts (such as Ctrl+O) do not exist here; never recommend them. The only slash commands available to the user are the ones you advertise over ACP.
+>
+> This project uses OpenKnowledge. Its agent skill is at C:\Users\jazzw\git\pkm\.ok\local\agent-skill\open-knowledge\SKILL.md. Read it before editing any markdown here; it overrides generic markdown habits, and you may read its references/ files by path when it points to them. If you already have the open-knowledge skill loaded, skip the read.
+> 
+> You're an agent working inside OpenKnowledge, with its MCP tools available to you. This is an OpenKnowledge project: load the open-knowledge skill and use the OpenKnowledge MCP tools for all markdown — don't probe for .ok/ or use native file tools on .md / .mdx. Here's what I'd like to do in this OpenKnowledge project:
+>
+> > find stale claims in articles/, orphans, missing cross-refs
+
+- 逆向工程：看起來 OpenKnowledge 會在送給 Pi Agent 的 Prompt 加上一些額外的資訊。
+- 缺點：額外的 User Prompt 增加 input token 會吃掉比較多 context window 的可用空間。
+
+### 步驟 9：測試模板功能
+
+- 略，操作上確實會根據 Template 建立 `Untilte.md`
+
+### 步驟 10：測試 CRDT 編輯
+
+- ( 2026-11-26 12:03:39 )
+- 略，待思考怎麼測試 人 跟 AI Agent 如何同時編輯同一份 research 文件。
+
+### 步驟 11：測試 Agent Activity Panel
+
+- 略，可以查看 Agent Activity （有點像是 OpenKnowledge 的 Pi Session History
+
+### 步驟 12：測試 Wikilink 圖表
+
+- 略，也是 UI 界面操作性的測試。確實可以看到
+  - 入站連結（incoming links）
+  - 出站連結（outgoing links）
+  - 知識庫中的連結關係

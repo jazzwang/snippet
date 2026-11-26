@@ -18,8 +18,11 @@ wget -c https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/main/Qwen3.5-9B-Q
 ## 移除原因：llama.cpp 載入失敗，原因待查
 
 ## [10/20 00:20:05] - 下載測試
-wget -c https://huggingface.co/bartowski/MiMo-V2.6-Distill-Qwen-9B-GGUF/resolve/main/MiMo-V2.6-Distill-Qwen-9B-Q4_K_M.gguf
+## wget -c https://huggingface.co/bartowski/MiMo-V2.6-Distill-Qwen-9B-GGUF/resolve/main/MiMo-V2.6-Distill-Qwen-9B-Q4_K_M.gguf
 
 ## [10/20 10:12:04] - 下載測試
 ## wget -c https://huggingface.co/mradermacher/translategemma-12b-it-GGUF/resolve/main/translategemma-12b-it.Q4_K_S.gguf
 ## 移除原因：llama.cpp 載入失敗，原因待查
+
+## [11/26 23:04:42] - 下載測試
+wget -c https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-Q4_K_M.gguf
