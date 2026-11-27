@@ -2067,3 +2067,131 @@ Model: PLaMo3-0.8B
 - 小結：
   > [!NOTE]
   > 最近測試幾個專攻翻譯的模型，都錯在 Jinja Template
+  > 要查一下可否忽略模型中的 Jinja Template 並自訂新的 Template
+
+## 2026-11-27
+
+- 主題：**llama-server router mode 模型閒置 unload 機制**
+- 參數：`--sleep-idle-seconds` + `--stop-timeout`
+
+### 💡 核心問題
+
+> [!NOTE]
+> `llama-server` 在 router mode 下，有哪一個參數會在模型閒置超過 5 分鐘後，強制 unload 該模型？
+
+✅ **答案：`--sleep-idle-seconds`**
+
+```bash
+llama-server --sleep-idle-seconds 300  # 300 秒 = 5 分鐘
+```
+
+> [!NOTE]
+> ❓ **問題**：如果設定 `stop-timeout=120`，會不會造成 `sleep-idle-seconds` 從 120 秒以後才算 300 秒？
+
+✅ **答案**：**不會互相影響**，兩者獨立運作。
+
+### ⚙️ 兩個參數的差異
+
+| 參數 | 功能 | 計時基準 | 預設值 |
+|------|------|---------|--------|
+| `--sleep-idle-seconds` | 模型閒置 unload 門檻 | 從**上次收到任務**開始計時 | `-1` (disabled) |
+| `--stop-timeout` | 卸載等待時間 | 從**unload 請求發出**開始計時 | `10` 秒 |
+
+### ⏱️ 時間線運作流程
+
+```mermaid
+sequenceDiagram
+    participant Client as 客戶端
+    participant Server as llama-server
+    participant Timer as 閒置計時器
+    participant Child as Child Subprocess
+
+    Note over Client,Child: 初始狀態：Model A 已載入記憶體
+
+    Client->>Server: 收到任務 (Task A)
+    Timer->>Timer: time_last_task 更新為現在時間
+
+    Note over Timer: 閒置計時開始<br/>從 time_last_task 計算
+
+    Timer->>Timer: 閒置 120 秒 (stop-timeout 觸發點)
+    Note over Server: 若有其他模型需要載入<br/>觸發 unload 請求<br/>等待 stop-timeout=120 秒後<br/>才強制終止 child 進程
+
+    Timer->>Timer: 閒置 300 秒 (sleep-idle-seconds 觸發點)
+    Server->>Child: 進入 sleep 模式，unload model
+    Note over Child: 模型與 KV Cache 從記憶體移除
+
+    Client->>Server: 新任務到達
+    Server->>Server: 自動重新載入模型
+```
+
+### 🧠 心得總結
+
+1. **`--sleep-idle-seconds` 是 router mode 的自動 unload 機制**
+   - 基於「上次收到任務的時間」計算
+   - 與 `--stop-timeout` 完全獨立，不會互相影響
+
+2. **`--stop-timeout` 是用於模型切換時的等待時間**
+   - 當需要 unload model A 來載入 model B 時
+   - 等待 unload 完成後才強制終止 child 進程
+
+3. **單人使用建議配置**
+   - `sleep-idle-seconds = 300`（5 分鐘）
+   - `stop-timeout = 300`（可調整）
+   - `models-max = 1`（一次只保留一個模型）
+
+4. **效能權衡**
+   - 大 ctx-size 雖然靈活，但會顯著降低推論速度
+   - 簡單工作建議使用較小的 ctx-size（性價比高）
+
+### 📚 參考來源
+
+1. [PR #18228: server: add auto-sleep after N seconds of idle](https://github.com/ggml-org/llama.cpp/pull/18228)
+2. [llama.cpp 官方文檔：Model Presets](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md#model-presets)
+3. [GitHub Issue: Feature Request: Idle model unload timeout](https://github.com/ggml-org/llama.cpp/issues/18189)
+
+### 行動：
+
+- 刪除 `stop-timeout` (沿用預設的 10 秒)
+- `sleep-idle-seconds` 從 `300` 秒（五分鐘）降到 `120` 秒（兩分鐘）
+- 將模型 Name 改成 ==**全部小寫**== (統一命名法則，因為 Pi Agent 顯示的 Google Model 也都是小寫)
+- 新增 Gemma 4 E4B Q4_K_M 來做翻譯或者簡單工作的預設
+- 加註實際運行時，看到的 `n_ctx_slot` 數字（單一 slot 的 context window size）
+
+| 模型 Name | 單一 Slot 分到的 context size |
+|-----------|------------------------------|
+| unsloth Qwen 3.5 9B (Q4_K_M) |  116,224 |
+| Ornith 1.5 9B (Q4_K_M) | 121,344 |
+| unsloth Gemma 4 E4B it (Q4_K_M) | 131,072 |
+
+```diff
+--- .models/preset.ini.old   2026-11-04 17:01:34.394738700 +0800
++++ .models/preset.ini       2026-11-27 14:39:21.623891800 +0800
+@@ -5,17 +5,20 @@
+ jinja = true
+ models-autoload = false      ## 啟動時不自動載入模型
+ np = 1                       ## 每個模型只跑 1 個 slot (因為暫時沒有併發需求，預設值為 4)
+-models-max = 1               ## 確保 Router Mode 一次只 serve 一個模型，不在使用中的就
+-sleep-idle-seconds = 300     ## 閒置五分鐘就釋放模型，降低 VRAM 壓力
+-stop-timeout = 300           ## 五分鐘後關閉模型所屬的後端獨立子進程（Subprocess）
++models-max = 1               ## 確保 Router Mode 一次只 serve 一個模型，不在使用中的就 unload
++sleep-idle-seconds = 120     ## 閒置二分鐘就釋放模型，降低 VRAM 壓力（預設值是 `-1` (disabled)）
+ cache-type-k = q4_0          ## 對 KV Cache 進行量化（快取量化）。這能直接讓上下文佔用的 VRAM 減半
+ cache-type-v = q4_0          ## 對 KV Cache 進行量化（快取量化）。這能直接讓上下文佔用的 VRAM 減半
+
+ ## 模型 1：較小上下文的設定檔
+-[unsloth/Qwen3.5-9B]
++[unsloth/qwen3.5-9b]
+ model = C:/Users/jazzw/.models/Qwen3.5-9B-Q4_K_M.gguf
+-#ctx-size = 40960
++#n_ctx_slot = 116224
+
+-[Ornith-1.5-9B]
++[ornith-1.5-9b]
+ model = C:/Users/jazzw/.models/Ornith-1.5-9B-Q4_K_M.gguf
+-#ctx-size = 40960
++#n_ctx_slot = 121344
++
++[gemma-4-e4b]
++model = C:/Users/jazzw/.models/gemma-4-E4B-it-Q4_K_M.gguf
++#n_ctx_slot = 131072
+```
